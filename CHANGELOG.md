@@ -1,3 +1,7 @@
+# 0.4.2
+- The description now says that the plugin downloads the public Shopproof rules file once a day.
+- Administration: the screen reader helper style no longer uses the deprecated CSS clip property. No visible change.
+
 # 0.4.1
 - New page designer block "Shopproof product information" (category Commerce) for product page layouts of your own. The default product page needs nothing: the blocks appear in the buy box and below the description as before.
 - Each block shows only once per page, wherever the theme or layout places it.

@@ -1,3 +1,7 @@
+# 0.4.2
+- Die Beschreibung nennt jetzt den täglichen Download der öffentlichen Shopproof-Regeldatei.
+- Administration: Die Hilfsklasse für Screenreader nutzt nicht mehr die veraltete CSS-Eigenschaft clip. Keine sichtbare Änderung.
+
 # 0.4.1
 - Neuer Erlebniswelten-Block "Shopproof Produktinformationen" (Kategorie Commerce) für eigene Produktseiten-Layouts. Die Standard-Produktseite braucht nichts: Die Blöcke erscheinen wie bisher in der Kaufbox und unter der Beschreibung.
 - Jeder Block erscheint nur einmal pro Seite, egal wo Theme oder Layout ihn platzieren.
