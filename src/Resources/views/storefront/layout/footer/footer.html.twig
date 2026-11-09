@@ -1,0 +1,16 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{# The shop's registration numbers as one small line with the VAT notice at the bottom of every
+   page (decision 0018), when the merchant entered numbers and left the footer line on. #}
+{% block layout_footer_vat %}
+    {{ parent() }}
+    {% block shopproof_footer_registrations %}
+        {% set shopproofFooter = shopproof_registrations_footer(context.languageInfo.localeCode, context.salesChannelId) %}
+        {% if shopproofFooter %}
+            {% set pageLang = context.languageInfo.localeCode|slice(0, 2)|lower %}
+            <p class="shopproof-registrations-footer footer-vat"{% if shopproofFooter.lang != pageLang %} lang="{{ shopproofFooter.lang }}"{% endif %}>
+                {% for row in shopproofFooter.numbers %}{{ row.label }}: {{ row.number }}{% if not loop.last %} &middot; {% endif %}{% endfor %}
+            </p>
+        {% endif %}
+    {% endblock %}
+{% endblock %}

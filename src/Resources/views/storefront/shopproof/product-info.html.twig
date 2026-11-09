@@ -1,18 +1,29 @@
 {# The Shopproof product blocks, each shown once per product and page: from the buy box and the
    product description in Shopware's standard layout, or from the Shopproof page designer element
-   wherever the merchant places it. #}
+   wherever the merchant places it. "safety-buyBox" and "safety-description" are the two places of
+   the product safety block; only the one chosen in the settings shows it. #}
 {% if product %}
     {% for part in parts %}
         {% if part == 'durability' %}
             {% set shopproofLabel = shopproof_durability(product, context.languageInfo.localeCode, context.salesChannelId) %}
             {% if shopproofLabel and shopproof_once('durability-' ~ product.id) %}{{ shopproofLabel|raw }}{% endif %}
-        {% elseif part == 'safety' %}
-            {% if shopproof_safety(product, context.salesChannelId) and shopproof_once('safety-' ~ product.id) %}
-                {% sw_include '@ShopproofCompliance/storefront/shopproof/safety.html.twig' with { product: product } %}
+        {% elseif part starts with 'safety' %}
+            {% set shopproofLayout = shopproof_safety_layout(context.salesChannelId) %}
+            {% if part == 'safety' or part == 'safety-' ~ shopproofLayout %}
+                {% set shopproofSafety = shopproof_safety(product, context.salesChannelId) %}
+                {% set shopproofHazard = shopproof_hazard(product, context.languageInfo.localeCode, context.salesChannelId) %}
+                {% if (shopproofSafety or shopproofHazard) and shopproof_once('safety-' ~ product.id) %}
+                    {% sw_include '@ShopproofCompliance/storefront/shopproof/safety.html.twig' with { product: product, shopproofSafety: shopproofSafety, shopproofHazard: shopproofHazard, compact: shopproofLayout == 'buyBox' } %}
+                {% endif %}
             {% endif %}
         {% elseif part == 'guarantee' %}
             {% if shopproof_guarantee(context.languageInfo.localeCode, context.salesChannelId) and shopproof_once('guarantee-' ~ product.id) %}
                 {% sw_include '@ShopproofCompliance/storefront/shopproof/guarantee.html.twig' %}
+            {% endif %}
+        {% elseif part == 'registrations' %}
+            {% set shopproofRegistrations = shopproof_registrations(product, context.languageInfo.localeCode, context.salesChannelId) %}
+            {% if shopproofRegistrations and shopproof_once('registrations-' ~ product.id) %}
+                {% sw_include '@ShopproofCompliance/storefront/shopproof/registrations.html.twig' with { reg: shopproofRegistrations } %}
             {% endif %}
         {% endif %}
     {% endfor %}

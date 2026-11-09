@@ -1,0 +1,29 @@
+{# The shop's registration numbers and how to return old batteries and electrical devices
+   (decision 0018). Text from the reviewed rules data; the numbers and the return note are the
+   merchant's own. Rendered on the server, takes the theme's own styles. #}
+{% set pageLang = context.languageInfo.localeCode|slice(0, 2)|lower %}
+<section class="shopproof shopproof-registrations mt-4"{% if reg.lang != pageLang %} lang="{{ reg.lang }}"{% endif %}>
+    {% if reg.numbers is not empty %}
+        <h3 class="h5 shopproof-registrations-heading">{{ reg.heading }}</h3>
+        <dl class="shopproof-registrations-numbers">
+            {% for row in reg.numbers %}
+                <div><dt>{{ row.label }}</dt><dd>{{ row.number }}</dd></div>
+            {% endfor %}
+        </dl>
+    {% endif %}
+    {% for section in reg.sections %}
+        <div class="shopproof-takeback shopproof-takeback-{{ section.key }}">
+            <h3 class="h5 shopproof-takeback-heading">{{ section.heading }}</h3>
+            <img class="shopproof-takeback-symbol" src="{{ reg.symbol }}" alt="{{ reg.symbolAlt }}" width="32" height="40" loading="lazy" decoding="async">
+            {% for line in section.text %}
+                <p>{{ line }}</p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    {% if reg.note %}
+        <div class="shopproof-takeback-note">
+            <h3 class="h5 shopproof-takeback-heading">{{ reg.returnHeading }}</h3>
+            <p{% if reg.lang != pageLang %} lang="{{ pageLang }}"{% endif %}>{{ reg.note|nl2br }}</p>
+        </div>
+    {% endif %}
+</section>

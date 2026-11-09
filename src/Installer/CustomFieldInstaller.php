@@ -4,6 +4,8 @@ namespace Shopproof\Compliance\Installer;
 
 use Doctrine\DBAL\Connection;
 use Shopproof\Compliance\Storefront\DurabilityLabel;
+use Shopproof\Compliance\Storefront\HazardLabel;
+use Shopproof\Compliance\Storefront\Registrations;
 use Shopproof\Compliance\Storefront\SafetyData;
 use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
@@ -22,7 +24,9 @@ final class CustomFieldInstaller
     public const PRODUCT_SET = 'shopproof_safety';
     public const MANUFACTURER_SET = 'shopproof_safety_manufacturer';
     public const DURABILITY_SET = 'shopproof_durability';
-    public const SETS = [self::PRODUCT_SET, self::MANUFACTURER_SET, self::DURABILITY_SET];
+    public const HAZARD_SET = 'shopproof_hazard';
+    public const TAKEBACK_SET = 'shopproof_takeback';
+    public const SETS = [self::PRODUCT_SET, self::MANUFACTURER_SET, self::DURABILITY_SET, self::HAZARD_SET, self::TAKEBACK_SET];
 
     private const LABELS = [
         'manufacturer_name' => ['Manufacturer name', 'Name des Herstellers'],
@@ -39,9 +43,30 @@ final class CustomFieldInstaller
         'brand' => ['Brand on the label (empty: the manufacturer\'s name)', 'Marke auf dem Label (leer: Name des Herstellers)'],
         'model' => ['Model identifier on the label (empty: the manufacturer number)', 'Modellkennung auf dem Label (leer: Herstellernummer)'],
         'display' => ['How to show the label', 'Darstellung des Labels'],
+        'hazard_pictograms' => ['Hazard pictograms (copy them from the label or safety data sheet)', 'Gefahrenpiktogramme (vom Etikett oder Sicherheitsdatenblatt übernehmen)'],
+        'hazard_signal' => ['Signal word', 'Signalwort'],
+        'hazard_statements' => ['Hazard statements, one code per line (H225, EUH066); own words after a colon', 'Gefahrenhinweise, ein Code pro Zeile (H225, EUH066); eigene Worte nach einem Doppelpunkt'],
+        'precautionary_statements' => ['Precautionary statements, one code per line (P210, P305+P351+P338); own words after a colon', 'Sicherheitshinweise, ein Code pro Zeile (P210, P305+P351+P338); eigene Worte nach einem Doppelpunkt'],
+        'weee' => ['Electrical equipment: show how to return old devices on this product page', 'Elektrogerät: auf dieser Produktseite zeigen, wie Altgeräte zurückgegeben werden'],
+        'batteries' => ['Contains batteries: show how to return old batteries on this product page', 'Enthält Batterien: auf dieser Produktseite zeigen, wie Altbatterien zurückgegeben werden'],
     ];
 
-    private const MULTILINE = ['manufacturer_address', 'responsible_address', 'identifiers', 'warnings'];
+    /** Pictogram names from CLP Annex V, English and German, for the product editor. */
+    private const PICTOGRAM_NAMES = [
+        'GHS01' => ['Exploding bomb', 'Explodierende Bombe'],
+        'GHS02' => ['Flame', 'Flamme'],
+        'GHS03' => ['Flame over circle', 'Flamme über einem Kreis'],
+        'GHS04' => ['Gas cylinder', 'Gasflasche'],
+        'GHS05' => ['Corrosion', 'Ätzwirkung'],
+        'GHS06' => ['Skull and crossbones', 'Totenkopf mit gekreuzten Knochen'],
+        'GHS07' => ['Exclamation mark', 'Ausrufezeichen'],
+        'GHS08' => ['Health hazard', 'Gesundheitsgefahr'],
+        'GHS09' => ['Environment', 'Umwelt'],
+    ];
+
+    private const MULTILINE = ['manufacturer_address', 'responsible_address', 'identifiers', 'warnings', 'hazard_statements', 'precautionary_statements'];
+
+    private const BOOLEAN = ['weee', 'batteries'];
 
     /**
      * @param EntityRepository<\Shopware\Core\System\CustomField\Aggregate\CustomFieldSet\CustomFieldSetCollection> $setRepository
@@ -67,6 +92,14 @@ final class CustomFieldInstaller
                 'Shopproof: EU durability label',
                 'Shopproof: EU-Haltbarkeitslabel',
             ]),
+            $this->set(self::HAZARD_SET, 'product', HazardLabel::PREFIX, HazardLabel::FIELDS, [
+                'Shopproof: hazardous chemicals (CLP)',
+                'Shopproof: gefährliche Chemikalien (CLP)',
+            ]),
+            $this->set(self::TAKEBACK_SET, 'product', Registrations::PREFIX, Registrations::SECTIONS, [
+                'Shopproof: take-back of old devices and batteries',
+                'Shopproof: Rücknahme von Altgeräten und Altbatterien',
+            ]),
         ], $context);
     }
 
@@ -91,6 +124,8 @@ final class CustomFieldInstaller
             'product_translation' => [
                 ...array_map(static fn (string $field): string => SafetyData::PREFIX . $field, [...SafetyData::PARTY_FIELDS, ...SafetyData::PRODUCT_FIELDS]),
                 ...array_map(static fn (string $field): string => DurabilityLabel::PREFIX . $field, DurabilityLabel::FIELDS),
+                ...array_map(static fn (string $field): string => HazardLabel::PREFIX . $field, HazardLabel::FIELDS),
+                ...array_map(static fn (string $field): string => Registrations::PREFIX . $field, Registrations::SECTIONS),
             ],
             'product_manufacturer_translation' => array_map(
                 static fn (string $field): string => SafetyData::MANUFACTURER_PREFIX . $field,
@@ -136,9 +171,42 @@ final class CustomFieldInstaller
                     'componentName' => 'sw-single-select',
                     'customFieldType' => 'select',
                     'options' => [
+                        ['value' => 'nested', 'label' => ['en-GB' => 'Short strip that opens the full label (default)', 'de-DE' => 'Schmaler Streifen, der das ganze Label öffnet (Standard)']],
                         ['value' => 'full', 'label' => ['en-GB' => 'Full label', 'de-DE' => 'Ganzes Label']],
-                        ['value' => 'nested', 'label' => ['en-GB' => 'Short strip that opens the full label', 'de-DE' => 'Schmaler Streifen, der das ganze Label öffnet']],
                     ],
+                ];
+            }
+            if ($field === 'hazard_pictograms') {
+                $type = CustomFieldTypes::SELECT;
+                $config = [
+                    ...$config,
+                    'componentName' => 'sw-multi-select',
+                    'customFieldType' => 'select',
+                    'options' => array_map(static fn (string $code): array => [
+                        'value' => $code,
+                        'label' => ['en-GB' => $code . ' ' . self::PICTOGRAM_NAMES[$code][0], 'de-DE' => $code . ' ' . self::PICTOGRAM_NAMES[$code][1]],
+                    ], HazardLabel::PICTOGRAMS),
+                ];
+            }
+            if ($field === 'hazard_signal') {
+                $type = CustomFieldTypes::SELECT;
+                $config = [
+                    ...$config,
+                    'componentName' => 'sw-single-select',
+                    'customFieldType' => 'select',
+                    'options' => [
+                        ['value' => 'danger', 'label' => ['en-GB' => 'Danger', 'de-DE' => 'Gefahr']],
+                        ['value' => 'warning', 'label' => ['en-GB' => 'Warning', 'de-DE' => 'Achtung']],
+                    ],
+                ];
+            }
+            if (\in_array($field, self::BOOLEAN, true)) {
+                $type = CustomFieldTypes::BOOL;
+                $config = [
+                    ...$config,
+                    'componentName' => 'sw-field',
+                    'customFieldType' => 'checkbox',
+                    'type' => 'checkbox',
                 ];
             }
             $customFields[] = [

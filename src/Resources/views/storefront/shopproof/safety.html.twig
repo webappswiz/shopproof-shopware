@@ -1,10 +1,29 @@
-{# Product safety information (GPSR, Regulation (EU) 2023/988 Art. 19; rule EU-PS-01). Rendered on
-   the server, no JavaScript; takes the theme's own styles. Shown only when a manufacturer is known. #}
-{% set shopproofSafety = shopproof_safety(product, context.salesChannelId) %}
-{% if shopproofSafety %}
-    {% set headingId = 'shopproof-safety-' ~ product.id %}
-    <section class="shopproof shopproof-safety mt-4" aria-labelledby="{{ headingId }}">
-        <h3 id="{{ headingId }}" class="h5">{{ 'shopproof.safety.heading'|trans|sw_sanitize }}</h3>
+{# Product safety information (GPSR, Regulation (EU) 2023/988 Art. 19; rule EU-PS-01) and the hazard
+   label elements of hazardous chemicals (CLP Art. 48a; rule EU-PS-03). Rendered on the server, no
+   JavaScript; takes the theme's own styles (the few styles below have zero specificity, except the
+   open arrow, because many themes hide the browser's own marker). Compact: one line under the
+   Add to cart button that opens to the details, in a native <details>, so keyboard and screen
+   reader support come from the browser. Hazard elements are never folded away: CLP asks for them
+   to be clear and visible in the offer. Never an empty block, no credit line. #}
+{% if shopproof_once('safety-css') %}
+<style>
+:where(.shopproof-safety summary){cursor:pointer;min-block-size:1.5rem}
+.shopproof-compact>details>summary{list-style:none}
+.shopproof-compact>details>summary::-webkit-details-marker{display:none}
+.shopproof-compact>details>summary::after{content:"";display:inline-block;inline-size:.45em;block-size:.45em;margin-inline-start:.5em;border-inline-end:2px solid currentColor;border-block-end:2px solid currentColor;transform:translateY(-.2em) rotate(45deg)}
+.shopproof-compact>details[open]>summary::after{transform:translateY(.1em) rotate(-135deg)}
+:where(.shopproof-safety details>dl){margin-block-start:.75rem}
+:where(.shopproof-hazard){margin-block-end:1rem}
+:where(.shopproof-hazard p){margin-block:0 .5rem}
+:where(.shopproof-hazard ul){margin-block:0 .75rem;padding-inline-start:1.25rem}
+:where(.shopproof-hazard-label){font-weight:bold}
+:where(.shopproof-hazard-pictograms){display:flex;flex-wrap:wrap;gap:.5rem}
+.shopproof-hazard-pictograms img{inline-size:4rem;block-size:4rem;max-inline-size:4rem;object-fit:contain}
+</style>
+{% endif %}
+{% set pageLang = context.languageInfo.localeCode|slice(0, 2)|lower %}
+{% set details %}
+    {% if shopproofSafety %}
         <dl>
             {% for party in [
                 { key: 'manufacturer', data: shopproofSafety.manufacturer },
@@ -35,5 +54,52 @@
                 <dd>{{ shopproofSafety.warnings|nl2br }}</dd>
             {% endif %}
         </dl>
+    {% endif %}
+{% endset %}
+{% set hazard %}
+    {% if shopproofHazard %}
+        <div class="shopproof-hazard" role="group" aria-label="{{ 'shopproof.safety.hazardHeading'|trans|striptags }}"{% if shopproofHazard.lang != pageLang %} lang="{{ shopproofHazard.lang }}"{% endif %}>
+            {% if shopproofHazard.pictograms is not empty %}
+                <p class="shopproof-hazard-pictograms">
+                    {% for pictogram in shopproofHazard.pictograms %}
+                        <img src="{{ pictogram.src }}" alt="{{ pictogram.alt }}" width="64" height="64" loading="lazy">
+                    {% endfor %}
+                </p>
+            {% endif %}
+            {% if shopproofHazard.signalWord %}
+                <p class="shopproof-signal-word"><strong>{{ shopproofHazard.signalWord }}</strong></p>
+            {% endif %}
+            {% for group in [
+                { key: 'hazardStatements', items: shopproofHazard.statements },
+                { key: 'precautions', items: shopproofHazard.precautions }
+            ] %}
+                {% if group.items is not empty %}
+                    <p class="shopproof-hazard-label">{{ ('shopproof.safety.' ~ group.key)|trans|sw_sanitize }}</p>
+                    <ul>
+                        {% for statement in group.items %}
+                            <li>{% if statement.code %}{{ statement.code }}: {% endif %}{{ statement.text }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endset %}
+{% if compact %}
+    <section class="shopproof shopproof-safety shopproof-compact mt-3" aria-label="{{ 'shopproof.safety.heading'|trans|striptags }}">
+        {{ hazard }}
+        {% if shopproofSafety %}
+            <details>
+                <summary>{{ 'shopproof.safety.summary'|trans({ '%name%': shopproofSafety.manufacturer.name })|sw_sanitize }}</summary>
+                {{ details }}
+            </details>
+        {% endif %}
+    </section>
+{% else %}
+    {% set headingId = 'shopproof-safety-' ~ product.id %}
+    <section class="shopproof shopproof-safety mt-4" aria-labelledby="{{ headingId }}">
+        <h3 id="{{ headingId }}" class="h5">{{ 'shopproof.safety.heading'|trans|sw_sanitize }}</h3>
+        {{ hazard }}
+        {{ details }}
     </section>
 {% endif %}

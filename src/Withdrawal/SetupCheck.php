@@ -33,15 +33,18 @@ final class SetupCheck
      *     failedRecords?: int,
      *     showSafety?: bool,
      *     guaranteeNotice?: bool,
-     *     manufacturersWithoutDetails?: list<array{id: string, name: string}>
+     *     manufacturersWithoutDetails?: list<array{id: string, name: string}>,
+     *     safetyPlacement?: string,
+     *     hazardProblems?: list<array{id: string, name: string, codes: list<array{code: string, reason: string}>}>,
+     *     registrationBadLines?: list<string>
      * } $facts
      *
-     * @return array{supported: bool, ok: bool, shop: list<array{key: string, ok: bool}>, channels: list<array{id: string, name: string, ok: bool, checks: list<array{key: string, ok: bool, detail?: string}>}>, layouts: list<array{id: string, name: string, ok: bool, missing: list<string>}>, failedRecords: int, products: list<array{key: string, ok: bool}>, manufacturersWithoutDetails: list<array{id: string, name: string}>}
+     * @return array{supported: bool, ok: bool, shop: list<array{key: string, ok: bool}>, channels: list<array{id: string, name: string, ok: bool, checks: list<array{key: string, ok: bool, detail?: string}>}>, layouts: list<array{id: string, name: string, ok: bool, missing: list<string>}>, failedRecords: int, products: list<array{key: string, ok: bool}>, manufacturersWithoutDetails: list<array{id: string, name: string}>, hazardProblems: list<array{id: string, name: string, codes: list<array{code: string, reason: string}>}>, registrationBadLines: list<string>}
      */
     public static function evaluate(array $facts): array
     {
         $common = [
-            'layouts' => self::layouts($facts['layouts'] ?? []),
+            'layouts' => self::layouts($facts['layouts'] ?? [], ($facts['safetyPlacement'] ?? 'buyBox') === 'description' ? 'description' : 'buyBox'),
             'failedRecords' => max(0, $facts['failedRecords'] ?? 0),
             ...self::products($facts),
         ];
@@ -83,31 +86,46 @@ final class SetupCheck
      * for goods from 27 September 2026) is off, or Shopware manufacturers have no Shopproof
      * contact details, so their products show the manufacturer's name only.
      *
-     * @param array{showSafety?: bool, guaranteeNotice?: bool, manufacturersWithoutDetails?: list<array{id: string, name: string}>} $facts
+     * Also products with hazard statements the storefront cannot show (an unknown code, or one
+     * that needs the shop's own words), and lines of the registration numbers setting that are
+     * not used.
      *
-     * @return array{products: list<array{key: string, ok: bool}>, manufacturersWithoutDetails: list<array{id: string, name: string}>}
+     * @param array{showSafety?: bool, guaranteeNotice?: bool, manufacturersWithoutDetails?: list<array{id: string, name: string}>, hazardProblems?: list<array{id: string, name: string, codes: list<array{code: string, reason: string}>}>, registrationBadLines?: list<string>} $facts
+     *
+     * @return array{products: list<array{key: string, ok: bool}>, manufacturersWithoutDetails: list<array{id: string, name: string}>, hazardProblems: list<array{id: string, name: string, codes: list<array{code: string, reason: string}>}>, registrationBadLines: list<string>}
      */
     private static function products(array $facts): array
     {
         $products = [['key' => 'guaranteeNotice', 'ok' => $facts['guaranteeNotice'] ?? false]];
         $missing = [];
+        $hazards = [];
         if ($facts['showSafety'] ?? false) {
             $missing = $facts['manufacturersWithoutDetails'] ?? [];
             $products[] = ['key' => 'manufacturerDetails', 'ok' => $missing === []];
+            $hazards = $facts['hazardProblems'] ?? [];
+            if ($hazards !== []) {
+                $products[] = ['key' => 'hazardStatements', 'ok' => false];
+            }
+        }
+        $badLines = $facts['registrationBadLines'] ?? [];
+        if ($badLines !== []) {
+            $products[] = ['key' => 'registrationNumbers', 'ok' => false];
         }
 
-        return ['products' => $products, 'manufacturersWithoutDetails' => $missing];
+        return ['products' => $products, 'manufacturersWithoutDetails' => $missing, 'hazardProblems' => $hazards, 'registrationBadLines' => $badLines];
     }
 
     /**
-     * Whether each product page layout has a place for the Shopproof blocks: the buy box (durability
-     * label) and the description (product safety, guarantee notice), or the Shopproof element.
+     * Whether each product page layout has a place for the Shopproof blocks: the buy box
+     * (durability label, and the product safety line in the default placement) and the
+     * description (guarantee notice, take-back, and product safety when placed there), or the
+     * Shopproof element.
      *
      * @param list<array{id: string, name: string, elements: list<string>}> $layouts
      *
      * @return list<array{id: string, name: string, ok: bool, missing: list<string>}>
      */
-    private static function layouts(array $layouts): array
+    private static function layouts(array $layouts, string $safetyPlacement = 'buyBox'): array
     {
         $result = [];
         foreach ($layouts as $layout) {
@@ -116,9 +134,15 @@ final class SetupCheck
             if (!$has(self::ELEMENT)) {
                 if (!$has(self::BUY_BOX)) {
                     $missing[] = 'durability';
+                    if ($safetyPlacement === 'buyBox') {
+                        $missing[] = 'safety';
+                    }
                 }
                 if (!$has(self::DESCRIPTION)) {
-                    $missing[] = 'safety';
+                    if ($safetyPlacement === 'description') {
+                        $missing[] = 'safety';
+                    }
+                    $missing[] = 'guarantee';
                 }
             }
             $result[] = ['id' => $layout['id'], 'name' => $layout['name'], 'ok' => $missing === [], 'missing' => $missing];

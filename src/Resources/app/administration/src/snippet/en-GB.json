@@ -74,7 +74,11 @@
             "guaranteeNotice_ok": "The EU legal guarantee notice is shown on product pages",
             "guaranteeNotice_off": "The EU legal guarantee notice is off in at least one storefront. It is required for goods from 27 September 2026. Turn on \"Show the official EU legal guarantee notice on product pages\" in the plugin settings.",
             "manufacturerDetails_ok": "Every manufacturer of your products has contact details for the product safety information",
-            "manufacturerDetails_off": "These manufacturers have no contact details, so their products show the manufacturer's name only. Add the address and email under Catalogues > Manufacturers (Shopproof: product safety), or on each product:"
+            "manufacturerDetails_off": "These manufacturers have no contact details, so their products show the manufacturer's name only. Add the address and email under Catalogues > Manufacturers (Shopproof: product safety), or on each product:",
+            "hazardStatements_off": "These products have hazard or precautionary statements the product page cannot show. Codes with a choice or a blank (such as P280 or P501) need your own words after a colon, for example \"P280: Wear protective gloves.\". Open the product, Custom fields, \"Shopproof: hazardous chemicals (CLP)\":",
+            "hazardOwn": "needs your own words",
+            "hazardUnknown": "unknown code, check the label",
+            "registrationNumbers_off": "These lines of \"Your registration numbers\" in the plugin settings are not shown, because they have no colon or no number, or there are more than 12. Write them like \"WEEE DE: DE 12345678\":"
         },
         "cms": {
             "label": "Shopproof product information",
@@ -84,12 +88,38 @@
         },
         "layouts": {
             "title": "Product pages",
-            "intro": "Where Shopproof shows the durability label (in the buy box) and the product safety information and guarantee notice (below the product description), for each product page layout your shop uses.",
+            "intro": "Where Shopproof shows the durability label and the product safety line (in the buy box) and the guarantee notice and take-back information (below the product description), for each product page layout your shop uses.",
             "ok": "shows the Shopproof blocks",
             "missing": "has no place for {blocks}. Open the layout and add the block \"Shopproof product information\" (category Commerce) where they should appear.",
             "part": {
                 "durability": "the durability label",
-                "safety": "product safety and the guarantee notice"
+                "safety": "product safety",
+                "guarantee": "the guarantee notice and take-back information"
+            }
+        },
+        "proof": {
+            "title": "Proof log",
+            "intro": "A dated record of what your shop showed and which withdrawals it received, kept in your shop's own database. Each entry is chained to the one before by a SHA-256 hash, so a changed or deleted entry shows up when you check the chain. It holds no customer names, email addresses or order numbers. A snapshot is recorded once a day.",
+            "unavailable": "The proof log table is missing. Update or reinstall the plugin.",
+            "loadFailed": "The proof log could not be loaded.",
+            "none": "No entries yet. The first snapshot is recorded within a day, or press \"Record a snapshot now\".",
+            "lastSnapshot": "Last snapshot: {date}",
+            "retention": "Entries are kept for {days} days (plugin settings, Proof log).",
+            "retentionAll": "All entries are kept (plugin settings, Proof log).",
+            "verify": "Check the chain",
+            "verifyOk": "Chain intact: {count} entries checked.",
+            "verifyBroken": "Chain broken at entry {id}, after {count} intact entries. An entry was changed or deleted.",
+            "verifyFailed": "The check could not run.",
+            "snapshot": "Record a snapshot now",
+            "download": "Download as CSV",
+            "time": "Time (UTC)",
+            "type": "Type",
+            "summary": "Summary",
+            "hash": "Hash",
+            "types": {
+                "snapshot": "Daily snapshot",
+                "withdrawal": "Withdrawal",
+                "retention": "Retention changed"
             }
         }
     }

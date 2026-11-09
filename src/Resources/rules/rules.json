@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "0.9.0",
+  "version": "0.10.0",
   "disclaimer": "Technical information to help shops comply. Not legal advice.",
   "strings": {
     "AT": {
@@ -41,7 +41,16 @@
       "confirm_button": "ontbinding bevestigen",
       "order_button": "bestelling met betalingsverplichting",
       "source": "https://ondernemersplein.overheid.nl/wetswijzigingen/webshops-moeten-een-herroepingsknop-hebben/",
-      "confidence": "medium"
+      "confidence": "medium",
+      "alternatives": [
+        {
+          "withdraw_button": "hier de overeenkomst herroepen",
+          "confirm_button": "herroeping bevestigen",
+          "source": "https://ondernemersplein.overheid.nl/wetswijzigingen/webshops-moeten-een-herroepingsknop-hebben/",
+          "confirm_source": "https://www.dekamer.be/FLWB/PDF/56/1532/56K1532006.pdf",
+          "confidence": "medium"
+        }
+      ]
     },
     "EU": {
       "language": "en",
@@ -330,7 +339,7 @@
     }
   },
   "edition": "free",
-  "pro_only_rules": 105,
+  "pro_only_rules": 108,
   "rules": [
     {
       "id": "AT-WD-01",

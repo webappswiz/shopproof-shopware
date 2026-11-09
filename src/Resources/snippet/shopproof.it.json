@@ -8,10 +8,14 @@
     "shopproof": {
         "safety": {
             "heading": "Informazioni sulla sicurezza del prodotto",
+            "summary": "Sicurezza del prodotto (fabbricante: %name%)",
             "manufacturer": "Fabbricante",
             "responsiblePerson": "Persona responsabile nell'UE",
             "identifiers": "Identificazione del prodotto",
-            "warnings": "Avvertenze e informazioni sulla sicurezza"
+            "warnings": "Avvertenze e informazioni sulla sicurezza",
+            "hazardHeading": "Etichettatura di pericolo",
+            "hazardStatements": "Indicazioni di pericolo",
+            "precautions": "Consigli di prudenza"
         }
     }
 }

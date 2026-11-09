@@ -126,3 +126,15 @@
 .shopproof-overview .mt-card a[href] {
     color: #0b539b;
 }
+
+.shopproof-overview__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-block: 12px;
+}
+
+.shopproof-overview__table code {
+    word-break: break-all;
+    font-size: 12px;
+}

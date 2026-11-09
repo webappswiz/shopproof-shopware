@@ -3,6 +3,8 @@
 namespace Shopproof\Compliance\Withdrawal;
 
 use Doctrine\DBAL\Connection;
+use Shopproof\Compliance\Storefront\HazardLabel;
+use Shopproof\Compliance\Storefront\Registrations;
 use Shopproof\Compliance\Storefront\SafetyData;
 use Shopware\Core\Defaults;
 use Shopware\Core\Framework\Uuid\Uuid;
@@ -27,27 +29,35 @@ class SetupFacts
     /** Most manufacturers without details the check names. */
     private const MANUFACTURER_LIMIT = 50;
 
+    private const HAZARD_PAGE = 500;
+
     /** Shopware's class for the event, present from 6.7.9. */
     private const EVENT_CLASS = 'Shopware\\Core\\Content\\RevocationRequest\\Event\\RevocationRequestEvent';
 
     public function __construct(
         private readonly Connection $connection,
         private readonly SystemConfigService $config,
+        private readonly HazardLabel $hazards,
     ) {
     }
 
     /**
-     * @return array{supported: bool, flowActive: bool, customerMail: bool, channels: list<array{id: string, name: string, active: bool, buttonOn: bool, pageId: string, pageExists: bool, pageHasForm: bool, locales: list<string>}>, layouts: list<array{id: string, name: string, elements: list<string>}>, recordTable: bool, failedRecords: int, showSafety: bool, guaranteeNotice: bool, manufacturersWithoutDetails: list<array{id: string, name: string}>}
+     * @return array{supported: bool, flowActive: bool, customerMail: bool, channels: list<array{id: string, name: string, active: bool, buttonOn: bool, pageId: string, pageExists: bool, pageHasForm: bool, locales: list<string>}>, layouts: list<array{id: string, name: string, elements: list<string>}>, recordTable: bool, failedRecords: int, showSafety: bool, guaranteeNotice: bool, manufacturersWithoutDetails: list<array{id: string, name: string}>, manufacturersWithoutDetailsCount: int, safetyPlacement: string, hazardProblems: list<array{id: string, name: string, codes: list<array{code: string, reason: string}>}>, registrationBadLines: list<string>}
      */
     public function collect(): array
     {
+        $missing = $this->manufacturersWithoutDetails();
         $common = [
             'layouts' => $this->layouts(),
             'recordTable' => $this->connection->fetchOne('SHOW TABLES LIKE :table', ['table' => WithdrawalStore::TABLE]) === WithdrawalStore::TABLE,
             'failedRecords' => self::int($this->config->get(WithdrawalSubscriber::FAILURES)),
             'showSafety' => $this->config->getBool(self::PLUGIN_CONFIG . 'showSafety'),
             'guaranteeNotice' => $this->guaranteeNoticeOn(),
-            'manufacturersWithoutDetails' => $this->manufacturersWithoutDetails(),
+            'manufacturersWithoutDetails' => \array_slice($missing, 0, self::MANUFACTURER_LIMIT),
+            'manufacturersWithoutDetailsCount' => \count($missing),
+            'safetyPlacement' => $this->config->getString(self::PLUGIN_CONFIG . 'safetyPlacement') === 'description' ? 'description' : 'buyBox',
+            'hazardProblems' => $this->hazardProblems(),
+            'registrationBadLines' => Registrations::badLines($this->config->getString(self::PLUGIN_CONFIG . 'registrationNumbers')),
         ];
         if (!class_exists(self::EVENT_CLASS)) {
             return ['supported' => false, 'flowActive' => false, 'customerMail' => false, 'channels' => [], ...$common];
@@ -118,7 +128,7 @@ class SetupFacts
 
     /**
      * Shopware manufacturers of at least one product whose products get no contact details for
-     * them (see SafetyData::manufacturerHasDetails), by name, at most MANUFACTURER_LIMIT.
+     * them (see SafetyData::manufacturerHasDetails), by name, all of them.
      *
      * @return list<array{id: string, name: string}>
      */
@@ -161,7 +171,54 @@ class SetupFacts
         }
         usort($missing, static fn (array $a, array $b): int => strcasecmp($a['name'], $b['name']));
 
-        return \array_slice($missing, 0, self::MANUFACTURER_LIMIT);
+        return $missing;
+    }
+
+    /**
+     * Products with hazard or precautionary statements the storefront cannot show, at most
+     * MANUFACTURER_LIMIT, with the codes and why.
+     *
+     * @return list<array{id: string, name: string, codes: list<array{code: string, reason: string}>}>
+     */
+    private function hazardProblems(): array
+    {
+        // In pages of 500 through every product with statements, so a problem is never missed in a
+        // large catalogue; stops once MANUFACTURER_LIMIT products are found.
+        $found = [];
+        $offset = 0;
+        do {
+            $rows = $this->connection->fetchAllAssociative(
+                \sprintf(
+                    'SELECT LOWER(HEX(p.id)) AS id, t.name, t.custom_fields, LOWER(HEX(p.parent_id)) AS parent_id
+                     FROM product p
+                     INNER JOIN product_translation t ON t.product_id = p.id AND t.product_version_id = p.version_id
+                     WHERE p.version_id = :version
+                       AND (JSON_EXTRACT(t.custom_fields, \'$.shopproof_safety_hazard_statements\') IS NOT NULL
+                         OR JSON_EXTRACT(t.custom_fields, \'$.shopproof_safety_precautionary_statements\') IS NOT NULL)
+                     ORDER BY p.id, t.language_id LIMIT %d OFFSET %d',
+                    self::HAZARD_PAGE,
+                    $offset
+                ),
+                ['version' => Uuid::fromHexToBytes(Defaults::LIVE_VERSION)]
+            );
+            $offset += self::HAZARD_PAGE;
+            foreach ($rows as $row) {
+                try {
+                    $fields = json_decode(self::str($row['custom_fields'] ?? null), true, 16, \JSON_THROW_ON_ERROR);
+                } catch (\JsonException) {
+                    continue;
+                }
+                $codes = $this->hazards->problems(\is_array($fields) ? $fields : null);
+                if ($codes === []) {
+                    continue;
+                }
+                $id = self::str($row['parent_id'] ?? null) !== '' ? self::str($row['parent_id']) : self::str($row['id'] ?? null);
+                $name = trim(self::str($row['name'] ?? null));
+                $found[$id] = ['id' => $id, 'name' => $name !== '' ? $name : ($found[$id]['name'] ?? ''), 'codes' => $codes];
+            }
+        } while (\count($rows) === self::HAZARD_PAGE && \count($found) < self::MANUFACTURER_LIMIT);
+
+        return \array_slice(array_values($found), 0, self::MANUFACTURER_LIMIT);
     }
 
     /**

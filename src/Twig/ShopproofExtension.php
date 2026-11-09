@@ -5,6 +5,8 @@ namespace Shopproof\Compliance\Twig;
 use Shopproof\Compliance\Rules\RulesFile;
 use Shopproof\Compliance\Storefront\DurabilityLabel;
 use Shopproof\Compliance\Storefront\GuaranteeNotice;
+use Shopproof\Compliance\Storefront\HazardLabel;
+use Shopproof\Compliance\Storefront\Registrations;
 use Shopproof\Compliance\Storefront\SafetyData;
 use Shopware\Core\Content\Product\ProductEntity;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
@@ -44,6 +46,8 @@ final class ShopproofExtension extends AbstractExtension implements ResetInterfa
         private readonly GuaranteeNotice $guarantee,
         private readonly DurabilityLabel $durability,
         private readonly Packages $packages,
+        private readonly HazardLabel $hazards,
+        private readonly Registrations $registrations,
     ) {
     }
 
@@ -54,6 +58,10 @@ final class ShopproofExtension extends AbstractExtension implements ResetInterfa
             new TwigFunction('shopproof_guarantee', $this->guaranteeNotice(...)),
             new TwigFunction('shopproof_durability', $this->durabilityLabel(...), ['is_safe' => ['html']]),
             new TwigFunction('shopproof_once', $this->once(...)),
+            new TwigFunction('shopproof_hazard', $this->hazard(...)),
+            new TwigFunction('shopproof_safety_layout', $this->safetyLayout(...)),
+            new TwigFunction('shopproof_registrations', $this->registrationsBlock(...)),
+            new TwigFunction('shopproof_registrations_footer', $this->registrationsFooter(...)),
         ];
     }
 
@@ -103,6 +111,91 @@ final class ShopproofExtension extends AbstractExtension implements ResetInterfa
     }
 
     /**
+     * Where the product safety block goes: 'buyBox' (default; one line under the Add to cart
+     * button that opens to the details, hazard label elements always visible above it) or
+     * 'description' (the full block below the product description).
+     */
+    public function safetyLayout(?string $salesChannelId = null): string
+    {
+        return $this->config->getString(self::CONFIG . 'safetyPlacement', $salesChannelId) === 'description' ? 'description' : 'buyBox';
+    }
+
+    /**
+     * The hazard label elements of a product (CLP Art. 48a), or null when it has none. Shown with
+     * the product safety block and never folded away.
+     *
+     * @return array<string, mixed>|null
+     */
+    public function hazard(mixed $product, ?string $localeCode = null, ?string $salesChannelId = null): ?array
+    {
+        if (!$product instanceof ProductEntity || !$this->config->getBool(self::CONFIG . 'showSafety', $salesChannelId)) {
+            return null;
+        }
+        $fields = $product->getTranslation('customFields');
+
+        return $this->hazards->forProduct(
+            \is_array($fields) ? $fields : null,
+            (string) $localeCode,
+            self::COUNTRY_LANGUAGE[$this->shopCountry($salesChannelId)] ?? '',
+            $this->assetBase('hazards')
+        );
+    }
+
+    /**
+     * The registration numbers and take-back block for a product page, or null. In 'marked' mode
+     * (default) only on products marked as electrical equipment or containing batteries; in
+     * 'all' mode on every product, with the take-back parts the shop turned on.
+     *
+     * @return array<string, mixed>|null
+     */
+    public function registrationsBlock(mixed $product, ?string $localeCode = null, ?string $salesChannelId = null): ?array
+    {
+        $mode = $this->config->getString(self::CONFIG . 'registrationsProductPage', $salesChannelId) ?: 'marked';
+        if (!$product instanceof ProductEntity || !\in_array($mode, ['marked', 'all'], true)) {
+            return null;
+        }
+        $fields = $product->getTranslation('customFields');
+        $sections = Registrations::sectionsForProduct(\is_array($fields) ? $fields : null, $mode, [
+            'weee' => $this->config->getBool(self::CONFIG . 'takebackWeee', $salesChannelId),
+            'batteries' => $this->config->getBool(self::CONFIG . 'takebackBatteries', $salesChannelId),
+        ]);
+        if ($mode === 'marked' && $sections === []) {
+            return null;
+        }
+        $block = $this->registrations->block(
+            Registrations::parseNumbers($this->config->getString(self::CONFIG . 'registrationNumbers', $salesChannelId)),
+            $sections,
+            $this->config->getBool(self::CONFIG . 'takebackOneForOne', $salesChannelId),
+            $this->config->getString(self::CONFIG . 'takebackNote', $salesChannelId),
+            (string) $localeCode,
+            self::COUNTRY_LANGUAGE[$this->shopCountry($salesChannelId)] ?? ''
+        );
+        if ($block === null) {
+            return null;
+        }
+
+        return [...$block, 'symbol' => $this->assetBase('registrations') . 'crossed-out-bin.svg'];
+    }
+
+    /**
+     * The registration numbers as one line for the footer, or null when off or there are none.
+     *
+     * @return array<string, mixed>|null
+     */
+    public function registrationsFooter(?string $localeCode = null, ?string $salesChannelId = null): ?array
+    {
+        if (!$this->config->getBool(self::CONFIG . 'registrationsFooter', $salesChannelId)) {
+            return null;
+        }
+
+        return $this->registrations->footer(
+            Registrations::parseNumbers($this->config->getString(self::CONFIG . 'registrationNumbers', $salesChannelId)),
+            (string) $localeCode,
+            self::COUNTRY_LANGUAGE[$this->shopCountry($salesChannelId)] ?? ''
+        );
+    }
+
+    /**
      * @return array<string, mixed>|null
      */
     public function guaranteeNotice(?string $localeCode = null, ?string $salesChannelId = null): ?array
@@ -119,7 +212,7 @@ final class ShopproofExtension extends AbstractExtension implements ResetInterfa
      */
     public function durabilityLabel(mixed $product, ?string $localeCode = null, ?string $salesChannelId = null): string
     {
-        if (!$product instanceof ProductEntity) {
+        if (!$product instanceof ProductEntity || self::coreLabelShown($product)) {
             return '';
         }
         $fields = $product->getTranslation('customFields');
@@ -129,15 +222,41 @@ final class ShopproofExtension extends AbstractExtension implements ResetInterfa
             \is_string($manufacturerName) ? $manufacturerName : null,
             $product->getManufacturerNumber()
         );
-        $base = $this->packages->getUrl('bundles/shopproofcompliance/storefront/durability/', 'asset');
-        $base = (string) preg_replace('/\?.*$/', '', $base);
-
         return $this->durability->render(
             $values,
             (string) $localeCode,
             self::COUNTRY_LANGUAGE[$this->shopCountry($salesChannelId)] ?? '',
-            $base
+            $this->assetBase('durability')
         );
+    }
+
+    /**
+     * True when Shopware's own durability label (6.7.14 and later: "Guarantee confirmed" with
+     * months, a manufacturer and a manufacturer number) shows in the buy box, so the product never
+     * gets two labels.
+     */
+    public static function coreLabelShown(ProductEntity $product): bool
+    {
+        // Read as properties, because Shopware before 6.7.14 has neither field.
+        $vars = $product->getVars();
+        $months = $vars['guaranteeMonths'] ?? null;
+        $manufacturer = $product->getManufacturer()?->getTranslation('name') ?? $product->getManufacturer()?->getName();
+        $number = $product->getManufacturerNumber();
+
+        return ($vars['guaranteeConfirmed'] ?? false) === true
+            && \is_int($months) && $months > 0
+            && \is_string($manufacturer) && $manufacturer !== ''
+            && \is_string($number) && $number !== '';
+    }
+
+    /**
+     * URL of a folder of the plugin's storefront files, ending in "/", without a version query.
+     */
+    private function assetBase(string $folder): string
+    {
+        $base = $this->packages->getUrl('bundles/shopproofcompliance/storefront/' . $folder . '/', 'asset');
+
+        return (string) preg_replace('/\?.*$/', '', $base);
     }
 
     /**

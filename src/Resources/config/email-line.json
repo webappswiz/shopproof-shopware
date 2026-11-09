@@ -1,0 +1,30 @@
+{
+  "_note": "Built from packages/rules/data/strings/withdrawal-labels.json by apps/shopware/scripts/build-storefront.mjs; do not edit by hand.",
+  "languages": {
+    "en": {
+      "link": "Withdraw from contract here",
+      "question": "Changed your mind?",
+      "period": "You can withdraw within {days} days."
+    },
+    "de": {
+      "link": "Vertrag widerrufen",
+      "question": "Sie haben es sich anders überlegt?",
+      "period": "Sie können innerhalb von {days} Tagen widerrufen."
+    },
+    "fr": {
+      "link": "renoncer au contrat ici",
+      "question": "Vous avez changé d'avis ?",
+      "period": "Vous pouvez vous rétracter dans un délai de {days} jours."
+    },
+    "it": {
+      "link": "recedere dal contratto qui",
+      "question": "Hai cambiato idea?",
+      "period": "Puoi recedere entro {days} giorni."
+    },
+    "nl": {
+      "link": "hier de overeenkomst ontbinden",
+      "question": "Van gedachten veranderd?",
+      "period": "U kunt binnen {days} dagen herroepen."
+    }
+  }
+}

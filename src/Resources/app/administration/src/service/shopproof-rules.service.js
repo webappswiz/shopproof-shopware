@@ -1,8 +1,8 @@
 const { ApiService } = Shopware.Classes;
 
 /**
- * The plugin's admin API: the rules overview, the withdrawal button setup check and the record of
- * withdrawal requests.
+ * The plugin's admin API: the rules overview, the withdrawal button setup check, the record of
+ * withdrawal requests and the proof log.
  */
 class ShopproofRulesService extends ApiService {
     constructor(httpClient, loginService) {
@@ -41,6 +41,33 @@ class ShopproofRulesService extends ApiService {
         return this.httpClient.delete(`${this.getApiBasePath()}/withdrawal-failures`, {
             headers: this.getBasicHeaders(),
         });
+    }
+
+    getProofLog(page = 1) {
+        return this.httpClient
+            .get(`${this.getApiBasePath()}/proof-log`, {
+                headers: this.getBasicHeaders(),
+                params: { page, limit: 25 },
+            })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    verifyProofLog() {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/proof-log/verify`, {}, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    recordProofSnapshot() {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/proof-log/snapshot`, {}, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    downloadProofLog() {
+        return this.httpClient
+            .get(`${this.getApiBasePath()}/proof-log/csv`, { headers: this.getBasicHeaders(), responseType: 'blob' })
+            .then((response) => response.data);
     }
 
     deleteWithdrawal(id) {

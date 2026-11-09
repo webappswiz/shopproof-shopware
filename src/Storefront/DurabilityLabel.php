@@ -45,7 +45,8 @@ final class DurabilityLabel
             'years' => preg_match('/^\d{1,2}$/', $years) === 1 ? (int) $years : 0,
             'brand' => $brand !== '' ? $brand : trim((string) $manufacturerName),
             'model' => $model !== '' ? $model : trim((string) $manufacturerNumber),
-            'display' => $get('display') === 'nested' ? 'nested' : 'full',
+            // The small strip is the default: it opens the full label and keeps Add to cart in view.
+            'display' => $get('display') === 'full' ? 'full' : 'nested',
         ];
     }
 

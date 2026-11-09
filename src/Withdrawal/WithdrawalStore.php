@@ -137,6 +137,36 @@ class WithdrawalStore
         );
     }
 
+    /**
+     * What the proof log keeps about a record: the stored row (hashed there, never copied), its
+     * time and the billing country of the matched order ('' when no order matched).
+     *
+     * @return array{record: array<string, mixed>, receivedAt: string, country: string}|null
+     */
+    public function proofFacts(string $id): ?array
+    {
+        if (!Uuid::isValid($id)) {
+            return null;
+        }
+        $row = $this->connection->fetchAssociative(
+            'SELECT LOWER(HEX(w.id)) AS id, LOWER(HEX(w.sales_channel_id)) AS sales_channel_id, w.first_name, w.last_name, w.email,
+                    w.contract_number, w.comment, LOWER(HEX(w.order_id)) AS order_id, w.submitted_at, w.created_at,
+                    (SELECT c.iso FROM `order` o
+                        INNER JOIN order_address a ON a.id = o.billing_address_id AND a.version_id = o.version_id
+                        INNER JOIN country c ON c.id = a.country_id
+                      WHERE o.id = w.order_id AND o.version_id = :version LIMIT 1) AS country
+             FROM ' . self::TABLE . ' w WHERE w.id = :id',
+            ['id' => Uuid::fromHexToBytes($id), 'version' => Uuid::fromHexToBytes(Defaults::LIVE_VERSION)]
+        );
+        if ($row === false) {
+            return null;
+        }
+        $country = self::str($row['country'] ?? null);
+        unset($row['country']);
+
+        return ['record' => $row, 'receivedAt' => self::atom(self::str($row['submitted_at'] ?? null)), 'country' => $country];
+    }
+
     public function count(): int
     {
         return self::int($this->connection->fetchOne('SELECT COUNT(*) FROM ' . self::TABLE));

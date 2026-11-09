@@ -74,7 +74,11 @@
             "guaranteeNotice_ok": "Der EU-Hinweis zur gesetzlichen Gewährleistung wird auf Produktseiten angezeigt",
             "guaranteeNotice_off": "Der EU-Hinweis zur gesetzlichen Gewährleistung ist in mindestens einem Storefront aus. Er ist ab 27. September 2026 für Waren vorgeschrieben. Schalten Sie in den Plugin-Einstellungen \"Den offiziellen EU-Hinweis zur gesetzlichen Gewährleistung auf Produktseiten anzeigen\" ein.",
             "manufacturerDetails_ok": "Jeder Hersteller Ihrer Produkte hat Kontaktdaten für die Informationen zur Produktsicherheit",
-            "manufacturerDetails_off": "Diese Hersteller haben keine Kontaktdaten, ihre Produkte zeigen daher nur den Namen des Herstellers. Tragen Sie Anschrift und E-Mail unter Kataloge > Hersteller (Shopproof: Produktsicherheit) oder am jeweiligen Produkt ein:"
+            "manufacturerDetails_off": "Diese Hersteller haben keine Kontaktdaten, ihre Produkte zeigen daher nur den Namen des Herstellers. Tragen Sie Anschrift und E-Mail unter Kataloge > Hersteller (Shopproof: Produktsicherheit) oder am jeweiligen Produkt ein:",
+            "hazardStatements_off": "Diese Produkte haben Gefahren- oder Sicherheitshinweise, die die Produktseite nicht zeigen kann. Codes mit einer Auswahl oder Lücke (wie P280 oder P501) brauchen Ihre eigenen Worte nach einem Doppelpunkt, zum Beispiel \"P280: Schutzhandschuhe tragen.\". Öffnen Sie das Produkt, Zusatzfelder, \"Shopproof: gefährliche Chemikalien (CLP)\":",
+            "hazardOwn": "braucht Ihre eigenen Worte",
+            "hazardUnknown": "unbekannter Code, bitte Etikett prüfen",
+            "registrationNumbers_off": "Diese Zeilen von \"Ihre Registrierungsnummern\" in den Plugin-Einstellungen werden nicht gezeigt, weil ihnen ein Doppelpunkt oder die Nummer fehlt oder es mehr als 12 sind. Schreiben Sie sie wie \"WEEE DE: DE 12345678\":"
         },
         "cms": {
             "label": "Shopproof Produktinformationen",
@@ -84,12 +88,38 @@
         },
         "layouts": {
             "title": "Produktseiten",
-            "intro": "Wo Shopproof das Haltbarkeitslabel (in der Kaufbox) sowie Produktsicherheit und Gewährleistungshinweis (unter der Produktbeschreibung) zeigt, für jedes Produktseiten-Layout Ihres Shops.",
+            "intro": "Wo Shopproof das Haltbarkeitslabel und die Zeile zur Produktsicherheit (im Kaufbereich) sowie den Garantiehinweis und die Rücknahmeinformationen (unter der Produktbeschreibung) zeigt, für jedes Produktseiten-Layout Ihres Shops.",
             "ok": "zeigt die Shopproof-Blöcke",
             "missing": "hat keinen Platz für {blocks}. Öffnen Sie das Layout und fügen Sie den Block \"Shopproof Produktinformationen\" (Kategorie Commerce) dort ein, wo sie erscheinen sollen.",
             "part": {
                 "durability": "das Haltbarkeitslabel",
-                "safety": "Produktsicherheit und Gewährleistungshinweis"
+                "safety": "die Produktsicherheit",
+                "guarantee": "den Garantiehinweis und die Rücknahmeinformationen"
+            }
+        },
+        "proof": {
+            "title": "Nachweisprotokoll",
+            "intro": "Ein datiertes Protokoll dessen, was Ihr Shop gezeigt hat und welche Widerrufe eingegangen sind, in der eigenen Datenbank Ihres Shops. Jeder Eintrag ist über einen SHA-256-Hash mit dem vorigen verkettet, sodass ein geänderter oder gelöschter Eintrag bei der Prüfung auffällt. Es enthält keine Kundennamen, E-Mail-Adressen oder Bestellnummern. Einmal täglich wird ein Stand gespeichert.",
+            "unavailable": "Die Tabelle des Nachweisprotokolls fehlt. Bitte das Plugin aktualisieren oder neu installieren.",
+            "loadFailed": "Das Nachweisprotokoll konnte nicht geladen werden.",
+            "none": "Noch keine Einträge. Der erste Stand wird innerhalb eines Tages gespeichert, oder klicken Sie auf \"Jetzt einen Stand speichern\".",
+            "lastSnapshot": "Letzter Stand: {date}",
+            "retention": "Einträge werden {days} Tage aufbewahrt (Plugin-Einstellungen, Nachweisprotokoll).",
+            "retentionAll": "Alle Einträge werden aufbewahrt (Plugin-Einstellungen, Nachweisprotokoll).",
+            "verify": "Kette prüfen",
+            "verifyOk": "Kette intakt: {count} Einträge geprüft.",
+            "verifyBroken": "Kette unterbrochen bei Eintrag {id}, nach {count} intakten Einträgen. Ein Eintrag wurde geändert oder gelöscht.",
+            "verifyFailed": "Die Prüfung konnte nicht laufen.",
+            "snapshot": "Jetzt einen Stand speichern",
+            "download": "Als CSV herunterladen",
+            "time": "Zeit (UTC)",
+            "type": "Art",
+            "summary": "Zusammenfassung",
+            "hash": "Hash",
+            "types": {
+                "snapshot": "Täglicher Stand",
+                "withdrawal": "Widerruf",
+                "retention": "Aufbewahrung geändert"
             }
         }
     }

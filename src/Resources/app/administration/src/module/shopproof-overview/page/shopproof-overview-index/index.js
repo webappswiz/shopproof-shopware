@@ -25,6 +25,13 @@ export default Shopware.Component.wrapComponentConfig({
             term: '',
             confirmId: null,
             clearing: false,
+            proof: null,
+            proofFailed: false,
+            proofLoading: false,
+            proofPage: 1,
+            verifying: false,
+            verifyResult: null,
+            snapshotting: false,
         };
     },
 
@@ -55,6 +62,7 @@ export default Shopware.Component.wrapComponentConfig({
         this.load();
         this.loadCheck();
         this.loadWithdrawals();
+        this.loadProof();
     },
 
     methods: {
@@ -144,6 +152,68 @@ export default Shopware.Component.wrapComponentConfig({
                 .finally(() => {
                     this.clearing = false;
                 });
+        },
+
+        loadProof() {
+            this.proofLoading = true;
+            this.proofFailed = false;
+            return this.shopproofRulesService
+                .getProofLog(this.proofPage)
+                .then((result) => {
+                    this.proof = result;
+                })
+                .catch(() => {
+                    this.proofFailed = true;
+                })
+                .finally(() => {
+                    this.proofLoading = false;
+                });
+        },
+
+        onProofPageChange({ page }) {
+            this.proofPage = page;
+            this.loadProof();
+        },
+
+        verifyProof() {
+            this.verifying = true;
+            this.verifyResult = null;
+            return this.shopproofRulesService
+                .verifyProofLog()
+                .then((result) => {
+                    this.verifyResult = result;
+                })
+                .catch(() => {
+                    this.verifyResult = { failed: true };
+                })
+                .finally(() => {
+                    this.verifying = false;
+                });
+        },
+
+        recordSnapshot() {
+            this.snapshotting = true;
+            return this.shopproofRulesService
+                .recordProofSnapshot()
+                .then(() => {
+                    this.proofPage = 1;
+                    return this.loadProof();
+                })
+                .finally(() => {
+                    this.snapshotting = false;
+                });
+        },
+
+        downloadProof() {
+            return this.shopproofRulesService.downloadProofLog().then((blob) => {
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = `shopproof-proof-log-${new Date().toISOString().slice(0, 10)}.csv`;
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+                URL.revokeObjectURL(link.href);
+            });
         },
 
         checkText(check) {

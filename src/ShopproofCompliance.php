@@ -14,14 +14,15 @@ use Shopware\Core\Framework\Plugin\Context\UpdateContext;
  * Shopproof EU Compliance for Shopware 6.7.
  *
  * Runs entirely on the shop's own server. The only outside request is the daily download of the
- * public Shopproof rules file. Withdrawal records stay in the shop's own database.
+ * public Shopproof rules file, and only when the merchant asks for it. Withdrawal records and the
+ * proof log stay in the shop's own database.
  */
 class ShopproofCompliance extends Plugin
 {
     /**
      * Tables this plugin owns. Removed on uninstall unless the merchant keeps the data.
      */
-    public const TABLES = ['shopproof_rules_cache', 'shopproof_withdrawal_request'];
+    public const TABLES = ['shopproof_rules_cache', 'shopproof_withdrawal_request', 'shopproof_proof_log'];
 
     public function install(InstallContext $installContext): void
     {

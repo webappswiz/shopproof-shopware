@@ -1,0 +1,21 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">Vertrag widerrufen</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "Widerruf bestätigen"
+    },
+    "shopproof": {
+        "safety": {
+            "heading": "Informationen zur Produktsicherheit",
+            "summary": "Produktsicherheit (Hersteller: %name%)",
+            "manufacturer": "Hersteller",
+            "responsiblePerson": "Verantwortliche Person in der EU",
+            "identifiers": "Produktkennzeichnung",
+            "warnings": "Warnhinweise und Sicherheitsinformationen",
+            "hazardHeading": "Gefahrenkennzeichnung",
+            "hazardStatements": "Gefahrenhinweise",
+            "precautions": "Sicherheitshinweise"
+        }
+    }
+}

@@ -39,9 +39,21 @@
             <name>showSafety</name>
             <label>Show product safety information on product pages</label>
             <label lang="de-DE">Informationen zur Produktsicherheit auf Produktseiten anzeigen</label>
-            <helpText>Shown below the product description when a manufacturer name is known. The details come from the product first, then its manufacturer (Catalogues > Manufacturers). The defaults below apply to products without a manufacturer, and to the manufacturer with the default name; they are never mixed with another manufacturer's name. The Shopproof page lists manufacturers without details.</helpText>
-            <helpText lang="de-DE">Erscheint unter der Produktbeschreibung, sobald ein Herstellername bekannt ist. Die Angaben kommen zuerst vom Produkt, dann von seinem Hersteller (Kataloge > Hersteller). Die Standardwerte unten gelten für Produkte ohne Hersteller und für den Hersteller mit dem Standardnamen; sie werden nie mit dem Namen eines anderen Herstellers gemischt. Die Shopproof-Seite listet Hersteller ohne Angaben.</helpText>
+            <helpText>Shown when a manufacturer name is known or the product has hazard labelling. The details come from the product first, then its manufacturer (Catalogues > Manufacturers). The defaults below apply to products without a manufacturer, and to the manufacturer with the default name; they are never mixed with another manufacturer's name. The Shopproof page lists manufacturers without details.</helpText>
+            <helpText lang="de-DE">Erscheint, sobald ein Herstellername bekannt ist oder das Produkt eine Gefahrenkennzeichnung hat. Die Angaben kommen zuerst vom Produkt, dann von seinem Hersteller (Kataloge > Hersteller). Die Standardwerte unten gelten für Produkte ohne Hersteller und für den Hersteller mit dem Standardnamen; sie werden nie mit dem Namen eines anderen Herstellers gemischt. Die Shopproof-Seite listet Hersteller ohne Angaben.</helpText>
             <defaultValue>true</defaultValue>
+        </input-field>
+        <input-field type="single-select">
+            <name>safetyPlacement</name>
+            <label>Where to show it</label>
+            <label lang="de-DE">Wo es erscheint</label>
+            <helpText>Recommended: one line under the Add to cart button, which opens to the details, so shoppers see it where they decide without a long block in the way. Hazard pictograms and statements for chemicals are always shown in full, as CLP Article 48a asks.</helpText>
+            <helpText lang="de-DE">Empfohlen: eine Zeile unter dem Button „In den Warenkorb“, die sich zu den Angaben öffnet. So sehen Kunden sie dort, wo sie entscheiden, ohne langen Block im Weg. Gefahrenpiktogramme und -hinweise für Chemikalien erscheinen immer vollständig, wie es Artikel 48a CLP verlangt.</helpText>
+            <defaultValue>buyBox</defaultValue>
+            <options>
+                <option><id>buyBox</id><name>One line under the Add to cart button (recommended)</name><name lang="de-DE">Eine Zeile unter dem Button „In den Warenkorb“ (empfohlen)</name></option>
+                <option><id>description</id><name>Full block below the product description</name><name lang="de-DE">Ganzer Block unter der Produktbeschreibung</name></option>
+            </options>
         </input-field>
         <input-field type="text">
             <name>safetyManufacturerName</name>
@@ -94,6 +106,104 @@
             <helpText>The harmonised notice from Implementing Regulation (EU) 2025/1960, in the page language, with a text version. Required from 27 September 2026 for goods. Technical help, not legal advice.</helpText>
             <helpText lang="de-DE">Der einheitliche Hinweis aus der Durchführungsverordnung (EU) 2025/1960 in der Sprache der Seite, mit Textfassung. Ab 27. September 2026 für Waren vorgeschrieben. Technische Hilfe, keine Rechtsberatung.</helpText>
             <defaultValue>false</defaultValue>
+        </input-field>
+    </card>
+    <card>
+        <title>Withdrawal button</title>
+        <title lang="de-DE">Widerrufsbutton</title>
+        <input-field type="bool">
+            <name>orderEmailWithdrawalLine</name>
+            <label>Add the withdrawal link to the order confirmation and shipping emails</label>
+            <label lang="de-DE">Den Widerrufslink in die Bestellbestätigung und die Versand-E-Mails einfügen</label>
+            <helpText>One line at the very end of the email, after your contact details: the button wording, then "Changed your mind? You can withdraw within 14 days.", both linking to the page of Shopware's withdrawal button (Settings > Basic information). Only when that button is on and its page is set. Shown in English, German, French, Italian and Dutch emails.</helpText>
+            <helpText lang="de-DE">Eine Zeile ganz am Ende der E-Mail, nach Ihren Kontaktangaben: die Button-Beschriftung, dann „Sie haben es sich anders überlegt? Sie können innerhalb von 14 Tagen widerrufen.“, beides verlinkt auf die Seite des Shopware-Widerrufsbuttons (Einstellungen > Stammdaten). Nur wenn dieser Button an ist und seine Seite gesetzt ist. In englischen, deutschen, französischen, italienischen und niederländischen E-Mails.</helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
+        <input-field type="int">
+            <name>withdrawalDays</name>
+            <label>Withdrawal period in days</label>
+            <label lang="de-DE">Widerrufsfrist in Tagen</label>
+            <helpText>14 is the legal minimum. Enter more only when you give shoppers longer (up to 365).</helpText>
+            <helpText lang="de-DE">14 ist das gesetzliche Minimum. Tragen Sie mehr nur ein, wenn Sie Kunden länger Zeit geben (bis 365).</helpText>
+            <defaultValue>14</defaultValue>
+            <min>14</min>
+            <max>365</max>
+        </input-field>
+    </card>
+    <card>
+        <title>Registration numbers and take-back</title>
+        <title lang="de-DE">Registrierungsnummern und Rücknahme</title>
+        <input-field type="textarea">
+            <name>registrationNumbers</name>
+            <label>Your registration numbers, one per line</label>
+            <label lang="de-DE">Ihre Registrierungsnummern, eine pro Zeile</label>
+            <helpText>Write the kind, the country and a colon, then the number, for example "WEEE DE: DE 12345678", "Batteries IT: IT09060P00001234", "Packaging DE: DE1234567890123", "IDU FR: FR123456_01ABCD" or "Textiles FR: ...". Anything else before the colon is shown as your own label. Up to 12. Shopproof checks no registers and does not tell you which registrations you need.</helpText>
+            <helpText lang="de-DE">Schreiben Sie die Art, das Land und einen Doppelpunkt, dann die Nummer, zum Beispiel „WEEE DE: DE 12345678“, „Batteries IT: IT09060P00001234“, „Packaging DE: DE1234567890123“, „IDU FR: FR123456_01ABCD“ oder „Textiles FR: ...“. Anderer Text vor dem Doppelpunkt erscheint als Ihre eigene Bezeichnung. Bis zu 12. Shopproof prüft keine Register und sagt nicht, welche Registrierungen Sie brauchen.</helpText>
+        </input-field>
+        <input-field type="bool">
+            <name>registrationsFooter</name>
+            <label>Show the numbers in the shop footer</label>
+            <label lang="de-DE">Die Nummern in der Fußzeile des Shops zeigen</label>
+            <helpText>One small line next to the VAT notice, on every page. Only when you entered numbers.</helpText>
+            <helpText lang="de-DE">Eine kleine Zeile beim Mehrwertsteuerhinweis, auf jeder Seite. Nur wenn Sie Nummern eingetragen haben.</helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
+        <input-field type="single-select">
+            <name>registrationsProductPage</name>
+            <label>Take-back information on product pages</label>
+            <label lang="de-DE">Rücknahmeinformationen auf Produktseiten</label>
+            <helpText>How to return old batteries and electrical devices, with your numbers, below the product description. Mark products under Custom fields > "Shopproof: take-back of old devices and batteries".</helpText>
+            <helpText lang="de-DE">Wie Altbatterien und Elektroaltgeräte zurückgegeben werden, mit Ihren Nummern, unter der Produktbeschreibung. Produkte markieren Sie unter Zusatzfelder > „Shopproof: Rücknahme von Altgeräten und Altbatterien“.</helpText>
+            <defaultValue>marked</defaultValue>
+            <options>
+                <option><id>marked</id><name>On marked products only (recommended)</name><name lang="de-DE">Nur auf markierten Produkten (empfohlen)</name></option>
+                <option><id>all</id><name>On all products</name><name lang="de-DE">Auf allen Produkten</name></option>
+                <option><id>off</id><name>Off</name><name lang="de-DE">Aus</name></option>
+            </options>
+        </input-field>
+        <input-field type="bool">
+            <name>takebackWeee</name>
+            <label>We sell electrical or electronic equipment</label>
+            <label lang="de-DE">Wir verkaufen Elektro- oder Elektronikgeräte</label>
+            <helpText>With "On all products", every product page explains how to return old devices.</helpText>
+            <helpText lang="de-DE">Bei „Auf allen Produkten“ erklärt jede Produktseite, wie Altgeräte zurückgegeben werden.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+        <input-field type="bool">
+            <name>takebackBatteries</name>
+            <label>We sell batteries or devices with batteries</label>
+            <label lang="de-DE">Wir verkaufen Batterien oder Geräte mit Batterien</label>
+            <helpText>With "On all products", every product page explains how to return old batteries.</helpText>
+            <helpText lang="de-DE">Bei „Auf allen Produkten“ erklärt jede Produktseite, wie Altbatterien zurückgegeben werden.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+        <input-field type="bool">
+            <name>takebackOneForOne</name>
+            <label>We take back an old device of the same kind free of charge when a customer buys a new one</label>
+            <label lang="de-DE">Wir nehmen beim Kauf eines neuen Geräts ein gleichartiges Altgerät kostenlos zurück</label>
+            <helpText>Required for some sellers only (Italy, the Netherlands, and in Germany shops with at least 400 m² for electrical equipment). Technical help, not legal advice.</helpText>
+            <helpText lang="de-DE">Nur für manche Händler vorgeschrieben (Italien, Niederlande und in Deutschland Shops mit mindestens 400 m² für Elektrogeräte). Technische Hilfe, keine Rechtsberatung.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+        <input-field type="textarea">
+            <name>takebackNote</name>
+            <label>How customers return items to you (optional)</label>
+            <label lang="de-DE">Wie Kunden Altgeräte an Sie zurückgeben (optional)</label>
+            <helpText>For example your address or how to ask for a free return label. Shown under "Returning to us".</helpText>
+            <helpText lang="de-DE">Zum Beispiel Ihre Anschrift oder wie man ein kostenloses Rücksendeetikett anfordert. Erscheint unter „Rückgabe bei uns“.</helpText>
+        </input-field>
+    </card>
+    <card>
+        <title>Proof log</title>
+        <title lang="de-DE">Nachweisprotokoll</title>
+        <input-field type="int">
+            <name>proofLogRetentionDays</name>
+            <label>Keep proof log entries for (days)</label>
+            <label lang="de-DE">Einträge im Nachweisprotokoll aufbewahren (Tage)</label>
+            <helpText>730 days (2 years) by default. Enter 0 to keep everything. The log stays in your shop's database, holds no customer names, email addresses or order numbers, and records each change of this setting.</helpText>
+            <helpText lang="de-DE">Standard 730 Tage (2 Jahre). 0 bewahrt alles auf. Das Protokoll bleibt in der Datenbank Ihres Shops, enthält keine Kundennamen, E-Mail-Adressen oder Bestellnummern und vermerkt jede Änderung dieser Einstellung.</helpText>
+            <defaultValue>730</defaultValue>
+            <min>0</min>
         </input-field>
     </card>
 </config>

@@ -88,6 +88,15 @@
                                 <router-link :to="{ name: 'sw.manufacturer.detail', params: { id: manufacturer.id } }">{{ manufacturer.name || manufacturer.id }}</router-link>
                             </li>
                         </ul>
+                        <ul v-if="item.key === 'hazardStatements' && check.hazardProblems" class="shopproof-overview__names">
+                            <li v-for="product in check.hazardProblems" :key="product.id">
+                                <router-link :to="{ name: 'sw.product.detail', params: { id: product.id } }">{{ product.name || product.id }}</router-link>:
+                                {{ product.codes.map((line) => `${line.code} (${$t(line.reason === 'own' ? 'shopproof.products.hazardOwn' : 'shopproof.products.hazardUnknown')})`).join(', ') }}
+                            </li>
+                        </ul>
+                        <ul v-if="item.key === 'registrationNumbers' && check.registrationBadLines" class="shopproof-overview__names">
+                            <li v-for="line in check.registrationBadLines" :key="line">{{ line }}</li>
+                        </ul>
                     </li>
                 </ul>
                 <p v-if="check.layouts && check.layouts.length">{{ $t('shopproof.layouts.intro') }}</p>
@@ -98,6 +107,58 @@
                         {{ layout.ok ? $t('shopproof.layouts.ok') : $t('shopproof.layouts.missing', { blocks: layout.missing.map((part) => $t(`shopproof.layouts.part.${part}`)).join(', ') }) }}
                     </li>
                 </ul>
+            </mt-card>
+
+            <mt-card
+                position-identifier="shopproof-overview-proof-log"
+                :title="$t('shopproof.proof.title')"
+                :is-loading="proofLoading"
+            >
+                <p>{{ $t('shopproof.proof.intro') }}</p>
+                <p v-if="proofFailed" role="alert">{{ $t('shopproof.proof.loadFailed') }}</p>
+                <p v-else-if="proof && !proof.available" role="alert">{{ $t('shopproof.proof.unavailable') }}</p>
+                <template v-else-if="proof">
+                    <p v-if="proof.lastSnapshot">{{ $t('shopproof.proof.lastSnapshot', { date: proof.lastSnapshot }) }}</p>
+                    <p>{{ proof.retentionDays > 0 ? $t('shopproof.proof.retention', { days: proof.retentionDays }) : $t('shopproof.proof.retentionAll') }}</p>
+                    <div class="shopproof-overview__actions">
+                        <mt-button variant="secondary" :is-loading="verifying" :disabled="verifying" @click="verifyProof">{{ $t('shopproof.proof.verify') }}</mt-button>
+                        <mt-button variant="secondary" :is-loading="snapshotting" :disabled="snapshotting" @click="recordSnapshot">{{ $t('shopproof.proof.snapshot') }}</mt-button>
+                        <mt-button variant="secondary" :disabled="proof.total === 0" @click="downloadProof">{{ $t('shopproof.proof.download') }}</mt-button>
+                    </div>
+                    <p v-if="verifyResult" role="status" :class="verifyResult.ok ? 'shopproof-overview__ok' : 'shopproof-overview__todo'">
+                        {{ verifyResult.failed ? $t('shopproof.proof.verifyFailed') : (verifyResult.ok ? $t('shopproof.proof.verifyOk', { count: verifyResult.checked }) : $t('shopproof.proof.verifyBroken', { id: verifyResult.brokenAt, count: verifyResult.checked })) }}
+                    </p>
+                    <p v-if="proof.total === 0">{{ $t('shopproof.proof.none') }}</p>
+                    <template v-else>
+                        <table class="shopproof-overview__table">
+                            <caption class="shopproof-overview__sr">{{ $t('shopproof.proof.title') }}</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">{{ $t('shopproof.proof.time') }}</th>
+                                    <th scope="col">{{ $t('shopproof.proof.type') }}</th>
+                                    <th scope="col">{{ $t('shopproof.proof.summary') }}</th>
+                                    <th scope="col">{{ $t('shopproof.proof.hash') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="entry in proof.items" :key="entry.id">
+                                    <td>{{ entry.created_at }}</td>
+                                    <td>{{ $t(`shopproof.proof.types.${entry.type}`) }}</td>
+                                    <td class="shopproof-overview__comment"><code>{{ entry.summary }}</code></td>
+                                    <td><code :title="entry.hash">{{ entry.hash.slice(0, 12) }}</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <sw-pagination
+                            v-if="proof.total > 25"
+                            :page="proofPage"
+                            :limit="25"
+                            :total="proof.total"
+                            :steps="[25]"
+                            @page-change="onProofPageChange"
+                        />
+                    </template>
+                </template>
             </mt-card>
 
             <mt-card

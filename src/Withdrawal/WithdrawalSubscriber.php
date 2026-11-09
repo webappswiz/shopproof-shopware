@@ -3,6 +3,8 @@
 namespace Shopproof\Compliance\Withdrawal;
 
 use Psr\Log\LoggerInterface;
+use Shopproof\Compliance\ProofLog\ProofChain;
+use Shopproof\Compliance\ProofLog\ProofLog;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -24,6 +26,7 @@ final class WithdrawalSubscriber implements EventSubscriberInterface
         private readonly WithdrawalStore $store,
         private readonly LoggerInterface $logger,
         private readonly SystemConfigService $config,
+        private readonly ProofLog $proofLog,
     ) {
     }
 
@@ -41,10 +44,29 @@ final class WithdrawalSubscriber implements EventSubscriberInterface
                 return;
             }
             $channel = method_exists($event, 'getSalesChannelId') ? $event->getSalesChannelId() : null;
-            $this->store->add($record, \is_string($channel) ? $channel : null);
+            $id = $this->store->add($record, \is_string($channel) ? $channel : null);
         } catch (\Throwable $e) {
             $this->logger->error('Shopproof could not record a withdrawal request: ' . $e->getMessage());
             $this->countFailure();
+
+            return;
+        }
+        $this->logProof($id);
+    }
+
+    /**
+     * The withdrawal's entry in the proof log: reference, time, country and a hash of the record,
+     * no personal details. A failure is logged; the record itself is already kept.
+     */
+    private function logProof(string $id): void
+    {
+        try {
+            $facts = $this->store->proofFacts($id);
+            if ($facts !== null && !$this->proofLog->append('withdrawal', ProofChain::withdrawalSummary($facts['record'], $id, $facts['receivedAt'], $facts['country']))) {
+                $this->logger->error('Shopproof could not add a withdrawal to the proof log (lock not available).');
+            }
+        } catch (\Throwable $e) {
+            $this->logger->error('Shopproof could not add a withdrawal to the proof log: ' . $e->getMessage());
         }
     }
 

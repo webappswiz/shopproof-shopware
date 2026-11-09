@@ -1,0 +1,183 @@
+{
+  "_note": "Built from packages/rules/data/strings/registrations-takeback.json by apps/shopware/scripts/build-storefront.mjs; do not edit by hand.",
+  "kinds": [
+    "weee",
+    "batteries",
+    "packaging",
+    "epr",
+    "textiles",
+    "other"
+  ],
+  "text": {
+    "en": {
+      "heading": "Registration numbers and take-back",
+      "registrations": "Registration numbers",
+      "kinds": {
+        "weee": "WEEE registration number",
+        "batteries": "Battery producer registration number",
+        "packaging": "Packaging register number",
+        "epr": "Unique identifier (IDU)",
+        "textiles": "Textiles registration number"
+      },
+      "symbol_alt": "Crossed-out wheeled bin symbol",
+      "return_to_us": "Returning to us",
+      "batteries": {
+        "heading": "Returning old batteries",
+        "text": [
+          "Old batteries do not belong in household waste. By law you must take them to a separate collection.",
+          "You can return old batteries free of charge, without buying anything, to a public collection point (for example your local recycling centre) or to a shop that sells batteries, including us.",
+          "The crossed-out wheeled bin on a battery means it must not go in household waste. The chemical symbols Hg, Cd or Pb below it mean the battery contains more than the permitted amount of mercury, cadmium or lead.",
+          "Batteries can contain substances that harm the environment and health, and damaged lithium batteries can catch fire. Tape over the terminals of lithium batteries before returning them, and take batteries out of devices where this is possible without damage.",
+          "You help avoid waste by choosing rechargeable batteries and devices with a long life."
+        ]
+      },
+      "weee": {
+        "heading": "Returning old electrical and electronic devices",
+        "text": [
+          "Old electrical and electronic devices do not belong in household waste. The crossed-out wheeled bin on a device means it must be collected separately.",
+          "Take old devices to a separate collection point, for example your local recycling centre, where you can hand them in free of charge.",
+          "Before returning a device, take out batteries and lamps that can be removed without damage and return them separately.",
+          "Delete any personal data on the device (for example on phones, computers or cameras) before returning it. You are responsible for this.",
+          "Old devices can contain hazardous substances. Separate collection allows them to be treated safely and their materials to be reused."
+        ],
+        "one_for_one": "When you buy a new device from us, we take back an old device of the same type and function free of charge."
+      }
+    },
+    "de": {
+      "heading": "Registrierungsnummern und Rücknahme",
+      "registrations": "Registrierungsnummern",
+      "kinds": {
+        "weee": "WEEE-Reg.-Nr.",
+        "batteries": "Registrierungsnummer Batterien",
+        "packaging": "Registrierungsnummer Verpackungen",
+        "epr": "Eindeutige Kennung (IDU)",
+        "textiles": "Registrierungsnummer Textilien"
+      },
+      "symbol_alt": "Symbol der durchgestrichenen Mülltonne",
+      "return_to_us": "Rückgabe bei uns",
+      "batteries": {
+        "heading": "Rückgabe von Altbatterien",
+        "text": [
+          "Altbatterien gehören nicht in den Hausmüll. Sie sind gesetzlich verpflichtet, sie einer getrennten Sammlung zuzuführen.",
+          "Sie können Altbatterien unentgeltlich und ohne Kaufverpflichtung bei einer öffentlichen Sammelstelle (zum Beispiel Ihrem Wertstoffhof) oder im Handel abgeben, wo Batterien verkauft werden, auch bei uns.",
+          "Die durchgestrichene Mülltonne auf einer Batterie bedeutet, dass sie nicht in den Hausmüll darf. Die chemischen Zeichen Hg, Cd oder Pb darunter bedeuten, dass die Batterie mehr als die zulässige Menge an Quecksilber, Cadmium oder Blei enthält.",
+          "Batterien können Stoffe enthalten, die Umwelt und Gesundheit schaden, und beschädigte Lithiumbatterien können in Brand geraten. Kleben Sie die Pole von Lithiumbatterien vor der Rückgabe ab und nehmen Sie Batterien aus Geräten heraus, wenn das ohne Beschädigung möglich ist.",
+          "Sie helfen, Abfall zu vermeiden, wenn Sie wiederaufladbare Batterien und langlebige Geräte wählen."
+        ]
+      },
+      "weee": {
+        "heading": "Rückgabe von Elektro- und Elektronik-Altgeräten",
+        "text": [
+          "Elektro- und Elektronik-Altgeräte gehören nicht in den Hausmüll. Die durchgestrichene Mülltonne auf einem Gerät bedeutet, dass es getrennt gesammelt werden muss.",
+          "Geben Sie Altgeräte bei einer Sammelstelle ab, zum Beispiel bei Ihrem Wertstoffhof. Die Abgabe dort ist unentgeltlich.",
+          "Entnehmen Sie vor der Rückgabe Batterien und Lampen, die sich ohne Beschädigung entfernen lassen, und geben Sie sie getrennt zurück.",
+          "Löschen Sie personenbezogene Daten auf dem Gerät (zum Beispiel auf Handys, Computern oder Kameras) vor der Rückgabe. Dafür sind Sie selbst verantwortlich.",
+          "Altgeräte können schädliche Stoffe enthalten. Die getrennte Sammlung sorgt dafür, dass sie sicher behandelt und Rohstoffe wiederverwendet werden."
+        ],
+        "one_for_one": "Wenn Sie bei uns ein neues Gerät kaufen, nehmen wir ein Altgerät der gleichen Art und Funktion unentgeltlich zurück."
+      }
+    },
+    "fr": {
+      "heading": "Numéros d’enregistrement et reprise",
+      "registrations": "Numéros d’enregistrement",
+      "kinds": {
+        "weee": "Numéro d’enregistrement DEEE",
+        "batteries": "Numéro d’enregistrement piles et accumulateurs",
+        "packaging": "Numéro d’enregistrement emballages",
+        "epr": "Identifiant unique (IDU)",
+        "textiles": "Numéro d’enregistrement textiles"
+      },
+      "symbol_alt": "Symbole de la poubelle barrée",
+      "return_to_us": "Retour chez nous",
+      "batteries": {
+        "heading": "Reprise des piles et batteries usagées",
+        "text": [
+          "Les piles et batteries usagées ne doivent pas être jetées avec les ordures ménagères. La loi vous oblige à les déposer dans une collecte séparée.",
+          "Vous pouvez les rapporter gratuitement, sans obligation d’achat, dans un point de collecte public (par exemple une déchèterie) ou dans un magasin qui vend des piles et batteries, y compris chez nous.",
+          "La poubelle barrée sur une pile ou une batterie signifie qu’elle ne doit pas être jetée avec les ordures ménagères. Les symboles chimiques Hg, Cd ou Pb placés en dessous signifient qu’elle contient plus que la quantité autorisée de mercure, de cadmium ou de plomb.",
+          "Les piles et batteries peuvent contenir des substances nocives pour l’environnement et la santé, et les batteries au lithium endommagées peuvent prendre feu. Isolez les bornes des batteries au lithium avec du ruban adhésif avant de les rapporter, et retirez les piles des appareils lorsque cela est possible sans les endommager.",
+          "Vous contribuez à réduire les déchets en choisissant des piles rechargeables et des appareils durables."
+        ]
+      },
+      "weee": {
+        "heading": "Reprise des équipements électriques et électroniques usagés",
+        "text": [
+          "Les équipements électriques et électroniques usagés ne doivent pas être jetés avec les ordures ménagères. La poubelle barrée sur un appareil signifie qu’il doit faire l’objet d’une collecte séparée.",
+          "Déposez vos appareils usagés dans un point de collecte, par exemple une déchèterie, où le dépôt est gratuit.",
+          "Avant de rapporter un appareil, retirez les piles, batteries et lampes qui peuvent être enlevées sans dommage et rapportez-les séparément.",
+          "Effacez les données personnelles de l’appareil (par exemple sur un téléphone, un ordinateur ou un appareil photo) avant de le rapporter. Vous en êtes responsable.",
+          "Les appareils usagés peuvent contenir des substances dangereuses. La collecte séparée permet de les traiter en toute sécurité et de réutiliser leurs matériaux."
+        ],
+        "one_for_one": "Lorsque vous achetez un nouvel appareil chez nous, nous reprenons gratuitement un appareil usagé de même type et de même fonction."
+      }
+    },
+    "it": {
+      "heading": "Numeri di registrazione e ritiro",
+      "registrations": "Numeri di registrazione",
+      "kinds": {
+        "weee": "Numero di iscrizione al Registro AEE",
+        "batteries": "Numero di iscrizione al Registro pile e accumulatori",
+        "packaging": "Numero di registrazione imballaggi",
+        "epr": "Identificativo unico (IDU)",
+        "textiles": "Numero di registrazione tessili"
+      },
+      "symbol_alt": "Simbolo del contenitore di spazzatura barrato",
+      "return_to_us": "Restituzione presso di noi",
+      "batteries": {
+        "heading": "Restituzione di pile e batterie esauste",
+        "text": [
+          "Le pile e le batterie esauste non vanno gettate nei rifiuti domestici. La legge prevede che siano conferite alla raccolta separata.",
+          "È possibile restituirle gratuitamente, senza obbligo di acquisto, presso un punto di raccolta pubblico (ad esempio un’isola ecologica) o un negozio che vende pile e batterie, anche presso di noi.",
+          "Il simbolo del contenitore di spazzatura barrato su una pila o batteria indica che non deve essere gettata nei rifiuti domestici. I simboli chimici Hg, Cd o Pb riportati sotto indicano che contiene mercurio, cadmio o piombo in quantità superiore a quella consentita.",
+          "Pile e batterie possono contenere sostanze dannose per l’ambiente e la salute, e le batterie al litio danneggiate possono prendere fuoco. Prima della restituzione, coprire i poli delle batterie al litio con nastro adesivo e rimuovere le batterie dagli apparecchi quando è possibile farlo senza danneggiarli.",
+          "Scegliere batterie ricaricabili e apparecchi di lunga durata aiuta a ridurre i rifiuti."
+        ]
+      },
+      "weee": {
+        "heading": "Restituzione di apparecchiature elettriche ed elettroniche usate (RAEE)",
+        "text": [
+          "Le apparecchiature elettriche ed elettroniche usate non vanno gettate nei rifiuti domestici. Il simbolo del contenitore di spazzatura barrato su un apparecchio indica che deve essere raccolto separatamente.",
+          "Portare gli apparecchi usati a un centro di raccolta, ad esempio un’isola ecologica, dove il conferimento è gratuito.",
+          "Prima della restituzione, rimuovere le pile, le batterie e le lampade che possono essere estratte senza danneggiarle e conferirle separatamente.",
+          "Cancellare i dati personali presenti sull’apparecchio (ad esempio su telefoni, computer o fotocamere) prima della restituzione. La responsabilità è di chi lo restituisce.",
+          "Gli apparecchi usati possono contenere sostanze pericolose. La raccolta separata permette di trattarli in sicurezza e di recuperarne i materiali."
+        ],
+        "one_for_one": "Acquistando da noi un nuovo apparecchio, è possibile restituirci gratuitamente un apparecchio usato di tipo equivalente (ritiro uno contro uno)."
+      }
+    },
+    "nl": {
+      "heading": "Registratienummers en inname",
+      "registrations": "Registratienummers",
+      "kinds": {
+        "weee": "WEEE-registratienummer",
+        "batteries": "Registratienummer batterijen",
+        "packaging": "Registratienummer verpakkingen",
+        "epr": "Unieke identificatiecode (IDU)",
+        "textiles": "Registratienummer textiel"
+      },
+      "symbol_alt": "Symbool van de doorgekruiste vuilnisbak",
+      "return_to_us": "Inleveren bij ons",
+      "batteries": {
+        "heading": "Inleveren van lege batterijen",
+        "text": [
+          "Lege batterijen horen niet bij het huisvuil. U bent wettelijk verplicht ze gescheiden in te leveren.",
+          "U kunt ze gratis en zonder aankoopverplichting inleveren bij een openbaar inzamelpunt (bijvoorbeeld de milieustraat) of in een winkel die batterijen verkoopt, ook bij ons.",
+          "De doorgekruiste vuilnisbak op een batterij betekent dat die niet bij het huisvuil mag. De chemische symbolen Hg, Cd of Pb eronder betekenen dat de batterij meer dan de toegestane hoeveelheid kwik, cadmium of lood bevat.",
+          "Batterijen kunnen stoffen bevatten die schadelijk zijn voor milieu en gezondheid, en beschadigde lithiumbatterijen kunnen vlam vatten. Plak de polen van lithiumbatterijen af voordat u ze inlevert, en haal batterijen uit apparaten als dat kan zonder ze te beschadigen.",
+          "U helpt afval te voorkomen door oplaadbare batterijen en duurzame apparaten te kiezen."
+        ]
+      },
+      "weee": {
+        "heading": "Inleveren van oude elektrische en elektronische apparaten",
+        "text": [
+          "Oude elektrische en elektronische apparaten horen niet bij het huisvuil. De doorgekruiste vuilnisbak op een apparaat betekent dat het gescheiden moet worden ingezameld.",
+          "Breng oude apparaten naar een inzamelpunt, bijvoorbeeld de milieustraat, waar u ze gratis kunt inleveren.",
+          "Haal vóór het inleveren batterijen en lampen eruit die zonder schade te verwijderen zijn, en lever ze apart in.",
+          "Wis persoonsgegevens op het apparaat (bijvoorbeeld op telefoons, computers of camera’s) voordat u het inlevert. U bent daar zelf verantwoordelijk voor.",
+          "Oude apparaten kunnen schadelijke stoffen bevatten. Gescheiden inzameling zorgt ervoor dat ze veilig worden verwerkt en dat materialen opnieuw worden gebruikt."
+        ],
+        "one_for_one": "Als u bij ons een nieuw apparaat koopt, nemen wij een oud apparaat van dezelfde soort en functie gratis terug."
+      }
+    }
+  }
+}

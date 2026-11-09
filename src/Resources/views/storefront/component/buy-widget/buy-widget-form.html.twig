@@ -1,10 +1,15 @@
 {% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget-form.html.twig' %}
 
-{# The EU durability label (rule EU-GU-02) above the quantity and add to cart button, when the
-   product has a valid label. Rendered on the server; the label HTML is escaped in PHP. #}
+{# Above the quantity and Add to cart button: the EU durability label (rule EU-GU-02), as the small
+   strip that opens the full label unless the product asks for the full label. Below the button:
+   the product safety line (GPSR) with any hazard labelling, when the settings put it there (the
+   default). Rendered on the server; the label HTML is escaped in PHP. #}
 {% block buy_widget_buy_form_inner %}
     {% block shopproof_buy_widget_durability %}
         {% sw_include '@ShopproofCompliance/storefront/shopproof/product-info.html.twig' with { product: product, parts: ['durability'] } %}
     {% endblock %}
     {{ parent() }}
+    {% block shopproof_buy_widget_safety %}
+        {% sw_include '@ShopproofCompliance/storefront/shopproof/product-info.html.twig' with { product: product, parts: ['safety-buyBox'] } %}
+    {% endblock %}
 {% endblock %}
