@@ -14,3 +14,14 @@
         {% endif %}
     {% endblock %}
 {% endblock %}
+
+{# Shopware's withdrawal button in the wording the shop chose; the national wording from the
+   snippets stays when the setting is "Automatic". #}
+{% block layout_footer_navigation_revocation_button %}
+    {% set shopproofLabels = shopproof_withdrawal_labels(context ?? null) %}
+    {% if shopproofLabels %}
+        {{ parent()|shopproof_withdraw_label(shopproofLabels.withdraw) }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

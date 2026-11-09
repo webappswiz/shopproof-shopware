@@ -6,6 +6,33 @@
         "formSubmit": "Widerruf bestätigen"
     },
     "shopproof": {
+        "withdrawal": {
+            "accountLink": "Vertrag widerrufen",
+            "orderDate": "Bestelldatum",
+            "commentHint": "Was Sie dem Shop sonst noch mitteilen möchten. Sie müssen den Widerruf nicht begründen.",
+            "picker": {
+                "legend": "Betroffene Artikel",
+                "hint": "Kreuzen Sie die Artikel an, die Sie zurücksenden. Nichts ankreuzen, um die ganze Bestellung zu widerrufen.",
+                "looking": "Die Artikel Ihrer Bestellung werden gesucht ...",
+                "found": "Die Artikel Ihrer Bestellung stehen unten.",
+                "none": "Die Artikel dieser Bestellung konnten nicht angezeigt werden. Bitte beschreiben Sie sie unten oder lassen Sie das Feld leer für die ganze Bestellung.",
+                "quantity": "Anzahl",
+                "excluded": "Vom Shop vom Widerruf ausgenommen.",
+                "defaultNote": "Wenn Sie meinen, dass das für Ihren Artikel nicht stimmt, können Sie Ihren Widerruf trotzdem senden, und der Shop prüft ihn."
+            },
+            "status": {
+                "title": "Ihr Widerruf",
+                "received": "Widerruf eingegangen",
+                "return_arrived": "Rücksendung beim Shop angekommen",
+                "refund_sent": "Erstattung veranlasst",
+                "done": "Erledigt",
+                "open": "Noch nicht",
+                "reference": "Referenz",
+                "receivedOn": "Eingegangen am %date%",
+                "notFound": "Wir konnten diesen Widerruf nicht finden. Bitte nutzen Sie den Link aus Ihrer Eingangsbestätigung oder wenden Sie sich an den Shop.",
+                "note": "Der Shop aktualisiert diese Seite. Bei Fragen antworten Sie auf Ihre Eingangsbestätigung."
+            }
+        },
         "safety": {
             "heading": "Informationen zur Produktsicherheit",
             "summary": "Produktsicherheit (Hersteller: %name%)",

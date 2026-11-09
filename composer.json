@@ -1,9 +1,25 @@
 {
     "name": "shopproof/compliance",
     "description": "EU compliance help for Shopware shops: withdrawal button, product safety (GPSR) with hazard labels, guarantee notice, durability label, take-back, proof log. Not legal advice.",
-    "version": "0.5.0",
+    "version": "0.6.1",
     "type": "shopware-platform-plugin",
     "license": "MIT",
+    "keywords": [
+        "shopware",
+        "shopware6",
+        "shopware-plugin",
+        "eu",
+        "gpsr",
+        "product-safety",
+        "withdrawal-button",
+        "widerrufsbutton",
+        "widerruf",
+        "legal-guarantee",
+        "durability-label",
+        "clp",
+        "weee",
+        "compliance"
+    ],
     "authors": [
         {
             "name": "Apex Point Consulting GmbH",
@@ -12,7 +28,8 @@
     ],
     "require": {
         "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
-        "shopware/core": "~6.7.2"
+        "shopware/core": "~6.7.2",
+        "shopware/storefront": "~6.7.2"
     },
     "autoload": {
         "psr-4": {

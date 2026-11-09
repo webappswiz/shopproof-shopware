@@ -167,6 +167,7 @@
                 :is-loading="withdrawalsLoading"
             >
                 <p>{{ $t('shopproof.withdrawal.listIntro') }}</p>
+                <p><small>{{ $t('shopproof.withdrawal.clock.help') }}</small></p>
                 <form class="shopproof-overview__search" role="search" @submit.prevent="search">
                     <label for="shopproof-withdrawal-search">{{ $t('shopproof.withdrawal.searchLabel') }}</label>
                     <input id="shopproof-withdrawal-search" v-model="term" type="search" class="shopproof-overview__search-input">
@@ -183,6 +184,8 @@
                                 <th scope="col">{{ $t('shopproof.withdrawal.customer') }}</th>
                                 <th scope="col">{{ $t('shopproof.withdrawal.contract') }}</th>
                                 <th scope="col">{{ $t('shopproof.withdrawal.comment') }}</th>
+                                <th scope="col">{{ $t('shopproof.withdrawal.status') }}</th>
+                                <th scope="col">{{ $t('shopproof.withdrawal.deadlines') }}</th>
                                 <th scope="col"><span class="shopproof-overview__sr">{{ $t('shopproof.withdrawal.actions') }}</span></th>
                             </tr>
                         </thead>
@@ -193,8 +196,42 @@
                                 <td>
                                     <router-link v-if="item.orderId" :to="orderLink(item.orderId)">{{ item.contractNumber }}</router-link>
                                     <template v-else>{{ item.contractNumber }}<br><small>{{ $t('shopproof.withdrawal.noOrder') }}</small></template>
+                                    <template v-if="item.orderDate"><br><small>{{ $t('shopproof.withdrawal.orderDate') }}: {{ item.orderDate }}</small></template>
                                 </td>
-                                <td class="shopproof-overview__comment">{{ item.comment }}</td>
+                                <td class="shopproof-overview__comment">
+                                    <template v-if="item.items"><strong>{{ $t('shopproof.withdrawal.items') }}</strong><br>{{ item.items }}<br></template>
+                                    {{ item.comment }}
+                                </td>
+                                <td>
+                                    <label :for="`shopproof-status-${item.id}`" class="shopproof-overview__sr">{{ $t('shopproof.withdrawal.status') }}</label>
+                                    <select
+                                        :id="`shopproof-status-${item.id}`"
+                                        class="shopproof-overview__status"
+                                        :value="item.status"
+                                        @change="askStatus(item, $event)"
+                                    >
+                                        <option v-for="state in ['received', 'return_arrived', 'refund_sent']" :key="state" :value="state">{{ $t(`shopproof.withdrawal.states.${state}`) }}</option>
+                                    </select>
+                                    <div v-if="pendingStatus && pendingStatus.id === item.id" class="shopproof-overview__confirm" role="group" :aria-label="$t('shopproof.withdrawal.confirmStatus')">
+                                        <p><small>{{ $t('shopproof.withdrawal.confirmStatus') }}</small></p>
+                                        <mt-button size="small" variant="primary" @click="confirmStatus(item)">{{ $t('shopproof.withdrawal.confirmYes') }}</mt-button>
+                                        <mt-button size="small" variant="secondary" @click="cancelStatus(item)">{{ $t('shopproof.withdrawal.confirmNo') }}</mt-button>
+                                    </div>
+                                    <p v-if="statusNotice && statusNotice.show && statusNotice.id === item.id" role="status"><small>{{ $t(`shopproof.withdrawal.${statusNotice.key}`) }}</small></p>
+                                    <p v-if="item.webhook" :class="`shopproof-overview__tone shopproof-overview__tone--${webhookTone(item.webhook)}`"><small>{{ webhookText(item.webhook) }}</small></p>
+                                </td>
+                                <td class="shopproof-overview__clock">
+                                    <p v-for="(line, index) in clockLines(item.clock)" :key="index" :class="`shopproof-overview__tone shopproof-overview__tone--${line[1]}`">{{ line[0] }}</p>
+                                    <label :for="`shopproof-delivered-${item.id}`"><small>{{ $t('shopproof.withdrawal.deliveredOn') }}</small></label>
+                                    <input
+                                        :id="`shopproof-delivered-${item.id}`"
+                                        type="date"
+                                        :value="item.deliveredOn"
+                                        :title="$t('shopproof.withdrawal.deliveredHelp')"
+                                        @change="setDelivered(item, $event.target.value)"
+                                    >
+                                    <small v-if="item.clock && item.clock.deliveredSource === 'shipped'"><br>{{ $t('shopproof.withdrawal.estimated') }}</small>
+                                </td>
                                 <td>
                                     <template v-if="confirmId === item.id">
                                         <mt-button size="small" variant="critical" @click="removeWithdrawal(item.id)">{{ $t('shopproof.withdrawal.confirmDelete') }}</mt-button>
@@ -213,6 +250,26 @@
                         :steps="[25]"
                         @page-change="onPageChange"
                     />
+                </template>
+            </mt-card>
+
+            <mt-card
+                position-identifier="shopproof-overview-returns"
+                :title="$t('shopproof.returns.title')"
+                :is-loading="returnsLoading"
+            >
+                <p>{{ $t('shopproof.returns.intro') }}</p>
+                <template v-if="returns">
+                    <p v-if="returns.webhookRejected" role="alert">{{ $t('shopproof.withdrawal.check.returnsUrl') }}</p>
+                    <p v-else>{{ returns.webhookOn ? $t('shopproof.returns.on') : $t('shopproof.returns.off') }}</p>
+                    <label for="shopproof-returns-secret">{{ $t('shopproof.returns.secret') }}</label>
+                    <div class="shopproof-overview__search">
+                        <input id="shopproof-returns-secret" :value="returns.secret" type="text" readonly class="shopproof-overview__search-input" aria-describedby="shopproof-returns-secret-help" @focus="$event.target.select()">
+                        <mt-button variant="secondary" @click="renewSecret">{{ $t('shopproof.returns.renew') }}</mt-button>
+                    </div>
+                    <p id="shopproof-returns-secret-help"><small>{{ $t('shopproof.returns.secretHelp') }}</small></p>
+                    <mt-button variant="secondary" :disabled="!returns.webhookOn || returnsTesting" @click="sendTest">{{ $t('shopproof.returns.test') }}</mt-button>
+                    <p v-if="returnsResult" role="status">{{ returnsResult }}</p>
                 </template>
             </mt-card>
 

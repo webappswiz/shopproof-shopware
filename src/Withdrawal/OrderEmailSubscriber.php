@@ -28,6 +28,8 @@ final class OrderEmailSubscriber implements EventSubscriberInterface
         private readonly SystemConfigService $config,
         private readonly OrderEmailLine $line,
         private readonly LoggerInterface $logger,
+        private readonly OrderLink $orderLink,
+        private readonly Wording $wording,
     ) {
     }
 
@@ -65,12 +67,39 @@ final class OrderEmailSubscriber implements EventSubscriberInterface
             if ($url === '' || $words === null) {
                 return;
             }
+            // Signed for this order, so the withdrawal form opens filled in (as the WooCommerce
+            // plugin's one-tap link); without an order the plain page address is used.
+            [$orderId, $email] = self::orderKeys($order);
+            if ($orderId !== '' && $email !== '') {
+                $url = $this->orderLink->url($url, $orderId, $email);
+            }
+            $label = $this->wording->labels($channel, $words['lang']);
+            if ($label !== null) {
+                $words['link'] = $label['withdraw'];
+            }
             $content = OrderEmailLine::add($data['contentHtml'], \is_string($data['contentPlain'] ?? null) ? $data['contentPlain'] : '', $words, $url);
             $event->addData('contentHtml', $content['html']);
             $event->addData('contentPlain', $content['plain']);
         } catch (\Throwable $e) {
             $this->logger->error('Shopproof could not add the withdrawal line to an order email: ' . $e->getMessage());
         }
+    }
+
+    /**
+     * The order's id and customer email from the mail's template data.
+     *
+     * @return array{0: string, 1: string}
+     */
+    public static function orderKeys(mixed $order): array
+    {
+        if (!\is_object($order) || !method_exists($order, 'getId') || !method_exists($order, 'getOrderCustomer')) {
+            return ['', ''];
+        }
+        $id = $order->getId();
+        $customer = $order->getOrderCustomer();
+        $email = \is_object($customer) && method_exists($customer, 'getEmail') ? $customer->getEmail() : null;
+
+        return [\is_string($id) ? strtolower($id) : '', \is_string($email) ? $email : ''];
     }
 
     /**
@@ -93,11 +122,8 @@ final class OrderEmailSubscriber implements EventSubscriberInterface
         if (!$this->config->getBool(SetupFacts::BUTTON, $channel) || !\is_string($page) || !Uuid::isValid($page)) {
             return '';
         }
-        $domain = $this->connection->fetchOne(
-            'SELECT url FROM sales_channel_domain WHERE sales_channel_id = :channel ORDER BY language_id = :language DESC, url LIKE \'https://%\' DESC, url LIMIT 1',
-            ['channel' => Uuid::fromHexToBytes($channel), 'language' => Uuid::fromHexToBytes($language)]
-        );
-        if (!\is_string($domain) || $domain === '') {
+        $domain = $this->domain($channel, $language);
+        if ($domain === '') {
             return '';
         }
         $path = $this->connection->fetchOne(
@@ -114,10 +140,24 @@ final class OrderEmailSubscriber implements EventSubscriberInterface
         );
         $path = \is_string($path) && $path !== '' ? '/' . ltrim($path, '/') : '/page/cms/' . $page;
 
-        return rtrim($domain, '/') . $path;
+        return $domain . $path;
     }
 
-    private function templateType(string $template): string
+    /**
+     * The storefront's address for a language (https before http), without a trailing slash, ''
+     * when the sales channel has no domain.
+     */
+    public function domain(string $channel, string $language): string
+    {
+        $domain = $this->connection->fetchOne(
+            'SELECT url FROM sales_channel_domain WHERE sales_channel_id = :channel ORDER BY language_id = :language DESC, url LIKE \'https://%\' DESC, url LIMIT 1',
+            ['channel' => Uuid::fromHexToBytes($channel), 'language' => Uuid::fromHexToBytes($language)]
+        );
+
+        return \is_string($domain) ? rtrim($domain, '/') : '';
+    }
+
+    public function templateType(string $template): string
     {
         $type = $this->connection->fetchOne(
             'SELECT t.technical_name FROM mail_template m INNER JOIN mail_template_type t ON t.id = m.mail_template_type_id WHERE m.id = :id',
@@ -127,7 +167,7 @@ final class OrderEmailSubscriber implements EventSubscriberInterface
         return \is_string($type) ? $type : '';
     }
 
-    private function locale(string $language): string
+    public function locale(string $language): string
     {
         $code = $this->connection->fetchOne(
             'SELECT l.code FROM language g INNER JOIN locale l ON l.id = g.locale_id WHERE g.id = :id',

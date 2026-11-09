@@ -6,6 +6,33 @@
         "formSubmit": "confirmer la rétractation"
     },
     "shopproof": {
+        "withdrawal": {
+            "accountLink": "renoncer au contrat ici",
+            "orderDate": "Date de commande",
+            "commentHint": "Tout ce que vous souhaitez dire à la boutique. Vous n'avez pas à justifier votre rétractation.",
+            "picker": {
+                "legend": "Articles concernés",
+                "hint": "Cochez les articles que vous renvoyez. Ne cochez rien pour vous rétracter de toute la commande.",
+                "looking": "Recherche des articles de votre commande...",
+                "found": "Les articles de votre commande sont listés ci-dessous.",
+                "none": "Nous n'avons pas pu afficher les articles de cette commande. Décrivez-les ci-dessous, ou laissez le champ vide pour toute la commande.",
+                "quantity": "Quantité",
+                "excluded": "Exclu de la rétractation par la boutique.",
+                "defaultNote": "Si vous pensez que cela ne concerne pas votre article, vous pouvez quand même envoyer votre rétractation, et la boutique l'examinera."
+            },
+            "status": {
+                "title": "Votre rétractation",
+                "received": "Rétractation reçue",
+                "return_arrived": "Retour arrivé à la boutique",
+                "refund_sent": "Remboursement effectué",
+                "done": "Fait",
+                "open": "Pas encore",
+                "reference": "Référence",
+                "receivedOn": "Reçue le %date%",
+                "notFound": "Nous n'avons pas trouvé cette rétractation. Utilisez le lien de votre accusé de réception ou contactez la boutique.",
+                "note": "La boutique met cette page à jour. Pour toute question, répondez à votre accusé de réception."
+            }
+        },
         "safety": {
             "heading": "Informations sur la sécurité du produit",
             "summary": "Sécurité du produit (fabricant : %name%)",

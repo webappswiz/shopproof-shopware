@@ -6,6 +6,33 @@
         "formSubmit": "conferma recesso"
     },
     "shopproof": {
+        "withdrawal": {
+            "accountLink": "recedere dal contratto qui",
+            "orderDate": "Data dell'ordine",
+            "commentHint": "Qualsiasi altra cosa vuoi comunicare al negozio. Non è necessario motivare il recesso.",
+            "picker": {
+                "legend": "Articoli interessati",
+                "hint": "Seleziona gli articoli che restituisci. Non selezionare nulla per recedere dall'intero ordine.",
+                "looking": "Ricerca degli articoli del tuo ordine...",
+                "found": "Gli articoli del tuo ordine sono elencati qui sotto.",
+                "none": "Non è stato possibile mostrare gli articoli di questo ordine. Descrivili qui sotto, oppure lascia il campo vuoto per l'intero ordine.",
+                "quantity": "Quantità",
+                "excluded": "Escluso dal recesso dal negozio.",
+                "defaultNote": "Se pensi che non valga per il tuo articolo, puoi comunque inviare il recesso e il negozio lo verificherà."
+            },
+            "status": {
+                "title": "Il tuo recesso",
+                "received": "Recesso ricevuto",
+                "return_arrived": "Reso arrivato al negozio",
+                "refund_sent": "Rimborso inviato",
+                "done": "Fatto",
+                "open": "Non ancora",
+                "reference": "Riferimento",
+                "receivedOn": "Ricevuto il %date%",
+                "notFound": "Non abbiamo trovato questo recesso. Usa il link nella tua conferma di ricezione o contatta il negozio.",
+                "note": "Il negozio aggiorna questa pagina. Per domande, rispondi alla tua conferma di ricezione."
+            }
+        },
         "safety": {
             "heading": "Informazioni sulla sicurezza del prodotto",
             "summary": "Sicurezza del prodotto (fabbricante: %name%)",

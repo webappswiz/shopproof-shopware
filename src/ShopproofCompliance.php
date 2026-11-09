@@ -4,6 +4,7 @@ namespace Shopproof\Compliance;
 
 use Doctrine\DBAL\Connection;
 use Shopproof\Compliance\Installer\CustomFieldInstaller;
+use Shopproof\Compliance\Installer\MailTemplateInstaller;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\Plugin;
 use Shopware\Core\Framework\Plugin\Context\InstallContext;
@@ -28,12 +29,14 @@ class ShopproofCompliance extends Plugin
     {
         parent::install($installContext);
         $this->customFields()?->install($installContext->getContext());
+        $this->mailTemplates()?->install();
     }
 
     public function update(UpdateContext $updateContext): void
     {
         parent::update($updateContext);
         $this->customFields()?->install($updateContext->getContext());
+        $this->mailTemplates()?->install();
     }
 
     public function uninstall(UninstallContext $uninstallContext): void
@@ -53,6 +56,7 @@ class ShopproofCompliance extends Plugin
         $customFields?->removeValues();
         $customFields?->uninstall($uninstallContext->getContext());
 
+        $this->mailTemplates()?->uninstall();
         foreach (self::TABLES as $table) {
             $connection->executeStatement(\sprintf('DROP TABLE IF EXISTS `%s`', $table));
         }
@@ -75,5 +79,12 @@ class ShopproofCompliance extends Plugin
         }
 
         return new CustomFieldInstaller($repository, $connection);
+    }
+
+    private function mailTemplates(): ?MailTemplateInstaller
+    {
+        $connection = $this->container?->get(Connection::class);
+
+        return $connection instanceof Connection ? new MailTemplateInstaller($connection) : null;
     }
 }

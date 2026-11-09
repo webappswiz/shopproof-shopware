@@ -1,0 +1,72 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-form/form-types/online-revocation-request-form.html.twig' %}
+
+{# Shopware's own withdrawal form, completed by Shopproof: filled in from the signed link in the
+   order emails and the customer account, an order date field when the shop asks for it, the item
+   picker, the comment field as the shop set it (with the note that no reason is needed), and the
+   confirm button in the wording the shop chose (the national wording from the snippets by
+   default). Everything else is Shopware's. #}
+{% block cms_form_revocation %}
+    {% set data = shopproof_withdrawal_prefill(data ?? null, context ?? null) %}
+    {{ parent() }}
+{% endblock %}
+
+{% block cms_form_revocation_input_contract_number %}
+    {{ parent() }}
+    {% set shopproofDateMode = shopproof_withdrawal_order_date(context ?? null) %}
+    {% if shopproofDateMode != 'off' %}
+        {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-input.html.twig'
+            with {
+            fieldName: 'orderDate',
+            type: 'date',
+            autocomplete: 'off',
+            required: shopproofDateMode == 'required',
+            additionalClass: 'col-md-12',
+            label: 'shopproof.withdrawal.orderDate',
+        } %}
+    {% endif %}
+{% endblock %}
+
+{% block cms_form_revocation_comment_textarea %}
+    {% if shopproof_withdrawal_picker(context ?? null) %}
+        <div class="form-group col-12 shopproof-picker"
+             data-shopproof-picker="true"
+             data-url="{{ path('frontend.shopproof.withdrawal.items') }}"
+             data-texts="{{ {
+                 legend: 'shopproof.withdrawal.picker.legend'|trans,
+                 hint: 'shopproof.withdrawal.picker.hint'|trans,
+                 looking: 'shopproof.withdrawal.picker.looking'|trans,
+                 found: 'shopproof.withdrawal.picker.found'|trans,
+                 none: 'shopproof.withdrawal.picker.none'|trans,
+                 quantity: 'shopproof.withdrawal.picker.quantity'|trans,
+                 excluded: 'shopproof.withdrawal.picker.excluded'|trans,
+                 defaultNote: 'shopproof.withdrawal.picker.defaultNote'|trans,
+             }|json_encode }}">
+            <p class="form-text shopproof-picker-status" role="status"></p>
+            <input type="hidden" name="shopproofItems" value="">
+        </div>
+        <script src="{{ asset('bundles/shopproofcompliance/storefront/withdrawal-items.js', 'asset') }}" defer></script>
+    {% endif %}
+    {% set shopproofComment = shopproof_withdrawal_comment(context ?? null) %}
+    {% if shopproofComment != 'off' %}
+        {% sw_include '@Storefront/storefront/component/form/form-textarea.html.twig' with {
+            label: 'revocationRequest.commentLabel'|trans,
+            id: formPrefix ~ '-form-comment',
+            name: 'comment',
+            value: data.get('comment'),
+            violationPath: '/comment',
+            validationRules: shopproofComment == 'required' ? 'required',
+            description: 'shopproof.withdrawal.commentHint'|trans,
+            rows: 5,
+            additionalClass: 'col-12',
+        } %}
+    {% endif %}
+{% endblock %}
+
+{% block cms_form_revocation_submit %}
+    {% set shopproofLabels = shopproof_withdrawal_labels(context ?? null) %}
+    {% if shopproofLabels %}
+        {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-submit.html.twig' with { submitText: shopproofLabels.confirm } %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

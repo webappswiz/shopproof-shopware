@@ -1,0 +1,28 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_head %}
+    {{ parent() }}
+    <meta name="robots" content="noindex, nofollow">
+    {# Shopware sets its own Referrer-Policy header; the page's link must not reach other sites. #}
+    <meta name="referrer" content="no-referrer">
+{% endblock %}
+
+{% block base_content %}
+    <section class="shopproof shopproof-withdrawal-status container py-4" aria-labelledby="shopproof-status-heading">
+        <h1 id="shopproof-status-heading" class="h2">{{ 'shopproof.withdrawal.status.title'|trans }}</h1>
+        {% if shopproofStatus %}
+            <p>
+                {{ 'shopproof.withdrawal.status.reference'|trans }}: {{ shopproofStatus.contractNumber }}.
+                {{ 'shopproof.withdrawal.status.receivedOn'|trans({ '%date%': shopproofStatus.submittedAt|format_date('long', locale: app.request.locale) }) }}
+            </p>
+            <ol class="shopproof-status-steps">
+                {% for step in shopproofStatus.steps %}
+                    <li{% if step.key == shopproofStatus.current %} aria-current="step"{% endif %}><strong>{{ ('shopproof.withdrawal.status.' ~ step.key)|trans }}</strong>: {% if step.done %}{{ 'shopproof.withdrawal.status.done'|trans }}{% if step.at %}, {{ step.at|format_date('long', locale: app.request.locale) }}{% endif %}{% else %}{{ 'shopproof.withdrawal.status.open'|trans }}{% endif %}</li>
+                {% endfor %}
+            </ol>
+            <p>{{ 'shopproof.withdrawal.status.note'|trans }}</p>
+        {% else %}
+            <p>{{ 'shopproof.withdrawal.status.notFound'|trans }}</p>
+        {% endif %}
+    </section>
+{% endblock %}

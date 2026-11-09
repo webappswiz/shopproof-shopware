@@ -6,6 +6,33 @@
         "formSubmit": "ontbinding bevestigen"
     },
     "shopproof": {
+        "withdrawal": {
+            "accountLink": "hier de overeenkomst ontbinden",
+            "orderDate": "Besteldatum",
+            "commentHint": "Wat u de winkel verder wilt laten weten. U hoeft geen reden voor de ontbinding op te geven.",
+            "picker": {
+                "legend": "Betreffende artikelen",
+                "hint": "Vink de artikelen aan die u terugstuurt. Vink niets aan om de hele bestelling te ontbinden.",
+                "looking": "De artikelen van uw bestelling worden opgezocht...",
+                "found": "De artikelen van uw bestelling staan hieronder.",
+                "none": "We konden de artikelen van deze bestelling niet tonen. Beschrijf ze hieronder, of laat het veld leeg voor de hele bestelling.",
+                "quantity": "Aantal",
+                "excluded": "Door de winkel uitgesloten van ontbinding.",
+                "defaultNote": "Denkt u dat dit voor uw artikel niet klopt, dan kunt u uw herroeping toch versturen en bekijkt de winkel die."
+            },
+            "status": {
+                "title": "Uw herroeping",
+                "received": "Herroeping ontvangen",
+                "return_arrived": "Retour aangekomen bij de winkel",
+                "refund_sent": "Terugbetaling verstuurd",
+                "done": "Gedaan",
+                "open": "Nog niet",
+                "reference": "Referentie",
+                "receivedOn": "Ontvangen op %date%",
+                "notFound": "We konden deze herroeping niet vinden. Gebruik de link in uw ontvangstbevestiging of neem contact op met de winkel.",
+                "note": "De winkel werkt deze pagina bij. Hebt u vragen, beantwoord dan uw ontvangstbevestiging."
+            }
+        },
         "safety": {
             "heading": "Informatie over productveiligheid",
             "summary": "Productveiligheid (fabrikant: %name%)",

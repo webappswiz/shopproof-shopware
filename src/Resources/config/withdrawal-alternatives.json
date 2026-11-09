@@ -1,0 +1,12 @@
+{
+  "_note": "Built from packages/rules/data/strings/withdrawal-label-alternatives.json by apps/shopware/scripts/build-storefront.mjs; do not edit by hand.",
+  "languages": {
+    "nl": [
+      {
+        "withdraw": "hier de overeenkomst herroepen",
+        "confirm": "herroeping bevestigen",
+        "source": "https://ondernemersplein.overheid.nl/wetswijzigingen/webshops-moeten-een-herroepingsknop-hebben/"
+      }
+    ]
+  }
+}

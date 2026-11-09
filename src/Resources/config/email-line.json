@@ -4,27 +4,47 @@
     "en": {
       "link": "Withdraw from contract here",
       "question": "Changed your mind?",
-      "period": "You can withdraw within {days} days."
+      "period": "You can withdraw within {days} days.",
+      "status": "See the status of your withdrawal:",
+      "returns": "Start your return here:",
+      "items": "Items",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them."
     },
     "de": {
       "link": "Vertrag widerrufen",
       "question": "Sie haben es sich anders überlegt?",
-      "period": "Sie können innerhalb von {days} Tagen widerrufen."
+      "period": "Sie können innerhalb von {days} Tagen widerrufen.",
+      "status": "Den Stand Ihres Widerrufs sehen Sie hier:",
+      "returns": "Ihre Rücksendung starten Sie hier:",
+      "items": "Artikel",
+      "excluded": "Diese Bestellung enthält Artikel, die Sie vom Widerruf ausgenommen haben: %s. Bitte prüfen Sie, ob die Ausnahme zutrifft, bevor Sie den Widerruf für diese Artikel ablehnen."
     },
     "fr": {
       "link": "renoncer au contrat ici",
       "question": "Vous avez changé d'avis ?",
-      "period": "Vous pouvez vous rétracter dans un délai de {days} jours."
+      "period": "Vous pouvez vous rétracter dans un délai de {days} jours.",
+      "status": "Suivez l'état de votre rétractation ici :",
+      "returns": "Commencez votre retour ici :",
+      "items": "Articles",
+      "excluded": "Cette commande contient des articles que vous avez exclus de la rétractation : %s. Vérifiez si l'exclusion s'applique avant de refuser la rétractation pour ces articles."
     },
     "it": {
       "link": "recedere dal contratto qui",
       "question": "Hai cambiato idea?",
-      "period": "Puoi recedere entro {days} giorni."
+      "period": "Puoi recedere entro {days} giorni.",
+      "status": "Segui lo stato del tuo recesso qui:",
+      "returns": "Avvia il reso qui:",
+      "items": "Articoli",
+      "excluded": "Questo ordine contiene articoli che hai escluso dal recesso: %s. Verifica se l'esclusione si applica prima di rifiutare il recesso per questi articoli."
     },
     "nl": {
       "link": "hier de overeenkomst ontbinden",
       "question": "Van gedachten veranderd?",
-      "period": "U kunt binnen {days} dagen herroepen."
+      "period": "U kunt binnen {days} dagen herroepen.",
+      "status": "Bekijk de status van uw herroeping hier:",
+      "returns": "Start uw retour hier:",
+      "items": "Artikelen",
+      "excluded": "Deze bestelling bevat artikelen die u van herroeping hebt uitgesloten: %s. Controleer of de uitsluiting van toepassing is voordat u de herroeping voor deze artikelen weigert."
     }
   }
 }

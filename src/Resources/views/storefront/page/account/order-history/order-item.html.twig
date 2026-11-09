@@ -1,0 +1,15 @@
+{% sw_extends '@Storefront/storefront/page/account/order-history/order-item.html.twig' %}
+
+{# The withdrawal link in each order's menu in the customer account, next to Shopware's own
+   order actions, signed for that order so the form opens filled in. Off when the setting
+   "Withdrawal link in the customer account" is off or the withdrawal button has no page. #}
+{% block page_account_order_item_context_menu_cancel_order %}
+    {{ parent() }}
+    {% set shopproofWithdrawUrl = shopproof_withdrawal_order_url(order, context ?? null) %}
+    {% if shopproofWithdrawUrl %}
+        {% set shopproofLabels = shopproof_withdrawal_labels(context ?? null) %}
+        <a class="dropdown-item order-table-header-context-menu-content-link shopproof-withdraw-link" href="{{ shopproofWithdrawUrl }}">
+            {{ shopproofLabels ? shopproofLabels.withdraw : 'shopproof.withdrawal.accountLink'|trans|striptags }}
+        </a>
+    {% endif %}
+{% endblock %}

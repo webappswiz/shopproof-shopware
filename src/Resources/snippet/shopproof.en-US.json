@@ -6,6 +6,33 @@
         "formSubmit": "Confirm withdrawal"
     },
     "shopproof": {
+        "withdrawal": {
+            "accountLink": "Withdraw from contract here",
+            "orderDate": "Order date",
+            "commentHint": "Anything else you want to tell the shop. You do not need to give a reason for withdrawing.",
+            "picker": {
+                "legend": "Items you are returning",
+                "hint": "Tick the items you are returning. Leave all unticked to withdraw from the whole order.",
+                "looking": "Looking up the items of your order...",
+                "found": "The items of your order are listed below.",
+                "none": "We could not list the items of this order. Please describe them below, or leave the field empty for the whole order.",
+                "quantity": "How many",
+                "excluded": "Excluded from withdrawal by the shop.",
+                "defaultNote": "If you think this is wrong for your item, you can still send your withdrawal, and the shop will check it."
+            },
+            "status": {
+                "title": "Your withdrawal",
+                "received": "Withdrawal received",
+                "return_arrived": "Return arrived at the shop",
+                "refund_sent": "Refund sent",
+                "done": "Done",
+                "open": "Not yet",
+                "reference": "Reference",
+                "receivedOn": "Received on %date%",
+                "notFound": "We could not find this withdrawal. Please use the link in your receipt email, or contact the shop.",
+                "note": "The shop updates this page. For questions, reply to your receipt email."
+            }
+        },
         "safety": {
             "heading": "Product safety information",
             "summary": "Product safety (manufacturer: %name%)",

@@ -138,3 +138,34 @@
     word-break: break-all;
     font-size: 12px;
 }
+
+.shopproof-overview__clock {
+    min-inline-size: 14rem;
+
+    p {
+        margin: 0 0 0.25rem;
+        padding-inline-start: 0.5rem;
+        border-inline-start: 3px solid transparent;
+    }
+}
+
+// The words carry the meaning; the colour (WCAG AA on white) only helps scanning.
+.shopproof-overview__tone--ok {
+    border-color: #1d6b2f !important;
+    color: #1d6b2f;
+}
+
+.shopproof-overview__tone--warn {
+    border-color: #8a5300 !important;
+    color: #8a5300;
+}
+
+.shopproof-overview__tone--bad {
+    border-color: #b3001b !important;
+    color: #b3001b;
+    font-weight: 600;
+}
+
+.shopproof-overview__status {
+    max-inline-size: 12rem;
+}

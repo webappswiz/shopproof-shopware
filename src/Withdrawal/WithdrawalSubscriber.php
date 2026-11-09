@@ -5,6 +5,7 @@ namespace Shopproof\Compliance\Withdrawal;
 use Psr\Log\LoggerInterface;
 use Shopproof\Compliance\ProofLog\ProofChain;
 use Shopproof\Compliance\ProofLog\ProofLog;
+use Shopware\Core\Framework\Context;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -27,6 +28,8 @@ final class WithdrawalSubscriber implements EventSubscriberInterface
         private readonly LoggerInterface $logger,
         private readonly SystemConfigService $config,
         private readonly ProofLog $proofLog,
+        private readonly ReturnsWebhook $returns,
+        private readonly WithdrawalItems $items,
     ) {
     }
 
@@ -44,7 +47,11 @@ final class WithdrawalSubscriber implements EventSubscriberInterface
                 return;
             }
             $channel = method_exists($event, 'getSalesChannelId') ? $event->getSalesChannelId() : null;
-            $id = $this->store->add($record, \is_string($channel) ? $channel : null);
+            $channel = \is_string($channel) ? $channel : null;
+            if ($record['items'] !== '') {
+                $record['items'] = $this->orderedItems($record, $channel, $event);
+            }
+            $id = $this->store->add($record, $channel, OrderEmailLine::period($this->config->getInt('ShopproofCompliance.config.withdrawalDays', $channel)));
         } catch (\Throwable $e) {
             $this->logger->error('Shopproof could not record a withdrawal request: ' . $e->getMessage());
             $this->countFailure();
@@ -52,6 +59,39 @@ final class WithdrawalSubscriber implements EventSubscriberInterface
             return;
         }
         $this->logProof($id);
+        try {
+            $this->returns->queue($id, $channel);
+        } catch (\Throwable $e) {
+            $this->logger->error('Shopproof could not queue a withdrawal for the returns tool: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * The ticked items that are on the order the request names (PickedItems), none when no order
+     * fits. If the order cannot be read (or the event carries no context), the lines are kept as
+     * sent.
+     *
+     * @param array{contract_number: string, email: string, items: string} $record
+     */
+    private function orderedItems(array $record, ?string $channel, object $event): string
+    {
+        try {
+            $order = $this->store->orderFor($record['contract_number'], $record['email'], $channel);
+            if ($order === '' || $channel === null) {
+                return '';
+            }
+            $context = method_exists($event, 'getContext') ? $event->getContext() : null;
+            if (!$context instanceof Context) {
+                return $record['items'];
+            }
+            $lines = $this->items->items($order, $channel, $context);
+
+            return PickedItems::onlyOrdered($record['items'], array_map(static fn (array $l): array => ['name' => $l['name'], 'quantity' => $l['quantity']], $lines));
+        } catch (\Throwable $e) {
+            $this->logger->error('Shopproof could not check the ticked items against the order: ' . $e->getMessage());
+
+            return $record['items'];
+        }
     }
 
     /**

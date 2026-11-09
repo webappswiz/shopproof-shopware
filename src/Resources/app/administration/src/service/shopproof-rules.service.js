@@ -32,7 +32,7 @@ class ShopproofRulesService extends ApiService {
         return this.httpClient
             .get(`${this.getApiBasePath()}/withdrawals`, {
                 headers: this.getBasicHeaders(),
-                params: { page, limit: 25, term },
+                params: { page, limit: 25, term, timezone: ShopproofRulesService.timeZone() },
             })
             .then((response) => ApiService.handleResponse(response));
     }
@@ -70,10 +70,46 @@ class ShopproofRulesService extends ApiService {
             .then((response) => response.data);
     }
 
+    /** The admin user's time zone, so deadline days match the merchant's calendar. */
+    static timeZone() {
+        const user = Shopware.State?.get('session')?.currentUser;
+        return user?.timeZone || Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+    }
+
+    setWithdrawalStatus(id, status, notify = true) {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/withdrawals/${id}/status`, { status, notify }, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    setWithdrawalDelivered(id, deliveredOn) {
+        return this.httpClient.post(`${this.getApiBasePath()}/withdrawals/${id}/delivered`, { deliveredOn }, {
+            headers: this.getBasicHeaders(),
+        });
+    }
+
     deleteWithdrawal(id) {
         return this.httpClient.delete(`${this.getApiBasePath()}/withdrawals/${id}`, {
             headers: this.getBasicHeaders(),
         });
+    }
+
+    getReturns() {
+        return this.httpClient
+            .get(`${this.getApiBasePath()}/returns`, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    renewReturnsSecret() {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/returns/secret`, {}, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    sendReturnsTest() {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/returns/test`, {}, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
     }
 }
 

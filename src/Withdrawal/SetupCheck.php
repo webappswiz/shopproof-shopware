@@ -6,8 +6,8 @@ namespace Shopproof\Compliance\Withdrawal;
  * Checks that Shopware's own withdrawal button (6.7.9 and later) is set up so shoppers can use it:
  * the button is on, it points to a page with the withdrawal form, the flow that confirms receipt to
  * the shopper is active, Shopproof's table for the records exists, and the storefront languages
- * have the national button wording. Also reports requests that could not be recorded, product page
- * layouts and product page warnings (guarantee notice, manufacturers without details). Pure: the
+ * have the national button wording. Warns when the chosen other wording does not apply. Also
+ * reports requests that could not be recorded, product page layouts and product page warnings (guarantee notice, manufacturers without details). Pure: the
  * facts come from SetupFacts, so the judgement is unit tested alone.
  */
 final class SetupCheck
@@ -27,7 +27,7 @@ final class SetupCheck
      *     supported: bool,
      *     flowActive: bool,
      *     customerMail: bool,
-     *     channels: list<array{id: string, name: string, active: bool, buttonOn: bool, pageId: string, pageExists: bool, pageHasForm: bool, locales: list<string>}>,
+     *     channels: list<array{id: string, name: string, active: bool, buttonOn: bool, pageId: string, pageExists: bool, pageHasForm: bool, locales: list<string>, wording?: array{mode: string, ownReady: bool, alternativeLanguages: list<string>}, returnsRejected?: bool}>,
      *     layouts?: list<array{id: string, name: string, elements: list<string>}>,
      *     recordTable?: bool,
      *     failedRecords?: int,
@@ -74,11 +74,46 @@ final class SetupCheck
                 ['key' => 'labels', 'ok' => $missing === [], 'detail' => implode(', ', $missing)],
             ];
             $channelOk = array_reduce($checks, static fn (bool $carry, array $check): bool => $carry && $check['ok'], true);
+            // The national wording still applies where the chosen one does not, so this warns only.
+            $wording = self::wording($channel);
+            if ($wording !== null) {
+                $checks[] = $wording;
+            }
+            // A returns tool address that cannot be used: withdrawals are kept, but not sent on.
+            if (($channel['returnsRejected'] ?? false) === true) {
+                $checks[] = ['key' => 'returnsUrl', 'ok' => false, 'detail' => ''];
+            }
             $ok = $ok && $channelOk;
             $channels[] = ['id' => $channel['id'], 'name' => $channel['name'], 'ok' => $channelOk, 'checks' => $checks];
         }
 
         return ['supported' => true, 'ok' => $ok && $channels !== [], 'shop' => $shop, 'channels' => $channels, ...$common];
+    }
+
+    /**
+     * The chosen button wording, when it is not the national one: the shop's own text is used
+     * only with both texts and the tick, and an alternative only for languages that have one.
+     * Null for the national wording, which the labels check covers.
+     *
+     * @param array{locales: list<string>, wording?: array{mode: string, ownReady: bool, alternativeLanguages: list<string>}} $channel
+     *
+     * @return array{key: string, ok: bool, detail: string}|null
+     */
+    private static function wording(array $channel): ?array
+    {
+        $wording = $channel['wording'] ?? null;
+        if ($wording !== null && $wording['mode'] === Wording::OWN) {
+            return ['key' => 'wording', 'ok' => $wording['ownReady'], 'detail' => ''];
+        }
+        if ($wording === null || $wording['mode'] !== Wording::ALTERNATIVE) {
+            return null;
+        }
+        $missing = array_values(array_unique(array_filter(
+            array_map(static fn (string $locale): string => strtolower(substr($locale, 0, 2)), $channel['locales']),
+            static fn (string $lang): bool => $lang !== '' && !\in_array($lang, $wording['alternativeLanguages'], true)
+        )));
+
+        return ['key' => 'wording', 'ok' => $missing === [], 'detail' => implode(', ', $missing)];
     }
 
     /**

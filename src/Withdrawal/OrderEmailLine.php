@@ -14,6 +14,12 @@ final class OrderEmailLine
     /** Marker class, so the line is never added twice and a pasted copy is respected. */
     public const MARKER = 'shopproof-email-link';
 
+    /** Marker class of the status page line in Shopware's receipt email. */
+    public const STATUS_MARKER = 'shopproof-status-link';
+    public const RETURNS_MARKER = 'shopproof-returns-link';
+    public const ITEMS_MARKER = 'shopproof-items';
+    public const EXCLUDED_MARKER = 'shopproof-excluded';
+
     /** @var array<mixed>|null */
     private ?array $data = null;
 
@@ -81,6 +87,102 @@ final class OrderEmailLine
         $plain = rtrim($plain) . "\n\n" . $safe($words['link']) . ': ' . $safe($url) . "\n" . $safe($words['question'] . ' ' . $words['period']) . "\n";
 
         return ['html' => $html, 'plain' => $plain];
+    }
+
+    /**
+     * The words before the status page link for a language, or null.
+     */
+    public function statusWords(string $localeCode): ?string
+    {
+        return $this->sentence($localeCode, 'status');
+    }
+
+    /**
+     * The returns portal sentence ("Start your return here:") for a locale, null without one.
+     */
+    public function returnsWords(string $localeCode): ?string
+    {
+        return $this->sentence($localeCode, 'returns');
+    }
+
+    /**
+     * The items label ("Items") for a locale, null without one.
+     */
+    public function itemsLabel(string $localeCode): ?string
+    {
+        return $this->sentence($localeCode, 'items');
+    }
+
+    /**
+     * The shop copy's line naming excluded items, with "%s" for the names; English by default.
+     */
+    public function excludedLine(string $localeCode): ?string
+    {
+        return $this->sentence($localeCode, 'excluded') ?? $this->sentence('en', 'excluded');
+    }
+
+    /**
+     * Adds a paragraph of plain text (the items, or the excluded items) to a withdrawal email,
+     * once. Line breaks in the text stay line breaks.
+     *
+     * @return array{html: string, plain: string}
+     */
+    public static function addText(string $html, string $plain, string $text, string $marker): array
+    {
+        if (str_contains($html, $marker) || trim($text) === '') {
+            return ['html' => $html, 'plain' => $plain];
+        }
+        $e = static fn (string $value): string => str_replace(['{', '}'], ['&#123;', '&#125;'], htmlspecialchars($value, \ENT_QUOTES | \ENT_HTML5, 'UTF-8'));
+        $line = '<p class="' . $marker . '" style="margin-top:1em;">' . nl2br($e($text), false) . '</p>';
+        $trimmed = rtrim($html);
+        $html = str_ends_with(strtolower($trimmed), '</div>') ? substr($trimmed, 0, -6) . $line . "\n</div>\n" : $trimmed . "\n" . $line . "\n";
+        $safe = static fn (string $value): string => str_replace(['{{', '{%', '{#'], ['{ {', '{ %', '{ #'], $value);
+
+        return ['html' => $html, 'plain' => rtrim($plain) . "\n\n" . $safe($text) . "\n"];
+    }
+
+    private function sentence(string $localeCode, string $key): ?string
+    {
+        $entry = $this->languages()[strtolower(substr($localeCode, 0, 2))] ?? null;
+
+        return \is_array($entry) && \is_string($entry[$key] ?? null) ? $entry[$key] : null;
+    }
+
+    /**
+     * Adds the status page line to the receipt email, in the same place as the withdrawal line.
+     *
+     * @return array{html: string, plain: string}
+     */
+    public static function addStatus(string $html, string $plain, string $words, string $url): array
+    {
+        return self::addLink($html, $plain, $words, $url, self::STATUS_MARKER, '2em');
+    }
+
+    /**
+     * Adds the returns portal line to the receipt email, after the status line.
+     *
+     * @return array{html: string, plain: string}
+     */
+    public static function addReturns(string $html, string $plain, string $words, string $url): array
+    {
+        return self::addLink($html, $plain, $words, $url, self::RETURNS_MARKER, str_contains($html, self::STATUS_MARKER) ? '1em' : '2em');
+    }
+
+    /**
+     * @return array{html: string, plain: string}
+     */
+    private static function addLink(string $html, string $plain, string $words, string $url, string $marker, string $space): array
+    {
+        if (str_contains($html, $marker)) {
+            return ['html' => $html, 'plain' => $plain];
+        }
+        $e = static fn (string $text): string => str_replace(['{', '}'], ['&#123;', '&#125;'], htmlspecialchars($text, \ENT_QUOTES | \ENT_HTML5, 'UTF-8'));
+        $line = '<p class="' . $marker . '" style="margin-top:' . $space . ';">' . $e($words) . ' <a href="' . $e($url) . '">' . $e($url) . '</a></p>';
+        $trimmed = rtrim($html);
+        $html = str_ends_with(strtolower($trimmed), '</div>') ? substr($trimmed, 0, -6) . $line . "\n</div>\n" : $trimmed . "\n" . $line . "\n";
+        $safe = static fn (string $text): string => str_replace(['{{', '{%', '{#'], ['{ {', '{ %', '{ #'], $text);
+
+        return ['html' => $html, 'plain' => rtrim($plain) . "\n\n" . $safe($words . ' ' . $url) . "\n"];
     }
 
     /**

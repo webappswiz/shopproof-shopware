@@ -48,7 +48,11 @@
                 "page": "Der Button führt zu einer Seite für Widerrufsanträge",
                 "form": "Diese Seite enthält das Widerrufsformular",
                 "labels": "Jede Storefront-Sprache hat die gesetzliche Beschriftung",
-                "labelsMissing": "Diese Storefront-Sprachen haben noch keine gesetzliche Beschriftung: {languages}. Den Text legen Sie unter Einstellungen > Textbausteine fest."
+                "labelsMissing": "Diese Storefront-Sprachen haben noch keine gesetzliche Beschriftung: {languages}. Den Text legen Sie unter Einstellungen > Textbausteine fest.",
+                "wording": "Die gewählte Beschriftung gilt in jeder Storefront-Sprache",
+                "wordingMissing": "Diese Storefront-Sprachen haben keine geprüfte andere Formulierung und behalten die gesetzliche Beschriftung: {languages}.",
+                "wordingOwn": "Ihre eigene Beschriftung wird noch nicht verwendet: beide Texte eintragen und bestätigen, dass Sie die gesetzliche Formulierung verstehen (Shopproof-Einstellungen, Karte Widerrufsbutton). Bis dahin gilt die gesetzliche Beschriftung.",
+                "returnsUrl": "Die Adresse Ihres Retourentools kann nicht verwendet werden, daher werden Widerrufe nicht weitergeleitet. Tragen Sie die vollständige https://-Adresse ein, die Ihr Retourentool nennt (Shopproof-Einstellungen, Karte Retourentool). Widerrufe werden hier weiterhin gespeichert."
             },
             "listTitle": "Widerrufsanträge",
             "listIntro": "Jeder Antrag über den Widerrufsbutton von Shopware, gespeichert in der Datenbank dieses Shops, damit Sie den Eingang belegen können. Shopproof erhält ihn nie.",
@@ -62,12 +66,44 @@
             "comment": "Kommentar",
             "actions": "Aktionen",
             "noOrder": "Keine passende Bestellung",
+            "orderDate": "Angegebenes Bestelldatum",
             "delete": "Löschen",
             "confirmDelete": "Endgültig löschen",
             "cancel": "Abbrechen",
             "failedRecords": "{count} Widerrufsantrag konnte nicht gespeichert werden; prüfen Sie das Log und die E-Mails von Shopware. | {count} Widerrufsanträge konnten nicht gespeichert werden; prüfen Sie das Log und die E-Mails von Shopware.",
             "failedHelp": "Shopware hat seine E-Mails trotzdem versendet, der Kunde hat also eine Bestätigung erhalten, aber der Antrag fehlt in der Liste unten. Sie finden ihn in den E-Mails, die Shopware an den Shop geschickt hat, und in var/log (Suche nach \"Shopproof could not record\"). Bewahren Sie eine Kopie auf.",
-            "failedClear": "Habe ich geprüft"
+            "failedClear": "Habe ich geprüft",
+            "status": "Status",
+            "deadlines": "Fristen",
+            "deliveredOn": "Ware angekommen am",
+            "deliveredHelp": "Der Tag, an dem die Kunden die Ware erhalten haben (das letzte Stück). Ohne ihn zählt der Tag, an dem Shopware die Lieferung als versandt markiert hat; damit lässt sich nur „rechtzeitig“ oder „prüfen“ sagen.",
+            "states": {
+                "received": "Widerruf eingegangen",
+                "return_arrived": "Rücksendung angekommen",
+                "refund_sent": "Erstattung gesendet"
+            },
+            "emailed": "Die Kunden haben eine E-Mail erhalten.",
+            "notEmailed": "Es wurde keine E-Mail gesendet (die Einstellung ist aus, oder dem Shop fehlt für diese Storefront eine E-Mail-Adresse oder ein Template).",
+            "statusFailed": "Der Status konnte nicht gespeichert werden. Bitte erneut versuchen.",
+            "confirmStatus": "Diesen Status speichern? Der Kunde erhält dazu eine E-Mail, außer die Status-E-Mails sind in den Einstellungen ausgeschaltet.",
+            "confirmYes": "Speichern und benachrichtigen",
+            "confirmNo": "Abbrechen",
+            "estimated": "Geschätzt aus dem Versanddatum",
+            "clock": {
+                "before_delivery": "Rechtzeitig: vor der Lieferung gesendet",
+                "inside": "Rechtzeitig: Frist endet am {date}",
+                "late": "{days} Tag zu spät: Frist endete am {date} | {days} Tage zu spät: Frist endete am {date}",
+                "check": "Prüfen: möglicherweise zu spät, Lieferdatum eintragen",
+                "unknown": "Frist unbekannt: Lieferdatum eintragen",
+                "paid": "Erstattet am {date}",
+                "none": "Keine Erstattungsfrist, solange der Widerruf zu spät ist",
+                "today": "Erstattung heute fällig ({date})",
+                "overdue": "Erstattung seit {days} Tag überfällig (fällig am {date}) | Erstattung seit {days} Tagen überfällig (fällig am {date})",
+                "due": "Erstattung fällig bis {date} (noch {days} Tag) | Erstattung fällig bis {date} (noch {days} Tage)",
+                "partly": "Teilweise erstattet am {date}, prüfen: {line}",
+                "help": "Technische Hilfe, keine Rechtsberatung. Die Frist beträgt 14 Tage (oder Ihre längere Frist) ab Lieferung und läuft bis Montag, wenn sie an einem Wochenende endet; auch Feiertage können sie verlängern. Die Erstattung ist 14 Tage nach Eingang des Widerrufs fällig."
+            },
+            "items": "Artikel"
         },
         "products": {
             "warn": "Prüfen",
@@ -120,6 +156,26 @@
                 "snapshot": "Täglicher Stand",
                 "withdrawal": "Widerruf",
                 "retention": "Aufbewahrung geändert"
+            }
+        },
+        "returns": {
+            "title": "Retourentool",
+            "intro": "Shopproof kann jeden neuen Widerruf als signiertes JSON an Ihr Retourentool oder Ihre Automatisierung senden und einen Link zu Ihrem Retourenportal in die Eingangsbestätigung an die Kunden setzen. Die Adressen legen Sie in den Shopproof-Einstellungen fest (Karte Retourentool).",
+            "on": "An: Jeder neue Widerruf wird an Ihr Retourentool gesendet.",
+            "off": "Aus: Keine Webhook-Adresse eingetragen.",
+            "secret": "Signatur-Geheimnis",
+            "secretHelp": "Fügen Sie es in Ihr Retourentool ein. Jede Anfrage hat den Header X-Shopproof-Signature: t=<Zeit>,v1=<Signatur>. Die Signatur ist der HMAC-SHA256 (hexadezimal) aus Zeit, einem Punkt und dem Inhalt der Anfrage, mit diesem Geheimnis als Schlüssel. Halten Sie das Geheimnis vertraulich.",
+            "renew": "Neues Geheimnis",
+            "renewed": "Neues Geheimnis erstellt. Fügen Sie es in Ihr Retourentool ein, das alte gilt nicht mehr.",
+            "test": "Test senden",
+            "testOk": "Ihr Retourentool hat den Test angenommen (Status {code}).",
+            "testRefused": "Ihr Retourentool hat den Test mit Status {code} abgelehnt. Prüfen Sie dort die Adresse und das Geheimnis.",
+            "testUnreachable": "Ihr Retourentool war nicht erreichbar. Prüfen Sie die Adresse.",
+            "delivery": {
+                "queued": "Retourentool: wartet auf Versand.",
+                "sent": "Retourentool: gesendet {time}, Status {code}.",
+                "retrying": "Retourentool: nicht angenommen {time} (Status {code}). Shopproof versucht es erneut.",
+                "failed": "Retourentool: aufgegeben {time} (Status {code}). Bitte legen Sie die Rücksendung von Hand an."
             }
         }
     }

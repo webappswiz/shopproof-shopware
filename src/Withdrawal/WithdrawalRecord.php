@@ -16,6 +16,7 @@ final class WithdrawalRecord
         'email' => 320,
         'contract_number' => 255,
         'comment' => 4096,
+        'items' => 2000,
     ];
 
     private const FORM_KEYS = [
@@ -24,7 +25,11 @@ final class WithdrawalRecord
         'email' => 'email',
         'contract_number' => 'contractNumber',
         'comment' => 'comment',
+        'items' => self::ITEMS_FIELD,
     ];
+
+    /** The hidden form field the item picker fills with the ticked items, one per line. */
+    public const ITEMS_FIELD = 'shopproofItems';
 
     /** Shopware\Core\Content\Flow\Dispatching\Action\FlowMailVariables::REVOCATION_REQUEST_FORM_DATA */
     public const FORM_DATA = 'revocationRequestFormData';
@@ -55,7 +60,7 @@ final class WithdrawalRecord
     /**
      * @param array<mixed> $form the event's form data
      *
-     * @return array{first_name: string, last_name: string, email: string, contract_number: string, comment: string, submitted_at: \DateTimeImmutable}|null
+     * @return array{first_name: string, last_name: string, email: string, contract_number: string, comment: string, items: string, order_date: string, submitted_at: \DateTimeImmutable}|null
      *                                                                                                                                                null when the form has no email or contract number
      */
     public static function fromForm(array $form, \DateTimeImmutable $now): ?array
@@ -70,6 +75,8 @@ final class WithdrawalRecord
             return null;
         }
         $time = $form['submitTime'] ?? null;
+        $date = $form['orderDate'] ?? '';
+        $date = \is_string($date) && preg_match('/^\d{4}-\d{2}-\d{2}$/', trim($date)) ? trim($date) : '';
 
         return [
             'first_name' => $row['first_name'],
@@ -77,6 +84,8 @@ final class WithdrawalRecord
             'email' => $row['email'],
             'contract_number' => $row['contract_number'],
             'comment' => $row['comment'],
+            'items' => $row['items'],
+            'order_date' => $date,
             'submitted_at' => $time instanceof \DateTimeInterface ? \DateTimeImmutable::createFromInterface($time) : $now,
         ];
     }

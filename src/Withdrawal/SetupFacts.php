@@ -38,6 +38,8 @@ class SetupFacts
         private readonly Connection $connection,
         private readonly SystemConfigService $config,
         private readonly HazardLabel $hazards,
+        private readonly Wording $wording,
+        private readonly ReturnsWebhook $returns,
     ) {
     }
 
@@ -97,6 +99,8 @@ class SetupFacts
                 'pageExists' => $pageId !== '' && $this->pageExists($pageId),
                 'pageHasForm' => $pageId !== '' && $this->pageHasForm($pageId),
                 'locales' => $this->locales($id),
+                'wording' => $this->wordingFacts($id),
+                'returnsRejected' => $this->returns->urlRejected($id),
             ];
         }
 
@@ -264,6 +268,20 @@ class SetupFacts
         }
 
         return $layouts;
+    }
+
+    /**
+     * @return array{mode: string, ownReady: bool, alternativeLanguages: list<string>}
+     */
+    private function wordingFacts(string $channelId): array
+    {
+        $mode = $this->config->getString(self::PLUGIN_CONFIG . 'buttonWording', $channelId);
+
+        return [
+            'mode' => \in_array($mode, [Wording::OWN, Wording::ALTERNATIVE], true) ? $mode : Wording::AUTO,
+            'ownReady' => $mode === Wording::OWN && $this->wording->labels($channelId, '') !== null,
+            'alternativeLanguages' => $this->wording->alternativeLanguages(),
+        ];
     }
 
     private function pageExists(string $pageId): bool

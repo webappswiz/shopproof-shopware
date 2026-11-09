@@ -48,7 +48,11 @@
                 "page": "The button links to a withdrawal request page",
                 "form": "That page has the withdrawal request form",
                 "labels": "Every storefront language has the national button wording",
-                "labelsMissing": "These storefront languages have no national button wording yet: {languages}. Set the button text under Settings > Snippets."
+                "labelsMissing": "These storefront languages have no national button wording yet: {languages}. Set the button text under Settings > Snippets.",
+                "wording": "The chosen button wording applies in every storefront language",
+                "wordingMissing": "These storefront languages have no reviewed alternative wording, so they keep the national wording: {languages}.",
+                "wordingOwn": "Your own button wording is not used yet: enter both texts and tick that you understand the legal wording (Shopproof settings, Withdrawal button card). Until then the national wording applies.",
+                "returnsUrl": "Your returns tool address cannot be used, so withdrawals are not sent on. Enter the full https:// address your returns tool gave you (Shopproof settings, Returns tool card). Withdrawals are still recorded here."
             },
             "listTitle": "Withdrawal requests",
             "listIntro": "Every request sent through Shopware's withdrawal button, kept in this shop's database so you can show when it arrived. Shopproof never receives it.",
@@ -62,12 +66,44 @@
             "comment": "Comment",
             "actions": "Actions",
             "noOrder": "No matching order",
+            "orderDate": "Order date given",
             "delete": "Delete",
             "confirmDelete": "Delete for good",
             "cancel": "Cancel",
             "failedRecords": "{count} withdrawal request could not be recorded; check the log and the Shopware emails. | {count} withdrawal requests could not be recorded; check the log and the Shopware emails.",
             "failedHelp": "Shopware still sent its emails, so the shopper got a confirmation, but the request is missing from the list below. Find it in the emails Shopware sent to the shop and in var/log (search for \"Shopproof could not record\"), and keep a copy.",
-            "failedClear": "I have checked these"
+            "failedClear": "I have checked these",
+            "status": "Status",
+            "deadlines": "Deadlines",
+            "deliveredOn": "Goods arrived on",
+            "deliveredHelp": "The day the customer received the goods (the last item). Without it, the day Shopware marked the delivery as shipped stands in, which can only say \"in time\" or \"check\".",
+            "states": {
+                "received": "Withdrawal received",
+                "return_arrived": "Return arrived",
+                "refund_sent": "Refund sent"
+            },
+            "emailed": "The customer got an email.",
+            "notEmailed": "No email was sent (the setting is off, or the shop has no email address or template for this storefront).",
+            "statusFailed": "The status could not be saved. Try again.",
+            "confirmStatus": "Save this status? The customer gets an email about it, unless status emails are off in the settings.",
+            "confirmYes": "Save and notify",
+            "confirmNo": "Cancel",
+            "estimated": "Estimated from the shipping date",
+            "clock": {
+                "before_delivery": "In time: sent before delivery",
+                "inside": "In time: window ends {date}",
+                "late": "Late by {days} day: window ended {date} | Late by {days} days: window ended {date}",
+                "check": "Check: may be late, enter the delivery date",
+                "unknown": "Window unknown: enter the delivery date",
+                "paid": "Refunded {date}",
+                "none": "No refund clock while the withdrawal is late",
+                "today": "Refund due today ({date})",
+                "overdue": "Refund overdue by {days} day (was due {date}) | Refund overdue by {days} days (was due {date})",
+                "due": "Refund due by {date} ({days} day left) | Refund due by {date} ({days} days left)",
+                "partly": "Partly refunded {date}, check: {line}",
+                "help": "Technical help, not legal advice. The window is 14 days (or your longer period) from delivery and runs to Monday when it ends on a weekend; public holidays can extend it too. The refund is due 14 days after the withdrawal arrived."
+            },
+            "items": "Items"
         },
         "products": {
             "warn": "Check",
@@ -120,6 +156,26 @@
                 "snapshot": "Daily snapshot",
                 "withdrawal": "Withdrawal",
                 "retention": "Retention changed"
+            }
+        },
+        "returns": {
+            "title": "Returns tool",
+            "intro": "Shopproof can send each new withdrawal to your returns tool or automation as signed JSON, and add a link to your returns portal to the customer's receipt. Set the addresses in the Shopproof settings (Returns tool card).",
+            "on": "On: each new withdrawal is sent to your returns tool.",
+            "off": "Off: no webhook address is set.",
+            "secret": "Signing secret",
+            "secretHelp": "Paste this into your returns tool. Each request carries the header X-Shopproof-Signature: t=<time>,v1=<signature>. The signature is the HMAC-SHA256, in hex, of the time, a dot and the request body, keyed with this secret. Keep the secret private.",
+            "renew": "New secret",
+            "renewed": "New secret made. Paste it into your returns tool, since the old one no longer works.",
+            "test": "Send a test",
+            "testOk": "Your returns tool accepted the test (status {code}).",
+            "testRefused": "Your returns tool refused the test with status {code}. Check the address and the secret there.",
+            "testUnreachable": "Your returns tool could not be reached. Check the address.",
+            "delivery": {
+                "queued": "Returns tool: waiting to send.",
+                "sent": "Returns tool: sent {time}, status {code}.",
+                "retrying": "Returns tool: not accepted {time} (status {code}). Shopproof will try again.",
+                "failed": "Returns tool: gave up {time} (status {code}). Please create the return by hand."
             }
         }
     }

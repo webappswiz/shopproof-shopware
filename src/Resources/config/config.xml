@@ -129,6 +129,127 @@
             <min>14</min>
             <max>365</max>
         </input-field>
+        <input-field type="bool">
+            <name>accountWithdrawalLink</name>
+            <label>Withdrawal link in the customer account</label>
+            <label lang="de-DE">Widerrufslink im Kundenkonto</label>
+            <helpText>Each order in the customer account gets the withdrawal link in its menu, next to Shopware's own order actions. The link and the one in the order emails open the form with the order already filled in.</helpText>
+            <helpText lang="de-DE">Jede Bestellung im Kundenkonto bekommt den Widerrufslink in ihrem Menü, neben den eigenen Bestellaktionen von Shopware. Dieser Link und der in den Bestell-E-Mails öffnen das Formular mit der Bestellung bereits ausgefüllt.</helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
+        <input-field type="bool">
+            <name>statusEmails</name>
+            <label>Email the customer when the return arrives and when the refund is sent</label>
+            <label lang="de-DE">Kunden per E-Mail informieren, wenn die Rücksendung ankommt und wenn die Erstattung gesendet ist</label>
+            <helpText>You set each withdrawal to "Return arrived" or "Refund sent" on the Shopproof page; a payment Shopware marks as refunded sets "Refund sent" too. The emails link to a page where the customer sees where the withdrawal stands. Change their words under Settings > Email templates ("Withdrawal: return arrived" and "Withdrawal: refund sent").</helpText>
+            <helpText lang="de-DE">Sie setzen jeden Widerruf auf der Shopproof-Seite auf „Rücksendung angekommen“ oder „Erstattung gesendet“; eine Zahlung, die Shopware als erstattet markiert, setzt ebenfalls „Erstattung gesendet“. Die E-Mails verlinken auf eine Seite, auf der die Kunden sehen, wo ihr Widerruf steht. Die Texte ändern Sie unter Einstellungen > E-Mail-Templates („Widerruf: Rücksendung angekommen“ und „Widerruf: Erstattung gesendet“).</helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
+        <input-field type="single-select">
+            <name>withdrawalOrderDate</name>
+            <label>Order date on the withdrawal form</label>
+            <label lang="de-DE">Bestelldatum im Widerrufsformular</label>
+            <helpText>Shopware's form asks for name, email and order number. Add the order date if you need it to find orders. A form opened from the order email or the customer account fills it in.</helpText>
+            <helpText lang="de-DE">Das Formular von Shopware fragt nach Name, E-Mail und Bestellnummer. Fügen Sie das Bestelldatum hinzu, wenn Sie es zum Finden von Bestellungen brauchen. Ein Formular aus der Bestell-E-Mail oder dem Kundenkonto füllt es aus.</helpText>
+            <defaultValue>off</defaultValue>
+            <options>
+                <option><id>off</id><name>Not asked</name><name lang="de-DE">Nicht abgefragt</name></option>
+                <option><id>optional</id><name>Asked, optional</name><name lang="de-DE">Abgefragt, freiwillig</name></option>
+                <option><id>required</id><name>Asked, required</name><name lang="de-DE">Abgefragt, Pflichtfeld</name></option>
+            </options>
+        </input-field>
+        <input-field type="bool">
+            <name>itemPicker</name>
+            <label>Let customers tick the items they send back</label>
+            <label lang="de-DE">Kunden die zurückgesendeten Artikel ankreuzen lassen</label>
+            <helpText>Once the customer has entered the order number and the email of the order (or opened the form from the order email or the customer account), the form lists the items of that order with their photos to tick. Nothing ticked means the whole order. Only names, quantities and photos are shown, never prices or addresses, and only for the matching order.</helpText>
+            <helpText lang="de-DE">Sobald Kunden die Bestellnummer und die E-Mail der Bestellung eingegeben haben (oder das Formular aus der Bestell-E-Mail oder dem Kundenkonto öffnen), listet das Formular die Artikel dieser Bestellung mit Fotos zum Ankreuzen. Nichts angekreuzt heißt die ganze Bestellung. Gezeigt werden nur Namen, Mengen und Fotos, nie Preise oder Adressen, und nur für die passende Bestellung.</helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
+        <input-field type="single-select">
+            <name>withdrawalComment</name>
+            <label>Comment field on the withdrawal form</label>
+            <label lang="de-DE">Kommentarfeld im Widerrufsformular</label>
+            <helpText>Shopware's form has an optional comment field. Shopproof adds the note that no reason is needed. Make it required only if you really need more information, since the law does not allow extra hurdles.</helpText>
+            <helpText lang="de-DE">Das Formular von Shopware hat ein freiwilliges Kommentarfeld. Shopproof ergänzt den Hinweis, dass kein Grund nötig ist. Machen Sie es nur zur Pflicht, wenn Sie wirklich mehr Angaben brauchen, da das Gesetz keine zusätzlichen Hürden erlaubt.</helpText>
+            <defaultValue>optional</defaultValue>
+            <options>
+                <option><id>optional</id><name>Shown, optional (recommended)</name><name lang="de-DE">Angezeigt, freiwillig (empfohlen)</name></option>
+                <option><id>required</id><name>Shown, required</name><name lang="de-DE">Angezeigt, Pflichtfeld</name></option>
+                <option><id>off</id><name>Not shown</name><name lang="de-DE">Nicht angezeigt</name></option>
+            </options>
+        </input-field>
+        <component name="sw-entity-multi-id-select">
+            <name>excludedCategories</name>
+            <entity>category</entity>
+            <label>Categories excluded from withdrawal</label>
+            <label lang="de-DE">Vom Widerruf ausgenommene Kategorien</label>
+            <helpText>Tick only goods the law allows you to exclude, for example made-to-order goods, goods that spoil fast or opened hygiene goods. Sub-categories are excluded too. Customers still see these items on the form, marked with your explanation, and your copy of each withdrawal names them, so you can check each case.</helpText>
+            <helpText lang="de-DE">Wählen Sie nur Waren, die Sie laut Gesetz ausnehmen dürfen, zum Beispiel Sonderanfertigungen, schnell verderbliche Waren oder geöffnete Hygieneartikel. Unterkategorien sind mit ausgenommen. Kunden sehen diese Artikel weiterhin im Formular, mit Ihrer Erklärung markiert, und Ihre Kopie jedes Widerrufs nennt sie, damit Sie jeden Fall prüfen können.</helpText>
+        </component>
+        <input-field type="bool">
+            <name>excludeDigital</name>
+            <label>Digital products are excluded from withdrawal</label>
+            <label lang="de-DE">Digitale Produkte sind vom Widerruf ausgenommen</label>
+            <helpText>For downloads the customer agreed to receive before the withdrawal period ended. Needs Shopware with product types (physical or digital).</helpText>
+            <helpText lang="de-DE">Für Downloads, deren Lieferung vor Ablauf der Widerrufsfrist die Kunden zugestimmt haben. Braucht Shopware mit Produkttypen (physisch oder digital).</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+        <input-field type="text">
+            <name>exclusionNote</name>
+            <label>Explanation shown next to excluded items</label>
+            <label lang="de-DE">Erklärung neben ausgenommenen Artikeln</label>
+            <helpText>Leave empty for the default: "Excluded from withdrawal by the shop. If you think this is wrong, you can still send your withdrawal, and the shop will check it." Up to 300 characters.</helpText>
+            <helpText lang="de-DE">Leer lassen für den Standard: „Vom Shop vom Widerruf ausgenommen. Wenn Sie das für falsch halten, können Sie Ihren Widerruf trotzdem senden, und der Shop prüft ihn.“ Bis zu 300 Zeichen.</helpText>
+        </input-field>
+        <input-field type="single-select">
+            <name>buttonWording</name>
+            <label>Wording of the withdrawal button</label>
+            <label lang="de-DE">Text des Widerrufsbuttons</label>
+            <helpText>Automatic (recommended): the words the law of each storefront language's country names, for example "Vertrag widerrufen" and "Widerruf bestätigen". A reviewed alternative exists only where the law names more than one wording (Dutch: "hier de overeenkomst herroepen"). Your own text is used only with both texts filled in and "I understand" ticked.</helpText>
+            <helpText lang="de-DE">Automatisch (empfohlen): die Worte, die das Recht des Landes jeder Storefront-Sprache nennt, zum Beispiel „Vertrag widerrufen“ und „Widerruf bestätigen“. Eine geprüfte Alternative gibt es nur, wo das Gesetz mehr als eine Formulierung nennt (Niederländisch: „hier de overeenkomst herroepen“). Ihr eigener Text wird nur verwendet, wenn beide Texte ausgefüllt sind und „Ich verstehe“ angehakt ist.</helpText>
+            <defaultValue>auto</defaultValue>
+            <options>
+                <option><id>auto</id><name>Automatic (recommended)</name><name lang="de-DE">Automatisch (empfohlen)</name></option>
+                <option><id>alternative</id><name>Reviewed alternative, where the law names one</name><name lang="de-DE">Geprüfte Alternative, wo das Gesetz eine nennt</name></option>
+                <option><id>own</id><name>My own text</name><name lang="de-DE">Mein eigener Text</name></option>
+            </options>
+        </input-field>
+        <input-field type="text">
+            <name>customWithdraw</name>
+            <label>Own text: withdrawal button</label>
+            <label lang="de-DE">Eigener Text: Widerrufsbutton</label>
+        </input-field>
+        <input-field type="text">
+            <name>customConfirm</name>
+            <label>Own text: confirm button on the form</label>
+            <label lang="de-DE">Eigener Text: Bestätigungsbutton im Formular</label>
+        </input-field>
+        <input-field type="bool">
+            <name>customWordingAck</name>
+            <label>I understand</label>
+            <label lang="de-DE">Ich verstehe</label>
+            <helpText>You are responsible for your own text. The law asks for the words "withdraw from contract here" and "confirm withdrawal" in your shoppers' language, or words that are just as clear. A less clear text can lead to warning letters or fines. Shopproof cannot check your text, and it is used for every storefront language. This is technical help, not legal advice.</helpText>
+            <helpText lang="de-DE">Für Ihren eigenen Text sind Sie verantwortlich. Das Gesetz verlangt die Worte „Vertrag widerrufen“ und „Widerruf bestätigen“ in der Sprache Ihrer Kunden oder Worte, die ebenso eindeutig sind. Ein weniger eindeutiger Text kann zu Abmahnungen oder Bußgeldern führen. Shopproof kann Ihren Text nicht prüfen, und er gilt für jede Storefront-Sprache. Dies ist technische Hilfe, keine Rechtsberatung.</helpText>
+        </input-field>
+    </card>
+    <card>
+        <title>Returns tool</title>
+        <title lang="de-DE">Retourentool</title>
+        <input-field type="url">
+            <name>returnsPortalUrl</name>
+            <label>Your returns portal (optional)</label>
+            <label lang="de-DE">Ihr Retourenportal (optional)</label>
+            <helpText>The https address where customers start a return, for example the page of your returns app. The withdrawal receipt email then says "Start your return here" with this link. Leave it empty if you have none.</helpText>
+            <helpText lang="de-DE">Die https-Adresse, unter der Kunden eine Rücksendung starten, zum Beispiel die Seite Ihrer Retouren-App. Die Eingangsbestätigung des Widerrufs sagt dann „Ihre Rücksendung starten Sie hier“ mit diesem Link. Lassen Sie es leer, wenn Sie keines haben.</helpText>
+        </input-field>
+        <input-field type="url">
+            <name>returnsWebhookUrl</name>
+            <label>Send each withdrawal to this address (webhook, optional)</label>
+            <label lang="de-DE">Jeden Widerruf an diese Adresse senden (Webhook, optional)</label>
+            <helpText>The https address your returns tool or automation gives you for incoming events. Shopproof posts each new withdrawal there as signed JSON (event "withdrawal.received"): the customer's name and email, the order and what they wrote. A tool that does not answer gets three more tries over six hours, then you get an email. The signing secret, a test button and how to check the signature are on the Shopproof page. Leave it empty to send nothing.</helpText>
+            <helpText lang="de-DE">Die https-Adresse, die Ihr Retourentool oder Ihre Automatisierung für eingehende Ereignisse nennt. Shopproof sendet jeden neuen Widerruf als signiertes JSON dorthin (Ereignis „withdrawal.received“): Name und E-Mail der Kunden, die Bestellung und was sie geschrieben haben. Antwortet das Tool nicht, folgen drei weitere Versuche über sechs Stunden, danach bekommen Sie eine E-Mail. Das Signatur-Geheimnis, ein Test-Button und wie Sie die Signatur prüfen, stehen auf der Shopproof-Seite. Lassen Sie es leer, um nichts zu senden.</helpText>
+        </input-field>
     </card>
     <card>
         <title>Registration numbers and take-back</title>
