@@ -1,0 +1,39 @@
+{# Product safety information (GPSR, Regulation (EU) 2023/988 Art. 19; rule EU-PS-01). Rendered on
+   the server, no JavaScript; takes the theme's own styles. Shown only when a manufacturer is known. #}
+{% set shopproofSafety = shopproof_safety(product, context.salesChannelId) %}
+{% if shopproofSafety %}
+    {% set headingId = 'shopproof-safety-' ~ product.id %}
+    <section class="shopproof shopproof-safety mt-4" aria-labelledby="{{ headingId }}">
+        <h3 id="{{ headingId }}" class="h5">{{ 'shopproof.safety.heading'|trans|sw_sanitize }}</h3>
+        <dl>
+            {% for party in [
+                { key: 'manufacturer', data: shopproofSafety.manufacturer },
+                { key: 'responsiblePerson', data: shopproofSafety.responsiblePerson }
+            ] %}
+                {% if party.data %}
+                    <dt>{{ ('shopproof.safety.' ~ party.key)|trans|sw_sanitize }}</dt>
+                    <dd>
+                        {{ party.data.name }}
+                        {% if party.data.address %}<br>{{ party.data.address|nl2br }}{% endif %}
+                        {% if party.data.email %}<br><a href="mailto:{{ party.data.email }}">{{ party.data.email }}</a>{% endif %}
+                        {% if party.data.url %}<br><a href="{{ party.data.url }}" rel="noopener">{{ party.data.url }}</a>{% endif %}
+                    </dd>
+                {% endif %}
+            {% endfor %}
+            {% if shopproofSafety.identifiers is not empty %}
+                <dt>{{ 'shopproof.safety.identifiers'|trans|sw_sanitize }}</dt>
+                <dd>
+                    <ul class="list-unstyled mb-0">
+                        {% for item in shopproofSafety.identifiers %}
+                            <li>{% if item.label %}{{ item.label }}: {% endif %}{{ item.value }}</li>
+                        {% endfor %}
+                    </ul>
+                </dd>
+            {% endif %}
+            {% if shopproofSafety.warnings %}
+                <dt>{{ 'shopproof.safety.warnings'|trans|sw_sanitize }}</dt>
+                <dd>{{ shopproofSafety.warnings|nl2br }}</dd>
+            {% endif %}
+        </dl>
+    </section>
+{% endif %}

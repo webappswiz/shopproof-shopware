@@ -1,0 +1,27 @@
+{
+  "base": "/bundles/shopproofcompliance/administration/",
+  "entryPoints": {
+    "shopproof-compliance": {
+      "css": [
+        "/bundles/shopproofcompliance/administration/assets/shopproof-compliance-DNo1LZJa.css"
+      ],
+      "dynamic": [
+        "/bundles/shopproofcompliance/administration/assets/index-DaRPsX6t.js"
+      ],
+      "js": [
+        "/bundles/shopproofcompliance/administration/assets/shopproof-compliance-3bEGwOsc.js"
+      ],
+      "legacy": false,
+      "preload": []
+    }
+  },
+  "legacy": false,
+  "metadatas": {},
+  "version": [
+    "7.1.0",
+    7,
+    1,
+    0
+  ],
+  "viteServer": null
+}

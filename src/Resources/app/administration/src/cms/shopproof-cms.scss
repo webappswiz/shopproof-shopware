@@ -1,0 +1,17 @@
+.shopproof-cms-preview,
+.shopproof-cms-element {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+    border: 1px dashed #758ca3;
+    border-radius: 4px;
+    background: #f9fafb;
+    color: #2a3345;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.shopproof-cms-element p {
+    margin: 0;
+}

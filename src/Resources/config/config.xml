@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Countries</title>
+        <title lang="de-DE">Länder</title>
+        <input-field type="multi-select">
+            <name>countries</name>
+            <label>Countries you sell to</label>
+            <label lang="de-DE">Länder, in die Sie verkaufen</label>
+            <helpText>Shopproof shows the rules for these countries and the EU-wide rules. Technical help, not legal advice.</helpText>
+            <helpText lang="de-DE">Shopproof zeigt die Regeln für diese Länder und die EU-weiten Regeln. Technische Hilfe, keine Rechtsberatung.</helpText>
+            <defaultValue>["AT","DE","FR","IT","NL"]</defaultValue>
+            <options>
+                <option><id>AT</id><name>Austria</name><name lang="de-DE">Österreich</name></option>
+                <option><id>DE</id><name>Germany</name><name lang="de-DE">Deutschland</name></option>
+                <option><id>FR</id><name>France</name><name lang="de-DE">Frankreich</name></option>
+                <option><id>IT</id><name>Italy</name><name lang="de-DE">Italien</name></option>
+                <option><id>NL</id><name>Netherlands</name><name lang="de-DE">Niederlande</name></option>
+            </options>
+        </input-field>
+    </card>
+    <card>
+        <title>Product safety (GPSR)</title>
+        <title lang="de-DE">Produktsicherheit (GPSR)</title>
+        <input-field type="bool">
+            <name>showSafety</name>
+            <label>Show product safety information on product pages</label>
+            <label lang="de-DE">Informationen zur Produktsicherheit auf Produktseiten anzeigen</label>
+            <helpText>Shown below the product description when a manufacturer name is known. Each field comes from the product first, then its manufacturer (Catalogues > Manufacturers), then the defaults below.</helpText>
+            <helpText lang="de-DE">Erscheint unter der Produktbeschreibung, sobald ein Herstellername bekannt ist. Jedes Feld kommt zuerst vom Produkt, dann von seinem Hersteller (Kataloge > Hersteller), dann von den Standardwerten unten.</helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
+        <input-field type="text">
+            <name>safetyManufacturerName</name>
+            <label>Manufacturer name</label>
+            <label lang="de-DE">Name des Herstellers</label>
+        </input-field>
+        <input-field type="textarea">
+            <name>safetyManufacturerAddress</name>
+            <label>Manufacturer postal address</label>
+            <label lang="de-DE">Postanschrift des Herstellers</label>
+        </input-field>
+        <input-field type="text">
+            <name>safetyManufacturerEmail</name>
+            <label>Manufacturer email</label>
+            <label lang="de-DE">E-Mail des Herstellers</label>
+        </input-field>
+        <input-field type="url">
+            <name>safetyManufacturerUrl</name>
+            <label>Manufacturer website or contact page</label>
+            <label lang="de-DE">Website oder Kontaktseite des Herstellers</label>
+        </input-field>
+        <input-field type="text">
+            <name>safetyResponsibleName</name>
+            <label>EU responsible person name (if the manufacturer is outside the EU)</label>
+            <label lang="de-DE">Name der verantwortlichen Person in der EU (wenn der Hersteller außerhalb der EU sitzt)</label>
+        </input-field>
+        <input-field type="textarea">
+            <name>safetyResponsibleAddress</name>
+            <label>EU responsible person postal address</label>
+            <label lang="de-DE">Postanschrift der verantwortlichen Person in der EU</label>
+        </input-field>
+        <input-field type="text">
+            <name>safetyResponsibleEmail</name>
+            <label>EU responsible person email</label>
+            <label lang="de-DE">E-Mail der verantwortlichen Person in der EU</label>
+        </input-field>
+        <input-field type="url">
+            <name>safetyResponsibleUrl</name>
+            <label>EU responsible person website</label>
+            <label lang="de-DE">Website der verantwortlichen Person in der EU</label>
+        </input-field>
+    </card>
+    <card>
+        <title>EU legal guarantee notice</title>
+        <title lang="de-DE">EU-Hinweis zur gesetzlichen Gewährleistung</title>
+        <input-field type="bool">
+            <name>showGuaranteeNotice</name>
+            <label>Show the official EU legal guarantee notice on product pages</label>
+            <label lang="de-DE">Den offiziellen EU-Hinweis zur gesetzlichen Gewährleistung auf Produktseiten anzeigen</label>
+            <helpText>The harmonised notice from Implementing Regulation (EU) 2025/1960, in the page language, with a text version. Required from 27 September 2026 for goods. Technical help, not legal advice.</helpText>
+            <helpText lang="de-DE">Der einheitliche Hinweis aus der Durchführungsverordnung (EU) 2025/1960 in der Sprache der Seite, mit Textfassung. Ab 27. September 2026 für Waren vorgeschrieben. Technische Hilfe, keine Rechtsberatung.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+    </card>
+</config>

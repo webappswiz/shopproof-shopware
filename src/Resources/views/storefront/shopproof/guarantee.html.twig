@@ -1,0 +1,23 @@
+{# The official EU legal guarantee notice (Implementing Regulation (EU) 2025/1960, Annex I; rule
+   EU-GU-01): the artwork unchanged, served from the shop at 400 px wide (smaller on narrow screens), with a text version for screen readers
+   and anyone who cannot see the image. #}
+{% set shopproofNotice = shopproof_guarantee(context.languageInfo.localeCode, context.salesChannelId) %}
+{% if shopproofNotice %}
+    {% set pageLang = context.languageInfo.localeCode|slice(0, 2)|lower %}
+    <figure class="shopproof shopproof-guarantee mt-4"{% if pageLang != shopproofNotice.lang %} lang="{{ shopproofNotice.lang }}"{% endif %}>
+        <img src="{{ asset('bundles/shopproofcompliance/storefront/guarantee/' ~ shopproofNotice.file, 'asset') }}"
+             alt="{{ shopproofNotice.alt }}"
+             width="400"
+             height="{{ shopproofNotice.width > 0 ? (shopproofNotice.height * 400 / shopproofNotice.width)|round : 565 }}"
+             class="img-fluid"
+             loading="lazy">
+        <figcaption>
+            <details>
+                <summary>{{ shopproofNotice.textVersion }}</summary>
+                {% for line in shopproofNotice.text %}
+                    <p class="mb-1">{{ line }}</p>
+                {% endfor %}
+            </details>
+        </figcaption>
+    </figure>
+{% endif %}

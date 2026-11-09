@@ -1,0 +1,132 @@
+{
+  "_note": "Built from packages/rules/data/strings/durability-label.json by apps/shopware/scripts/build-storefront.mjs; do not edit by hand.",
+  "portal": "https://europa.eu/youreurope/commercial-guarantee-durability/index.htm",
+  "min_years": 3,
+  "max_years": 99,
+  "fit": {
+    "upper": 0.7,
+    "digit": 0.64,
+    "lower": 0.56,
+    "space": 0.28,
+    "other": 0.6
+  },
+  "font_family": "Shopproof Inter",
+  "fonts": [
+    {
+      "file": "shopproof-inter-400.woff2",
+      "weight": 400,
+      "range": "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD"
+    },
+    {
+      "file": "shopproof-inter-400-ext.woff2",
+      "weight": 400,
+      "range": "U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF"
+    },
+    {
+      "file": "shopproof-inter-800.woff2",
+      "weight": 800,
+      "range": "U+0030-0039"
+    }
+  ],
+  "label": {
+    "file": "durability-label.jpg",
+    "width": 741,
+    "height": 780,
+    "blank": [
+      {
+        "x": 14,
+        "y": 176,
+        "width": 360,
+        "height": 53
+      },
+      {
+        "x": 374,
+        "y": 176,
+        "width": 353,
+        "height": 53
+      },
+      {
+        "x": 14,
+        "y": 232,
+        "width": 318,
+        "height": 227
+      }
+    ],
+    "fields": {
+      "years": {
+        "x": 20,
+        "y": 413,
+        "size": 217,
+        "weight": 800,
+        "anchor": "start",
+        "max_width": 300
+      },
+      "brand": {
+        "x": 18,
+        "y": 205,
+        "size": 24.8,
+        "weight": 400,
+        "anchor": "start",
+        "max_width": 330
+      },
+      "model": {
+        "x": 723,
+        "y": 205,
+        "size": 24.8,
+        "weight": 400,
+        "anchor": "end",
+        "max_width": 330
+      }
+    }
+  },
+  "nested": {
+    "file": "durability-label-nested.jpg",
+    "width": 1030,
+    "height": 163,
+    "blank": [
+      {
+        "x": 28,
+        "y": 30,
+        "width": 169,
+        "height": 112
+      }
+    ],
+    "fields": {
+      "years": {
+        "x": 33,
+        "y": 131,
+        "size": 114,
+        "weight": 800,
+        "anchor": "start",
+        "max_width": 150
+      }
+    }
+  },
+  "text": {
+    "en": {
+      "alt": "GARAN label: the producer guarantees the durability of this product for {years} years. Producer: {brand}. Model: {model}. Your legal guarantee rights also apply.",
+      "alt_nested": "GARAN label: producer guarantee of durability for {years} years. Select to show the full label.",
+      "link": "About the producer guarantee of durability (Your Europe)"
+    },
+    "de": {
+      "alt": "GARAN-Kennzeichnung: Der Hersteller garantiert die Haltbarkeit dieses Produkts für {years} Jahre. Hersteller: {brand}. Modell: {model}. Ihre gesetzlichen Gewährleistungsrechte gelten zusätzlich.",
+      "alt_nested": "GARAN-Kennzeichnung: Haltbarkeitsgarantie des Herstellers für {years} Jahre. Auswählen, um die ganze Kennzeichnung zu zeigen.",
+      "link": "Mehr zur Haltbarkeitsgarantie des Herstellers (Ihr Europa)"
+    },
+    "fr": {
+      "alt": "Label GARAN : le producteur garantit la durabilité de ce produit pendant {years} ans. Producteur : {brand}. Modèle : {model}. Vos droits au titre de la garantie légale s'appliquent également.",
+      "alt_nested": "Label GARAN : garantie commerciale de durabilité du producteur pendant {years} ans. Sélectionnez pour afficher le label complet.",
+      "link": "En savoir plus sur la garantie de durabilité du producteur (L'Europe est à vous)"
+    },
+    "it": {
+      "alt": "Etichetta GARAN: il produttore garantisce la durabilità di questo prodotto per {years} anni. Produttore: {brand}. Modello: {model}. Restano validi anche i diritti della garanzia legale.",
+      "alt_nested": "Etichetta GARAN: garanzia di durabilità del produttore per {years} anni. Seleziona per mostrare l'etichetta completa.",
+      "link": "Informazioni sulla garanzia di durabilità del produttore (La tua Europa)"
+    },
+    "nl": {
+      "alt": "GARAN-label: de producent garandeert de duurzaamheid van dit product gedurende {years} jaar. Producent: {brand}. Model: {model}. Uw rechten uit de wettelijke garantie blijven ook gelden.",
+      "alt_nested": "GARAN-label: duurzaamheidsgarantie van de producent voor {years} jaar. Selecteer om het volledige label te tonen.",
+      "link": "Meer over de duurzaamheidsgarantie van de producent (Uw Europa)"
+    }
+  }
+}

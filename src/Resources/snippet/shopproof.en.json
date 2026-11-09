@@ -1,0 +1,17 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">Withdraw from contract here</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "Confirm withdrawal"
+    },
+    "shopproof": {
+        "safety": {
+            "heading": "Product safety information",
+            "manufacturer": "Manufacturer",
+            "responsiblePerson": "Person responsible in the EU",
+            "identifiers": "Product identification",
+            "warnings": "Warnings and safety information"
+        }
+    }
+}

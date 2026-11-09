@@ -1,0 +1,19 @@
+{# The Shopproof product blocks, each shown once per product and page: from the buy box and the
+   product description in Shopware's standard layout, or from the Shopproof page designer element
+   wherever the merchant places it. #}
+{% if product %}
+    {% for part in parts %}
+        {% if part == 'durability' %}
+            {% set shopproofLabel = shopproof_durability(product, context.languageInfo.localeCode, context.salesChannelId) %}
+            {% if shopproofLabel and shopproof_once('durability-' ~ product.id) %}{{ shopproofLabel|raw }}{% endif %}
+        {% elseif part == 'safety' %}
+            {% if shopproof_safety(product, context.salesChannelId) and shopproof_once('safety-' ~ product.id) %}
+                {% sw_include '@ShopproofCompliance/storefront/shopproof/safety.html.twig' with { product: product } %}
+            {% endif %}
+        {% elseif part == 'guarantee' %}
+            {% if shopproof_guarantee(context.languageInfo.localeCode, context.salesChannelId) and shopproof_once('guarantee-' ~ product.id) %}
+                {% sw_include '@ShopproofCompliance/storefront/shopproof/guarantee.html.twig' %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endif %}

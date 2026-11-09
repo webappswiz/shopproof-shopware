@@ -1,0 +1,79 @@
+{
+    "shopproof": {
+        "general": {
+            "title": "Shopproof",
+            "description": "EU rules for the countries you sell to"
+        },
+        "overview": {
+            "aboutTitle": "About these rules",
+            "disclaimer": "Technical information to help shops comply. Not legal advice.",
+            "loadFailed": "The rules could not be loaded. Check that the shop can reach shopproof.app's rules file and try again.",
+            "notYet": "No rules file yet. Shopproof downloads it once a day; run bin/console shopproof:rules:refresh to fetch it now.",
+            "version": "Rules version {version}, downloaded {date}.",
+            "countriesHint": "Choose the countries you sell to under Extensions > My extensions > Shopproof EU Compliance > Configure. EU-wide rules are always shown.",
+            "groupTitle": "{country}: {count} rules",
+            "effectiveFrom": "In force from",
+            "whereInShop": "Where in the shop",
+            "legalBasis": "Official source",
+            "opensNewTab": "(opens in a new tab)"
+        },
+        "countries": {
+            "EU": "EU-wide",
+            "AT": "Austria",
+            "DE": "Germany",
+            "FR": "France",
+            "IT": "Italy",
+            "NL": "Netherlands"
+        },
+        "withdrawal": {
+            "checkTitle": "Withdrawal button",
+            "checkFailed": "The withdrawal button check could not be loaded. Try again.",
+            "unsupported": "This Shopware version has no withdrawal button yet. Update to Shopware 6.7.9 or later to use it; Shopproof then keeps a record of every request.",
+            "allGood": "Shopware's withdrawal button is set up in every active storefront.",
+            "needsWork": "Shopware's withdrawal button still needs some setup.",
+            "done": "Done",
+            "todo": "To do",
+            "where": "Change these under Settings > Basic information (Legal and compliance: Show \"Revoke a contract\" button in footer; Shop pages: Shop page layout for revocation request) and Settings > Flow Builder. The sales channel can override each setting. Technical help, not legal advice.",
+            "check": {
+                "flowActive": "The flow \"Online revocation request sent\" is active, so emails go out",
+                "customerMail": "The flow emails the shopper a confirmation with the request and its date and time",
+                "buttonOn": "The withdrawal button is switched on",
+                "page": "The button links to a withdrawal request page",
+                "form": "That page has the withdrawal request form",
+                "labels": "Every storefront language has the national button wording",
+                "labelsMissing": "These storefront languages have no national button wording yet: {languages}. Set the button text under Settings > Snippets."
+            },
+            "listTitle": "Withdrawal requests",
+            "listIntro": "Every request sent through Shopware's withdrawal button, kept in this shop's database so you can show when it arrived. Shopproof never receives it.",
+            "searchLabel": "Search by email, name or order number",
+            "search": "Search",
+            "listFailed": "The withdrawal requests could not be loaded. Your user needs the right to view orders.",
+            "none": "No withdrawal requests yet.",
+            "received": "Received",
+            "customer": "Customer",
+            "contract": "Order or contract number",
+            "comment": "Comment",
+            "actions": "Actions",
+            "noOrder": "No matching order",
+            "delete": "Delete",
+            "confirmDelete": "Delete for good",
+            "cancel": "Cancel"
+        },
+        "cms": {
+            "label": "Shopproof product information",
+            "previewText": "Durability label, product safety, guarantee notice",
+            "elementText": "On the product page this shows the durability label, the product safety information and the EU legal guarantee notice, each where it applies. A block the buy box or the description already shows on the page is not repeated.",
+            "configText": "Nothing to set here. The content comes from each product and from the Shopproof settings under Extensions > My extensions > Shopproof EU Compliance > Configure."
+        },
+        "layouts": {
+            "title": "Product pages",
+            "intro": "Where Shopproof shows the durability label (in the buy box) and the product safety information and guarantee notice (below the product description), for each product page layout your shop uses.",
+            "ok": "shows the Shopproof blocks",
+            "missing": "has no place for {blocks}. Open the layout and add the block \"Shopproof product information\" (category Commerce) where they should appear.",
+            "part": {
+                "durability": "the durability label",
+                "safety": "product safety and the guarantee notice"
+            }
+        }
+    }
+}

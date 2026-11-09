@@ -1,0 +1,17 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">renoncer au contrat ici</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "confirmer la rétractation"
+    },
+    "shopproof": {
+        "safety": {
+            "heading": "Informations sur la sécurité du produit",
+            "manufacturer": "Fabricant",
+            "responsiblePerson": "Personne responsable dans l'UE",
+            "identifiers": "Identification du produit",
+            "warnings": "Avertissements et informations de sécurité"
+        }
+    }
+}

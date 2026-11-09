@@ -1,0 +1,109 @@
+.shopproof-overview__rules {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.shopproof-overview__rule {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--color-gray-300, #d1d9e0);
+
+    &:first-child {
+        padding-top: 0;
+    }
+
+    &:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+}
+
+.shopproof-overview__rule-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 8px;
+}
+
+.shopproof-overview__facts {
+    display: grid;
+    gap: 4px;
+    margin: 8px 0 0;
+
+    div {
+        display: flex;
+        gap: 8px;
+    }
+
+    dt {
+        font-weight: 600;
+        min-width: 140px;
+    }
+
+    dd {
+        margin: 0;
+    }
+}
+
+.shopproof-overview__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.shopproof-overview__checks {
+    list-style: none;
+    margin: 0 0 1rem;
+    padding: 0;
+
+    li {
+        margin-block: 0.25rem;
+    }
+}
+
+.shopproof-overview__state {
+    display: inline-block;
+    min-inline-size: 7rem;
+    font-weight: 600;
+}
+
+.shopproof-overview__search {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-block: 1rem;
+}
+
+.shopproof-overview__search-input {
+    min-inline-size: 16rem;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid #758ca3;
+    border-radius: 4px;
+}
+
+.shopproof-overview__table {
+    inline-size: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+        padding: 0.5rem;
+        text-align: start;
+        vertical-align: top;
+        border-block-end: 1px solid #d1d9e0;
+    }
+}
+
+.shopproof-overview__comment {
+    max-inline-size: 20rem;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+/* Darker than the admin's default link blue so links reach 4.5:1 on white (WCAG 2.2 AA). */
+.shopproof-overview .mt-card a[href] {
+    color: #0b539b;
+}

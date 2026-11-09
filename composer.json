@@ -1,0 +1,41 @@
+{
+    "name": "shopproof/compliance",
+    "description": "EU compliance help for Shopware shops: completes the withdrawal button, product safety (GPSR), the EU legal guarantee notice and the durability label. Technical help, not legal advice.",
+    "version": "0.4.1",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Apex Point Consulting GmbH",
+            "homepage": "https://shopproof.app"
+        }
+    ],
+    "require": {
+        "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+        "shopware/core": "~6.7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shopproof\\Compliance\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Shopproof\\Compliance\\ShopproofCompliance",
+        "label": {
+            "en-GB": "Shopproof EU Compliance",
+            "de-DE": "Shopproof EU-Compliance"
+        },
+        "description": {
+            "en-GB": "Technical help with EU shop rules: withdrawal button check, product safety, guarantee notice and durability label. Not legal advice.",
+            "de-DE": "Technische Hilfe bei EU-Regeln für Shops: Prüfung des Widerrufsbuttons, Produktsicherheit, Garantiehinweis und Haltbarkeitslabel. Keine Rechtsberatung."
+        },
+        "manufacturerLink": {
+            "en-GB": "https://shopproof.app",
+            "de-DE": "https://shopproof.app"
+        },
+        "supportLink": {
+            "en-GB": "https://shopproof.app/help/",
+            "de-DE": "https://shopproof.app/help/"
+        }
+    }
+}

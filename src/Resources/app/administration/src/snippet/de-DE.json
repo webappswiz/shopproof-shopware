@@ -1,0 +1,79 @@
+{
+    "shopproof": {
+        "general": {
+            "title": "Shopproof",
+            "description": "EU-Regeln für die Länder, in die Sie verkaufen"
+        },
+        "overview": {
+            "aboutTitle": "Über diese Regeln",
+            "disclaimer": "Technische Informationen, die Shops bei der Umsetzung helfen. Keine Rechtsberatung.",
+            "loadFailed": "Die Regeln konnten nicht geladen werden. Prüfen Sie, ob der Shop die Regeldatei von shopproof.app erreicht, und versuchen Sie es erneut.",
+            "notYet": "Noch keine Regeldatei. Shopproof lädt sie einmal täglich; mit bin/console shopproof:rules:refresh holen Sie sie sofort.",
+            "version": "Regelversion {version}, geladen am {date}.",
+            "countriesHint": "Wählen Sie die Länder, in die Sie verkaufen, unter Erweiterungen > Meine Erweiterungen > Shopproof EU-Compliance > Konfigurieren. EU-weite Regeln werden immer angezeigt.",
+            "groupTitle": "{country}: {count} Regeln",
+            "effectiveFrom": "Gilt ab",
+            "whereInShop": "Wo im Shop",
+            "legalBasis": "Offizielle Quelle",
+            "opensNewTab": "(öffnet in neuem Tab)"
+        },
+        "countries": {
+            "EU": "EU-weit",
+            "AT": "Österreich",
+            "DE": "Deutschland",
+            "FR": "Frankreich",
+            "IT": "Italien",
+            "NL": "Niederlande"
+        },
+        "withdrawal": {
+            "checkTitle": "Widerrufsbutton",
+            "checkFailed": "Die Prüfung des Widerrufsbuttons konnte nicht geladen werden. Bitte erneut versuchen.",
+            "unsupported": "Diese Shopware-Version hat noch keinen Widerrufsbutton. Aktualisieren Sie auf Shopware 6.7.9 oder neuer; Shopproof speichert dann jeden Antrag.",
+            "allGood": "Der Widerrufsbutton von Shopware ist in jedem aktiven Storefront eingerichtet.",
+            "needsWork": "Der Widerrufsbutton von Shopware ist noch nicht ganz eingerichtet.",
+            "done": "Erledigt",
+            "todo": "Offen",
+            "where": "Das ändern Sie unter Einstellungen > Stammdaten (Recht und Datenschutz: Button \"Vertrag widerrufen\" im Footer anzeigen; Shopseiten: Shopseiten-Layout für Widerrufsantrag Seite) und Einstellungen > Flow Builder. Jeder Verkaufskanal kann die Einstellung überschreiben. Technische Hilfe, keine Rechtsberatung.",
+            "check": {
+                "flowActive": "Der Flow \"Online revocation request sent\" ist aktiv, die E-Mails werden also versendet",
+                "customerMail": "Der Flow schickt dem Kunden eine Bestätigung mit dem Antrag samt Datum und Uhrzeit",
+                "buttonOn": "Der Widerrufsbutton ist eingeschaltet",
+                "page": "Der Button führt zu einer Seite für Widerrufsanträge",
+                "form": "Diese Seite enthält das Widerrufsformular",
+                "labels": "Jede Storefront-Sprache hat die gesetzliche Beschriftung",
+                "labelsMissing": "Diese Storefront-Sprachen haben noch keine gesetzliche Beschriftung: {languages}. Den Text legen Sie unter Einstellungen > Textbausteine fest."
+            },
+            "listTitle": "Widerrufsanträge",
+            "listIntro": "Jeder Antrag über den Widerrufsbutton von Shopware, gespeichert in der Datenbank dieses Shops, damit Sie den Eingang belegen können. Shopproof erhält ihn nie.",
+            "searchLabel": "Suche nach E-Mail, Name oder Bestellnummer",
+            "search": "Suchen",
+            "listFailed": "Die Widerrufsanträge konnten nicht geladen werden. Ihr Benutzer braucht das Recht, Bestellungen anzusehen.",
+            "none": "Noch keine Widerrufsanträge.",
+            "received": "Eingegangen",
+            "customer": "Kunde",
+            "contract": "Bestell- oder Vertragsnummer",
+            "comment": "Kommentar",
+            "actions": "Aktionen",
+            "noOrder": "Keine passende Bestellung",
+            "delete": "Löschen",
+            "confirmDelete": "Endgültig löschen",
+            "cancel": "Abbrechen"
+        },
+        "cms": {
+            "label": "Shopproof Produktinformationen",
+            "previewText": "Haltbarkeitslabel, Produktsicherheit, Gewährleistungshinweis",
+            "elementText": "Auf der Produktseite zeigt dieses Element das Haltbarkeitslabel, die Informationen zur Produktsicherheit und den EU-Hinweis zur gesetzlichen Gewährleistung, jeweils wo zutreffend. Was Kaufbox oder Beschreibung auf der Seite bereits zeigen, wird nicht wiederholt.",
+            "configText": "Hier gibt es nichts einzustellen. Die Inhalte kommen vom jeweiligen Produkt und aus den Shopproof-Einstellungen unter Erweiterungen > Meine Erweiterungen > Shopproof EU-Compliance > Konfigurieren."
+        },
+        "layouts": {
+            "title": "Produktseiten",
+            "intro": "Wo Shopproof das Haltbarkeitslabel (in der Kaufbox) sowie Produktsicherheit und Gewährleistungshinweis (unter der Produktbeschreibung) zeigt, für jedes Produktseiten-Layout Ihres Shops.",
+            "ok": "zeigt die Shopproof-Blöcke",
+            "missing": "hat keinen Platz für {blocks}. Öffnen Sie das Layout und fügen Sie den Block \"Shopproof Produktinformationen\" (Kategorie Commerce) dort ein, wo sie erscheinen sollen.",
+            "part": {
+                "durability": "das Haltbarkeitslabel",
+                "safety": "Produktsicherheit und Gewährleistungshinweis"
+            }
+        }
+    }
+}

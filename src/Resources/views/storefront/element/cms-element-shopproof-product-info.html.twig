@@ -1,0 +1,12 @@
+{# Shopproof page designer element: the durability label, product safety information and the EU
+   legal guarantee notice for the product of a product page layout. Each block that the buy box or
+   the product description already showed on this page is left out, so nothing appears twice. On
+   other pages the element shows nothing. #}
+{% block element_shopproof_product_info %}
+    {% set shopproofProduct = page.product ?? null %}
+    {% if shopproofProduct %}
+        <div class="cms-element-shopproof-product-info">
+            {% sw_include '@ShopproofCompliance/storefront/shopproof/product-info.html.twig' with { product: shopproofProduct, parts: ['durability', 'safety', 'guarantee'] } %}
+        </div>
+    {% endif %}
+{% endblock %}

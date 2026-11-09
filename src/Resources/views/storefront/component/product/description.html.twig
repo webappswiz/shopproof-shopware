@@ -1,0 +1,8 @@
+{% sw_extends '@Storefront/storefront/component/product/description.html.twig' %}
+
+{% block component_product_description_content %}
+    {{ parent() }}
+    {% block shopproof_product_description_blocks %}
+        {% sw_include '@ShopproofCompliance/storefront/shopproof/product-info.html.twig' with { product: product, parts: ['safety', 'guarantee'] } %}
+    {% endblock %}
+{% endblock %}
