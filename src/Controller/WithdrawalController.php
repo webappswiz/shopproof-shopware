@@ -5,8 +5,10 @@ namespace Shopproof\Compliance\Controller;
 use Shopproof\Compliance\Withdrawal\SetupCheck;
 use Shopproof\Compliance\Withdrawal\SetupFacts;
 use Shopproof\Compliance\Withdrawal\WithdrawalStore;
+use Shopproof\Compliance\Withdrawal\WithdrawalSubscriber;
 use Shopware\Core\Framework\Routing\ApiRouteScope;
 use Shopware\Core\PlatformRequest;
+use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,6 +25,7 @@ final class WithdrawalController extends AbstractController
     public function __construct(
         private readonly SetupFacts $facts,
         private readonly WithdrawalStore $store,
+        private readonly SystemConfigService $config,
     ) {
     }
 
@@ -35,6 +38,22 @@ final class WithdrawalController extends AbstractController
     public function check(): JsonResponse
     {
         return new JsonResponse(SetupCheck::evaluate($this->facts->collect()));
+    }
+
+    /**
+     * "I have checked these" on the notice about requests that could not be recorded.
+     */
+    #[Route(
+        path: '/api/_action/shopproof/withdrawal-failures',
+        name: 'api.action.shopproof.withdrawal_failures.clear',
+        defaults: [PlatformRequest::ATTRIBUTE_ACL => ['system_config:update']],
+        methods: ['DELETE']
+    )]
+    public function clearFailures(): Response
+    {
+        $this->config->delete(WithdrawalSubscriber::FAILURES);
+
+        return new Response('', Response::HTTP_NO_CONTENT);
     }
 
     #[Route(

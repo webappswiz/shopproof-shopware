@@ -3,13 +3,16 @@
 namespace Shopproof\Compliance\Withdrawal;
 
 use Doctrine\DBAL\Connection;
+use Shopproof\Compliance\Storefront\SafetyData;
 use Shopware\Core\Defaults;
 use Shopware\Core\Framework\Uuid\Uuid;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 
 /**
  * Reads what SetupCheck needs from the shop: storefront sales channels with their languages, the
- * withdrawal button settings per channel, the page and its form, and Shopware's withdrawal flow.
+ * withdrawal button settings per channel, the page and its form, Shopware's withdrawal flow, the
+ * records table and failed records, product page layouts, the guarantee notice setting and the
+ * manufacturers without product safety details.
  */
 class SetupFacts
 {
@@ -18,6 +21,11 @@ class SetupFacts
     public const PAGE = 'core.basicInformation.revocationRequestPage';
 
     public const DEFAULT_PRODUCT_LAYOUT = 'core.cms.default_product_cms_page';
+
+    private const PLUGIN_CONFIG = 'ShopproofCompliance.config.';
+
+    /** Most manufacturers without details the check names. */
+    private const MANUFACTURER_LIMIT = 50;
 
     /** Shopware's class for the event, present from 6.7.9. */
     private const EVENT_CLASS = 'Shopware\\Core\\Content\\RevocationRequest\\Event\\RevocationRequestEvent';
@@ -29,12 +37,20 @@ class SetupFacts
     }
 
     /**
-     * @return array{supported: bool, flowActive: bool, customerMail: bool, channels: list<array{id: string, name: string, active: bool, buttonOn: bool, pageId: string, pageExists: bool, pageHasForm: bool, locales: list<string>}>, layouts: list<array{id: string, name: string, elements: list<string>}>}
+     * @return array{supported: bool, flowActive: bool, customerMail: bool, channels: list<array{id: string, name: string, active: bool, buttonOn: bool, pageId: string, pageExists: bool, pageHasForm: bool, locales: list<string>}>, layouts: list<array{id: string, name: string, elements: list<string>}>, recordTable: bool, failedRecords: int, showSafety: bool, guaranteeNotice: bool, manufacturersWithoutDetails: list<array{id: string, name: string}>}
      */
     public function collect(): array
     {
+        $common = [
+            'layouts' => $this->layouts(),
+            'recordTable' => $this->connection->fetchOne('SHOW TABLES LIKE :table', ['table' => WithdrawalStore::TABLE]) === WithdrawalStore::TABLE,
+            'failedRecords' => self::int($this->config->get(WithdrawalSubscriber::FAILURES)),
+            'showSafety' => $this->config->getBool(self::PLUGIN_CONFIG . 'showSafety'),
+            'guaranteeNotice' => $this->guaranteeNoticeOn(),
+            'manufacturersWithoutDetails' => $this->manufacturersWithoutDetails(),
+        ];
         if (!class_exists(self::EVENT_CLASS)) {
-            return ['supported' => false, 'flowActive' => false, 'customerMail' => false, 'channels' => [], 'layouts' => $this->layouts()];
+            return ['supported' => false, 'flowActive' => false, 'customerMail' => false, 'channels' => [], ...$common];
         }
 
         $flows = $this->connection->fetchAllAssociative(
@@ -74,7 +90,78 @@ class SetupFacts
             ];
         }
 
-        return ['supported' => true, 'flowActive' => $flows !== [], 'customerMail' => $customerMail, 'channels' => $channels, 'layouts' => $this->layouts()];
+        return ['supported' => true, 'flowActive' => $flows !== [], 'customerMail' => $customerMail, 'channels' => $channels, ...$common];
+    }
+
+    /**
+     * True when the guarantee notice is on for every active storefront (each can override the
+     * setting), or switched on for the whole shop when there is no storefront.
+     */
+    private function guaranteeNoticeOn(): bool
+    {
+        $key = self::PLUGIN_CONFIG . 'showGuaranteeNotice';
+        $ids = $this->connection->fetchFirstColumn(
+            'SELECT LOWER(HEX(id)) FROM sales_channel WHERE type_id = :type AND active = 1',
+            ['type' => Uuid::fromHexToBytes(Defaults::SALES_CHANNEL_TYPE_STOREFRONT)]
+        );
+        if ($ids === []) {
+            return $this->config->getBool($key);
+        }
+        foreach ($ids as $id) {
+            if (!$this->config->getBool($key, self::str($id))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Shopware manufacturers of at least one product whose products get no contact details for
+     * them (see SafetyData::manufacturerHasDetails), by name, at most MANUFACTURER_LIMIT.
+     *
+     * @return list<array{id: string, name: string}>
+     */
+    private function manufacturersWithoutDetails(): array
+    {
+        $defaults = [];
+        foreach (['manufacturer_name' => 'safetyManufacturerName', 'manufacturer_address' => 'safetyManufacturerAddress', 'manufacturer_email' => 'safetyManufacturerEmail', 'manufacturer_url' => 'safetyManufacturerUrl'] as $field => $setting) {
+            $defaults[$field] = $this->config->getString(self::PLUGIN_CONFIG . $setting);
+        }
+        $rows = $this->connection->fetchAllAssociative(
+            'SELECT LOWER(HEX(m.id)) AS id, t.name, t.custom_fields, t.language_id = :language AS system_language
+             FROM product_manufacturer m
+             INNER JOIN product_manufacturer_translation t ON t.product_manufacturer_id = m.id AND t.product_manufacturer_version_id = m.version_id
+             WHERE m.version_id = :version
+               AND EXISTS (SELECT 1 FROM product p WHERE p.product_manufacturer_id = m.id AND p.version_id = :version)',
+            ['version' => Uuid::fromHexToBytes(Defaults::LIVE_VERSION), 'language' => Uuid::fromHexToBytes(Defaults::LANGUAGE_SYSTEM)]
+        );
+        $names = [];
+        $withDetails = [];
+        foreach ($rows as $row) {
+            $id = self::str($row['id'] ?? null);
+            $name = trim(self::str($row['name'] ?? null));
+            if (!isset($names[$id]) || ($name !== '' && self::int($row['system_language'] ?? null) === 1)) {
+                $names[$id] = $name !== '' ? $name : ($names[$id] ?? '');
+            }
+            try {
+                $fields = json_decode(self::str($row['custom_fields'] ?? null), true, 16, \JSON_THROW_ON_ERROR);
+            } catch (\JsonException) {
+                $fields = null;
+            }
+            if (SafetyData::manufacturerHasDetails($name, \is_array($fields) ? $fields : null, $defaults)) {
+                $withDetails[$id] = true;
+            }
+        }
+        $missing = [];
+        foreach ($names as $id => $name) {
+            if (!isset($withDetails[$id])) {
+                $missing[] = ['id' => $id, 'name' => $name];
+            }
+        }
+        usort($missing, static fn (array $a, array $b): int => strcasecmp($a['name'], $b['name']));
+
+        return \array_slice($missing, 0, self::MANUFACTURER_LIMIT);
     }
 
     /**

@@ -37,6 +37,12 @@ class ShopproofRulesService extends ApiService {
             .then((response) => ApiService.handleResponse(response));
     }
 
+    clearWithdrawalFailures() {
+        return this.httpClient.delete(`${this.getApiBasePath()}/withdrawal-failures`, {
+            headers: this.getBasicHeaders(),
+        });
+    }
+
     deleteWithdrawal(id) {
         return this.httpClient.delete(`${this.getApiBasePath()}/withdrawals/${id}`, {
             headers: this.getBasicHeaders(),

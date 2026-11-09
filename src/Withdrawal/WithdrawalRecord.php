@@ -82,6 +82,26 @@ final class WithdrawalRecord
     }
 
     /**
+     * The order numbers to look for when a shopper types one: as typed, and without what shoppers
+     * often add (spaces, a leading "#", "Order", "Order no.", "Bestellung", "Bestellnummer", "Nr.").
+     * The record keeps what was typed.
+     *
+     * @return list<string>
+     */
+    public static function orderNumbers(string $typed): array
+    {
+        $typed = trim($typed);
+        $bare = (string) preg_replace(
+            '/^(?:(?:order|bestellung|bestellnummer)(?:\s*(?:number|nummer|no|nr)\b)?\s*\.?\s*:?)?\s*#?/iu',
+            '',
+            $typed
+        );
+        $bare = (string) preg_replace('/\s+/u', '', $bare);
+
+        return array_values(array_unique(array_filter([$typed, $bare], static fn (string $number): bool => $number !== '')));
+    }
+
+    /**
      * Whether an order's customer email is the one the request gives, ignoring case and spaces.
      */
     public static function sameEmail(string $a, string $b): bool

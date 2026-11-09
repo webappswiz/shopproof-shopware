@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "0.8.0",
+  "version": "0.9.0",
   "disclaimer": "Technical information to help shops comply. Not legal advice.",
   "strings": {
     "AT": {
@@ -596,6 +596,25 @@
       "verification": "verified_official",
       "plugin_feature": "gpsr_block",
       "notes": "Template recall notice is a possible Pro feature",
+      "review_required": false
+    },
+    {
+      "id": "EU-PS-03",
+      "jurisdiction": "EU",
+      "area": "product_safety",
+      "requirement": "Hazard label elements in online offers of hazardous chemicals",
+      "shop_must": "When selling a substance or mixture classified as hazardous under CLP (for example cleaning products, paints, glues, lamp oil, some craft supplies), show the label elements of Article 17 clearly and visibly in the online offer: hazard pictograms, signal word, hazard statements, precautionary statements and supplemental information, as on the product label",
+      "where_in_shop": "Product page",
+      "applies_to": "Substances and mixtures classified as hazardous, sold at a distance to anyone (consumers and businesses)",
+      "exemptions": "Products outside CLP in their finished state for the final user (Art. 1(5)): medicines, veterinary medicines, cosmetics, medical devices, food and feed. Articles such as toys or electronics are not substances or mixtures",
+      "effective_from": "2026-07-01",
+      "status": "in_force",
+      "legal_basis": "Regulation (EC) No 1272/2008 (CLP), Art. 48a and Art. 17, inserted by Regulation (EU) 2024/2865, Art. 1(27) and Art. 2(2)",
+      "source_url": "https://eur-lex.europa.eu/eli/reg/2024/2865/oj",
+      "confidence": "high",
+      "verification": "verified_official",
+      "plugin_feature": "gpsr_block",
+      "notes": "The product safety block shows the official statement texts in the shopper's language from the codes the shop enters (data/strings/hazard-labelling.json). The shop takes the classification from the supplier's label or safety data sheet; Shopproof does not classify products.",
       "review_required": false
     },
     {

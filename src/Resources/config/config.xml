@@ -39,8 +39,8 @@
             <name>showSafety</name>
             <label>Show product safety information on product pages</label>
             <label lang="de-DE">Informationen zur Produktsicherheit auf Produktseiten anzeigen</label>
-            <helpText>Shown below the product description when a manufacturer name is known. Each field comes from the product first, then its manufacturer (Catalogues > Manufacturers), then the defaults below.</helpText>
-            <helpText lang="de-DE">Erscheint unter der Produktbeschreibung, sobald ein Herstellername bekannt ist. Jedes Feld kommt zuerst vom Produkt, dann von seinem Hersteller (Kataloge > Hersteller), dann von den Standardwerten unten.</helpText>
+            <helpText>Shown below the product description when a manufacturer name is known. The details come from the product first, then its manufacturer (Catalogues > Manufacturers). The defaults below apply to products without a manufacturer, and to the manufacturer with the default name; they are never mixed with another manufacturer's name. The Shopproof page lists manufacturers without details.</helpText>
+            <helpText lang="de-DE">Erscheint unter der Produktbeschreibung, sobald ein Herstellername bekannt ist. Die Angaben kommen zuerst vom Produkt, dann von seinem Hersteller (Kataloge > Hersteller). Die Standardwerte unten gelten für Produkte ohne Hersteller und für den Hersteller mit dem Standardnamen; sie werden nie mit dem Namen eines anderen Herstellers gemischt. Die Shopproof-Seite listet Hersteller ohne Angaben.</helpText>
             <defaultValue>true</defaultValue>
         </input-field>
         <input-field type="text">

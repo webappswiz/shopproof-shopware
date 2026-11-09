@@ -24,6 +24,7 @@ export default Shopware.Component.wrapComponentConfig({
             page: 1,
             term: '',
             confirmId: null,
+            clearing: false,
         };
     },
 
@@ -133,6 +134,16 @@ export default Shopware.Component.wrapComponentConfig({
                 this.confirmId = null;
                 this.loadWithdrawals();
             });
+        },
+
+        clearFailures() {
+            this.clearing = true;
+            return this.shopproofRulesService
+                .clearWithdrawalFailures()
+                .then(() => this.loadCheck())
+                .finally(() => {
+                    this.clearing = false;
+                });
         },
 
         checkText(check) {

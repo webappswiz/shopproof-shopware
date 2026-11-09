@@ -44,20 +44,26 @@ class WithdrawalStore
     }
 
     /**
-     * The order the request names, when its number exists in the same sales channel and the
-     * order's customer email matches. Otherwise null; the record is kept either way.
+     * The order the request names, when its number (as typed, or without "#", spaces or a word
+     * like "Order" in front, see WithdrawalRecord::orderNumbers) exists in the same sales channel
+     * and the order's customer email matches. Otherwise null; the record is kept either way.
      */
     private function matchOrder(string $orderNumber, string $email, ?string $salesChannelId): ?string
     {
+        $numbers = WithdrawalRecord::orderNumbers($orderNumber);
+        if ($numbers === []) {
+            return null;
+        }
         $sql = 'SELECT o.id, oc.email FROM `order` o
             INNER JOIN order_customer oc ON oc.order_id = o.id AND oc.order_version_id = o.version_id
-            WHERE o.order_number = :number AND o.version_id = :version';
-        $params = ['number' => $orderNumber, 'version' => Uuid::fromHexToBytes(Defaults::LIVE_VERSION)];
+            WHERE o.order_number IN (:numbers) AND o.version_id = :version';
+        $params = ['numbers' => $numbers, 'version' => Uuid::fromHexToBytes(Defaults::LIVE_VERSION)];
+        $types = ['numbers' => ArrayParameterType::STRING];
         if ($salesChannelId !== null && Uuid::isValid($salesChannelId)) {
             $sql .= ' AND o.sales_channel_id = :channel';
             $params['channel'] = Uuid::fromHexToBytes($salesChannelId);
         }
-        foreach ($this->connection->fetchAllAssociative($sql . ' LIMIT 5', $params) as $row) {
+        foreach ($this->connection->fetchAllAssociative($sql . ' LIMIT 5', $params, $types) as $row) {
             if (\is_string($row['id'] ?? null) && WithdrawalRecord::sameEmail(self::str($row['email'] ?? null), $email)) {
                 return $row['id'];
             }

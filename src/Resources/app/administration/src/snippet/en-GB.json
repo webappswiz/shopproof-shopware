@@ -43,6 +43,7 @@
             "check": {
                 "flowActive": "The flow \"Online revocation request sent\" is active, so emails go out",
                 "customerMail": "The flow emails the shopper a confirmation with the request and its date and time",
+                "recordTable": "Shopproof's table for the records exists (shopproof_withdrawal_request). If not, reinstall the plugin.",
                 "buttonOn": "The withdrawal button is switched on",
                 "page": "The button links to a withdrawal request page",
                 "form": "That page has the withdrawal request form",
@@ -63,7 +64,17 @@
             "noOrder": "No matching order",
             "delete": "Delete",
             "confirmDelete": "Delete for good",
-            "cancel": "Cancel"
+            "cancel": "Cancel",
+            "failedRecords": "{count} withdrawal request could not be recorded; check the log and the Shopware emails. | {count} withdrawal requests could not be recorded; check the log and the Shopware emails.",
+            "failedHelp": "Shopware still sent its emails, so the shopper got a confirmation, but the request is missing from the list below. Find it in the emails Shopware sent to the shop and in var/log (search for \"Shopproof could not record\"), and keep a copy.",
+            "failedClear": "I have checked these"
+        },
+        "products": {
+            "warn": "Check",
+            "guaranteeNotice_ok": "The EU legal guarantee notice is shown on product pages",
+            "guaranteeNotice_off": "The EU legal guarantee notice is off in at least one storefront. It is required for goods from 27 September 2026. Turn on \"Show the official EU legal guarantee notice on product pages\" in the plugin settings.",
+            "manufacturerDetails_ok": "Every manufacturer of your products has contact details for the product safety information",
+            "manufacturerDetails_off": "These manufacturers have no contact details, so their products show the manufacturer's name only. Add the address and email under Catalogues > Manufacturers (Shopproof: product safety), or on each product:"
         },
         "cms": {
             "label": "Shopproof product information",

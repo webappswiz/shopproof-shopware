@@ -51,7 +51,10 @@ final class RulesFile
 
     /**
      * Rules a merchant may see: never ones held for review. A rule is shown only when it says
-     * explicitly that no review is required.
+     * explicitly that no review is required, and is not waiting for a check (status
+     * pending_check), of low confidence or unverified, and its official source is an https link.
+     * The file comes from the network, so each of these is checked here too, not only by the
+     * rules validator.
      *
      * @param array<string, mixed>|null $file
      *
@@ -62,13 +65,27 @@ final class RulesFile
         $rules = (\is_array($file) && isset($file['rules']) && \is_array($file['rules'])) ? $file['rules'] : [];
         $shown = [];
         foreach ($rules as $rule) {
-            if (\is_array($rule) && \array_key_exists('review_required', $rule) && $rule['review_required'] === false) {
+            if (\is_array($rule) && self::showable($rule)) {
                 /** @var array<string, mixed> $rule */
                 $shown[] = $rule;
             }
         }
 
         return $shown;
+    }
+
+    /**
+     * @param array<mixed> $rule
+     */
+    private static function showable(array $rule): bool
+    {
+        $source = $rule['source_url'] ?? null;
+
+        return \array_key_exists('review_required', $rule) && $rule['review_required'] === false
+            && ($rule['status'] ?? null) !== 'pending_check'
+            && ($rule['confidence'] ?? null) !== 'low'
+            && ($rule['verification'] ?? null) !== 'unverified'
+            && \is_string($source) && preg_match('#^https://[^\s"<>]+$#i', $source) === 1;
     }
 
     /**

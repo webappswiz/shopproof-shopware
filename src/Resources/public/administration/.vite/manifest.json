@@ -1,6 +1,6 @@
 {
   "main.js": {
-    "file": "assets/shopproof-compliance-D6CilqPw.js",
+    "file": "assets/shopproof-compliance-DXWh0yUd.js",
     "name": "shopproof-compliance",
     "src": "main.js",
     "isEntry": true,
@@ -12,12 +12,12 @@
     ]
   },
   "module/shopproof-overview/page/shopproof-overview-index/index.js": {
-    "file": "assets/index-DwasUmWH.js",
+    "file": "assets/index-qpB_6Jw0.js",
     "name": "index",
     "src": "module/shopproof-overview/page/shopproof-overview-index/index.js",
     "isDynamicEntry": true,
     "css": [
-      "assets/index-DoJtsDPH.css"
+      "assets/index-DtlfMl6A.css"
     ]
   }
 }

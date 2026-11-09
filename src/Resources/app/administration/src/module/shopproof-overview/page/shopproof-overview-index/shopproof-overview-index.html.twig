@@ -10,6 +10,16 @@
 
     <template #content>
         <sw-card-view>
+            <div v-if="check && check.failedRecords > 0" class="shopproof-overview__alert" role="alert">
+                <p>
+                    <strong>{{ $tc('shopproof.withdrawal.failedRecords', check.failedRecords, { count: check.failedRecords }) }}</strong>
+                </p>
+                <p>{{ $t('shopproof.withdrawal.failedHelp') }}</p>
+                <mt-button size="small" variant="secondary" :disabled="clearing" @click="clearFailures">
+                    {{ $t('shopproof.withdrawal.failedClear') }}
+                </mt-button>
+            </div>
+
             <mt-card
                 position-identifier="shopproof-overview-about"
                 :title="$t('shopproof.overview.aboutTitle')"
@@ -65,12 +75,23 @@
             </mt-card>
 
             <mt-card
-                v-if="check && check.layouts && check.layouts.length"
+                v-if="check && ((check.layouts && check.layouts.length) || (check.products && check.products.length))"
                 position-identifier="shopproof-overview-layouts"
                 :title="$t('shopproof.layouts.title')"
             >
-                <p>{{ $t('shopproof.layouts.intro') }}</p>
-                <ul class="shopproof-overview__checks">
+                <ul v-if="check.products && check.products.length" class="shopproof-overview__checks">
+                    <li v-for="item in check.products" :key="item.key">
+                        <span class="shopproof-overview__state">{{ item.ok ? $t('shopproof.withdrawal.done') : $t('shopproof.products.warn') }}</span>
+                        {{ $t(`shopproof.products.${item.key}_${item.ok ? 'ok' : 'off'}`) }}
+                        <ul v-if="item.key === 'manufacturerDetails' && !item.ok" class="shopproof-overview__names">
+                            <li v-for="manufacturer in check.manufacturersWithoutDetails" :key="manufacturer.id">
+                                <router-link :to="{ name: 'sw.manufacturer.detail', params: { id: manufacturer.id } }">{{ manufacturer.name || manufacturer.id }}</router-link>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p v-if="check.layouts && check.layouts.length">{{ $t('shopproof.layouts.intro') }}</p>
+                <ul v-if="check.layouts && check.layouts.length" class="shopproof-overview__checks">
                     <li v-for="layout in check.layouts" :key="layout.id">
                         <span class="shopproof-overview__state">{{ layout.ok ? $t('shopproof.withdrawal.done') : $t('shopproof.withdrawal.todo') }}</span>
                         <router-link :to="{ name: 'sw.cms.detail', params: { id: layout.id } }">{{ layout.name }}</router-link>:

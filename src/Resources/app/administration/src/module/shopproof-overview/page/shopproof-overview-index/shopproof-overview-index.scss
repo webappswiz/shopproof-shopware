@@ -103,6 +103,25 @@
     overflow-wrap: anywhere;
 }
 
+.shopproof-overview__names {
+    margin: 0.25rem 0 0.5rem 7rem;
+    padding-inline-start: 1rem;
+}
+
+/* Red notice: dark red text on a light red ground (contrast above 7:1, WCAG 2.2 AA). */
+.shopproof-overview__alert {
+    margin-block-end: 2rem;
+    padding: 1rem 1.25rem;
+    border: 2px solid #b3001b;
+    border-radius: 4px;
+    background: #fde8ea;
+    color: #6e0010;
+
+    p {
+        margin: 0 0 0.5rem;
+    }
+}
+
 /* Darker than the admin's default link blue so links reach 4.5:1 on white (WCAG 2.2 AA). */
 .shopproof-overview .mt-card a[href] {
     color: #0b539b;

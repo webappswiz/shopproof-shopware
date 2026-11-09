@@ -43,6 +43,7 @@
             "check": {
                 "flowActive": "Der Flow \"Online revocation request sent\" ist aktiv, die E-Mails werden also versendet",
                 "customerMail": "Der Flow schickt dem Kunden eine Bestätigung mit dem Antrag samt Datum und Uhrzeit",
+                "recordTable": "Die Shopproof-Tabelle für die Anträge ist vorhanden (shopproof_withdrawal_request). Wenn nicht, installieren Sie das Plugin neu.",
                 "buttonOn": "Der Widerrufsbutton ist eingeschaltet",
                 "page": "Der Button führt zu einer Seite für Widerrufsanträge",
                 "form": "Diese Seite enthält das Widerrufsformular",
@@ -63,7 +64,17 @@
             "noOrder": "Keine passende Bestellung",
             "delete": "Löschen",
             "confirmDelete": "Endgültig löschen",
-            "cancel": "Abbrechen"
+            "cancel": "Abbrechen",
+            "failedRecords": "{count} Widerrufsantrag konnte nicht gespeichert werden; prüfen Sie das Log und die E-Mails von Shopware. | {count} Widerrufsanträge konnten nicht gespeichert werden; prüfen Sie das Log und die E-Mails von Shopware.",
+            "failedHelp": "Shopware hat seine E-Mails trotzdem versendet, der Kunde hat also eine Bestätigung erhalten, aber der Antrag fehlt in der Liste unten. Sie finden ihn in den E-Mails, die Shopware an den Shop geschickt hat, und in var/log (Suche nach \"Shopproof could not record\"). Bewahren Sie eine Kopie auf.",
+            "failedClear": "Habe ich geprüft"
+        },
+        "products": {
+            "warn": "Prüfen",
+            "guaranteeNotice_ok": "Der EU-Hinweis zur gesetzlichen Gewährleistung wird auf Produktseiten angezeigt",
+            "guaranteeNotice_off": "Der EU-Hinweis zur gesetzlichen Gewährleistung ist in mindestens einem Storefront aus. Er ist ab 27. September 2026 für Waren vorgeschrieben. Schalten Sie in den Plugin-Einstellungen \"Den offiziellen EU-Hinweis zur gesetzlichen Gewährleistung auf Produktseiten anzeigen\" ein.",
+            "manufacturerDetails_ok": "Jeder Hersteller Ihrer Produkte hat Kontaktdaten für die Informationen zur Produktsicherheit",
+            "manufacturerDetails_off": "Diese Hersteller haben keine Kontaktdaten, ihre Produkte zeigen daher nur den Namen des Herstellers. Tragen Sie Anschrift und E-Mail unter Kataloge > Hersteller (Shopproof: Produktsicherheit) oder am jeweiligen Produkt ein:"
         },
         "cms": {
             "label": "Shopproof Produktinformationen",
