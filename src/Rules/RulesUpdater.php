@@ -6,10 +6,16 @@ use GuzzleHttp\ClientInterface;
 use Psr\Log\LoggerInterface;
 
 /**
- * Downloads the public rules file. A failed or unusable download keeps the last good copy.
+ * The rules the plugin works with: the copy shipped inside the plugin, or a newer one the merchant
+ * chose to download. Nothing is downloaded unless the merchant asks for it (the button in the
+ * Shopproof overview, the daily update setting, or the console command). A failed or unusable
+ * download keeps the last good copy.
  */
 class RulesUpdater
 {
+    /** The public rules file as it was when this plugin version was built. */
+    public const BUNDLED = __DIR__ . '/../Resources/rules/rules.json';
+
     public function __construct(
         private readonly ClientInterface $client,
         private readonly RulesStore $store,
@@ -55,17 +61,44 @@ class RulesUpdater
     }
 
     /**
-     * The stored file, downloading it first when there is none yet (right after install).
+     * The newer of the downloaded copy and the copy shipped with the plugin. Never downloads.
+     *
+     * @return array{file: array<string, mixed>|null, downloaded: bool}
+     */
+    public function current(): array
+    {
+        return self::newer($this->store->get(), self::bundled());
+    }
+
+    /**
+     * The copy shipped with the plugin, or null if it is missing or damaged.
      *
      * @return array<string, mixed>|null
      */
-    public function current(): ?array
+    public static function bundled(string $path = self::BUNDLED): ?array
     {
-        $file = $this->store->get();
-        if ($file === null && $this->refresh()) {
-            $file = $this->store->get();
+        $body = is_file($path) ? file_get_contents($path) : false;
+
+        return \is_string($body) ? RulesFile::parse($body) : null;
+    }
+
+    /**
+     * Picks the downloaded copy unless the shipped copy is newer (after a plugin update).
+     *
+     * @param array<string, mixed>|null $downloaded
+     * @param array<string, mixed>|null $bundled
+     *
+     * @return array{file: array<string, mixed>|null, downloaded: bool}
+     */
+    public static function newer(?array $downloaded, ?array $bundled): array
+    {
+        if ($downloaded === null) {
+            return ['file' => $bundled, 'downloaded' => false];
+        }
+        if ($bundled !== null && version_compare(RulesFile::text($bundled, 'version'), RulesFile::text($downloaded, 'version'), '>')) {
+            return ['file' => $bundled, 'downloaded' => false];
         }
 
-        return $file;
+        return ['file' => $downloaded, 'downloaded' => true];
     }
 }

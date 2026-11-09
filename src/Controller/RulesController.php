@@ -5,6 +5,7 @@ namespace Shopproof\Compliance\Controller;
 use Shopproof\Compliance\Rules\RulesFile;
 use Shopproof\Compliance\Rules\RulesStore;
 use Shopproof\Compliance\Rules\RulesUpdater;
+use Shopproof\Compliance\ScheduledTask\RefreshRulesTaskHandler;
 use Shopware\Core\Framework\Routing\ApiRouteScope;
 use Shopware\Core\PlatformRequest;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
@@ -40,7 +41,7 @@ final class RulesController extends AbstractController
     )]
     public function rules(): JsonResponse
     {
-        $file = $this->updater->current();
+        ['file' => $file, 'downloaded' => $downloaded] = $this->updater->current();
         $countries = $this->countries();
         $rules = array_map(
             static fn (array $rule): array => array_intersect_key($rule, array_flip(self::FIELDS)),
@@ -51,11 +52,27 @@ final class RulesController extends AbstractController
             'available' => $file !== null,
             'version' => RulesFile::text($file, 'version'),
             'disclaimer' => RulesFile::text($file, 'disclaimer', RulesFile::DEFAULT_DISCLAIMER),
-            'fetchedAt' => $this->store->fetchedAt()?->format(\DATE_ATOM),
+            'downloaded' => $downloaded,
+            'fetchedAt' => $downloaded ? $this->store->fetchedAt()?->format(\DATE_ATOM) : null,
+            'autoUpdate' => $this->config->getBool(RefreshRulesTaskHandler::SETTING),
             'countries' => $countries,
             'counts' => RulesFile::summarize($file),
             'rules' => $rules,
         ]);
+    }
+
+    /**
+     * "Check for rule updates now" in the Shopproof overview: the merchant asks for a download.
+     */
+    #[Route(
+        path: '/api/_action/shopproof/rules/refresh',
+        name: 'api.action.shopproof.rules.refresh',
+        defaults: [PlatformRequest::ATTRIBUTE_ACL => ['system_config:update']],
+        methods: ['POST']
+    )]
+    public function refresh(): JsonResponse
+    {
+        return new JsonResponse(['updated' => $this->updater->refresh()]);
     }
 
     /**

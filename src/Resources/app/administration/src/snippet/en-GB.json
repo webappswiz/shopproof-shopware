@@ -7,15 +7,21 @@
         "overview": {
             "aboutTitle": "About these rules",
             "disclaimer": "Technical information to help shops comply. Not legal advice.",
-            "loadFailed": "The rules could not be loaded. Check that the shop can reach shopproof.app's rules file and try again.",
-            "notYet": "No rules file yet. Shopproof downloads it once a day; run bin/console shopproof:rules:refresh to fetch it now.",
+            "loadFailed": "The rules could not be loaded. Reload the page and try again.",
+            "notYet": "The rules list that ships with the plugin is missing. Reinstall the plugin, or press \"Check for rule updates now\".",
             "version": "Rules version {version}, downloaded {date}.",
             "countriesHint": "Choose the countries you sell to under Extensions > My extensions > Shopproof EU Compliance > Configure. EU-wide rules are always shown.",
             "groupTitle": "{country}: {count} rules",
             "effectiveFrom": "In force from",
             "whereInShop": "Where in the shop",
             "legalBasis": "Official source",
-            "opensNewTab": "(opens in a new tab)"
+            "opensNewTab": "(opens in a new tab)",
+            "versionBundled": "Rules version {version}, shipped with the plugin.",
+            "autoOff": "Shopproof works without contacting any server. To get rule changes as they are published, press \"Check for rule updates now\" or turn on \"Download rule updates once a day\" in the plugin settings. The download goes to the Shopproof rules service and sends no shop, customer or personal data.",
+            "autoOn": "Rule updates are downloaded once a day from the Shopproof rules service. You can turn this off in the plugin settings.",
+            "refresh": "Check for rule updates now",
+            "refresh_updated": "Rules checked. The list below is the newest version.",
+            "refresh_failed": "The rules service could not be reached. The rules you already have stay in place; try again later."
         },
         "countries": {
             "EU": "EU-wide",

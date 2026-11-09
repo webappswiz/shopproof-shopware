@@ -7,15 +7,21 @@
         "overview": {
             "aboutTitle": "Über diese Regeln",
             "disclaimer": "Technische Informationen, die Shops bei der Umsetzung helfen. Keine Rechtsberatung.",
-            "loadFailed": "Die Regeln konnten nicht geladen werden. Prüfen Sie, ob der Shop die Regeldatei von shopproof.app erreicht, und versuchen Sie es erneut.",
-            "notYet": "Noch keine Regeldatei. Shopproof lädt sie einmal täglich; mit bin/console shopproof:rules:refresh holen Sie sie sofort.",
+            "loadFailed": "Die Regeln konnten nicht geladen werden. Laden Sie die Seite neu und versuchen Sie es erneut.",
+            "notYet": "Die mit dem Plugin gelieferte Regelliste fehlt. Installieren Sie das Plugin neu oder klicken Sie auf „Jetzt nach Regel-Updates suchen“.",
             "version": "Regelversion {version}, geladen am {date}.",
             "countriesHint": "Wählen Sie die Länder, in die Sie verkaufen, unter Erweiterungen > Meine Erweiterungen > Shopproof EU-Compliance > Konfigurieren. EU-weite Regeln werden immer angezeigt.",
             "groupTitle": "{country}: {count} Regeln",
             "effectiveFrom": "Gilt ab",
             "whereInShop": "Wo im Shop",
             "legalBasis": "Offizielle Quelle",
-            "opensNewTab": "(öffnet in neuem Tab)"
+            "opensNewTab": "(öffnet in neuem Tab)",
+            "versionBundled": "Regelversion {version}, mit dem Plugin geliefert.",
+            "autoOff": "Shopproof funktioniert, ohne einen Server zu kontaktieren. Um Regeländerungen zu erhalten, sobald sie veröffentlicht werden, klicken Sie auf „Jetzt nach Regel-Updates suchen“ oder schalten Sie in den Plugin-Einstellungen „Regel-Updates einmal täglich herunterladen“ ein. Der Download geht an den Shopproof-Regeldienst und sendet keine Shop-, Kunden- oder personenbezogenen Daten.",
+            "autoOn": "Regel-Updates werden einmal täglich vom Shopproof-Regeldienst heruntergeladen. Sie können das in den Plugin-Einstellungen ausschalten.",
+            "refresh": "Jetzt nach Regel-Updates suchen",
+            "refresh_updated": "Regeln geprüft. Die Liste unten ist die neueste Version.",
+            "refresh_failed": "Der Regeldienst war nicht erreichbar. Ihre bisherigen Regeln bleiben erhalten; versuchen Sie es später erneut."
         },
         "countries": {
             "EU": "EU-weit",

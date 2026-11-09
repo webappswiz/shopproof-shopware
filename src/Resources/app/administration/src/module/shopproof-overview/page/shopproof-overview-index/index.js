@@ -14,6 +14,8 @@ export default Shopware.Component.wrapComponentConfig({
             isLoading: true,
             failed: false,
             overview: null,
+            refreshing: false,
+            refreshResult: '',
             check: null,
             checkFailed: false,
             withdrawals: null,
@@ -68,6 +70,23 @@ export default Shopware.Component.wrapComponentConfig({
                 })
                 .finally(() => {
                     this.isLoading = false;
+                });
+        },
+
+        refreshRules() {
+            this.refreshing = true;
+            this.refreshResult = '';
+            return this.shopproofRulesService
+                .refreshRules()
+                .then((result) => {
+                    this.refreshResult = result && result.updated ? 'updated' : 'failed';
+                    return this.load();
+                })
+                .catch(() => {
+                    this.refreshResult = 'failed';
+                })
+                .finally(() => {
+                    this.refreshing = false;
                 });
         },
 

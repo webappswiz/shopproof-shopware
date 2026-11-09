@@ -21,6 +21,18 @@
         </input-field>
     </card>
     <card>
+        <title>Rule updates</title>
+        <title lang="de-DE">Regel-Updates</title>
+        <input-field type="bool">
+            <name>autoUpdateRules</name>
+            <label>Download rule updates once a day</label>
+            <label lang="de-DE">Regel-Updates einmal täglich herunterladen</label>
+            <helpText>Off by default. Shopproof ships with a copy of the rules list and works without contacting any server. When this is on, the shop downloads the newest public rules file from the Shopproof rules service (https://d3jn3nfc6dj1sm.cloudfront.net, run by Apex Point Consulting GmbH) once a day. No shop, customer or personal data is sent. You can also check once with "Check for rule updates now" on the Shopproof page (Settings > Extensions > Shopproof). Privacy: https://shopproof.app/privacy</helpText>
+            <helpText lang="de-DE">Standardmäßig aus. Shopproof enthält eine Kopie der Regelliste und funktioniert, ohne einen Server zu kontaktieren. Ist diese Option an, lädt der Shop einmal täglich die neueste öffentliche Regeldatei vom Shopproof-Regeldienst (https://d3jn3nfc6dj1sm.cloudfront.net, betrieben von der Apex Point Consulting GmbH). Es werden keine Shop-, Kunden- oder personenbezogenen Daten gesendet. Einmalig prüfen können Sie auch mit „Jetzt nach Regel-Updates suchen“ auf der Shopproof-Seite (Einstellungen > Erweiterungen > Shopproof). Datenschutz: https://shopproof.app/privacy</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+    </card>
+    <card>
         <title>Product safety (GPSR)</title>
         <title lang="de-DE">Produktsicherheit (GPSR)</title>
         <input-field type="bool">

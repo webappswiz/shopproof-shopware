@@ -1,6 +1,6 @@
 {
   "main.js": {
-    "file": "assets/shopproof-compliance-BCuBkuf-.js",
+    "file": "assets/shopproof-compliance-D6CilqPw.js",
     "name": "shopproof-compliance",
     "src": "main.js",
     "isEntry": true,
@@ -12,7 +12,7 @@
     ]
   },
   "module/shopproof-overview/page/shopproof-overview-index/index.js": {
-    "file": "assets/index-BgaSZBWv.js",
+    "file": "assets/index-DwasUmWH.js",
     "name": "index",
     "src": "module/shopproof-overview/page/shopproof-overview-index/index.js",
     "isDynamicEntry": true,

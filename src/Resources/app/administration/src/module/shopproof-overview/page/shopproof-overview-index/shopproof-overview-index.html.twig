@@ -20,10 +20,18 @@
                 </p>
                 <p v-if="failed" role="alert">{{ $t('shopproof.overview.loadFailed') }}</p>
                 <p v-else-if="overview && !overview.available">{{ $t('shopproof.overview.notYet') }}</p>
-                <p v-else-if="overview">
+                <p v-else-if="overview && overview.downloaded">
                     {{ $t('shopproof.overview.version', { version: overview.version, date: fetchedAt }) }}
                 </p>
+                <p v-else-if="overview">
+                    {{ $t('shopproof.overview.versionBundled', { version: overview.version }) }}
+                </p>
                 <p>{{ $t('shopproof.overview.countriesHint') }}</p>
+                <p v-if="overview">{{ overview.autoUpdate ? $t('shopproof.overview.autoOn') : $t('shopproof.overview.autoOff') }}</p>
+                <mt-button variant="secondary" :is-loading="refreshing" :disabled="refreshing" @click="refreshRules">
+                    {{ $t('shopproof.overview.refresh') }}
+                </mt-button>
+                <p v-if="refreshResult" role="status">{{ $t(`shopproof.overview.refresh_${refreshResult}`) }}</p>
             </mt-card>
 
             <mt-card

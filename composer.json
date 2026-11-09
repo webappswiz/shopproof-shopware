@@ -1,7 +1,7 @@
 {
     "name": "shopproof/compliance",
     "description": "EU compliance help for Shopware shops: completes the withdrawal button, product safety (GPSR), the EU legal guarantee notice and the durability label. Technical help, not legal advice.",
-    "version": "0.4.2",
+    "version": "0.4.3",
     "type": "shopware-platform-plugin",
     "license": "MIT",
     "authors": [
@@ -26,8 +26,8 @@
             "de-DE": "Shopproof EU-Compliance"
         },
         "description": {
-            "en-GB": "Technical help with EU shop rules: withdrawal button check, product safety (GPSR), guarantee notice and durability label. Downloads a public rules file daily. Not legal advice.",
-            "de-DE": "Technische Hilfe bei EU-Regeln: Widerrufsbutton-Prüfung, Produktsicherheit (GPSR), Garantiehinweis, Haltbarkeitslabel. Lädt täglich eine öffentliche Regeldatei. Keine Rechtsberatung."
+            "en-GB": "Technical help with EU shop rules: withdrawal button check, product safety (GPSR), guarantee notice, durability label. Rules list included, daily updates opt-in. Not legal advice.",
+            "de-DE": "Technische Hilfe bei EU-Regeln: Widerrufsbutton-Prüfung, Produktsicherheit (GPSR), Garantiehinweis, Haltbarkeitslabel. Regeln enthalten, Updates optional. Keine Rechtsberatung."
         },
         "manufacturerLink": {
             "en-GB": "https://shopproof.app",
