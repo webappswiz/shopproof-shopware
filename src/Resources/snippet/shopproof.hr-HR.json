@@ -1,0 +1,54 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">odustati od ugovora</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "potvrditi odustajanje"
+    },
+    "shopproof": {
+        "withdrawal": {
+            "accountLink": "odustati od ugovora",
+            "orderDate": "Datum narudžbe",
+            "commentHint": "Sve ostalo što želite reći trgovini. Odustanak ne morate obrazložiti.",
+            "periodLaw": "Možete odustati u roku od %days% dana od primitka narudžbe.",
+            "periodLonger": "Ova trgovina daje vam %days% dana od primitka narudžbe za odustanak.",
+            "picker": {
+                "legend": "Artikli koje vraćate",
+                "hint": "Označite artikle koje vraćate. Ako ništa ne označite, odustajete od cijele narudžbe.",
+                "looking": "Tražimo artikle iz vaše narudžbe...",
+                "found": "Artikli iz vaše narudžbe navedeni su u nastavku.",
+                "none": "Nismo mogli prikazati artikle ove narudžbe. Opišite ih u nastavku ili ostavite polje prazno za cijelu narudžbu.",
+                "quantity": "Količina",
+                "excluded": "Trgovina je ovaj artikl isključila iz prava na odustanak.",
+                "defaultNote": "Ako smatrate da se to ne odnosi na vaš artikl, svejedno možete poslati odustanak, a trgovina će ga provjeriti."
+            },
+            "status": {
+                "title": "Vaš odustanak",
+                "received": "Odustanak primljen",
+                "return_arrived": "Povrat je stigao u trgovinu",
+                "refund_sent": "Novac je vraćen",
+                "done": "Gotovo",
+                "open": "Još ne",
+                "reference": "Referentni broj",
+                "receivedOn": "Primljeno %date%",
+                "notFound": "Nismo pronašli ovaj odustanak. Upotrijebite poveznicu iz e-poruke s potvrdom ili se obratite trgovini.",
+                "note": "Trgovina ažurira ovu stranicu. Za pitanja odgovorite na e-poruku s potvrdom."
+            }
+        },
+        "digital": {
+            "consent": "Izričito pristajem da isporuku digitalnog sadržaja započnete prije isteka roka za odustanak.",
+            "ack": "Potvrđujem da gubim pravo na odustanak kada isporuka digitalnog sadržaja započne."
+        },
+        "safety": {
+            "heading": "Informacije o sigurnosti proizvoda",
+            "summary": "Sigurnost proizvoda (proizvođač: %name%)",
+            "manufacturer": "Proizvođač",
+            "responsiblePerson": "Odgovorna osoba u EU-u",
+            "identifiers": "Identifikacija proizvoda",
+            "warnings": "Upozorenja i sigurnosne informacije",
+            "hazardHeading": "Označivanje opasnosti",
+            "hazardStatements": "Oznake upozorenja",
+            "precautions": "Oznake obavijesti"
+        }
+    }
+}

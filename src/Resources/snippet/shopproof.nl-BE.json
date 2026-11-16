@@ -10,6 +10,8 @@
             "accountLink": "hier de overeenkomst ontbinden",
             "orderDate": "Besteldatum",
             "commentHint": "Wat u de winkel verder wilt laten weten. U hoeft geen reden voor de ontbinding op te geven.",
+            "periodLaw": "U kunt de overeenkomst binnen %days% dagen na ontvangst van uw bestelling ontbinden.",
+            "periodLonger": "Deze winkel geeft u %days% dagen na ontvangst van uw bestelling om de overeenkomst te ontbinden.",
             "picker": {
                 "legend": "Betreffende artikelen",
                 "hint": "Vink de artikelen aan die u terugstuurt. Vink niets aan om de hele bestelling te ontbinden.",
@@ -32,6 +34,10 @@
                 "notFound": "We konden deze herroeping niet vinden. Gebruik de link in uw ontvangstbevestiging of neem contact op met de winkel.",
                 "note": "De winkel werkt deze pagina bij. Hebt u vragen, beantwoord dan uw ontvangstbevestiging."
             }
+        },
+        "digital": {
+            "consent": "Ik stem er uitdrukkelijk mee in dat de levering van de digitale inhoud begint vóór het einde van de herroepingstermijn.",
+            "ack": "Ik erken dat ik mijn herroepingsrecht verlies zodra de levering van de digitale inhoud is begonnen."
         },
         "safety": {
             "heading": "Informatie over productveiligheid",

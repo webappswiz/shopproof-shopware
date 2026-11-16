@@ -2,6 +2,8 @@
 
 namespace Shopproof\Compliance\Withdrawal;
 
+use Shopproof\Compliance\Notes\NotesCheck;
+
 /**
  * Checks that Shopware's own withdrawal button (6.7.9 and later) is set up so shoppers can use it:
  * the button is on, it points to a page with the withdrawal form, the flow that confirms receipt to
@@ -19,8 +21,15 @@ final class SetupCheck
 
     public const ELEMENT = 'shopproof-product-info';
 
-    /** Storefront languages the plugin's snippets give the national wording for. */
-    public const LABEL_LANGUAGES = ['en', 'de', 'fr', 'it', 'nl'];
+    /**
+     * Storefront languages the plugin's snippets give the button wording for: the 24 official EU
+     * languages (national wording where reviewed, the Directive (EU) 2023/2673 wording otherwise).
+     * A test keeps this in step with the snippet files.
+     */
+    public const LABEL_LANGUAGES = [
+        'bg', 'cs', 'da', 'de', 'el', 'en', 'es', 'et', 'fi', 'fr', 'ga', 'hr',
+        'hu', 'it', 'lt', 'lv', 'mt', 'nl', 'pl', 'pt', 'ro', 'sk', 'sl', 'sv',
+    ];
 
     /**
      * @param array{
@@ -36,10 +45,11 @@ final class SetupCheck
      *     manufacturersWithoutDetails?: list<array{id: string, name: string}>,
      *     safetyPlacement?: string,
      *     hazardProblems?: list<array{id: string, name: string, codes: list<array{code: string, reason: string}>}>,
-     *     registrationBadLines?: list<string>
+     *     registrationBadLines?: list<string>,
+     *     notes?: array{unitPriceGaps?: list<array{id: string, name: string}>, depositBadLines?: list<string>, missingPolicyPages?: list<string>, dispute?: array{choice: string, statements: list<string>, foundOnPages: bool, pasted: bool, pagesChecked: bool}}
      * } $facts
      *
-     * @return array{supported: bool, ok: bool, shop: list<array{key: string, ok: bool}>, channels: list<array{id: string, name: string, ok: bool, checks: list<array{key: string, ok: bool, detail?: string}>}>, layouts: list<array{id: string, name: string, ok: bool, missing: list<string>}>, failedRecords: int, products: list<array{key: string, ok: bool}>, manufacturersWithoutDetails: list<array{id: string, name: string}>, hazardProblems: list<array{id: string, name: string, codes: list<array{code: string, reason: string}>}>, registrationBadLines: list<string>}
+     * @return array{supported: bool, ok: bool, shop: list<array{key: string, ok: bool}>, channels: list<array{id: string, name: string, ok: bool, checks: list<array{key: string, ok: bool, detail?: string}>}>, layouts: list<array{id: string, name: string, ok: bool, missing: list<string>}>, failedRecords: int, products: list<array{key: string, ok: bool}>, manufacturersWithoutDetails: list<array{id: string, name: string}>, hazardProblems: list<array{id: string, name: string, codes: list<array{code: string, reason: string}>}>, registrationBadLines: list<string>, notes: list<array{key: string, ok: bool, detail?: string}>, unitPriceGaps: list<array{id: string, name: string}>, depositBadLines: list<string>, disputeStatements: list<string>}
      */
     public static function evaluate(array $facts): array
     {
@@ -47,6 +57,7 @@ final class SetupCheck
             'layouts' => self::layouts($facts['layouts'] ?? [], ($facts['safetyPlacement'] ?? 'buyBox') === 'description' ? 'description' : 'buyBox'),
             'failedRecords' => max(0, $facts['failedRecords'] ?? 0),
             ...self::products($facts),
+            ...NotesCheck::evaluate($facts['notes'] ?? []),
         ];
         if (!$facts['supported']) {
             return ['supported' => false, 'ok' => false, 'shop' => [], 'channels' => [], ...$common];

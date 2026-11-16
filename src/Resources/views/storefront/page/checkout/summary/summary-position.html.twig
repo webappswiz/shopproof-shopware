@@ -1,0 +1,14 @@
+{% sw_extends '@Storefront/storefront/page/checkout/summary/summary-position.html.twig' %}
+
+{# Shops whose prices already hold the bottle deposit: "Included deposit" under the subtotal.
+   Shops that charge it on top get Shopware's own cart line "Deposit" instead. #}
+{% block page_checkout_summary_position %}
+    {{ parent() }}
+    {% set shopproofIncluded = shopproof_included_deposit(summary, context) %}
+    {% if shopproofIncluded %}
+        {% block shopproof_summary_included_deposit %}
+            <dt class="col-7 checkout-aside-summary-label shopproof-deposit-included">{{ shopproofIncluded.label }}</dt>
+            <dd class="col-5 checkout-aside-summary-value shopproof-deposit-included">{{ shopproofIncluded.amount }}</dd>
+        {% endblock %}
+    {% endif %}
+{% endblock %}

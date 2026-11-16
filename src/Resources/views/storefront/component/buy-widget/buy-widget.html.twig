@@ -1,0 +1,42 @@
+{% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget.html.twig' %}
+
+{# Shop notes next to the price. Right below the price: the bottle deposit ("plus EUR 0.25
+   deposit"), only for shoppers whose shipping country has the deposit type. Shopware's own tax
+   line ("Prices incl. VAT plus shipping costs", linked to the shipping page) stays, with other
+   words only for the small business scheme, free shipping or a margin scheme product. Below it,
+   the known defects of used goods. Nothing changes with the default settings. #}
+{% block buy_widget_price %}
+    {{ parent() }}
+    {% block shopproof_buy_widget_deposit %}
+        {% set shopproofDeposit = shopproof_deposit_note(product, context) %}
+        {% if shopproofDeposit %}
+            <p class="shopproof-deposit small mb-1">{{ shopproofDeposit }}</p>
+        {% endif %}
+    {% endblock %}
+{% endblock %}
+
+{% block buy_widget_tax_link %}
+    {% set shopproofTaxLine = shopproof_price_tax_line(product, context) %}
+    {% if shopproofTaxLine %}
+        {% set cmsPath = path('frontend.cms.page', { id: config('core.basicInformation.shippingPaymentInfoPage') }) %}
+        <button class="btn btn-link-inline product-detail-tax-link"
+                type="button"
+                data-ajax-modal="true"
+                data-url="{{ cmsPath }}"
+                aria-haspopup="dialog">
+            {{ shopproofTaxLine }}
+        </button>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block buy_widget_tax %}
+    {{ parent() }}
+    {% block shopproof_buy_widget_defects %}
+        {% set shopproofDefects = shopproof_defects(product, context) %}
+        {% if shopproofDefects %}
+            <p class="shopproof-defects small"><strong>{{ shopproofDefects.label }}</strong> {{ shopproofDefects.text|nl2br }}</p>
+        {% endif %}
+    {% endblock %}
+{% endblock %}

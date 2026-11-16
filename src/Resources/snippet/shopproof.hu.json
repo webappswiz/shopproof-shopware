@@ -1,0 +1,54 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">elállás a szerződéstől</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "elállás megerősítése"
+    },
+    "shopproof": {
+        "withdrawal": {
+            "accountLink": "elállás a szerződéstől",
+            "orderDate": "Rendelés dátuma",
+            "commentHint": "Bármi más, amit közölni szeretne az üzlettel. Az elállást nem kell indokolnia.",
+            "periodLaw": "A rendelés kézhezvételétől számított %days% napon belül állhat el.",
+            "periodLonger": "Ez az üzlet a rendelés kézhezvételétől számított %days% napot biztosít az elállásra.",
+            "picker": {
+                "legend": "Visszaküldött termékek",
+                "hint": "Jelölje be a visszaküldött termékeket. Ha semmit sem jelöl be, a teljes rendeléstől eláll.",
+                "looking": "Rendelése termékeinek keresése...",
+                "found": "Rendelése termékei alább láthatók.",
+                "none": "A rendelés termékeit nem sikerült megjeleníteni. Írja le őket alább, vagy hagyja üresen a mezőt a teljes rendeléshez.",
+                "quantity": "Mennyiség",
+                "excluded": "Az üzlet kizárta az elállási jogból.",
+                "defaultNote": "Ha úgy gondolja, hogy ez az Ön termékére nem vonatkozik, elállását ennek ellenére elküldheti, és az üzlet megvizsgálja."
+            },
+            "status": {
+                "title": "Az Ön elállása",
+                "received": "Elállás beérkezett",
+                "return_arrived": "A visszaküldött termék megérkezett az üzletbe",
+                "refund_sent": "Visszatérítés elküldve",
+                "done": "Kész",
+                "open": "Még nem",
+                "reference": "Hivatkozási szám",
+                "receivedOn": "Beérkezett: %date%",
+                "notFound": "Nem találtuk ezt az elállást. Kérjük, használja a visszaigazoló e-mailben található linket, vagy forduljon az üzlethez.",
+                "note": "Az üzlet frissíti ezt az oldalt. Kérdés esetén válaszoljon a visszaigazoló e-mailre."
+            }
+        },
+        "digital": {
+            "consent": "Kifejezetten hozzájárulok, hogy a digitális tartalom szolgáltatását az elállási határidő lejárta előtt megkezdjék.",
+            "ack": "Tudomásul veszem, hogy a digitális tartalom szolgáltatásának megkezdésével elveszítem az elállási jogomat."
+        },
+        "safety": {
+            "heading": "Termékbiztonsági információk",
+            "summary": "Termékbiztonság (gyártó: %name%)",
+            "manufacturer": "Gyártó",
+            "responsiblePerson": "Felelős személy az EU-ban",
+            "identifiers": "Termékazonosítás",
+            "warnings": "Figyelmeztetések és biztonsági információk",
+            "hazardHeading": "Veszélyjelölés",
+            "hazardStatements": "Figyelmeztető mondatok",
+            "precautions": "Óvintézkedésre vonatkozó mondatok"
+        }
+    }
+}

@@ -1,5 +1,5 @@
 {
-  "_note": "Built from packages/rules/data/strings/withdrawal-labels.json by apps/shopware/scripts/build-storefront.mjs; do not edit by hand.",
+  "_note": "Built from packages/rules/data/strings/withdrawal-labels.json, packages/rules/languages/withdrawal-labels-languages.json and scripts/text-eu.mjs by apps/shopware/scripts/build-storefront.mjs; do not edit by hand.",
   "languages": {
     "en": {
       "link": "Withdraw from contract here",
@@ -8,7 +8,13 @@
       "status": "See the status of your withdrawal:",
       "returns": "Start your return here:",
       "items": "Items",
-      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them."
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Digital content: you agreed that we start supplying it before the withdrawal period ends, and you acknowledged that you lose your right of withdrawal once supply has started.",
+      "legal": {
+        "terms": "Terms and conditions",
+        "withdrawal": "Withdrawal policy",
+        "privacy": "Privacy notice"
+      }
     },
     "de": {
       "link": "Vertrag widerrufen",
@@ -17,7 +23,13 @@
       "status": "Den Stand Ihres Widerrufs sehen Sie hier:",
       "returns": "Ihre Rücksendung starten Sie hier:",
       "items": "Artikel",
-      "excluded": "Diese Bestellung enthält Artikel, die Sie vom Widerruf ausgenommen haben: %s. Bitte prüfen Sie, ob die Ausnahme zutrifft, bevor Sie den Widerruf für diese Artikel ablehnen."
+      "excluded": "Diese Bestellung enthält Artikel, die Sie vom Widerruf ausgenommen haben: %s. Bitte prüfen Sie, ob die Ausnahme zutrifft, bevor Sie den Widerruf für diese Artikel ablehnen.",
+      "digital": "Digitale Inhalte: Sie haben zugestimmt, dass wir vor Ablauf der Widerrufsfrist mit der Bereitstellung beginnen, und bestätigt, dass Sie mit Beginn der Bereitstellung Ihr Widerrufsrecht verlieren.",
+      "legal": {
+        "terms": "AGB",
+        "withdrawal": "Widerrufsbelehrung",
+        "privacy": "Datenschutzerklärung"
+      }
     },
     "fr": {
       "link": "renoncer au contrat ici",
@@ -26,7 +38,13 @@
       "status": "Suivez l'état de votre rétractation ici :",
       "returns": "Commencez votre retour ici :",
       "items": "Articles",
-      "excluded": "Cette commande contient des articles que vous avez exclus de la rétractation : %s. Vérifiez si l'exclusion s'applique avant de refuser la rétractation pour ces articles."
+      "excluded": "Cette commande contient des articles que vous avez exclus de la rétractation : %s. Vérifiez si l'exclusion s'applique avant de refuser la rétractation pour ces articles.",
+      "digital": "Contenu numérique : vous avez consenti à ce que la fourniture commence avant la fin du délai de rétractation et reconnu perdre votre droit de rétractation dès le début de la fourniture.",
+      "legal": {
+        "terms": "Conditions générales de vente",
+        "withdrawal": "Politique de rétractation",
+        "privacy": "Politique de confidentialité"
+      }
     },
     "it": {
       "link": "recedere dal contratto qui",
@@ -35,7 +53,13 @@
       "status": "Segui lo stato del tuo recesso qui:",
       "returns": "Avvia il reso qui:",
       "items": "Articoli",
-      "excluded": "Questo ordine contiene articoli che hai escluso dal recesso: %s. Verifica se l'esclusione si applica prima di rifiutare il recesso per questi articoli."
+      "excluded": "Questo ordine contiene articoli che hai escluso dal recesso: %s. Verifica se l'esclusione si applica prima di rifiutare il recesso per questi articoli.",
+      "digital": "Contenuto digitale: hai acconsentito che la fornitura inizi prima della scadenza del periodo di recesso e hai preso atto che perdi il diritto di recesso una volta iniziata la fornitura.",
+      "legal": {
+        "terms": "Condizioni generali di vendita",
+        "withdrawal": "Informazioni sul recesso",
+        "privacy": "Informativa sulla privacy"
+      }
     },
     "nl": {
       "link": "hier de overeenkomst ontbinden",
@@ -44,7 +68,298 @@
       "status": "Bekijk de status van uw herroeping hier:",
       "returns": "Start uw retour hier:",
       "items": "Artikelen",
-      "excluded": "Deze bestelling bevat artikelen die u van herroeping hebt uitgesloten: %s. Controleer of de uitsluiting van toepassing is voordat u de herroeping voor deze artikelen weigert."
+      "excluded": "Deze bestelling bevat artikelen die u van herroeping hebt uitgesloten: %s. Controleer of de uitsluiting van toepassing is voordat u de herroeping voor deze artikelen weigert.",
+      "digital": "Digitale inhoud: u hebt ermee ingestemd dat de levering begint vóór het einde van de herroepingstermijn en erkend dat u uw herroepingsrecht verliest zodra de levering is begonnen.",
+      "legal": {
+        "terms": "Algemene voorwaarden",
+        "withdrawal": "Herroepingsbeleid",
+        "privacy": "Privacyverklaring"
+      }
+    },
+    "bg": {
+      "link": "откажете се от договора тук",
+      "question": null,
+      "period": null,
+      "status": "Вижте състоянието на Вашия отказ тук:",
+      "returns": "Започнете връщането оттук:",
+      "items": "Артикули",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Цифрово съдържание: съгласихте се да започнем доставката преди изтичането на срока за отказ и потвърдихте, че губите правото си на отказ, след като доставката започне.",
+      "legal": {
+        "terms": "Общи условия",
+        "withdrawal": "Правила за отказ",
+        "privacy": "Уведомление за поверителност"
+      }
+    },
+    "cs": {
+      "link": "zde odstoupit od smlouvy",
+      "question": null,
+      "period": null,
+      "status": "Stav svého odstoupení najdete zde:",
+      "returns": "Vrácení zboží zahájíte zde:",
+      "items": "Položky",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Digitální obsah: souhlasili jste, abychom s dodáním začali před uplynutím lhůty pro odstoupení, a vzali jste na vědomí, že zahájením dodání ztrácíte právo na odstoupení od smlouvy.",
+      "legal": {
+        "terms": "Obchodní podmínky",
+        "withdrawal": "Poučení o odstoupení od smlouvy",
+        "privacy": "Informace o ochraně osobních údajů"
+      }
+    },
+    "da": {
+      "link": "Fortryd aftale",
+      "question": null,
+      "period": null,
+      "status": "Se status for din fortrydelse her:",
+      "returns": "Start din returnering her:",
+      "items": "Varer",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Digitalt indhold: Du har givet samtykke til, at vi begynder leveringen, før fortrydelsesfristen udløber, og anerkendt, at du mister din fortrydelsesret, når leveringen er begyndt.",
+      "legal": {
+        "terms": "Handelsbetingelser",
+        "withdrawal": "Fortrydelsesvilkår",
+        "privacy": "Privatlivspolitik"
+      }
+    },
+    "el": {
+      "link": "Πατήστε εδώ για υπαναχώρηση",
+      "question": null,
+      "period": null,
+      "status": "Δείτε την κατάσταση της υπαναχώρησής σας εδώ:",
+      "returns": "Ξεκινήστε την επιστροφή σας εδώ:",
+      "items": "Είδη",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Ψηφιακό περιεχόμενο: συναινέσατε να ξεκινήσουμε την παροχή πριν από τη λήξη της προθεσμίας υπαναχώρησης και αναγνωρίσατε ότι χάνετε το δικαίωμα υπαναχώρησης μόλις ξεκινήσει η παροχή.",
+      "legal": {
+        "terms": "Όροι και προϋποθέσεις",
+        "withdrawal": "Πολιτική υπαναχώρησης",
+        "privacy": "Ενημέρωση απορρήτου"
+      }
+    },
+    "es": {
+      "link": "desistir del contrato aquí",
+      "question": null,
+      "period": null,
+      "status": "Consulte el estado de su desistimiento aquí:",
+      "returns": "Inicie su devolución aquí:",
+      "items": "Artículos",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Contenido digital: usted dio su consentimiento para que comencemos el suministro antes de que finalice el plazo de desistimiento y reconoció que pierde su derecho de desistimiento una vez iniciado el suministro.",
+      "legal": {
+        "terms": "Condiciones generales",
+        "withdrawal": "Política de desistimiento",
+        "privacy": "Política de privacidad"
+      }
+    },
+    "et": {
+      "link": "Taganen lepingust",
+      "question": null,
+      "period": null,
+      "status": "Vaadake oma taganemise olekut siit:",
+      "returns": "Alustage tagastamist siit:",
+      "items": "Tooted",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Digitaalne sisu: nõustusite, et alustame üleandmist enne taganemistähtaja lõppu, ja kinnitasite, et kaotate taganemisõiguse, kui üleandmine on alanud.",
+      "legal": {
+        "terms": "Müügitingimused",
+        "withdrawal": "Taganemisõiguse teave",
+        "privacy": "Privaatsusteade"
+      }
+    },
+    "fi": {
+      "link": "Peruuta sopimus tästä",
+      "question": null,
+      "period": null,
+      "status": "Katso peruutuksesi tila täältä:",
+      "returns": "Aloita palautus täältä:",
+      "items": "Tuotteet",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Digitaalinen sisältö: annoit suostumuksesi siihen, että toimittaminen alkaa ennen peruuttamisajan päättymistä, ja vahvistit ymmärtäväsi, että menetät peruuttamisoikeutesi, kun toimittaminen on alkanut.",
+      "legal": {
+        "terms": "Toimitusehdot",
+        "withdrawal": "Peruutusoikeus",
+        "privacy": "Tietosuojaseloste"
+      }
+    },
+    "ga": {
+      "link": "tarraing siar ón gconradh anseo",
+      "question": null,
+      "period": null,
+      "status": "Féach stádas do tharraingthe siar anseo:",
+      "returns": "Cuir tús le do thabhairt ar ais anseo:",
+      "items": "Earraí",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Ábhar digiteach: thoiligh tú go dtosóimis ar an soláthar sula dtagann deireadh leis an tréimhse tarraingthe siar, agus d'admhaigh tú go gcailleann tú do cheart chun tarraingt siar a luaithe a thosaíonn an soláthar.",
+      "legal": {
+        "terms": "Téarmaí agus coinníollacha",
+        "withdrawal": "Beartas tarraingthe siar",
+        "privacy": "Fógra príobháideachais"
+      }
+    },
+    "hr": {
+      "link": "odustati od ugovora",
+      "question": null,
+      "period": null,
+      "status": "Status svog odustanka pogledajte ovdje:",
+      "returns": "Povrat započnite ovdje:",
+      "items": "Artikli",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Digitalni sadržaj: pristali ste da isporuku započnemo prije isteka roka za odustanak i potvrdili da gubite pravo na odustanak kada isporuka započne.",
+      "legal": {
+        "terms": "Opći uvjeti",
+        "withdrawal": "Pravila o odustanku",
+        "privacy": "Obavijest o privatnosti"
+      }
+    },
+    "hu": {
+      "link": "elállás a szerződéstől",
+      "question": null,
+      "period": null,
+      "status": "Elállása állapotát itt követheti:",
+      "returns": "A visszaküldést itt indíthatja el:",
+      "items": "Termékek",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Digitális tartalom: Ön hozzájárult, hogy a szolgáltatást az elállási határidő lejárta előtt megkezdjük, és tudomásul vette, hogy a szolgáltatás megkezdésével elveszíti az elállási jogát.",
+      "legal": {
+        "terms": "Általános szerződési feltételek",
+        "withdrawal": "Elállási tájékoztató",
+        "privacy": "Adatvédelmi tájékoztató"
+      }
+    },
+    "lt": {
+      "link": "atsisakyti sutarties čia",
+      "question": null,
+      "period": null,
+      "status": "Atsisakymo būseną matysite čia:",
+      "returns": "Grąžinimą pradėkite čia:",
+      "items": "Prekės",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Skaitmeninis turinys: sutikote, kad teikimą pradėtume nepasibaigus sutarties atsisakymo laikotarpiui, ir patvirtinote, kad pradėjus teikti prarandate sutarties atsisakymo teisę.",
+      "legal": {
+        "terms": "Pirkimo taisyklės",
+        "withdrawal": "Atsisakymo taisyklės",
+        "privacy": "Privatumo pranešimas"
+      }
+    },
+    "lv": {
+      "link": "Atteikties no līguma",
+      "question": null,
+      "period": null,
+      "status": "Sava atteikuma statusu skatiet šeit:",
+      "returns": "Sāciet atpakaļ nosūtīšanu šeit:",
+      "items": "Preces",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Digitālais saturs: jūs piekritāt, ka piegādi sākam pirms atteikuma termiņa beigām, un apliecinājāt, ka zaudējat atteikuma tiesības, tiklīdz piegāde ir sākusies.",
+      "legal": {
+        "terms": "Lietošanas noteikumi",
+        "withdrawal": "Atteikuma tiesības",
+        "privacy": "Privātuma paziņojums"
+      }
+    },
+    "mt": {
+      "link": "irtira mill-kuntratt hawnhekk",
+      "question": null,
+      "period": null,
+      "status": "Ara l-istatus tar-reċess tiegħek hawn:",
+      "returns": "Ibda r-ritorn tiegħek hawn:",
+      "items": "Oġġetti",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Kontenut diġitali: qbilt li nibdew il-forniment qabel ma jintemm il-perjodu ta' reċess, u rrikonoxxejt li titlef id-dritt ta' reċess tiegħek ladarba jibda l-forniment.",
+      "legal": {
+        "terms": "Termini u kundizzjonijiet",
+        "withdrawal": "Politika tar-reċess",
+        "privacy": "Avviż ta' privatezza"
+      }
+    },
+    "pl": {
+      "link": "odstąp od umowy tutaj",
+      "question": null,
+      "period": null,
+      "status": "Status odstąpienia od umowy sprawdzisz tutaj:",
+      "returns": "Zwrot rozpoczniesz tutaj:",
+      "items": "Produkty",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Treści cyfrowe: wyraziłeś zgodę na rozpoczęcie dostarczania przed upływem terminu do odstąpienia od umowy i przyjąłeś do wiadomości, że z chwilą rozpoczęcia dostarczania tracisz prawo odstąpienia od umowy.",
+      "legal": {
+        "terms": "Regulamin",
+        "withdrawal": "Pouczenie o odstąpieniu od umowy",
+        "privacy": "Polityka prywatności"
+      }
+    },
+    "pt": {
+      "link": "retrate-se do contrato aqui",
+      "question": null,
+      "period": null,
+      "status": "Veja o estado da sua retratação aqui:",
+      "returns": "Inicie a sua devolução aqui:",
+      "items": "Artigos",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Conteúdo digital: deu o seu consentimento para que iniciemos o fornecimento antes do fim do prazo de retratação e reconheceu que perde o direito de retratação assim que o fornecimento tiver início.",
+      "legal": {
+        "terms": "Termos e condições",
+        "withdrawal": "Política de retratação",
+        "privacy": "Aviso de privacidade"
+      }
+    },
+    "ro": {
+      "link": "retrageți-vă din contract aici",
+      "question": null,
+      "period": null,
+      "status": "Vedeți stadiul retragerii dumneavoastră aici:",
+      "returns": "Începeți returnarea aici:",
+      "items": "Produse",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Conținut digital: v-ați exprimat acordul ca furnizarea să înceapă înainte de expirarea perioadei de retragere și ați luat act de faptul că vă pierdeți dreptul de retragere odată ce furnizarea a început.",
+      "legal": {
+        "terms": "Termeni și condiții",
+        "withdrawal": "Politica de retragere",
+        "privacy": "Nota de confidențialitate"
+      }
+    },
+    "sk": {
+      "link": "odstúpiť od zmluvy tu",
+      "question": null,
+      "period": null,
+      "status": "Stav svojho odstúpenia nájdete tu:",
+      "returns": "Vrátenie tovaru začnete tu:",
+      "items": "Položky",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Digitálny obsah: súhlasili ste, aby sme s dodaním začali pred uplynutím lehoty na odstúpenie, a vzali ste na vedomie, že začatím dodania strácate právo na odstúpenie od zmluvy.",
+      "legal": {
+        "terms": "Obchodné podmienky",
+        "withdrawal": "Poučenie o odstúpení od zmluvy",
+        "privacy": "Informácie o ochrane osobných údajov"
+      }
+    },
+    "sl": {
+      "link": "kliknite tukaj za odstop od pogodbe",
+      "question": null,
+      "period": null,
+      "status": "Stanje svojega odstopa si oglejte tukaj:",
+      "returns": "Vračilo začnite tukaj:",
+      "items": "Izdelki",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Digitalna vsebina: soglašali ste, da z dobavo začnemo pred iztekom roka za odstop, in potrdili, da z začetkom dobave izgubite pravico do odstopa od pogodbe.",
+      "legal": {
+        "terms": "Splošni pogoji",
+        "withdrawal": "Pravila o odstopu",
+        "privacy": "Obvestilo o zasebnosti"
+      }
+    },
+    "sv": {
+      "link": "ångra avtalet här",
+      "question": null,
+      "period": null,
+      "status": "Se status för ditt frånträdande här:",
+      "returns": "Starta din retur här:",
+      "items": "Artiklar",
+      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "digital": "Digitalt innehåll: du samtyckte till att vi börjar tillhandahålla det innan ångerfristen har löpt ut och bekräftade att du förlorar din ångerrätt när tillhandahållandet har påbörjats.",
+      "legal": {
+        "terms": "Köpvillkor",
+        "withdrawal": "Ångerrätt",
+        "privacy": "Integritetspolicy"
+      }
     }
   }
 }

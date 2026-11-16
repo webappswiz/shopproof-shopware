@@ -1,0 +1,54 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">Atteikties no līguma</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "Apstiprināt atteikumu"
+    },
+    "shopproof": {
+        "withdrawal": {
+            "accountLink": "Atteikties no līguma",
+            "orderDate": "Pasūtījuma datums",
+            "commentHint": "Viss cits, ko vēlaties pateikt veikalam. Atteikums nav jāpamato.",
+            "periodLaw": "Jūs varat atteikties %days% dienu laikā no pasūtījuma saņemšanas.",
+            "periodLonger": "Šis veikals jums dod %days% dienas no pasūtījuma saņemšanas, lai atteiktos.",
+            "picker": {
+                "legend": "Preces, ko atdodat atpakaļ",
+                "hint": "Atzīmējiet preces, ko atdodat atpakaļ. Neatzīmējiet nevienu, lai atteiktos no visa pasūtījuma.",
+                "looking": "Meklējam jūsu pasūtījuma preces...",
+                "found": "Jūsu pasūtījuma preces ir norādītas zemāk.",
+                "none": "Šī pasūtījuma preces neizdevās parādīt. Aprakstiet tās zemāk vai atstājiet lauku tukšu visam pasūtījumam.",
+                "quantity": "Daudzums",
+                "excluded": "Veikals šo preci ir izslēdzis no atteikuma tiesībām.",
+                "defaultNote": "Ja uzskatāt, ka tas uz jūsu preci neattiecas, varat tomēr nosūtīt atteikumu, un veikals to izskatīs."
+            },
+            "status": {
+                "title": "Jūsu atteikums",
+                "received": "Atteikums saņemts",
+                "return_arrived": "Atpakaļ nosūtītā prece ir veikalā",
+                "refund_sent": "Nauda atmaksāta",
+                "done": "Izdarīts",
+                "open": "Vēl nav",
+                "reference": "Atsauce",
+                "receivedOn": "Saņemts %date%",
+                "notFound": "Mēs neatradām šo atteikumu. Lūdzu, izmantojiet saiti no apstiprinājuma e-pasta vai sazinieties ar veikalu.",
+                "note": "Veikals atjaunina šo lapu. Ja jums ir jautājumi, atbildiet uz apstiprinājuma e-pastu."
+            }
+        },
+        "digital": {
+            "consent": "Es nepārprotami piekrītu, ka digitālā satura piegādi sākat pirms atteikuma termiņa beigām.",
+            "ack": "Es apzinos, ka zaudēju atteikuma tiesības, tiklīdz digitālā satura piegāde ir sākusies."
+        },
+        "safety": {
+            "heading": "Informācija par produkta drošumu",
+            "summary": "Produkta drošums (ražotājs: %name%)",
+            "manufacturer": "Ražotājs",
+            "responsiblePerson": "Atbildīgā persona ES",
+            "identifiers": "Produkta identifikācija",
+            "warnings": "Brīdinājumi un drošuma informācija",
+            "hazardHeading": "Bīstamības marķējums",
+            "hazardStatements": "Bīstamības apzīmējumi",
+            "precautions": "Drošības prasību apzīmējumi"
+        }
+    }
+}

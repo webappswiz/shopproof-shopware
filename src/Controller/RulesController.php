@@ -83,7 +83,16 @@ final class RulesController extends AbstractController
      */
     private function countries(): array
     {
-        $chosen = $this->config->get('ShopproofCompliance.config.countries');
+        return self::chosenCountries($this->config->get('ShopproofCompliance.config.countries'));
+    }
+
+    /**
+     * The launch countries from the setting's value, all five when nothing usable is set.
+     *
+     * @return list<string>
+     */
+    public static function chosenCountries(mixed $chosen): array
+    {
         $chosen = \is_array($chosen) ? $chosen : [];
         $valid = array_values(array_filter(
             array_map(static fn ($code): string => \is_string($code) ? strtoupper($code) : '', $chosen),

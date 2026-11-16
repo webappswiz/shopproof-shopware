@@ -10,6 +10,8 @@
             "accountLink": "Withdraw from contract here",
             "orderDate": "Order date",
             "commentHint": "Anything else you want to tell the shop. You do not need to give a reason for withdrawing.",
+            "periodLaw": "You can withdraw within %days% days of receiving your order.",
+            "periodLonger": "This shop gives you %days% days from receiving your order to withdraw.",
             "picker": {
                 "legend": "Items you are returning",
                 "hint": "Tick the items you are returning. Leave all unticked to withdraw from the whole order.",
@@ -32,6 +34,10 @@
                 "notFound": "We could not find this withdrawal. Please use the link in your receipt email, or contact the shop.",
                 "note": "The shop updates this page. For questions, reply to your receipt email."
             }
+        },
+        "digital": {
+            "consent": "I expressly agree that you start supplying the digital content before the withdrawal period ends.",
+            "ack": "I acknowledge that I lose my right of withdrawal once the supply of the digital content has started."
         },
         "safety": {
             "heading": "Product safety information",

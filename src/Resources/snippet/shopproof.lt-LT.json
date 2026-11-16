@@ -1,0 +1,54 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">atsisakyti sutarties čia</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "patvirtinti sutarties atsisakymą"
+    },
+    "shopproof": {
+        "withdrawal": {
+            "accountLink": "atsisakyti sutarties čia",
+            "orderDate": "Užsakymo data",
+            "commentHint": "Viskas, ką dar norite pranešti parduotuvei. Atsisakymo pagrįsti nereikia.",
+            "periodLaw": "Sutarties galite atsisakyti per %days% d. nuo užsakymo gavimo.",
+            "periodLonger": "Ši parduotuvė suteikia jums %days% d. nuo užsakymo gavimo sutarties atsisakyti.",
+            "picker": {
+                "legend": "Grąžinamos prekės",
+                "hint": "Pažymėkite grąžinamas prekes. Nieko nepažymėję atsisakysite viso užsakymo.",
+                "looking": "Ieškome jūsų užsakymo prekių...",
+                "found": "Jūsų užsakymo prekės nurodytos žemiau.",
+                "none": "Šio užsakymo prekių parodyti nepavyko. Aprašykite jas žemiau arba palikite lauką tuščią, jei tai visas užsakymas.",
+                "quantity": "Kiekis",
+                "excluded": "Parduotuvė šiai prekei atsisakymo teisės netaiko.",
+                "defaultNote": "Jei manote, kad tai netinka jūsų prekei, vis tiek galite išsiųsti atsisakymą, ir parduotuvė jį peržiūrės."
+            },
+            "status": {
+                "title": "Jūsų atsisakymas",
+                "received": "Atsisakymas gautas",
+                "return_arrived": "Grąžinta prekė pasiekė parduotuvę",
+                "refund_sent": "Pinigai grąžinti",
+                "done": "Atlikta",
+                "open": "Dar ne",
+                "reference": "Nuorodos numeris",
+                "receivedOn": "Gauta %date%",
+                "notFound": "Šio atsisakymo neradome. Naudokite nuorodą iš patvirtinimo el. laiško arba susisiekite su parduotuve.",
+                "note": "Parduotuvė atnaujina šį puslapį. Kilus klausimų, atsakykite į patvirtinimo el. laišką."
+            }
+        },
+        "digital": {
+            "consent": "Aiškiai sutinku, kad skaitmeninio turinio teikimą pradėtumėte nepasibaigus sutarties atsisakymo laikotarpiui.",
+            "ack": "Patvirtinu, kad pradėjus teikti skaitmeninį turinį prarandu sutarties atsisakymo teisę."
+        },
+        "safety": {
+            "heading": "Informacija apie gaminio saugą",
+            "summary": "Gaminio sauga (gamintojas: %name%)",
+            "manufacturer": "Gamintojas",
+            "responsiblePerson": "Atsakingas asmuo ES",
+            "identifiers": "Gaminio identifikavimas",
+            "warnings": "Įspėjimai ir saugos informacija",
+            "hazardHeading": "Pavojų ženklinimas",
+            "hazardStatements": "Pavojingumo frazės",
+            "precautions": "Atsargumo frazės"
+        }
+    }
+}

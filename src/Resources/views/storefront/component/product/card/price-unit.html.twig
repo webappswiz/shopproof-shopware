@@ -1,0 +1,28 @@
+{% sw_extends '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
+
+{# Listings: the bottle deposit right below the price, as on the product page; and the same tax
+   line words as the product page where the listing shows Shopware's tax line. #}
+{% block component_product_box_price %}
+    {{ parent() }}
+    {% block shopproof_product_box_deposit %}
+        {% set shopproofDeposit = shopproof_deposit_note(product, context) %}
+        {% if shopproofDeposit %}
+            <p class="shopproof-deposit small mb-0">{{ shopproofDeposit }}</p>
+        {% endif %}
+    {% endblock %}
+{% endblock %}
+
+{% block component_product_box_price_tax_info %}
+    {% set shopproofTaxLine = shopproof_price_tax_line(product, context) %}
+    {% if shopproofTaxLine %}
+        <button class="product-price-tax-link btn btn-link-inline fs-6"
+                type="button"
+                data-ajax-modal="true"
+                data-url="{{ path('frontend.cms.page', { id: config('core.basicInformation.shippingPaymentInfoPage') }) }}"
+                aria-haspopup="dialog">
+            {{ shopproofTaxLine }}
+        </button>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

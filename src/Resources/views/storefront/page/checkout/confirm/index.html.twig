@@ -1,0 +1,65 @@
+{% sw_extends '@Storefront/storefront/page/checkout/confirm/index.html.twig' %}
+
+{#
+    Digital content consent (Art. 16(m) of Directive 2011/83/EU), when the merchant turned it on:
+    Shopware's one box for downloads becomes two, in the storefront language, as in the WooCommerce
+    plugin. The first keeps Shopware's own field, so Shopware still requires it; the plugin requires
+    the second and saves both on the order.
+#}
+{% block page_checkout_confirm_revocation_control %}
+    {% if page.showRevocation() and shopproof_digital_consent(context ?? null) %}
+        <div class="form-check shopproof-digital-consent">
+            <input type="checkbox"
+                   class="checkout-confirm-revocation-checkbox form-check-input{% if formViolations.getViolations('/revocation') is not empty %} is-invalid{% endif %}"
+                   required="required"
+                   id="revocation"
+                   form="confirmOrderForm"
+                   name="revocation">
+            <label for="revocation" class="checkout-confirm-revocation-label custom-control-label">
+                {{ 'shopproof.digital.consent'|trans|sw_sanitize }}
+            </label>
+        </div>
+        <div class="form-check shopproof-digital-ack">
+            <input type="checkbox"
+                   class="form-check-input{% if formViolations.getViolations('/shopproofDigitalAck') is not empty %} is-invalid{% endif %}"
+                   required="required"
+                   id="shopproofDigitalAck"
+                   form="confirmOrderForm"
+                   name="shopproofDigitalAck">
+            <label for="shopproofDigitalAck" class="custom-control-label">
+                {{ 'shopproof.digital.ack'|trans|sw_sanitize }}
+            </label>
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{# The checkout boxes the shop chose (withdrawal policy, privacy notice, its own), right below
+   Shopware's own terms checkbox and with the same markup, so they look like it in every theme.
+   Each is required in the browser and on the server; the policy links open the page in a window,
+   as Shopware's terms link does. #}
+{% block page_checkout_confirm_tos_control %}
+    {{ parent() }}
+    {% block shopproof_checkout_boxes %}
+        {% for box in shopproof_checkout_boxes(page.cart, context) %}
+            {% set shopproofViolation = formViolations ? formViolations.getViolations('/' ~ box.field) : [] %}
+            <div class="form-check shopproof-check">
+                <input type="checkbox"
+                       class="form-check-input{% if shopproofViolation is not empty %} is-invalid{% endif %}"
+                       required="required"
+                       id="{{ box.field }}"
+                       form="confirmOrderForm"
+                       name="{{ box.field }}"
+                       value="1"
+                       {% if shopproofViolation is not empty %}aria-invalid="true" aria-describedby="{{ box.field }}-error"{% endif %}>
+                <label for="{{ box.field }}" class="custom-control-label">
+                    {{ box.before }}{% if box.link %}<button type="button" class="btn btn-link-inline" aria-haspopup="dialog" data-ajax-modal="true" data-url="{{ path('frontend.cms.page', { id: box.page }) }}">{{ box.link }}</button>{% endif %}{{ box.after }}
+                </label>
+                {% if shopproofViolation is not empty %}
+                    <div class="invalid-feedback d-block" id="{{ box.field }}-error">{{ shopproof_check_error(context) }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endblock %}
+{% endblock %}

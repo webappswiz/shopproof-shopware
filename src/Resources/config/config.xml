@@ -115,9 +115,25 @@
             <name>orderEmailWithdrawalLine</name>
             <label>Add the withdrawal link to the order confirmation and shipping emails</label>
             <label lang="de-DE">Den Widerrufslink in die Bestellbestätigung und die Versand-E-Mails einfügen</label>
-            <helpText>One line at the very end of the email, after your contact details: the button wording, then "Changed your mind? You can withdraw within 14 days.", both linking to the page of Shopware's withdrawal button (Settings > Basic information). Only when that button is on and its page is set. Shown in English, German, French, Italian and Dutch emails.</helpText>
-            <helpText lang="de-DE">Eine Zeile ganz am Ende der E-Mail, nach Ihren Kontaktangaben: die Button-Beschriftung, dann „Sie haben es sich anders überlegt? Sie können innerhalb von 14 Tagen widerrufen.“, beides verlinkt auf die Seite des Shopware-Widerrufsbuttons (Einstellungen > Stammdaten). Nur wenn dieser Button an ist und seine Seite gesetzt ist. In englischen, deutschen, französischen, italienischen und niederländischen E-Mails.</helpText>
+            <helpText>One line at the very end of the email, after your contact details: the button wording, then "Changed your mind? You can withdraw within 14 days.", both linking to the page of Shopware's withdrawal button (Settings > Basic information). Only when that button is on and its page is set. In all 24 official EU languages; in languages other than English, German, French, Italian and Dutch the line is the button wording alone.</helpText>
+            <helpText lang="de-DE">Eine Zeile ganz am Ende der E-Mail, nach Ihren Kontaktangaben: die Button-Beschriftung, dann „Sie haben es sich anders überlegt? Sie können innerhalb von 14 Tagen widerrufen.“, beides verlinkt auf die Seite des Shopware-Widerrufsbuttons (Einstellungen > Stammdaten). Nur wenn dieser Button an ist und seine Seite gesetzt ist. In allen 24 EU-Amtssprachen; außer auf Englisch, Deutsch, Französisch, Italienisch und Niederländisch steht dort nur die Button-Beschriftung.</helpText>
             <defaultValue>true</defaultValue>
+        </input-field>
+        <input-field type="bool">
+            <name>orderEmailLegalLinks</name>
+            <label>Add links to your legal pages to the order confirmation email</label>
+            <label lang="de-DE">Links zu Ihren Rechtstexten in die Bestellbestätigung einfügen</label>
+            <helpText>One small line just above the withdrawal line: "Terms and conditions | Withdrawal policy | Privacy notice", linking to the pages set under Settings > Basic information. Pages that are not set there are left out.</helpText>
+            <helpText lang="de-DE">Eine kleine Zeile direkt über der Widerrufszeile: „AGB | Widerrufsbelehrung | Datenschutzerklärung“, verlinkt auf die Seiten unter Einstellungen > Stammdaten. Seiten, die dort nicht gesetzt sind, fehlen.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+        <input-field type="bool">
+            <name>modelFormOnPolicyPage</name>
+            <label>Show the EU model withdrawal form at the end of your withdrawal policy page</label>
+            <label lang="de-DE">Das EU-Muster-Widerrufsformular am Ende Ihrer Widerrufsbelehrung zeigen</label>
+            <helpText>The official text (Directive 2011/83/EU, Annex I(B)) in the storefront language, with your company name, address and email from Settings > Basic information filled in. It goes below the page set there as the revocation page, also in the pop-up at checkout. Leave this off when your legal texts already contain the form.</helpText>
+            <helpText lang="de-DE">Der amtliche Text (Richtlinie 2011/83/EU, Anhang I Teil B) in der Sprache des Shops, mit Firmenname, Anschrift und E-Mail aus Einstellungen > Stammdaten ausgefüllt. Er steht unter der dort als Widerrufsbelehrung gesetzten Seite, auch im Fenster an der Kasse. Lassen Sie das aus, wenn Ihre Rechtstexte das Formular schon enthalten.</helpText>
+            <defaultValue>false</defaultValue>
         </input-field>
         <input-field type="int">
             <name>withdrawalDays</name>
@@ -234,6 +250,18 @@
         </input-field>
     </card>
     <card>
+        <title>Digital content</title>
+        <title lang="de-DE">Digitale Inhalte</title>
+        <input-field type="bool">
+            <name>digitalConsent</name>
+            <label>Two consent boxes at checkout for downloads</label>
+            <label lang="de-DE">Zwei Zustimmungsfelder an der Kasse für Downloads</label>
+            <helpText>For carts with a digital product, Shopware's one box becomes two, in the shopper's language: consent that you start the download before the withdrawal period ends, and that the shopper then loses the right of withdrawal (Art. 16(m) of Directive 2011/83/EU). Both are saved on the order with the time (Shopproof field on the order) and repeated in the order confirmation.</helpText>
+            <helpText lang="de-DE">Bei Warenkörben mit einem digitalen Produkt wird aus dem einen Feld von Shopware zwei, in der Sprache der Kunden: die Zustimmung, dass Sie vor Ablauf der Widerrufsfrist mit dem Download beginnen, und die Bestätigung, dass die Kunden damit ihr Widerrufsrecht verlieren (Art. 16 lit. m der Richtlinie 2011/83/EU). Beides wird mit Zeitpunkt an der Bestellung gespeichert (Shopproof-Feld der Bestellung) und in der Bestellbestätigung wiederholt.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+    </card>
+    <card>
         <title>Returns tool</title>
         <title lang="de-DE">Retourentool</title>
         <input-field type="url">
@@ -325,6 +353,178 @@
             <helpText lang="de-DE">Standard 730 Tage (2 Jahre). 0 bewahrt alles auf. Das Protokoll bleibt in der Datenbank Ihres Shops, enthält keine Kundennamen, E-Mail-Adressen oder Bestellnummern und vermerkt jede Änderung dieser Einstellung.</helpText>
             <defaultValue>730</defaultValue>
             <min>0</min>
+        </input-field>
+    </card>
+    <card>
+        <title>Price notes</title>
+        <title lang="de-DE">Preisangaben</title>
+        <input-field type="single-select">
+            <name>priceNoteTax</name>
+            <label>VAT words under the price</label>
+            <label lang="de-DE">MwSt.-Hinweis unter dem Preis</label>
+            <helpText>Shopware already shows "Prices incl. VAT plus shipping costs" with a link to your shipping page, the delivery time and the unit price. Pick the small business scheme only when you charge no VAT (for example § 19 UStG in Germany): the line then says "No VAT shown: small business scheme". Products marked "Margin scheme" in "Shopproof: price, deposit and cart notes" say "Margin scheme: VAT included but not shown separately". Technical help, not legal advice.</helpText>
+            <helpText lang="de-DE">Shopware zeigt bereits „Preise inkl. MwSt. zzgl. Versandkosten“ mit einem Link auf Ihre Versandseite, die Lieferzeit und den Grundpreis. Wählen Sie die Kleinunternehmerregelung nur, wenn Sie keine MwSt. berechnen (zum Beispiel § 19 UStG): die Zeile sagt dann „Kein Ausweis der MwSt.: Kleinunternehmerregelung“. Produkte mit „Differenzbesteuerung“ in „Shopproof: Preis-, Pfand- und Warenkorbhinweise“ sagen „Differenzbesteuert: MwSt. enthalten, aber nicht ausgewiesen“. Technische Hilfe, keine Rechtsberatung.</helpText>
+            <defaultValue>shopware</defaultValue>
+            <options>
+                <option><id>shopware</id><name>Shopware's own words (default)</name><name lang="de-DE">Die Worte von Shopware (Standard)</name></option>
+                <option><id>small</id><name>Small business scheme, no VAT shown</name><name lang="de-DE">Kleinunternehmerregelung, keine MwSt. ausgewiesen</name></option>
+            </options>
+        </input-field>
+        <input-field type="text">
+            <name>smallBusinessText</name>
+            <label>Your own small business words (optional)</label>
+            <label lang="de-DE">Eigene Worte zur Kleinunternehmerregelung (optional)</label>
+            <helpText>Leave empty for "No VAT shown: small business scheme" in the shopper's language. Your own words show in every language.</helpText>
+            <helpText lang="de-DE">Leer lassen für „Kein Ausweis der MwSt.: Kleinunternehmerregelung“ in der Sprache der Kunden. Eigene Worte erscheinen in jeder Sprache.</helpText>
+        </input-field>
+        <input-field type="single-select">
+            <name>priceNoteShipping</name>
+            <label>Shipping words under the price</label>
+            <label lang="de-DE">Versandhinweis unter dem Preis</label>
+            <helpText>Pick "free shipping" only when every order ships free; the line then says "Incl. VAT, free shipping", still linked to your shipping page.</helpText>
+            <helpText lang="de-DE">Wählen Sie „versandkostenfrei“ nur, wenn jede Bestellung kostenlos versendet wird; die Zeile sagt dann „inkl. MwSt., versandkostenfrei“, weiter mit Link auf Ihre Versandseite.</helpText>
+            <defaultValue>shopware</defaultValue>
+            <options>
+                <option><id>shopware</id><name>Plus shipping (Shopware's own words, default)</name><name lang="de-DE">Zzgl. Versandkosten (die Worte von Shopware, Standard)</name></option>
+                <option><id>free</id><name>Free shipping</name><name lang="de-DE">Versandkostenfrei</name></option>
+            </options>
+        </input-field>
+    </card>
+    <card>
+        <title>Food information</title>
+        <title lang="de-DE">Lebensmittelinformationen</title>
+        <input-field type="textarea">
+            <name>foodBusiness</name>
+            <label>Food business name and address</label>
+            <label lang="de-DE">Name und Anschrift des Lebensmittelunternehmers</label>
+            <helpText>For food and drinks only. Enter the details per product in "Shopproof: food information" (Catalogues > Products > Specifications, custom fields). They show in a "Food information" tab next to the description, in the language of the page; products with nothing filled in show no tab. This business is used for products that do not name their own. Technical help, not legal advice: check the details with your producer.</helpText>
+            <helpText lang="de-DE">Nur für Lebensmittel und Getränke. Die Angaben je Produkt tragen Sie unter „Shopproof: Lebensmittelinformationen“ ein (Kataloge > Produkte > Eigenschaften, Zusatzfelder). Sie erscheinen in einem Tab „Lebensmittelinformationen“ neben der Beschreibung, in der Sprache der Seite; Produkte ohne Angaben zeigen keinen Tab. Dieser Unternehmer gilt für Produkte ohne eigenen. Technische Hilfe, keine Rechtsberatung: prüfen Sie die Angaben mit Ihrem Hersteller.</helpText>
+        </input-field>
+    </card>
+    <card>
+        <title>Bottle deposit</title>
+        <title lang="de-DE">Pfand</title>
+        <input-field type="textarea">
+            <name>depositTypes</name>
+            <label>Your deposit types, one per line: code | name | amount | kind | country</label>
+            <label lang="de-DE">Ihre Pfandarten, eine pro Zeile: Code | Name | Betrag | Art | Land</label>
+            <helpText>For example "de-single | Einweg | 0.25 | single | DE" and "de-crate | Kasten | 1.50 | crate | DE". Kind is single, reusable or crate; the amount is what consumers pay, in your default currency. Then name the codes on each product in "Shopproof: price, deposit and cart notes", with the number of bottles or cans. Shoppers whose shipping country is the type's country see "plus EUR 0.25 deposit" right below the price, and the cart adds the deposit as its own line "Deposit". Shoppers in other countries see nothing. Technical help, not legal advice.</helpText>
+            <helpText lang="de-DE">Zum Beispiel „de-einweg | Einweg | 0.25 | einweg | DE“ und „de-kasten | Kasten | 1.50 | kasten | DE“. Die Art ist einweg, mehrweg oder kasten; der Betrag ist der, den Verbraucher zahlen, in Ihrer Standardwährung. Dann tragen Sie die Codes bei jedem Produkt unter „Shopproof: Preis-, Pfand- und Warenkorbhinweise“ ein, mit der Zahl der Flaschen oder Dosen. Kunden mit diesem Lieferland sehen „zzgl. 0,25 € Pfand“ direkt unter dem Preis, und der Warenkorb fügt das Pfand als eigene Zeile „Pfand“ hinzu. Kunden in anderen Ländern sehen nichts. Technische Hilfe, keine Rechtsberatung.</helpText>
+        </input-field>
+        <input-field type="bool">
+            <name>depositInPrice</name>
+            <label>My prices already include the deposit</label>
+            <label lang="de-DE">Meine Preise enthalten das Pfand bereits</label>
+            <helpText>Then no deposit line is added; the note says "Included deposit: EUR 0.25" and the cart summary shows the included deposit.</helpText>
+            <helpText lang="de-DE">Dann kommt keine Pfandzeile dazu; der Hinweis sagt „Enthaltenes Pfand: 0,25 €“ und die Warenkorb-Übersicht zeigt das enthaltene Pfand.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+        <input-field type="single-select">
+            <name>depositTax</name>
+            <label>VAT on the deposit</label>
+            <label lang="de-DE">MwSt. auf das Pfand</label>
+            <defaultValue>product</defaultValue>
+            <options>
+                <option><id>product</id><name>Same VAT as the drinks (default)</name><name lang="de-DE">Gleiche MwSt. wie die Getränke (Standard)</name></option>
+                <option><id>none</id><name>No VAT</name><name lang="de-DE">Keine MwSt.</name></option>
+            </options>
+        </input-field>
+    </card>
+    <card>
+        <title>Cart and checkout</title>
+        <title lang="de-DE">Warenkorb und Kasse</title>
+        <input-field type="bool">
+            <name>cartDescriptions</name>
+            <label>Show each product's short cart description under its name</label>
+            <label lang="de-DE">Die kurze Warenkorb-Beschreibung jedes Produkts unter seinem Namen zeigen</label>
+            <helpText>In the cart, at checkout, in the order and the customer's order history. Products without a "Description in the cart" (Shopproof: price, deposit and cart notes) show nothing extra.</helpText>
+            <helpText lang="de-DE">Im Warenkorb, an der Kasse, in der Bestellung und im Bestellverlauf der Kunden. Produkte ohne „Beschreibung im Warenkorb“ (Shopproof: Preis-, Pfand- und Warenkorbhinweise) zeigen nichts zusätzlich.</helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
+        <input-field type="multi-select">
+            <name>checkoutBoxes</name>
+            <label>Tick boxes on the order confirmation page</label>
+            <label lang="de-DE">Häkchen auf der Seite „Bestellung abschließen“</label>
+            <helpText>Each box sits right below Shopware's own terms checkbox (Settings > Checkout), and the order cannot be placed until it is ticked. Which boxes were ticked, and when, is saved on the order (custom field "Ticked at checkout"). The policy boxes link Shopware's withdrawal and privacy pages (Settings > Basic information) and show only once those are set. Ask yourself whether you need a box at all: Shopware already shows your withdrawal policy on that page. Technical help, not legal advice.</helpText>
+            <helpText lang="de-DE">Jedes Häkchen steht direkt unter dem eigenen AGB-Häkchen von Shopware (Einstellungen > Checkout), und die Bestellung geht erst ab, wenn es gesetzt ist. Welche Häkchen gesetzt wurden und wann, wird an der Bestellung gespeichert (Zusatzfeld „An der Kasse angehakt“). Die Häkchen zu Widerruf und Datenschutz verlinken die Widerrufs- und Datenschutzseite von Shopware (Einstellungen > Stammdaten) und erscheinen erst, wenn diese gesetzt sind. Prüfen Sie, ob Sie ein Häkchen überhaupt brauchen: Shopware zeigt die Widerrufsbelehrung auf dieser Seite bereits. Technische Hilfe, keine Rechtsberatung.</helpText>
+            <defaultValue>[]</defaultValue>
+            <options>
+                <option><id>withdrawal</id><name>I have read the withdrawal policy</name><name lang="de-DE">Ich habe die Widerrufsbelehrung gelesen</name></option>
+                <option><id>privacy</id><name>I have read the privacy notice</name><name lang="de-DE">Ich habe die Datenschutzerklärung gelesen</name></option>
+                <option><id>custom1</id><name>Your own box 1</name><name lang="de-DE">Eigenes Häkchen 1</name></option>
+                <option><id>custom2</id><name>Your own box 2</name><name lang="de-DE">Eigenes Häkchen 2</name></option>
+                <option><id>custom3</id><name>Your own box 3</name><name lang="de-DE">Eigenes Häkchen 3</name></option>
+            </options>
+        </input-field>
+        <input-field type="text">
+            <name>checkoutBox1</name>
+            <label>Own box 1: text</label>
+            <label lang="de-DE">Eigenes Häkchen 1: Text</label>
+            <helpText>For example "I confirm that I am at least 18 years old." Shown as you type it, in every language.</helpText>
+            <helpText lang="de-DE">Zum Beispiel „Ich bestätige, dass ich mindestens 18 Jahre alt bin.“ Erscheint so, wie Sie es schreiben, in jeder Sprache.</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>checkoutBox1Tag</name>
+            <label>Own box 1: only when the cart has a product with this tag (optional)</label>
+            <label lang="de-DE">Eigenes Häkchen 1: nur, wenn ein Produkt mit diesem Tag im Warenkorb ist (optional)</label>
+        </input-field>
+        <input-field type="text">
+            <name>checkoutBox2</name>
+            <label>Own box 2: text</label>
+            <label lang="de-DE">Eigenes Häkchen 2: Text</label>
+        </input-field>
+        <input-field type="text">
+            <name>checkoutBox2Tag</name>
+            <label>Own box 2: only when the cart has a product with this tag (optional)</label>
+            <label lang="de-DE">Eigenes Häkchen 2: nur, wenn ein Produkt mit diesem Tag im Warenkorb ist (optional)</label>
+        </input-field>
+        <input-field type="text">
+            <name>checkoutBox3</name>
+            <label>Own box 3: text</label>
+            <label lang="de-DE">Eigenes Häkchen 3: Text</label>
+        </input-field>
+        <input-field type="text">
+            <name>checkoutBox3Tag</name>
+            <label>Own box 3: only when the cart has a product with this tag (optional)</label>
+            <label lang="de-DE">Eigenes Häkchen 3: nur, wenn ein Produkt mit diesem Tag im Warenkorb ist (optional)</label>
+        </input-field>
+    </card>
+    <card>
+        <title>Dispute resolution statement</title>
+        <title lang="de-DE">Hinweis zur Streitbeilegung</title>
+        <input-field type="single-select">
+            <name>disputeChoice</name>
+            <label>Do you take part in proceedings before a consumer arbitration board?</label>
+            <label lang="de-DE">Nehmen Sie an Verfahren vor einer Verbraucherschlichtungsstelle teil?</label>
+            <helpText>In Germany § 36 VSBG asks shops with terms or a website to say so (shops with more than 10 staff; similar duties elsewhere in the EU since the EU online dispute platform closed on 20 July 2025). The Shopproof page then shows the statement in each language, to paste into your terms and imprint pages. Shopproof never adds it to pages by itself, as it would show on every page. Technical help, not legal advice.</helpText>
+            <helpText lang="de-DE">In Deutschland verlangt § 36 VSBG das von Shops mit AGB oder Website (Shops mit mehr als 10 Beschäftigten; ähnliche Pflichten in anderen EU-Ländern, seit die EU-Streitbeilegungsplattform am 20. Juli 2025 geschlossen hat). Die Shopproof-Seite zeigt dann den Hinweis in jeder Sprache, zum Einfügen in Ihre AGB und Ihr Impressum. Shopproof fügt ihn nie selbst in Seiten ein, weil er sonst auf jeder Seite stünde. Technische Hilfe, keine Rechtsberatung.</helpText>
+            <defaultValue>notSet</defaultValue>
+            <options>
+                <option><id>notSet</id><name>Not chosen yet (nothing to paste)</name><name lang="de-DE">Noch nicht gewählt (nichts zum Einfügen)</name></option>
+                <option><id>no</id><name>Not willing or obliged</name><name lang="de-DE">Weder bereit noch verpflichtet</name></option>
+                <option><id>willing</id><name>Willing, before the board below</name><name lang="de-DE">Bereit, vor der Stelle unten</name></option>
+                <option><id>obliged</id><name>Obliged, before the board below</name><name lang="de-DE">Verpflichtet, vor der Stelle unten</name></option>
+            </options>
+        </input-field>
+        <input-field type="text">
+            <name>disputeBoard</name>
+            <label>Name and address of the arbitration board</label>
+            <label lang="de-DE">Name und Anschrift der Schlichtungsstelle</label>
+            <helpText>For example "Universalschlichtungsstelle des Bundes, Zentrum für Schlichtung e.V., Straßburger Straße 8, 77694 Kehl am Rhein".</helpText>
+            <helpText lang="de-DE">Zum Beispiel „Universalschlichtungsstelle des Bundes, Zentrum für Schlichtung e.V., Straßburger Straße 8, 77694 Kehl am Rhein“.</helpText>
+        </input-field>
+        <input-field type="url">
+            <name>disputeUrl</name>
+            <label>Website of the arbitration board (https)</label>
+            <label lang="de-DE">Website der Schlichtungsstelle (https)</label>
+        </input-field>
+        <input-field type="bool">
+            <name>disputePasted</name>
+            <label>I added the statement to my terms and imprint pages</label>
+            <label lang="de-DE">Ich habe den Hinweis in meine AGB und mein Impressum eingefügt</label>
+            <helpText>The setup check looks for the statement on Shopware's terms and imprint pages (Settings > Basic information) itself. Tick this when it sits elsewhere, for example in a text the check cannot read.</helpText>
+            <helpText lang="de-DE">Die Einrichtungsprüfung sucht den Hinweis selbst auf den AGB- und Impressumsseiten von Shopware (Einstellungen > Stammdaten). Setzen Sie das Häkchen, wenn er woanders steht, zum Beispiel in einem Text, den die Prüfung nicht lesen kann.</helpText>
+            <defaultValue>false</defaultValue>
         </input-field>
     </card>
 </config>

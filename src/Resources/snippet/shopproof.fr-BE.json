@@ -10,6 +10,8 @@
             "accountLink": "renoncer au contrat ici",
             "orderDate": "Date de commande",
             "commentHint": "Tout ce que vous souhaitez dire à la boutique. Vous n'avez pas à justifier votre rétractation.",
+            "periodLaw": "Vous pouvez vous rétracter dans un délai de %days% jours à compter de la réception de votre commande.",
+            "periodLonger": "Cette boutique vous laisse %days% jours à compter de la réception de votre commande pour vous rétracter.",
             "picker": {
                 "legend": "Articles concernés",
                 "hint": "Cochez les articles que vous renvoyez. Ne cochez rien pour vous rétracter de toute la commande.",
@@ -32,6 +34,10 @@
                 "notFound": "Nous n'avons pas trouvé cette rétractation. Utilisez le lien de votre accusé de réception ou contactez la boutique.",
                 "note": "La boutique met cette page à jour. Pour toute question, répondez à votre accusé de réception."
             }
+        },
+        "digital": {
+            "consent": "Je consens expressément à ce que la fourniture du contenu numérique commence avant la fin du délai de rétractation.",
+            "ack": "Je reconnais perdre mon droit de rétractation dès le début de la fourniture du contenu numérique."
         },
         "safety": {
             "heading": "Informations sur la sécurité du produit",

@@ -1,0 +1,54 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">tarraing siar ón gconradh anseo</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "dearbhaigh an tarraingt siar"
+    },
+    "shopproof": {
+        "withdrawal": {
+            "accountLink": "tarraing siar ón gconradh anseo",
+            "orderDate": "Dáta an ordaithe",
+            "commentHint": "Aon rud eile is mian leat a insint don siopa. Ní gá duit cúis a thabhairt leis an tarraingt siar.",
+            "periodLaw": "Is féidir leat tarraingt siar laistigh de %days% lá ón uair a fhaigheann tú d'ordú.",
+            "periodLonger": "Tugann an siopa seo %days% lá duit ón uair a fhaigheann tú d'ordú chun tarraingt siar.",
+            "picker": {
+                "legend": "Earraí atá á dtabhairt ar ais agat",
+                "hint": "Cuir tic leis na hearraí atá á dtabhairt ar ais agat. Ná cuir tic le haon cheann chun tarraingt siar ón ordú ar fad.",
+                "looking": "Earraí d'ordaithe á lorg...",
+                "found": "Tá earraí d'ordaithe liostaithe thíos.",
+                "none": "Níorbh fhéidir linn earraí an ordaithe seo a thaispeáint. Déan cur síos orthu thíos, nó fág an réimse folamh don ordú ar fad.",
+                "quantity": "Líon",
+                "excluded": "Eisiata ón gceart chun tarraingt siar ag an siopa.",
+                "defaultNote": "Má cheapann tú go bhfuil sé seo mícheart i gcás d'earra, is féidir leat do tharraingt siar a sheoladh fós, agus seiceálfaidh an siopa í."
+            },
+            "status": {
+                "title": "Do tharraingt siar",
+                "received": "Fuarthas an tarraingt siar",
+                "return_arrived": "Tháinig an t-earra ar ais chuig an siopa",
+                "refund_sent": "Seoladh an aisíocaíocht",
+                "done": "Déanta",
+                "open": "Níl fós",
+                "reference": "Tagairt",
+                "receivedOn": "Fuarthas ar %date%",
+                "notFound": "Níor aimsíomar an tarraingt siar seo. Úsáid an nasc i do ríomhphost admhála, nó déan teagmháil leis an siopa.",
+                "note": "Nuashonraíonn an siopa an leathanach seo. Má tá ceist agat, freagair do ríomhphost admhála."
+            }
+        },
+        "digital": {
+            "consent": "Toilím go sainráite go dtosóidh sibh ar an ábhar digiteach a sholáthar sula dtagann deireadh leis an tréimhse tarraingthe siar.",
+            "ack": "Admhaím go gcaillim mo cheart chun tarraingt siar a luaithe a thosaíonn soláthar an ábhair dhigitigh."
+        },
+        "safety": {
+            "heading": "Faisnéis faoi shábháilteacht an táirge",
+            "summary": "Sábháilteacht an táirge (monaróir: %name%)",
+            "manufacturer": "Monaróir",
+            "responsiblePerson": "Duine freagrach san Aontas",
+            "identifiers": "Sainaithint an táirge",
+            "warnings": "Rabhaidh agus faisnéis sábháilteachta",
+            "hazardHeading": "Lipéadú guaise",
+            "hazardStatements": "Ráitis ghuaise",
+            "precautions": "Ráitis réamhchúraim"
+        }
+    }
+}

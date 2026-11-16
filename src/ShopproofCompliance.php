@@ -4,6 +4,7 @@ namespace Shopproof\Compliance;
 
 use Doctrine\DBAL\Connection;
 use Shopproof\Compliance\Installer\CustomFieldInstaller;
+use Shopproof\Compliance\Installer\ImportExportProfileInstaller;
 use Shopproof\Compliance\Installer\MailTemplateInstaller;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\Plugin;
@@ -30,6 +31,7 @@ class ShopproofCompliance extends Plugin
         parent::install($installContext);
         $this->customFields()?->install($installContext->getContext());
         $this->mailTemplates()?->install();
+        $this->importProfiles()?->install($installContext->getContext());
     }
 
     public function update(UpdateContext $updateContext): void
@@ -37,6 +39,7 @@ class ShopproofCompliance extends Plugin
         parent::update($updateContext);
         $this->customFields()?->install($updateContext->getContext());
         $this->mailTemplates()?->install();
+        $this->importProfiles()?->install($updateContext->getContext());
     }
 
     public function uninstall(UninstallContext $uninstallContext): void
@@ -57,6 +60,7 @@ class ShopproofCompliance extends Plugin
         $customFields?->uninstall($uninstallContext->getContext());
 
         $this->mailTemplates()?->uninstall();
+        $this->importProfiles()?->uninstall($uninstallContext->getContext());
         foreach (self::TABLES as $table) {
             $connection->executeStatement(\sprintf('DROP TABLE IF EXISTS `%s`', $table));
         }
@@ -79,6 +83,13 @@ class ShopproofCompliance extends Plugin
         }
 
         return new CustomFieldInstaller($repository, $connection);
+    }
+
+    private function importProfiles(): ?ImportExportProfileInstaller
+    {
+        $repository = $this->container?->get('import_export_profile.repository');
+
+        return $repository instanceof EntityRepository ? new ImportExportProfileInstaller($repository) : null;
     }
 
     private function mailTemplates(): ?MailTemplateInstaller

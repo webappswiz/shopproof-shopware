@@ -1,0 +1,54 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">kliknite tukaj za odstop od pogodbe</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "potrdi odstop od pogodbe"
+    },
+    "shopproof": {
+        "withdrawal": {
+            "accountLink": "kliknite tukaj za odstop od pogodbe",
+            "orderDate": "Datum naročila",
+            "commentHint": "Karkoli drugega želite sporočiti trgovini. Odstopa vam ni treba utemeljiti.",
+            "periodLaw": "Odstopite lahko v %days% dneh od prejema naročila.",
+            "periodLonger": "Ta trgovina vam za odstop daje %days% dni od prejema naročila.",
+            "picker": {
+                "legend": "Izdelki, ki jih vračate",
+                "hint": "Označite izdelke, ki jih vračate. Če ne označite ničesar, odstopite od celotnega naročila.",
+                "looking": "Iščemo izdelke iz vašega naročila...",
+                "found": "Izdelki iz vašega naročila so navedeni spodaj.",
+                "none": "Izdelkov tega naročila ni bilo mogoče prikazati. Opišite jih spodaj ali pustite polje prazno za celotno naročilo.",
+                "quantity": "Količina",
+                "excluded": "Trgovina je ta izdelek izvzela iz pravice do odstopa.",
+                "defaultNote": "Če menite, da to za vaš izdelek ne velja, lahko odstop vseeno pošljete in trgovina ga bo preverila."
+            },
+            "status": {
+                "title": "Vaš odstop",
+                "received": "Odstop prejet",
+                "return_arrived": "Vračilo je prispelo v trgovino",
+                "refund_sent": "Denar je vrnjen",
+                "done": "Opravljeno",
+                "open": "Še ne",
+                "reference": "Referenčna številka",
+                "receivedOn": "Prejeto %date%",
+                "notFound": "Tega odstopa nismo našli. Uporabite povezavo iz potrditvenega e-poštnega sporočila ali se obrnite na trgovino.",
+                "note": "Trgovina posodablja to stran. Za vprašanja odgovorite na potrditveno e-poštno sporočilo."
+            }
+        },
+        "digital": {
+            "consent": "Izrecno soglašam, da z dobavo digitalne vsebine začnete pred iztekom roka za odstop od pogodbe.",
+            "ack": "Seznanjen sem, da z začetkom dobave digitalne vsebine izgubim pravico do odstopa od pogodbe."
+        },
+        "safety": {
+            "heading": "Informacije o varnosti izdelka",
+            "summary": "Varnost izdelka (proizvajalec: %name%)",
+            "manufacturer": "Proizvajalec",
+            "responsiblePerson": "Odgovorna oseba v EU",
+            "identifiers": "Identifikacija izdelka",
+            "warnings": "Opozorila in varnostne informacije",
+            "hazardHeading": "Označevanje nevarnosti",
+            "hazardStatements": "Stavki o nevarnosti",
+            "precautions": "Previdnostni stavki"
+        }
+    }
+}

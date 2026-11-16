@@ -104,7 +104,7 @@ final class ProofChain
     {
         $out = [];
         foreach ($cells as $cell) {
-            if ($cell !== '' && \in_array($cell[0], ['=', '+', '-', '@'], true)) {
+            if ($cell !== '' && \in_array($cell[0], ['=', '+', '-', '@', "\t", "\r"], true)) {
                 $cell = "'" . $cell;
             }
             $out[] = '"' . str_replace('"', '""', $cell) . '"';

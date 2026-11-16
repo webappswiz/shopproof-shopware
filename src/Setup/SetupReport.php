@@ -39,6 +39,14 @@ final class SetupReport
         'registrationNumbers' => ['', 'These lines of "Your registration numbers" are not shown (no colon, no number, or more than 12):'],
     ];
 
+    private const NOTES = [
+        'unitPrices' => ['', 'These products look sold by weight or volume, but have no content and unit set (Specifications > Measures and packaging), so Shopware shows no unit price:'],
+        'depositTypes' => ['', 'These lines of "Your deposit types" are not used (write them as code | name | amount | kind | country):'],
+        'checkoutPolicyPages' => ['', 'These chosen checkout boxes do not show, because their page is not set in Settings > Basic information:'],
+        'disputeBoard' => ['', 'Your dispute resolution statement names no arbitration board yet, so there is nothing to paste. Enter its name in the Shopproof settings.'],
+        'disputeStatement' => ['The dispute resolution statement is on your terms or imprint page', 'Paste your dispute resolution statement into your terms and imprint pages (or tick that you did in the Shopproof settings):'],
+    ];
+
     private const PARTS = [
         'durability' => 'the durability label',
         'safety' => 'product safety',
@@ -61,7 +69,7 @@ final class SetupReport
     }
 
     /**
-     * @param array{supported: bool, ok: bool, shop: list<array{key: string, ok: bool}>, channels: list<array{id: string, name: string, ok: bool, checks: list<array{key: string, ok: bool, detail?: string}>}>, layouts: list<array{id: string, name: string, ok: bool, missing: list<string>}>, failedRecords: int, products: list<array{key: string, ok: bool}>, manufacturersWithoutDetails: list<array{id: string, name: string}>, hazardProblems: list<array{id: string, name: string, codes: list<array{code: string, reason: string}>}>, registrationBadLines: list<string>} $result
+     * @param array{supported: bool, ok: bool, shop: list<array{key: string, ok: bool}>, channels: list<array{id: string, name: string, ok: bool, checks: list<array{key: string, ok: bool, detail?: string}>}>, layouts: list<array{id: string, name: string, ok: bool, missing: list<string>}>, failedRecords: int, products: list<array{key: string, ok: bool}>, manufacturersWithoutDetails: list<array{id: string, name: string}>, hazardProblems: list<array{id: string, name: string, codes: list<array{code: string, reason: string}>}>, registrationBadLines: list<string>, notes?: list<array{key: string, ok: bool, detail?: string}>, unitPriceGaps?: list<array{id: string, name: string}>, depositBadLines?: list<string>, disputeStatements?: list<string>} $result
      *
      * @return array{code: int, lines: list<string>}
      */
@@ -148,6 +156,31 @@ final class SetupReport
             }
             if ($check['key'] === 'manufacturerDetails' && $manufacturerCount > \count($details)) {
                 $lines[] = \sprintf('  - and %d more', $manufacturerCount - \count($details));
+            }
+        }
+
+        $notes = $result['notes'] ?? [];
+        if ($notes !== []) {
+            $lines[] = '';
+            $lines[] = 'Shop notes';
+        }
+        foreach ($notes as $check) {
+            [$okText, $offText] = self::NOTES[$check['key']] ?? [$check['key'], $check['key']];
+            if ($check['ok']) {
+                $lines[] = '[ok] ' . $okText;
+                continue;
+            }
+            $needsWork = true;
+            $lines[] = '[check] ' . $offText;
+            $details = match ($check['key']) {
+                'unitPrices' => array_map(static fn (array $p): string => $p['name'], $result['unitPriceGaps'] ?? []),
+                'depositTypes' => $result['depositBadLines'] ?? [],
+                'checkoutPolicyPages' => array_map(static fn (string $key): string => $key === 'privacy' ? 'privacy notice (privacy page)' : 'withdrawal policy (revocation page)', explode(', ', $check['detail'] ?? '')),
+                'disputeStatement' => $result['disputeStatements'] ?? [],
+                default => [],
+            };
+            foreach ($details as $detail) {
+                $lines[] = '  - ' . $detail;
             }
         }
 

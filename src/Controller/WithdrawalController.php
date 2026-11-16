@@ -3,6 +3,7 @@
 namespace Shopproof\Compliance\Controller;
 
 use Shopproof\Compliance\Withdrawal\OrderEmailLine;
+use Shopproof\Compliance\Withdrawal\WithdrawalCsv;
 use Shopproof\Compliance\Withdrawal\SetupCheck;
 use Shopproof\Compliance\Withdrawal\SetupFacts;
 use Shopproof\Compliance\Withdrawal\WithdrawalClock;
@@ -16,6 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
 /**
@@ -78,6 +80,37 @@ final class WithdrawalController extends AbstractController
             new \DateTimeZone(\is_string($zone) && \in_array($zone, \DateTimeZone::listIdentifiers(), true) ? $zone : 'UTC'),
             OrderEmailLine::period($this->config->getInt('ShopproofCompliance.config.withdrawalDays'))
         ));
+    }
+
+    /**
+     * Every withdrawal as a CSV file, newest first (the "Export all as CSV" button).
+     */
+    #[Route(
+        path: '/api/_action/shopproof/withdrawals/csv',
+        name: 'api.action.shopproof.withdrawals.csv',
+        defaults: [PlatformRequest::ATTRIBUTE_ACL => ['order:read']],
+        methods: ['GET']
+    )]
+    public function csv(Request $request): StreamedResponse
+    {
+        $lang = WithdrawalCsv::lang((string) $request->query->get('lang', 'en'));
+        $days = OrderEmailLine::period($this->config->getInt('ShopproofCompliance.config.withdrawalDays'));
+        $response = new StreamedResponse(function () use ($lang, $days): void {
+            echo WithdrawalCsv::header($lang);
+            $page = 1;
+            do {
+                $list = $this->store->list($page, 100, '', new \DateTimeZone('UTC'), $days);
+                foreach ($list['items'] as $item) {
+                    echo WithdrawalCsv::row($item, $lang);
+                }
+                ++$page;
+            } while (\count($list['items']) === 100);
+        });
+        $response->headers->set('Content-Type', 'text/csv; charset=utf-8');
+        $response->headers->set('Content-Disposition', 'attachment; filename="shopproof-withdrawals-' . gmdate('Y-m-d') . '.csv"');
+        $response->headers->set('Cache-Control', 'no-store, private');
+
+        return $response;
     }
 
     /**

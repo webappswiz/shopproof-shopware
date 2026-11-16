@@ -1,0 +1,54 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">retrageți-vă din contract aici</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "confirmați retragerea"
+    },
+    "shopproof": {
+        "withdrawal": {
+            "accountLink": "retrageți-vă din contract aici",
+            "orderDate": "Data comenzii",
+            "commentHint": "Orice altceva doriți să comunicați magazinului. Nu trebuie să motivați retragerea.",
+            "periodLaw": "Vă puteți retrage în termen de %days% zile de la primirea comenzii.",
+            "periodLonger": "Acest magazin vă acordă %days% zile de la primirea comenzii pentru a vă retrage.",
+            "picker": {
+                "legend": "Produsele pe care le returnați",
+                "hint": "Bifați produsele pe care le returnați. Nu bifați nimic pentru a vă retrage din întreaga comandă.",
+                "looking": "Căutăm produsele din comanda dumneavoastră...",
+                "found": "Produsele din comanda dumneavoastră sunt afișate mai jos.",
+                "none": "Nu am putut afișa produsele acestei comenzi. Descrieți-le mai jos sau lăsați câmpul gol pentru întreaga comandă.",
+                "quantity": "Cantitate",
+                "excluded": "Exclus de magazin de la dreptul de retragere.",
+                "defaultNote": "Dacă considerați că acest lucru nu este corect pentru produsul dumneavoastră, puteți trimite totuși retragerea, iar magazinul o va verifica."
+            },
+            "status": {
+                "title": "Retragerea dumneavoastră",
+                "received": "Retragere primită",
+                "return_arrived": "Produsul returnat a ajuns la magazin",
+                "refund_sent": "Banii au fost returnați",
+                "done": "Gata",
+                "open": "Încă nu",
+                "reference": "Referință",
+                "receivedOn": "Primită pe %date%",
+                "notFound": "Nu am găsit această retragere. Folosiți linkul din e-mailul de confirmare sau contactați magazinul.",
+                "note": "Magazinul actualizează această pagină. Pentru întrebări, răspundeți la e-mailul de confirmare."
+            }
+        },
+        "digital": {
+            "consent": "Îmi exprim acordul expres ca furnizarea conținutului digital să înceapă înainte de expirarea perioadei de retragere.",
+            "ack": "Iau act de faptul că îmi pierd dreptul de retragere odată ce furnizarea conținutului digital a început."
+        },
+        "safety": {
+            "heading": "Informații privind siguranța produsului",
+            "summary": "Siguranța produsului (producător: %name%)",
+            "manufacturer": "Producător",
+            "responsiblePerson": "Persoana responsabilă în UE",
+            "identifiers": "Identificarea produsului",
+            "warnings": "Avertismente și informații de siguranță",
+            "hazardHeading": "Etichetarea pericolelor",
+            "hazardStatements": "Fraze de pericol",
+            "precautions": "Fraze de precauție"
+        }
+    }
+}

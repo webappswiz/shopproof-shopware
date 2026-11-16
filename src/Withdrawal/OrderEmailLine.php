@@ -19,6 +19,8 @@ final class OrderEmailLine
     public const RETURNS_MARKER = 'shopproof-returns-link';
     public const ITEMS_MARKER = 'shopproof-items';
     public const EXCLUDED_MARKER = 'shopproof-excluded';
+    public const DIGITAL_MARKER = 'shopproof-digital-consent';
+    public const LEGAL_MARKER = 'shopproof-legal-links';
 
     /** @var array<mixed>|null */
     private ?array $data = null;
@@ -36,23 +38,26 @@ final class OrderEmailLine
     }
 
     /**
-     * The words for a language, or null when there is no reviewed wording for it.
+     * The words for a language, or null when there is no wording for it. The question and the
+     * period are null in languages without reviewed words for them: there the line is the link
+     * alone, in the Directive's wording (as the WooCommerce plugin does).
      *
-     * @return array{lang: string, link: string, question: string, period: string}|null
+     * @return array{lang: string, link: string, question: string|null, period: string|null}|null
      */
     public function words(string $localeCode, int $days): ?array
     {
         $lang = strtolower(substr($localeCode, 0, 2));
         $entry = $this->languages()[$lang] ?? null;
-        if (!\is_array($entry) || !\is_string($entry['link'] ?? null) || !\is_string($entry['question'] ?? null) || !\is_string($entry['period'] ?? null)) {
+        if (!\is_array($entry) || !\is_string($entry['link'] ?? null)) {
             return null;
         }
+        $reminder = \is_string($entry['question'] ?? null) && \is_string($entry['period'] ?? null);
 
         return [
             'lang' => $lang,
             'link' => $entry['link'],
-            'question' => $entry['question'],
-            'period' => str_replace('{days}', (string) $days, $entry['period']),
+            'question' => $reminder ? $entry['question'] : null,
+            'period' => $reminder ? str_replace('{days}', (string) $days, $entry['period']) : null,
         ];
     }
 
@@ -62,7 +67,7 @@ final class OrderEmailLine
      * message in a div that sets the font), else at the end. Text that would be read as Twig is
      * escaped, because Shopware renders the templates after this.
      *
-     * @param array{lang: string, link: string, question: string, period: string} $words
+     * @param array{lang: string, link: string, question: string|null, period: string|null} $words
      *
      * @return array{html: string, plain: string}
      */
@@ -73,8 +78,9 @@ final class OrderEmailLine
         }
         $e = static fn (string $text): string => str_replace(['{', '}'], ['&#123;', '&#125;'], htmlspecialchars($text, \ENT_QUOTES | \ENT_HTML5, 'UTF-8'));
         $href = $e($url);
-        $line = '<p class="' . self::MARKER . '" style="margin-top:2em;"><a href="' . $href . '">' . $e($words['link']) . '</a>. '
-            . $e($words['question']) . ' <a href="' . $href . '">' . $e($words['period']) . '</a></p>';
+        $reminder = $words['question'] !== null && $words['period'] !== null;
+        $line = '<p class="' . self::MARKER . '" style="margin-top:2em;"><a href="' . $href . '">' . $e($words['link']) . '</a>'
+            . ($reminder ? '. ' . $e((string) $words['question']) . ' <a href="' . $href . '">' . $e((string) $words['period']) . '</a>' : '') . '</p>';
 
         $trimmed = rtrim($html);
         if (str_ends_with(strtolower($trimmed), '</div>')) {
@@ -84,7 +90,7 @@ final class OrderEmailLine
         }
 
         $safe = static fn (string $text): string => str_replace(['{{', '{%', '{#'], ['{ {', '{ %', '{ #'], $text);
-        $plain = rtrim($plain) . "\n\n" . $safe($words['link']) . ': ' . $safe($url) . "\n" . $safe($words['question'] . ' ' . $words['period']) . "\n";
+        $plain = rtrim($plain) . "\n\n" . $safe($words['link']) . ': ' . $safe($url) . "\n" . ($reminder ? $safe($words['question'] . ' ' . $words['period']) . "\n" : '');
 
         return ['html' => $html, 'plain' => $plain];
     }
@@ -139,6 +145,56 @@ final class OrderEmailLine
         $safe = static fn (string $value): string => str_replace(['{{', '{%', '{#'], ['{ {', '{ %', '{ #'], $value);
 
         return ['html' => $html, 'plain' => rtrim($plain) . "\n\n" . $safe($text) . "\n"];
+    }
+
+    /**
+     * The order confirmation's line repeating the digital content consent, null without one.
+     */
+    public function digitalConfirmation(string $localeCode): ?string
+    {
+        return $this->sentence($localeCode, 'digital');
+    }
+
+    /**
+     * The names of the legal pages for a locale, English for a language without them.
+     *
+     * @return array{terms: string, withdrawal: string, privacy: string}|null
+     */
+    public function legalLabels(string $localeCode): ?array
+    {
+        foreach ([strtolower(substr($localeCode, 0, 2)), 'en'] as $lang) {
+            $entry = $this->languages()[$lang] ?? null;
+            $legal = \is_array($entry) ? ($entry['legal'] ?? null) : null;
+            if (\is_array($legal) && \is_string($legal['terms'] ?? null) && \is_string($legal['withdrawal'] ?? null) && \is_string($legal['privacy'] ?? null)) {
+                return ['terms' => $legal['terms'], 'withdrawal' => $legal['withdrawal'], 'privacy' => $legal['privacy']];
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Adds one line of links to the legal pages ("Terms and conditions | Withdrawal policy |
+     * Privacy notice"), once, in small print, as the Shopify app's line.
+     *
+     * @param list<array{0: string, 1: string}> $links label and address
+     *
+     * @return array{html: string, plain: string}
+     */
+    public static function addLegal(string $html, string $plain, array $links): array
+    {
+        if ($links === [] || str_contains($html, self::LEGAL_MARKER)) {
+            return ['html' => $html, 'plain' => $plain];
+        }
+        $e = static fn (string $text): string => str_replace(['{', '}'], ['&#123;', '&#125;'], htmlspecialchars($text, \ENT_QUOTES | \ENT_HTML5, 'UTF-8'));
+        $parts = array_map(static fn (array $l): string => '<a href="' . $e($l[1]) . '">' . $e($l[0]) . '</a>', $links);
+        $line = '<p class="' . self::LEGAL_MARKER . '" style="margin-top:2em;font-size:0.9em;">' . implode(' | ', $parts) . '</p>';
+        $trimmed = rtrim($html);
+        $html = str_ends_with(strtolower($trimmed), '</div>') ? substr($trimmed, 0, -6) . $line . "\n</div>\n" : $trimmed . "\n" . $line . "\n";
+        $safe = static fn (string $text): string => str_replace(['{{', '{%', '{#'], ['{ {', '{ %', '{ #'], $text);
+        $lines = array_map(static fn (array $l): string => $safe($l[0] . ': ' . $l[1]), $links);
+
+        return ['html' => $html, 'plain' => rtrim($plain) . "\n\n" . implode("\n", $lines) . "\n"];
     }
 
     private function sentence(string $localeCode, string $key): ?string

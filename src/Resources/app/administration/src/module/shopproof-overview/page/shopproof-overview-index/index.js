@@ -38,6 +38,11 @@ export default Shopware.Component.wrapComponentConfig({
             returnsLoading: false,
             returnsTesting: false,
             returnsResult: '',
+            exporting: false,
+            exportFailed: false,
+            shopDetails: null,
+            usingShopDetails: false,
+            shopDetailsResult: '',
         };
     },
 
@@ -67,6 +72,7 @@ export default Shopware.Component.wrapComponentConfig({
     created() {
         this.load();
         this.loadCheck();
+        this.loadShopDetails();
         this.loadWithdrawals();
         this.loadProof();
         this.loadReturns();
@@ -344,16 +350,69 @@ export default Shopware.Component.wrapComponentConfig({
                 });
         },
 
+        /** Saves a file the browser received (the proof log or withdrawals CSV). */
+        saveFile(blob, name) {
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = name;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            URL.revokeObjectURL(link.href);
+        },
+
+        exportWithdrawals() {
+            this.exporting = true;
+            this.exportFailed = false;
+            const lang = String(Shopware.State?.get('session')?.currentLocale || 'en-GB').startsWith('de') ? 'de' : 'en';
+            return this.shopproofRulesService
+                .downloadWithdrawals(lang)
+                .then((blob) => this.saveFile(blob, `shopproof-withdrawals-${new Date().toISOString().slice(0, 10)}.csv`))
+                .catch(() => {
+                    this.exportFailed = true;
+                })
+                .finally(() => {
+                    this.exporting = false;
+                });
+        },
+
+        loadShopDetails() {
+            return this.shopproofRulesService
+                .getShopDetails()
+                .then((result) => {
+                    this.shopDetails = result;
+                })
+                .catch(() => {
+                    this.shopDetails = null;
+                });
+        },
+
+        useShopDetails() {
+            this.usingShopDetails = true;
+            this.shopDetailsResult = '';
+            return this.shopproofRulesService
+                .useShopDetails()
+                .then((result) => {
+                    this.shopDetails = result;
+                    this.shopDetailsResult = 'saved';
+                    // The safety step and card at the top count the manufacturers just filled in.
+                    if (this.$refs.setup) {
+                        this.$refs.setup.load();
+                    }
+                    return this.loadCheck();
+                })
+                .catch(() => {
+                    this.shopDetailsResult = 'failed';
+                })
+                .finally(() => {
+                    this.usingShopDetails = false;
+                });
+        },
+
         downloadProof() {
-            return this.shopproofRulesService.downloadProofLog().then((blob) => {
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = `shopproof-proof-log-${new Date().toISOString().slice(0, 10)}.csv`;
-                document.body.appendChild(link);
-                link.click();
-                link.remove();
-                URL.revokeObjectURL(link.href);
-            });
+            return this.shopproofRulesService
+                .downloadProofLog()
+                .then((blob) => this.saveFile(blob, `shopproof-proof-log-${new Date().toISOString().slice(0, 10)}.csv`));
         },
 
         checkText(check) {
@@ -372,6 +431,13 @@ export default Shopware.Component.wrapComponentConfig({
 
         orderLink(id) {
             return { name: 'sw.order.detail', params: { id } };
+        },
+
+        /** A finished placement check changes the setup steps and the withdrawal button card. */
+        onPlacementChecked() {
+            if (this.$refs.setup) {
+                this.$refs.setup.load();
+            }
         },
 
         countryName(code) {

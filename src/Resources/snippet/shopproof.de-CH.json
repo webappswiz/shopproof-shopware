@@ -10,6 +10,8 @@
             "accountLink": "Vertrag widerrufen",
             "orderDate": "Bestelldatum",
             "commentHint": "Was Sie dem Shop sonst noch mitteilen möchten. Sie müssen den Widerruf nicht begründen.",
+            "periodLaw": "Sie können innerhalb von %days% Tagen ab Erhalt Ihrer Bestellung widerrufen.",
+            "periodLonger": "Dieser Shop gibt Ihnen ab Erhalt Ihrer Bestellung %days% Tage Zeit für den Widerruf.",
             "picker": {
                 "legend": "Betroffene Artikel",
                 "hint": "Kreuzen Sie die Artikel an, die Sie zurücksenden. Nichts ankreuzen, um die ganze Bestellung zu widerrufen.",
@@ -32,6 +34,10 @@
                 "notFound": "Wir konnten diesen Widerruf nicht finden. Bitte nutzen Sie den Link aus Ihrer Eingangsbestätigung oder wenden Sie sich an den Shop.",
                 "note": "Der Shop aktualisiert diese Seite. Bei Fragen antworten Sie auf Ihre Eingangsbestätigung."
             }
+        },
+        "digital": {
+            "consent": "Ich stimme ausdrücklich zu, dass Sie vor Ablauf der Widerrufsfrist mit der Bereitstellung der digitalen Inhalte beginnen.",
+            "ack": "Mir ist bekannt, dass ich mit Beginn der Bereitstellung der digitalen Inhalte mein Widerrufsrecht verliere."
         },
         "safety": {
             "heading": "Informationen zur Produktsicherheit",

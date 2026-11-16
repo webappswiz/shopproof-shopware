@@ -1,0 +1,19 @@
+{% sw_extends '@Storefront/storefront/page/content/detail.html.twig' %}
+
+{# The EU model withdrawal form at the end of the withdrawal policy page, when the merchant turned it on. #}
+{% block page_content_sections_inner %}
+    {{ parent() }}
+    {% set shopproofModelForm = shopproof_model_form(cmsPage.id ?? null, context ?? null) %}
+    {% if shopproofModelForm %}
+        <div class="cms-section cms-section-default">
+            <div class="cms-section-default boxed">
+                <div class="cms-block">
+                    <div class="cms-element-text">
+                        {# Built from escaped texts in ModelForm::render(); a variable loses the function's is_safe mark. #}
+                        {{ shopproofModelForm|raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

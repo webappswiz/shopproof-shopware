@@ -1,0 +1,54 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">retrate-se do contrato aqui</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "confirmar retratação"
+    },
+    "shopproof": {
+        "withdrawal": {
+            "accountLink": "retrate-se do contrato aqui",
+            "orderDate": "Data da encomenda",
+            "commentHint": "Qualquer outra coisa que queira dizer à loja. Não precisa de justificar a retratação.",
+            "periodLaw": "Pode retratar-se no prazo de %days% dias a contar da receção da encomenda.",
+            "periodLonger": "Esta loja dá-lhe %days% dias a contar da receção da encomenda para se retratar.",
+            "picker": {
+                "legend": "Artigos que devolve",
+                "hint": "Assinale os artigos que devolve. Não assinale nenhum para se retratar de toda a encomenda.",
+                "looking": "A procurar os artigos da sua encomenda...",
+                "found": "Os artigos da sua encomenda estão indicados abaixo.",
+                "none": "Não foi possível mostrar os artigos desta encomenda. Descreva-os abaixo ou deixe o campo em branco para toda a encomenda.",
+                "quantity": "Quantidade",
+                "excluded": "Excluído da retratação pela loja.",
+                "defaultNote": "Se considerar que isto não se aplica ao seu artigo, pode enviar mesmo assim a sua retratação e a loja irá analisá-la."
+            },
+            "status": {
+                "title": "A sua retratação",
+                "received": "Retratação recebida",
+                "return_arrived": "Devolução chegou à loja",
+                "refund_sent": "Reembolso efetuado",
+                "done": "Feito",
+                "open": "Ainda não",
+                "reference": "Referência",
+                "receivedOn": "Recebida em %date%",
+                "notFound": "Não encontrámos esta retratação. Utilize a ligação do seu e-mail de confirmação ou contacte a loja.",
+                "note": "A loja atualiza esta página. Se tiver perguntas, responda ao seu e-mail de confirmação."
+            }
+        },
+        "digital": {
+            "consent": "Dou o meu consentimento expresso para que iniciem o fornecimento do conteúdo digital antes do fim do prazo de retratação.",
+            "ack": "Reconheço que perco o meu direito de retratação assim que o fornecimento do conteúdo digital tiver início."
+        },
+        "safety": {
+            "heading": "Informações de segurança do produto",
+            "summary": "Segurança do produto (fabricante: %name%)",
+            "manufacturer": "Fabricante",
+            "responsiblePerson": "Pessoa responsável na UE",
+            "identifiers": "Identificação do produto",
+            "warnings": "Advertências e informações de segurança",
+            "hazardHeading": "Rotulagem de perigo",
+            "hazardStatements": "Advertências de perigo",
+            "precautions": "Recomendações de prudência"
+        }
+    }
+}

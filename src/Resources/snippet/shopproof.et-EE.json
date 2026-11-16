@@ -1,0 +1,54 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">Taganen lepingust</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "Kinnitan taganemise"
+    },
+    "shopproof": {
+        "withdrawal": {
+            "accountLink": "Taganen lepingust",
+            "orderDate": "Tellimuse kuupäev",
+            "commentHint": "Kõik muu, mida soovite poele öelda. Taganemist ei pea põhjendama.",
+            "periodLaw": "Võite taganeda %days% päeva jooksul alates tellimuse kättesaamisest.",
+            "periodLonger": "See pood annab teile taganemiseks %days% päeva alates tellimuse kättesaamisest.",
+            "picker": {
+                "legend": "Tagastatavad tooted",
+                "hint": "Märkige tagastatavad tooted. Kui te midagi ei märgi, taganete kogu tellimusest.",
+                "looking": "Otsime teie tellimuse tooteid...",
+                "found": "Teie tellimuse tooted on loetletud allpool.",
+                "none": "Selle tellimuse tooteid ei õnnestunud kuvada. Kirjeldage neid allpool või jätke väli kogu tellimuse puhul tühjaks.",
+                "quantity": "Kogus",
+                "excluded": "Pood on selle toote taganemisõigusest välja jätnud.",
+                "defaultNote": "Kui leiate, et see ei kehti teie toote kohta, võite oma taganemisavalduse siiski saata ja pood vaatab selle läbi."
+            },
+            "status": {
+                "title": "Teie taganemine",
+                "received": "Taganemisavaldus kätte saadud",
+                "return_arrived": "Tagastus jõudis poodi",
+                "refund_sent": "Raha tagastatud",
+                "done": "Tehtud",
+                "open": "Veel mitte",
+                "reference": "Viitenumber",
+                "receivedOn": "Kätte saadud %date%",
+                "notFound": "Me ei leidnud seda taganemist. Kasutage kinnituskirjas olevat linki või võtke poega ühendust.",
+                "note": "Pood uuendab seda lehte. Küsimuste korral vastake kinnituskirjale."
+            }
+        },
+        "digital": {
+            "consent": "Nõustun sõnaselgelt, et alustate digitaalse sisu üleandmist enne taganemistähtaja lõppu.",
+            "ack": "Olen teadlik, et kaotan taganemisõiguse, kui digitaalse sisu üleandmine on alanud."
+        },
+        "safety": {
+            "heading": "Tooteohutuse teave",
+            "summary": "Tooteohutus (tootja: %name%)",
+            "manufacturer": "Tootja",
+            "responsiblePerson": "Vastutav isik ELis",
+            "identifiers": "Toote identifitseerimine",
+            "warnings": "Hoiatused ja ohutusteave",
+            "hazardHeading": "Ohumärgistus",
+            "hazardStatements": "Ohulaused",
+            "precautions": "Hoiatuslaused"
+        }
+    }
+}

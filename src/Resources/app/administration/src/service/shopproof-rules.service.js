@@ -94,6 +94,27 @@ class ShopproofRulesService extends ApiService {
         });
     }
 
+    getOverview() {
+        return this.httpClient
+            .get(`${this.getApiBasePath()}/overview`, {
+                headers: this.getBasicHeaders(),
+                params: { timezone: ShopproofRulesService.timeZone() },
+            })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    getPlacement() {
+        return this.httpClient
+            .get(`${this.getApiBasePath()}/placement`, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    savePlacementResult(counts) {
+        return this.httpClient.post(`${this.getApiBasePath()}/placement/result`, counts, {
+            headers: this.getBasicHeaders(),
+        });
+    }
+
     getReturns() {
         return this.httpClient
             .get(`${this.getApiBasePath()}/returns`, { headers: this.getBasicHeaders() })
@@ -103,6 +124,30 @@ class ShopproofRulesService extends ApiService {
     renewReturnsSecret() {
         return this.httpClient
             .post(`${this.getApiBasePath()}/returns/secret`, {}, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    /** Every withdrawal as a CSV file, headings in the admin's language (English or German). */
+    downloadWithdrawals(lang) {
+        return this.httpClient
+            .get(`${this.getApiBasePath()}/withdrawals/csv`, {
+                headers: this.getBasicHeaders(),
+                params: { lang },
+                responseType: 'blob',
+            })
+            .then((response) => response.data);
+    }
+
+    /** The shop's own details, offered as the default manufacturer for goods it makes itself. */
+    getShopDetails() {
+        return this.httpClient
+            .get(`${this.getApiBasePath()}/safety/shop-details`, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    useShopDetails() {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/safety/use-shop-details`, {}, { headers: this.getBasicHeaders() })
             .then((response) => ApiService.handleResponse(response));
     }
 

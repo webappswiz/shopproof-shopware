@@ -103,7 +103,9 @@
                 "partly": "Teilweise erstattet am {date}, prüfen: {line}",
                 "help": "Technische Hilfe, keine Rechtsberatung. Die Frist beträgt 14 Tage (oder Ihre längere Frist) ab Lieferung und läuft bis Montag, wenn sie an einem Wochenende endet; auch Feiertage können sie verlängern. Die Erstattung ist 14 Tage nach Eingang des Widerrufs fällig."
             },
-            "items": "Artikel"
+            "items": "Artikel",
+            "export": "Alle als CSV exportieren",
+            "exportFailed": "Die CSV-Datei konnte nicht erstellt werden. Bitte versuchen Sie es noch einmal."
         },
         "products": {
             "warn": "Prüfen",
@@ -114,7 +116,12 @@
             "hazardStatements_off": "Diese Produkte haben Gefahren- oder Sicherheitshinweise, die die Produktseite nicht zeigen kann. Codes mit einer Auswahl oder Lücke (wie P280 oder P501) brauchen Ihre eigenen Worte nach einem Doppelpunkt, zum Beispiel \"P280: Schutzhandschuhe tragen.\". Öffnen Sie das Produkt, Zusatzfelder, \"Shopproof: gefährliche Chemikalien (CLP)\":",
             "hazardOwn": "braucht Ihre eigenen Worte",
             "hazardUnknown": "unbekannter Code, bitte Etikett prüfen",
-            "registrationNumbers_off": "Diese Zeilen von \"Ihre Registrierungsnummern\" in den Plugin-Einstellungen werden nicht gezeigt, weil ihnen ein Doppelpunkt oder die Nummer fehlt oder es mehr als 12 sind. Schreiben Sie sie wie \"WEEE DE: DE 12345678\":"
+            "registrationNumbers_off": "Diese Zeilen von \"Ihre Registrierungsnummern\" in den Plugin-Einstellungen werden nicht gezeigt, weil ihnen ein Doppelpunkt oder die Nummer fehlt oder es mehr als 12 sind. Schreiben Sie sie wie \"WEEE DE: DE 12345678\":",
+            "ownGoodsTitle": "Stellen Sie Ihre Waren selbst her?",
+            "ownGoodsText": "Dann ist Ihr Shop der Hersteller. Diese Angaben aus Einstellungen > Stammdaten können die leeren Felder des Standard-Herstellers in den Shopproof-Einstellungen füllen. Produkte mit eigenem Hersteller behalten ihren. Bitte prüfen Sie die Angaben vorher.",
+            "ownGoodsButton": "Diese Angaben für die leeren Felder nutzen",
+            "ownGoods_saved": "Gespeichert. Prüfen Sie die Angaben in den Plugin-Einstellungen unter Produktsicherheit (GPSR).",
+            "ownGoods_failed": "Die Angaben konnten nicht gespeichert werden. Bitte versuchen Sie es noch einmal."
         },
         "cms": {
             "label": "Shopproof Produktinformationen",
@@ -176,6 +183,204 @@
                 "sent": "Retourentool: gesendet {time}, Status {code}.",
                 "retrying": "Retourentool: nicht angenommen {time} (Status {code}). Shopproof versucht es erneut.",
                 "failed": "Retourentool: aufgegeben {time} (Status {code}). Bitte legen Sie die Rücksendung von Hand an."
+            }
+        },
+        "notes": {
+            "title": "Shop-Hinweise",
+            "unitPrices_off": "Diese Produkte sehen nach Ware nach Gewicht oder Volumen aus (zum Beispiel „500 g“ im Namen), haben aber keinen Inhalt und keine Einheit, deshalb zeigt Shopware keinen Grundpreis. Öffnen Sie das Produkt, Eigenschaften, Maße und Verpackung:",
+            "depositTypes_off": "Diese Zeilen von „Ihre Pfandarten“ in den Plugin-Einstellungen werden nicht verwendet. Schreiben Sie sie wie „de-einweg | Einweg | 0.25 | einweg | DE“:",
+            "checkoutPolicyPages_off": "Diese gewählten Häkchen an der Kasse erscheinen nicht, weil ihre Seite unter Einstellungen > Stammdaten nicht gesetzt ist:",
+            "box_withdrawal": "Ich habe die Widerrufsbelehrung gelesen (Widerrufsseite)",
+            "box_privacy": "Ich habe die Datenschutzerklärung gelesen (Datenschutzseite)",
+            "disputeBoard_off": "Ihr Hinweis zur Streitbeilegung nennt noch keine Schlichtungsstelle. Tragen Sie ihren Namen in den Plugin-Einstellungen ein.",
+            "disputeStatement_ok": "Ihr Hinweis zur Streitbeilegung steht in Ihren AGB oder im Impressum",
+            "disputeStatement_off": "Fügen Sie Ihren Hinweis zur Streitbeilegung in Ihre AGB und Ihr Impressum ein (Inhalte > Erlebniswelten), oder setzen Sie in den Plugin-Einstellungen das Häkchen, dass Sie es getan haben.",
+            "disputeIntro": "Ihr Hinweis zur Streitbeilegung, zum Einfügen in der Sprache jeder Seite:",
+            "where": "Ändern Sie das unter Einstellungen > Erweiterungen > Shopproof > Konfigurieren (Karten Preisangaben, Pfand, Warenkorb und Kasse, Hinweis zur Streitbeilegung). Technische Hilfe, keine Rechtsberatung."
+        },
+        "bulk": {
+            "title": "Sicherheitsangaben für viele Produkte auf einmal",
+            "intro": "Tragen Sie die Angaben zur Produktsicherheit für viele Produkte in einer Tabelle ein, mit dem Import/Export von Shopware:",
+            "step1": "Öffnen Sie Einstellungen > Import/Export, Reiter Export, und exportieren Sie mit dem Profil \"Shopproof: Produktsicherheit\". Haken Sie \"Produktvarianten exportieren\" an, wenn Ihre Varianten eigene Angaben haben.",
+            "step2": "Füllen Sie die Spalten in der Datei aus. Lassen Sie die Spalte product_number unverändert. Gefahrenpiktogramme behalten die Form aus dem Export, zum Beispiel [\"GHS02\",\"GHS07\"].",
+            "step3": "Importieren Sie die Datei mit demselben Profil, Reiter Import. Produkte werden über die Produktnummer zugeordnet, und eine leere Zelle lässt den Wert, wie er ist. Eine Zeile mit unbekannter Nummer wird nicht importiert: Shopware meldet den Import dann als fehlgeschlagen und bietet eine Datei mit diesen Zeilen an, die übrigen Zeilen werden gespeichert.",
+            "manufacturers": "Die meisten Produkte übernehmen die Angaben ihres Herstellers. Das Profil \"Shopproof: Herstellerangaben zur Produktsicherheit\" funktioniert genauso für Hersteller, zugeordnet über die Spalte id.",
+            "bulkEdit": "Um wenigen Produkten dieselben Angaben zu geben, wählen Sie sie unter Kataloge > Produkte aus, wählen Sie Mehrfachänderung und füllen Sie \"Shopproof: Produktsicherheit (GPSR)\" unter Zusatzfelder aus.",
+            "openImport": "Import/Export öffnen",
+            "openProducts": "Produkte öffnen"
+        },
+        "placement": {
+            "title": "Prüfen, wo der Widerrufsbutton erscheint",
+            "intro": "Hier sehen Sie Ihre Shopseiten so, wie Kunden sie sehen, am Computer und am Handy. Der Widerrufsbutton hat einen blauen Rahmen, und alles, was Inhalte Ihres Themes verdeckt, einen rot gestrichelten. Klicken Sie sich in der Vorschau durch Ihren Shop, und jede Seite wird erneut geprüft. Die Prüfung läuft in Ihrem Browser, und nichts verlässt Ihren Shop; gespeichert wird nur die Zahl der bestandenen Seiten.",
+            "loadFailed": "Die Shopseiten für die Prüfung konnten nicht geladen werden. Laden Sie diese Seite neu, um es noch einmal zu versuchen.",
+            "noChannel": "Es wurde kein aktiver Storefront mit Domain gefunden, daher gibt es nichts zu prüfen.",
+            "otherOrigin": "{names}: Keine Storefront-Domain nutzt die Adresse, unter der diese Administration geöffnet ist. Ihr Browser zeigt diese Seiten hier daher eventuell nicht an, und sie gelten als nicht geprüft. Öffnen Sie die Administration unter der Domain des Storefronts oder fügen Sie diese Domain dem Storefront hinzu, um sie zu prüfen.",
+            "page": {
+                "label": "Seite",
+                "home": "Startseite",
+                "product": "Produktseite",
+                "listing": "Kategorieseite",
+                "cart": "Warenkorb",
+                "account": "Kundenkonto (Anmeldung)",
+                "withdrawal": "Widerrufsseite"
+            },
+            "width": "Breite der Vorschau",
+            "desktop": "Computer",
+            "phone": "Handy",
+            "again": "Alle Seiten erneut prüfen",
+            "open": "Diese Seite in einem neuen Tab öffnen",
+            "loading": "Seite wird geladen...",
+            "blocked": "Diese Seite konnte nicht in der Vorschau gezeigt werden. Admin und Shop liegen vielleicht unter verschiedenen Webadressen, eine Sicherheitseinstellung auf dem Server blockiert Vorschauen, oder die Seite hat Sie auf eine andere Website geleitet. Öffnen Sie die Seite in einem neuen Tab und prüfen Sie sie selbst.",
+            "blockedShort": "Nicht geöffnet",
+            "checking": "Wird geprüft...",
+            "sweeping": "Ihre Seiten werden am Computer und am Handy geprüft...",
+            "swept": "Alle Seiten geprüft.",
+            "missing": "Kein Button",
+            "notNeeded": "Hier nicht nötig",
+            "frameTitle": "Vorschau Ihrer Shopseite",
+            "tableCaption": "Widerrufsbutton auf jeder Seite",
+            "last": "Letzte Prüfung {date}: {pass} bestanden, {warn} zum Ansehen, {fail} mit Problem, {skipped} nicht geprüft.",
+            "footnote": "Technische Hilfe, keine Rechtsberatung. Der Cookie-Hinweis kann als schwebendes Element erscheinen, bis Sie ihn in der Vorschau schließen. Wählen Sie die Seite danach erneut, um sie noch einmal zu prüfen.",
+            "status": {
+                "pass": "Bestanden",
+                "warn": "Prüfen",
+                "fail": "Problem",
+                "skip": "Nicht geprüft"
+            },
+            "text": {
+                "and": "und",
+                "area": {
+                    "footer": "in der Fußzeile",
+                    "header": "im Kopfbereich oder Menü",
+                    "main": "im Seiteninhalt",
+                    "account": "im Kundenkonto",
+                    "other": "auf der Seite"
+                },
+                "found": {
+                    "pass": "Widerrufsbutton gefunden {areas}.",
+                    "fail": "Kein Widerrufsbutton auf dieser Seite. Kunden müssen ihn auf jeder Seite finden, zum Beispiel in der Fußzeile.",
+                    "skip": "Kein Widerrufsbutton auf dieser Seite, das ist hier in Ordnung."
+                },
+                "visible": {
+                    "pass": "Kunden sehen ihn, ohne etwas zu öffnen.",
+                    "warn": "Bei dieser Bildschirmbreite ist der Button versteckt {areas}, zum Beispiel in einem geschlossenen Menü. Sorgen Sie dafür, dass er auch woanders sichtbar ist, etwa in der Fußzeile."
+                },
+                "clear": {
+                    "pass": "Nichts verdeckt den Button.",
+                    "warn": "Etwas verdeckt einen der Buttons: {items}.",
+                    "fail": "Etwas verdeckt den Button: {items}. Kunden können ihn nicht erreichen."
+                },
+                "contrast": {
+                    "pass": "Textkontrast {value}:1 (der Barrierefreiheitsstandard verlangt mindestens 4,5:1).",
+                    "warn": "Der Button ist schwer lesbar: Der Textkontrast ist nur {value}:1, der Barrierefreiheitsstandard (WCAG 2.2 AA) verlangt 4,5:1. Wählen Sie in Ihrem Theme andere Button-Farben.",
+                    "skip": "Kontrast nicht gemessen: Hinter dem Text liegt ein Bild oder Farbverlauf."
+                },
+                "floating": {
+                    "pass": "Nichts schwebt über den Inhalten Ihres Themes.",
+                    "warn": "Etwas schwebt über den Inhalten Ihres Themes: {items}. Das kommt nicht von Shopproof, sondern von Ihrem Theme oder einer anderen Erweiterung."
+                },
+                "others": {
+                    "pass": "Kein zweiter Widerrufsbutton gefunden.",
+                    "warn": "Wir haben einen weiteren Widerrufsbutton gefunden: {items}. Kunden sollten nur einen sehen. Schalten Sie den Button in der anderen Erweiterung aus."
+                }
+            }
+        },
+        "setup": {
+            "loadFailed": "Die Übersicht konnte nicht geladen werden. Laden Sie diese Seite neu, um es noch einmal zu versuchen.",
+            "title": "Shopproof einrichten",
+            "progress": "{done} von {all} Schritten erledigt.",
+            "doneSr": "(erledigt)",
+            "optional": "(optional)",
+            "start": "Starten",
+            "complete": "Die Einrichtung ist abgeschlossen. Shopproof prüft weiter und zeigt Neues unten an.",
+            "glance": "Ihr Shop auf einen Blick",
+            "why": "Warum ist das nötig?",
+            "whyText": "Das Gesetz: {law}. Es gilt ab {date}.",
+            "whyLink": "Amtlichen Text lesen",
+            "notAdvice": "Shopproof gibt technische Hilfe. Das ist keine Rechtsberatung.",
+            "state": {
+                "good": "Erledigt",
+                "warn": "Bitte ansehen",
+                "bad": "Handlung nötig",
+                "todo": "Zu tun"
+            },
+            "link": {
+                "open": "Öffnen",
+                "fix": "Beheben"
+            },
+            "step": {
+                "button": {
+                    "title": "Widerrufsbutton von Shopware einschalten",
+                    "help": "Schalten Sie unter Einstellungen > Stammdaten den Widerrufsbutton ein und wählen Sie die Seite mit dem Widerrufsformular, für jeden Storefront."
+                },
+                "placement": {
+                    "title": "Prüfen, ob Kunden den Widerrufsbutton finden",
+                    "help": "Wir öffnen Ihre Shopseiten und suchen den Button am Computer und am Handy. Das dauert etwa eine Minute."
+                },
+                "safety": {
+                    "title": "Angeben, wer Ihre Produkte herstellt",
+                    "help": "Geben Sie jedem Hersteller unter Kataloge > Hersteller Anschrift und E-Mail, oder legen Sie in den Plugin-Einstellungen einen Hersteller für den ganzen Shop fest."
+                },
+                "guarantee": {
+                    "title": "Hinweis zur gesetzlichen Gewährleistung zeigen",
+                    "help": "Ein amtlicher EU-Hinweis auf Ihren Produktseiten. Schalten Sie ihn in den Plugin-Einstellungen mit einem Schalter ein."
+                },
+                "registrations": {
+                    "title": "Ihre Registrierungsnummern eintragen",
+                    "help": "Nur wenn Sie Elektrogeräte, Batterien oder Verpackungen verkaufen, die eine Nummer brauchen. Tragen Sie sie in den Plugin-Einstellungen ein."
+                }
+            },
+            "card": {
+                "withdrawal": {
+                    "title": "Widerrufsbutton",
+                    "unsupported": "Diese Shopware-Version hat noch keinen Widerrufsbutton. Aktualisieren Sie auf Shopware 6.7.9 oder neuer.",
+                    "notReady": "Nicht bereit: Der Button ist in mindestens einem Storefront aus oder hat keine Seite mit dem Formular, oder die Eingangsbestätigung per E-Mail oder die Aufzeichnung der Anfragen funktioniert nicht. Die Einrichtungsprüfung unten nennt, was zu tun ist.",
+                    "notChecked": "Der Button ist eingeschaltet. Prüfen Sie, ob Kunden ihn auf jeder Seite finden.",
+                    "problem": "Die letzte Prüfung hat auf {count} Seite ein Problem gefunden. | Die letzte Prüfung hat auf {count} Seiten ein Problem gefunden.",
+                    "noPages": "Nicht geprüft. Die letzte Prüfung hat keine Shopseite geöffnet, auf der der Widerrufsbutton stehen sollte, daher wurde er dort nicht gefunden. Starten Sie die Prüfung erneut.",
+                    "look": "Funktioniert, aber die letzte Prüfung hat etwas zum Ansehen gefunden.",
+                    "working": "Funktioniert. Der Button wurde auf der {count} geprüften Seite gefunden. | Funktioniert. Der Button wurde auf allen {count} geprüften Seiten gefunden."
+                },
+                "withdrawals": {
+                    "title": "Widerrufe",
+                    "failed": "{count} Widerruf konnte nicht gespeichert werden. | {count} Widerrufe konnten nicht gespeichert werden.",
+                    "overdue": "{count} Erstattung ist heute fällig oder überfällig. | {count} Erstattungen sind heute fällig oder überfällig.",
+                    "soon": "{count} Erstattung ist in den nächsten 3 Tagen fällig. | {count} Erstattungen sind in den nächsten 3 Tagen fällig.",
+                    "received": "{count} Widerruf eingegangen. Nichts ist fällig. | {count} Widerrufe eingegangen. Nichts ist fällig.",
+                    "none": "Noch keine. Sie erscheinen hier, sobald ein Kunde den Button nutzt."
+                },
+                "safety": {
+                    "title": "Produktsicherheit",
+                    "noProducts": "Noch keine aktiven Produkte.",
+                    "noMaker": "{count} von {total} Produkten zeigt keinen Hersteller. | {count} von {total} Produkten zeigen keinen Hersteller.",
+                    "noDetails": "{count} Hersteller hat keine Anschrift oder E-Mail, daher zeigen seine Produkte nur den Namen. | {count} Hersteller haben keine Anschrift oder E-Mail, daher zeigen ihre Produkte nur den Namen.",
+                    "complete": "Jedes Produkt zeigt seinen Hersteller mit Kontaktdaten."
+                },
+                "guarantee": {
+                    "title": "Hinweis zur gesetzlichen Gewährleistung",
+                    "on": "Wird auf Ihren Produktseiten gezeigt.",
+                    "off": "In mindestens einem Storefront aus. Das EU-Recht verlangt ihn von Shops, die Waren verkaufen.",
+                    "unknown": "Nicht geprüft. Die Produktsicherheit ist ausgeschaltet, daher sieht Shopproof die Produktseiten nicht an."
+                },
+                "registrations": {
+                    "title": "Registrierungsnummern",
+                    "some": "{count} Nummer eingetragen. | {count} Nummern eingetragen.",
+                    "none": "Keine eingetragen. Nur für Elektrogeräte, Batterien oder Verpackungen nötig."
+                },
+                "proof": {
+                    "title": "Nachweisprotokoll",
+                    "unavailable": "Die Tabelle des Nachweisprotokolls fehlt. Installieren Sie das Plugin neu.",
+                    "changed": "Ein alter Eintrag wurde geändert oder gelöscht.",
+                    "empty": "Der erste tägliche Eintrag folgt innerhalb eines Tages.",
+                    "noSnapshot": "Keine Aufzeichnung: Es gibt noch keinen täglichen Eintrag, obwohl das Protokoll andere Einträge hat. Die geplanten Aufgaben von Shopware laufen vielleicht nicht.",
+                    "stale": "Keine Aufzeichnung: Der neueste tägliche Eintrag ist vom {date}. Die geplanten Aufgaben von Shopware laufen vielleicht nicht.",
+                    "recording": "Zeichnet täglich auf. {count} Eintrag, keine Änderungen gefunden. | Zeichnet täglich auf. {count} Einträge, keine Änderungen gefunden."
+                },
+                "rules": {
+                    "title": "Regeln",
+                    "missing": "Die Regelliste konnte nicht geladen werden.",
+                    "loaded": "{count} Regel für die EU und Ihre Länder (Version {version}). | {count} Regeln für die EU und Ihre Länder (Version {version})."
+                }
             }
         }
     }

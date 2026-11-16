@@ -3,6 +3,7 @@
 namespace Shopproof\Compliance\Twig;
 
 use Shopproof\Compliance\Withdrawal\OrderEmailSubscriber;
+use Shopproof\Compliance\Withdrawal\OrderEmailLine;
 use Shopproof\Compliance\Withdrawal\OrderLink;
 use Shopproof\Compliance\Withdrawal\WithdrawalPrefill;
 use Shopproof\Compliance\Withdrawal\Wording;
@@ -16,7 +17,7 @@ use Twig\TwigFunction;
 
 /**
  * Storefront helpers around Shopware's own withdrawal button: the form filled in from a signed
- * order link, the order date field, the chosen button wording, and the link in the customer
+ * order link, the withdrawal period, the order date field, the chosen button wording, and the link in the customer
  * account. Each helper returns nothing (and Shopware's own output stays) when its setting is off.
  */
 final class WithdrawalExtension extends AbstractExtension
@@ -42,6 +43,7 @@ final class WithdrawalExtension extends AbstractExtension
             new TwigFunction('shopproof_withdrawal_order_url', $this->orderUrl(...)),
             new TwigFunction('shopproof_withdrawal_picker', $this->pickerOn(...)),
             new TwigFunction('shopproof_withdrawal_comment', $this->commentMode(...)),
+            new TwigFunction('shopproof_withdrawal_days', $this->days(...)),
         ];
     }
 
@@ -123,6 +125,14 @@ final class WithdrawalExtension extends AbstractExtension
      * The signed withdrawal link for an order in the customer account, '' when the setting is off,
      * the button is off or has no page.
      */
+    /**
+     * The withdrawal period the form states: the shop's setting, never under the legal 14 days.
+     */
+    public function days(?SalesChannelContext $context): int
+    {
+        return OrderEmailLine::period($this->config->getInt(self::CONFIG . 'withdrawalDays', $context?->getSalesChannelId()));
+    }
+
     public function orderUrl(mixed $order, ?SalesChannelContext $context): string
     {
         if ($context === null || !$this->config->getBool(self::CONFIG . 'accountWithdrawalLink', $context->getSalesChannelId())) {

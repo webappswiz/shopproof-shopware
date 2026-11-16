@@ -10,6 +10,8 @@
             "accountLink": "recedere dal contratto qui",
             "orderDate": "Data dell'ordine",
             "commentHint": "Qualsiasi altra cosa vuoi comunicare al negozio. Non è necessario motivare il recesso.",
+            "periodLaw": "Puoi recedere entro %days% giorni dal ricevimento dell'ordine.",
+            "periodLonger": "Questo negozio ti concede %days% giorni dal ricevimento dell'ordine per recedere.",
             "picker": {
                 "legend": "Articoli interessati",
                 "hint": "Seleziona gli articoli che restituisci. Non selezionare nulla per recedere dall'intero ordine.",
@@ -32,6 +34,10 @@
                 "notFound": "Non abbiamo trovato questo recesso. Usa il link nella tua conferma di ricezione o contatta il negozio.",
                 "note": "Il negozio aggiorna questa pagina. Per domande, rispondi alla tua conferma di ricezione."
             }
+        },
+        "digital": {
+            "consent": "Acconsento espressamente che la fornitura del contenuto digitale inizi prima della scadenza del periodo di recesso.",
+            "ack": "Prendo atto che perdo il diritto di recesso una volta iniziata la fornitura del contenuto digitale."
         },
         "safety": {
             "heading": "Informazioni sulla sicurezza del prodotto",

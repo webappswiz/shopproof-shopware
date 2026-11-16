@@ -1,0 +1,358 @@
+{
+  "_note": "Copied from apps/wordpress/shopproof/assets/notes/model-form.json by apps/shopware/scripts/build-storefront.mjs; do not edit by hand.",
+  "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02011L0083-20220528",
+  "source_note": "Directive 2011/83/EU, Annex I(B), consolidated text of 28 May 2022 (fax number removed by Directive (EU) 2019/2161). Official text in each EU language, unchanged. There is no Irish version of this annex, so Irish pages use the English text.",
+  "countries": {
+    "AT": "de",
+    "BE": "nl",
+    "BG": "bg",
+    "CY": "el",
+    "CZ": "cs",
+    "DE": "de",
+    "DK": "da",
+    "EE": "et",
+    "ES": "es",
+    "FI": "fi",
+    "FR": "fr",
+    "GR": "el",
+    "HR": "hr",
+    "HU": "hu",
+    "IE": "en",
+    "IT": "it",
+    "LT": "lt",
+    "LU": "fr",
+    "LV": "lv",
+    "MT": "en",
+    "NL": "nl",
+    "PL": "pl",
+    "PT": "pt",
+    "RO": "ro",
+    "SE": "sv",
+    "SI": "sl",
+    "SK": "sk"
+  },
+  "forms": {
+    "bg": {
+      "title": "Стандартен формуляр за отказ",
+      "note": "(попълнете и изпратете настоящия формуляр единствено ако желаете да се откажете от договора)",
+      "to": "До {trader}:",
+      "lines": [
+        "С настоящото уведомявам/уведомяваме (*), че се отказвам/отказваме (*) от сключения от мен/нас (*) договор за покупка на следните стоки (*)/за предоставяне на следната услуга (*)",
+        "Поръчано на (*)/получено на (*)",
+        "Име на потребителя(ите)",
+        "Адрес на потребителя(ите)",
+        "Подпис на потребителя(ите) (само в случай че настоящият формуляр е на хартия)",
+        "Дата"
+      ],
+      "footnote": "Ненужното се зачертава."
+    },
+    "cs": {
+      "title": "Vzorový formulář pro odstoupení od smlouvy",
+      "note": "(vyplňte tento formulář a pošlete jej zpět pouze v případě, že chcete odstoupit od smlouvy)",
+      "to": "Adresát {trader}:",
+      "lines": [
+        "Oznamuji/oznamujeme (*), že tímto odstupuji/odstupujeme (*) od smlouvy o nákupu tohoto zboží (*)/o poskytnutí těchto služeb (*)",
+        "Datum objednání (*)/datum obdržení (*)",
+        "Jméno spotřebitele/spotřebitelů",
+        "Adresa spotřebitele/spotřebitelů",
+        "Podpis spotřebitele/spotřebitelů (pouze pokud je tento formulář zasílán v papírové podobě)",
+        "Datum"
+      ],
+      "footnote": "Nehodící se škrtněte."
+    },
+    "da": {
+      "title": "Standardfortrydelsesformular",
+      "note": "(denne formular udfyldes og returneres kun, hvis fortrydelsesretten gøres gældende)",
+      "to": "Til {trader}:",
+      "lines": [
+        "Jeg/vi (*) meddeler herved, at jeg/vi (*) ønsker at gøre fortrydelsesretten gældende i forbindelse med min/vores (*) købsaftale om følgende varer (*)/levering af følgende tjenesteydelser (*)",
+        "Bestilt den (*)/modtaget den (*)",
+        "Forbrugerens navn (Forbrugernes navne)",
+        "Forbrugerens adresse (Forbrugernes adresse)",
+        "Forbrugerens underskrift (Forbrugernes underskrifter) (kun hvis formularens indhold meddeles på papir)",
+        "Dato"
+      ],
+      "footnote": "Det ikke-relevante udstreges."
+    },
+    "de": {
+      "title": "Muster-Widerrufsformular",
+      "note": "(Wenn Sie den Vertrag widerrufen wollen, dann füllen Sie bitte dieses Formular aus und senden Sie es zurück)",
+      "to": "An {trader}:",
+      "lines": [
+        "Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf der folgenden Waren (*)/die Erbringung der folgenden Dienstleistung (*)",
+        "Bestellt am (*)/erhalten am (*)",
+        "Name des/der Verbraucher(s)",
+        "Anschrift des/der Verbraucher(s)",
+        "Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier)",
+        "Datum"
+      ],
+      "footnote": "Unzutreffendes streichen."
+    },
+    "el": {
+      "title": "Υπόδειγμα εντύπου υπαναχώρησης",
+      "note": "(συμπληρώστε και επιστρέψτε το παρόν έντυπο μόνο εάν επιθυμείτε να υπαναχωρήσετε από τη σύμβαση)",
+      "to": "Προς {trader}:",
+      "lines": [
+        "Γνωστοποιώ/Γνωστοποιούμε (*) με την παρούσα ότι υπαναχωρώ/υπαναχωρούμε (*) από τη σύμβασή μου/μας (*) πώλησης των ακόλουθων αγαθών (*)/παροχής της ακόλουθης υπηρεσίας (*)",
+        "Που παραγγέλθηκε(-αν) στις (*)/που παρελήφθη(-σαν) στις (*)",
+        "Όνομα καταναλωτή(-ών)",
+        "Διεύθυνση καταναλωτή(-ών)",
+        "Υπογραφή καταναλωτή(-ών) (μόνο εάν το παρόν έντυπο κοινοποιηθεί σε χαρτί)",
+        "Ημερομηνία"
+      ],
+      "footnote": "Διαγράφεται η περιττή ένδειξη."
+    },
+    "en": {
+      "title": "Model withdrawal form",
+      "note": "(complete and return this form only if you wish to withdraw from the contract)",
+      "to": "To {trader}:",
+      "lines": [
+        "I/We (*) hereby give notice that I/We (*) withdraw from my/our (*) contract of sale of the following goods (*)/for the provision of the following service (*),",
+        "Ordered on (*)/received on (*),",
+        "Name of consumer(s),",
+        "Address of consumer(s),",
+        "Signature of consumer(s) (only if this form is notified on paper),",
+        "Date"
+      ],
+      "footnote": "Delete as appropriate."
+    },
+    "es": {
+      "title": "Modelo de formulario de desistimiento",
+      "note": "(solo debe cumplimentar y enviar el presente formulario si desea desistir del contrato)",
+      "to": "A la atención de {trader}:",
+      "lines": [
+        "Por la presente le comunico/comunicamos (*) que desisto de mi/desistimos de nuestro (*) contrato de venta del siguiente bien/prestación del siguiente servicio (*)",
+        "Pedido el/recibido el (*)",
+        "Nombre del consumidor o de los consumidores",
+        "Dirección del consumidor o de los consumidores",
+        "Firma del consumidor o de los consumidores (solo si el presente formulario se presenta en papel)",
+        "Fecha"
+      ],
+      "footnote": "Táchese lo que no proceda."
+    },
+    "et": {
+      "title": "Taganemisteate näidisvorm",
+      "note": "(täitke ja tagastage käesolev vorm üksnes juhul, kui soovite lepingust taganeda)",
+      "to": "Kellele: {trader}:",
+      "lines": [
+        "Käesolevaga soovin/soovime (*) taganeda lepingust, millega on ostetud järgmine kaup (*)/ on tellitud järgmine teenus (*)",
+        "Tellimuse esitamise kuupäev (*)/ kättesaamise kuupäev (*)",
+        "Tarbija nimi / tarbijate nimed",
+        "Tarbija(te) aadress(id)",
+        "Tarbija allkiri / tarbijate allkirjad (ainult juhul, kui käesolev vorm esitatakse paberkandjal)",
+        "Kuupäev"
+      ],
+      "footnote": "Mittevajalik maha tõmmata."
+    },
+    "fi": {
+      "title": "Malliperuuttamislomake",
+      "note": "(täyttäkää ja palauttakaa tämä lomake vain siinä tapauksessa, että haluatte peruuttaa sopimuksen)",
+      "to": "Vastaanottaja {trader}:",
+      "lines": [
+        "Ilmoitan/Ilmoitamme (*), että haluan/haluamme (*) peruuttaa tekemäni/tekemämme (*) sopimuksen, joka koskee seuraavien tavaroiden toimittamista (*)/ seuraavan palvelun suorittamista (*):",
+        "Tilauspäivä (*)/Vastaanottopäivä (*)",
+        "Kuluttajan nimi (*)/ Kuluttajien nimet (*)",
+        "Kuluttajan osoite (*)/ Kuluttajien osoitteet (*)",
+        "Kuluttajan allekirjoitus (*)/ Kuluttajien allekirjoitukset (*) (vain jos lomake täytetään paperimuodossa)",
+        "Päiväys"
+      ],
+      "footnote": "Tarpeeton yliviivataan."
+    },
+    "fr": {
+      "title": "Modèle de formulaire de rétractation",
+      "note": "(Veuillez compléter et renvoyer le présent formulaire uniquement si vous souhaitez vous rétracter du contrat)",
+      "to": "À l’attention de {trader}:",
+      "lines": [
+        "Je/Nous (*) vous notifie/notifions (*) par la présente ma/notre (*) rétractation du contrat portant sur la vente du bien (*)/pour la prestation de service (*) ci-dessous",
+        "Commandé le (*)/reçu le (*)",
+        "Nom du (des) consommateur(s)",
+        "Adresse du (des) consommateur(s)",
+        "Signature du (des) consommateur(s) (uniquement en cas de notification du présent formulaire sur papier)",
+        "Date"
+      ],
+      "footnote": "Biffez la mention inutile."
+    },
+    "hr": {
+      "title": "Uzorak obrasca o odustajanju",
+      "note": "(ovaj obrazac trebate ispuniti i vratiti nam ga samo ako želite odustati od ugovora)",
+      "to": "Prima {trader}:",
+      "lines": [
+        "ja/mi (*) ovim izjavljujem/izjavljujemo (*) da odustajem/odustajemo (*) od svojeg ugovora za prodaju sljedeće robe (*)/za pružanje sljedeće usluge (*),",
+        "naručene dana (*)/primljene dana (*),",
+        "naziv potrošača,",
+        "adresa potrošača,",
+        "potpis potrošača (samo ako se ovaj obrazac ispunjava na papiru),",
+        "datum."
+      ],
+      "footnote": "Prekrižiti nepotrebno."
+    },
+    "hu": {
+      "title": "Elállásinyilatkozat-minta",
+      "note": "(csak a szerződéstől való elállási szándék esetén töltse ki és juttassa vissza)",
+      "to": "Címzett: {trader}:",
+      "lines": [
+        "Alulírott/ak (*) kijelenti/k, hogy alulírott/ak (*) eláll/nak (*) az alábbi áruk adásvételétől (*)/az alábbi szolgáltatás igénybevételétől (*)",
+        "Megrendelés időpontja (*)/átvétel időpontja (*)",
+        "Fogyasztó(k) neve",
+        "Fogyasztó(k) címe",
+        "A fogyasztó(k) aláírása (kizárólag írásban történő értesítés esetén)",
+        "Kelt"
+      ],
+      "footnote": "A nem kívánt rész törlendő."
+    },
+    "it": {
+      "title": "Modulo di recesso tipo",
+      "note": "(compilare e restituire il presente modulo solo se si desidera recedere dal contratto)",
+      "to": "Destinatario {trader}:",
+      "lines": [
+        "Con la presente io/noi (*) notifichiamo il recesso dal mio/nostro (*) contratto di vendita dei seguenti beni/servizi (*)",
+        "Ordinato il (*)/ricevuto il (*)",
+        "Nome del/dei consumatore(i)",
+        "Indirizzo del/dei consumatore(i)",
+        "Firma del/dei consumatore(i) (solo se il presente modulo è notificato in versione cartacea)",
+        "Data"
+      ],
+      "footnote": "Cancellare la dicitura inutile."
+    },
+    "lt": {
+      "title": "Pavyzdinė sutarties atsisakymo forma",
+      "note": "(šią formą pildyti ir grąžinti tik tada, jei norite atsisakyti sutarties)",
+      "to": "Kam {trader}:",
+      "lines": [
+        "Aš/Mes (*) pranešu (-ame), kad atsisakau (-ome) toliau išvardytų prekių pardavimo (*)/toliau nurodytos paslaugos teikimo sutarties (*)",
+        "Užsakytos (*)/gautos (*)",
+        "Vartotojo (-ų) vardas, pavardė",
+        "Vartotojo (-ų) adresas",
+        "Vartotojo (-ų) parašas (-ai) (tik jei forma pateikiama popieriuje)",
+        "Data"
+      ],
+      "footnote": "Išbraukti, kas nereikalinga."
+    },
+    "lv": {
+      "title": "Atteikuma veidlapas paraugs",
+      "note": "(aizpildiet un nosūtiet šo veidlapu tikai tad, ja vēlaties atteikties no līguma)",
+      "to": "Adresāts: {trader}:",
+      "lines": [
+        "Es/mēs (*) paziņoju/paziņojam, ka es/mēs (*) vēlos/vēlamies atteikties no manis/mūsu (*) noslēgtā pārdošanas līguma par šādu preču iegādi (*)/pakalpojumu sniegšanu (*)",
+        "Pasūtīšanas datums (*)/saņemšanas datums (*)",
+        "Patērētāja(-u) vārds(-i) un uzvārds(-i)",
+        "Patērētāja(-u) adrese",
+        "Patērētāja(-u) paraksts (tikai tad, ja šo veidlapu nosūta uz papīra)",
+        "Datums"
+      ],
+      "footnote": "Nevajadzīgo svītrot."
+    },
+    "mt": {
+      "title": "Formola standard ta’ reċess",
+      "note": "(imla u rritorna din il-formola fil-każ biss li tixtieq tirreċedi mill-kuntratt)",
+      "to": "Lil {trader}:",
+      "lines": [
+        "Jien/Aħna (*) bil-preżenti ninnotifika(w) (*) li nirreċedi/u (*) mill-kuntratt ta’ bejgħ tiegħi/tagħna (*) tal-oġġetti li ġejjin (*)/għall-forniment tas-servizz li ġej (*)",
+        "Ordnat(i) fi (*)/li wasal/waslu fi (*)",
+        "Isem il-konsumatur(i)",
+        "Indirizz tal-konsumatur(i)",
+        "Firma tal-konsumatur(i) (fil-każ biss li din il-formola hija notifikata fuq il-karta)",
+        "Data"
+      ],
+      "footnote": "Aqta’ fejn xieraq."
+    },
+    "nl": {
+      "title": "Modelformulier voor herroeping",
+      "note": "(dit formulier alleen invullen en terugzenden als u de overeenkomst wilt herroepen)",
+      "to": "Aan {trader}:",
+      "lines": [
+        "Ik/Wij (*) deel/delen (*) u hierbij mede dat ik/wij (*) onze overeenkomst betreffende de verkoop van de volgende goederen/levering van de volgende dienst (*) herroep/herroepen (*)",
+        "Besteld op (*)/Ontvangen op (*)",
+        "Naam/Namen consument(en)",
+        "Adres consument(en)",
+        "Handtekening van consument(en) (alleen wanneer dit formulier op papier wordt ingediend)",
+        "Datum"
+      ],
+      "footnote": "Doorhalen wat niet van toepassing is."
+    },
+    "pl": {
+      "title": "Wzór formularza odstąpienia od umowy",
+      "note": "(formularz ten należy wypełnić i odesłać tylko w przypadku chęci odstąpienia od umowy)",
+      "to": "Adresat {trader}:",
+      "lines": [
+        "Ja/My (*) niniejszym informuję/informujemy (*) o moim/naszym (*) odstąpieniu od umowy sprzedaży następujących towarów (*)/o świadczenie następującej usługi (*)",
+        "Data zamówienia (*)/odbioru (*)",
+        "Imię i nazwisko/Nazwa/nazwisko konsumenta(-ów)",
+        "Adres konsumenta(-ów)",
+        "Podpis konsumenta(-ów) (tylko jeżeli formularz jest przesyłany w wersji papierowej)",
+        "Data"
+      ],
+      "footnote": "Niepotrzebne skreślić."
+    },
+    "pt": {
+      "title": "Modelo de formulário de retractação",
+      "note": "(só deve preencher e devolver o presente formulário se quiser retractar-se do contrato)",
+      "to": "Para {trader}:",
+      "lines": [
+        "Pela presente comunico/comunicamos (*) que me retracto/nos retractamos (*) do meu/nosso (*) contrato de compra e venda relativo ao seguinte bem/para a prestação do seguinte serviço (*)",
+        "Solicitado em (*)/recebido em (*)",
+        "Nome do(s) consumidor(es)",
+        "Endereço do(s) consumidor(es)",
+        "Assinatura do(s) consumidor(es) (só no caso de o presente formulário ser notificado em papel)",
+        "Data"
+      ],
+      "footnote": "Riscar o que não interessa."
+    },
+    "ro": {
+      "title": "Model de formular de retragere",
+      "note": "(prezentul formular se trimite înapoi completat doar dacă doriți să vă retrageți din contract)",
+      "to": "Către {trader}:",
+      "lines": [
+        "Vă informez/vă informăm (*) prin prezenta cu privire la retragerea mea/noastră (*) din contractul referitor la vânzarea următoarelor bunuri (*)/prestarea următoarelor servicii (*)",
+        "Comandate la data (*)/primite la data (*)",
+        "Numele consumatorului (consumatorilor)",
+        "Adresa consumatorului (consumatorilor)",
+        "Semnătura consumatorului (consumatorilor) (doar în cazul în care acest formular este notificat pe hârtie)",
+        "Data"
+      ],
+      "footnote": "A se elimina mențiunea inutilă, după caz."
+    },
+    "sk": {
+      "title": "Vzorový formulár na odstúpenie od zmluvy",
+      "note": "(vyplňte a zašlite tento formulár len v prípade, že si želáte odstúpiť od zmluvy)",
+      "to": "Komu {trader}:",
+      "lines": [
+        "Týmto oznamujem/oznamujeme (*), že odstupujem/odstupujeme (*) od kúpnej zmluvy na tento tovar/od zmluvy o poskytnutí tejto služby (*)",
+        "Dátum objednania/dátum prijatia (*)",
+        "Meno spotrebiteľa/spotrebiteľov",
+        "Adresa spotrebiteľa/spotrebiteľov",
+        "Podpis spotrebiteľa/spotrebiteľov (iba ak sa tento formulár podáva na papieri)",
+        "Dátum"
+      ],
+      "footnote": "Nehodiace sa prečiarknite."
+    },
+    "sl": {
+      "title": "Vzorčni odstopni obrazec",
+      "note": "(ta obrazec izpolnite in pošljite samo, če želite odstopiti od pogodbe)",
+      "to": "{trader}:",
+      "lines": [
+        "Obveščam/Obveščamo (*) vas, da odstopam/odstopamo (*) od pogodbe za prodajo naslednjega blaga (*)/za zagotovitev naslednje storitve (*)",
+        "Naročeno dne (*)/prejeto dne (*)",
+        "Ime potrošnika(-ov)",
+        "Naslov potrošnika(-ov)",
+        "Podpis potrošnika(-ov) (samo če se obrazec pošlje na papirju)",
+        "Datum"
+      ],
+      "footnote": "Po potrebi črtajte."
+    },
+    "sv": {
+      "title": "Mall för ångerblankett",
+      "note": "(Blanketten ska fyllas i och återsändas bara om du vill frånträda avtalet)",
+      "to": "Till {trader}:",
+      "lines": [
+        "Jag/Vi (*) meddelar härmed att jag/vi (*) frånträder mitt/vårt (*) köpeavtal avseende följande varor (*)/tjänster (*)",
+        "Beställdes den (*)/mottogs den (*)",
+        "Konsumentens/konsumenternas namn:",
+        "Konsumentens/konsumenternas adress:",
+        "Konsumentens/konsumenternas underskrift (endast om denna blankett meddelas på papper)",
+        "Datum:"
+      ],
+      "footnote": "Stryk det som inte är tillämpligt."
+    }
+  }
+}

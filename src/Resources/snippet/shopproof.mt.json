@@ -1,0 +1,54 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">irtira mill-kuntratt hawnhekk</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "ikkonferma r-reċess"
+    },
+    "shopproof": {
+        "withdrawal": {
+            "accountLink": "irtira mill-kuntratt hawnhekk",
+            "orderDate": "Data tal-ordni",
+            "commentHint": "Kull ħaġa oħra li trid tgħid lill-ħanut. M'għandekx bżonn tagħti raġuni għar-reċess.",
+            "periodLaw": "Tista' tirtira fi żmien %days% jum minn meta tirċievi l-ordni.",
+            "periodLonger": "Dan il-ħanut jagħtik %days% jum minn meta tirċievi l-ordni biex tirtira.",
+            "picker": {
+                "legend": "Oġġetti li qed tirritorna",
+                "hint": "Immarka l-oġġetti li qed tirritorna. Timmarka xejn biex tirtira mill-ordni kollha.",
+                "looking": "Qed infittxu l-oġġetti tal-ordni tiegħek...",
+                "found": "L-oġġetti tal-ordni tiegħek huma elenkati hawn taħt.",
+                "none": "Ma stajniex nuru l-oġġetti ta' din l-ordni. Iddeskrivihom hawn taħt, jew ħalli l-qasam vojt għall-ordni kollha.",
+                "quantity": "Kwantità",
+                "excluded": "Eskluż mid-dritt ta' reċess mill-ħanut.",
+                "defaultNote": "Jekk taħseb li dan mhux korrett għall-oġġett tiegħek, xorta tista' tibgħat ir-reċess tiegħek, u l-ħanut se jiċċekkjah."
+            },
+            "status": {
+                "title": "Ir-reċess tiegħek",
+                "received": "Ir-reċess wasal",
+                "return_arrived": "Ir-ritorn wasal għand il-ħanut",
+                "refund_sent": "Ir-rimborż intbagħat",
+                "done": "Lest",
+                "open": "Mhux għadu",
+                "reference": "Referenza",
+                "receivedOn": "Wasal fil-%date%",
+                "notFound": "Ma sibniex dan ir-reċess. Jekk jogħġbok uża l-link fl-email ta' konferma tiegħek, jew ikkuntattja lill-ħanut.",
+                "note": "Il-ħanut jaġġorna din il-paġna. Għal mistoqsijiet, wieġeb għall-email ta' konferma tiegħek."
+            }
+        },
+        "digital": {
+            "consent": "Naqbel espressament li tibdew il-forniment tal-kontenut diġitali qabel ma jintemm il-perjodu ta' reċess.",
+            "ack": "Nirrikonoxxi li nitlef id-dritt ta' reċess tiegħi ladarba jibda l-forniment tal-kontenut diġitali."
+        },
+        "safety": {
+            "heading": "Informazzjoni dwar is-sikurezza tal-prodott",
+            "summary": "Sikurezza tal-prodott (manifattur: %name%)",
+            "manufacturer": "Manifattur",
+            "responsiblePerson": "Persuna responsabbli fl-UE",
+            "identifiers": "Identifikazzjoni tal-prodott",
+            "warnings": "Twissijiet u informazzjoni dwar is-sikurezza",
+            "hazardHeading": "Tikkettar tal-periklu",
+            "hazardStatements": "Dikjarazzjonijiet ta' periklu",
+            "precautions": "Dikjarazzjonijiet ta' prekawzjoni"
+        }
+    }
+}

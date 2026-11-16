@@ -1,0 +1,54 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">odstąp od umowy tutaj</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "potwierdź odstąpienie od umowy"
+    },
+    "shopproof": {
+        "withdrawal": {
+            "accountLink": "odstąp od umowy tutaj",
+            "orderDate": "Data zamówienia",
+            "commentHint": "Wszystko, co jeszcze chcesz przekazać sklepowi. Nie musisz uzasadniać odstąpienia.",
+            "periodLaw": "Możesz odstąpić od umowy w ciągu %days% dni od otrzymania zamówienia.",
+            "periodLonger": "Ten sklep daje Ci %days% dni od otrzymania zamówienia na odstąpienie od umowy.",
+            "picker": {
+                "legend": "Zwracane produkty",
+                "hint": "Zaznacz zwracane produkty. Nie zaznaczaj żadnego, aby odstąpić od całego zamówienia.",
+                "looking": "Wyszukiwanie produktów z Twojego zamówienia...",
+                "found": "Produkty z Twojego zamówienia są wymienione poniżej.",
+                "none": "Nie udało się wyświetlić produktów z tego zamówienia. Opisz je poniżej lub pozostaw pole puste, aby objąć całe zamówienie.",
+                "quantity": "Ilość",
+                "excluded": "Wyłączone przez sklep z prawa odstąpienia.",
+                "defaultNote": "Jeśli uważasz, że nie dotyczy to Twojego produktu, możesz mimo to wysłać oświadczenie, a sklep je sprawdzi."
+            },
+            "status": {
+                "title": "Twoje odstąpienie od umowy",
+                "received": "Odstąpienie otrzymane",
+                "return_arrived": "Zwrot dotarł do sklepu",
+                "refund_sent": "Pieniądze zwrócone",
+                "done": "Gotowe",
+                "open": "Jeszcze nie",
+                "reference": "Numer referencyjny",
+                "receivedOn": "Otrzymano %date%",
+                "notFound": "Nie znaleźliśmy tego odstąpienia. Użyj linku z e-maila z potwierdzeniem lub skontaktuj się ze sklepem.",
+                "note": "Sklep aktualizuje tę stronę. W razie pytań odpowiedz na e-mail z potwierdzeniem."
+            }
+        },
+        "digital": {
+            "consent": "Wyrażam wyraźną zgodę na rozpoczęcie dostarczania treści cyfrowych przed upływem terminu do odstąpienia od umowy.",
+            "ack": "Przyjmuję do wiadomości, że z chwilą rozpoczęcia dostarczania treści cyfrowych tracę prawo odstąpienia od umowy."
+        },
+        "safety": {
+            "heading": "Informacje o bezpieczeństwie produktu",
+            "summary": "Bezpieczeństwo produktu (producent: %name%)",
+            "manufacturer": "Producent",
+            "responsiblePerson": "Osoba odpowiedzialna w UE",
+            "identifiers": "Identyfikacja produktu",
+            "warnings": "Ostrzeżenia i informacje dotyczące bezpieczeństwa",
+            "hazardHeading": "Oznakowanie zagrożeń",
+            "hazardStatements": "Zwroty wskazujące rodzaj zagrożenia",
+            "precautions": "Zwroty wskazujące środki ostrożności"
+        }
+    }
+}

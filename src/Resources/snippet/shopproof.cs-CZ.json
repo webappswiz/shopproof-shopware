@@ -1,0 +1,54 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">zde odstoupit od smlouvy</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "potvrdit odstoupení od smlouvy"
+    },
+    "shopproof": {
+        "withdrawal": {
+            "accountLink": "zde odstoupit od smlouvy",
+            "orderDate": "Datum objednávky",
+            "commentHint": "Cokoli dalšího chcete obchodu sdělit. Odstoupení nemusíte zdůvodňovat.",
+            "periodLaw": "Od smlouvy můžete odstoupit do %days% dní od převzetí objednávky.",
+            "periodLonger": "Tento obchod vám dává na odstoupení %days% dní od převzetí objednávky.",
+            "picker": {
+                "legend": "Vracené položky",
+                "hint": "Zaškrtněte vracené položky. Nezaškrtnete-li nic, odstoupíte od celé objednávky.",
+                "looking": "Hledáme položky vaší objednávky...",
+                "found": "Položky vaší objednávky jsou uvedeny níže.",
+                "none": "Položky této objednávky se nepodařilo zobrazit. Popište je níže nebo pole ponechte prázdné pro celou objednávku.",
+                "quantity": "Počet",
+                "excluded": "Obchod tuto položku vyloučil z odstoupení.",
+                "defaultNote": "Pokud si myslíte, že se to na vaši položku nevztahuje, můžete odstoupení přesto odeslat a obchod je zkontroluje."
+            },
+            "status": {
+                "title": "Vaše odstoupení",
+                "received": "Odstoupení přijato",
+                "return_arrived": "Vrácené zboží dorazilo do obchodu",
+                "refund_sent": "Peníze vráceny",
+                "done": "Hotovo",
+                "open": "Zatím ne",
+                "reference": "Referenční číslo",
+                "receivedOn": "Přijato %date%",
+                "notFound": "Toto odstoupení jsme nenašli. Použijte prosím odkaz z potvrzovacího e-mailu nebo kontaktujte obchod.",
+                "note": "Obchod tuto stránku aktualizuje. S dotazy odpovězte na potvrzovací e-mail."
+            }
+        },
+        "digital": {
+            "consent": "Výslovně souhlasím s tím, abyste s dodáním digitálního obsahu začali před uplynutím lhůty pro odstoupení od smlouvy.",
+            "ack": "Beru na vědomí, že zahájením dodání digitálního obsahu ztrácím právo na odstoupení od smlouvy."
+        },
+        "safety": {
+            "heading": "Informace o bezpečnosti výrobku",
+            "summary": "Bezpečnost výrobku (výrobce: %name%)",
+            "manufacturer": "Výrobce",
+            "responsiblePerson": "Odpovědná osoba v EU",
+            "identifiers": "Identifikace výrobku",
+            "warnings": "Upozornění a bezpečnostní informace",
+            "hazardHeading": "Označení nebezpečnosti",
+            "hazardStatements": "Standardní věty o nebezpečnosti",
+            "precautions": "Pokyny pro bezpečné zacházení"
+        }
+    }
+}

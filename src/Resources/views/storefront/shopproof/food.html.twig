@@ -1,0 +1,32 @@
+{# The food information block: the details as a list, the nutrition declaration as a table with
+   a caption and header cells, so screen readers read each value with its nutrient. #}
+<div class="shopproof shopproof-food">
+    <h2 class="h4">{{ food.heading }}</h2>
+    {% if food.rows|length %}
+        <dl class="shopproof-food__list">
+            {% for row in food.rows %}
+                <dt>{{ row.label }}</dt>
+                <dd>
+                    {%- if row.parts is defined -%}
+                        {%- for part in row.parts -%}{% if part.bold %}<strong>{{ part.text }}</strong>{% else %}{{ part.text }}{% endif %}{%- endfor -%}
+                    {%- else -%}
+                        {{ row.text|nl2br }}
+                    {%- endif -%}
+                </dd>
+            {% endfor %}
+        </dl>
+    {% endif %}
+    {% if food.nutrition %}
+        <table class="table table-sm shopproof-food__nutrition">
+            <caption class="caption-top">{{ food.nutrition.caption }}</caption>
+            <thead>
+                <tr><th scope="col">{{ food.nutrition.average }}</th><th scope="col">{{ food.nutrition.basis }}</th></tr>
+            </thead>
+            <tbody>
+                {% for row in food.nutrition.rows %}
+                    <tr><th scope="row" class="{{ row.sub ? 'ps-4 fw-normal' : '' }}">{{ row.label }}</th><td>{{ row.value }}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>

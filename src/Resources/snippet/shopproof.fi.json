@@ -1,0 +1,54 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">Peruuta sopimus tästä</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "Vahvista peruuttaminen"
+    },
+    "shopproof": {
+        "withdrawal": {
+            "accountLink": "Peruuta sopimus tästä",
+            "orderDate": "Tilauspäivä",
+            "commentHint": "Muuta, mitä haluat kertoa kaupalle. Sinun ei tarvitse perustella peruutusta.",
+            "periodLaw": "Voit peruuttaa %days% päivän kuluessa tilauksen vastaanottamisesta.",
+            "periodLonger": "Tämä kauppa antaa sinulle %days% päivää tilauksen vastaanottamisesta peruuttaaksesi.",
+            "picker": {
+                "legend": "Palautettavat tuotteet",
+                "hint": "Valitse palautettavat tuotteet. Jos et valitse mitään, peruutat koko tilauksen.",
+                "looking": "Haetaan tilauksesi tuotteita...",
+                "found": "Tilauksesi tuotteet näkyvät alla.",
+                "none": "Tämän tilauksen tuotteita ei voitu näyttää. Kuvaile ne alla tai jätä kenttä tyhjäksi koko tilauksen osalta.",
+                "quantity": "Määrä",
+                "excluded": "Kauppa on rajannut tämän tuotteen peruuttamisoikeuden ulkopuolelle.",
+                "defaultNote": "Jos mielestäsi tämä ei koske tuotettasi, voit silti lähettää peruutuksesi, ja kauppa tarkistaa sen."
+            },
+            "status": {
+                "title": "Peruutuksesi",
+                "received": "Peruutus vastaanotettu",
+                "return_arrived": "Palautus saapui kauppaan",
+                "refund_sent": "Rahat palautettu",
+                "done": "Valmis",
+                "open": "Ei vielä",
+                "reference": "Viite",
+                "receivedOn": "Vastaanotettu %date%",
+                "notFound": "Emme löytäneet tätä peruutusta. Käytä vahvistussähköpostissa olevaa linkkiä tai ota yhteyttä kauppaan.",
+                "note": "Kauppa päivittää tätä sivua. Jos sinulla on kysyttävää, vastaa vahvistussähköpostiin."
+            }
+        },
+        "digital": {
+            "consent": "Annan nimenomaisen suostumukseni siihen, että digitaalisen sisällön toimittaminen alkaa ennen peruuttamisajan päättymistä.",
+            "ack": "Ymmärrän, että menetän peruuttamisoikeuteni, kun digitaalisen sisällön toimittaminen on alkanut."
+        },
+        "safety": {
+            "heading": "Tuoteturvallisuustiedot",
+            "summary": "Tuoteturvallisuus (valmistaja: %name%)",
+            "manufacturer": "Valmistaja",
+            "responsiblePerson": "Vastuuhenkilö EU:ssa",
+            "identifiers": "Tuotteen tunnistetiedot",
+            "warnings": "Varoitukset ja turvallisuustiedot",
+            "hazardHeading": "Varoitusmerkinnät",
+            "hazardStatements": "Vaaralausekkeet",
+            "precautions": "Turvalausekkeet"
+        }
+    }
+}

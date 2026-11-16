@@ -1,0 +1,77 @@
+{% block shopproof_placement %}
+<mt-card
+    id="shopproof-placement"
+    class="shopproof-placement"
+    position-identifier="shopproof-overview-placement"
+    :title="$t('shopproof.placement.title')"
+    :is-loading="!loaded && !failed"
+>
+    <p>{{ $t('shopproof.placement.intro') }}</p>
+    <p v-if="failed" role="alert">{{ $t('shopproof.placement.loadFailed') }}</p>
+    <p v-else-if="loaded && !pages.length" role="alert">{{ $t('shopproof.placement.noChannel') }}</p>
+    <template v-else-if="loaded">
+        <p v-if="otherOrigin.length" role="note">{{ $t('shopproof.placement.otherOrigin', { names: otherOrigin.join(', ') }) }}</p>
+        <div class="shopproof-placement__controls">
+            <label for="shopproof-placement-page">{{ $t('shopproof.placement.page.label') }}</label>
+            <select
+                id="shopproof-placement-page"
+                class="shopproof-placement__select"
+                :value="current"
+                @change="choose($event.target.value)"
+            >
+                <option v-for="page in pages" :key="page.key" :value="page.key">{{ page.label }}</option>
+            </select>
+            <fieldset class="shopproof-placement__widths">
+                <legend class="shopproof-overview__sr">{{ $t('shopproof.placement.width') }}</legend>
+                <label><input type="radio" name="shopproof-placement-width" value="desktop" :checked="width === 'desktop'" @change="setWidth('desktop')"> {{ $t('shopproof.placement.desktop') }}</label>
+                <label><input type="radio" name="shopproof-placement-width" value="phone" :checked="width === 'phone'" @change="setWidth('phone')"> {{ $t('shopproof.placement.phone') }}</label>
+            </fieldset>
+            <mt-button variant="secondary" size="small" :disabled="state && state.sweeping" @click="again">{{ $t('shopproof.placement.again') }}</mt-button>
+            <a v-if="openUrl" :href="openUrl" target="_blank" rel="noopener">{{ $t('shopproof.placement.open') }}</a>
+        </div>
+        <div class="shopproof-placement__layout">
+            <div>
+                <div aria-live="polite">
+                    <p v-if="!state || state.preview.status === 'loading'">{{ $t('shopproof.placement.loading') }}</p>
+                    <p v-else-if="state.preview.status === 'blocked' || state.preview.status === 'error'" class="shopproof-placement__blocked">{{ $t('shopproof.placement.blocked') }}</p>
+                    <ul v-else class="shopproof-placement__checks">
+                        <li v-for="message in state.preview.messages" :key="message.id" :class="`shopproof-placement__check is-${message.status}`">
+                            <span class="shopproof-placement__icon" aria-hidden="true">{{ icon(message.status) }}</span>
+                            <span class="shopproof-overview__sr">{{ $t(`shopproof.placement.status.${message.status}`) }}: </span>
+                            {{ message.message }}
+                        </li>
+                    </ul>
+                </div>
+                <p class="shopproof-placement__status" aria-live="polite">
+                    <small>{{ state && state.sweeping ? $t('shopproof.placement.sweeping') : $t('shopproof.placement.swept') }}</small>
+                </p>
+                <table v-if="rows.length" class="shopproof-overview__table shopproof-placement__table">
+                    <caption class="shopproof-overview__sr">{{ $t('shopproof.placement.tableCaption') }}</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">{{ $t('shopproof.placement.page.label') }}</th>
+                            <th scope="col">{{ $t('shopproof.placement.desktop') }}</th>
+                            <th scope="col">{{ $t('shopproof.placement.phone') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="row in rows" :key="row.key">
+                            <td><button type="button" class="shopproof-placement__link" @click="choose(row.key)">{{ row.label }}</button></td>
+                            <td v-for="width in ['desktop', 'phone']" :key="width" :class="row[width] ? `is-${row[width].status}` : ''" :title="cellTitle(row, width)">
+                                <template v-if="row[width]">
+                                    <span class="shopproof-placement__icon" aria-hidden="true">{{ icon(row[width].status) }}</span>
+                                    <span class="shopproof-overview__sr">{{ $t(`shopproof.placement.status.${row[width].status}`) }}: </span>
+                                </template>
+                                {{ cell(row, width) }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p v-if="last && !(state && state.sweeping)"><small>{{ lastText() }}</small></p>
+            </div>
+            <div ref="stage" class="shopproof-placement__stage"></div>
+        </div>
+    </template>
+    <p><small>{{ $t('shopproof.placement.footnote') }}</small></p>
+</mt-card>
+{% endblock %}

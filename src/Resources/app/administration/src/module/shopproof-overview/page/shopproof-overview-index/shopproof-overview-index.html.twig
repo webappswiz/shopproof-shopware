@@ -20,6 +20,8 @@
                 </mt-button>
             </div>
 
+            <shopproof-setup-overview ref="setup" :rules="overview && overview.rules ? overview.rules : []" />
+
             <mt-card
                 position-identifier="shopproof-overview-about"
                 :title="$t('shopproof.overview.aboutTitle')"
@@ -74,6 +76,8 @@
                 </template>
             </mt-card>
 
+            <shopproof-placement v-if="check && check.supported" @checked="onPlacementChecked" />
+
             <mt-card
                 v-if="check && ((check.layouts && check.layouts.length) || (check.products && check.products.length))"
                 position-identifier="shopproof-overview-layouts"
@@ -99,6 +103,13 @@
                         </ul>
                     </li>
                 </ul>
+                <div v-if="shopDetails && shopDetails.fills && shopDetails.fills.length" class="shopproof-overview__own-goods">
+                    <p><strong>{{ $t('shopproof.products.ownGoodsTitle') }}</strong></p>
+                    <p>{{ $t('shopproof.products.ownGoodsText') }}</p>
+                    <p class="shopproof-overview__comment">{{ [shopDetails.shop.name, shopDetails.shop.address, shopDetails.shop.email, shopDetails.shop.url].filter(Boolean).join('\n') }}</p>
+                    <mt-button variant="secondary" :is-loading="usingShopDetails" @click="useShopDetails">{{ $t('shopproof.products.ownGoodsButton') }}</mt-button>
+                </div>
+                <p v-if="shopDetailsResult" role="status">{{ $t(`shopproof.products.ownGoods_${shopDetailsResult}`) }}</p>
                 <p v-if="check.layouts && check.layouts.length">{{ $t('shopproof.layouts.intro') }}</p>
                 <ul v-if="check.layouts && check.layouts.length" class="shopproof-overview__checks">
                     <li v-for="layout in check.layouts" :key="layout.id">
@@ -110,6 +121,54 @@
             </mt-card>
 
             <mt-card
+                v-if="check && check.notes && check.notes.length"
+                position-identifier="shopproof-overview-notes"
+                :title="$t('shopproof.notes.title')"
+            >
+                <ul class="shopproof-overview__checks">
+                    <li v-for="item in check.notes" :key="item.key">
+                        <span class="shopproof-overview__state">{{ item.ok ? $t('shopproof.withdrawal.done') : $t('shopproof.products.warn') }}</span>
+                        {{ $t(`shopproof.notes.${item.key}_${item.ok ? 'ok' : 'off'}`) }}
+                        <ul v-if="item.key === 'unitPrices' && check.unitPriceGaps" class="shopproof-overview__names">
+                            <li v-for="product in check.unitPriceGaps" :key="product.id">
+                                <router-link :to="{ name: 'sw.product.detail', params: { id: product.id } }">{{ product.name || product.id }}</router-link>
+                            </li>
+                        </ul>
+                        <ul v-if="item.key === 'depositTypes' && check.depositBadLines" class="shopproof-overview__names">
+                            <li v-for="line in check.depositBadLines" :key="line">{{ line }}</li>
+                        </ul>
+                        <ul v-if="item.key === 'checkoutPolicyPages' && item.detail" class="shopproof-overview__names">
+                            <li v-for="box in item.detail.split(', ')" :key="box">{{ $t(`shopproof.notes.box_${box}`) }}</li>
+                        </ul>
+                    </li>
+                </ul>
+                <template v-if="check.disputeStatements && check.disputeStatements.length">
+                    <p>{{ $t('shopproof.notes.disputeIntro') }}</p>
+                    <blockquote v-for="(statement, index) in check.disputeStatements" :key="index" class="shopproof-overview__statement">{{ statement }}</blockquote>
+                </template>
+                <p>{{ $t('shopproof.notes.where') }}</p>
+            </mt-card>
+
+            <mt-card
+                position-identifier="shopproof-overview-bulk"
+                :title="$t('shopproof.bulk.title')"
+            >
+                <p>{{ $t('shopproof.bulk.intro') }}</p>
+                <ol class="shopproof-overview__steps">
+                    <li>{{ $t('shopproof.bulk.step1') }}</li>
+                    <li>{{ $t('shopproof.bulk.step2') }}</li>
+                    <li>{{ $t('shopproof.bulk.step3') }}</li>
+                </ol>
+                <p>{{ $t('shopproof.bulk.manufacturers') }}</p>
+                <p>{{ $t('shopproof.bulk.bulkEdit') }}</p>
+                <div class="shopproof-overview__actions">
+                    <router-link :to="{ name: 'sw.import.export.index.export' }">{{ $t('shopproof.bulk.openImport') }}</router-link>
+                    <router-link :to="{ name: 'sw.product.index' }">{{ $t('shopproof.bulk.openProducts') }}</router-link>
+                </div>
+            </mt-card>
+
+            <mt-card
+                id="shopproof-proof-log"
                 position-identifier="shopproof-overview-proof-log"
                 :title="$t('shopproof.proof.title')"
                 :is-loading="proofLoading"
@@ -162,6 +221,7 @@
             </mt-card>
 
             <mt-card
+                id="shopproof-withdrawals"
                 position-identifier="shopproof-overview-withdrawals"
                 :title="$t('shopproof.withdrawal.listTitle')"
                 :is-loading="withdrawalsLoading"
@@ -172,7 +232,14 @@
                     <label for="shopproof-withdrawal-search">{{ $t('shopproof.withdrawal.searchLabel') }}</label>
                     <input id="shopproof-withdrawal-search" v-model="term" type="search" class="shopproof-overview__search-input">
                     <mt-button variant="secondary" type="submit">{{ $t('shopproof.withdrawal.search') }}</mt-button>
+                    <mt-button
+                        variant="secondary"
+                        :disabled="!withdrawals || withdrawals.total === 0"
+                        :is-loading="exporting"
+                        @click="exportWithdrawals"
+                    >{{ $t('shopproof.withdrawal.export') }}</mt-button>
                 </form>
+                <p v-if="exportFailed" role="alert">{{ $t('shopproof.withdrawal.exportFailed') }}</p>
                 <p v-if="withdrawalsFailed" role="alert">{{ $t('shopproof.withdrawal.listFailed') }}</p>
                 <p v-else-if="withdrawals && withdrawals.total === 0">{{ $t('shopproof.withdrawal.none') }}</p>
                 <template v-else-if="withdrawals">
@@ -274,7 +341,8 @@
             </mt-card>
 
             <mt-card
-                v-for="group in groups"
+                v-for="(group, index) in groups"
+                :id="index === 0 ? 'shopproof-rules' : undefined"
                 :key="group.code"
                 :position-identifier="`shopproof-overview-${group.code}`"
                 :title="$t('shopproof.overview.groupTitle', { country: countryName(group.code), count: group.rules.length })"

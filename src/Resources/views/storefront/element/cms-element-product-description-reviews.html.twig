@@ -1,0 +1,43 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-product-description-reviews.html.twig' %}
+
+{# Food information (Regulation (EU) No 1169/2011) as its own tab right after the description,
+   as food shops usually show it, only on products with food values. Same tab markup as
+   Shopware's own, so it looks and works like the description tab in every theme. #}
+{% block element_product_description_reviews_tabs_navigation_description %}
+    {{ parent() }}
+    {% set shopproofFood = shopproof_food(product, context) %}
+    {% if shopproofFood %}
+        {% block shopproof_food_tab_navigation %}
+            <li class="nav-item">
+                <a class="nav-link product-detail-tab-navigation-link shopproof-food-tab"
+                   id="shopproof-food-tab-{{ product.id }}"
+                   data-bs-toggle="tab"
+                   data-off-canvas-tabs="true"
+                   href="#shopproof-food-tab-{{ product.id }}-pane"
+                   role="tab"
+                   aria-controls="shopproof-food-tab-{{ product.id }}-pane"
+                   aria-selected="false">
+                    <span>{{ shopproofFood.heading }}</span>
+                    <span class="product-detail-tab-navigation-icon">
+                        {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
+                    </span>
+                </a>
+            </li>
+        {% endblock %}
+    {% endif %}
+{% endblock %}
+
+{% block element_product_description_reviews_tabs_content_description %}
+    {{ parent() }}
+    {% set shopproofFood = shopproof_food(product, context) %}
+    {% if shopproofFood %}
+        {% block shopproof_food_tab_content %}
+            <div class="tab-pane fade"
+                 id="shopproof-food-tab-{{ product.id }}-pane"
+                 role="tabpanel"
+                 aria-labelledby="shopproof-food-tab-{{ product.id }}">
+                {% sw_include '@ShopproofCompliance/storefront/shopproof/food.html.twig' with { food: shopproofFood } %}
+            </div>
+        {% endblock %}
+    {% endif %}
+{% endblock %}

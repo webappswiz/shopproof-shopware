@@ -1,0 +1,54 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">desistir del contrato aquí</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "confirmar desistimiento"
+    },
+    "shopproof": {
+        "withdrawal": {
+            "accountLink": "desistir del contrato aquí",
+            "orderDate": "Fecha del pedido",
+            "commentHint": "Cualquier otra cosa que quiera comunicar a la tienda. No necesita indicar el motivo del desistimiento.",
+            "periodLaw": "Puede desistir en un plazo de %days% días desde la recepción de su pedido.",
+            "periodLonger": "Esta tienda le concede %days% días desde la recepción de su pedido para desistir.",
+            "picker": {
+                "legend": "Artículos que devuelve",
+                "hint": "Marque los artículos que devuelve. No marque ninguno para desistir de todo el pedido.",
+                "looking": "Buscando los artículos de su pedido...",
+                "found": "Los artículos de su pedido aparecen a continuación.",
+                "none": "No pudimos mostrar los artículos de este pedido. Descríbalos a continuación o deje el campo vacío para todo el pedido.",
+                "quantity": "Cantidad",
+                "excluded": "Excluido del desistimiento por la tienda.",
+                "defaultNote": "Si cree que esto no es correcto para su artículo, puede enviar igualmente su desistimiento y la tienda lo revisará."
+            },
+            "status": {
+                "title": "Su desistimiento",
+                "received": "Desistimiento recibido",
+                "return_arrived": "Devolución recibida en la tienda",
+                "refund_sent": "Reembolso realizado",
+                "done": "Hecho",
+                "open": "Todavía no",
+                "reference": "Referencia",
+                "receivedOn": "Recibido el %date%",
+                "notFound": "No hemos encontrado este desistimiento. Utilice el enlace de su correo de confirmación o póngase en contacto con la tienda.",
+                "note": "La tienda actualiza esta página. Si tiene preguntas, responda a su correo de confirmación."
+            }
+        },
+        "digital": {
+            "consent": "Doy mi consentimiento expreso para que comiencen el suministro del contenido digital antes de que finalice el plazo de desistimiento.",
+            "ack": "Reconozco que pierdo mi derecho de desistimiento una vez iniciado el suministro del contenido digital."
+        },
+        "safety": {
+            "heading": "Información sobre la seguridad del producto",
+            "summary": "Seguridad del producto (fabricante: %name%)",
+            "manufacturer": "Fabricante",
+            "responsiblePerson": "Persona responsable en la UE",
+            "identifiers": "Identificación del producto",
+            "warnings": "Advertencias e información de seguridad",
+            "hazardHeading": "Etiquetado de peligro",
+            "hazardStatements": "Indicaciones de peligro",
+            "precautions": "Consejos de prudencia"
+        }
+    }
+}

@@ -3,6 +3,7 @@
 namespace Shopproof\Compliance\Withdrawal;
 
 use Doctrine\DBAL\Connection;
+use Shopproof\Compliance\Notes\NotesFacts;
 use Shopproof\Compliance\Storefront\HazardLabel;
 use Shopproof\Compliance\Storefront\Registrations;
 use Shopproof\Compliance\Storefront\SafetyData;
@@ -40,11 +41,12 @@ class SetupFacts
         private readonly HazardLabel $hazards,
         private readonly Wording $wording,
         private readonly ReturnsWebhook $returns,
+        private readonly ?NotesFacts $notes = null,
     ) {
     }
 
     /**
-     * @return array{supported: bool, flowActive: bool, customerMail: bool, channels: list<array{id: string, name: string, active: bool, buttonOn: bool, pageId: string, pageExists: bool, pageHasForm: bool, locales: list<string>}>, layouts: list<array{id: string, name: string, elements: list<string>}>, recordTable: bool, failedRecords: int, showSafety: bool, guaranteeNotice: bool, manufacturersWithoutDetails: list<array{id: string, name: string}>, manufacturersWithoutDetailsCount: int, safetyPlacement: string, hazardProblems: list<array{id: string, name: string, codes: list<array{code: string, reason: string}>}>, registrationBadLines: list<string>}
+     * @return array{supported: bool, flowActive: bool, customerMail: bool, channels: list<array{id: string, name: string, active: bool, buttonOn: bool, pageId: string, pageExists: bool, pageHasForm: bool, locales: list<string>}>, layouts: list<array{id: string, name: string, elements: list<string>}>, recordTable: bool, failedRecords: int, showSafety: bool, guaranteeNotice: bool, manufacturersWithoutDetails: list<array{id: string, name: string}>, manufacturersWithoutDetailsCount: int, safetyPlacement: string, hazardProblems: list<array{id: string, name: string, codes: list<array{code: string, reason: string}>}>, registrationBadLines: list<string>, notes: array{unitPriceGaps?: list<array{id: string, name: string}>, depositBadLines?: list<string>, missingPolicyPages?: list<string>, dispute?: array{choice: string, statements: list<string>, foundOnPages: bool, pasted: bool, pagesChecked: bool}}}
      */
     public function collect(): array
     {
@@ -60,6 +62,7 @@ class SetupFacts
             'safetyPlacement' => $this->config->getString(self::PLUGIN_CONFIG . 'safetyPlacement') === 'description' ? 'description' : 'buyBox',
             'hazardProblems' => $this->hazardProblems(),
             'registrationBadLines' => Registrations::badLines($this->config->getString(self::PLUGIN_CONFIG . 'registrationNumbers')),
+            'notes' => $this->notes?->collect() ?? [],
         ];
         if (!class_exists(self::EVENT_CLASS)) {
             return ['supported' => false, 'flowActive' => false, 'customerMail' => false, 'channels' => [], ...$common];

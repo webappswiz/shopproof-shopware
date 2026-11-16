@@ -1,0 +1,54 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">Fortryd aftale</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "Bekræft fortrydelse"
+    },
+    "shopproof": {
+        "withdrawal": {
+            "accountLink": "Fortryd aftale",
+            "orderDate": "Ordredato",
+            "commentHint": "Alt andet, du vil fortælle butikken. Du behøver ikke at begrunde din fortrydelse.",
+            "periodLaw": "Du kan fortryde inden for %days% dage fra modtagelsen af din ordre.",
+            "periodLonger": "Denne butik giver dig %days% dage fra modtagelsen af din ordre til at fortryde.",
+            "picker": {
+                "legend": "Varer, du returnerer",
+                "hint": "Sæt kryds ved de varer, du returnerer. Sæt ingen krydser for at fortryde hele ordren.",
+                "looking": "Finder varerne i din ordre...",
+                "found": "Varerne i din ordre står nedenfor.",
+                "none": "Vi kunne ikke vise varerne i denne ordre. Beskriv dem nedenfor, eller lad feltet stå tomt for hele ordren.",
+                "quantity": "Antal",
+                "excluded": "Undtaget fra fortrydelsesretten af butikken.",
+                "defaultNote": "Hvis du mener, at det ikke gælder din vare, kan du stadig sende din fortrydelse, og butikken vil gennemgå den."
+            },
+            "status": {
+                "title": "Din fortrydelse",
+                "received": "Fortrydelse modtaget",
+                "return_arrived": "Returvaren er nået frem til butikken",
+                "refund_sent": "Pengene er tilbagebetalt",
+                "done": "Udført",
+                "open": "Endnu ikke",
+                "reference": "Reference",
+                "receivedOn": "Modtaget den %date%",
+                "notFound": "Vi kunne ikke finde denne fortrydelse. Brug linket i din kvitteringsmail, eller kontakt butikken.",
+                "note": "Butikken opdaterer denne side. Har du spørgsmål, så svar på din kvitteringsmail."
+            }
+        },
+        "digital": {
+            "consent": "Jeg giver udtrykkeligt samtykke til, at I begynder leveringen af det digitale indhold, før fortrydelsesfristen udløber.",
+            "ack": "Jeg anerkender, at jeg mister min fortrydelsesret, når leveringen af det digitale indhold er begyndt."
+        },
+        "safety": {
+            "heading": "Oplysninger om produktsikkerhed",
+            "summary": "Produktsikkerhed (producent: %name%)",
+            "manufacturer": "Producent",
+            "responsiblePerson": "Ansvarlig person i EU",
+            "identifiers": "Produktidentifikation",
+            "warnings": "Advarsler og sikkerhedsoplysninger",
+            "hazardHeading": "Faremærkning",
+            "hazardStatements": "Faresætninger",
+            "precautions": "Sikkerhedssætninger"
+        }
+    }
+}

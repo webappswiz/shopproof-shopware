@@ -103,7 +103,9 @@
                 "partly": "Partly refunded {date}, check: {line}",
                 "help": "Technical help, not legal advice. The window is 14 days (or your longer period) from delivery and runs to Monday when it ends on a weekend; public holidays can extend it too. The refund is due 14 days after the withdrawal arrived."
             },
-            "items": "Items"
+            "items": "Items",
+            "export": "Export all as CSV",
+            "exportFailed": "The CSV file could not be made. Please try again."
         },
         "products": {
             "warn": "Check",
@@ -114,7 +116,12 @@
             "hazardStatements_off": "These products have hazard or precautionary statements the product page cannot show. Codes with a choice or a blank (such as P280 or P501) need your own words after a colon, for example \"P280: Wear protective gloves.\". Open the product, Custom fields, \"Shopproof: hazardous chemicals (CLP)\":",
             "hazardOwn": "needs your own words",
             "hazardUnknown": "unknown code, check the label",
-            "registrationNumbers_off": "These lines of \"Your registration numbers\" in the plugin settings are not shown, because they have no colon or no number, or there are more than 12. Write them like \"WEEE DE: DE 12345678\":"
+            "registrationNumbers_off": "These lines of \"Your registration numbers\" in the plugin settings are not shown, because they have no colon or no number, or there are more than 12. Write them like \"WEEE DE: DE 12345678\":",
+            "ownGoodsTitle": "Do you make your own goods?",
+            "ownGoodsText": "Then your shop is the manufacturer. These details from Settings > Basic information can fill in the empty default manufacturer fields in the Shopproof settings. Products with their own manufacturer keep theirs. Please check them first.",
+            "ownGoodsButton": "Use these details for the empty fields",
+            "ownGoods_saved": "Saved. Check them in the plugin settings under Product safety (GPSR).",
+            "ownGoods_failed": "The details could not be saved. Please try again."
         },
         "cms": {
             "label": "Shopproof product information",
@@ -176,6 +183,204 @@
                 "sent": "Returns tool: sent {time}, status {code}.",
                 "retrying": "Returns tool: not accepted {time} (status {code}). Shopproof will try again.",
                 "failed": "Returns tool: gave up {time} (status {code}). Please create the return by hand."
+            }
+        },
+        "notes": {
+            "title": "Shop notes",
+            "unitPrices_off": "These products look sold by weight or volume (for example \"500 g\" in the name), but have no content and unit set, so Shopware shows no unit price. Open the product, Specifications, Measures and packaging:",
+            "depositTypes_off": "These lines of \"Your deposit types\" in the plugin settings are not used. Write them like \"de-single | Einweg | 0.25 | single | DE\":",
+            "checkoutPolicyPages_off": "These checkout boxes you chose do not show, because their page is not set in Settings > Basic information:",
+            "box_withdrawal": "I have read the withdrawal policy (revocation page)",
+            "box_privacy": "I have read the privacy notice (privacy page)",
+            "disputeBoard_off": "Your dispute resolution statement names no arbitration board yet. Enter its name in the plugin settings.",
+            "disputeStatement_ok": "Your dispute resolution statement is on your terms or imprint page",
+            "disputeStatement_off": "Paste your dispute resolution statement into your terms and imprint pages (Content > Shopping Experiences), or tick that you did in the plugin settings.",
+            "disputeIntro": "Your dispute resolution statement, to paste in the language of each page:",
+            "where": "Change these in Settings > Extensions > Shopproof > Configure (cards Price notes, Bottle deposit, Cart and checkout, Dispute resolution statement). Technical help, not legal advice."
+        },
+        "bulk": {
+            "title": "Safety details for many products at once",
+            "intro": "Fill in the product safety details of many products in a spreadsheet, with Shopware's own Import/Export:",
+            "step1": "Open Settings > Import/Export, tab Export, and export with the profile \"Shopproof: product safety\". Tick \"Export product variants\" if your variants have their own details.",
+            "step2": "Fill in the columns in the file. Leave the product_number column as it is. Hazard pictograms keep the form of the export, for example [\"GHS02\",\"GHS07\"].",
+            "step3": "Import the file with the same profile, tab Import. Products are matched by product number, and an empty cell leaves the value as it is. A row with an unknown number is not imported: Shopware then reports the import as failed and offers a file with those rows, while the other rows are saved.",
+            "manufacturers": "Most products take their details from their manufacturer. The profile \"Shopproof: manufacturer safety details\" works the same way for manufacturers, matched by the id column.",
+            "bulkEdit": "To give a few products the same details, select them in Catalogues > Products, choose Bulk edit and fill in \"Shopproof: product safety (GPSR)\" under Custom fields.",
+            "openImport": "Open Import/Export",
+            "openProducts": "Open products"
+        },
+        "placement": {
+            "title": "Check where the withdrawal link appears",
+            "intro": "Here you see your shop pages as shoppers see them, on a computer and on a phone. The withdrawal button has a blue frame, and anything that covers your theme's content has a red dashed frame. Click around your shop in the preview and each page is checked again. The check runs in your browser and nothing leaves your shop; only the number of pages that passed is saved.",
+            "loadFailed": "The shop pages for the check could not be loaded. Reload this page to try again.",
+            "noChannel": "No active storefront with a domain was found, so there is nothing to check.",
+            "otherOrigin": "{names}: no storefront domain uses the address this admin is open on, so your browser may not show these pages here and they count as not checked. Open the admin on the storefront's own domain, or add that domain to the storefront, to check them.",
+            "page": {
+                "label": "Page",
+                "home": "Home page",
+                "product": "Product page",
+                "listing": "Category page",
+                "cart": "Cart",
+                "account": "Customer account (login)",
+                "withdrawal": "Withdrawal page"
+            },
+            "width": "Preview width",
+            "desktop": "Desktop",
+            "phone": "Phone",
+            "again": "Check all pages again",
+            "open": "Open this page in a new tab",
+            "loading": "Loading the page...",
+            "blocked": "We could not show this page in the preview. The admin and the shop may be on different web addresses, a security setting on the server may block previews, or the page sent you to another site. Open the page in a new tab and check it yourself.",
+            "blockedShort": "Could not open",
+            "checking": "Checking...",
+            "sweeping": "Checking your pages on a computer and a phone...",
+            "swept": "All pages checked.",
+            "missing": "No link",
+            "notNeeded": "Not needed here",
+            "frameTitle": "Preview of your shop page",
+            "tableCaption": "Withdrawal link on each page",
+            "last": "Last check {date}: {pass} passed, {warn} to look at, {fail} with a problem, {skipped} not checked.",
+            "footnote": "Technical help, not legal advice. The cookie banner can show as a floating element until you close it in the preview. Then choose the page again to check it once more.",
+            "status": {
+                "pass": "Passed",
+                "warn": "Check",
+                "fail": "Problem",
+                "skip": "Not checked"
+            },
+            "text": {
+                "and": "and",
+                "area": {
+                    "footer": "in the footer",
+                    "header": "in the header or menu",
+                    "main": "in the page content",
+                    "account": "in the account area",
+                    "other": "on the page"
+                },
+                "found": {
+                    "pass": "Withdrawal button found {areas}.",
+                    "fail": "No withdrawal button on this page. Shoppers must find it on every page, for example in the footer.",
+                    "skip": "No withdrawal button on this page, which is fine here."
+                },
+                "visible": {
+                    "pass": "Shoppers see it without opening anything.",
+                    "warn": "At this screen width the button is hidden {areas}, for example in a closed menu. Make sure it is also visible somewhere else, such as the footer."
+                },
+                "clear": {
+                    "pass": "Nothing covers the button.",
+                    "warn": "Something covers one of the buttons: {items}.",
+                    "fail": "Something covers the button: {items}. Shoppers cannot reach it."
+                },
+                "contrast": {
+                    "pass": "Text contrast {value}:1 (the accessibility standard asks for at least 4.5:1).",
+                    "warn": "The button is hard to read: text contrast is only {value}:1, and the accessibility standard (WCAG 2.2 AA) asks for 4.5:1. Choose other button colours in your theme.",
+                    "skip": "Contrast not measured: an image or gradient sits behind the text."
+                },
+                "floating": {
+                    "pass": "Nothing floats over your theme's content.",
+                    "warn": "Something floats over your theme's content: {items}. This does not come from Shopproof. It comes from your theme or another extension."
+                },
+                "others": {
+                    "pass": "No second withdrawal button found.",
+                    "warn": "We found another withdrawal button: {items}. Shoppers should see only one. Turn off the button in the other extension."
+                }
+            }
+        },
+        "setup": {
+            "loadFailed": "The setup overview could not be loaded. Reload this page to try again.",
+            "title": "Set up Shopproof",
+            "progress": "{done} of {all} steps done.",
+            "doneSr": "(done)",
+            "optional": "(optional)",
+            "start": "Start",
+            "complete": "Setup is complete. Shopproof keeps checking and shows anything new below.",
+            "glance": "Your shop at a glance",
+            "why": "Why is this needed?",
+            "whyText": "The law: {law}. It applies from {date}.",
+            "whyLink": "Read the official text",
+            "notAdvice": "Shopproof gives technical help. It is not legal advice.",
+            "state": {
+                "good": "Done",
+                "warn": "Needs a look",
+                "bad": "Needs action",
+                "todo": "To do"
+            },
+            "link": {
+                "open": "Open",
+                "fix": "Fix this"
+            },
+            "step": {
+                "button": {
+                    "title": "Switch on Shopware's withdrawal button",
+                    "help": "Under Settings > Basic information, turn on the withdrawal button and choose the page with the withdrawal form, for every storefront."
+                },
+                "placement": {
+                    "title": "Check that customers can find the withdrawal button",
+                    "help": "We open your shop pages and look for the button on a computer and a phone. It takes about a minute."
+                },
+                "safety": {
+                    "title": "Add who makes your products",
+                    "help": "Give each manufacturer its address and email under Catalogues > Manufacturers, or set a manufacturer for the whole shop in the plugin settings."
+                },
+                "guarantee": {
+                    "title": "Show the legal guarantee notice",
+                    "help": "An official EU notice on your product pages. Turn it on with one switch in the plugin settings."
+                },
+                "registrations": {
+                    "title": "Add your registration numbers",
+                    "help": "Only if you sell electrical devices, batteries or packaging that needs a number. Enter them in the plugin settings."
+                }
+            },
+            "card": {
+                "withdrawal": {
+                    "title": "Withdrawal button",
+                    "unsupported": "This Shopware version has no withdrawal button yet. Update to Shopware 6.7.9 or later.",
+                    "notReady": "Not ready: the button is off or has no page with the form in at least one storefront, or the receipt email or the record of requests is not working. The setup check below names what to fix.",
+                    "notChecked": "The button is on. Check that customers can find it on every page.",
+                    "problem": "The last check found a problem on {count} page. | The last check found a problem on {count} pages.",
+                    "noPages": "Not checked. The last check did not open any shop page that should show the withdrawal button, so the button was not found there. Run the check again.",
+                    "look": "Working, but the last check found something to look at.",
+                    "working": "Working. The button was found on the {count} page we checked. | Working. The button was found on all {count} pages we checked."
+                },
+                "withdrawals": {
+                    "title": "Withdrawals",
+                    "failed": "{count} withdrawal request could not be recorded. | {count} withdrawal requests could not be recorded.",
+                    "overdue": "{count} refund is due today or late. | {count} refunds are due today or late.",
+                    "soon": "{count} refund is due in the next 3 days. | {count} refunds are due in the next 3 days.",
+                    "received": "{count} withdrawal received. Nothing is due. | {count} withdrawals received. Nothing is due.",
+                    "none": "None yet. They appear here when a customer uses the button."
+                },
+                "safety": {
+                    "title": "Product safety",
+                    "noProducts": "No active products yet.",
+                    "noMaker": "{count} of {total} products shows no manufacturer. | {count} of {total} products show no manufacturer.",
+                    "noDetails": "{count} manufacturer has no address or email, so its products show the name only. | {count} manufacturers have no address or email, so their products show the name only.",
+                    "complete": "Every product shows its manufacturer with contact details."
+                },
+                "guarantee": {
+                    "title": "Legal guarantee notice",
+                    "on": "Shown on your product pages.",
+                    "off": "Off in at least one storefront. EU law asks shops that sell goods to show it.",
+                    "unknown": "Not checked. Product safety is switched off, so Shopproof does not look at the product pages."
+                },
+                "registrations": {
+                    "title": "Registration numbers",
+                    "some": "{count} number entered. | {count} numbers entered.",
+                    "none": "None entered. Needed only for electrical devices, batteries or packaging."
+                },
+                "proof": {
+                    "title": "Proof log",
+                    "unavailable": "The proof log table is missing. Reinstall the plugin.",
+                    "changed": "An old entry was changed or deleted.",
+                    "empty": "The first daily entry is added within a day.",
+                    "noSnapshot": "Not recording: there is no daily entry yet, although the log has other entries. Shopware's scheduled tasks may not be running.",
+                    "stale": "Not recording: the newest daily entry is from {date}. Shopware's scheduled tasks may not be running.",
+                    "recording": "Recording every day. {count} entry, no changes found. | Recording every day. {count} entries, no changes found."
+                },
+                "rules": {
+                    "title": "Rules",
+                    "missing": "The rules list could not be loaded.",
+                    "loaded": "{count} rule for the EU and your countries (version {version}). | {count} rules for the EU and your countries (version {version})."
+                }
             }
         }
     }

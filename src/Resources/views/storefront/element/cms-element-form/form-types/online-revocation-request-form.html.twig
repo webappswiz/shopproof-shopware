@@ -1,13 +1,20 @@
 {% sw_extends '@Storefront/storefront/element/cms-element-form/form-types/online-revocation-request-form.html.twig' %}
 
 {# Shopware's own withdrawal form, completed by Shopproof: filled in from the signed link in the
-   order emails and the customer account, an order date field when the shop asks for it, the item
-   picker, the comment field as the shop set it (with the note that no reason is needed), and the
-   confirm button in the wording the shop chose (the national wording from the snippets by
-   default). Everything else is Shopware's. #}
+   order emails and the customer account, the withdrawal period above the fields, an order date
+   field when the shop asks for it, the item picker, the comment field as the shop set it (with
+   the note that no reason is needed), and the confirm button in the wording the shop chose (the
+   national wording from the snippets by default). Everything else is Shopware's. #}
 {% block cms_form_revocation %}
     {% set data = shopproof_withdrawal_prefill(data ?? null, context ?? null) %}
-    {{ parent() }}
+    {# The period, above the fields: shoppers and AI agents read the page, not the order email. #}
+    {% set shopproofDays = shopproof_withdrawal_days(context ?? null) %}
+    {# The wrapper tells the placement check on the Shopproof page that the confirm button is the
+       form's own, not a second withdrawal button. #}
+    <div class="shopproof-withdrawal">
+        <p class="shopproof-period">{{ (shopproofDays > 14 ? 'shopproof.withdrawal.periodLonger' : 'shopproof.withdrawal.periodLaw')|trans({'%days%': shopproofDays}) }}</p>
+        {{ parent() }}
+    </div>
 {% endblock %}
 
 {% block cms_form_revocation_input_contract_number %}

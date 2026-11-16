@@ -1,0 +1,13 @@
+{% sw_extends '@Storefront/storefront/component/line-item/type/product.html.twig' %}
+
+{# The product's short cart description on its own line under the name, in the cart, the
+   checkout, the order confirmation and the customer's order history. #}
+{% block component_line_item_type_product_label %}
+    {{ parent() }}
+    {% block shopproof_line_item_description %}
+        {% set shopproofDescription = shopproof_cart_description(lineItem) %}
+        {% if shopproofDescription %}
+            <div class="shopproof-cart-description small">{{ shopproofDescription }}</div>
+        {% endif %}
+    {% endblock %}
+{% endblock %}

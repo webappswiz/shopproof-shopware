@@ -8,14 +8,28 @@ use Shopproof\Compliance\Command\RefreshRulesCommand;
 use Shopproof\Compliance\Command\SettingsExportCommand;
 use Shopproof\Compliance\Command\SettingsImportCommand;
 use Shopproof\Compliance\Command\SetupCheckCommand;
+use Shopproof\Compliance\Controller\OverviewController;
+use Shopproof\Compliance\Controller\PlacementController;
 use Shopproof\Compliance\Controller\ProofLogController;
 use Shopproof\Compliance\Controller\RulesController;
+use Shopproof\Compliance\Controller\SafetyController;
+use Shopproof\Compliance\Setup\ShopDetails;
 use Shopproof\Compliance\Controller\WithdrawalController;
 use Shopproof\Compliance\Controller\WithdrawalStatusController;
 use Shopproof\Compliance\Controller\ReturnsController;
 use Shopproof\Compliance\Controller\WithdrawalItemsController;
+use Shopproof\Compliance\Notes\CheckoutBoxesSubscriber;
+use Shopproof\Compliance\Notes\CartFieldsSubscriber;
+use Shopproof\Compliance\Notes\DepositCacheSubscriber;
+use Shopproof\Compliance\Notes\NotesCartProcessor;
+use Shopproof\Compliance\Notes\NotesFacts;
+use Shopproof\Compliance\Notes\NotesSettings;
+use Shopproof\Compliance\Notes\NotesTexts;
 use Shopproof\Compliance\ProofLog\ProofLog;
 use Shopproof\Compliance\ProofLog\ProofSnapshot;
+use Shopproof\Compliance\Placement\PlacementPages;
+use Shopproof\Compliance\Placement\PreviewSubscriber;
+use Shopproof\Compliance\Placement\PreviewToken;
 use Shopproof\Compliance\ProofLog\RetentionSubscriber;
 use Shopproof\Compliance\Rules\RulesStore;
 use Shopproof\Compliance\Rules\RulesUpdater;
@@ -27,7 +41,12 @@ use Shopproof\Compliance\Storefront\DurabilityLabel;
 use Shopproof\Compliance\Storefront\GuaranteeNotice;
 use Shopproof\Compliance\Storefront\HazardLabel;
 use Shopproof\Compliance\Storefront\Registrations;
+use Shopproof\Compliance\Checkout\DigitalConsentSubscriber;
+use Shopproof\Compliance\Twig\CheckoutExtension;
+use Shopproof\Compliance\Twig\ModelFormExtension;
+use Shopproof\Compliance\Twig\NotesExtension;
 use Shopproof\Compliance\Twig\ShopproofExtension;
+use Shopproof\Compliance\Withdrawal\ModelForm;
 use Shopproof\Compliance\Twig\WithdrawalExtension;
 use Shopproof\Compliance\Withdrawal\OrderEmailLine;
 use Shopproof\Compliance\Withdrawal\OrderEmailSubscriber;
@@ -90,6 +109,25 @@ return static function (ContainerConfigurator $container): void {
     $services->set(Wording::class)
         ->arg('$file', __DIR__ . '/withdrawal-alternatives.json');
 
+    // Placement check (decision 0024): a key made with the shop's own secret lets the Shopproof
+    // page frame the shop's own pages; nothing is stored for it.
+    $services->set(PreviewToken::class)
+        ->args([param('kernel.secret')]);
+
+    $services->set(PreviewSubscriber::class)
+        ->tag('kernel.event_subscriber');
+
+    $services->set(PlacementPages::class)
+        ->arg('$snippetDir', __DIR__ . '/../snippet');
+
+    $services->set(PlacementController::class)
+        ->public()
+        ->call('setContainer', [service('service_container')]);
+
+    $services->set(OverviewController::class)
+        ->public()
+        ->call('setContainer', [service('service_container')]);
+
     $services->set(WithdrawalPrefill::class);
 
     $services->set(WithdrawalFormValidator::class)
@@ -98,6 +136,27 @@ return static function (ContainerConfigurator $container): void {
     $services->set(WithdrawalExtension::class)
         ->arg('$requests', service('request_stack'))
         ->tag('twig.extension');
+
+    $services->set(ShopDetails::class);
+
+    $services->set(SafetyController::class)
+        ->public()
+        ->call('setContainer', [service('service_container')]);
+
+    $services->set(ModelForm::class)
+        ->args([__DIR__ . '/model-form.json']);
+
+    $services->set(ModelFormExtension::class)
+        ->tag('twig.extension');
+
+    $services->set(CheckoutExtension::class)
+        ->tag('twig.extension');
+
+    $services->set(DigitalConsentSubscriber::class)
+        ->arg('$requests', service('request_stack'))
+        ->arg('$translator', service('translator'))
+        ->arg('$logger', service('logger'))
+        ->tag('kernel.event_subscriber');
 
     $services->set(ShopproofExtension::class)
         ->arg('$packages', service('assets.packages'))
@@ -197,4 +256,34 @@ return static function (ContainerConfigurator $container): void {
 
     $services->set(WithdrawalItemsController::class)
         ->public();
+
+    // Shop notes ported from the Shopify app: food information, price notes, deposit, cart
+    // descriptions, checkout boxes and the dispute statement.
+    $services->set(NotesTexts::class)
+        ->args([__DIR__ . '/notes-texts.json']);
+
+    $services->set(NotesSettings::class)
+        ->tag('kernel.reset', ['method' => 'reset']);
+
+    // After Shopware's product processor (5000) has priced the products.
+    $services->set(NotesCartProcessor::class)
+        ->arg('$calculator', service('Shopware\\Core\\Checkout\\Cart\\Price\\QuantityPriceCalculator'))
+        ->tag('shopware.cart.processor', ['priority' => 4950]);
+
+    $services->set(CheckoutBoxesSubscriber::class)
+        ->arg('$requests', service('request_stack'))
+        ->arg('$carts', service('Shopware\\Core\\Checkout\\Cart\\SalesChannel\\CartService'))
+        ->tag('kernel.event_subscriber');
+
+    $services->set(NotesFacts::class);
+
+    $services->set(DepositCacheSubscriber::class)
+        ->tag('kernel.event_subscriber');
+
+    $services->set(CartFieldsSubscriber::class)
+        ->tag('kernel.event_subscriber');
+
+    $services->set(NotesExtension::class)
+        ->arg('$currency', service('Shopware\\Core\\System\\Currency\\CurrencyFormatter'))
+        ->tag('twig.extension');
 };

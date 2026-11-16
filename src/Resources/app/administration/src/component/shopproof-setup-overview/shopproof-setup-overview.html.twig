@@ -1,0 +1,58 @@
+{% block shopproof_setup_overview %}
+<div class="shopproof-setup">
+    <p v-if="failed" role="alert">{{ $t('shopproof.setup.loadFailed') }}</p>
+    <template v-else-if="result">
+        <mt-card
+            v-if="!setupDone"
+            position-identifier="shopproof-overview-setup"
+            :title="$t('shopproof.setup.title')"
+        >
+            <p>{{ $t('shopproof.setup.progress', { done: result.done, all: result.required }) }}</p>
+            <progress class="shopproof-setup__bar" :max="result.required" :value="result.done">{{ result.done }} / {{ result.required }}</progress>
+            <ol class="shopproof-setup__steps">
+                <li v-for="step in result.steps" :key="step.key" :class="['shopproof-setup__step', { 'is-done': step.done }]">
+                    <span class="shopproof-setup__mark" aria-hidden="true">{{ step.done ? '✓' : '' }}</span>
+                    <div>
+                        <strong>{{ $t(`shopproof.setup.step.${step.key}.title`) }}</strong>
+                        <span v-if="step.done" class="shopproof-overview__sr">{{ $t('shopproof.setup.doneSr') }}</span>
+                        <span v-else-if="step.optional" class="shopproof-setup__optional">{{ $t('shopproof.setup.optional') }}</span>
+                        <template v-if="!step.done">
+                            <p class="shopproof-setup__help">{{ $t(`shopproof.setup.step.${step.key}.help`) }}</p>
+                            <details v-if="why(step.key)" class="shopproof-setup__why">
+                                <summary>{{ $t('shopproof.setup.why') }}</summary>
+                                <p>
+                                    {{ why(step.key).text }}
+                                    <a :href="why(step.key).url" target="_blank" rel="noopener noreferrer">{{ $t('shopproof.setup.whyLink') }}<span class="shopproof-overview__sr"> {{ $t('shopproof.overview.opensNewTab') }}</span></a>
+                                </p>
+                                <p>{{ $t('shopproof.setup.notAdvice') }}</p>
+                            </details>
+                            <p>
+                                <router-link v-if="place(step.key).route" :to="place(step.key).route">{{ $t('shopproof.setup.start') }}<span class="shopproof-overview__sr">: {{ $t(`shopproof.setup.step.${step.key}.title`) }}</span></router-link>
+                                <button v-else type="button" class="shopproof-setup__go" @click="go(step.key)">{{ $t('shopproof.setup.start') }}<span class="shopproof-overview__sr">: {{ $t(`shopproof.setup.step.${step.key}.title`) }}</span></button>
+                            </p>
+                        </template>
+                    </div>
+                </li>
+            </ol>
+        </mt-card>
+        <p v-else class="shopproof-setup__complete" role="status">{{ $t('shopproof.setup.complete') }}</p>
+
+        <mt-card position-identifier="shopproof-overview-glance" :title="$t('shopproof.setup.glance')">
+            <ul class="shopproof-setup__cards">
+                <li v-for="card in result.cards" :key="card.key" :class="['shopproof-setup__card', `is-${card.state}`]" :data-card="card.key">
+                    <h3 class="shopproof-setup__card-title">
+                        {{ $t(`shopproof.setup.card.${card.key}.title`) }}
+                        <span v-if="card.state !== 'info'" class="shopproof-setup__pill">{{ $t(`shopproof.setup.state.${card.state}`) }}</span>
+                    </h3>
+                    <p>{{ cardText(card) }}</p>
+                    <p v-if="place(card.key).route || place(card.key).anchor">
+                        <router-link v-if="place(card.key).route" :to="place(card.key).route">{{ cardLink(card) }}<span class="shopproof-overview__sr">: {{ $t(`shopproof.setup.card.${card.key}.title`) }}</span></router-link>
+                        <button v-else type="button" class="shopproof-setup__go" @click="go(card.key)">{{ cardLink(card) }}<span class="shopproof-overview__sr">: {{ $t(`shopproof.setup.card.${card.key}.title`) }}</span></button>
+                    </p>
+                </li>
+            </ul>
+            <p><small>{{ $t('shopproof.setup.notAdvice') }}</small></p>
+        </mt-card>
+    </template>
+</div>
+{% endblock %}

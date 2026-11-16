@@ -1,0 +1,54 @@
+{
+    "footer": {
+        "serviceRevocationRequestTextPage": "<a class=\"btn btn-primary\" href=\"%url%\">ångra avtalet här</a>"
+    },
+    "revocationRequest": {
+        "formSubmit": "bekräfta frånträde"
+    },
+    "shopproof": {
+        "withdrawal": {
+            "accountLink": "ångra avtalet här",
+            "orderDate": "Orderdatum",
+            "commentHint": "Något annat du vill berätta för butiken. Du behöver inte motivera att du ångrar köpet.",
+            "periodLaw": "Du kan ångra köpet inom %days% dagar från att du tagit emot din order.",
+            "periodLonger": "Den här butiken ger dig %days% dagar från att du tagit emot din order att ångra köpet.",
+            "picker": {
+                "legend": "Varor som du returnerar",
+                "hint": "Markera de varor du returnerar. Markera inga för att ångra hela ordern.",
+                "looking": "Söker efter varorna i din order...",
+                "found": "Varorna i din order visas nedan.",
+                "none": "Vi kunde inte visa varorna i den här ordern. Beskriv dem nedan eller lämna fältet tomt för hela ordern.",
+                "quantity": "Antal",
+                "excluded": "Undantagen från ångerrätten av butiken.",
+                "defaultNote": "Om du anser att det inte gäller din vara kan du ändå skicka ditt frånträdande, och butiken går igenom det."
+            },
+            "status": {
+                "title": "Ditt frånträdande",
+                "received": "Frånträdande mottaget",
+                "return_arrived": "Returen har kommit fram till butiken",
+                "refund_sent": "Återbetalning skickad",
+                "done": "Klart",
+                "open": "Inte än",
+                "reference": "Referens",
+                "receivedOn": "Mottaget %date%",
+                "notFound": "Vi kunde inte hitta det här frånträdandet. Använd länken i ditt bekräftelsemejl eller kontakta butiken.",
+                "note": "Butiken uppdaterar den här sidan. Om du har frågor, svara på ditt bekräftelsemejl."
+            }
+        },
+        "digital": {
+            "consent": "Jag samtycker uttryckligen till att ni börjar tillhandahålla det digitala innehållet innan ångerfristen har löpt ut.",
+            "ack": "Jag är medveten om att jag förlorar min ångerrätt när tillhandahållandet av det digitala innehållet har påbörjats."
+        },
+        "safety": {
+            "heading": "Information om produktsäkerhet",
+            "summary": "Produktsäkerhet (tillverkare: %name%)",
+            "manufacturer": "Tillverkare",
+            "responsiblePerson": "Ansvarig person i EU",
+            "identifiers": "Produktidentifiering",
+            "warnings": "Varningar och säkerhetsinformation",
+            "hazardHeading": "Faromärkning",
+            "hazardStatements": "Faroangivelser",
+            "precautions": "Skyddsangivelser"
+        }
+    }
+}

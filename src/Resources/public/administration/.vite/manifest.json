@@ -1,23 +1,43 @@
 {
+  "component/shopproof-placement/index.js": {
+    "file": "assets/index-Daib9jUk.js",
+    "name": "index",
+    "src": "component/shopproof-placement/index.js",
+    "isDynamicEntry": true,
+    "css": [
+      "assets/index-B9GhrpgM.css"
+    ]
+  },
+  "component/shopproof-setup-overview/index.js": {
+    "file": "assets/index-BEaSsvL7.js",
+    "name": "index",
+    "src": "component/shopproof-setup-overview/index.js",
+    "isDynamicEntry": true,
+    "css": [
+      "assets/index-CkMjk1n6.css"
+    ]
+  },
   "main.js": {
-    "file": "assets/shopproof-compliance-_t_E4Qmt.js",
+    "file": "assets/shopproof-compliance-CZqxByt4.js",
     "name": "shopproof-compliance",
     "src": "main.js",
     "isEntry": true,
     "dynamicImports": [
-      "module/shopproof-overview/page/shopproof-overview-index/index.js"
+      "module/shopproof-overview/page/shopproof-overview-index/index.js",
+      "component/shopproof-setup-overview/index.js",
+      "component/shopproof-placement/index.js"
     ],
     "css": [
       "assets/shopproof-compliance-DNo1LZJa.css"
     ]
   },
   "module/shopproof-overview/page/shopproof-overview-index/index.js": {
-    "file": "assets/index-fXlYDr5Y.js",
+    "file": "assets/index-DazR2Qha.js",
     "name": "index",
     "src": "module/shopproof-overview/page/shopproof-overview-index/index.js",
     "isDynamicEntry": true,
     "css": [
-      "assets/index-DsvIgLCh.css"
+      "assets/index-D-g4u6Rm.css"
     ]
   }
 }
