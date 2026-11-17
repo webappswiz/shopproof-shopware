@@ -39,6 +39,11 @@
             "consent": "Je consens expressément à ce que la fourniture du contenu numérique commence avant la fin du délai de rétractation.",
             "ack": "Je reconnais perdre mon droit de rétractation dès le début de la fourniture du contenu numérique."
         },
+        "service": {
+            "consent": "Je demande expressément que vous commenciez le service avant la fin du délai de rétractation. Si je me rétracte, je paie la part déjà fournie.",
+            "ack": "Je reconnais perdre mon droit de rétractation une fois le service pleinement exécuté.",
+            "pair": "Pour que le service commence plus tôt, cochez les deux cases. Sinon, laissez-les vides."
+        },
         "safety": {
             "heading": "Informations sur la sécurité du produit",
             "summary": "Sécurité du produit (fabricant : %name%)",

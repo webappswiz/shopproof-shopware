@@ -39,6 +39,11 @@
             "consent": "Îmi exprim acordul expres ca furnizarea conținutului digital să înceapă înainte de expirarea perioadei de retragere.",
             "ack": "Iau act de faptul că îmi pierd dreptul de retragere odată ce furnizarea conținutului digital a început."
         },
+        "service": {
+            "consent": "Solicit în mod expres să începeți prestarea serviciului înainte de încheierea perioadei de retragere. Dacă mă retrag, plătesc partea deja prestată.",
+            "ack": "Iau la cunoștință că îmi pierd dreptul de retragere după ce serviciul a fost prestat integral.",
+            "pair": "Pentru ca serviciul să înceapă mai devreme, bifați ambele căsuțe. Altfel, lăsați-le pe amândouă goale."
+        },
         "safety": {
             "heading": "Informații privind siguranța produsului",
             "summary": "Siguranța produsului (producător: %name%)",

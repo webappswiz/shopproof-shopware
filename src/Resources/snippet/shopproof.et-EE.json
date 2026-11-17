@@ -39,6 +39,11 @@
             "consent": "Nõustun sõnaselgelt, et alustate digitaalse sisu üleandmist enne taganemistähtaja lõppu.",
             "ack": "Olen teadlik, et kaotan taganemisõiguse, kui digitaalse sisu üleandmine on alanud."
         },
+        "service": {
+            "consent": "Palun sõnaselgelt, et alustaksite teenuse osutamist enne taganemisõiguse tähtaja lõppu. Kui ma taganen, maksan juba osutatud osa eest.",
+            "ack": "Olen teadlik, et kaotan taganemisõiguse, kui teenus on täielikult osutatud.",
+            "pair": "Kui soovite, et teenus algaks varem, märkige mõlemad kastid. Muul juhul jätke mõlemad tühjaks."
+        },
         "safety": {
             "heading": "Tooteohutuse teave",
             "summary": "Tooteohutus (tootja: %name%)",

@@ -39,6 +39,11 @@
             "consent": "Annan nimenomaisen suostumukseni siihen, että digitaalisen sisällön toimittaminen alkaa ennen peruuttamisajan päättymistä.",
             "ack": "Ymmärrän, että menetän peruuttamisoikeuteni, kun digitaalisen sisällön toimittaminen on alkanut."
         },
+        "service": {
+            "consent": "Pyydän nimenomaisesti, että aloitatte palvelun ennen peruuttamisajan päättymistä. Jos peruutan, maksan jo suoritetusta osasta.",
+            "ack": "Ymmärrän, että menetän peruuttamisoikeuteni, kun palvelu on suoritettu kokonaan.",
+            "pair": "Jos haluat palvelun alkavan aiemmin, valitse molemmat ruudut. Muuten jätä molemmat tyhjiksi."
+        },
         "safety": {
             "heading": "Tuoteturvallisuustiedot",
             "summary": "Tuoteturvallisuus (valmistaja: %name%)",

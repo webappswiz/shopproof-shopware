@@ -4,6 +4,8 @@ namespace Shopproof\Compliance\Notes;
 
 use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\DBAL\Connection;
+use Shopproof\Compliance\Withdrawal\OrderEmailLine;
+use Shopproof\Compliance\Withdrawal\PolicyMatch;
 use Shopware\Core\Defaults;
 use Shopware\Core\Framework\Uuid\Uuid;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
@@ -27,11 +29,12 @@ class NotesFacts
         private readonly SystemConfigService $config,
         private readonly NotesSettings $settings,
         private readonly NotesTexts $texts,
+        private readonly ?PolicyMatch $policy = null,
     ) {
     }
 
     /**
-     * @return array{unitPriceGaps: list<array{id: string, name: string}>, depositBadLines: list<string>, missingPolicyPages: list<string>, dispute: array{choice: string, statements: list<string>, foundOnPages: bool, pasted: bool, pagesChecked: bool}}
+     * @return array{unitPriceGaps: list<array{id: string, name: string}>, depositBadLines: list<string>, missingPolicyPages: list<string>, dispute: array{choice: string, statements: list<string>, foundOnPages: bool, pasted: bool, pagesChecked: bool}, policyMatch?: array{page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null}}
      */
     public function collect(): array
     {
@@ -51,6 +54,10 @@ class NotesFacts
             }
         }
         $legalPages = $this->legalPages();
+        $policy = [];
+        if ($this->policy !== null) {
+            $policy['policyMatch'] = $this->policyMatch($pages['withdrawal']);
+        }
 
         return [
             'unitPriceGaps' => $this->unitPriceGaps(),
@@ -63,7 +70,37 @@ class NotesFacts
                 'pasted' => $this->settings->bool('disputePasted', null),
                 'pagesChecked' => $legalPages !== [],
             ],
+            ...$policy,
         ];
+    }
+
+    /**
+     * The withdrawal policy match check (decision 0039): the revocation page set in Settings >
+     * Basic information, compared with Shopproof's withdrawal period and the shop email.
+     *
+     * @return array{page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null}
+     */
+    private function policyMatch(string $pageId): array
+    {
+        if ($this->policy === null || $pageId === '' || !$this->pageExists($pageId)) {
+            return ['page' => false, 'result' => null];
+        }
+
+        return [
+            'page' => true,
+            'result' => $this->policy->match(PolicyMatch::plain($this->pageText([$pageId])), [
+                'days' => OrderEmailLine::period($this->config->getInt('ShopproofCompliance.config.withdrawalDays')),
+                'emails' => [$this->config->getString('core.basicInformation.email')],
+            ]),
+        ];
+    }
+
+    private function pageExists(string $pageId): bool
+    {
+        return (bool) $this->connection->fetchOne(
+            'SELECT 1 FROM cms_page WHERE id = :id AND version_id = :version',
+            ['id' => Uuid::fromHexToBytes($pageId), 'version' => Uuid::fromHexToBytes(Defaults::LIVE_VERSION)]
+        );
     }
 
     /**

@@ -4,6 +4,12 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use GuzzleHttp\Client;
 use Shopproof\Compliance\Cache\ManufacturerCacheSubscriber;
+use Shopproof\Compliance\Cancel\CancelForm;
+use Shopproof\Compliance\Cancel\CancelService;
+use Shopproof\Compliance\Cancel\CancelStore;
+use Shopproof\Compliance\Controller\CancelController;
+use Shopproof\Compliance\Controller\CancellationController;
+use Shopproof\Compliance\Twig\CancelExtension;
 use Shopproof\Compliance\Command\RefreshRulesCommand;
 use Shopproof\Compliance\Command\SettingsExportCommand;
 use Shopproof\Compliance\Command\SettingsImportCommand;
@@ -42,11 +48,13 @@ use Shopproof\Compliance\Storefront\GuaranteeNotice;
 use Shopproof\Compliance\Storefront\HazardLabel;
 use Shopproof\Compliance\Storefront\Registrations;
 use Shopproof\Compliance\Checkout\DigitalConsentSubscriber;
+use Shopproof\Compliance\Checkout\ServiceConsentSubscriber;
 use Shopproof\Compliance\Twig\CheckoutExtension;
 use Shopproof\Compliance\Twig\ModelFormExtension;
 use Shopproof\Compliance\Twig\NotesExtension;
 use Shopproof\Compliance\Twig\ShopproofExtension;
 use Shopproof\Compliance\Withdrawal\ModelForm;
+use Shopproof\Compliance\Withdrawal\PolicyMatch;
 use Shopproof\Compliance\Twig\WithdrawalExtension;
 use Shopproof\Compliance\Withdrawal\OrderEmailLine;
 use Shopproof\Compliance\Withdrawal\OrderEmailSubscriber;
@@ -146,6 +154,9 @@ return static function (ContainerConfigurator $container): void {
     $services->set(ModelForm::class)
         ->args([__DIR__ . '/model-form.json']);
 
+    $services->set(PolicyMatch::class)
+        ->args([__DIR__ . '/policy-match.json']);
+
     $services->set(ModelFormExtension::class)
         ->tag('twig.extension');
 
@@ -154,6 +165,13 @@ return static function (ContainerConfigurator $container): void {
 
     $services->set(DigitalConsentSubscriber::class)
         ->arg('$requests', service('request_stack'))
+        ->arg('$translator', service('translator'))
+        ->arg('$logger', service('logger'))
+        ->tag('kernel.event_subscriber');
+
+    $services->set(ServiceConsentSubscriber::class)
+        ->arg('$requests', service('request_stack'))
+        ->arg('$carts', service('Shopware\\Core\\Checkout\\Cart\\SalesChannel\\CartService'))
         ->arg('$translator', service('translator'))
         ->arg('$logger', service('logger'))
         ->tag('kernel.event_subscriber');
@@ -285,5 +303,29 @@ return static function (ContainerConfigurator $container): void {
 
     $services->set(NotesExtension::class)
         ->arg('$currency', service('Shopware\\Core\\System\\Currency\\CurrencyFormatter'))
+        ->tag('twig.extension');
+
+    // The cancel button (Germany § 312k BGB, France L. 215-1-1), with the WooCommerce plugin's texts.
+    $services->set(CancelForm::class)
+        ->factory([CancelForm::class, 'fromFile'])
+        ->args([__DIR__ . '/cancel-button.json']);
+
+    $services->set(CancelStore::class);
+
+    $services->set(CancelService::class)
+        ->arg('$mail', service('Shopware\\Core\\Content\\Mail\\Service\\MailService'))
+        ->arg('$cache', service('cache.object'))
+        ->arg('$logger', service('logger'));
+
+    $services->set(CancelController::class)
+        ->arg('$pages', service('Shopware\\Storefront\\Page\\GenericPageLoader'))
+        ->public()
+        ->call('setContainer', [service('service_container')]);
+
+    $services->set(CancellationController::class)
+        ->public()
+        ->call('setContainer', [service('service_container')]);
+
+    $services->set(CancelExtension::class)
         ->tag('twig.extension');
 };

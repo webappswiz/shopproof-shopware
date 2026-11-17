@@ -39,6 +39,11 @@
             "consent": "Ich stimme ausdrücklich zu, dass Sie vor Ablauf der Widerrufsfrist mit der Bereitstellung der digitalen Inhalte beginnen.",
             "ack": "Mir ist bekannt, dass ich mit Beginn der Bereitstellung der digitalen Inhalte mein Widerrufsrecht verliere."
         },
+        "service": {
+            "consent": "Ich verlange ausdrücklich, dass Sie vor Ablauf der Widerrufsfrist mit der Dienstleistung beginnen. Wenn ich widerrufe, zahle ich für den bereits erbrachten Teil.",
+            "ack": "Mir ist bekannt, dass ich mein Widerrufsrecht verliere, sobald Sie die Dienstleistung vollständig erbracht haben.",
+            "pair": "Damit die Dienstleistung früher beginnt, setzen Sie bitte beide Häkchen. Sonst lassen Sie beide leer."
+        },
         "safety": {
             "heading": "Informationen zur Produktsicherheit",
             "summary": "Produktsicherheit (Hersteller: %name%)",

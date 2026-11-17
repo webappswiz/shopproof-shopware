@@ -39,6 +39,11 @@
             "consent": "Wyrażam wyraźną zgodę na rozpoczęcie dostarczania treści cyfrowych przed upływem terminu do odstąpienia od umowy.",
             "ack": "Przyjmuję do wiadomości, że z chwilą rozpoczęcia dostarczania treści cyfrowych tracę prawo odstąpienia od umowy."
         },
+        "service": {
+            "consent": "Wyraźnie żądam rozpoczęcia świadczenia usługi przed upływem terminu do odstąpienia od umowy. Jeśli odstąpię od umowy, zapłacę za część już wykonaną.",
+            "ack": "Przyjmuję do wiadomości, że tracę prawo odstąpienia od umowy po pełnym wykonaniu usługi.",
+            "pair": "Aby usługa rozpoczęła się wcześniej, zaznacz oba pola. W przeciwnym razie pozostaw oba puste."
+        },
         "safety": {
             "heading": "Informacje o bezpieczeństwie produktu",
             "summary": "Bezpieczeństwo produktu (producent: %name%)",

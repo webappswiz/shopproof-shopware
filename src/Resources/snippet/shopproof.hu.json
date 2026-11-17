@@ -39,6 +39,11 @@
             "consent": "Kifejezetten hozzájárulok, hogy a digitális tartalom szolgáltatását az elállási határidő lejárta előtt megkezdjék.",
             "ack": "Tudomásul veszem, hogy a digitális tartalom szolgáltatásának megkezdésével elveszítem az elállási jogomat."
         },
+        "service": {
+            "consent": "Kifejezetten kérem, hogy a szolgáltatást az elállási határidő lejárta előtt kezdjék meg. Ha elállok, a már teljesített részt kifizetem.",
+            "ack": "Tudomásul veszem, hogy a szolgáltatás teljes teljesítése után elveszítem az elállási jogomat.",
+            "pair": "Ha szeretné, hogy a szolgáltatás korábban kezdődjön, jelölje be mindkét négyzetet. Ellenkező esetben hagyja mindkettőt üresen."
+        },
         "safety": {
             "heading": "Termékbiztonsági információk",
             "summary": "Termékbiztonság (gyártó: %name%)",

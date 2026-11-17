@@ -94,6 +94,27 @@ class ShopproofRulesService extends ApiService {
         });
     }
 
+    getCancellations(page = 1) {
+        return this.httpClient
+            .get(`${this.getApiBasePath()}/cancellations`, {
+                headers: this.getBasicHeaders(),
+                params: { page, limit: 25 },
+            })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    markCancellationDone(id) {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/cancellations/${id}/done`, {}, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    deleteCancellation(id) {
+        return this.httpClient.delete(`${this.getApiBasePath()}/cancellations/${id}`, {
+            headers: this.getBasicHeaders(),
+        });
+    }
+
     getOverview() {
         return this.httpClient
             .get(`${this.getApiBasePath()}/overview`, {

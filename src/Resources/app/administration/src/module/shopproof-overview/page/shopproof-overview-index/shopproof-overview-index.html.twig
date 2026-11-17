@@ -128,7 +128,7 @@
                 <ul class="shopproof-overview__checks">
                     <li v-for="item in check.notes" :key="item.key">
                         <span class="shopproof-overview__state">{{ item.ok ? $t('shopproof.withdrawal.done') : $t('shopproof.products.warn') }}</span>
-                        {{ $t(`shopproof.notes.${item.key}_${item.ok ? 'ok' : 'off'}`) }}
+                        {{ $t(`shopproof.notes.${item.key}_${item.ok ? 'ok' : 'off'}`, { detail: item.detail || '' }) }}
                         <ul v-if="item.key === 'unitPrices' && check.unitPriceGaps" class="shopproof-overview__names">
                             <li v-for="product in check.unitPriceGaps" :key="product.id">
                                 <router-link :to="{ name: 'sw.product.detail', params: { id: product.id } }">{{ product.name || product.id }}</router-link>
@@ -318,6 +318,65 @@
                         @page-change="onPageChange"
                     />
                 </template>
+            </mt-card>
+
+            <mt-card
+                id="shopproof-cancellations"
+                position-identifier="shopproof-overview-cancellations"
+                :title="$t('shopproof.cancel.title')"
+                :is-loading="cancellationsLoading"
+            >
+                <p>{{ $t('shopproof.cancel.intro') }}</p>
+                <p v-if="cancellationsFailed" role="alert">{{ $t('shopproof.cancel.failed') }}</p>
+                <p v-else-if="cancellations && cancellations.total === 0">{{ $t('shopproof.cancel.none') }}</p>
+                <template v-else-if="cancellations">
+                    <p v-if="cancellations.open > 0"><strong>{{ $tc('shopproof.cancel.open', cancellations.open, { count: cancellations.open }) }}</strong></p>
+                    <table class="shopproof-overview__table">
+                        <caption class="shopproof-overview__sr">{{ $t('shopproof.cancel.title') }}</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">{{ $t('shopproof.withdrawal.received') }}</th>
+                                <th scope="col">{{ $t('shopproof.withdrawal.customer') }}</th>
+                                <th scope="col">{{ $t('shopproof.withdrawal.contract') }}</th>
+                                <th scope="col">{{ $t('shopproof.cancel.end') }}</th>
+                                <th scope="col">{{ $t('shopproof.withdrawal.status') }}</th>
+                                <th scope="col"><span class="shopproof-overview__sr">{{ $t('shopproof.withdrawal.actions') }}</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="item in cancellations.items" :key="item.id">
+                                <td>{{ formatTime(item.receivedAt) }}<br><small>{{ item.reference }}</small><template v-if="item.salesChannel"><br><small>{{ item.salesChannel }}</small></template></td>
+                                <td>{{ item.name }}<br><small>{{ item.email }}</small></td>
+                                <td>{{ item.contract }}<template v-if="item.cancelType === 'extraordinary'"><br><small><strong>{{ $t('shopproof.cancel.extraordinary') }}</strong>: {{ item.reason }}</small></template></td>
+                                <td>{{ item.endMode === 'date' ? item.endDate : $t('shopproof.cancel.earliest') }}</td>
+                                <td>
+                                    <template v-if="item.doneAt">{{ $t('shopproof.cancel.doneOn', { date: formatTime(item.doneAt) }) }}</template>
+                                    <template v-else>
+                                        {{ $t('shopproof.cancel.openState') }}
+                                        <small v-if="item.receiptSent !== '1'" role="note"><br>{{ $t('shopproof.cancel.noReceipt') }}</small>
+                                        <br><mt-button size="small" variant="primary" @click="markCancellationDone(item.id)">{{ $t('shopproof.cancel.markDone') }}</mt-button>
+                                    </template>
+                                </td>
+                                <td>
+                                    <template v-if="confirmCancelId === item.id">
+                                        <mt-button size="small" variant="critical" @click="removeCancellation(item.id)">{{ $t('shopproof.withdrawal.confirmDelete') }}</mt-button>
+                                        <mt-button size="small" variant="secondary" @click="confirmCancelId = null">{{ $t('shopproof.withdrawal.cancel') }}</mt-button>
+                                    </template>
+                                    <mt-button v-else size="small" variant="secondary" @click="confirmCancelId = item.id">{{ $t('shopproof.withdrawal.delete') }}</mt-button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <sw-pagination
+                        v-if="cancellations.total > 25"
+                        :page="cancellationsPage"
+                        :limit="25"
+                        :total="cancellations.total"
+                        :steps="[25]"
+                        @page-change="onCancellationsPageChange"
+                    />
+                </template>
+                <p><small>{{ $t('shopproof.cancel.next') }}</small></p>
             </mt-card>
 
             <mt-card

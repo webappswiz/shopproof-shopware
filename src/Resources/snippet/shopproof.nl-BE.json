@@ -39,6 +39,11 @@
             "consent": "Ik stem er uitdrukkelijk mee in dat de levering van de digitale inhoud begint vóór het einde van de herroepingstermijn.",
             "ack": "Ik erken dat ik mijn herroepingsrecht verlies zodra de levering van de digitale inhoud is begonnen."
         },
+        "service": {
+            "consent": "Ik verzoek u uitdrukkelijk met de dienst te beginnen voordat de bedenktijd afloopt. Als ik herroep, betaal ik voor het deel dat al is geleverd.",
+            "ack": "Ik erken dat ik mijn herroepingsrecht verlies zodra u de dienst volledig hebt verricht.",
+            "pair": "Vink beide vakjes aan als de dienst eerder moet beginnen. Laat anders beide leeg."
+        },
         "safety": {
             "heading": "Informatie over productveiligheid",
             "summary": "Productveiligheid (fabrikant: %name%)",

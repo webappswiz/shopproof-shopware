@@ -3,6 +3,7 @@
 namespace Shopproof\Compliance\Installer;
 
 use Doctrine\DBAL\Connection;
+use Shopproof\Compliance\Checkout\ServiceWithdrawal;
 use Shopproof\Compliance\Notes\CheckoutBoxes;
 use Shopproof\Compliance\Notes\Deposit;
 use Shopproof\Compliance\Notes\FoodInformation;
@@ -21,7 +22,8 @@ use Shopware\Core\System\CustomField\CustomFieldTypes;
 
 /**
  * Product safety custom fields: one set on products (overrides, identifiers, warnings) and one on
- * manufacturers (address, contact, EU responsible person). Created on install and update, kept
+ * manufacturers (address, contact, EU responsible person), with the other Shopproof sets (labels,
+ * notes, the withdrawal type of a product, and the order's checkout and service fields). Created on install and update, kept
  * in step with this class, removed on uninstall unless the merchant keeps the data.
  */
 final class CustomFieldInstaller
@@ -35,7 +37,11 @@ final class CustomFieldInstaller
     public const FOOD_SET = 'shopproof_food';
     public const NOTES_SET = 'shopproof_notes';
     public const ORDER_SET = CheckoutBoxes::ORDER_SET;
-    public const SETS = [self::PRODUCT_SET, self::MANUFACTURER_SET, self::DURABILITY_SET, self::DURABILITY_MAKER_SET, self::HAZARD_SET, self::TAKEBACK_SET, self::FOOD_SET, self::NOTES_SET, self::ORDER_SET];
+    public const WITHDRAWAL_SET = 'shopproof_withdrawal';
+    public const SETS = [self::PRODUCT_SET, self::MANUFACTURER_SET, self::DURABILITY_SET, self::DURABILITY_MAKER_SET, self::HAZARD_SET, self::TAKEBACK_SET, self::FOOD_SET, self::NOTES_SET, self::ORDER_SET, self::WITHDRAWAL_SET];
+
+    /** The order fields for services, without the prefix: the consent record, then what the merchant enters. */
+    public const SERVICE_ORDER_FIELDS = ['service_consent', 'service_start', 'service_end', 'service_share', 'service_done'];
 
     /** The price, deposit and cart description fields, by their full names. */
     public const NOTES_FIELDS = [
@@ -104,6 +110,12 @@ final class CustomFieldInstaller
         Deposit::PREFIX . 'types' => ['Deposit types (codes from the Shopproof settings, comma separated, for example: de-single, at-single, de-crate)', 'Pfandarten (Codes aus den Shopproof-Einstellungen, mit Komma getrennt, zum Beispiel: de-einweg, at-einweg, de-kasten)'],
         Deposit::PREFIX . 'units' => ['Bottles or cans with a deposit (for example 6 for a six-pack; empty means 1)', 'Flaschen oder Dosen mit Pfand (zum Beispiel 6 für ein Sechserpack; leer heißt 1)'],
         'checks_text' => ['Ticked at checkout', 'An der Kasse angehakt'],
+        'withdrawal_kind' => ['Right of withdrawal', 'Widerrufsrecht'],
+        'service_consent' => ['Services: early start asked at checkout (what the shopper ticked, and when)', 'Dienstleistungen: vorzeitiger Beginn an der Kasse verlangt (was die Kunden angekreuzt haben, und wann)'],
+        'service_start' => ['Services: service starts on', 'Dienstleistungen: Leistung beginnt am'],
+        'service_end' => ['Services: service ends on', 'Dienstleistungen: Leistung endet am'],
+        'service_share' => ['Services: part already provided when the withdrawal arrived (%)', 'Dienstleistungen: bei Eingang des Widerrufs bereits erbrachter Teil (%)'],
+        'service_done' => ['Services: fully provided on', 'Dienstleistungen: vollständig erbracht am'],
     ];
 
     /** Allergen names from Annex II of Regulation 1169/2011, English and German, for the product editor. */
@@ -137,11 +149,19 @@ final class CustomFieldInstaller
         'GHS09' => ['Environment', 'Umwelt'],
     ];
 
-    private const MULTILINE = ['digital_consent', 'checks_text', 'manufacturer_address', 'responsible_address', 'identifiers', 'warnings', 'hazard_statements', 'precautionary_statements', 'food_ingredients', 'food_storage', 'food_business', PriceNotes::PREFIX . 'defects'];
+    private const MULTILINE = ['digital_consent', 'service_consent', 'checks_text', 'manufacturer_address', 'responsible_address', 'identifiers', 'warnings', 'hazard_statements', 'precautionary_statements', 'food_ingredients', 'food_storage', 'food_business', PriceNotes::PREFIX . 'defects'];
 
     private const BOOLEAN = ['weee', 'batteries', PriceNotes::PREFIX . 'margin_scheme', 'free', 'whole', 'maker_free', 'maker_whole'];
 
-    private const DATES = ['checked', 'maker_checked'];
+    private const DATES = ['checked', 'maker_checked', 'service_start', 'service_end', 'service_done'];
+
+    /** Help texts for the withdrawal type and the service fields on the order. */
+    private const SERVICE_HELP = [
+        'withdrawal_kind' => ['Automatic: digital products are digital content, all others goods. Service: the 14 days count from the order, and shoppers can ask you to start early. Dated booking: leisure, travel, catering, accommodation or car hire on a fixed date, usually without a right of withdrawal (Art. 16(l) of Directive 2011/83/EU). An order with any goods counts as a sales contract. Technical help, not legal advice.', 'Automatisch: digitale Produkte sind digitale Inhalte, alle anderen Waren. Dienstleistung: die 14 Tage zählen ab der Bestellung, und Kunden können einen früheren Beginn verlangen. Termingebundene Buchung: Freizeit, Reise, Gastronomie, Unterkunft oder Mietwagen zu einem festen Termin, meist ohne Widerrufsrecht (Art. 16 lit. l der Richtlinie 2011/83/EU). Eine Bestellung mit Waren zählt als Kaufvertrag. Technische Hilfe, keine Rechtsberatung.'],
+        'service_start' => ['With the start and end, the Shopproof page works out the part provided by days when a withdrawal arrives, unless you enter the part below.', 'Mit Beginn und Ende berechnet die Shopproof-Seite bei einem Widerruf den erbrachten Teil nach Tagen, wenn Sie unten keinen Teil eintragen.'],
+        'service_share' => ['Use this when days do not fit, for example 3 of 10 lessons given: 30. The customer pays this part of the price only if they asked for the early start at checkout (Art. 14(3) and (4) of Directive 2011/83/EU).', 'Nutzen Sie dies, wenn Tage nicht passen, zum Beispiel 3 von 10 Stunden gegeben: 30. Die Kunden zahlen diesen Teil des Preises nur, wenn sie an der Kasse den früheren Beginn verlangt haben (Art. 14 Abs. 3 und 4 der Richtlinie 2011/83/EU).'],
+        'service_done' => ['Once the service is fully provided, after the shopper asked for the early start and acknowledged the loss of the right, a later withdrawal has no effect (Art. 16(a) of Directive 2011/83/EU).', 'Ist die Leistung vollständig erbracht, nachdem die Kunden den früheren Beginn verlangt und den Verlust des Rechts bestätigt haben, bleibt ein späterer Widerruf ohne Wirkung (Art. 16 lit. a der Richtlinie 2011/83/EU).'],
+    ];
 
     /** Help texts under a field: the durability label's rules, so a wrong label is hard to set. */
     private const HELP = [
@@ -196,9 +216,13 @@ final class CustomFieldInstaller
                 'Shopproof: price, deposit and cart notes',
                 'Shopproof: Preis-, Pfand- und Warenkorbhinweise',
             ]),
-            $this->set(self::ORDER_SET, 'order', 'shopproof_', ['digital_consent', 'checks_text'], [
+            $this->set(self::ORDER_SET, 'order', 'shopproof_', ['digital_consent', 'checks_text', ...self::SERVICE_ORDER_FIELDS], [
                 'Shopproof',
                 'Shopproof',
+            ]),
+            $this->set(self::WITHDRAWAL_SET, 'product', 'shopproof_', ['withdrawal_kind'], [
+                'Shopproof: right of withdrawal',
+                'Shopproof: Widerrufsrecht',
             ]),
         ], $context);
     }
@@ -228,12 +252,13 @@ final class CustomFieldInstaller
                 ...array_map(static fn (string $field): string => Registrations::PREFIX . $field, Registrations::SECTIONS),
                 ...array_map(static fn (string $field): string => FoodInformation::PREFIX . $field, FoodInformation::FIELDS),
                 ...self::NOTES_FIELDS,
+                ServiceWithdrawal::KIND_FIELD,
             ],
             'product_manufacturer_translation' => [
                 ...array_map(static fn (string $field): string => SafetyData::MANUFACTURER_PREFIX . $field, SafetyData::MANUFACTURER_FIELDS),
                 ...array_map(static fn (string $field): string => DurabilityLabel::PREFIX . $field, DurabilityLabel::MAKER_FIELDS),
             ],
-            'order' => ['shopproof_digital_consent', CheckoutBoxes::ORDER_FIELD, CheckoutBoxes::ORDER_TEXT_FIELD],
+            'order' => ['shopproof_digital_consent', CheckoutBoxes::ORDER_FIELD, CheckoutBoxes::ORDER_TEXT_FIELD, ...array_map(static fn (string $field): string => 'shopproof_' . $field, self::SERVICE_ORDER_FIELDS)],
         ];
         foreach ($keys as $table => $fields) {
             foreach ($fields as $key) {
@@ -289,6 +314,32 @@ final class CustomFieldInstaller
                         'value' => $code,
                         'label' => ['en-GB' => $code . ' ' . self::PICTOGRAM_NAMES[$code][0], 'de-DE' => $code . ' ' . self::PICTOGRAM_NAMES[$code][1]],
                     ], HazardLabel::PICTOGRAMS),
+                ];
+            }
+            if ($field === 'withdrawal_kind') {
+                $type = CustomFieldTypes::SELECT;
+                $config = [
+                    ...$config,
+                    'componentName' => 'sw-single-select',
+                    'customFieldType' => 'select',
+                    'placeholder' => ['en-GB' => 'Automatic', 'de-DE' => 'Automatisch'],
+                    'options' => [
+                        ['value' => 'goods', 'label' => ['en-GB' => 'Goods (14 days from delivery)', 'de-DE' => 'Ware (14 Tage ab Lieferung)']],
+                        ['value' => 'service', 'label' => ['en-GB' => 'Service (14 days from the order)', 'de-DE' => 'Dienstleistung (14 Tage ab Bestellung)']],
+                        ['value' => 'dated', 'label' => ['en-GB' => 'Dated booking (usually no right of withdrawal)', 'de-DE' => 'Termingebundene Buchung (meist kein Widerrufsrecht)']],
+                    ],
+                ];
+            }
+            if ($field === 'service_share') {
+                $type = CustomFieldTypes::FLOAT;
+                $config = [
+                    ...$config,
+                    'componentName' => 'sw-field',
+                    'customFieldType' => 'number',
+                    'type' => 'number',
+                    'numberType' => 'float',
+                    'min' => 0,
+                    'max' => 100,
                 ];
             }
             if ($field === 'hazard_signal') {
@@ -367,16 +418,22 @@ final class CustomFieldInstaller
                     'type' => 'checkbox',
                 ];
             }
-            $help = $prefix === DurabilityLabel::PREFIX ? (self::HELP[$field] ?? self::HELP[str_replace('maker_', '', $field)] ?? null) : null;
+            $help = $prefix === DurabilityLabel::PREFIX ? (self::HELP[$field] ?? self::HELP[str_replace('maker_', '', $field)] ?? null) : (self::SERVICE_HELP[$field] ?? null);
             if ($help !== null) {
                 $config['helpText'] = ['en-GB' => $help[0], 'de-DE' => $help[1]];
             }
-            $customFields[] = [
+            $customField = [
                 'id' => \is_string($fieldId) ? $fieldId : Uuid::fromStringToHex($fieldName),
                 'name' => $fieldName,
                 'type' => $type,
                 'config' => $config,
             ];
+            // The withdrawal type must reach the cart and the order line item, whose payload keeps
+            // only custom fields marked for the cart.
+            if ($fieldName === ServiceWithdrawal::KIND_FIELD) {
+                $customField['allowCartExpose'] = true;
+            }
+            $customFields[] = $customField;
         }
 
         $relationId = $this->connection->fetchOne(

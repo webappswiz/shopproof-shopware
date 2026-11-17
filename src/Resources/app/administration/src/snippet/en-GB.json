@@ -101,7 +101,19 @@
                 "overdue": "Refund overdue by {days} day (was due {date}) | Refund overdue by {days} days (was due {date})",
                 "due": "Refund due by {date} ({days} day left) | Refund due by {date} ({days} days left)",
                 "partly": "Partly refunded {date}, check: {line}",
-                "help": "Technical help, not legal advice. The window is 14 days (or your longer period) from delivery and runs to Monday when it ends on a weekend; public holidays can extend it too. The refund is due 14 days after the withdrawal arrived."
+                "insideOrder": "In time: window ends {date} (14 days from the order, as for services)",
+                "performed": "Check: the service was fully provided before the withdrawal, after the early start request, so the right may have ended (Art. 16(a))",
+                "digital": "Check: digital content, and the customer agreed at checkout that the download may start early and that the right then ends. If the download started before the withdrawal, the right may have ended (Art. 16(m))",
+                "exempt": "Check: dated bookings only (leisure, travel and the like), usually no right of withdrawal (Art. 16(l))",
+                "noneRight": "No refund clock while the right of withdrawal may not apply",
+                "owed": {
+                    "no_consent": "Service: the customer pays nothing for what was provided, because there is no early start request (Art. 14(4))",
+                    "not_started": "Service: not started when the withdrawal arrived, nothing owed",
+                    "days": "Service: {days} of {of} days provided, the customer pays {owed}, refund {refund}",
+                    "share": "Service: {share} % provided, the customer pays {owed}, refund {refund}",
+                    "unknown": "Service: enter the service dates or the part provided on the order (Custom fields, Shopproof) to see what the customer pays"
+                },
+                "help": "Technical help, not legal advice. The window is 14 days (or your longer period) from delivery and runs to Monday when it ends on a weekend; public holidays can extend it too. The refund is due 14 days after the withdrawal arrived. For services, the window counts from the order, and with the early start request the customer pays for the part provided."
             },
             "items": "Items",
             "export": "Export all as CSV",
@@ -197,6 +209,17 @@
             "disputeStatement_ok": "Your dispute resolution statement is on your terms or imprint page",
             "disputeStatement_off": "Paste your dispute resolution statement into your terms and imprint pages (Content > Shopping Experiences), or tick that you did in the plugin settings.",
             "disputeIntro": "Your dispute resolution statement, to paste in the language of each page:",
+            "policyPage_off": "Withdrawal policy: not checked, because no revocation page is set in Settings > Basic information. Set it, and Shopproof compares it with your withdrawal period and shop email.",
+            "policyText_off": "Withdrawal policy: not checked, because your revocation page has almost no text. If it is filled in another way, compare the period and the email address yourself.",
+            "policyPeriod_ok": "Withdrawal policy: your revocation page says {detail} days, the same as the withdrawal period in the plugin settings",
+            "policyPeriodDifferent_off": "Withdrawal policy: your revocation page says {detail} days, but the withdrawal period in the plugin settings is different. Change one of them so they match.",
+            "policyPeriodMonths_off": "Withdrawal policy: your revocation page gives the period in months, so Shopproof cannot compare it. Check that it is the same as the withdrawal period in the plugin settings.",
+            "policyPeriodMany_off": "Withdrawal policy: your revocation page names more than one period ({detail} days). Check that the withdrawal period in the plugin settings is the right one.",
+            "policyPeriodNone_off": "Withdrawal policy: no withdrawal period found on your revocation page. Check it yourself.",
+            "policyEmail_ok": "Withdrawal policy: your revocation page names your shop email",
+            "policyEmailDifferent_off": "Withdrawal policy: your revocation page names {detail}, not the shop email in Settings > Basic information. Check that customers who write to that address reach you.",
+            "policyEmailUnsure_off": "Withdrawal policy: your revocation page names {detail}, but no shop email is set in Settings > Basic information, so Shopproof cannot compare it.",
+            "policyEmailNone_off": "Withdrawal policy: no email address found on your revocation page. Check that it tells customers how to reach you.",
             "where": "Change these in Settings > Extensions > Shopproof > Configure (cards Price notes, Bottle deposit, Cart and checkout, Dispute resolution statement). Technical help, not legal advice."
         },
         "bulk": {
@@ -383,6 +406,21 @@
                     "loaded": "{count} rule for the EU and your countries (version {version}). | {count} rules for the EU and your countries (version {version})."
                 }
             }
+        },
+        "cancel": {
+            "title": "Cancellations",
+            "intro": "Cancellations customers sent on your cancel page (Settings > Extensions > Shopproof, \"Cancel button\"). Each customer got a confirmation email with the date and time of receipt, and your shop email got a copy.",
+            "failed": "The cancellations could not be loaded.",
+            "none": "No cancellations yet.",
+            "open": "{count} open cancellation | {count} open cancellations",
+            "end": "Ends",
+            "extraordinary": "Extraordinary",
+            "earliest": "At the earliest possible date",
+            "doneOn": "Done on {date}",
+            "openState": "Open",
+            "noReceipt": "The customer did not get the confirmation email. Please confirm it to them by email.",
+            "markDone": "Mark as done",
+            "next": "End the contract (for a subscription, in your subscriptions app), tell the customer the end date if they chose the earliest possible date, and mark the cancellation as done. Technical help, not legal advice."
         }
     }
 }

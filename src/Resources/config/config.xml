@@ -262,6 +262,35 @@
         </input-field>
     </card>
     <card>
+        <title>Services</title>
+        <title lang="de-DE">Dienstleistungen</title>
+        <input-field type="single-select">
+            <name>serviceConsent</name>
+            <label>Ask shoppers whether a service may start early</label>
+            <label lang="de-DE">Kunden fragen, ob eine Dienstleistung früher beginnen darf</label>
+            <helpText>For carts with a service (set per product under Custom fields, "Shopproof: right of withdrawal"), checkout shows two boxes in the shopper's language: the request to start before the withdrawal period ends, and the acknowledgement that the right ends once the service is fully provided (Art. 8(8) and 16(a) of Directive 2011/83/EU). Without the request, a customer who withdraws pays nothing for what was already provided (Art. 14(4)). Both boxes are saved on the order with the time and repeated in the order confirmation. Technical help, not legal advice.</helpText>
+            <helpText lang="de-DE">Bei Warenkörben mit einer Dienstleistung (pro Produkt unter Zusatzfelder, „Shopproof: Widerrufsrecht“) zeigt die Kasse zwei Felder in der Sprache der Kunden: das Verlangen, vor Ablauf der Widerrufsfrist zu beginnen, und die Bestätigung, dass das Recht endet, sobald die Leistung vollständig erbracht ist (Art. 8 Abs. 8 und Art. 16 lit. a der Richtlinie 2011/83/EU). Ohne das Verlangen zahlen Kunden, die widerrufen, nichts für bereits Erbrachtes (Art. 14 Abs. 4). Beides wird mit Zeitpunkt an der Bestellung gespeichert und in der Bestellbestätigung wiederholt. Technische Hilfe, keine Rechtsberatung.</helpText>
+            <defaultValue>off</defaultValue>
+            <options>
+                <option><id>off</id><name>Do not ask</name><name lang="de-DE">Nicht fragen</name></option>
+                <option><id>optional</id><name>Ask, the shopper decides</name><name lang="de-DE">Fragen, die Kunden entscheiden</name></option>
+                <option><id>required</id><name>Ask, required to order</name><name lang="de-DE">Fragen, zum Bestellen nötig</name></option>
+            </options>
+        </input-field>
+    </card>
+    <card>
+        <title>Cancel button</title>
+        <title lang="de-DE">Kündigungsbutton</title>
+        <input-field type="bool">
+            <name>cancelButton</name>
+            <label>Cancel button for subscriptions and memberships</label>
+            <label lang="de-DE">Kündigungsbutton für Abos und Mitgliedschaften</label>
+            <helpText>If customers can sign up online for a contract that runs over time, Germany (§ 312k BGB) and France (L. 215-1-1 Code de la consommation) require a way to cancel it online. When on, every page shows "Cancel contracts here" in the footer under the withdrawal button, linking to the cancel page (/shopproof/cancel): a short form, a summary with the final "Cancel now" button, a confirmation email to the customer with the date and time of receipt and a copy to your shop email. You find the cancellations on the Shopproof page and mark each one done once the contract is ended. Technical help, not legal advice.</helpText>
+            <helpText lang="de-DE">Wenn Kunden online einen Vertrag über eine längere Laufzeit abschließen können, verlangen Deutschland (§ 312k BGB) und Frankreich (L. 215-1-1 Code de la consommation) eine Möglichkeit, ihn online zu kündigen. Eingeschaltet zeigt jede Seite im Footer unter dem Widerrufsbutton „Verträge hier kündigen“ mit einem Link zur Kündigungsseite (/shopproof/cancel): ein kurzes Formular, eine Übersicht mit dem Button „jetzt kündigen“, eine Bestätigung per E-Mail an die Kunden mit Datum und Uhrzeit des Eingangs und eine Kopie an die E-Mail-Adresse Ihres Shops. Die Kündigungen finden Sie auf der Shopproof-Seite und markieren sie als erledigt, sobald der Vertrag beendet ist. Technische Hilfe, keine Rechtsberatung.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+    </card>
+    <card>
         <title>Returns tool</title>
         <title lang="de-DE">Retourentool</title>
         <input-field type="url">

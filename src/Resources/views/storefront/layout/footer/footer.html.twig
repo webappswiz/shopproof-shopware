@@ -25,3 +25,16 @@
         {{ parent() }}
     {% endif %}
 {% endblock %}
+
+{# The cancel link (Germany § 312k BGB, France L. 215-1-1) on every page, right under the
+   withdrawal button in the same column, while the merchant has the cancel button on. #}
+{% block layout_footer_navigation_hotline_content %}
+    {{ parent() }}
+    {% block shopproof_footer_cancel %}
+        {% set shopproofCancel = shopproof_cancel_link(context ?? null) %}
+        {% if shopproofCancel %}
+            {% set pageLang = context.languageInfo.localeCode|slice(0, 2)|lower %}
+            <div class="footer-shopproof-cancel mt-2"><a class="shopproof-cancel-link" href="{{ path('frontend.shopproof.cancel') }}"{% if shopproofCancel.lang != pageLang %} lang="{{ shopproofCancel.lang }}"{% endif %}>{{ shopproofCancel.label }}</a></div>
+        {% endif %}
+    {% endblock %}
+{% endblock %}

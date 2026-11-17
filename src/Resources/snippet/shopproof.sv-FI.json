@@ -39,6 +39,11 @@
             "consent": "Jag samtycker uttryckligen till att ni börjar tillhandahålla det digitala innehållet innan ångerfristen har löpt ut.",
             "ack": "Jag är medveten om att jag förlorar min ångerrätt när tillhandahållandet av det digitala innehållet har påbörjats."
         },
+        "service": {
+            "consent": "Jag begär uttryckligen att ni påbörjar tjänsten innan ångerfristen löper ut. Om jag ångrar mig betalar jag för den del som redan har utförts.",
+            "ack": "Jag är medveten om att jag förlorar min ångerrätt när tjänsten har fullgjorts helt.",
+            "pair": "Kryssa i båda rutorna om tjänsten ska börja tidigare. Lämna annars båda tomma."
+        },
         "safety": {
             "heading": "Information om produktsäkerhet",
             "summary": "Produktsäkerhet (tillverkare: %name%)",

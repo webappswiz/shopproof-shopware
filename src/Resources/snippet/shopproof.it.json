@@ -39,6 +39,11 @@
             "consent": "Acconsento espressamente che la fornitura del contenuto digitale inizi prima della scadenza del periodo di recesso.",
             "ack": "Prendo atto che perdo il diritto di recesso una volta iniziata la fornitura del contenuto digitale."
         },
+        "service": {
+            "consent": "Chiedo espressamente che iniziate il servizio prima della fine del periodo di recesso. Se recedo, pago la parte già fornita.",
+            "ack": "Prendo atto che perdo il diritto di recesso una volta che il servizio è stato interamente prestato.",
+            "pair": "Per far iniziare prima il servizio, spunti entrambe le caselle. Altrimenti le lasci vuote."
+        },
         "safety": {
             "heading": "Informazioni sulla sicurezza del prodotto",
             "summary": "Sicurezza del prodotto (fabbricante: %name%)",

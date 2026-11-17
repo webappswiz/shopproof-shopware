@@ -5,6 +5,7 @@ namespace Shopproof\Compliance\Withdrawal;
 use Doctrine\DBAL\Connection;
 use Psr\Log\LoggerInterface;
 use Shopproof\Compliance\Checkout\DigitalConsent;
+use Shopproof\Compliance\Checkout\ServiceWithdrawal;
 use Shopware\Core\Content\MailTemplate\Service\Event\MailBeforeValidateEvent;
 use Shopware\Core\Defaults;
 use Shopware\Core\Framework\Uuid\Uuid;
@@ -16,8 +17,9 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  * emails, linking to the page of Shopware's own withdrawal button. Only when the setting is on,
  * the button is on and its page is set for the sales channel, and the email's language has a
  * wording. The order confirmation also gets, above that line, the digital content consent the
- * shopper gave (DigitalConsent) and a line of links to the terms, withdrawal policy and privacy
- * pages set under Settings > Basic information. Never stops an email: a failure here is logged
+ * shopper gave (DigitalConsent), the early start request for services (ServiceWithdrawal) and a
+ * line of links to the terms, withdrawal policy and privacy pages set under Settings > Basic
+ * information. Never stops an email: a failure here is logged
  * and the email goes out as it is.
  */
 final class OrderEmailSubscriber implements EventSubscriberInterface
@@ -75,6 +77,11 @@ final class OrderEmailSubscriber implements EventSubscriberInterface
                 $confirm = $this->line->digitalConfirmation($locale);
                 if ($consent && $confirm !== null) {
                     $content = OrderEmailLine::addText($content['html'], $content['plain'], $confirm, OrderEmailLine::DIGITAL_MARKER);
+                }
+                // The early start request for services (Art. 8(8)), on the same durable medium.
+                $service = $this->line->serviceConfirmation($locale);
+                if ($service !== null && ServiceWithdrawal::given(\is_array($fields) ? $fields : null)) {
+                    $content = OrderEmailLine::addText($content['html'], $content['plain'], $service, OrderEmailLine::SERVICE_MARKER);
                 }
                 if ($this->config->getBool(self::CONFIG . 'orderEmailLegalLinks', $channel)) {
                     $links = $this->legalLinks($channel, $language, $locale);

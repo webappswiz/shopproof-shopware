@@ -39,6 +39,11 @@
             "consent": "Toilím go sainráite go dtosóidh sibh ar an ábhar digiteach a sholáthar sula dtagann deireadh leis an tréimhse tarraingthe siar.",
             "ack": "Admhaím go gcaillim mo cheart chun tarraingt siar a luaithe a thosaíonn soláthar an ábhair dhigitigh."
         },
+        "service": {
+            "consent": "Iarraim go sainráite oraibh tús a chur leis an tseirbhís sula dtéann an tréimhse aistarraingthe in éag. Má tharraingím siar, íocfaidh mé as an gcuid a soláthraíodh cheana.",
+            "ack": "Admhaím go gcaillim mo cheart aistarraingthe nuair a bheidh an tseirbhís soláthraithe go hiomlán.",
+            "pair": "Chun go dtosóidh an tseirbhís níos luaithe, cuir tic sa dá bhosca. Mura bhfuil, fág an dá cheann folamh."
+        },
         "safety": {
             "heading": "Faisnéis faoi shábháilteacht an táirge",
             "summary": "Sábháilteacht an táirge (monaróir: %name%)",

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "0.11.0",
+  "version": "0.12.0",
   "disclaimer": "Technical information to help shops comply. Not legal advice.",
   "strings": {
     "AT": {
@@ -475,6 +475,25 @@
       "review_required": false
     },
     {
+      "id": "DE-WD-04",
+      "jurisdiction": "DE",
+      "area": "withdrawal",
+      "requirement": "Cancellation button for subscriptions (Germany)",
+      "shop_must": "Where consumers can conclude a contract for a continuing obligation (a subscription or membership with regular paid supply) on the website, offer a cancellation button labelled 'Verträge hier kündigen' (or an equally clear wording) that leads straight to a confirmation page asking for the type of cancellation (and the reason if extraordinary), the consumer's identification, the contract, the date the contract should end and an email for the confirmation, with a button 'jetzt kündigen'. Both buttons and the page must always be available and easy to reach. The consumer must be able to save the cancellation with date and time, and the shop confirms its content, date, time of receipt and the end date by email at once",
+      "where_in_shop": "Footer / account area, next to the withdrawal button",
+      "applies_to": "Contracts with consumers for continuing obligations that can be concluded on the shop's website, concluded or cancelled from 1 July 2022",
+      "exemptions": "Contracts whose cancellation the law requires in a stricter form than text form; websites and contracts for financial services",
+      "effective_from": "2022-07-01",
+      "status": "in_force",
+      "legal_basis": "§ 312k BGB (Gesetz für faire Verbraucherverträge, BGBl. I 2021 S. 3433)",
+      "source_url": "https://www.gesetze-im-internet.de/bgb/__312k.html",
+      "confidence": "high",
+      "verification": "verified_official",
+      "plugin_feature": "withdrawal",
+      "notes": "§ 312k BGB read on gesetze-im-internet.de on 16 Nov 2026. Without the buttons and page, the consumer may cancel at any time without notice (§ 312k Abs. 6). If no end date is given, the cancellation takes effect at the earliest possible date (Abs. 5). Date: in force 1 July 2022 (Art. 2 and 3 Gesetz für faire Verbraucherverträge), not read here. This is cancellation, not withdrawal; the withdrawal button is DE-WD-01",
+      "review_required": false
+    },
+    {
       "id": "DE-CO-01",
       "jurisdiction": "DE",
       "area": "checkout",
@@ -624,6 +643,25 @@
       "verification": "verified_official",
       "plugin_feature": "withdrawal",
       "notes": "Arts. 6(1)(h), 9, 10, 16 and 28 read in the Official Journal text (OJ L 304, 22.11.2011) from the Publications Office (publications.europa.eu) on 3 Nov 2026, because eur-lex.europa.eu blocks automated readers. Date: Art. 28(2), contracts concluded after 13 June 2014. The withdrawal function and the information about it are in EU-WD-01 and EU-WD-02",
+      "review_required": false
+    },
+    {
+      "id": "EU-WD-04",
+      "jurisdiction": "EU",
+      "area": "withdrawal",
+      "requirement": "Withdrawal from services, subscriptions and dated bookings",
+      "shop_must": "For services, the 14 days run from the day the contract is concluded; for a subscription to goods, from receipt of the first delivery. To start a paid service within the 14 days, require the consumer's express request and their acknowledgement that the right ends once the service is fully performed. If the consumer then withdraws, they pay an amount in proportion to what was provided until they withdrew, compared with the whole contract, calculated on the total price (the market value if the price is excessive); without the request, or without the information on the right and on this payment, they pay nothing. Once the service is fully performed with that request and acknowledgement, the right of withdrawal ends. Accommodation other than for living, transport of goods, car rental, catering and leisure services for a specific date or period have no right of withdrawal",
+      "where_in_shop": "Product setup (service or dated booking), checkout boxes for an early start, order confirmation, withdrawal handling",
+      "applies_to": "Distance and off-premises service contracts with consumers in the EU, including contracts with regular deliveries over a period, as transposed by each country",
+      "exemptions": "Art. 16(l): accommodation other than for residential purposes, transport of goods, car rental, catering and leisure services with a specific date or period of performance",
+      "effective_from": "2022-05-28",
+      "status": "in_force",
+      "legal_basis": "Directive 2011/83/EU, Arts. 6(1)(j) and (k), 8(8), 9(2)(a) and (b)(iii), 14(3) and (4)(a), 16(a) and (l), as amended by Directive (EU) 2019/2161",
+      "source_url": "https://eur-lex.europa.eu/eli/dir/2011/83/oj",
+      "confidence": "high",
+      "verification": "verified_official",
+      "plugin_feature": "withdrawal",
+      "notes": "Arts. 8(8), 9(2), 14(3) and (4) and 16(a) and (l) read in the consolidated text of 28 May 2022 on eur-lex.europa.eu (CELEX 02011L0083-20220528) on 16 Nov 2026. Date: the 16(a) wording that asks for the request and acknowledgement for paid services comes from Directive (EU) 2019/2161, applied from 28 May 2022; the window, proportional payment and 16(l) exception applied since 13 June 2014. A sales contract with both goods and services counts as a sales contract (Art. 2(5)). The model withdrawal information (Annex I(A)) has an optional sentence on this payment. The withdrawal function itself is in EU-WD-01",
       "review_required": false
     },
     {
@@ -893,6 +931,28 @@
       "verification": "verified_official",
       "plugin_feature": "withdrawal",
       "notes": "L. 221-18 (in force since 1 July 2016, Ord. 2016-301) and L. 221-20 (in force since 28 May 2022) read on Légifrance on 3 Nov 2026; L. 221-5 not read. The date is that of the current article numbering; the same 14 day right applied before under the former articles (loi n° 2014-344), not read here. The withdrawal function is in FR-WD-01",
+      "review_required": false
+    },
+    {
+      "id": "FR-WD-03",
+      "jurisdiction": "FR",
+      "area": "withdrawal",
+      "requirement": "Online cancellation for subscriptions (France)",
+      "shop_must": "Where a contract was concluded online, or the shop offers online contracts when the consumer cancels, offer a free online cancellation function presented as 'résilier votre contrat' (or an equally clear wording, in legible characters), directly and permanently reachable. The consumer enters or checks their identification and contract details, sees a summary page and confirms with 'notifier la résiliation' (or similar). The shop confirms receipt and tells the consumer on a durable medium, within a reasonable time, the date the contract ends and the effects of the cancellation",
+      "where_in_shop": "Footer / account area, next to the withdrawal button",
+      "applies_to": "Contracts with consumers and non-professionals that are running (such as subscriptions), concluded online or where the shop offers online contracts, from 1 June 2023",
+      "exemptions": "None known; check sector rules (insurance, telecoms) separately",
+      "effective_from": "2023-06-01",
+      "status": "in_force",
+      "legal_basis": "Code de la consommation, arts. L. 215-1-1 and D. 215-1 to D. 215-3 (loi n° 2022-1158 du 16 août 2022, art. 15; décret n° 2023-417 du 31 mai 2023)",
+      "source_url": "https://www.legifrance.gouv.fr/eli/decret/2023/5/31/ECOC2310833D/jo/texte",
+      "more_info": [
+        "https://www.inc-conso.fr/content/vous-pouvez-resilier-votre-contrat-dabonnement-en-quelques-clics"
+      ],
+      "confidence": "medium",
+      "verification": "secondary",
+      "plugin_feature": "withdrawal",
+      "notes": "Légifrance blocks automated readers, so the official texts were not read. L. 215-1-1 read as quoted in full by a law firm (Landot avocats, 5 June 2023); the label 'résilier votre contrat', the three steps and the start date 1 June 2023 taken from the Institut national de la consommation (inc-conso.fr, 20 June 2023), which cites D. 215-1 to D. 215-3. Check the decree on Légifrance before raising confidence. This is cancellation, not withdrawal; the withdrawal function is FR-WD-01",
       "review_required": false
     },
     {

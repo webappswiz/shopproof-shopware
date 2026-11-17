@@ -39,6 +39,11 @@
             "consent": "Izrecno soglašam, da z dobavo digitalne vsebine začnete pred iztekom roka za odstop od pogodbe.",
             "ack": "Seznanjen sem, da z začetkom dobave digitalne vsebine izgubim pravico do odstopa od pogodbe."
         },
+        "service": {
+            "consent": "Izrecno zahtevam, da z izvajanjem storitve začnete pred iztekom roka za odstop od pogodbe. Če odstopim, plačam že opravljeni del.",
+            "ack": "Potrjujem, da izgubim pravico do odstopa od pogodbe, ko je storitev v celoti opravljena.",
+            "pair": "Če želite, da se storitev začne prej, označite obe polji. Sicer pustite obe prazni."
+        },
         "safety": {
             "heading": "Informacije o varnosti izdelka",
             "summary": "Varnost izdelka (proizvajalec: %name%)",

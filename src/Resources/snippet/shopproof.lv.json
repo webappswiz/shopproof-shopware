@@ -39,6 +39,11 @@
             "consent": "Es nepārprotami piekrītu, ka digitālā satura piegādi sākat pirms atteikuma termiņa beigām.",
             "ack": "Es apzinos, ka zaudēju atteikuma tiesības, tiklīdz digitālā satura piegāde ir sākusies."
         },
+        "service": {
+            "consent": "Es skaidri lūdzu sākt pakalpojuma sniegšanu pirms atteikuma termiņa beigām. Ja es atsakos, es samaksāju par jau sniegto daļu.",
+            "ack": "Es apzinos, ka zaudēju atteikuma tiesības, tiklīdz pakalpojums ir pilnībā sniegts.",
+            "pair": "Lai pakalpojums sāktos agrāk, atzīmējiet abas rūtiņas. Pretējā gadījumā atstājiet abas tukšas."
+        },
         "safety": {
             "heading": "Informācija par produkta drošumu",
             "summary": "Produkta drošums (ražotājs: %name%)",

@@ -39,6 +39,11 @@
             "consent": "I expressly agree that you start supplying the digital content before the withdrawal period ends.",
             "ack": "I acknowledge that I lose my right of withdrawal once the supply of the digital content has started."
         },
+        "service": {
+            "consent": "I ask you to start the service before the withdrawal period ends. If I withdraw, I pay for the part already provided.",
+            "ack": "I acknowledge that I lose my right of withdrawal once you have fully provided the service.",
+            "pair": "To have the service start early, tick both boxes. Otherwise leave both empty."
+        },
         "safety": {
             "heading": "Product safety information",
             "summary": "Product safety (manufacturer: %name%)",

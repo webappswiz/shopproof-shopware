@@ -39,6 +39,11 @@
             "consent": "Naqbel espressament li tibdew il-forniment tal-kontenut diġitali qabel ma jintemm il-perjodu ta' reċess.",
             "ack": "Nirrikonoxxi li nitlef id-dritt ta' reċess tiegħi ladarba jibda l-forniment tal-kontenut diġitali."
         },
+        "service": {
+            "consent": "Nitlob espressament li tibdew is-servizz qabel ma jintemm il-perjodu tal-irtirar. Jekk nirtira, inħallas għall-parti diġà pprovduta.",
+            "ack": "Nirrikonoxxi li nitlef id-dritt tiegħi tal-irtirar ladarba s-servizz ikun ġie pprovdut kollu.",
+            "pair": "Biex is-servizz jibda aktar kmieni, immarka ż-żewġ kaxxi. Inkella ħallihom it-tnejn vojta."
+        },
         "safety": {
             "heading": "Informazzjoni dwar is-sikurezza tal-prodott",
             "summary": "Sikurezza tal-prodott (manifattur: %name%)",

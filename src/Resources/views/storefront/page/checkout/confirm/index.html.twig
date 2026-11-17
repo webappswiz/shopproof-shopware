@@ -62,4 +62,30 @@
             </div>
         {% endfor %}
     {% endblock %}
+    {# Early start for services (Art. 8(8) and 16(a) of Directive 2011/83/EU), when the merchant asks
+       and the cart holds a service: two boxes, required, or in the optional mode both or neither. #}
+    {% block shopproof_service_consent %}
+        {% set shopproofServiceMode = shopproof_service_consent(page.cart ?? null, context ?? null) %}
+        {% if shopproofServiceMode %}
+            {% for field, key in { shopproofServiceConsent: 'shopproof.service.consent', shopproofServiceAck: 'shopproof.service.ack' } %}
+                {% set shopproofViolation = formViolations ? formViolations.getViolations('/' ~ field) : [] %}
+                <div class="form-check shopproof-service">
+                    <input type="checkbox"
+                           class="form-check-input{% if shopproofViolation is not empty %} is-invalid{% endif %}"
+                           {% if shopproofServiceMode == 'required' %}required="required"{% endif %}
+                           id="{{ field }}"
+                           form="confirmOrderForm"
+                           name="{{ field }}"
+                           value="1"
+                           {% if shopproofViolation is not empty %}aria-invalid="true" aria-describedby="{{ field }}-error"{% endif %}>
+                    <label for="{{ field }}" class="custom-control-label">
+                        {{ key|trans|sw_sanitize }}
+                    </label>
+                    {% if shopproofViolation is not empty %}
+                        <div class="invalid-feedback d-block" id="{{ field }}-error">{{ shopproofServiceMode == 'required' ? shopproof_check_error(context) : 'shopproof.service.pair'|trans|sw_sanitize }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endblock %}
 {% endblock %}

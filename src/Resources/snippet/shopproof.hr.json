@@ -39,6 +39,11 @@
             "consent": "Izričito pristajem da isporuku digitalnog sadržaja započnete prije isteka roka za odustanak.",
             "ack": "Potvrđujem da gubim pravo na odustanak kada isporuka digitalnog sadržaja započne."
         },
+        "service": {
+            "consent": "Izričito tražim da započnete s uslugom prije isteka roka za jednostrani raskid. Ako raskinem ugovor, platit ću već pruženi dio.",
+            "ack": "Prihvaćam da gubim pravo na jednostrani raskid nakon što uslugu u potpunosti pružite.",
+            "pair": "Da bi usluga počela ranije, označite oba polja. Inače ostavite oba prazna."
+        },
         "safety": {
             "heading": "Informacije o sigurnosti proizvoda",
             "summary": "Sigurnost proizvoda (proizvođač: %name%)",

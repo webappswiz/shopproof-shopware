@@ -20,6 +20,7 @@ final class OrderEmailLine
     public const ITEMS_MARKER = 'shopproof-items';
     public const EXCLUDED_MARKER = 'shopproof-excluded';
     public const DIGITAL_MARKER = 'shopproof-digital-consent';
+    public const SERVICE_MARKER = 'shopproof-service-consent';
     public const LEGAL_MARKER = 'shopproof-legal-links';
 
     /** @var array<mixed>|null */
@@ -153,6 +154,14 @@ final class OrderEmailLine
     public function digitalConfirmation(string $localeCode): ?string
     {
         return $this->sentence($localeCode, 'digital');
+    }
+
+    /**
+     * The order confirmation's line repeating the early start request for services, null without one.
+     */
+    public function serviceConfirmation(string $localeCode): ?string
+    {
+        return $this->sentence($localeCode, 'service');
     }
 
     /**

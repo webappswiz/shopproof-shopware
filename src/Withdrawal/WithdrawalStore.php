@@ -4,6 +4,8 @@ namespace Shopproof\Compliance\Withdrawal;
 
 use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\DBAL\Connection;
+use Shopproof\Compliance\Checkout\DigitalConsent;
+use Shopproof\Compliance\Checkout\ServiceWithdrawal;
 use Shopware\Core\Defaults;
 use Shopware\Core\Framework\Uuid\Uuid;
 
@@ -244,9 +246,11 @@ class WithdrawalStore
     /**
      * What the matched order says for the clock, as UTC times: when its delivery was last marked
      * shipped, whether the delivery is still open, when its payment was last marked refunded or
-     * partly refunded, and its current payment state.
+     * partly refunded, and its current payment state. For services (ServiceWithdrawal): what the
+     * order is for withdrawal, when it was placed, whether the early start was asked, and what the
+     * merchant entered on the order.
      *
-     * @return array{shippedAt: string, open: bool, refundedAt: string, partlyRefundedAt: string, paymentState: string}
+     * @return array{shippedAt: string, open: bool, refundedAt: string, partlyRefundedAt: string, paymentState: string, kind?: string, orderedAt?: string, consent?: bool, serviceItems?: bool, digitalConsent?: bool, serviceDone?: string, servicePrice?: float, serviceStart?: string, serviceEnd?: string, serviceShare?: float|null, currency?: string}
      */
     public function orderFacts(string $orderId): array
     {
@@ -255,6 +259,7 @@ class WithdrawalStore
             return $facts;
         }
         $params = ['order' => Uuid::fromHexToBytes($orderId), 'version' => Uuid::fromHexToBytes(Defaults::LIVE_VERSION)];
+        $facts += $this->serviceFacts($params);
         $delivery = $this->connection->fetchAssociative(
             'SELECT d.id, s.technical_name AS state FROM order_delivery d INNER JOIN state_machine_state s ON s.id = d.state_id
              WHERE d.order_id = :order AND d.order_version_id = :version AND d.version_id = :version ORDER BY d.created_at LIMIT 1',
@@ -285,6 +290,72 @@ class WithdrawalStore
         }
 
         return $facts;
+    }
+
+    /**
+     * The service facts of an order: its kind from the product line items (their product type and
+     * custom fields as kept on the order), when it was placed, the consent record, the dates the
+     * merchant entered, and what the service items cost with tax.
+     *
+     * @param array{order: string, version: string} $params
+     *
+     * @return array{kind: string, orderedAt: string, consent: bool, serviceItems: bool, digitalConsent: bool, serviceDone: string, servicePrice: float, serviceStart: string, serviceEnd: string, serviceShare: float|null, currency: string}
+     */
+    private function serviceFacts(array $params): array
+    {
+        $order = $this->connection->fetchAssociative(
+            'SELECT o.order_date_time, o.custom_fields, o.tax_status, c.iso_code FROM `order` o LEFT JOIN currency c ON c.id = o.currency_id
+             WHERE o.id = :order AND o.version_id = :version',
+            $params
+        );
+        $fields = $order !== false ? json_decode(self::str($order['custom_fields'] ?? null), true) : null;
+        $fields = \is_array($fields) ? $fields : null;
+        $net = $order !== false && ($order['tax_status'] ?? null) === 'net';
+
+        $kinds = [];
+        $price = 0.0;
+        $rows = $this->connection->fetchAllAssociative(
+            'SELECT li.payload, li.total_price, li.price,
+                    EXISTS (SELECT 1 FROM order_line_item_download d WHERE d.order_line_item_id = li.id AND d.order_line_item_version_id = li.version_id) AS download
+             FROM order_line_item li
+             WHERE li.order_id = :order AND li.order_version_id = :version AND li.version_id = :version AND li.type = :type',
+            $params + ['type' => 'product']
+        );
+        foreach ($rows as $row) {
+            $payload = json_decode(self::str($row['payload'] ?? null), true);
+            $payload = \is_array($payload) ? $payload : [];
+            $type = \is_string($payload['productType'] ?? null) ? $payload['productType'] : null;
+            if (self::int($row['download'] ?? null) > 0) {
+                $type = 'digital';
+            }
+            $kind = ServiceWithdrawal::kindOf($type, \is_array($payload['customFields'] ?? null) ? $payload['customFields'] : null);
+            $kinds[] = $kind;
+            if ($kind === 'service') {
+                $total = (float) (is_numeric($row['total_price'] ?? null) ? $row['total_price'] : 0);
+                if ($net) {
+                    $calculated = json_decode(self::str($row['price'] ?? null), true);
+                    $taxes = \is_array($calculated) && \is_array($calculated['calculatedTaxes'] ?? null) ? $calculated['calculatedTaxes'] : [];
+                    foreach ($taxes as $tax) {
+                        $total += \is_array($tax) && is_numeric($tax['tax'] ?? null) ? (float) $tax['tax'] : 0.0;
+                    }
+                }
+                $price += $total;
+            }
+        }
+
+        return [
+            'kind' => ServiceWithdrawal::contractKind($kinds),
+            'orderedAt' => $order !== false ? self::atom(self::str($order['order_date_time'] ?? null)) : '',
+            'consent' => ServiceWithdrawal::given($fields),
+            'serviceItems' => \in_array('service', $kinds, true),
+            'digitalConsent' => DigitalConsent::given($fields),
+            'serviceDone' => ServiceWithdrawal::dateOf($fields[ServiceWithdrawal::DONE_FIELD] ?? null),
+            'servicePrice' => round($price, 2),
+            'serviceStart' => ServiceWithdrawal::dateOf($fields[ServiceWithdrawal::START_FIELD] ?? null),
+            'serviceEnd' => ServiceWithdrawal::dateOf($fields[ServiceWithdrawal::END_FIELD] ?? null),
+            'serviceShare' => ServiceWithdrawal::shareOf($fields[ServiceWithdrawal::SHARE_FIELD] ?? null),
+            'currency' => $order !== false ? self::str($order['iso_code'] ?? null) : '',
+        ];
     }
 
     /**

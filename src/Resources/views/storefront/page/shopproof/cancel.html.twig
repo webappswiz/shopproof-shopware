@@ -1,0 +1,101 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{# The cancel page (Germany § 312k BGB, France L. 215-1-1): details, summary with the final
+   button, confirmation. Texts from cancel-button.json, the same as WooCommerce and Shopify. #}
+{% block base_head %}
+    {{ parent() }}
+    <meta name="robots" content="noindex">
+{% endblock %}
+
+{% block base_content %}
+    {% set c = shopproofCancel %}
+    {% set t = c.t %}
+    <section class="shopproof shopproof-cancel container py-4" aria-labelledby="shopproof-cancel-heading"{% if c.lang != context.languageInfo.localeCode|slice(0, 2)|lower %} lang="{{ c.lang }}"{% endif %}>
+        {% if c.state == 'closed' %}
+            <h1 id="shopproof-cancel-heading" class="h2">{{ t.heading }}</h1>
+            <p>{{ t.closedBody }}</p>
+            {% if c.shopEmail %}<p><a href="mailto:{{ c.shopEmail }}">{{ c.shopEmail }}</a></p>{% endif %}
+        {% elseif c.state == 'done' or c.state == 'bot' %}
+            <h1 id="shopproof-cancel-heading" class="h2">{{ t.successHeading }}</h1>
+            {% if c.state == 'done' %}
+                <p role="status">{{ c.body }}</p>
+                <dl class="shopproof-cancel-summary">
+                    {% for row in c.details %}<dt>{{ row[0] }}</dt><dd>{{ row[1]|nl2br }}</dd>{% endfor %}
+                </dl>
+            {% endif %}
+        {% elseif c.state == 'summary' %}
+            <h1 id="shopproof-cancel-heading" class="h2">{{ t.summaryHeading }}</h1>
+            <p>{{ t.summaryIntro }}</p>
+            <dl class="shopproof-cancel-summary">
+                {% for row in c.details %}<dt>{{ row[0] }}</dt><dd>{{ row[1]|nl2br }}</dd>{% endfor %}
+            </dl>
+            <form method="post" action="{{ path('frontend.shopproof.cancel') }}" class="shopproof-cancel-change d-inline-block me-2">
+                {% for key, value in c.data %}<input type="hidden" name="{{ key }}" value="{{ value }}">{% endfor %}
+                <input type="hidden" name="shopproof_cancel_step" value="change">
+                <button type="submit" class="btn btn-outline-secondary">{{ t.change }}</button>
+            </form>
+            <form method="post" action="{{ path('frontend.shopproof.cancel') }}" class="shopproof-cancel-send d-inline-block">
+                {% for key, value in c.data %}<input type="hidden" name="{{ key }}" value="{{ value }}">{% endfor %}
+                <input type="hidden" name="shopproof_cancel_step" value="send">
+                <div class="shopproof-cancel-hp" aria-hidden="true" style="position:absolute;left:-9999px;"><label>website <input type="text" name="website" value="" tabindex="-1" autocomplete="off"></label></div>
+                <button type="submit" class="btn btn-primary">{{ t.submit }}</button>
+            </form>
+        {% else %}
+            {% set d = c.data %}
+            {% set e = c.errors %}
+            <h1 id="shopproof-cancel-heading" class="h2">{{ t.heading }}</h1>
+            <p>{{ t.intro }}</p>
+            {% if e._form is defined %}<p class="alert alert-danger" role="alert"><strong>{{ t[e._form] }}</strong></p>{% endif %}
+            <form method="post" action="{{ path('frontend.shopproof.cancel') }}" class="shopproof-cancel-form" novalidate>
+                <input type="hidden" name="shopproof_cancel_step" value="review">
+                {% for field in [
+                    { name: 'name', type: 'text', label: 'name', hint: '', auto: 'name', max: 200 },
+                    { name: 'email', type: 'email', label: 'email', hint: 'emailHint', auto: 'email', max: 200 },
+                    { name: 'contract', type: 'text', label: 'contract', hint: 'contractHint', auto: '', max: 200 }
+                ] %}
+                    {% set id = 'shopproof-cancel-' ~ field.name %}
+                    {% set describe = (field.hint ? id ~ '-hint ' : '') ~ (e[field.name] is defined ? id ~ '-error' : '') %}
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="{{ id }}">{{ t[field.label] }}</label>
+                        <input type="{{ field.type }}" id="{{ id }}" name="{{ field.name }}" value="{{ d[field.name] }}" maxlength="{{ field.max }}" class="form-control{% if e[field.name] is defined %} is-invalid{% endif %}" required{% if field.auto %} autocomplete="{{ field.auto }}"{% endif %}{% if describe|trim %} aria-describedby="{{ describe|trim }}"{% endif %}{% if e[field.name] is defined %} aria-invalid="true"{% endif %}>
+                        {% if field.hint %}<small id="{{ id }}-hint" class="form-text">{{ t[field.hint] }}</small>{% endif %}
+                        {% if e[field.name] is defined %}<div id="{{ id }}-error" class="invalid-feedback d-block">{{ t[e[field.name]] }}</div>{% endif %}
+                    </div>
+                {% endfor %}
+                <fieldset class="mb-3">
+                    <legend class="form-label fs-6">{{ t.type }}</legend>
+                    {% for value in ['ordinary', 'extraordinary'] %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="shopproof-cancel-type-{{ value }}" name="cancelType" value="{{ value }}"{% if d.cancelType == value %} checked{% endif %}>
+                            <label class="form-check-label" for="shopproof-cancel-type-{{ value }}">{{ t[value] }}</label>
+                        </div>
+                    {% endfor %}
+                </fieldset>
+                <div class="form-group mb-3">
+                    <label class="form-label" for="shopproof-cancel-reason">{{ t.reason }}</label>
+                    <textarea id="shopproof-cancel-reason" name="reason" rows="3" maxlength="2000" class="form-control{% if e.reason is defined %} is-invalid{% endif %}" aria-describedby="shopproof-cancel-reason-hint{% if e.reason is defined %} shopproof-cancel-reason-error{% endif %}"{% if e.reason is defined %} aria-invalid="true"{% endif %}>{{ d.reason }}</textarea>
+                    <small id="shopproof-cancel-reason-hint" class="form-text">{{ t.reasonHint }}</small>
+                    {% if e.reason is defined %}<div id="shopproof-cancel-reason-error" class="invalid-feedback d-block">{{ t[e.reason] }}</div>{% endif %}
+                </div>
+                <fieldset class="mb-3">
+                    <legend class="form-label fs-6">{{ t.end }}</legend>
+                    {% for value, key in { earliest: 'endEarliest', date: 'endDate' } %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="shopproof-cancel-end-{{ value }}" name="endMode" value="{{ value }}"{% if d.endMode == value %} checked{% endif %}>
+                            <label class="form-check-label" for="shopproof-cancel-end-{{ value }}">{{ t[key] }}</label>
+                        </div>
+                    {% endfor %}
+                </fieldset>
+                <div class="form-group mb-3">
+                    <label class="form-label" for="shopproof-cancel-enddate">{{ t.endDateLabel }}</label>
+                    <input type="date" id="shopproof-cancel-enddate" name="endDate" value="{{ d.endDate }}" min="{{ c.today }}" class="form-control{% if e.endDate is defined %} is-invalid{% endif %}" aria-describedby="shopproof-cancel-enddate-hint{% if e.endDate is defined %} shopproof-cancel-enddate-error{% endif %}"{% if e.endDate is defined %} aria-invalid="true"{% endif %}>
+                    <small id="shopproof-cancel-enddate-hint" class="form-text">{{ t.endDateHint }}</small>
+                    {% if e.endDate is defined %}<div id="shopproof-cancel-enddate-error" class="invalid-feedback d-block">{{ t[e.endDate] }}</div>{% endif %}
+                </div>
+                <div class="shopproof-cancel-hp" aria-hidden="true" style="position:absolute;left:-9999px;"><label>website <input type="text" name="website" value="" tabindex="-1" autocomplete="off"></label></div>
+                <button type="submit" class="btn btn-primary">{{ t.review }}</button>
+                <p class="mt-3"><small>{{ t.privacy }}</small></p>
+            </form>
+        {% endif %}
+    </section>
+{% endblock %}

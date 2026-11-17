@@ -39,6 +39,11 @@
             "consent": "Dou o meu consentimento expresso para que iniciem o fornecimento do conteúdo digital antes do fim do prazo de retratação.",
             "ack": "Reconheço que perco o meu direito de retratação assim que o fornecimento do conteúdo digital tiver início."
         },
+        "service": {
+            "consent": "Peço expressamente que iniciem o serviço antes do fim do prazo de livre resolução. Se exercer o direito de livre resolução, pago a parte já prestada.",
+            "ack": "Reconheço que perco o meu direito de livre resolução quando o serviço tiver sido integralmente prestado.",
+            "pair": "Para que o serviço comece mais cedo, assinale as duas caixas. Caso contrário, deixe ambas vazias."
+        },
         "safety": {
             "heading": "Informações de segurança do produto",
             "summary": "Segurança do produto (fabricante: %name%)",

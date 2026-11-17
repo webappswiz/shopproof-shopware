@@ -39,6 +39,11 @@
             "consent": "Doy mi consentimiento expreso para que comiencen el suministro del contenido digital antes de que finalice el plazo de desistimiento.",
             "ack": "Reconozco que pierdo mi derecho de desistimiento una vez iniciado el suministro del contenido digital."
         },
+        "service": {
+            "consent": "Solicito expresamente que comiencen el servicio antes de que termine el plazo de desistimiento. Si desisto, pagaré la parte ya prestada.",
+            "ack": "Reconozco que pierdo mi derecho de desistimiento una vez que hayan prestado el servicio por completo.",
+            "pair": "Para que el servicio comience antes, marque las dos casillas. Si no, déjelas vacías."
+        },
         "safety": {
             "heading": "Información sobre la seguridad del producto",
             "summary": "Seguridad del producto (fabricante: %name%)",

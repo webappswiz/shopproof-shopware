@@ -18,7 +18,7 @@
     ]
   },
   "main.js": {
-    "file": "assets/shopproof-compliance-CwFmLlwF.js",
+    "file": "assets/shopproof-compliance-g3eqbNxQ.js",
     "name": "shopproof-compliance",
     "src": "main.js",
     "isEntry": true,
@@ -32,7 +32,7 @@
     ]
   },
   "module/shopproof-overview/page/shopproof-overview-index/index.js": {
-    "file": "assets/index-DazR2Qha.js",
+    "file": "assets/index-yyUrOk4N.js",
     "name": "index",
     "src": "module/shopproof-overview/page/shopproof-overview-index/index.js",
     "isDynamicEntry": true,

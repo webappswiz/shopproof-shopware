@@ -5,6 +5,7 @@ namespace Shopproof\Compliance\Withdrawal;
 use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\DBAL\Connection;
 use Psr\Cache\CacheItemPoolInterface;
+use Shopproof\Compliance\Checkout\ServiceWithdrawal;
 use Shopware\Core\Checkout\Cart\LineItem\LineItem;
 use Shopware\Core\Checkout\Order\Aggregate\OrderLineItem\OrderLineItemCollection;
 use Shopware\Core\Checkout\Order\Aggregate\OrderLineItem\OrderLineItemEntity;
@@ -114,7 +115,9 @@ class WithdrawalItems
                 'name' => trim(strip_tags($line->getLabel())),
                 'quantity' => $line->getQuantity(),
                 'image' => self::image($line),
-                'excluded' => $line->getProductId() !== null && \in_array($line->getProductId(), $excluded, true),
+                // A dated booking (leisure, travel and the like on a fixed date) usually has no right
+                // of withdrawal (Art. 16(l) of Directive 2011/83/EU), as in the WooCommerce plugin.
+                'excluded' => ($line->getProductId() !== null && \in_array($line->getProductId(), $excluded, true)) || self::dated($line),
             ];
         }
 
@@ -208,6 +211,13 @@ class WithdrawalItems
     /**
      * The product photo: the smallest thumbnail at least 100 pixels wide, else the photo itself.
      */
+    private static function dated(OrderLineItemEntity $line): bool
+    {
+        $fields = $line->getPayload()['customFields'] ?? null;
+
+        return ServiceWithdrawal::kindOf(null, \is_array($fields) ? $fields : null) === 'dated';
+    }
+
     private static function image(OrderLineItemEntity $line): string
     {
         $cover = $line->getCover();

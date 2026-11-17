@@ -43,6 +43,11 @@ export default Shopware.Component.wrapComponentConfig({
             shopDetails: null,
             usingShopDetails: false,
             shopDetailsResult: '',
+            cancellations: null,
+            cancellationsFailed: false,
+            cancellationsLoading: false,
+            cancellationsPage: 1,
+            confirmCancelId: null,
         };
     },
 
@@ -76,6 +81,7 @@ export default Shopware.Component.wrapComponentConfig({
         this.loadWithdrawals();
         this.loadProof();
         this.loadReturns();
+        this.loadCancellations();
     },
 
     methods: {
@@ -252,7 +258,10 @@ export default Shopware.Component.wrapComponentConfig({
                 });
         },
 
-        /** The window line and the refund line of a clock, each with its tone (ok, warn, bad, none). */
+        /**
+         * The window line and the refund line of a clock, and for services the amount owed, each
+         * with its tone (ok, warn, bad, none).
+         */
         clockLines(clock) {
             if (!clock) {
                 return [];
@@ -261,15 +270,20 @@ export default Shopware.Component.wrapComponentConfig({
                 ? this.$t(`shopproof.withdrawal.clock.${key}`, values)
                 : this.$tc(`shopproof.withdrawal.clock.${key}`, count, values));
             const day = (value) => (value ? Shopware.Utils.format.date(`${value}T12:00:00`, { hour: undefined, minute: undefined }) : '');
-            const windowTone = { inside: 'ok', before_delivery: 'ok', late: 'bad', check: 'warn' }[clock.window] || 'none';
-            const windowText = clock.window === 'late'
-                ? t('late', { days: clock.daysOver, date: day(clock.windowEnd) }, clock.daysOver)
-                : t(clock.window, { date: day(clock.windowEnd) });
+            const windowTone = { inside: 'ok', before_delivery: 'ok', late: 'bad', check: 'warn', performed: 'warn', digital: 'warn', exempt: 'warn' }[clock.window] || 'none';
+            let windowText;
+            if (clock.window === 'late') {
+                windowText = t('late', { days: clock.daysOver, date: day(clock.windowEnd) }, clock.daysOver);
+            } else if (clock.window === 'inside' && clock.basis === 'order') {
+                windowText = t('insideOrder', { date: day(clock.windowEnd) });
+            } else {
+                windowText = t(clock.window, { date: day(clock.windowEnd) });
+            }
             let refund;
             if (clock.refund === 'paid') {
                 refund = [t('paid', { date: day(clock.refunded) }), 'ok'];
             } else if (clock.refund === 'none') {
-                refund = [t('none'), 'none'];
+                refund = [t(clock.window === 'late' ? 'none' : 'noneRight'), 'none'];
             } else if (clock.refund === 'today') {
                 refund = [t('today', { date: day(clock.refundDue) }), 'bad'];
             } else if (clock.refund === 'overdue') {
@@ -280,13 +294,57 @@ export default Shopware.Component.wrapComponentConfig({
             if (clock.partlyRefunded && ['due', 'today', 'overdue'].includes(clock.refund)) {
                 refund = [t('partly', { date: day(clock.partlyRefunded), line: refund[0] }), refund[1] === 'bad' ? 'bad' : 'warn'];
             }
-            return [[windowText, windowTone], refund];
+            const lines = [[windowText, windowTone], refund];
+            // Services: what the customer pays for the part provided (Art. 14(3) and (4)).
+            if (clock.owed) {
+                const money = (value) => Shopware.Utils.format.currency(value, clock.owed.currency || 'EUR', 2);
+                lines.push([t(`owed.${clock.owed.state}`, {
+                    days: clock.owed.days,
+                    of: clock.owed.of,
+                    share: clock.owed.share,
+                    owed: money(clock.owed.owed),
+                    refund: money(clock.owed.refund),
+                }), clock.owed.state === 'unknown' ? 'warn' : 'none']);
+            }
+            return lines;
         },
 
         removeWithdrawal(id) {
             return this.shopproofRulesService.deleteWithdrawal(id).then(() => {
                 this.confirmId = null;
                 this.loadWithdrawals();
+            });
+        },
+
+        loadCancellations() {
+            this.cancellationsLoading = true;
+            this.cancellationsFailed = false;
+            return this.shopproofRulesService
+                .getCancellations(this.cancellationsPage)
+                .then((result) => {
+                    this.cancellations = result;
+                })
+                .catch(() => {
+                    this.cancellationsFailed = true;
+                })
+                .finally(() => {
+                    this.cancellationsLoading = false;
+                });
+        },
+
+        onCancellationsPageChange({ page }) {
+            this.cancellationsPage = page;
+            this.loadCancellations();
+        },
+
+        markCancellationDone(id) {
+            return this.shopproofRulesService.markCancellationDone(id).then(() => this.loadCancellations());
+        },
+
+        removeCancellation(id) {
+            return this.shopproofRulesService.deleteCancellation(id).then(() => {
+                this.confirmCancelId = null;
+                this.loadCancellations();
             });
         },
 

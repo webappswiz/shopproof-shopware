@@ -46,7 +46,7 @@ final class SetupCheck
      *     safetyPlacement?: string,
      *     hazardProblems?: list<array{id: string, name: string, codes: list<array{code: string, reason: string}>}>,
      *     registrationBadLines?: list<string>,
-     *     notes?: array{unitPriceGaps?: list<array{id: string, name: string}>, depositBadLines?: list<string>, missingPolicyPages?: list<string>, dispute?: array{choice: string, statements: list<string>, foundOnPages: bool, pasted: bool, pagesChecked: bool}}
+     *     notes?: array{unitPriceGaps?: list<array{id: string, name: string}>, depositBadLines?: list<string>, missingPolicyPages?: list<string>, dispute?: array{choice: string, statements: list<string>, foundOnPages: bool, pasted: bool, pagesChecked: bool}, policyMatch?: array{page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null}}
      * } $facts
      *
      * @return array{supported: bool, ok: bool, shop: list<array{key: string, ok: bool}>, channels: list<array{id: string, name: string, ok: bool, checks: list<array{key: string, ok: bool, detail?: string}>}>, layouts: list<array{id: string, name: string, ok: bool, missing: list<string>}>, failedRecords: int, products: list<array{key: string, ok: bool}>, manufacturersWithoutDetails: list<array{id: string, name: string}>, hazardProblems: list<array{id: string, name: string, codes: list<array{code: string, reason: string}>}>, registrationBadLines: list<string>, notes: list<array{key: string, ok: bool, detail?: string}>, unitPriceGaps: list<array{id: string, name: string}>, depositBadLines: list<string>, disputeStatements: list<string>}

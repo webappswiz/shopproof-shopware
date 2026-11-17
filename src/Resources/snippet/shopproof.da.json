@@ -39,6 +39,11 @@
             "consent": "Jeg giver udtrykkeligt samtykke til, at I begynder leveringen af det digitale indhold, før fortrydelsesfristen udløber.",
             "ack": "Jeg anerkender, at jeg mister min fortrydelsesret, når leveringen af det digitale indhold er begyndt."
         },
+        "service": {
+            "consent": "Jeg anmoder udtrykkeligt om, at I begynder på tjenesteydelsen, før fortrydelsesfristen udløber. Hvis jeg fortryder, betaler jeg for den del, der allerede er leveret.",
+            "ack": "Jeg anerkender, at jeg mister min fortrydelsesret, når tjenesteydelsen er fuldt leveret.",
+            "pair": "Sæt kryds i begge felter, hvis tjenesteydelsen skal begynde tidligere. Ellers lad begge være tomme."
+        },
         "safety": {
             "heading": "Oplysninger om produktsikkerhed",
             "summary": "Produktsikkerhed (producent: %name%)",

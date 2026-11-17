@@ -101,7 +101,19 @@
                 "overdue": "Erstattung seit {days} Tag überfällig (fällig am {date}) | Erstattung seit {days} Tagen überfällig (fällig am {date})",
                 "due": "Erstattung fällig bis {date} (noch {days} Tag) | Erstattung fällig bis {date} (noch {days} Tage)",
                 "partly": "Teilweise erstattet am {date}, prüfen: {line}",
-                "help": "Technische Hilfe, keine Rechtsberatung. Die Frist beträgt 14 Tage (oder Ihre längere Frist) ab Lieferung und läuft bis Montag, wenn sie an einem Wochenende endet; auch Feiertage können sie verlängern. Die Erstattung ist 14 Tage nach Eingang des Widerrufs fällig."
+                "insideOrder": "Rechtzeitig: Frist endet am {date} (14 Tage ab Bestellung, wie bei Dienstleistungen)",
+                "performed": "Prüfen: die Dienstleistung war vor dem Widerruf vollständig erbracht, nach dem Verlangen eines früheren Beginns, das Recht kann also erloschen sein (Art. 16 lit. a)",
+                "digital": "Prüfen: digitale Inhalte, und der Kunde hat an der Kasse zugestimmt, dass der Download früher beginnt und das Widerrufsrecht dann erlischt. Begann der Download vor dem Widerruf, kann das Recht erloschen sein (Art. 16 lit. m)",
+                "exempt": "Prüfen: nur termingebundene Buchungen (Freizeit, Reisen und Ähnliches), meist kein Widerrufsrecht (Art. 16 lit. l)",
+                "noneRight": "Keine Erstattungsfrist, solange das Widerrufsrecht möglicherweise nicht gilt",
+                "owed": {
+                    "no_consent": "Dienstleistung: die Kunden zahlen nichts für Erbrachtes, weil kein Verlangen eines früheren Beginns vorliegt (Art. 14 Abs. 4)",
+                    "not_started": "Dienstleistung: bei Eingang des Widerrufs nicht begonnen, nichts geschuldet",
+                    "days": "Dienstleistung: {days} von {of} Tagen erbracht, die Kunden zahlen {owed}, Erstattung {refund}",
+                    "share": "Dienstleistung: {share} % erbracht, die Kunden zahlen {owed}, Erstattung {refund}",
+                    "unknown": "Dienstleistung: tragen Sie an der Bestellung die Leistungsdaten oder den erbrachten Teil ein (Zusatzfelder, Shopproof), um zu sehen, was die Kunden zahlen"
+                },
+                "help": "Technische Hilfe, keine Rechtsberatung. Die Frist beträgt 14 Tage (oder Ihre längere Frist) ab Lieferung und läuft bis Montag, wenn sie an einem Wochenende endet; auch Feiertage können sie verlängern. Die Erstattung ist 14 Tage nach Eingang des Widerrufs fällig. Bei Dienstleistungen zählt die Frist ab der Bestellung, und mit dem Verlangen eines früheren Beginns zahlen die Kunden für den erbrachten Teil."
             },
             "items": "Artikel",
             "export": "Alle als CSV exportieren",
@@ -197,6 +209,17 @@
             "disputeStatement_ok": "Ihr Hinweis zur Streitbeilegung steht in Ihren AGB oder im Impressum",
             "disputeStatement_off": "Fügen Sie Ihren Hinweis zur Streitbeilegung in Ihre AGB und Ihr Impressum ein (Inhalte > Erlebniswelten), oder setzen Sie in den Plugin-Einstellungen das Häkchen, dass Sie es getan haben.",
             "disputeIntro": "Ihr Hinweis zur Streitbeilegung, zum Einfügen in der Sprache jeder Seite:",
+            "policyPage_off": "Widerrufsbelehrung: nicht geprüft, weil unter Einstellungen > Stammdaten keine Widerrufsseite gesetzt ist. Setzen Sie sie, dann vergleicht Shopproof sie mit Ihrer Widerrufsfrist und Ihrer Shop-E-Mail.",
+            "policyText_off": "Widerrufsbelehrung: nicht geprüft, weil Ihre Widerrufsseite fast keinen Text hat. Wenn sie anders gefüllt wird, vergleichen Sie Frist und E-Mail-Adresse bitte selbst.",
+            "policyPeriod_ok": "Widerrufsbelehrung: Ihre Widerrufsseite nennt {detail} Tage, wie die Widerrufsfrist in den Plugin-Einstellungen",
+            "policyPeriodDifferent_off": "Widerrufsbelehrung: Ihre Widerrufsseite nennt {detail} Tage, die Widerrufsfrist in den Plugin-Einstellungen ist aber eine andere. Ändern Sie eines davon, damit beide übereinstimmen.",
+            "policyPeriodMonths_off": "Widerrufsbelehrung: Ihre Widerrufsseite nennt die Frist in Monaten, das kann Shopproof nicht vergleichen. Prüfen Sie, ob sie der Widerrufsfrist in den Plugin-Einstellungen entspricht.",
+            "policyPeriodMany_off": "Widerrufsbelehrung: Ihre Widerrufsseite nennt mehr als eine Frist ({detail} Tage). Prüfen Sie, ob die Widerrufsfrist in den Plugin-Einstellungen die richtige ist.",
+            "policyPeriodNone_off": "Widerrufsbelehrung: auf Ihrer Widerrufsseite wurde keine Widerrufsfrist gefunden. Prüfen Sie sie bitte selbst.",
+            "policyEmail_ok": "Widerrufsbelehrung: Ihre Widerrufsseite nennt Ihre Shop-E-Mail",
+            "policyEmailDifferent_off": "Widerrufsbelehrung: Ihre Widerrufsseite nennt {detail}, nicht die Shop-E-Mail aus Einstellungen > Stammdaten. Prüfen Sie, ob Nachrichten an diese Adresse bei Ihnen ankommen.",
+            "policyEmailUnsure_off": "Widerrufsbelehrung: Ihre Widerrufsseite nennt {detail}, unter Einstellungen > Stammdaten ist aber keine Shop-E-Mail gesetzt, daher kann Shopproof nicht vergleichen.",
+            "policyEmailNone_off": "Widerrufsbelehrung: auf Ihrer Widerrufsseite wurde keine E-Mail-Adresse gefunden. Prüfen Sie, ob dort steht, wie Kunden Sie erreichen.",
             "where": "Ändern Sie das unter Einstellungen > Erweiterungen > Shopproof > Konfigurieren (Karten Preisangaben, Pfand, Warenkorb und Kasse, Hinweis zur Streitbeilegung). Technische Hilfe, keine Rechtsberatung."
         },
         "bulk": {
@@ -383,6 +406,21 @@
                     "loaded": "{count} Regel für die EU und Ihre Länder (Version {version}). | {count} Regeln für die EU und Ihre Länder (Version {version})."
                 }
             }
+        },
+        "cancel": {
+            "title": "Kündigungen",
+            "intro": "Kündigungen, die Kunden auf Ihrer Kündigungsseite gesendet haben (Einstellungen > Erweiterungen > Shopproof, „Kündigungsbutton“). Jeder Kunde hat eine Bestätigung per E-Mail mit Datum und Uhrzeit des Eingangs erhalten, die E-Mail-Adresse Ihres Shops eine Kopie.",
+            "failed": "Die Kündigungen konnten nicht geladen werden.",
+            "none": "Noch keine Kündigungen.",
+            "open": "{count} offene Kündigung | {count} offene Kündigungen",
+            "end": "Endet",
+            "extraordinary": "Außerordentlich",
+            "earliest": "Zum nächstmöglichen Zeitpunkt",
+            "doneOn": "Erledigt am {date}",
+            "openState": "Offen",
+            "noReceipt": "Der Kunde hat die Bestätigung per E-Mail nicht erhalten. Bitte bestätigen Sie die Kündigung per E-Mail.",
+            "markDone": "Als erledigt markieren",
+            "next": "Beenden Sie den Vertrag (bei einem Abo in Ihrer Abo-App), nennen Sie dem Kunden das Enddatum, wenn er den nächstmöglichen Zeitpunkt gewählt hat, und markieren Sie die Kündigung als erledigt. Technische Hilfe, keine Rechtsberatung."
         }
     }
 }

@@ -10,6 +10,7 @@
       "items": "Items",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Digital content: you agreed that we start supplying it before the withdrawal period ends, and you acknowledged that you lose your right of withdrawal once supply has started.",
+      "service": "Services: you asked us to start before the withdrawal period ends. If you withdraw, you pay for the part already provided, and you lose your right of withdrawal once we have fully provided the service.",
       "legal": {
         "terms": "Terms and conditions",
         "withdrawal": "Withdrawal policy",
@@ -25,6 +26,7 @@
       "items": "Artikel",
       "excluded": "Diese Bestellung enthält Artikel, die Sie vom Widerruf ausgenommen haben: %s. Bitte prüfen Sie, ob die Ausnahme zutrifft, bevor Sie den Widerruf für diese Artikel ablehnen.",
       "digital": "Digitale Inhalte: Sie haben zugestimmt, dass wir vor Ablauf der Widerrufsfrist mit der Bereitstellung beginnen, und bestätigt, dass Sie mit Beginn der Bereitstellung Ihr Widerrufsrecht verlieren.",
+      "service": "Dienstleistungen: Sie haben verlangt, dass wir vor Ablauf der Widerrufsfrist beginnen. Wenn Sie widerrufen, zahlen Sie für den bereits erbrachten Teil, und Sie verlieren Ihr Widerrufsrecht, sobald wir die Dienstleistung vollständig erbracht haben.",
       "legal": {
         "terms": "AGB",
         "withdrawal": "Widerrufsbelehrung",
@@ -40,6 +42,7 @@
       "items": "Articles",
       "excluded": "Cette commande contient des articles que vous avez exclus de la rétractation : %s. Vérifiez si l'exclusion s'applique avant de refuser la rétractation pour ces articles.",
       "digital": "Contenu numérique : vous avez consenti à ce que la fourniture commence avant la fin du délai de rétractation et reconnu perdre votre droit de rétractation dès le début de la fourniture.",
+      "service": "Services : vous avez demandé que nous commencions avant la fin du délai de rétractation. Si vous vous rétractez, vous payez la part déjà fournie, et vous perdez votre droit de rétractation une fois le service pleinement exécuté.",
       "legal": {
         "terms": "Conditions générales de vente",
         "withdrawal": "Politique de rétractation",
@@ -55,6 +58,7 @@
       "items": "Articoli",
       "excluded": "Questo ordine contiene articoli che hai escluso dal recesso: %s. Verifica se l'esclusione si applica prima di rifiutare il recesso per questi articoli.",
       "digital": "Contenuto digitale: hai acconsentito che la fornitura inizi prima della scadenza del periodo di recesso e hai preso atto che perdi il diritto di recesso una volta iniziata la fornitura.",
+      "service": "Servizi: ci ha chiesto di iniziare prima della fine del periodo di recesso. Se recede, paga la parte già fornita, e perde il diritto di recesso una volta che il servizio è stato interamente prestato.",
       "legal": {
         "terms": "Condizioni generali di vendita",
         "withdrawal": "Informazioni sul recesso",
@@ -70,6 +74,7 @@
       "items": "Artikelen",
       "excluded": "Deze bestelling bevat artikelen die u van herroeping hebt uitgesloten: %s. Controleer of de uitsluiting van toepassing is voordat u de herroeping voor deze artikelen weigert.",
       "digital": "Digitale inhoud: u hebt ermee ingestemd dat de levering begint vóór het einde van de herroepingstermijn en erkend dat u uw herroepingsrecht verliest zodra de levering is begonnen.",
+      "service": "Diensten: u hebt ons gevraagd te beginnen voordat de bedenktijd afloopt. Als u herroept, betaalt u voor het deel dat al is geleverd, en u verliest uw herroepingsrecht zodra wij de dienst volledig hebben verricht.",
       "legal": {
         "terms": "Algemene voorwaarden",
         "withdrawal": "Herroepingsbeleid",
@@ -85,6 +90,7 @@
       "items": "Артикули",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Цифрово съдържание: съгласихте се да започнем доставката преди изтичането на срока за отказ и потвърдихте, че губите правото си на отказ, след като доставката започне.",
+      "service": "Услуги: поискахте да започнем преди изтичането на срока за отказ. Ако се откажете, плащате за вече предоставената част и губите правото си на отказ, след като услугата бъде изцяло предоставена.",
       "legal": {
         "terms": "Общи условия",
         "withdrawal": "Правила за отказ",
@@ -100,6 +106,7 @@
       "items": "Položky",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Digitální obsah: souhlasili jste, abychom s dodáním začali před uplynutím lhůty pro odstoupení, a vzali jste na vědomí, že zahájením dodání ztrácíte právo na odstoupení od smlouvy.",
+      "service": "Služby: požádali jste nás o zahájení před uplynutím lhůty pro odstoupení od smlouvy. Pokud odstoupíte, zaplatíte za již poskytnutou část a po úplném poskytnutí služby ztrácíte právo na odstoupení od smlouvy.",
       "legal": {
         "terms": "Obchodní podmínky",
         "withdrawal": "Poučení o odstoupení od smlouvy",
@@ -115,6 +122,7 @@
       "items": "Varer",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Digitalt indhold: Du har givet samtykke til, at vi begynder leveringen, før fortrydelsesfristen udløber, og anerkendt, at du mister din fortrydelsesret, når leveringen er begyndt.",
+      "service": "Tjenesteydelser: Du har anmodet os om at begynde, før fortrydelsesfristen udløber. Hvis du fortryder, betaler du for den del, der allerede er leveret, og du mister din fortrydelsesret, når vi har leveret tjenesteydelsen fuldt ud.",
       "legal": {
         "terms": "Handelsbetingelser",
         "withdrawal": "Fortrydelsesvilkår",
@@ -130,6 +138,7 @@
       "items": "Είδη",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Ψηφιακό περιεχόμενο: συναινέσατε να ξεκινήσουμε την παροχή πριν από τη λήξη της προθεσμίας υπαναχώρησης και αναγνωρίσατε ότι χάνετε το δικαίωμα υπαναχώρησης μόλις ξεκινήσει η παροχή.",
+      "service": "Υπηρεσίες: ζητήσατε να ξεκινήσουμε πριν από τη λήξη της προθεσμίας υπαναχώρησης. Αν υπαναχωρήσετε, πληρώνετε το μέρος που έχει ήδη παρασχεθεί, και χάνετε το δικαίωμα υπαναχώρησης μόλις παράσχουμε πλήρως την υπηρεσία.",
       "legal": {
         "terms": "Όροι και προϋποθέσεις",
         "withdrawal": "Πολιτική υπαναχώρησης",
@@ -145,6 +154,7 @@
       "items": "Artículos",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Contenido digital: usted dio su consentimiento para que comencemos el suministro antes de que finalice el plazo de desistimiento y reconoció que pierde su derecho de desistimiento una vez iniciado el suministro.",
+      "service": "Servicios: nos pidió que comenzáramos antes de que termine el plazo de desistimiento. Si desiste, pagará la parte ya prestada, y pierde su derecho de desistimiento una vez que hayamos prestado el servicio por completo.",
       "legal": {
         "terms": "Condiciones generales",
         "withdrawal": "Política de desistimiento",
@@ -160,6 +170,7 @@
       "items": "Tooted",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Digitaalne sisu: nõustusite, et alustame üleandmist enne taganemistähtaja lõppu, ja kinnitasite, et kaotate taganemisõiguse, kui üleandmine on alanud.",
+      "service": "Teenused: palusite meil alustada enne taganemisõiguse tähtaja lõppu. Kui taganete, maksate juba osutatud osa eest ja kaotate taganemisõiguse, kui oleme teenuse täielikult osutanud.",
       "legal": {
         "terms": "Müügitingimused",
         "withdrawal": "Taganemisõiguse teave",
@@ -175,6 +186,7 @@
       "items": "Tuotteet",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Digitaalinen sisältö: annoit suostumuksesi siihen, että toimittaminen alkaa ennen peruuttamisajan päättymistä, ja vahvistit ymmärtäväsi, että menetät peruuttamisoikeutesi, kun toimittaminen on alkanut.",
+      "service": "Palvelut: pyysitte meitä aloittamaan ennen peruuttamisajan päättymistä. Jos peruutatte, maksatte jo suoritetusta osasta, ja menetätte peruuttamisoikeutenne, kun olemme suorittaneet palvelun kokonaan.",
       "legal": {
         "terms": "Toimitusehdot",
         "withdrawal": "Peruutusoikeus",
@@ -190,6 +202,7 @@
       "items": "Earraí",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Ábhar digiteach: thoiligh tú go dtosóimis ar an soláthar sula dtagann deireadh leis an tréimhse tarraingthe siar, agus d'admhaigh tú go gcailleann tú do cheart chun tarraingt siar a luaithe a thosaíonn an soláthar.",
+      "service": "Seirbhísí: d'iarr tú orainn tosú sula dtéann an tréimhse aistarraingthe in éag. Má tharraingíonn tú siar, íocfaidh tú as an gcuid a soláthraíodh cheana, agus caillfidh tú do cheart aistarraingthe nuair a bheidh an tseirbhís soláthraithe go hiomlán againn.",
       "legal": {
         "terms": "Téarmaí agus coinníollacha",
         "withdrawal": "Beartas tarraingthe siar",
@@ -205,6 +218,7 @@
       "items": "Artikli",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Digitalni sadržaj: pristali ste da isporuku započnemo prije isteka roka za odustanak i potvrdili da gubite pravo na odustanak kada isporuka započne.",
+      "service": "Usluge: zatražili ste da počnemo prije isteka roka za jednostrani raskid. Ako raskinete ugovor, plaćate već pruženi dio, a pravo na jednostrani raskid gubite nakon što uslugu u potpunosti pružimo.",
       "legal": {
         "terms": "Opći uvjeti",
         "withdrawal": "Pravila o odustanku",
@@ -220,6 +234,7 @@
       "items": "Termékek",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Digitális tartalom: Ön hozzájárult, hogy a szolgáltatást az elállási határidő lejárta előtt megkezdjük, és tudomásul vette, hogy a szolgáltatás megkezdésével elveszíti az elállási jogát.",
+      "service": "Szolgáltatások: Ön kérte, hogy az elállási határidő lejárta előtt kezdjük meg. Ha eláll, a már teljesített részt kifizeti, és a szolgáltatás teljes teljesítése után elveszíti az elállási jogát.",
       "legal": {
         "terms": "Általános szerződési feltételek",
         "withdrawal": "Elállási tájékoztató",
@@ -235,6 +250,7 @@
       "items": "Prekės",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Skaitmeninis turinys: sutikote, kad teikimą pradėtume nepasibaigus sutarties atsisakymo laikotarpiui, ir patvirtinote, kad pradėjus teikti prarandate sutarties atsisakymo teisę.",
+      "service": "Paslaugos: paprašėte pradėti nepasibaigus sutarties atsisakymo laikotarpiui. Jei atsisakysite sutarties, sumokėsite už jau suteiktą dalį, o teisę atsisakyti sutarties prarasite, kai paslaugą visiškai suteiksime.",
       "legal": {
         "terms": "Pirkimo taisyklės",
         "withdrawal": "Atsisakymo taisyklės",
@@ -250,6 +266,7 @@
       "items": "Preces",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Digitālais saturs: jūs piekritāt, ka piegādi sākam pirms atteikuma termiņa beigām, un apliecinājāt, ka zaudējat atteikuma tiesības, tiklīdz piegāde ir sākusies.",
+      "service": "Pakalpojumi: jūs lūdzāt mūs sākt pirms atteikuma termiņa beigām. Ja atsakāties, jūs samaksājat par jau sniegto daļu un zaudējat atteikuma tiesības, tiklīdz esam pakalpojumu pilnībā snieguši.",
       "legal": {
         "terms": "Lietošanas noteikumi",
         "withdrawal": "Atteikuma tiesības",
@@ -265,6 +282,7 @@
       "items": "Oġġetti",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Kontenut diġitali: qbilt li nibdew il-forniment qabel ma jintemm il-perjodu ta' reċess, u rrikonoxxejt li titlef id-dritt ta' reċess tiegħek ladarba jibda l-forniment.",
+      "service": "Servizzi: tlabtna nibdew qabel ma jintemm il-perjodu tal-irtirar. Jekk tirtira, tħallas għall-parti diġà pprovduta, u titlef id-dritt tiegħek tal-irtirar ladarba nkunu pprovdejna s-servizz kollu.",
       "legal": {
         "terms": "Termini u kundizzjonijiet",
         "withdrawal": "Politika tar-reċess",
@@ -280,6 +298,7 @@
       "items": "Produkty",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Treści cyfrowe: wyraziłeś zgodę na rozpoczęcie dostarczania przed upływem terminu do odstąpienia od umowy i przyjąłeś do wiadomości, że z chwilą rozpoczęcia dostarczania tracisz prawo odstąpienia od umowy.",
+      "service": "Usługi: zażądali Państwo rozpoczęcia przed upływem terminu do odstąpienia od umowy. W razie odstąpienia płacą Państwo za część już wykonaną, a po pełnym wykonaniu usługi tracą Państwo prawo odstąpienia od umowy.",
       "legal": {
         "terms": "Regulamin",
         "withdrawal": "Pouczenie o odstąpieniu od umowy",
@@ -295,6 +314,7 @@
       "items": "Artigos",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Conteúdo digital: deu o seu consentimento para que iniciemos o fornecimento antes do fim do prazo de retratação e reconheceu que perde o direito de retratação assim que o fornecimento tiver início.",
+      "service": "Serviços: pediu-nos que começássemos antes do fim do prazo de livre resolução. Se exercer o direito de livre resolução, paga a parte já prestada, e perde esse direito quando tivermos prestado integralmente o serviço.",
       "legal": {
         "terms": "Termos e condições",
         "withdrawal": "Política de retratação",
@@ -310,6 +330,7 @@
       "items": "Produse",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Conținut digital: v-ați exprimat acordul ca furnizarea să înceapă înainte de expirarea perioadei de retragere și ați luat act de faptul că vă pierdeți dreptul de retragere odată ce furnizarea a început.",
+      "service": "Servicii: ne-ați solicitat să începem înainte de încheierea perioadei de retragere. Dacă vă retrageți, plătiți partea deja prestată și vă pierdeți dreptul de retragere după ce am prestat integral serviciul.",
       "legal": {
         "terms": "Termeni și condiții",
         "withdrawal": "Politica de retragere",
@@ -325,6 +346,7 @@
       "items": "Položky",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Digitálny obsah: súhlasili ste, aby sme s dodaním začali pred uplynutím lehoty na odstúpenie, a vzali ste na vedomie, že začatím dodania strácate právo na odstúpenie od zmluvy.",
+      "service": "Služby: požiadali ste nás o začatie pred uplynutím lehoty na odstúpenie od zmluvy. Ak odstúpite, zaplatíte za už poskytnutú časť a po úplnom poskytnutí služby strácate právo na odstúpenie od zmluvy.",
       "legal": {
         "terms": "Obchodné podmienky",
         "withdrawal": "Poučenie o odstúpení od zmluvy",
@@ -340,6 +362,7 @@
       "items": "Izdelki",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Digitalna vsebina: soglašali ste, da z dobavo začnemo pred iztekom roka za odstop, in potrdili, da z začetkom dobave izgubite pravico do odstopa od pogodbe.",
+      "service": "Storitve: zahtevali ste, da začnemo pred iztekom roka za odstop od pogodbe. Če odstopite, plačate že opravljeni del, pravico do odstopa od pogodbe pa izgubite, ko storitev v celoti opravimo.",
       "legal": {
         "terms": "Splošni pogoji",
         "withdrawal": "Pravila o odstopu",
@@ -355,6 +378,7 @@
       "items": "Artiklar",
       "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
       "digital": "Digitalt innehåll: du samtyckte till att vi börjar tillhandahålla det innan ångerfristen har löpt ut och bekräftade att du förlorar din ångerrätt när tillhandahållandet har påbörjats.",
+      "service": "Tjänster: du begärde att vi skulle börja innan ångerfristen löper ut. Om du ångrar dig betalar du för den del som redan har utförts, och du förlorar din ångerrätt när vi har fullgjort tjänsten helt.",
       "legal": {
         "terms": "Köpvillkor",
         "withdrawal": "Ångerrätt",

@@ -39,6 +39,11 @@
             "consent": "Aiškiai sutinku, kad skaitmeninio turinio teikimą pradėtumėte nepasibaigus sutarties atsisakymo laikotarpiui.",
             "ack": "Patvirtinu, kad pradėjus teikti skaitmeninį turinį prarandu sutarties atsisakymo teisę."
         },
+        "service": {
+            "consent": "Aiškiai prašau pradėti teikti paslaugą nepasibaigus sutarties atsisakymo laikotarpiui. Jei atsisakysiu sutarties, sumokėsiu už jau suteiktą dalį.",
+            "ack": "Suprantu, kad prarandu teisę atsisakyti sutarties, kai paslauga visiškai suteikiama.",
+            "pair": "Kad paslauga prasidėtų anksčiau, pažymėkite abu langelius. Kitaip palikite abu tuščius."
+        },
         "safety": {
             "heading": "Informacija apie gaminio saugą",
             "summary": "Gaminio sauga (gamintojas: %name%)",

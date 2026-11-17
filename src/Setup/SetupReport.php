@@ -45,6 +45,17 @@ final class SetupReport
         'checkoutPolicyPages' => ['', 'These chosen checkout boxes do not show, because their page is not set in Settings > Basic information:'],
         'disputeBoard' => ['', 'Your dispute resolution statement names no arbitration board yet, so there is nothing to paste. Enter its name in the Shopproof settings.'],
         'disputeStatement' => ['The dispute resolution statement is on your terms or imprint page', 'Paste your dispute resolution statement into your terms and imprint pages (or tick that you did in the Shopproof settings):'],
+        'policyPage' => ['', 'Withdrawal policy: not checked, because no revocation page is set in Settings > Basic information.'],
+        'policyText' => ['', 'Withdrawal policy: not checked, because the revocation page has almost no text. Compare the period and the email address yourself.'],
+        'policyPeriod' => ['Withdrawal policy: the revocation page says {detail} days, the same as the Shopproof withdrawal period', ''],
+        'policyPeriodDifferent' => ['', 'Withdrawal policy: the revocation page says {detail} days, but the Shopproof withdrawal period is different. Change one of them so they match.'],
+        'policyPeriodMonths' => ['', 'Withdrawal policy: the revocation page gives the period in months, so it cannot be compared. Check that it is the same as the Shopproof withdrawal period.'],
+        'policyPeriodMany' => ['', 'Withdrawal policy: the revocation page names more than one period ({detail} days). Check that the Shopproof withdrawal period is the right one.'],
+        'policyPeriodNone' => ['', 'Withdrawal policy: no withdrawal period found on the revocation page. Check it yourself.'],
+        'policyEmail' => ['Withdrawal policy: the revocation page names the shop email', ''],
+        'policyEmailDifferent' => ['', 'Withdrawal policy: the revocation page names {detail}, not the shop email in Settings > Basic information. Check that customers who write there reach you.'],
+        'policyEmailUnsure' => ['', 'Withdrawal policy: the revocation page names {detail}, but no shop email is set in Settings > Basic information, so it cannot be compared.'],
+        'policyEmailNone' => ['', 'Withdrawal policy: no email address found on the revocation page. Check that it tells customers how to reach you.'],
     ];
 
     private const PARTS = [
@@ -165,7 +176,10 @@ final class SetupReport
             $lines[] = 'Shop notes';
         }
         foreach ($notes as $check) {
-            [$okText, $offText] = self::NOTES[$check['key']] ?? [$check['key'], $check['key']];
+            [$okText, $offText] = array_map(
+                static fn (string $text): string => str_replace('{detail}', $check['detail'] ?? '', $text),
+                self::NOTES[$check['key']] ?? [$check['key'], $check['key']]
+            );
             if ($check['ok']) {
                 $lines[] = '[ok] ' . $okText;
                 continue;

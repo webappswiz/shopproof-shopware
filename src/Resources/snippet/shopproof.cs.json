@@ -39,6 +39,11 @@
             "consent": "Výslovně souhlasím s tím, abyste s dodáním digitálního obsahu začali před uplynutím lhůty pro odstoupení od smlouvy.",
             "ack": "Beru na vědomí, že zahájením dodání digitálního obsahu ztrácím právo na odstoupení od smlouvy."
         },
+        "service": {
+            "consent": "Výslovně žádám, abyste se službou začali před uplynutím lhůty pro odstoupení od smlouvy. Pokud odstoupím, zaplatím za již poskytnutou část.",
+            "ack": "Beru na vědomí, že po úplném poskytnutí služby ztrácím právo na odstoupení od smlouvy.",
+            "pair": "Aby služba začala dříve, zaškrtněte obě políčka. Jinak nechte obě prázdná."
+        },
         "safety": {
             "heading": "Informace o bezpečnosti výrobku",
             "summary": "Bezpečnost výrobku (výrobce: %name%)",
