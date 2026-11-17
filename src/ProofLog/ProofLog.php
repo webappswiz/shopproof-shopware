@@ -20,7 +20,11 @@ class ProofLog
 {
     public const TABLE = 'shopproof_proof_log';
 
-    public const TYPES = ['snapshot', 'withdrawal', 'retention'];
+    /**
+     * Entry types. "anchor" records Shopproof's receipt for the chain hash it stored (the daily
+     * stamp of Shopproof Pro, decision 0013); the free plugin never writes one itself.
+     */
+    public const TYPES = ['snapshot', 'withdrawal', 'retention', 'anchor'];
 
     public const DEFAULT_RETENTION = 730;
 

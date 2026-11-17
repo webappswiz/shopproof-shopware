@@ -8,12 +8,20 @@ namespace Shopproof\Compliance\Storefront;
  * two years. The official artwork is drawn unchanged; only its placeholder words are covered and
  * replaced with the years, brand and model, in Inter, as Annex II allows. Same layout data and
  * method as the WooCommerce plugin. No Shopware dependencies, so it is unit tested alone.
+ *
+ * The label is only for a guarantee that is free of charge and covers the entire good (Directive
+ * 2011/83/EU Art. 6(1)(la) as amended by Directive (EU) 2024/825), so it needs both ticks as well
+ * as the years. The guarantee can be set once on the manufacturer; products use it unless they
+ * set their own years. A source link and a "last checked" date are kept for the shop's records.
  */
 final class DurabilityLabel
 {
     public const PREFIX = 'shopproof_durability_';
 
-    public const FIELDS = ['years', 'brand', 'model', 'display'];
+    public const FIELDS = ['years', 'free', 'whole', 'brand', 'model', 'display', 'source', 'checked'];
+
+    /** The guarantee fields on a manufacturer, named PREFIX . 'maker_' . field. */
+    public const MAKER_FIELDS = ['maker_years', 'maker_free', 'maker_whole', 'maker_source', 'maker_checked'];
 
     /** @var array<string, mixed>|null */
     private ?array $data = null;
@@ -23,42 +31,72 @@ final class DurabilityLabel
     }
 
     /**
-     * Label values for a product: its own fields, the brand falling back to the Shopware
-     * manufacturer's name and the model to the manufacturer's product number.
+     * Label values for a product: its own guarantee when it sets its own years, else the
+     * manufacturer's; the brand falling back to the Shopware manufacturer's name and the model to
+     * the manufacturer's product number.
      *
-     * @param array<mixed>|null $fields product custom fields
+     * @param array<mixed>|null $fields      product custom fields
+     * @param array<mixed>|null $makerFields manufacturer custom fields
      *
-     * @return array{years: int, brand: string, model: string, display: string}
+     * @return array{years: int, brand: string, model: string, display: string, free: bool, whole: bool, from: string}
      */
-    public static function values(?array $fields, ?string $manufacturerName, ?string $manufacturerNumber): array
+    public static function values(?array $fields, ?string $manufacturerName, ?string $manufacturerNumber, ?array $makerFields = null): array
     {
-        $get = static function (string $key) use ($fields): string {
-            $value = \is_array($fields) ? ($fields[self::PREFIX . $key] ?? null) : null;
+        $reader = static fn (?array $from): \Closure => static function (string $key) use ($from): string {
+            $value = \is_array($from) ? ($from[self::PREFIX . $key] ?? null) : null;
+            if (\is_bool($value)) {
+                return $value ? 'yes' : '';
+            }
 
             return \is_string($value) || \is_int($value) ? trim((string) $value) : '';
         };
-        $years = $get('years');
+        $get = $reader($fields);
+        $years = static fn (string $value): int => preg_match('/^\d{1,2}$/', $value) === 1 ? (int) $value : 0;
+        $ticked = static fn (string $value): bool => \in_array(strtolower($value), ['yes', '1', 'true'], true);
         $brand = $get('brand');
         $model = $get('model');
+        $own = $years($get('years'));
+        // Any years typed on the product make it the product's own guarantee, so a value that
+        // cannot be read ("10 Jahre") shows no label instead of the manufacturer's years.
+        $from = $get('years') !== '' ? 'product' : '';
+        $free = $ticked($get('free'));
+        $whole = $ticked($get('whole'));
+        if ($from === '') {
+            $maker = $reader($makerFields);
+            $own = $years($maker('maker_years'));
+            if ($own > 0) {
+                $from = 'manufacturer';
+                $free = $ticked($maker('maker_free'));
+                $whole = $ticked($maker('maker_whole'));
+            }
+        }
 
         return [
-            'years' => preg_match('/^\d{1,2}$/', $years) === 1 ? (int) $years : 0,
+            'years' => $own,
             'brand' => $brand !== '' ? $brand : trim((string) $manufacturerName),
             'model' => $model !== '' ? $model : trim((string) $manufacturerNumber),
             // The small strip is the default: it opens the full label and keeps Add to cart in view.
             'display' => $get('display') === 'full' ? 'full' : 'nested',
+            'free' => $from !== '' && $free,
+            'whole' => $from !== '' && $whole,
+            'from' => $from,
         ];
     }
 
     /**
-     * @param array{years: int, brand: string, model: string, display: string} $values
+     * Whether the values make a label: more than two whole years, free of charge, covering the
+     * whole product, a brand and a model identifier.
+     *
+     * @param array{years: int, brand: string, model: string, display: string, free?: bool, whole?: bool} $values
      */
     public function valid(array $values): bool
     {
         $min = $this->number($this->data(), 'min_years');
         $max = $this->number($this->data(), 'max_years');
 
-        return $min > 0 && $values['years'] >= $min && $values['years'] <= $max && $values['brand'] !== '' && $values['model'] !== '';
+        return $min > 0 && $values['years'] >= $min && $values['years'] <= $max
+            && ($values['free'] ?? false) === true && ($values['whole'] ?? false) === true
+            && $values['brand'] !== '' && $values['model'] !== '';
     }
 
     /**
@@ -105,7 +143,7 @@ final class DurabilityLabel
     /**
      * HTML for the label, or '' when the values do not make a valid label.
      *
-     * @param array{years: int, brand: string, model: string, display: string} $values
+     * @param array{years: int, brand: string, model: string, display: string, free?: bool, whole?: bool} $values
      * @param string                                                         $assetBase URL of the durability asset folder, ending in /
      */
     public function render(array $values, string $pageLanguage, string $countryLanguage, string $assetBase): string

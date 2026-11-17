@@ -208,7 +208,8 @@ final class ShopproofExtension extends AbstractExtension implements ResetInterfa
 
     /**
      * The durability label for a product, as escaped HTML, or '' when the product has no valid
-     * label (no guarantee of more than two years, or no brand or model).
+     * label (no free guarantee of more than two years for the whole product, from the product or
+     * its manufacturer, or no brand or model).
      */
     public function durabilityLabel(mixed $product, ?string $localeCode = null, ?string $salesChannelId = null): string
     {
@@ -217,10 +218,12 @@ final class ShopproofExtension extends AbstractExtension implements ResetInterfa
         }
         $fields = $product->getTranslation('customFields');
         $manufacturerName = $product->getManufacturer()?->getTranslation('name');
+        $makerFields = $product->getManufacturer()?->getTranslation('customFields');
         $values = DurabilityLabel::values(
             \is_array($fields) ? $fields : null,
             \is_string($manufacturerName) ? $manufacturerName : null,
-            $product->getManufacturerNumber()
+            $product->getManufacturerNumber(),
+            \is_array($makerFields) ? $makerFields : null
         );
         return $this->durability->render(
             $values,

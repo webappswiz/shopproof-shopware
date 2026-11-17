@@ -162,7 +162,8 @@
             "types": {
                 "snapshot": "Täglicher Stand",
                 "withdrawal": "Widerruf",
-                "retention": "Aufbewahrung geändert"
+                "retention": "Aufbewahrung geändert",
+                "anchor": "Stempel bei Shopproof"
             }
         },
         "returns": {

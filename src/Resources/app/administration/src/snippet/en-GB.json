@@ -162,7 +162,8 @@
             "types": {
                 "snapshot": "Daily snapshot",
                 "withdrawal": "Withdrawal",
-                "retention": "Retention changed"
+                "retention": "Retention changed",
+                "anchor": "Stamp held by Shopproof"
             }
         },
         "returns": {

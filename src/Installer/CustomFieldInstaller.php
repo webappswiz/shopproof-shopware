@@ -29,12 +29,13 @@ final class CustomFieldInstaller
     public const PRODUCT_SET = 'shopproof_safety';
     public const MANUFACTURER_SET = 'shopproof_safety_manufacturer';
     public const DURABILITY_SET = 'shopproof_durability';
+    public const DURABILITY_MAKER_SET = 'shopproof_durability_manufacturer';
     public const HAZARD_SET = 'shopproof_hazard';
     public const TAKEBACK_SET = 'shopproof_takeback';
     public const FOOD_SET = 'shopproof_food';
     public const NOTES_SET = 'shopproof_notes';
     public const ORDER_SET = CheckoutBoxes::ORDER_SET;
-    public const SETS = [self::PRODUCT_SET, self::MANUFACTURER_SET, self::DURABILITY_SET, self::HAZARD_SET, self::TAKEBACK_SET, self::FOOD_SET, self::NOTES_SET, self::ORDER_SET];
+    public const SETS = [self::PRODUCT_SET, self::MANUFACTURER_SET, self::DURABILITY_SET, self::DURABILITY_MAKER_SET, self::HAZARD_SET, self::TAKEBACK_SET, self::FOOD_SET, self::NOTES_SET, self::ORDER_SET];
 
     /** The price, deposit and cart description fields, by their full names. */
     public const NOTES_FIELDS = [
@@ -56,7 +57,16 @@ final class CustomFieldInstaller
         'responsible_url' => ['EU responsible person website', 'Website der verantwortlichen Person in der EU'],
         'identifiers' => ['Product identifiers (one per line, for example "Model: X1" or "Batch: 2026-04")', 'Produktkennzeichnung (eine pro Zeile, zum Beispiel "Modell: X1" oder "Charge: 2026-04")'],
         'warnings' => ['Warnings and safety information (in the buyer\'s language)', 'Warnhinweise und Sicherheitsinformationen (in der Sprache der Käufer)'],
-        'years' => ['Durability guarantee in years (3 to 99; leave empty when the producer offers none of more than two years)', 'Haltbarkeitsgarantie in Jahren (3 bis 99; leer lassen, wenn der Hersteller keine über zwei Jahre gibt)'],
+        'years' => ['Durability guarantee in years (3 to 99; empty: the manufacturer\'s guarantee, if it has one)', 'Haltbarkeitsgarantie in Jahren (3 bis 99; leer: die Garantie des Herstellers, falls angegeben)'],
+        'free' => ['Free of charge: the shopper gets this guarantee at no extra cost', 'Kostenlos: die Kunden bekommen diese Garantie ohne Aufpreis'],
+        'whole' => ['Covers the whole product, not only a part of it', 'Gilt für das ganze Produkt, nicht nur für einen Teil'],
+        'source' => ['Source of the guarantee (link to the producer\'s terms, for your records)', 'Quelle der Garantie (Link zu den Bedingungen des Herstellers, für Ihre Unterlagen)'],
+        'checked' => ['Guarantee terms last checked on', 'Garantiebedingungen zuletzt geprüft am'],
+        'maker_years' => ['Durability guarantee in years (3 to 99; products of this manufacturer use it unless they set their own)', 'Haltbarkeitsgarantie in Jahren (3 bis 99; Produkte dieses Herstellers nutzen sie, wenn sie keine eigene haben)'],
+        'maker_free' => ['Free of charge: the shopper gets this guarantee at no extra cost', 'Kostenlos: die Kunden bekommen diese Garantie ohne Aufpreis'],
+        'maker_whole' => ['Covers the whole product, not only a part of it', 'Gilt für das ganze Produkt, nicht nur für einen Teil'],
+        'maker_source' => ['Source of the guarantee (link to the producer\'s terms, for your records)', 'Quelle der Garantie (Link zu den Bedingungen des Herstellers, für Ihre Unterlagen)'],
+        'maker_checked' => ['Guarantee terms last checked on', 'Garantiebedingungen zuletzt geprüft am'],
         'brand' => ['Brand on the label (empty: the manufacturer\'s name)', 'Marke auf dem Label (leer: Name des Herstellers)'],
         'model' => ['Model identifier on the label (empty: the manufacturer number)', 'Modellkennung auf dem Label (leer: Herstellernummer)'],
         'display' => ['How to show the label', 'Darstellung des Labels'],
@@ -129,7 +139,18 @@ final class CustomFieldInstaller
 
     private const MULTILINE = ['digital_consent', 'checks_text', 'manufacturer_address', 'responsible_address', 'identifiers', 'warnings', 'hazard_statements', 'precautionary_statements', 'food_ingredients', 'food_storage', 'food_business', PriceNotes::PREFIX . 'defects'];
 
-    private const BOOLEAN = ['weee', 'batteries', PriceNotes::PREFIX . 'margin_scheme'];
+    private const BOOLEAN = ['weee', 'batteries', PriceNotes::PREFIX . 'margin_scheme', 'free', 'whole', 'maker_free', 'maker_whole'];
+
+    private const DATES = ['checked', 'maker_checked'];
+
+    /** Help texts under a field: the durability label's rules, so a wrong label is hard to set. */
+    private const HELP = [
+        'years' => ['The EU "GARAN" label shows only when the years are set and both ticks below are on. Technical help, not legal advice.', 'Das EU-Label "GARAN" erscheint nur, wenn die Jahre angegeben und beide Haken unten gesetzt sind. Technische Hilfe, keine Rechtsberatung.'],
+        'maker_years' => ['The EU "GARAN" label shows only when the years are set and both ticks below are on. Each product still needs a manufacturer number or its own model identifier. Technical help, not legal advice.', 'Das EU-Label "GARAN" erscheint nur, wenn die Jahre angegeben und beide Haken unten gesetzt sind. Jedes Produkt braucht trotzdem eine Herstellernummer oder eine eigene Modellkennung. Technische Hilfe, keine Rechtsberatung.'],
+        'free' => ['A paid or extended warranty is a different offer: describe it in your own words, without the label.', 'Eine kostenpflichtige oder verlängerte Garantie ist ein anderes Angebot: beschreiben Sie sie mit eigenen Worten, ohne das Label.'],
+        'whole' => ['If the guarantee covers only a part (for example only the motor), do not use the label: say in the product description which part is covered and for how long, so shoppers do not take it for a guarantee on the whole product.', 'Gilt die Garantie nur für einen Teil (zum Beispiel nur den Motor), nutzen Sie das Label nicht: schreiben Sie in die Produktbeschreibung, welcher Teil wie lange abgedeckt ist, damit Kunden sie nicht für eine Garantie auf das ganze Produkt halten.'],
+        'checked' => ['Check the producer\'s terms again at least once a year, because producers can change or end a guarantee.', 'Prüfen Sie die Bedingungen des Herstellers mindestens einmal im Jahr, denn Hersteller können eine Garantie ändern oder beenden.'],
+    ];
 
     /**
      * @param EntityRepository<\Shopware\Core\System\CustomField\Aggregate\CustomFieldSet\CustomFieldSetCollection> $setRepository
@@ -152,6 +173,10 @@ final class CustomFieldInstaller
                 'Shopproof: Produktsicherheit (GPSR)',
             ]),
             $this->set(self::DURABILITY_SET, 'product', DurabilityLabel::PREFIX, DurabilityLabel::FIELDS, [
+                'Shopproof: EU durability label',
+                'Shopproof: EU-Haltbarkeitslabel',
+            ]),
+            $this->set(self::DURABILITY_MAKER_SET, 'product_manufacturer', DurabilityLabel::PREFIX, DurabilityLabel::MAKER_FIELDS, [
                 'Shopproof: EU durability label',
                 'Shopproof: EU-Haltbarkeitslabel',
             ]),
@@ -204,10 +229,10 @@ final class CustomFieldInstaller
                 ...array_map(static fn (string $field): string => FoodInformation::PREFIX . $field, FoodInformation::FIELDS),
                 ...self::NOTES_FIELDS,
             ],
-            'product_manufacturer_translation' => array_map(
-                static fn (string $field): string => SafetyData::MANUFACTURER_PREFIX . $field,
-                SafetyData::MANUFACTURER_FIELDS
-            ),
+            'product_manufacturer_translation' => [
+                ...array_map(static fn (string $field): string => SafetyData::MANUFACTURER_PREFIX . $field, SafetyData::MANUFACTURER_FIELDS),
+                ...array_map(static fn (string $field): string => DurabilityLabel::PREFIX . $field, DurabilityLabel::MAKER_FIELDS),
+            ],
             'order' => ['shopproof_digital_consent', CheckoutBoxes::ORDER_FIELD, CheckoutBoxes::ORDER_TEXT_FIELD],
         ];
         foreach ($keys as $table => $fields) {
@@ -323,6 +348,16 @@ final class CustomFieldInstaller
                     'max' => 999,
                 ];
             }
+            if (\in_array($field, self::DATES, true)) {
+                $type = CustomFieldTypes::DATETIME;
+                $config = [
+                    ...$config,
+                    'componentName' => 'sw-field',
+                    'customFieldType' => 'date',
+                    'type' => 'date',
+                    'dateType' => 'date',
+                ];
+            }
             if (\in_array($field, self::BOOLEAN, true)) {
                 $type = CustomFieldTypes::BOOL;
                 $config = [
@@ -331,6 +366,10 @@ final class CustomFieldInstaller
                     'customFieldType' => 'checkbox',
                     'type' => 'checkbox',
                 ];
+            }
+            $help = $prefix === DurabilityLabel::PREFIX ? (self::HELP[$field] ?? self::HELP[str_replace('maker_', '', $field)] ?? null) : null;
+            if ($help !== null) {
+                $config['helpText'] = ['en-GB' => $help[0], 'de-DE' => $help[1]];
             }
             $customFields[] = [
                 'id' => \is_string($fieldId) ? $fieldId : Uuid::fromStringToHex($fieldName),
