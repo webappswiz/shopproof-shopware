@@ -421,6 +421,33 @@
             "noReceipt": "Der Kunde hat die Bestätigung per E-Mail nicht erhalten. Bitte bestätigen Sie die Kündigung per E-Mail.",
             "markDone": "Als erledigt markieren",
             "next": "Beenden Sie den Vertrag (bei einem Abo in Ihrer Abo-App), nennen Sie dem Kunden das Enddatum, wenn er den nächstmöglichen Zeitpunkt gewählt hat, und markieren Sie die Kündigung als erledigt. Technische Hilfe, keine Rechtsberatung."
+        },
+        "contact": {
+            "title": "Hilfe und Kontakt",
+            "guides": "Schritt-für-Schritt-Anleitungen:",
+            "formTitle": "Schreiben Sie uns",
+            "intro": "Fragen, ein Problem oder eine Idee? Schreiben Sie uns hier. Wir lesen jede Nachricht selbst.",
+            "introPro": "Fragen, ein Problem oder eine Idee? Schreiben Sie uns hier. Als Kunde von Shopproof Pro erhalten Sie innerhalb von 1 Werktag eine Antwort.",
+            "name": "Ihr Name (freiwillig)",
+            "email": "Ihre E-Mail-Adresse für unsere Antwort",
+            "message": "Ihre Nachricht",
+            "includeShop": "Meine Shop-Adresse ({shop}) mitsenden, damit Sie sich das Problem ansehen können",
+            "what": "Wenn Sie auf Senden klicken, schickt Ihr Shop Ihren Namen, Ihre E-Mail-Adresse und Ihre Nachricht, die Shop-Adresse (falls angehakt) und die Versionsnummern unten an shopproof.app. Sie erreicht uns als E-Mail an support{'@'}shopproof.app, und wir verwenden sie nur, um Ihnen zu antworten. Bitte keine Kundendaten angeben.",
+            "privacy": "Datenschutzerklärung",
+            "send": "Nachricht senden",
+            "sent": "Danke, Ihre Nachricht ist unterwegs. Wir antworten an {email}.",
+            "sentPro": "Danke, Ihre Nachricht ist unterwegs. Wir antworten innerhalb von 1 Werktag an {email}.",
+            "unreachable": "Ihr Shop konnte shopproof.app nicht erreichen.",
+            "stillThere": "Ihre Nachricht steht noch im Formular unten. Sie können es erneut versuchen oder sie per E-Mail senden:",
+            "openEmail": "In einer E-Mail öffnen",
+            "errorEmail": "Geben Sie eine vollständige E-Mail-Adresse ein, etwa sie{'@'}ihrshop.de, damit wir antworten können.",
+            "errorShort": "Schreiben Sie ein paar Worte, damit wir wissen, wie wir helfen können.",
+            "errorLong": "Ihre Nachricht ist zu lang. Bitte bleiben Sie unter 4.000 Zeichen.",
+            "loadFailed": "Das Formular konnte Ihre Angaben nicht laden. Sie können sie trotzdem eintippen.",
+            "ownEmail": "Lieber mit Ihrem eigenen E-Mail-Programm?",
+            "copy": "Adresse kopieren",
+            "copied": "Adresse kopiert.",
+            "notLegalAdvice": "Shopproof ist technische Hilfe, keine Rechtsberatung."
         }
     }
 }

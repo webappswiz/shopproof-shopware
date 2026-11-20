@@ -1,0 +1,18 @@
+.shopproof-contact {
+    &__heading { margin: 16px 0 4px; font-size: 16px; }
+    &__form p { margin: 0 0 12px; }
+    &__form label { display: block; font-weight: 600; margin-bottom: 4px; }
+    &__form input[type="text"], &__form input[type="email"], &__form textarea {
+        width: 100%; max-width: 480px; padding: 8px; border: 1px solid #889; border-radius: 4px; font: inherit; box-sizing: border-box;
+    }
+    &__form textarea { max-width: 640px; }
+    &__form input[aria-invalid="true"], &__form textarea[aria-invalid="true"] { border-color: #b3261e; }
+    &__tick { font-weight: 400 !important; }
+    &__error { display: block; color: #b3261e; margin-top: 4px; }
+    &__small { font-size: 13px; color: #52667a; }
+    &__notice { padding: 8px 12px; border-radius: 4px; margin: 12px 0; }
+    &__notice.is-success { background: #e8f5ee; color: #0b5c2e; }
+    &__notice.is-error { background: #fdecea; color: #8a1c14; }
+    &__copied { margin-left: 6px; color: #0b5c2e; }
+    &__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}

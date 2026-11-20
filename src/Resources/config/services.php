@@ -14,7 +14,9 @@ use Shopproof\Compliance\Command\RefreshRulesCommand;
 use Shopproof\Compliance\Command\SettingsExportCommand;
 use Shopproof\Compliance\Command\SettingsImportCommand;
 use Shopproof\Compliance\Command\SetupCheckCommand;
+use Shopproof\Compliance\Controller\ContactController;
 use Shopproof\Compliance\Controller\OverviewController;
+use Shopproof\Compliance\Support\SupportMessage;
 use Shopproof\Compliance\Controller\PlacementController;
 use Shopproof\Compliance\Controller\ProofLogController;
 use Shopproof\Compliance\Controller\RulesController;
@@ -259,6 +261,16 @@ return static function (ContainerConfigurator $container): void {
         ->arg('$mail', service('Shopware\\Core\\Content\\Mail\\Service\\MailService'))
         ->arg('$logger', service('logger'))
         ->arg('$version', \is_array($composer) && \is_string($composer['version'] ?? null) ? $composer['version'] : '');
+
+    $services->set(SupportMessage::class)
+        ->arg('$client', service('shopproof.http_client'));
+
+    $services->set(ContactController::class)
+        ->public()
+        ->arg('$version', \is_array($composer) && \is_string($composer['version'] ?? null) ? $composer['version'] : '')
+        ->arg('$shopwareVersion', '%kernel.shopware_version%')
+        ->arg('$bundles', '%kernel.bundles%')
+        ->call('setContainer', [service('service_container')]);
 
     $services->set(ReturnsWebhookHandler::class)
         ->arg('$logger', service('logger'));

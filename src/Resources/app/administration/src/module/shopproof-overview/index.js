@@ -7,6 +7,7 @@ Shopware.Locale.extend('de-DE', deDE);
 Shopware.Component.register('shopproof-overview-index', () => import('./page/shopproof-overview-index'));
 Shopware.Component.register('shopproof-setup-overview', () => import('../../component/shopproof-setup-overview'));
 Shopware.Component.register('shopproof-placement', () => import('../../component/shopproof-placement'));
+Shopware.Component.register('shopproof-contact', () => import('../../component/shopproof-contact'));
 
 Shopware.Module.register('shopproof-overview', {
     type: 'plugin',

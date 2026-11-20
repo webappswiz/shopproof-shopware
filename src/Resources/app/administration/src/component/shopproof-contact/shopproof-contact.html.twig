@@ -1,0 +1,82 @@
+{% block shopproof_contact %}
+<mt-card
+    id="shopproof-contact"
+    class="shopproof-contact"
+    position-identifier="shopproof-overview-contact"
+    :title="$t('shopproof.contact.title')"
+>
+    <p>
+        {{ $t('shopproof.contact.guides') }}
+        <a :href="helpUrl" target="_blank" rel="noopener noreferrer">shopproof.app/help<span class="shopproof-contact__sr">{{ $t('shopproof.overview.opensNewTab') }}</span></a>
+    </p>
+
+    <div v-if="sent" class="shopproof-contact__notice is-success" role="status">
+        {{ form && form.pro ? $t('shopproof.contact.sentPro', { email: sentTo }) : $t('shopproof.contact.sent', { email: sentTo }) }}
+    </div>
+    <div v-else-if="error === 'send'" class="shopproof-contact__notice is-error" role="alert">
+        {{ reason || $t('shopproof.contact.unreachable') }}
+        {{ $t('shopproof.contact.stillThere') }}
+        <a :href="mailto">{{ $t('shopproof.contact.openEmail') }}</a>
+    </div>
+
+    <h3 class="shopproof-contact__heading">{{ $t('shopproof.contact.formTitle') }}</h3>
+    <p>{{ form && form.pro ? $t('shopproof.contact.introPro') : $t('shopproof.contact.intro') }}</p>
+    <p v-if="loadFailed">{{ $t('shopproof.contact.loadFailed') }}</p>
+
+    <form class="shopproof-contact__form" novalidate @submit.prevent="send">
+        <p>
+            <label for="shopproof-contact-name">{{ $t('shopproof.contact.name') }}</label>
+            <input id="shopproof-contact-name" v-model="name" type="text" maxlength="100" autocomplete="name">
+        </p>
+        <p>
+            <label for="shopproof-contact-email">{{ $t('shopproof.contact.email') }}</label>
+            <input
+                id="shopproof-contact-email"
+                ref="email"
+                v-model="email"
+                type="email"
+                required
+                maxlength="254"
+                autocomplete="email"
+                :aria-invalid="field === 'email' ? 'true' : null"
+                :aria-describedby="field === 'email' ? 'shopproof-contact-email-error' : null"
+            >
+            <span v-if="field === 'email'" id="shopproof-contact-email-error" class="shopproof-contact__error">{{ $t('shopproof.contact.errorEmail') }}</span>
+        </p>
+        <p>
+            <label for="shopproof-contact-message">{{ $t('shopproof.contact.message') }}</label>
+            <textarea
+                id="shopproof-contact-message"
+                ref="message"
+                v-model="message"
+                rows="6"
+                required
+                maxlength="4000"
+                :aria-invalid="field === 'message' ? 'true' : null"
+                :aria-describedby="field === 'message' ? 'shopproof-contact-message-error' : null"
+            ></textarea>
+            <span v-if="field === 'message'" id="shopproof-contact-message-error" class="shopproof-contact__error">{{ error === 'long' ? $t('shopproof.contact.errorLong') : $t('shopproof.contact.errorShort') }}</span>
+        </p>
+        <p>
+            <label class="shopproof-contact__tick">
+                <input v-model="includeShop" type="checkbox">
+                {{ $t('shopproof.contact.includeShop', { shop: form && form.shop ? form.shop : '' }) }}
+            </label>
+        </p>
+        <p class="shopproof-contact__small">
+            {{ $t('shopproof.contact.what') }}
+            <a :href="privacyUrl" target="_blank" rel="noopener noreferrer">{{ $t('shopproof.contact.privacy') }}<span class="shopproof-contact__sr">{{ $t('shopproof.overview.opensNewTab') }}</span></a>
+        </p>
+        <p v-if="form" class="shopproof-contact__small">{{ form.versions.join(', ') }}</p>
+        <mt-button type="submit" variant="primary" :is-loading="sending" :disabled="sending">{{ $t('shopproof.contact.send') }}</mt-button>
+    </form>
+
+    <p>
+        {{ $t('shopproof.contact.ownEmail') }}
+        <a :href="mailto"><code>{{ form ? form.address : 'support@shopproof.app' }}</code></a>
+        <mt-button v-if="canCopy" variant="secondary" size="small" @click="copy">{{ $t('shopproof.contact.copy') }}</mt-button>
+        <span class="shopproof-contact__copied" role="status">{{ copied ? $t('shopproof.contact.copied') : '' }}</span>
+    </p>
+    <p class="shopproof-contact__small">{{ $t('shopproof.contact.notLegalAdvice') }}</p>
+</mt-card>
+{% endblock %}

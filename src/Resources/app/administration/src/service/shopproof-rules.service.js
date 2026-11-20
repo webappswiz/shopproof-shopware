@@ -172,6 +172,18 @@ class ShopproofRulesService extends ApiService {
             .then((response) => ApiService.handleResponse(response));
     }
 
+    getContactForm() {
+        return this.httpClient
+            .get(`${this.getApiBasePath()}/contact`, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    sendContact(data) {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/contact`, data, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
     sendReturnsTest() {
         return this.httpClient
             .post(`${this.getApiBasePath()}/returns/test`, {}, { headers: this.getBasicHeaders() })

@@ -421,6 +421,33 @@
             "noReceipt": "The customer did not get the confirmation email. Please confirm it to them by email.",
             "markDone": "Mark as done",
             "next": "End the contract (for a subscription, in your subscriptions app), tell the customer the end date if they chose the earliest possible date, and mark the cancellation as done. Technical help, not legal advice."
+        },
+        "contact": {
+            "title": "Help and contact",
+            "guides": "Step-by-step guides:",
+            "formTitle": "Send us a message",
+            "intro": "Questions, a problem or an idea? Write to us here. We read every message ourselves.",
+            "introPro": "Questions, a problem or an idea? Write to us here. As a Shopproof Pro customer you get an answer within 1 working day.",
+            "name": "Your name (optional)",
+            "email": "Your email address, for our answer",
+            "message": "Your message",
+            "includeShop": "Include my shop address ({shop}), so you can look at the problem",
+            "what": "When you press Send, your shop sends your name, email address and message, the shop address if ticked, and the version numbers below to shopproof.app. It reaches us as an email to support{'@'}shopproof.app and we use it only to answer you. Please leave out customer details.",
+            "privacy": "Privacy notice",
+            "send": "Send message",
+            "sent": "Thank you, your message is on its way. We answer to {email}.",
+            "sentPro": "Thank you, your message is on its way. We answer within 1 working day, to {email}.",
+            "unreachable": "Your shop could not reach shopproof.app.",
+            "stillThere": "Your message is still in the form below. You can try again, or send it by email instead:",
+            "openEmail": "Open it in an email",
+            "errorEmail": "Enter a full email address, like you{'@'}yourshop.com, so we can answer you.",
+            "errorShort": "Write a few words so we know how to help.",
+            "errorLong": "Your message is too long. Please keep it under 4,000 characters.",
+            "loadFailed": "The form could not load your details. You can still type them in.",
+            "ownEmail": "Rather use your own email?",
+            "copy": "Copy address",
+            "copied": "Address copied.",
+            "notLegalAdvice": "Shopproof gives technical help. It is not legal advice."
         }
     }
 }

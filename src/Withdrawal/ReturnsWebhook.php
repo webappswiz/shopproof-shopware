@@ -426,7 +426,9 @@ class ReturnsWebhook
         return [
             'subject' => 'Withdrawal ' . $reference . ' did not reach your returns tool',
             'body' => 'Shopproof tried four times to send withdrawal ' . $reference . ' to your returns tool and gave up. ' . $reason
-                . "\n\nThe withdrawal itself is saved and the customer has their receipt. Please create the return by hand, and check the returns tool address under Settings > Extensions > Shopproof.",
+                // Shopware's own flow sends the customer's receipt, so Shopproof cannot know whether
+                // it went out and claims nothing about it.
+                . "\n\nThe withdrawal itself is saved. Please create the return by hand, and check the returns tool address under Settings > Extensions > Shopproof.",
         ];
     }
 }
