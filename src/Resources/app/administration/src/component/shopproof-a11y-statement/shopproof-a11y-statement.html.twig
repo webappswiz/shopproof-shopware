@@ -1,0 +1,71 @@
+{% block shopproof_a11y_statement %}
+<mt-card
+    id="shopproof-a11y-statement"
+    class="shopproof-a11y"
+    position-identifier="shopproof-overview-a11y-statement"
+    :title="$t('shopproof.a11y.title')"
+>
+    <p>{{ $t('shopproof.a11y.intro') }}</p>
+    <p>{{ $t('shopproof.a11y.linkCheck') }}</p>
+    <p>{{ $t('shopproof.a11y.draftIntro') }}</p>
+
+    <form class="shopproof-a11y__form" @submit.prevent>
+        <p>
+            <label for="shopproof-a11y-country">{{ $t('shopproof.a11y.country') }}</label>
+            <select id="shopproof-a11y-country" v-model="country">
+                <option v-for="code in countries" :key="code" :value="code">{{ $t(`shopproof.a11y.countries.${code}`) }}</option>
+            </select>
+        </p>
+        <p>
+            <label for="shopproof-a11y-lang">{{ $t('shopproof.a11y.language') }}</label>
+            <select id="shopproof-a11y-lang" v-model="lang">
+                <option value="">{{ $t('shopproof.a11y.languageAuto') }}</option>
+                <option v-for="code in languages" :key="code" :value="code">{{ $t(`shopproof.a11y.languages.${code}`) }}</option>
+            </select>
+        </p>
+        <p>
+            <label for="shopproof-a11y-shop">{{ $t('shopproof.a11y.shop') }}</label>
+            <input id="shopproof-a11y-shop" v-model="shop" type="text" maxlength="120">
+        </p>
+        <p>
+            <label for="shopproof-a11y-url">{{ $t('shopproof.a11y.url') }}</label>
+            <input id="shopproof-a11y-url" v-model="url" type="text" maxlength="200">
+        </p>
+        <p>
+            <label for="shopproof-a11y-email">{{ $t('shopproof.a11y.email') }}</label>
+            <input id="shopproof-a11y-email" v-model="email" type="email" maxlength="200" aria-describedby="shopproof-a11y-email-help">
+            <span id="shopproof-a11y-email-help" class="shopproof-a11y__small">{{ $t('shopproof.a11y.emailHelp') }}</span>
+        </p>
+        <p>
+            <label for="shopproof-a11y-about">{{ $t('shopproof.a11y.about') }}</label>
+            <input id="shopproof-a11y-about" v-model="about" type="text" maxlength="300" aria-describedby="shopproof-a11y-about-help">
+            <span id="shopproof-a11y-about-help" class="shopproof-a11y__small">{{ $t('shopproof.a11y.aboutHelp') }}</span>
+        </p>
+        <p>
+            <label for="shopproof-a11y-measures">{{ $t('shopproof.a11y.measures') }}</label>
+            <textarea id="shopproof-a11y-measures" v-model="measures" rows="4" aria-describedby="shopproof-a11y-measures-help"></textarea>
+            <span id="shopproof-a11y-measures-help" class="shopproof-a11y__small">{{ $t('shopproof.a11y.measuresHelp') }}</span>
+        </p>
+        <p>
+            <label for="shopproof-a11y-barriers">{{ $t('shopproof.a11y.barriers') }}</label>
+            <textarea id="shopproof-a11y-barriers" v-model="barriers" rows="4" aria-describedby="shopproof-a11y-barriers-help"></textarea>
+            <span id="shopproof-a11y-barriers-help" class="shopproof-a11y__small">{{ $t('shopproof.a11y.barriersHelp') }}</span>
+        </p>
+    </form>
+
+    <p v-if="!draft.authority">{{ $t('shopproof.a11y.noAuthority') }}</p>
+    <h3 class="shopproof-a11y__heading">{{ $t('shopproof.a11y.preview') }}</h3>
+    <textarea
+        class="shopproof-a11y__text"
+        readonly
+        rows="16"
+        :aria-label="$t('shopproof.a11y.preview')"
+        :value="draft.text"
+    ></textarea>
+    <p>
+        <button v-if="canCopy" type="button" class="sw-button sw-button--primary" @click="copy">{{ $t('shopproof.a11y.copy') }}</button>
+        <span v-if="copied" class="shopproof-a11y__copied" role="status">{{ $t('shopproof.a11y.copied') }}</span>
+    </p>
+    <p class="shopproof-a11y__small">{{ $t('shopproof.a11y.where') }}</p>
+</mt-card>
+{% endblock %}

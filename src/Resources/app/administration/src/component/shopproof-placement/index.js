@@ -8,10 +8,10 @@ const TEXT_KEYS = [
     'and', 'area.footer', 'area.header', 'area.main', 'area.account', 'area.other',
     'found.pass', 'found.fail', 'found.skip', 'visible.pass', 'visible.warn',
     'clear.pass', 'clear.warn', 'clear.fail', 'contrast.pass', 'contrast.warn', 'contrast.skip',
-    'floating.pass', 'floating.warn', 'others.pass', 'others.warn',
+    'floating.pass', 'floating.warn', 'others.pass', 'others.warn', 'a11y.pass', 'a11y.info',
 ];
 
-const ICON = { pass: '✓', warn: '!', fail: '✕', skip: '–' };
+const ICON = { pass: '✓', warn: '!', fail: '✕', skip: '–', info: 'i' };
 
 
 /**

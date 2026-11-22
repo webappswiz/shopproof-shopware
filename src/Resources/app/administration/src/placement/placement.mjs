@@ -80,6 +80,22 @@ function matchesHref(a, paths) {
   }
 }
 
+// Links to accessibility information (an accessibility statement), by their words or address,
+// the same words the shop scanner uses (packages/scanner/src/checks.mjs, WORDS.accessibility).
+const A11Y_WORDS = /barrierefrei|accessibilit|accessibilité|accessibilità|toegankelijk/;
+const A11Y_PATH = /barrierefrei|accessib|toegankelijk/;
+
+function isA11yLink(a) {
+  if (A11Y_WORDS.test(nameOf(a))) return true;
+  try {
+    return A11Y_PATH.test(
+      new URL(a.getAttribute("href"), a.ownerDocument.baseURI).pathname.toLowerCase(),
+    );
+  } catch {
+    return false;
+  }
+}
+
 /** Visible text of a link or button, with its accessible name as a fallback. */
 function nameOf(el) {
   return norm(el.textContent || el.getAttribute("aria-label") || el.getAttribute("title") || "");
@@ -208,7 +224,7 @@ function coveredBy(el, rect, doc) {
  *   page's path(s), so links to it count even without our class; labels: the reviewed national
  *   withdrawal button labels; scroll: scroll each link into view before testing whether something
  *   covers it (default true)
- * @returns {{ links: object[], floating: object[], width: number }}
+ * @returns {{ links: object[], floating: object[], a11y: { area: string, visible: boolean }[], width: number }}
  */
 export function inspectPlacement(doc, { paths = [], labels = [], scroll = true } = {}) {
   const win = doc.defaultView;
@@ -280,7 +296,14 @@ export function inspectPlacement(doc, { paths = [], labels = [], scroll = true }
       description: describe(el),
     });
   }
-  return { links, floating, width: viewW };
+  // Links to accessibility information, wherever they are. Only where and whether they are seen.
+  const a11y = [];
+  for (const a of [...doc.querySelectorAll("a[href]")].slice(0, MAX_ELEMENTS)) {
+    if (a.closest(ADMIN_ONLY) || !isA11yLink(a)) continue;
+    const r = rectOf(a);
+    a11y.push({ area: areaOf(a), visible: !hiddenByStyle(a, win) && r.width > 0 && r.height > 0 });
+  }
+  return { links, floating, a11y, width: viewW };
 }
 
 /** True if theme content with text or an image lies under the floating box. */
@@ -310,7 +333,8 @@ function contentLike(n) {
 
 /**
  * Turns an inspection into checks with codes the admin translates:
- * found, label, visible, clear, floating, contrast. Status is pass, warn, fail or skip.
+ * found, label, visible, clear, floating, contrast, others and a11y. Status is pass, warn, fail or
+ * skip; a11y is pass or info, a note that never changes the page result.
  * @param {{ links: object[], floating: object[] }} result
  * @param {{ expectLink?: boolean }} [options] expectLink: false on pages where the link is optional
  */
@@ -364,6 +388,14 @@ export function placementChecks(result, { expectLink = true } = {}) {
       ...rivalFloating.map((f) => f.description),
       ...others.filter((l) => l.visible && !l.floating).map((l) => describe(l.element)),
     ],
+  });
+  // Many very small businesses are exempt from the accessibility statement, so a missing link is a
+  // note, never a problem.
+  const a11y = result.a11y || [];
+  checks.push({
+    id: "a11y",
+    status: a11y.length ? "pass" : "info",
+    areas: [...new Set(a11y.map((l) => l.area))],
   });
   return checks;
 }
@@ -424,6 +456,9 @@ export const PLACEMENT_TEXT = {
   "others.pass": "No second withdrawal button found.",
   "others.warn":
     "Another withdrawal button was found: {items}. Shoppers should see only one; turn the other app's button off.",
+  "a11y.pass": "Link to accessibility information found {areas}.",
+  "a11y.info":
+    "No link to accessibility information on this page. Most shops need an accessibility statement since 28 June 2025, usually linked in the footer; very small businesses are exempt.",
 };
 
 function fill(template, vars) {

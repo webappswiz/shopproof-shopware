@@ -57,6 +57,8 @@
       "freeShipping": "free shipping",
       "deliveryTime": "Delivery time: {time}",
       "defects": "Known defects:",
+      "priorPrice": "Lowest price in the 30 days before the reduction: {price}",
+      "priorPriceSince": "Lowest price since {date}: {price}",
       "checksLegend": "Before you check out",
       "terms": "I have read and accept the <a href=\"{link}\">terms and conditions</a>.",
       "withdrawal": "I have read the <a href=\"{link}\">withdrawal policy</a>.",
@@ -66,7 +68,13 @@
       "checkConfirmOne": "Please tick the box below to check out.",
       "disputeNo": "We are not willing or obliged to take part in dispute resolution proceedings before a consumer arbitration board.",
       "disputeWilling": "We are willing to take part in dispute resolution proceedings before this consumer arbitration board: {board}.",
-      "disputeObliged": "We are obliged to take part in dispute resolution proceedings before this consumer arbitration board: {board}."
+      "disputeObliged": "We are obliged to take part in dispute resolution proceedings before this consumer arbitration board: {board}.",
+      "reviewsOrders": "Only customers who bought this product can review it. We check each review against our orders.",
+      "reviewsMarked": "Reviews marked as verified come from customers who bought this product. We check those against our orders. We do not check other reviews.",
+      "reviewsNone": "We do not check whether reviews come from customers who bought or used this product.",
+      "deliverTo": "We deliver to:",
+      "deliverCount": "We deliver to {count} countries.",
+      "payWith": "Payment methods:"
     }
   },
   "de": {
@@ -127,6 +135,8 @@
       "freeShipping": "versandkostenfrei",
       "deliveryTime": "Lieferzeit: {time}",
       "defects": "Bekannte Mängel:",
+      "priorPrice": "Niedrigster Preis der letzten 30 Tage vor der Reduzierung: {price}",
+      "priorPriceSince": "Niedrigster Preis seit {date}: {price}",
       "checksLegend": "Vor dem Bestellen",
       "terms": "Ich habe die <a href=\"{link}\">AGB</a> gelesen und akzeptiere sie.",
       "withdrawal": "Ich habe die <a href=\"{link}\">Widerrufsbelehrung</a> gelesen.",
@@ -136,7 +146,13 @@
       "checkConfirmOne": "Bitte setzen Sie das Häkchen unten, um zur Kasse zu gehen.",
       "disputeNo": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.",
       "disputeWilling": "Wir sind bereit, an Streitbeilegungsverfahren vor dieser Verbraucherschlichtungsstelle teilzunehmen: {board}.",
-      "disputeObliged": "Wir sind verpflichtet, an Streitbeilegungsverfahren vor dieser Verbraucherschlichtungsstelle teilzunehmen: {board}."
+      "disputeObliged": "Wir sind verpflichtet, an Streitbeilegungsverfahren vor dieser Verbraucherschlichtungsstelle teilzunehmen: {board}.",
+      "reviewsOrders": "Nur Kundinnen und Kunden, die dieses Produkt gekauft haben, können es bewerten. Wir prüfen jede Bewertung anhand unserer Bestellungen.",
+      "reviewsMarked": "Als verifiziert markierte Bewertungen stammen von Kundinnen und Kunden, die dieses Produkt gekauft haben. Wir prüfen diese anhand unserer Bestellungen. Andere Bewertungen prüfen wir nicht.",
+      "reviewsNone": "Wir prüfen nicht, ob Bewertungen von Kundinnen und Kunden stammen, die dieses Produkt gekauft oder genutzt haben.",
+      "deliverTo": "Wir liefern nach:",
+      "deliverCount": "Wir liefern in {count} Länder.",
+      "payWith": "Zahlungsarten:"
     }
   },
   "fr": {
@@ -197,6 +213,8 @@
       "freeShipping": "livraison gratuite",
       "deliveryTime": "Délai de livraison : {time}",
       "defects": "Défauts connus :",
+      "priorPrice": "Prix le plus bas des 30 jours précédant la réduction : {price}",
+      "priorPriceSince": "Prix le plus bas depuis le {date} : {price}",
       "checksLegend": "Avant de commander",
       "terms": "J'ai lu et j'accepte les <a href=\"{link}\">conditions générales de vente</a>.",
       "withdrawal": "J'ai lu les <a href=\"{link}\">informations sur la rétractation</a>.",
@@ -206,7 +224,13 @@
       "checkConfirmOne": "Veuillez cocher la case ci-dessous pour passer à la caisse.",
       "disputeNo": "Nous ne sommes ni disposés ni tenus à participer à une procédure de règlement des litiges devant un organisme de médiation de la consommation.",
       "disputeWilling": "Nous acceptons de participer à une procédure de règlement des litiges devant ce médiateur de la consommation : {board}.",
-      "disputeObliged": "Nous sommes tenus de participer à une procédure de règlement des litiges devant ce médiateur de la consommation : {board}."
+      "disputeObliged": "Nous sommes tenus de participer à une procédure de règlement des litiges devant ce médiateur de la consommation : {board}.",
+      "reviewsOrders": "Seuls les clients qui ont acheté ce produit peuvent le noter. Nous vérifions chaque avis à partir de nos commandes.",
+      "reviewsMarked": "Les avis marqués comme vérifiés proviennent de clients qui ont acheté ce produit. Nous les vérifions à partir de nos commandes. Nous ne vérifions pas les autres avis.",
+      "reviewsNone": "Nous ne vérifions pas si les avis proviennent de clients qui ont acheté ou utilisé ce produit.",
+      "deliverTo": "Nous livrons dans ces pays :",
+      "deliverCount": "Nous livrons dans {count} pays.",
+      "payWith": "Moyens de paiement :"
     }
   },
   "it": {
@@ -267,6 +291,8 @@
       "freeShipping": "spedizione gratuita",
       "deliveryTime": "Tempi di consegna: {time}",
       "defects": "Difetti noti:",
+      "priorPrice": "Prezzo più basso nei 30 giorni precedenti la riduzione: {price}",
+      "priorPriceSince": "Prezzo più basso dal {date}: {price}",
       "checksLegend": "Prima di ordinare",
       "terms": "Ho letto e accetto le <a href=\"{link}\">condizioni generali di vendita</a>.",
       "withdrawal": "Ho letto le <a href=\"{link}\">informazioni sul recesso</a>.",
@@ -276,7 +302,13 @@
       "checkConfirmOne": "Seleziona la casella qui sotto per procedere al pagamento.",
       "disputeNo": "Non siamo disposti né obbligati a partecipare a procedure di risoluzione delle controversie davanti a un organismo di conciliazione per i consumatori.",
       "disputeWilling": "Siamo disposti a partecipare a procedure di risoluzione delle controversie davanti a questo organismo per i consumatori: {board}.",
-      "disputeObliged": "Siamo obbligati a partecipare a procedure di risoluzione delle controversie davanti a questo organismo per i consumatori: {board}."
+      "disputeObliged": "Siamo obbligati a partecipare a procedure di risoluzione delle controversie davanti a questo organismo per i consumatori: {board}.",
+      "reviewsOrders": "Solo i clienti che hanno acquistato questo prodotto possono recensirlo. Verifichiamo ogni recensione in base ai nostri ordini.",
+      "reviewsMarked": "Le recensioni contrassegnate come verificate provengono da clienti che hanno acquistato questo prodotto. Le verifichiamo in base ai nostri ordini. Non verifichiamo le altre recensioni.",
+      "reviewsNone": "Non verifichiamo se le recensioni provengono da clienti che hanno acquistato o utilizzato questo prodotto.",
+      "deliverTo": "Spediamo in:",
+      "deliverCount": "Spediamo in {count} paesi.",
+      "payWith": "Metodi di pagamento:"
     }
   },
   "nl": {
@@ -337,6 +369,8 @@
       "freeShipping": "gratis verzending",
       "deliveryTime": "Levertijd: {time}",
       "defects": "Bekende gebreken:",
+      "priorPrice": "Laagste prijs in de 30 dagen vóór de korting: {price}",
+      "priorPriceSince": "Laagste prijs sinds {date}: {price}",
       "checksLegend": "Voordat u bestelt",
       "terms": "Ik heb de <a href=\"{link}\">algemene voorwaarden</a> gelezen en ga ermee akkoord.",
       "withdrawal": "Ik heb de <a href=\"{link}\">informatie over herroeping</a> gelezen.",
@@ -346,7 +380,13 @@
       "checkConfirmOne": "Vink het vakje hieronder aan om af te rekenen.",
       "disputeNo": "Wij zijn niet bereid of verplicht deel te nemen aan geschillenbeslechting bij een geschillencommissie voor consumenten.",
       "disputeWilling": "Wij zijn bereid deel te nemen aan geschillenbeslechting bij deze geschillencommissie voor consumenten: {board}.",
-      "disputeObliged": "Wij zijn verplicht deel te nemen aan geschillenbeslechting bij deze geschillencommissie voor consumenten: {board}."
+      "disputeObliged": "Wij zijn verplicht deel te nemen aan geschillenbeslechting bij deze geschillencommissie voor consumenten: {board}.",
+      "reviewsOrders": "Alleen klanten die dit product hebben gekocht, kunnen het beoordelen. We controleren elke review aan de hand van onze bestellingen.",
+      "reviewsMarked": "Reviews die als geverifieerd zijn gemarkeerd, komen van klanten die dit product hebben gekocht. Die controleren we aan de hand van onze bestellingen. Andere reviews controleren we niet.",
+      "reviewsNone": "We controleren niet of reviews afkomstig zijn van klanten die dit product hebben gekocht of gebruikt.",
+      "deliverTo": "Wij leveren in:",
+      "deliverCount": "Wij leveren in {count} landen.",
+      "payWith": "Betaalmethoden:"
     }
   }
 }

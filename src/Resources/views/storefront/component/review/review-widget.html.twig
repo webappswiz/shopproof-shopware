@@ -1,0 +1,13 @@
+{% sw_extends '@Storefront/storefront/component/review/review-widget.html.twig' %}
+
+{# Review check notice (UCPD Art. 7(6)): whether and how the shop checks that reviews come from
+   buyers, right below the reviews heading. Only once the shop picked its answer. #}
+{% block component_review_title %}
+    {{ parent() }}
+    {% set shopproofReviewNotice = shopproof_review_notice(context) %}
+    {% if shopproofReviewNotice %}
+        {% block shopproof_review_notice %}
+            <p class="shopproof-review-notice small">{{ shopproofReviewNotice }}</p>
+        {% endblock %}
+    {% endif %}
+{% endblock %}

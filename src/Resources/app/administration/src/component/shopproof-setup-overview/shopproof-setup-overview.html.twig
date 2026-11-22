@@ -37,6 +37,40 @@
         </mt-card>
         <p v-else class="shopproof-setup__complete" role="status">{{ $t('shopproof.setup.complete') }}</p>
 
+        <mt-card
+            v-if="result.nonEu"
+            id="shopproof-non-eu"
+            position-identifier="shopproof-overview-non-eu"
+            :title="$t('shopproof.setup.nonEu.title')"
+        >
+            <p>{{ $t('shopproof.setup.nonEu.intro') }}</p>
+            <p v-if="!result.nonEu.total">{{ $t('shopproof.setup.nonEu.empty') }}</p>
+            <template v-else>
+                <p>{{ $t('shopproof.setup.nonEu.summary', { open: result.nonEu.open, total: result.nonEu.total }) }}</p>
+                <ol class="shopproof-setup__steps">
+                    <li v-for="item in result.nonEu.items" :key="item.id" :class="['shopproof-setup__card', `is-${item.state}`]" :data-rule="item.id">
+                        <h3 class="shopproof-setup__card-title">
+                            {{ item.requirement }}
+                            <span class="shopproof-setup__pill">{{ $t(`shopproof.setup.nonEu.state.${item.state}`) }}</span>
+                        </h3>
+                        <p>{{ item.shopMust }}</p>
+                        <p class="shopproof-setup__help">{{ $t(`shopproof.setup.nonEu.status.${item.state}`) }}</p>
+                        <p class="shopproof-setup__help">
+                            {{ $t('shopproof.setup.nonEu.source', { basis: item.basis }) }}
+                            <a :href="item.source" target="_blank" rel="noopener noreferrer">{{ $t('shopproof.setup.nonEu.official') }}<span class="shopproof-overview__sr"> {{ $t('shopproof.overview.opensNewTab') }}</span></a>
+                        </p>
+                        <p v-if="item.id === 'EU-NE-01'">
+                            <router-link :to="{ name: 'sw.extension.config', params: { namespace: 'ShopproofCompliance' } }">{{ $t('shopproof.setup.nonEu.openSettings') }}</router-link>
+                        </p>
+                    </li>
+                </ol>
+            </template>
+            <p>
+                <small>{{ $t('shopproof.setup.nonEu.footer') }}</small>
+                <a href="https://shopproof.app/sell-into-the-eu/" target="_blank" rel="noopener noreferrer">{{ $t('shopproof.setup.nonEu.guide') }}<span class="shopproof-overview__sr"> {{ $t('shopproof.overview.opensNewTab') }}</span></a>
+            </p>
+        </mt-card>
+
         <mt-card position-identifier="shopproof-overview-glance" :title="$t('shopproof.setup.glance')">
             <ul class="shopproof-setup__cards">
                 <li v-for="card in result.cards" :key="card.key" :class="['shopproof-setup__card', `is-${card.state}`]" :data-card="card.key">

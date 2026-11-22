@@ -1,0 +1,2149 @@
+{
+  "_note": "Built from packages/rules/data/strings/green-claims.json by packages/widgets; do not edit by hand.",
+  "max_products": 250,
+  "specific": {
+    "percent": "\\d\\s?(%|prozent|procent|percent|per cent|pour cent|por ciento|per cento|por cento|prosent)",
+    "labels": [
+      "ecolabel",
+      "eco label",
+      "umweltzeichen",
+      "blauer engel",
+      "blue angel",
+      "nordic swan",
+      "svanen",
+      "svanemærk",
+      "joutsenmerk",
+      "milieukeur",
+      "miljömärk",
+      "miljømærk",
+      "ympäristömerk",
+      "ekoznač",
+      "etiqueta ecológica",
+      "rótulo ecológico",
+      "oznakowanie ekologiczne",
+      "nf environnement",
+      "nf-environnement",
+      "ecocert"
+    ]
+  },
+  "languages": {
+    "bg": {
+      "terms": [
+        {
+          "text": "екологосъобразен",
+          "kind": "generic"
+        },
+        {
+          "text": "благоприятен за околната среда",
+          "kind": "generic"
+        },
+        {
+          "text": "приятел на природата",
+          "kind": "generic"
+        },
+        {
+          "text": "екологичен",
+          "kind": "generic"
+        },
+        {
+          "text": "съобразен в екологично отношение",
+          "kind": "generic"
+        },
+        {
+          "text": "благоприятен за климата",
+          "kind": "generic"
+        },
+        {
+          "text": "щадящ околната среда",
+          "kind": "generic"
+        },
+        {
+          "text": "въглеродосъобразен",
+          "kind": "generic"
+        },
+        {
+          "text": "енергийно ефективен",
+          "kind": "generic"
+        },
+        {
+          "text": "биоразградим",
+          "kind": "generic"
+        },
+        {
+          "text": "на био основа",
+          "kind": "generic"
+        },
+        {
+          "text": "неутрален по отношение на климата",
+          "kind": "offsetting"
+        },
+        {
+          "text": "сертифициран като неутрален по отношение на CO2",
+          "kind": "offsetting"
+        },
+        {
+          "text": "въглеродно положителен",
+          "kind": "offsetting"
+        },
+        {
+          "text": "нулеви нетни емисии по отношение на климата",
+          "kind": "offsetting"
+        },
+        {
+          "text": "компенсиран от гледна точка на климата",
+          "kind": "offsetting"
+        },
+        {
+          "text": "намалено въздействие върху климата",
+          "kind": "offsetting"
+        },
+        {
+          "text": "ограничен CO2 отпечатък",
+          "kind": "offsetting"
+        },
+        {
+          "text": "неутрален по отношение на CO2",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "не"
+      ],
+      "disposal": [
+        "изхвърл"
+      ]
+    },
+    "cs": {
+      "terms": [
+        {
+          "text": "environmentálně šetrné",
+          "kind": "generic"
+        },
+        {
+          "text": "přátelské k přírodě",
+          "kind": "generic"
+        },
+        {
+          "text": "šetrné k životnímu prostředí",
+          "kind": "generic"
+        },
+        {
+          "text": "šetrné ke klimatu",
+          "kind": "generic"
+        },
+        {
+          "text": "jemné k životnímu prostředí",
+          "kind": "generic"
+        },
+        {
+          "text": "uhlíkově šetrné",
+          "kind": "generic"
+        },
+        {
+          "text": "energeticky úsporné",
+          "kind": "generic"
+        },
+        {
+          "text": "biologicky rozložitelné",
+          "kind": "generic"
+        },
+        {
+          "text": "na biologické bázi",
+          "kind": "generic"
+        },
+        {
+          "text": "ekologicky šetrné",
+          "kind": "generic"
+        },
+        {
+          "text": "energeticky úsporný",
+          "kind": "generic"
+        },
+        {
+          "text": "biologicky rozložitelný",
+          "kind": "generic"
+        },
+        {
+          "text": "udržitelné",
+          "kind": "broad"
+        },
+        {
+          "text": "klimaticky neutrální",
+          "kind": "offsetting"
+        },
+        {
+          "text": "certifikované jako neutrální z hlediska CO2",
+          "kind": "offsetting"
+        },
+        {
+          "text": "uhlíkově pozitivní",
+          "kind": "offsetting"
+        },
+        {
+          "text": "bez dopadu na klima",
+          "kind": "offsetting"
+        },
+        {
+          "text": "vykompenzované z hlediska klimatu",
+          "kind": "offsetting"
+        },
+        {
+          "text": "se sníženým dopadem na klima",
+          "kind": "offsetting"
+        },
+        {
+          "text": "s omezenou uhlíkovou stopou",
+          "kind": "offsetting"
+        },
+        {
+          "text": "neutrální z hlediska CO2",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "ne",
+        "není",
+        "nejsou"
+      ],
+      "disposal": [
+        "likvid"
+      ]
+    },
+    "da": {
+      "terms": [
+        {
+          "text": "miljøvenlig",
+          "kind": "generic"
+        },
+        {
+          "text": "økovenlig",
+          "kind": "generic"
+        },
+        {
+          "text": "naturven",
+          "kind": "generic"
+        },
+        {
+          "text": "miljøkorrekt",
+          "kind": "generic"
+        },
+        {
+          "text": "klimavenlig",
+          "kind": "generic"
+        },
+        {
+          "text": "mild mod miljøet",
+          "kind": "generic"
+        },
+        {
+          "text": "CO2-venlig",
+          "kind": "generic"
+        },
+        {
+          "text": "energieffektiv",
+          "kind": "generic"
+        },
+        {
+          "text": "bionedbrydelig",
+          "kind": "generic"
+        },
+        {
+          "text": "biobaseret",
+          "kind": "generic"
+        },
+        {
+          "text": "bæredygtig",
+          "kind": "broad"
+        },
+        {
+          "text": "klimaneutral",
+          "kind": "offsetting"
+        },
+        {
+          "text": "certificeret CO2-neutral",
+          "kind": "offsetting"
+        },
+        {
+          "text": "carbonpositiv",
+          "kind": "offsetting"
+        },
+        {
+          "text": "klimanettonulemission",
+          "kind": "offsetting"
+        },
+        {
+          "text": "klimakompenseret",
+          "kind": "offsetting"
+        },
+        {
+          "text": "reduceret klimapåvirkning",
+          "kind": "offsetting"
+        },
+        {
+          "text": "begrænset CO2-fodaftryk",
+          "kind": "offsetting"
+        },
+        {
+          "text": "CO2-neutral",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "ikke",
+        "ej"
+      ],
+      "disposal": [
+        "bortskaf"
+      ]
+    },
+    "de": {
+      "terms": [
+        {
+          "text": "umweltfreundlich",
+          "kind": "generic"
+        },
+        {
+          "text": "umweltschonend",
+          "kind": "generic"
+        },
+        {
+          "text": "naturfreundlich",
+          "kind": "generic"
+        },
+        {
+          "text": "umweltgerecht",
+          "kind": "generic"
+        },
+        {
+          "text": "klimafreundlich",
+          "kind": "generic"
+        },
+        {
+          "text": "umweltverträglich",
+          "kind": "generic"
+        },
+        {
+          "text": "CO2-freundlich",
+          "kind": "generic"
+        },
+        {
+          "text": "energieeffizient",
+          "kind": "generic"
+        },
+        {
+          "text": "biologisch abbaubar",
+          "kind": "generic"
+        },
+        {
+          "text": "biobasiert",
+          "kind": "generic"
+        },
+        {
+          "text": "nachhaltig",
+          "kind": "broad"
+        },
+        {
+          "text": "klimaneutral",
+          "kind": "offsetting"
+        },
+        {
+          "text": "zertifiziert CO2-neutral",
+          "kind": "offsetting"
+        },
+        {
+          "text": "CO2-positiv",
+          "kind": "offsetting"
+        },
+        {
+          "text": "mit Klimaausgleich",
+          "kind": "offsetting"
+        },
+        {
+          "text": "klimaschonend",
+          "kind": "offsetting"
+        },
+        {
+          "text": "mit reduziertem CO2-Fußabdruck",
+          "kind": "offsetting"
+        },
+        {
+          "text": "CO2-neutral",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "nicht",
+        "kein",
+        "keine",
+        "keinen",
+        "keiner",
+        "nie"
+      ],
+      "disposal": [
+        "entsorg"
+      ]
+    },
+    "el": {
+      "terms": [
+        {
+          "text": "φιλικό προς το περιβάλλον",
+          "kind": "generic"
+        },
+        {
+          "text": "φιλικό προς τη φύση",
+          "kind": "generic"
+        },
+        {
+          "text": "οικολογικό",
+          "kind": "generic"
+        },
+        {
+          "text": "περιβαλλοντικά ορθό",
+          "kind": "generic"
+        },
+        {
+          "text": "φιλικό προς το κλίμα",
+          "kind": "generic"
+        },
+        {
+          "text": "ήπιο για το περιβάλλον",
+          "kind": "generic"
+        },
+        {
+          "text": "ουδέτερο σε άνθρακα",
+          "kind": "generic"
+        },
+        {
+          "text": "ενεργειακά αποδοτικό",
+          "kind": "generic"
+        },
+        {
+          "text": "βιοαποδομήσιμο",
+          "kind": "generic"
+        },
+        {
+          "text": "βιώσιμο",
+          "kind": "broad"
+        },
+        {
+          "text": "κλιματικά ουδέτερο",
+          "kind": "offsetting"
+        },
+        {
+          "text": "πιστοποιημένα ουδέτερο σε CO2",
+          "kind": "offsetting"
+        },
+        {
+          "text": "με θετικό αντίκτυπο άνθρακα",
+          "kind": "offsetting"
+        },
+        {
+          "text": "με μηδενικές καθαρές εκπομπές για το κλίμα",
+          "kind": "offsetting"
+        },
+        {
+          "text": "με κλιματική αντιστάθμιση",
+          "kind": "offsetting"
+        },
+        {
+          "text": "με μειωμένο κλιματικό αντίκτυπο",
+          "kind": "offsetting"
+        },
+        {
+          "text": "με μειωμένο αποτύπωμα CO2",
+          "kind": "offsetting"
+        },
+        {
+          "text": "ουδέτερο σε CO2",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "δεν",
+        "μη",
+        "μην",
+        "όχι"
+      ],
+      "disposal": [
+        "απόρριψ"
+      ]
+    },
+    "en": {
+      "terms": [
+        {
+          "text": "environmentally friendly",
+          "kind": "generic"
+        },
+        {
+          "text": "eco-friendly",
+          "kind": "generic"
+        },
+        {
+          "text": "nature's friend",
+          "kind": "generic"
+        },
+        {
+          "text": "ecological",
+          "kind": "generic"
+        },
+        {
+          "text": "environmentally correct",
+          "kind": "generic"
+        },
+        {
+          "text": "climate friendly",
+          "kind": "generic"
+        },
+        {
+          "text": "gentle on the environment",
+          "kind": "generic"
+        },
+        {
+          "text": "carbon friendly",
+          "kind": "generic"
+        },
+        {
+          "text": "energy efficient",
+          "kind": "generic"
+        },
+        {
+          "text": "biodegradable",
+          "kind": "generic"
+        },
+        {
+          "text": "biobased",
+          "kind": "generic"
+        },
+        {
+          "text": "sustainable",
+          "kind": "broad"
+        },
+        {
+          "text": "climate neutral",
+          "kind": "offsetting"
+        },
+        {
+          "text": "CO2 neutral certified",
+          "kind": "offsetting"
+        },
+        {
+          "text": "carbon positive",
+          "kind": "offsetting"
+        },
+        {
+          "text": "climate net zero",
+          "kind": "offsetting"
+        },
+        {
+          "text": "climate compensated",
+          "kind": "offsetting"
+        },
+        {
+          "text": "reduced climate impact",
+          "kind": "offsetting"
+        },
+        {
+          "text": "limited CO2 footprint",
+          "kind": "offsetting"
+        },
+        {
+          "text": "CO2 neutral",
+          "kind": "offsetting"
+        },
+        {
+          "text": "carbon neutral",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "not",
+        "non",
+        "no",
+        "never",
+        "isn't",
+        "aren't"
+      ],
+      "disposal": [
+        "dispos"
+      ]
+    },
+    "es": {
+      "terms": [
+        {
+          "text": "respetuoso con el medio ambiente",
+          "kind": "generic"
+        },
+        {
+          "text": "amigo del medio ambiente",
+          "kind": "generic"
+        },
+        {
+          "text": "bueno para la naturaleza",
+          "kind": "generic"
+        },
+        {
+          "text": "inocuo para el medio ambiente",
+          "kind": "generic"
+        },
+        {
+          "text": "respetuoso con el clima",
+          "kind": "generic"
+        },
+        {
+          "text": "delicado con el medio ambiente",
+          "kind": "generic"
+        },
+        {
+          "text": "inocuo en términos de carbono",
+          "kind": "generic"
+        },
+        {
+          "text": "eficiente desde el punto de vista energético",
+          "kind": "generic"
+        },
+        {
+          "text": "biodegradable",
+          "kind": "generic"
+        },
+        {
+          "text": "de origen biológico",
+          "kind": "generic"
+        },
+        {
+          "text": "eficiente energéticamente",
+          "kind": "generic"
+        },
+        {
+          "text": "sostenible",
+          "kind": "broad"
+        },
+        {
+          "text": "climáticamente neutro",
+          "kind": "offsetting"
+        },
+        {
+          "text": "neutralidad de carbono certificada",
+          "kind": "offsetting"
+        },
+        {
+          "text": "positivo en términos de carbono",
+          "kind": "offsetting"
+        },
+        {
+          "text": "cero emisiones netas",
+          "kind": "offsetting"
+        },
+        {
+          "text": "con compensación climática",
+          "kind": "offsetting"
+        },
+        {
+          "text": "impacto climático reducido",
+          "kind": "offsetting"
+        },
+        {
+          "text": "huella de CO2 reducida",
+          "kind": "offsetting"
+        },
+        {
+          "text": "respetuosa con el medio ambiente",
+          "kind": "generic"
+        },
+        {
+          "text": "respetuosa con el clima",
+          "kind": "generic"
+        }
+      ],
+      "not": [
+        "no",
+        "nunca"
+      ],
+      "disposal": [
+        "desech",
+        "elimin"
+      ]
+    },
+    "et": {
+      "terms": [
+        {
+          "text": "keskkonnasõbralik",
+          "kind": "generic"
+        },
+        {
+          "text": "ökosõbralik",
+          "kind": "generic"
+        },
+        {
+          "text": "keskkonnasäästlik",
+          "kind": "generic"
+        },
+        {
+          "text": "loodussõbralik",
+          "kind": "generic"
+        },
+        {
+          "text": "keskkonnanõuetele vastav",
+          "kind": "generic"
+        },
+        {
+          "text": "kliimasõbralik",
+          "kind": "generic"
+        },
+        {
+          "text": "keskkonnast hooliv",
+          "kind": "generic"
+        },
+        {
+          "text": "süsinikusõbralik",
+          "kind": "generic"
+        },
+        {
+          "text": "energiatõhus",
+          "kind": "generic"
+        },
+        {
+          "text": "biolagunev",
+          "kind": "generic"
+        },
+        {
+          "text": "biopõhine",
+          "kind": "generic"
+        },
+        {
+          "text": "kestlik",
+          "kind": "broad"
+        },
+        {
+          "text": "kliimaneutraalne",
+          "kind": "offsetting"
+        },
+        {
+          "text": "sertifitseeritud CO2-neutraalne",
+          "kind": "offsetting"
+        },
+        {
+          "text": "süsinikpositiivne",
+          "kind": "offsetting"
+        },
+        {
+          "text": "nullnetoheitega",
+          "kind": "offsetting"
+        },
+        {
+          "text": "kliimakompenseeritud",
+          "kind": "offsetting"
+        },
+        {
+          "text": "väiksema kliimamõjuga",
+          "kind": "offsetting"
+        },
+        {
+          "text": "väike CO2 jalajälg",
+          "kind": "offsetting"
+        },
+        {
+          "text": "CO2-neutraalne",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "ei",
+        "mitte",
+        "pole"
+      ],
+      "disposal": [
+        "jäätme"
+      ]
+    },
+    "fi": {
+      "terms": [
+        {
+          "text": "ympäristöystävällinen",
+          "kind": "generic"
+        },
+        {
+          "text": "ympäristöä säästävä",
+          "kind": "generic"
+        },
+        {
+          "text": "luontoystävällinen",
+          "kind": "generic"
+        },
+        {
+          "text": "ekologinen",
+          "kind": "generic"
+        },
+        {
+          "text": "ympäristöä kunnioittava",
+          "kind": "generic"
+        },
+        {
+          "text": "ilmastoystävällinen",
+          "kind": "generic"
+        },
+        {
+          "text": "lempeä ympäristölle",
+          "kind": "generic"
+        },
+        {
+          "text": "hiiliystävällinen",
+          "kind": "generic"
+        },
+        {
+          "text": "energiatehokas",
+          "kind": "generic"
+        },
+        {
+          "text": "biohajoava",
+          "kind": "generic"
+        },
+        {
+          "text": "biopohjainen",
+          "kind": "generic"
+        },
+        {
+          "text": "ilmastoneutraali",
+          "kind": "offsetting"
+        },
+        {
+          "text": "sertifioidusti hiilidioksidineutraali",
+          "kind": "offsetting"
+        },
+        {
+          "text": "hiilipositiivinen",
+          "kind": "offsetting"
+        },
+        {
+          "text": "nettonollavaikutus",
+          "kind": "offsetting"
+        },
+        {
+          "text": "ilmastokompensoitu",
+          "kind": "offsetting"
+        },
+        {
+          "text": "vähemmän ympäristövaikutuksia",
+          "kind": "offsetting"
+        },
+        {
+          "text": "pieni hiilidioksidijalanjälki",
+          "kind": "offsetting"
+        },
+        {
+          "text": "hiilidioksidineutraali",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "ei",
+        "eivät",
+        "ole"
+      ],
+      "disposal": [
+        "hävit"
+      ]
+    },
+    "fr": {
+      "terms": [
+        {
+          "text": "respectueux de l'environnement",
+          "kind": "generic"
+        },
+        {
+          "text": "respectueux de la nature",
+          "kind": "generic"
+        },
+        {
+          "text": "ami de la nature",
+          "kind": "generic"
+        },
+        {
+          "text": "écologique",
+          "kind": "generic"
+        },
+        {
+          "text": "bon pour l'environnement",
+          "kind": "generic"
+        },
+        {
+          "text": "bon pour le climat",
+          "kind": "generic"
+        },
+        {
+          "text": "favorable à l'environnement",
+          "kind": "generic"
+        },
+        {
+          "text": "à faible intensité de carbone",
+          "kind": "generic"
+        },
+        {
+          "text": "économe en énergie",
+          "kind": "generic"
+        },
+        {
+          "text": "biodégradable",
+          "kind": "generic"
+        },
+        {
+          "text": "biosourcé",
+          "kind": "generic"
+        },
+        {
+          "text": "neutre pour le climat",
+          "kind": "offsetting"
+        },
+        {
+          "text": "certifié neutre en CO2",
+          "kind": "offsetting"
+        },
+        {
+          "text": "bilan carbone positif",
+          "kind": "offsetting"
+        },
+        {
+          "text": "zéro net pour le climat",
+          "kind": "offsetting"
+        },
+        {
+          "text": "climatiquement compensé",
+          "kind": "offsetting"
+        },
+        {
+          "text": "impact réduit sur le climat",
+          "kind": "offsetting"
+        },
+        {
+          "text": "empreinte CO2 limitée",
+          "kind": "offsetting"
+        },
+        {
+          "text": "neutre en CO2",
+          "kind": "offsetting"
+        },
+        {
+          "text": "neutre en carbone",
+          "kind": "offsetting"
+        },
+        {
+          "text": "respectueuse de l'environnement",
+          "kind": "generic"
+        },
+        {
+          "text": "respectueuse de la nature",
+          "kind": "generic"
+        },
+        {
+          "text": "amie de la nature",
+          "kind": "generic"
+        }
+      ],
+      "not": [
+        "pas",
+        "non",
+        "ni",
+        "jamais"
+      ],
+      "disposal": [
+        "élimin",
+        "jeter"
+      ]
+    },
+    "ga": {
+      "terms": [
+        {
+          "text": "neamhdhíobhálach don chomhshaol",
+          "kind": "generic"
+        },
+        {
+          "text": "éicea-chairdiúil",
+          "kind": "generic"
+        },
+        {
+          "text": "cara an dúlra",
+          "kind": "generic"
+        },
+        {
+          "text": "éiceolaíoch",
+          "kind": "generic"
+        },
+        {
+          "text": "ceart don chomhshaol",
+          "kind": "generic"
+        },
+        {
+          "text": "neamhdhíobhálach don aeráid",
+          "kind": "generic"
+        },
+        {
+          "text": "séimh ar an gcomhshaol",
+          "kind": "generic"
+        },
+        {
+          "text": "comhshaol ísealcharbóin",
+          "kind": "generic"
+        },
+        {
+          "text": "tíosach ar fhuinneamh",
+          "kind": "generic"
+        },
+        {
+          "text": "in-bhithdhíghrádaithe",
+          "kind": "generic"
+        },
+        {
+          "text": "bithbhunaithe",
+          "kind": "generic"
+        },
+        {
+          "text": "inbhuanaithe",
+          "kind": "broad"
+        },
+        {
+          "text": "neodrach ó thaobh na haeráide de",
+          "kind": "offsetting"
+        },
+        {
+          "text": "deimhnithe neodrach ó thaobh CO2",
+          "kind": "offsetting"
+        },
+        {
+          "text": "carbóndearfach",
+          "kind": "offsetting"
+        },
+        {
+          "text": "glan-nialas aeráide",
+          "kind": "offsetting"
+        },
+        {
+          "text": "cúiteamh don aeráid",
+          "kind": "offsetting"
+        },
+        {
+          "text": "tionchar laghdaithe aeráide",
+          "kind": "offsetting"
+        },
+        {
+          "text": "lorg teoranta CO2",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "ní",
+        "nach",
+        "níl"
+      ],
+      "disposal": [
+        "diúscair"
+      ]
+    },
+    "hr": {
+      "terms": [
+        {
+          "text": "prihvatljivo za okoliš",
+          "kind": "generic"
+        },
+        {
+          "text": "ekološki prihvatljivo",
+          "kind": "generic"
+        },
+        {
+          "text": "prijatelj prirode",
+          "kind": "generic"
+        },
+        {
+          "text": "dobro za okoliš",
+          "kind": "generic"
+        },
+        {
+          "text": "klimatski prihvatljivo",
+          "kind": "generic"
+        },
+        {
+          "text": "nježno za okoliš",
+          "kind": "generic"
+        },
+        {
+          "text": "ugljično prihvatljivo",
+          "kind": "generic"
+        },
+        {
+          "text": "energetski učinkovito",
+          "kind": "generic"
+        },
+        {
+          "text": "biorazgradivo",
+          "kind": "generic"
+        },
+        {
+          "text": "biobazirano",
+          "kind": "generic"
+        },
+        {
+          "text": "održivo",
+          "kind": "broad"
+        },
+        {
+          "text": "klimatski neutralno",
+          "kind": "offsetting"
+        },
+        {
+          "text": "certificirano CO2 neutralno",
+          "kind": "offsetting"
+        },
+        {
+          "text": "ugljično pozitivno",
+          "kind": "offsetting"
+        },
+        {
+          "text": "klimatski kompenzirano",
+          "kind": "offsetting"
+        },
+        {
+          "text": "smanjen utjecaj na klimu",
+          "kind": "offsetting"
+        },
+        {
+          "text": "ograničen CO2 otisak",
+          "kind": "offsetting"
+        },
+        {
+          "text": "CO2 neutralno",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "nije",
+        "ne",
+        "nisu"
+      ],
+      "disposal": [
+        "zbrinj"
+      ]
+    },
+    "hu": {
+      "terms": [
+        {
+          "text": "környezetbarát",
+          "kind": "generic"
+        },
+        {
+          "text": "ökobarát",
+          "kind": "generic"
+        },
+        {
+          "text": "a természet barátja",
+          "kind": "generic"
+        },
+        {
+          "text": "környezetvédelmi szempontból helyes",
+          "kind": "generic"
+        },
+        {
+          "text": "klímabarát",
+          "kind": "generic"
+        },
+        {
+          "text": "környezetkímélő",
+          "kind": "generic"
+        },
+        {
+          "text": "alacsony szén-dioxid-kibocsátású",
+          "kind": "generic"
+        },
+        {
+          "text": "energiahatékony",
+          "kind": "generic"
+        },
+        {
+          "text": "biológiailag lebontható",
+          "kind": "generic"
+        },
+        {
+          "text": "bioalapú",
+          "kind": "generic"
+        },
+        {
+          "text": "fenntartható",
+          "kind": "broad"
+        },
+        {
+          "text": "tanúsítottan karbonsemleges",
+          "kind": "offsetting"
+        },
+        {
+          "text": "karbonpozitív",
+          "kind": "offsetting"
+        },
+        {
+          "text": "klíma nulla nettó",
+          "kind": "offsetting"
+        },
+        {
+          "text": "klímakompenzált",
+          "kind": "offsetting"
+        },
+        {
+          "text": "csökkentett éghajlati hatás",
+          "kind": "offsetting"
+        },
+        {
+          "text": "csökkentett szén-dioxid lábnyom",
+          "kind": "offsetting"
+        },
+        {
+          "text": "karbonsemleges",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "nem",
+        "nincs",
+        "sem"
+      ],
+      "disposal": [
+        "ártalmatlanít"
+      ]
+    },
+    "it": {
+      "terms": [
+        {
+          "text": "rispettoso dell'ambiente",
+          "kind": "generic"
+        },
+        {
+          "text": "ecocompatibile",
+          "kind": "generic"
+        },
+        {
+          "text": "amico della natura",
+          "kind": "generic"
+        },
+        {
+          "text": "rispettoso dal punto di vista ambientale",
+          "kind": "generic"
+        },
+        {
+          "text": "rispettoso dal punto di vista del clima",
+          "kind": "generic"
+        },
+        {
+          "text": "che salvaguarda l'ambiente",
+          "kind": "generic"
+        },
+        {
+          "text": "rispettoso in termini di emissioni di carbonio",
+          "kind": "generic"
+        },
+        {
+          "text": "efficiente sotto il profilo energetico",
+          "kind": "generic"
+        },
+        {
+          "text": "biodegradabile",
+          "kind": "generic"
+        },
+        {
+          "text": "a base biologica",
+          "kind": "generic"
+        },
+        {
+          "text": "sostenibile",
+          "kind": "broad"
+        },
+        {
+          "text": "neutrale dal punto di vista climatico",
+          "kind": "offsetting"
+        },
+        {
+          "text": "certificato neutrale in termini di emissioni di CO2",
+          "kind": "offsetting"
+        },
+        {
+          "text": "positivo in termini di emissioni di carbonio",
+          "kind": "offsetting"
+        },
+        {
+          "text": "a zero emissioni nette per il clima",
+          "kind": "offsetting"
+        },
+        {
+          "text": "compensazione climatica",
+          "kind": "offsetting"
+        },
+        {
+          "text": "impatto climatico ridotto",
+          "kind": "offsetting"
+        },
+        {
+          "text": "impronta di CO2 ridotta",
+          "kind": "offsetting"
+        },
+        {
+          "text": "neutrale in termini di emissioni di CO2",
+          "kind": "offsetting"
+        },
+        {
+          "text": "rispettosa dell'ambiente",
+          "kind": "generic"
+        },
+        {
+          "text": "amica della natura",
+          "kind": "generic"
+        }
+      ],
+      "not": [
+        "non",
+        "né",
+        "mai"
+      ],
+      "disposal": [
+        "smalti"
+      ]
+    },
+    "lt": {
+      "terms": [
+        {
+          "text": "nekenkiantis aplinkai",
+          "kind": "generic"
+        },
+        {
+          "text": "tausojantis aplinką",
+          "kind": "generic"
+        },
+        {
+          "text": "nekenkiantis gamtai",
+          "kind": "generic"
+        },
+        {
+          "text": "tinkamas aplinkai",
+          "kind": "generic"
+        },
+        {
+          "text": "nekenkiantis klimatui",
+          "kind": "generic"
+        },
+        {
+          "text": "palankus aplinkai",
+          "kind": "generic"
+        },
+        {
+          "text": "nekenkiantis anglies dioksido atžvilgiu",
+          "kind": "generic"
+        },
+        {
+          "text": "veiksmingai vartojantis energiją",
+          "kind": "generic"
+        },
+        {
+          "text": "biologiškai skaidus",
+          "kind": "generic"
+        },
+        {
+          "text": "biologinės kilmės",
+          "kind": "generic"
+        },
+        {
+          "text": "neutralaus poveikio klimatui",
+          "kind": "offsetting"
+        },
+        {
+          "text": "sertifikuoto neutralaus CO2 poveikio",
+          "kind": "offsetting"
+        },
+        {
+          "text": "palankus anglies dioksido atžvilgiu",
+          "kind": "offsetting"
+        },
+        {
+          "text": "neutralus klimatui",
+          "kind": "offsetting"
+        },
+        {
+          "text": "kompensuojantis poveikį klimatui",
+          "kind": "offsetting"
+        },
+        {
+          "text": "sumažinto poveikio klimatui",
+          "kind": "offsetting"
+        },
+        {
+          "text": "riboto CO2 pėdsako",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "ne",
+        "nėra"
+      ],
+      "disposal": [
+        "šalin"
+      ]
+    },
+    "lv": {
+      "terms": [
+        {
+          "text": "videi draudzīgs",
+          "kind": "generic"
+        },
+        {
+          "text": "dabai draudzīgs",
+          "kind": "generic"
+        },
+        {
+          "text": "dabas draugs",
+          "kind": "generic"
+        },
+        {
+          "text": "videi piemērots",
+          "kind": "generic"
+        },
+        {
+          "text": "klimatam draudzīgs",
+          "kind": "generic"
+        },
+        {
+          "text": "vidi saudzējošs",
+          "kind": "generic"
+        },
+        {
+          "text": "oglekļa ziņā nekaitīgs",
+          "kind": "generic"
+        },
+        {
+          "text": "bionoārdāms",
+          "kind": "generic"
+        },
+        {
+          "text": "biobāzēts",
+          "kind": "generic"
+        },
+        {
+          "text": "energoefektīvs",
+          "kind": "generic"
+        },
+        {
+          "text": "ilgtspējīgs",
+          "kind": "broad"
+        },
+        {
+          "text": "klimatneitrāls",
+          "kind": "offsetting"
+        },
+        {
+          "text": "sertificēts kā CO2 neitrāls",
+          "kind": "offsetting"
+        },
+        {
+          "text": "CO2 labvēlīgs",
+          "kind": "offsetting"
+        },
+        {
+          "text": "nulles ietekme uz klimatu",
+          "kind": "offsetting"
+        },
+        {
+          "text": "klimata ietekmi kompensējošs",
+          "kind": "offsetting"
+        },
+        {
+          "text": "samazināta ietekme uz klimatu",
+          "kind": "offsetting"
+        },
+        {
+          "text": "samazināta CO2 pēda",
+          "kind": "offsetting"
+        },
+        {
+          "text": "CO2 neitrāls",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "nav",
+        "ne"
+      ],
+      "disposal": [
+        "utiliz"
+      ]
+    },
+    "mt": {
+      "terms": [
+        {
+          "text": "favur l-ambjent",
+          "kind": "generic"
+        },
+        {
+          "text": "ekokompatibbli",
+          "kind": "generic"
+        },
+        {
+          "text": "ħbieb tan-natura",
+          "kind": "generic"
+        },
+        {
+          "text": "ekoloġiċi",
+          "kind": "generic"
+        },
+        {
+          "text": "ambjentalment korretti",
+          "kind": "generic"
+        },
+        {
+          "text": "favur il-klima",
+          "kind": "generic"
+        },
+        {
+          "text": "favur il-karbonju",
+          "kind": "generic"
+        },
+        {
+          "text": "effiċjenti fl-użu tal-enerġija",
+          "kind": "generic"
+        },
+        {
+          "text": "bijodegradabbli",
+          "kind": "generic"
+        },
+        {
+          "text": "b'bażi bijoloġika",
+          "kind": "generic"
+        },
+        {
+          "text": "effiċjenti fl-enerġija",
+          "kind": "generic"
+        },
+        {
+          "text": "sostenibbli",
+          "kind": "broad"
+        },
+        {
+          "text": "klimatikament newtrali",
+          "kind": "offsetting"
+        },
+        {
+          "text": "iċċertifikat li newtrali f'termini ta' CO2",
+          "kind": "offsetting"
+        },
+        {
+          "text": "pożittiv f'termini tal-karbonju",
+          "kind": "offsetting"
+        },
+        {
+          "text": "newtrali f'termini ta' klima",
+          "kind": "offsetting"
+        },
+        {
+          "text": "klimatikament ikkumpensat",
+          "kind": "offsetting"
+        },
+        {
+          "text": "b'impatt imnaqqas fuq il-klima",
+          "kind": "offsetting"
+        },
+        {
+          "text": "impronta limitata tal-karbonju",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "mhux",
+        "ma"
+      ],
+      "disposal": [
+        "rimi"
+      ]
+    },
+    "nl": {
+      "terms": [
+        {
+          "text": "milieuvriendelijk",
+          "kind": "generic"
+        },
+        {
+          "text": "milieubewust",
+          "kind": "generic"
+        },
+        {
+          "text": "natuurvriendelijk",
+          "kind": "generic"
+        },
+        {
+          "text": "ecologisch",
+          "kind": "generic"
+        },
+        {
+          "text": "ecologisch verantwoord",
+          "kind": "generic"
+        },
+        {
+          "text": "klimaatvriendelijk",
+          "kind": "generic"
+        },
+        {
+          "text": "zacht voor het milieu",
+          "kind": "generic"
+        },
+        {
+          "text": "koolstofarm",
+          "kind": "generic"
+        },
+        {
+          "text": "energie-efficiënt",
+          "kind": "generic"
+        },
+        {
+          "text": "biologisch afbreekbaar",
+          "kind": "generic"
+        },
+        {
+          "text": "biogebaseerd",
+          "kind": "generic"
+        },
+        {
+          "text": "klimaatneutraal",
+          "kind": "offsetting"
+        },
+        {
+          "text": "gecertificeerd CO2-neutraal",
+          "kind": "offsetting"
+        },
+        {
+          "text": "met positieve koolstofbalans",
+          "kind": "offsetting"
+        },
+        {
+          "text": "nettonulimpact op het klimaat",
+          "kind": "offsetting"
+        },
+        {
+          "text": "klimaatcompensatie",
+          "kind": "offsetting"
+        },
+        {
+          "text": "minder impact op het klimaat",
+          "kind": "offsetting"
+        },
+        {
+          "text": "beperkte CO2-voetafdruk",
+          "kind": "offsetting"
+        },
+        {
+          "text": "CO2-neutraal",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "niet",
+        "geen",
+        "nooit"
+      ],
+      "disposal": [
+        "afvoer",
+        "weggooi",
+        "inleveren"
+      ]
+    },
+    "pl": {
+      "terms": [
+        {
+          "text": "przyjazne dla środowiska",
+          "kind": "generic"
+        },
+        {
+          "text": "eko-przyjazne",
+          "kind": "generic"
+        },
+        {
+          "text": "przyjazne dla natury",
+          "kind": "generic"
+        },
+        {
+          "text": "poprawne środowiskowo",
+          "kind": "generic"
+        },
+        {
+          "text": "przyjazne dla klimatu",
+          "kind": "generic"
+        },
+        {
+          "text": "łagodne dla środowiska",
+          "kind": "generic"
+        },
+        {
+          "text": "przyjazne pod względem emisji dwutlenku węgla",
+          "kind": "generic"
+        },
+        {
+          "text": "efektywne energetycznie",
+          "kind": "generic"
+        },
+        {
+          "text": "biodegradowalne",
+          "kind": "generic"
+        },
+        {
+          "text": "oparte na surowcach pochodzenia biologicznego",
+          "kind": "generic"
+        },
+        {
+          "text": "neutralne dla klimatu",
+          "kind": "offsetting"
+        },
+        {
+          "text": "potwierdzone jako neutralne pod względem emisji dwutlenku węgla",
+          "kind": "offsetting"
+        },
+        {
+          "text": "korzystne pod względem emisji dwutlenku węgla",
+          "kind": "offsetting"
+        },
+        {
+          "text": "neutralne emisyjnie dla klimatu",
+          "kind": "offsetting"
+        },
+        {
+          "text": "o skompensowanym wpływie na klimat",
+          "kind": "offsetting"
+        },
+        {
+          "text": "zredukowany wpływ na klimat",
+          "kind": "offsetting"
+        },
+        {
+          "text": "ograniczony ślad węglowy",
+          "kind": "offsetting"
+        },
+        {
+          "text": "neutralne pod względem emisji dwutlenku węgla",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "nie"
+      ],
+      "disposal": [
+        "utyliz"
+      ]
+    },
+    "pt": {
+      "terms": [
+        {
+          "text": "respeitador do ambiente",
+          "kind": "generic"
+        },
+        {
+          "text": "amigo do ambiente",
+          "kind": "generic"
+        },
+        {
+          "text": "amigo da natureza",
+          "kind": "generic"
+        },
+        {
+          "text": "ambientalmente correto",
+          "kind": "generic"
+        },
+        {
+          "text": "respeitador do clima",
+          "kind": "generic"
+        },
+        {
+          "text": "protege o ambiente",
+          "kind": "generic"
+        },
+        {
+          "text": "respeitador do carbono",
+          "kind": "generic"
+        },
+        {
+          "text": "energeticamente eficiente",
+          "kind": "generic"
+        },
+        {
+          "text": "biodegradável",
+          "kind": "generic"
+        },
+        {
+          "text": "biobaseado",
+          "kind": "generic"
+        },
+        {
+          "text": "sustentável",
+          "kind": "broad"
+        },
+        {
+          "text": "neutro para o clima",
+          "kind": "offsetting"
+        },
+        {
+          "text": "certificado como neutro em CO2",
+          "kind": "offsetting"
+        },
+        {
+          "text": "saldo favorável de carbono",
+          "kind": "offsetting"
+        },
+        {
+          "text": "com impacto neutro no clima",
+          "kind": "offsetting"
+        },
+        {
+          "text": "compensado para o clima",
+          "kind": "offsetting"
+        },
+        {
+          "text": "impacto climático reduzido",
+          "kind": "offsetting"
+        },
+        {
+          "text": "pegada limitada de CO2",
+          "kind": "offsetting"
+        },
+        {
+          "text": "neutro em CO2",
+          "kind": "offsetting"
+        },
+        {
+          "text": "respeitadora do ambiente",
+          "kind": "generic"
+        }
+      ],
+      "not": [
+        "não",
+        "nunca"
+      ],
+      "disposal": [
+        "descart",
+        "elimin"
+      ]
+    },
+    "ro": {
+      "terms": [
+        {
+          "text": "prietenos cu mediul",
+          "kind": "generic"
+        },
+        {
+          "text": "respectuos față de mediu",
+          "kind": "generic"
+        },
+        {
+          "text": "benefic pentru natură",
+          "kind": "generic"
+        },
+        {
+          "text": "sigur pentru mediu",
+          "kind": "generic"
+        },
+        {
+          "text": "benefic pentru climă",
+          "kind": "generic"
+        },
+        {
+          "text": "agreabil pentru mediu",
+          "kind": "generic"
+        },
+        {
+          "text": "cu emisii reduse de carbon",
+          "kind": "generic"
+        },
+        {
+          "text": "eficient din punctul de vedere al energiei",
+          "kind": "generic"
+        },
+        {
+          "text": "biodegradabil",
+          "kind": "generic"
+        },
+        {
+          "text": "bioprodus",
+          "kind": "generic"
+        },
+        {
+          "text": "eficientă din punct de vedere energetic",
+          "kind": "generic"
+        },
+        {
+          "text": "neutru din punct de vedere climatic",
+          "kind": "offsetting"
+        },
+        {
+          "text": "neutru din punctul de vedere al emisiilor de carbon",
+          "kind": "offsetting"
+        },
+        {
+          "text": "emisii nete zero pentru climat",
+          "kind": "offsetting"
+        },
+        {
+          "text": "compensat din punct de vedere climatic",
+          "kind": "offsetting"
+        },
+        {
+          "text": "impact redus asupra climei",
+          "kind": "offsetting"
+        },
+        {
+          "text": "amprentă limitată de CO2",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "nu",
+        "nici"
+      ],
+      "disposal": [
+        "elimin"
+      ]
+    },
+    "sk": {
+      "terms": [
+        {
+          "text": "šetrné k životnému prostrediu",
+          "kind": "generic"
+        },
+        {
+          "text": "environmentálne vhodné",
+          "kind": "generic"
+        },
+        {
+          "text": "priateľské k prírode",
+          "kind": "generic"
+        },
+        {
+          "text": "environmentálne správne",
+          "kind": "generic"
+        },
+        {
+          "text": "šetrné ku klíme",
+          "kind": "generic"
+        },
+        {
+          "text": "neškodiace životnému prostrediu",
+          "kind": "generic"
+        },
+        {
+          "text": "nízkouhlíkové",
+          "kind": "generic"
+        },
+        {
+          "text": "energeticky účinné",
+          "kind": "generic"
+        },
+        {
+          "text": "biologicky rozložiteľné",
+          "kind": "generic"
+        },
+        {
+          "text": "udržateľné",
+          "kind": "broad"
+        },
+        {
+          "text": "klimaticky neutrálne",
+          "kind": "offsetting"
+        },
+        {
+          "text": "certifikované CO2 neutrálne",
+          "kind": "offsetting"
+        },
+        {
+          "text": "uhlíkovo pozitívne",
+          "kind": "offsetting"
+        },
+        {
+          "text": "s kompenzáciou vo vzťahu ku klíme",
+          "kind": "offsetting"
+        },
+        {
+          "text": "znížený vplyv na klímu",
+          "kind": "offsetting"
+        },
+        {
+          "text": "znížená stopa CO2",
+          "kind": "offsetting"
+        },
+        {
+          "text": "CO2 neutrálne",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "nie"
+      ],
+      "disposal": [
+        "likvid"
+      ]
+    },
+    "sl": {
+      "terms": [
+        {
+          "text": "okolju prijazen",
+          "kind": "generic"
+        },
+        {
+          "text": "ekološko prijazen",
+          "kind": "generic"
+        },
+        {
+          "text": "prijatelj narave",
+          "kind": "generic"
+        },
+        {
+          "text": "okoljsko korekten",
+          "kind": "generic"
+        },
+        {
+          "text": "podnebju prijazen",
+          "kind": "generic"
+        },
+        {
+          "text": "nežen do okolja",
+          "kind": "generic"
+        },
+        {
+          "text": "ogljično prijazen",
+          "kind": "generic"
+        },
+        {
+          "text": "energijsko učinkovit",
+          "kind": "generic"
+        },
+        {
+          "text": "biorazgradljiv",
+          "kind": "generic"
+        },
+        {
+          "text": "na biološki osnovi",
+          "kind": "generic"
+        },
+        {
+          "text": "trajnostno",
+          "kind": "broad"
+        },
+        {
+          "text": "podnebno nevtralen",
+          "kind": "offsetting"
+        },
+        {
+          "text": "certificirano ogljično nevtralen",
+          "kind": "offsetting"
+        },
+        {
+          "text": "ogljično pozitiven",
+          "kind": "offsetting"
+        },
+        {
+          "text": "podnebno izravnan",
+          "kind": "offsetting"
+        },
+        {
+          "text": "zmanjšan podnebni vpliv",
+          "kind": "offsetting"
+        },
+        {
+          "text": "zmanjšan ogljični odtis",
+          "kind": "offsetting"
+        },
+        {
+          "text": "ogljično nevtralen",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "ni",
+        "ne",
+        "niso"
+      ],
+      "disposal": [
+        "odstran"
+      ]
+    },
+    "sv": {
+      "terms": [
+        {
+          "text": "miljövänlig",
+          "kind": "generic"
+        },
+        {
+          "text": "ekovänlig",
+          "kind": "generic"
+        },
+        {
+          "text": "naturvänlig",
+          "kind": "generic"
+        },
+        {
+          "text": "miljömässigt korrekt",
+          "kind": "generic"
+        },
+        {
+          "text": "klimatvänlig",
+          "kind": "generic"
+        },
+        {
+          "text": "skonsam mot miljön",
+          "kind": "generic"
+        },
+        {
+          "text": "koldioxidvänlig",
+          "kind": "generic"
+        },
+        {
+          "text": "energieffektiv",
+          "kind": "generic"
+        },
+        {
+          "text": "biologiskt nedbrytbar",
+          "kind": "generic"
+        },
+        {
+          "text": "biobaserad",
+          "kind": "generic"
+        },
+        {
+          "text": "klimatneutral",
+          "kind": "offsetting"
+        },
+        {
+          "text": "certifierad som koldioxidneutral",
+          "kind": "offsetting"
+        },
+        {
+          "text": "koldioxidpositiv",
+          "kind": "offsetting"
+        },
+        {
+          "text": "nettonollutsläpp av växthusgaser",
+          "kind": "offsetting"
+        },
+        {
+          "text": "klimatkompenserad",
+          "kind": "offsetting"
+        },
+        {
+          "text": "minskad klimatpåverkan",
+          "kind": "offsetting"
+        },
+        {
+          "text": "begränsat koldioxidavtryck",
+          "kind": "offsetting"
+        },
+        {
+          "text": "koldioxidneutral",
+          "kind": "offsetting"
+        }
+      ],
+      "not": [
+        "inte",
+        "ej",
+        "icke",
+        "aldrig"
+      ],
+      "disposal": [
+        "kassera",
+        "lämna in"
+      ]
+    }
+  }
+}

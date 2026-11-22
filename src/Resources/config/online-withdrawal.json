@@ -1,0 +1,264 @@
+{
+  "_note": "Built from packages/rules/data/strings/online-withdrawal-sentence.json by packages/widgets; do not edit by hand.",
+  "minPolicyWords": 2,
+  "languages": {
+    "bg": {
+      "copy": "Можете също така да упражните правото си на отказ онлайн на {url}. Ако използвате тази онлайн функция, своевременно ще Ви изпратим потвърждение за получаването на отказа на траен носител (например по електронна поща), включително неговото съдържание и датата и часа на подаването му.",
+      "find": [
+        "можете също така да упражните правото си на отказ онлайн",
+        "ако използвате тази онлайн функция"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "cs": {
+      "copy": "Můžete rovněž uplatnit své právo odstoupit od smlouvy online na {url}. Pokud tento internetový prvek použijete, zašleme Vám na trvalém nosiči (například e-mailem) potvrzení o přijetí odstoupení od smlouvy, včetně jeho obsahu a data a času jeho odeslání, a to bez zbytečného odkladu.",
+      "find": [
+        "můžete rovněž uplatnit své právo odstoupit od smlouvy online",
+        "pokud tento internetový prvek použijete"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "da": {
+      "copy": "De kan også udøve Deres fortrydelsesret online på {url}. Hvis De anvender denne onlinefunktion, sender vi Dem uden unødig forsinkelse en kvittering for modtagelse af fortrydelsen på et varigt medium (f.eks. pr. e-mail), herunder dens indhold samt datoen og tidspunktet for indsendelse.",
+      "find": [
+        "de kan også udøve deres fortrydelsesret online",
+        "hvis de anvender denne onlinefunktion"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "de": {
+      "copy": "Sie können Ihr Widerrufsrecht auch online unter {url} ausüben. Wenn Sie diese Online-Funktion nutzen, übermitteln wir Ihnen auf einem dauerhaften Datenträger (z. B. durch eine E-Mail) unverzüglich eine Eingangsbestätigung mit Informationen zum Inhalt der Widerrufserklärung sowie dem Datum und der Uhrzeit ihres Eingangs.",
+      "find": [
+        "sie können ihr widerrufsrecht auch online",
+        "wenn sie diese online-funktion nutzen"
+      ],
+      "variants": [
+        "(?:widerrufs|r(?:ü|ue)cktritts)recht[^.]{0,60}? (?:auch )?online(?:[^.]|\\.\\S){0,100}? aus(?:ü|ue)ben",
+        "widerrufsfunktion|widerrufs-?(?:button|schaltfl(?:ä|ae)che)",
+        "online[- ]?widerruf",
+        "(?:auch|direkt|bequem|einfach|jederzeit) online (?:zu )?widerrufen",
+        "(?:schaltfl(?:ä|ae)che|button|link)[^.]{0,60}? vertrag (?:hier )?widerrufen|vertrag (?:hier )?widerrufen[^.]{0,60}? (?:schaltfl(?:ä|ae)che|button|link)"
+      ],
+      "policy_words": [
+        "widerruf",
+        "rücktritt",
+        "ruecktritt"
+      ]
+    },
+    "el": {
+      "copy": "Μπορείτε επίσης να ασκήσετε το δικαίωμα υπαναχώρησης ηλεκτρονικά στη διεύθυνση {url}. Εάν χρησιμοποιήσετε αυτή τη διαδικτυακή λειτουργία, θα σας αποστείλουμε απόδειξη παραλαβής της υπαναχώρησης σε σταθερό μέσο (π.χ. μέσω ηλεκτρονικού ταχυδρομείου), συμπεριλαμβανομένου του περιεχομένου της και της ημερομηνίας και ώρας υποβολής της, χωρίς αδικαιολόγητη καθυστέρηση.",
+      "find": [
+        "μπορείτε επίσης να ασκήσετε το δικαίωμα υπαναχώρησης ηλεκτρονικά",
+        "εάν χρησιμοποιήσετε αυτή τη διαδικτυακή λειτουργία"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "en": {
+      "copy": "You can also exercise your right of withdrawal online at {url}. If you use this online feature, we will send you an acknowledgement of receipt of the withdrawal on a durable medium (e.g. by email), including its content and the date and time of its submission, without undue delay.",
+      "find": [
+        "you can also exercise your right of withdrawal online",
+        "if you use this online feature"
+      ],
+      "variants": [
+        "(?:exercise|use)[^.]{0,40}? right (?:of|to) (?:withdrawal|withdraw|cancel(?:lation)?)[^.]{0,30}? online",
+        "withdrawal (?:function|feature|button)",
+        "(?:withdraw|cancel)(?: from (?:the|your|this) (?:contract|order|purchase))? online\\b|online (?:withdrawal|cancellation)",
+        "withdraw from (?:the )?contract here"
+      ],
+      "policy_words": [
+        "withdraw",
+        "cancellation"
+      ]
+    },
+    "es": {
+      "copy": "También puede ejercer su derecho de desistimiento en línea en {url}. Si utiliza esta función en línea, le enviaremos sin demora indebida un acuse de recibo del desistimiento en un soporte duradero (por ejemplo, por correo electrónico), que incluirá su contenido y la fecha y hora de presentación.",
+      "find": [
+        "también puede ejercer su derecho de desistimiento en línea",
+        "si utiliza esta función en línea"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "et": {
+      "copy": "Teil on võimalik kasutada oma taganemisõigust ka internetis aadressil {url}. Kui te kasutate seda internetipõhist funktsiooni, saadame teile põhjendamatu viivituseta püsival andmekandjal (näiteks e-kirjaga) kinnituse taganemisteate kättesaamise, sealhulgas selle sisu ning selle esitamise kuupäeva ja kellaaja kohta.",
+      "find": [
+        "teil on võimalik kasutada oma taganemisõigust ka internetis",
+        "kui te kasutate seda internetipõhist funktsiooni"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "fi": {
+      "copy": "Voitte käyttää peruuttamisoikeuttanne myös verkossa osoitteessa {url}. Jos käytätte tätä verkkotoimintoa, lähetämme teille ilman aiheetonta viivytystä pysyvällä välineellä (esim. sähköpostitse) peruuttamisen vastaanottamista koskevan ilmoituksen, jossa mainitaan peruutuksen sisältö ja sen toimituspäivä ja -aika.",
+      "find": [
+        "voitte käyttää peruuttamisoikeuttanne myös verkossa",
+        "jos käytätte tätä verkkotoimintoa"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "fr": {
+      "copy": "Vous pouvez également exercer votre droit de rétractation en ligne sur {url}. Si vous utilisez cette fonctionnalité en ligne, nous vous enverrons, sans retard excessif, un accusé de réception de la rétractation sur un support durable (par exemple, par courriel), y compris son contenu ainsi que la date et l’heure de sa soumission.",
+      "find": [
+        "vous pouvez également exercer votre droit de rétractation en ligne",
+        "si vous utilisez cette fonctionnalité en ligne"
+      ],
+      "variants": [
+        "exercer[^.]{0,40}? droit de r(?:é|e)tractation[^.]{0,30}? en ligne",
+        "fonction(?:nalit(?:é|e))? de r(?:é|e)tractation",
+        "(?:vous )?r(?:é|e)tracter en ligne|r(?:é|e)tractation en ligne",
+        "renoncer au contrat ici"
+      ],
+      "policy_words": [
+        "rétract",
+        "retract"
+      ]
+    },
+    "ga": {
+      "copy": "Is féidir leat do cheart chun tarraingt siar a fheidhmiú ar líne freisin ag {url}. Má úsáideann tú an ghné shábháilteachta seo ar líne, seolfaimid admháil chugat ar mheán marthanach (e.g. trí ríomhphost) go bhfuarthas an tarraingt siar, lena n-áirítear an t-ábhar atá inti agus an dáta agus an t-am a cuireadh isteach é, gan mhoill.",
+      "find": [
+        "is féidir leat do cheart chun tarraingt siar a fheidhmiú ar líne freisin",
+        "má úsáideann tú an ghné shábháilteachta seo"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "hr": {
+      "copy": "Pravo odustajanja možete ostvariti i putem interneta na {url}. Ako upotrijebite tu internetsku funkciju, bez nepotrebne odgode poslat ćemo vam potvrdu o primitku obavijesti o odustajanju na trajnom nosaču podataka (npr. e-poštom), uključujući njezin sadržaj te datum i vrijeme podnošenja.",
+      "find": [
+        "pravo odustajanja možete ostvariti i putem interneta",
+        "ako upotrijebite tu internetsku funkciju"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "hu": {
+      "copy": "Az elállási jogát Ön online is gyakorolhatja a következő címen: {url}. Ha ezt az online funkciót veszi igénybe, az elállásról való tudomásszerzésről – az elállás tartalmát, valamint napját és időpontját is feltüntetve – indokolatlan késedelem nélkül átvételi elismervényt fogunk Önnek küldeni egy tartós adathordozón (például e-mailben).",
+      "find": [
+        "az elállási jogát ön online is gyakorolhatja",
+        "ha ezt az online funkciót veszi igénybe"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "it": {
+      "copy": "È inoltre possibile esercitare il diritto di recesso online su {url}. Se si utilizza questa funzionalità online, trasmetteremo senza indebito ritardo un avviso di ricevimento del recesso su un supporto durevole (ad esempio tramite posta elettronica), compresi il suo contenuto e la data e l’ora della sua trasmissione.",
+      "find": [
+        "è inoltre possibile esercitare il diritto di recesso online",
+        "se si utilizza questa funzionalità online"
+      ],
+      "variants": [
+        "esercitare[^.]{0,40}? diritto di recesso[^.]{0,30}? online",
+        "funzion(?:alit(?:à|a)|e) di recesso",
+        "recedere (?:anche )?online|recesso online",
+        "recedere dal contratto qui"
+      ],
+      "policy_words": [
+        "recesso",
+        "recedere"
+      ]
+    },
+    "lt": {
+      "copy": "Be to, galite pasinaudoti savo teise atsisakyti sutarties internetu {url}. Jeigu pasinaudosite šia internetine funkcija, nepagrįstai nedelsdami Jums patvariojoje laikmenoje (pvz., elektroniniu paštu) išsiųsime sutarties atsisakymo gavimo patvirtinimą, įskaitant sutarties atsisakymo turinį ir jo pateikimo datą bei laiką.",
+      "find": [
+        "be to, galite pasinaudoti savo teise atsisakyti sutarties internetu",
+        "jeigu pasinaudosite šia internetine funkcija"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "lv": {
+      "copy": "Atteikuma tiesības varat izmantot arī tiešsaistē {url}. Ja izmantojat šo tiešsaistes funkciju, mēs jums bez nepamatotas kavēšanās nosūtīsim apstiprinājumu par atteikuma saņemšanu uz pastāvīga informācijas nesēja (piemēram, pa e-pastu), norādot tā saturu un iesniegšanas datumu un laiku.",
+      "find": [
+        "atteikuma tiesības varat izmantot arī tiešsaistē",
+        "ja izmantojat šo tiešsaistes funkciju"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "mt": {
+      "copy": "Tista’ wkoll teżerċita d-dritt tiegħek ta’ reċess online fi {url}. Jekk tuża din il-karatteristika online, aħna nibgħatulek konferma tar-riċevuta tar-reċess fuq mezz li jservi għal żmien twil (eż. permezz tal-posta elettronika), inkluż il-kontenut tiegħu u d-data u l-ħin tas-sottomissjoni tiegħu, mingħajr dewmien żejjed.",
+      "find": [
+        "tista' wkoll teżerċita d-dritt tiegħek ta' reċess online",
+        "jekk tuża din il-karatteristika online"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "nl": {
+      "copy": "U kunt uw herroepingsrecht ook online uitoefenen op {url}. Indien u deze onlinefunctie gebruikt, sturen wij u onverwijld een ontvangstbevestiging van de herroeping op een duurzame gegevensdrager (bv. per e-mail), met vermelding van de inhoud en de datum en het tijdstip van indiening daarvan.",
+      "find": [
+        "u kunt uw herroepingsrecht ook online uitoefenen",
+        "indien u deze onlinefunctie gebruikt"
+      ],
+      "variants": [
+        "herroepingsrecht[^.]{0,40}? online",
+        "herroepingsfunctie|ontbindingsfunctie",
+        "(?:herroepen|ontbinden) (?:ook )?online|online (?:herroepen|ontbinden)",
+        "hier de overeenkomst ontbinden"
+      ],
+      "policy_words": [
+        "herroep",
+        "bedenktijd"
+      ]
+    },
+    "pl": {
+      "copy": "Mogą Państwo również wykonać prawo do odstąpienia od umowy przez internet na stronie {url}. Jeżeli korzystają Państwo z tej funkcji internetowej, bez zbędnej zwłoki prześlemy Państwu potwierdzenie otrzymania informacji o odstąpieniu od umowy na trwałym nośniku (na przykład pocztą elektroniczną), w tym jego treść oraz datę i godzinę złożenia.",
+      "find": [
+        "mogą państwo również wykonać prawo do odstąpienia od umowy przez internet",
+        "jeżeli korzystają państwo z tej funkcji internetowej"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "pt": {
+      "copy": "Pode também exercer o seu direito de retratação em linha em {url}. Se utilizar esta funcionalidade em linha, enviar-lhe-emos, sem demora injustificada, um aviso de receção da retratação num suporte duradouro (por exemplo, por correio eletrónico), incluindo o respetivo conteúdo e a data e hora da sua apresentação.",
+      "find": [
+        "pode também exercer o seu direito de retratação em linha",
+        "se utilizar esta funcionalidade em linha"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "ro": {
+      "copy": "Vă puteți exercita dreptul de retragere și online la {url}. Dacă utilizați această funcție online, vă vom transmite, fără întârzieri nejustificate, o confirmare de primire a retragerii pe un suport durabil (de exemplu prin e-mail), incluzând conținutul acesteia, precum și data și ora transmiterii acesteia.",
+      "find": [
+        "vă puteți exercita dreptul de retragere și online",
+        "dacă utilizați această funcție online"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "sk": {
+      "copy": "Právo na odstúpenie od zmluvy si môžete uplatniť aj online na adrese {url}. Ak použijete túto online funkciu, bez zbytočného odkladu Vám na trvalom nosiči (napr. e-mailom) zašleme potvrdenie o prijatí odstúpenia od zmluvy vrátane jeho obsahu a dátumu a času jeho predloženia.",
+      "find": [
+        "právo na odstúpenie od zmluvy si môžete uplatniť aj online",
+        "ak použijete túto online funkciu"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "sl": {
+      "copy": "Pravico do odstopa od pogodbe lahko uveljavljate tudi na spletu na {url}. Če uporabite to spletno funkcijo, vam bomo prek trajnega nosilca podatkov (npr. po elektronski pošti) brez nepotrebnega odlašanja poslali potrdilo o prejemu obvestila za odstop od pogodbe, vključno z njegovo vsebino ter datumom in uro njegove predložitve.",
+      "find": [
+        "pravico do odstopa od pogodbe lahko uveljavljate tudi na spletu",
+        "če uporabite to spletno funkcijo"
+      ],
+      "variants": [],
+      "policy_words": []
+    },
+    "sv": {
+      "copy": "Du kan också utöva din ångerrätt online på {url}. Om du använder onlinefunktionen kommer vi att utan onödigt dröjsmål skicka ett mottagningsbevis på frånträdet på ett varaktigt medium (t.ex. via e-post), med information om dess innehåll samt datum och tidpunkt för inlämnandet.",
+      "find": [
+        "du kan också utöva din ångerrätt online",
+        "om du använder onlinefunktionen kommer vi att"
+      ],
+      "variants": [],
+      "policy_words": []
+    }
+  }
+}

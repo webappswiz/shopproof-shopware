@@ -14,7 +14,12 @@ use Shopproof\Compliance\Checkout\ServiceWithdrawal;
  *   also extend it but differ by region, so the clock only says so. A withdrawal sent before
  *   delivery is always in time.
  * - Refund (Art. 13): within 14 days from the day the shop was told. Not moved past weekends, so
- *   the clock never shows a later date than the law may allow.
+ *   the clock never shows a later date than the law may allow. For goods the shop may wait until
+ *   they are back or the customer shows proof of sending, whichever comes first (Art. 13(3)),
+ *   unless it offered to collect them. So while goods are out the clock says "waiting" after the
+ *   14 days instead of "overdue", and goods back later make the refund due that day. The goods
+ *   back day is the "Return arrived" status; a proof of sending the clock cannot see, so the text
+ *   names it.
  * - Goods back (Art. 14): within 14 days of withdrawing.
  *
  * Services and dated bookings (ServiceWithdrawal): an order of only services or digital content
@@ -84,12 +89,18 @@ final class WithdrawalClock
      * has the digital content consent record (Art. 16(m)), so the right may have ended once the
      * download started.
      *
-     * @param array{received: string, today: string, delivered?: string, deliveredSource?: string, notShipped?: bool, refunded?: string, partlyRefunded?: string, days?: int, kind?: string, concluded?: string, performed?: string, consent?: bool, exempt?: bool, digitalConsent?: bool} $facts
+     * goodsBack is the day the goods came back ('' when not yet). Goods are out when a delivery day
+     * is known and the order is not only services; then the refund may wait for them (Art. 13(3)):
+     * after the 14 days it is 'waiting', not 'overdue', and goods back later move refundDue to
+     * that day.
      *
-     * @return array{window: string, windowEnd: string, daysOver: int, refund: string, refundDue: string, daysLeft: int, returnBy: string, refunded: string, partlyRefunded: string, basis: string}
+     * @param array{received: string, today: string, delivered?: string, deliveredSource?: string, notShipped?: bool, refunded?: string, partlyRefunded?: string, days?: int, kind?: string, concluded?: string, performed?: string, consent?: bool, exempt?: bool, digitalConsent?: bool, goodsBack?: string} $facts
+     *
+     * @return array{window: string, windowEnd: string, daysOver: int, refund: string, refundDue: string, daysLeft: int, returnBy: string, refunded: string, partlyRefunded: string, basis: string, goods: bool, goodsBack: string}
      *         window: inside, before_delivery, late, check, unknown, performed, digital or exempt;
-     *         refund: paid, due, today, overdue or none (not owed while the withdrawal is late, or
-     *         while the right may not apply); basis: delivery or order.
+     *         refund: paid, due, today, overdue, waiting (the 14 days are over but the goods are not
+     *         back) or none (not owed while the withdrawal is late, or while the right may not
+     *         apply); basis: delivery or order.
      */
     public static function assess(array $facts): array
     {
@@ -136,12 +147,20 @@ final class WithdrawalClock
             $window = 'unknown';
         }
 
+        // Goods are out once a delivery day is known; an order of only services sends nothing back.
+        $goods = !$service && $delivered !== '';
+        $goodsBack = $goods ? ($facts['goodsBack'] ?? '') : '';
         $refundDue = self::addDays($received, self::DAYS);
+        if ($goodsBack !== '' && $goodsBack > $refundDue) {
+            // Goods back after the 14 days: the refund is due from that day (Art. 13(3)).
+            $refundDue = $goodsBack;
+        }
         $daysLeft = self::daysBetween($facts['today'], $refundDue);
         $refund = match (true) {
             $refunded !== '' => 'paid',
             \in_array($window, ['late', 'exempt', 'performed', 'digital'], true) => 'none',
             $daysLeft > 0 => 'due',
+            $goods && $goodsBack === '' => 'waiting',
             $daysLeft === 0 => 'today',
             default => 'overdue',
         };
@@ -157,12 +176,15 @@ final class WithdrawalClock
             'refunded' => $refunded,
             'partlyRefunded' => $partly,
             'basis' => $service ? 'order' : 'delivery',
+            'goods' => $goods,
+            'goodsBack' => $goodsBack,
         ];
     }
 
     /**
      * The clock for a stored record and what its matched order says. Times are UTC ISO strings,
-     * turned into days in the given time zone. The status "Refund sent" counts as paid on its day;
+     * turned into days in the given time zone. The status "Return arrived" is the day the goods
+     * came back. The status "Refund sent" counts as paid on its day;
      * otherwise a payment Shopware shows as refunded does. A partial refund counts only when made
      * after the withdrawal arrived. The period stored with the record wins over the current setting.
      *
@@ -172,10 +194,10 @@ final class WithdrawalClock
      * (ServiceWithdrawal::owed), with the order's currency code. An order of only digital content
      * with the digital consent record shows "digital" (check) and no refund clock.
      *
-     * @param array{submittedAt: string, status: string, refundSentAt: string, deliveredOn: string, periodDays: int} $record
+     * @param array{submittedAt: string, status: string, refundSentAt: string, deliveredOn: string, periodDays: int, returnArrivedAt?: string} $record
      * @param array{shippedAt: string, open: bool, refundedAt: string, partlyRefundedAt: string, paymentState: string, kind?: string, orderedAt?: string, consent?: bool, serviceItems?: bool, digitalConsent?: bool, serviceDone?: string, servicePrice?: float, serviceStart?: string, serviceEnd?: string, serviceShare?: float|null, currency?: string} $order
      *
-     * @return array{window: string, windowEnd: string, daysOver: int, refund: string, refundDue: string, daysLeft: int, returnBy: string, refunded: string, partlyRefunded: string, basis: string, delivered: string, deliveredSource: string, tone: string, owed: array{state: string, share: float, owed: float, refund: float, days: int, of: int, currency: string}|null}|null
+     * @return array{window: string, windowEnd: string, daysOver: int, refund: string, refundDue: string, daysLeft: int, returnBy: string, refunded: string, partlyRefunded: string, basis: string, goods: bool, goodsBack: string, delivered: string, deliveredSource: string, tone: string, owed: array{state: string, share: float, owed: float, refund: float, days: int, of: int, currency: string}|null}|null
      */
     public static function forRecord(array $record, array $order, \DateTimeZone $zone, string $today, int $defaultDays): ?array
     {
@@ -214,6 +236,8 @@ final class WithdrawalClock
             'refunded' => $refunded,
             'partlyRefunded' => $partly,
             'days' => $record['periodDays'] >= self::DAYS ? $record['periodDays'] : $defaultDays,
+            // The "Return arrived" status: the goods are back (Art. 13(3)).
+            'goodsBack' => self::day($record['returnArrivedAt'] ?? '', $zone),
         ]);
 
         $owed = null;
@@ -264,6 +288,7 @@ final class WithdrawalClock
             'paid' => 'ok',
             'none' => 'none',
             'today', 'overdue' => 'bad',
+            'waiting' => 'warn',
             default => $clock['daysLeft'] <= self::SOON || $clock['partlyRefunded'] !== '' ? 'warn' : 'ok',
         };
         $rank = ['none' => 0, 'ok' => 1, 'warn' => 2, 'bad' => 3];

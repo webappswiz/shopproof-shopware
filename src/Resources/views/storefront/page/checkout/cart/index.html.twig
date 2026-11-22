@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/page/checkout/cart/index.html.twig' %}
+
+{# Where the shop delivers and how shoppers can pay (Art. 8(3) of Directive 2011/83/EU), when the
+   merchant turned it on: one short line right above the Go to checkout button. #}
+{% block page_checkout_cart_action_proceed %}
+    {% set shopproofDeliveryLine = shopproof_delivery_line(context ?? null) %}
+    {% if shopproofDeliveryLine %}
+        <p class="checkout-aside-action shopproof-delivery-line">{{ shopproofDeliveryLine }}</p>
+    {% endif %}
+    {{ parent() }}
+{% endblock %}

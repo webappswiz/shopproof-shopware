@@ -245,6 +245,89 @@ final class ServiceWithdrawal
         return ['state' => $state, 'share' => round($share * 100, 1), 'owed' => $owed, 'refund' => round($price - $owed, 2), 'days' => $out['days'], 'of' => $out['of']];
     }
 
+    /**
+     * What the service items of an order cost with tax, after vouchers, promotions and credits
+     * (Art. 14(3) counts from the total price the customer agreed to pay, as the WooCommerce plugin
+     * does with the line totals after coupons).
+     *
+     * Each line: id (the cart line item id, kept on the order as identifier), type, service (a
+     * product line of the service kind), total (its total price as stored, net or gross like the
+     * order), gross (the same with tax) and payload. A promotion names the share of each product
+     * in its "composition"; a discount without one (a credit the merchant added, or a promotion
+     * whose products are not in the order) is spread over the products by their totals. Delivery
+     * discounts lower the shipping costs only, so they are left out.
+     *
+     * Uses the plain type names, so it runs (and is unit tested) without Shopware's cart classes.
+     *
+     * @param list<array{id: string, type: string, service: bool, total: float, gross: float, payload: array<mixed>}> $lines
+     */
+    public static function priceAfterDiscounts(array $lines): float
+    {
+        $products = [];
+        $sum = 0.0;
+        foreach ($lines as $index => $line) {
+            if ($line['type'] === 'product' && $line['total'] > 0) {
+                $products[$index] = 0.0;
+                $sum += $line['total'];
+            }
+        }
+        if ($products === []) {
+            return 0.0;
+        }
+        $byId = [];
+        foreach (array_keys($products) as $index) {
+            $byId[$lines[$index]['id']] ??= $index;
+        }
+
+        foreach ($lines as $line) {
+            if ($line['type'] === 'product' || $line['total'] >= 0) {
+                continue;
+            }
+            if (($line['payload']['discountScope'] ?? null) === 'delivery') {
+                continue;
+            }
+            $amount = -$line['total'];
+            $parts = [];
+            $composition = $line['payload']['composition'] ?? null;
+            foreach (\is_array($composition) ? $composition : [] as $entry) {
+                $id = \is_array($entry) && \is_string($entry['id'] ?? null) ? $entry['id'] : null;
+                $value = \is_array($entry) && is_numeric($entry['discount'] ?? null) ? abs((float) $entry['discount']) : 0.0;
+                if ($id !== null && isset($byId[$id]) && $value > 0) {
+                    $parts[$byId[$id]] = ($parts[$byId[$id]] ?? 0.0) + $value;
+                }
+            }
+            if ($parts === []) {
+                foreach (array_keys($products) as $index) {
+                    $parts[$index] = $amount * $lines[$index]['total'] / $sum;
+                }
+            } else {
+                // The composition is in the line's own prices; scale it so it never adds up to more
+                // than the discount itself.
+                $named = array_sum($parts);
+                if ($named > $amount) {
+                    foreach ($parts as $index => $value) {
+                        $parts[$index] = $value * $amount / $named;
+                    }
+                }
+            }
+            foreach ($parts as $index => $value) {
+                $products[$index] += $value;
+            }
+        }
+
+        $price = 0.0;
+        foreach ($products as $index => $discount) {
+            $line = $lines[$index];
+            if (!$line['service']) {
+                continue;
+            }
+            $left = max(0.0, $line['total'] - $discount);
+            $price += $line['gross'] * $left / $line['total'];
+        }
+
+        return round($price, 2);
+    }
+
     private static function daysBetween(string $from, string $to): int
     {
         $utc = new \DateTimeZone('UTC');

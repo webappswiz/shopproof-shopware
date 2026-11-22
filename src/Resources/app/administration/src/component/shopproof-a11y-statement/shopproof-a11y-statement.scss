@@ -1,0 +1,11 @@
+.shopproof-a11y {
+    &__heading { margin: 16px 0 4px; font-size: 16px; }
+    &__form p { margin: 0 0 12px; }
+    &__form label { display: block; font-weight: 600; margin-bottom: 4px; }
+    &__form input, &__form select, &__form textarea, &__text {
+        width: 100%; max-width: 480px; padding: 8px; border: 1px solid #889; border-radius: 4px; font: inherit; box-sizing: border-box;
+    }
+    &__form textarea, &__text { max-width: 640px; }
+    &__small { display: block; font-size: 13px; color: #52667a; margin-top: 4px; }
+    &__copied { margin-left: 6px; color: #0b5c2e; }
+}

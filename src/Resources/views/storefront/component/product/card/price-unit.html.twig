@@ -1,9 +1,19 @@
 {% sw_extends '@Storefront/storefront/component/product/card/price-unit.html.twig' %}
 
-{# Listings: the bottle deposit right below the price, as on the product page; and the same tax
+{# Listings: the 30-day lowest price of a reduced product and the bottle deposit right below the
+   price, as on the product page; and the same tax
    line words as the product page where the listing shows Shopware's tax line. #}
 {% block component_product_box_price %}
     {{ parent() }}
+    {% block shopproof_product_box_energy %}
+        {% sw_include '@ShopproofCompliance/storefront/shopproof/energy.html.twig' with { product: product } %}
+    {% endblock %}
+    {% block shopproof_product_box_prior_price %}
+        {% set shopproofPriorPrice = shopproof_prior_price(product, context) %}
+        {% if shopproofPriorPrice %}
+            <p class="shopproof-prior-price small mb-0">{{ shopproofPriorPrice }}</p>
+        {% endif %}
+    {% endblock %}
     {% block shopproof_product_box_deposit %}
         {% set shopproofDeposit = shopproof_deposit_note(product, context) %}
         {% if shopproofDeposit %}

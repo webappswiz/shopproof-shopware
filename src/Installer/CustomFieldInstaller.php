@@ -10,6 +10,7 @@ use Shopproof\Compliance\Notes\FoodInformation;
 use Shopproof\Compliance\Notes\NotesCartProcessor;
 use Shopproof\Compliance\Notes\PriceNotes;
 use Shopproof\Compliance\Storefront\DurabilityLabel;
+use Shopproof\Compliance\Storefront\EnergyLabel;
 use Shopproof\Compliance\Storefront\HazardLabel;
 use Shopproof\Compliance\Storefront\Registrations;
 use Shopproof\Compliance\Storefront\SafetyData;
@@ -38,7 +39,8 @@ final class CustomFieldInstaller
     public const NOTES_SET = 'shopproof_notes';
     public const ORDER_SET = CheckoutBoxes::ORDER_SET;
     public const WITHDRAWAL_SET = 'shopproof_withdrawal';
-    public const SETS = [self::PRODUCT_SET, self::MANUFACTURER_SET, self::DURABILITY_SET, self::DURABILITY_MAKER_SET, self::HAZARD_SET, self::TAKEBACK_SET, self::FOOD_SET, self::NOTES_SET, self::ORDER_SET, self::WITHDRAWAL_SET];
+    public const ENERGY_SET = 'shopproof_energy';
+    public const SETS = [self::PRODUCT_SET, self::MANUFACTURER_SET, self::DURABILITY_SET, self::DURABILITY_MAKER_SET, self::HAZARD_SET, self::TAKEBACK_SET, self::FOOD_SET, self::NOTES_SET, self::ORDER_SET, self::WITHDRAWAL_SET, self::ENERGY_SET];
 
     /** The order fields for services, without the prefix: the consent record, then what the merchant enters. */
     public const SERVICE_ORDER_FIELDS = ['service_consent', 'service_start', 'service_end', 'service_share', 'service_done'];
@@ -52,7 +54,29 @@ final class CustomFieldInstaller
         Deposit::PREFIX . 'units',
     ];
 
+    /** Help texts of the energy label fields. */
+    private const ENERGY_HELP = [
+        'energy_class' => ['For goods with an EU energy label (appliances, lamps, TVs, heaters). Shoppers see the coloured class arrow and the "Product information sheet" link right below the price, on the product page and in listings. Variants can set their own. Technical help, not legal advice.', 'Für Waren mit EU-Energielabel (Geräte, Lampen, Fernseher, Heizgeräte). Kunden sehen den farbigen Klassenpfeil und den Link "Produktdatenblatt" direkt unter dem Preis, auf der Produktseite und in Listen. Varianten können eigene Werte haben. Technische Hilfe, keine Rechtsberatung.'],
+        'energy_range' => ['Empty means A to G, the scale of the new labels. Older labels (ovens, range hoods, heaters) use another range, for example A+++ to D.', 'Leer bedeutet A bis G, die Skala der neuen Labels. Ältere Labels (Backöfen, Dunstabzugshauben, Heizgeräte) haben eine andere Skala, zum Beispiel A+++ bis D.'],
+        'energy_eprel' => ['The number in the EU product database EPREL, behind the QR code on the label, or ask your supplier. The arrow and the "Product information sheet" link then open the official EPREL page.', 'Die Nummer in der EU-Produktdatenbank EPREL, hinter dem QR-Code auf dem Label, oder beim Lieferanten erfragen. Pfeil und Link "Produktdatenblatt" öffnen dann die offizielle EPREL-Seite.'],
+        'energy_label' => ['Optional with an EPREL number: the label file from your supplier, opened when the shopper selects the arrow.', 'Optional mit EPREL-Nummer: die Label-Datei Ihres Lieferanten, die sich beim Klick auf den Pfeil öffnet.'],
+        'energy_sheet' => ['Only without an EPREL number: a https link to the product information sheet.', 'Nur ohne EPREL-Nummer: ein https-Link zum Produktdatenblatt.'],
+        'energy_fr_type' => ['For sales to France: the repairability index (laptops, dishwashers, vacuum cleaners, lawn mowers, pressure washers) or the durability index (TVs, washing machines).', 'Für Verkäufe nach Frankreich: der Reparierbarkeitsindex (Laptops, Geschirrspüler, Staubsauger, Rasenmäher, Hochdruckreiniger) oder der Haltbarkeitsindex (Fernseher, Waschmaschinen).'],
+        'energy_fr_score' => ['From 0 to 10 with one decimal, as the producer gives it.', 'Von 0 bis 10 mit einer Nachkommastelle, wie vom Hersteller angegeben.'],
+        'energy_fr_logo' => ['The official pictogram with the score, from the producer. Shown next to the price.', 'Das offizielle Piktogramm mit der Note, vom Hersteller. Erscheint neben dem Preis.'],
+        'energy_fr_detail' => ['A https link to the detail of the score: shoppers must reach it in one click.', 'Ein https-Link zum Detail der Note: Kunden müssen es mit einem Klick erreichen.'],
+    ];
+
     private const LABELS = [
+        'energy_class' => ['Energy class', 'Energieeffizienzklasse'],
+        'energy_range' => ['Class range', 'Klassenspektrum'],
+        'energy_eprel' => ['EPREL registration number', 'EPREL-Registriernummer'],
+        'energy_label' => ['Label file', 'Label-Datei'],
+        'energy_sheet' => ['Product information sheet link', 'Link zum Produktdatenblatt'],
+        'energy_fr_type' => ['French index', 'Französischer Index'],
+        'energy_fr_score' => ['French index score', 'Note des französischen Index'],
+        'energy_fr_logo' => ['French index pictogram', 'Piktogramm des französischen Index'],
+        'energy_fr_detail' => ['French index detail link', 'Link zum Detail des französischen Index'],
         'manufacturer_name' => ['Manufacturer name', 'Name des Herstellers'],
         'manufacturer_address' => ['Manufacturer postal address', 'Postanschrift des Herstellers'],
         'manufacturer_email' => ['Manufacturer email', 'E-Mail des Herstellers'],
@@ -224,6 +248,10 @@ final class CustomFieldInstaller
                 'Shopproof: right of withdrawal',
                 'Shopproof: Widerrufsrecht',
             ]),
+            $this->set(self::ENERGY_SET, 'product', 'shopproof_', self::energyFields(), [
+                'Shopproof: energy label and French repair index',
+                'Shopproof: Energielabel und französischer Reparaturindex',
+            ]),
         ], $context);
     }
 
@@ -253,6 +281,7 @@ final class CustomFieldInstaller
                 ...array_map(static fn (string $field): string => FoodInformation::PREFIX . $field, FoodInformation::FIELDS),
                 ...self::NOTES_FIELDS,
                 ServiceWithdrawal::KIND_FIELD,
+                ...array_map(static fn (string $field): string => 'shopproof_' . $field, self::energyFields()),
             ],
             'product_manufacturer_translation' => [
                 ...array_map(static fn (string $field): string => SafetyData::MANUFACTURER_PREFIX . $field, SafetyData::MANUFACTURER_FIELDS),
@@ -418,7 +447,9 @@ final class CustomFieldInstaller
                     'type' => 'checkbox',
                 ];
             }
-            $help = $prefix === DurabilityLabel::PREFIX ? (self::HELP[$field] ?? self::HELP[str_replace('maker_', '', $field)] ?? null) : (self::SERVICE_HELP[$field] ?? null);
+            $config = [...$config, ...self::energyConfig($field)];
+            $type = self::energyType($field) ?? $type;
+            $help = $prefix === DurabilityLabel::PREFIX ? (self::HELP[$field] ?? self::HELP[str_replace('maker_', '', $field)] ?? null) : (self::SERVICE_HELP[$field] ?? self::ENERGY_HELP[$field] ?? null);
             if ($help !== null) {
                 $config['helpText'] = ['en-GB' => $help[0], 'de-DE' => $help[1]];
             }
@@ -451,5 +482,60 @@ final class CustomFieldInstaller
             ]],
             'customFields' => $customFields,
         ];
+    }
+
+    /** @return list<string> the energy fields after "shopproof_" */
+    public static function energyFields(): array
+    {
+        return array_map(static fn (string $field): string => 'energy_' . $field, array_keys(EnergyLabel::FIELDS));
+    }
+
+    private static function energyType(string $field): ?string
+    {
+        return match ($field) {
+            'energy_class', 'energy_range', 'energy_fr_type' => CustomFieldTypes::SELECT,
+            'energy_fr_score' => CustomFieldTypes::FLOAT,
+            'energy_label', 'energy_fr_logo' => CustomFieldTypes::MEDIA,
+            default => null,
+        };
+    }
+
+    /**
+     * @param list<array{string, string, string}> $options Value, English label, German label.
+     *
+     * @return array<string, mixed>
+     */
+    private static function energyChoices(array $options): array
+    {
+        return [
+            'componentName' => 'sw-single-select',
+            'customFieldType' => 'select',
+            'options' => array_map(
+                static fn (array $o): array => ['value' => $o[0], 'label' => ['en-GB' => $o[1], 'de-DE' => $o[2]]],
+                $options,
+            ),
+        ];
+    }
+
+    /** @return array<string, mixed> */
+    private static function energyConfig(string $field): array
+    {
+        $choices = self::energyChoices(...);
+
+        return match ($field) {
+            'energy_class' => $choices(array_map(static fn (string $c): array => [$c, $c, $c], EnergyLabel::CLASSES)),
+            'energy_range' => $choices(array_map(static function (string $r): array {
+                [$top, $bottom] = EnergyLabel::rangeEnds($r);
+
+                return [$r, $top . ' to ' . $bottom, $top . ' bis ' . $bottom];
+            }, EnergyLabel::RANGES)),
+            'energy_fr_type' => $choices([
+                ['repair', 'Repairability index', 'Reparierbarkeitsindex (indice de réparabilité)'],
+                ['durability', 'Durability index', 'Haltbarkeitsindex (indice de durabilité)'],
+            ]),
+            'energy_fr_score' => ['componentName' => 'sw-field', 'customFieldType' => 'number', 'type' => 'number', 'numberType' => 'float', 'min' => 0, 'max' => 10, 'step' => 0.1],
+            'energy_label', 'energy_fr_logo' => ['componentName' => 'sw-media-field', 'customFieldType' => 'media'],
+            default => [],
+        };
     }
 }

@@ -1,0 +1,10 @@
+{# The energy label arrow, the product information sheet link and the French repairability or
+   durability index (rules EU-EL-01, FR-EN-01), right below the price at about the price's size,
+   on the product page and in listings. Nothing shows without the Shopproof energy fields. #}
+{% set shopproofEnergy = shopproof_energy(product, context) %}
+{% if shopproofEnergy %}
+    {% if shopproof_once('energy-css') %}
+        <style>{{ shopproof_energy_css() }}.shopproof-energy-wrap .shopproof-energy{margin-inline-start:0}.product-detail-buy .shopproof-energy-wrap{font-size:1.75rem}.product-price-info .shopproof-energy-wrap{font-size:1rem}</style>
+    {% endif %}
+    <div class="shopproof-energy-wrap mb-1">{{ shopproofEnergy }}</div>
+{% endif %}

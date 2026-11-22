@@ -1,4 +1,13 @@
 {
+  "component/shopproof-a11y-statement/index.js": {
+    "file": "assets/index-BkjI4EuU.js",
+    "name": "index",
+    "src": "component/shopproof-a11y-statement/index.js",
+    "isDynamicEntry": true,
+    "css": [
+      "assets/index-B2fW76u3.css"
+    ]
+  },
   "component/shopproof-contact/index.js": {
     "file": "assets/index-BUX_Goyk.js",
     "name": "index",
@@ -8,17 +17,23 @@
       "assets/index-DJhrE2Xq.css"
     ]
   },
+  "component/shopproof-green-claims/index.js": {
+    "file": "assets/index-BzanT3Eu.js",
+    "name": "index",
+    "src": "component/shopproof-green-claims/index.js",
+    "isDynamicEntry": true
+  },
   "component/shopproof-placement/index.js": {
-    "file": "assets/index-Daib9jUk.js",
+    "file": "assets/index-DHHrW8DG.js",
     "name": "index",
     "src": "component/shopproof-placement/index.js",
     "isDynamicEntry": true,
     "css": [
-      "assets/index-B9GhrpgM.css"
+      "assets/index-DW4cwI2_.css"
     ]
   },
   "component/shopproof-setup-overview/index.js": {
-    "file": "assets/index-BEaSsvL7.js",
+    "file": "assets/index-7AKarP_p.js",
     "name": "index",
     "src": "component/shopproof-setup-overview/index.js",
     "isDynamicEntry": true,
@@ -27,7 +42,7 @@
     ]
   },
   "main.js": {
-    "file": "assets/shopproof-compliance-CXBE8RXo.js",
+    "file": "assets/shopproof-compliance-CpBuEK4r.js",
     "name": "shopproof-compliance",
     "src": "main.js",
     "isEntry": true,
@@ -35,14 +50,16 @@
       "module/shopproof-overview/page/shopproof-overview-index/index.js",
       "component/shopproof-setup-overview/index.js",
       "component/shopproof-placement/index.js",
-      "component/shopproof-contact/index.js"
+      "component/shopproof-contact/index.js",
+      "component/shopproof-green-claims/index.js",
+      "component/shopproof-a11y-statement/index.js"
     ],
     "css": [
       "assets/shopproof-compliance-DNo1LZJa.css"
     ]
   },
   "module/shopproof-overview/page/shopproof-overview-index/index.js": {
-    "file": "assets/index-Dfm2Fm9m.js",
+    "file": "assets/index-AqI_spRJ.js",
     "name": "index",
     "src": "module/shopproof-overview/page/shopproof-overview-index/index.js",
     "isDynamicEntry": true,

@@ -66,6 +66,8 @@
             "comment": "Kommentar",
             "actions": "Aktionen",
             "noOrder": "Keine passende Bestellung",
+            "refundOnOrder": "In der Bestellung erstatten",
+            "refundOnOrderHelp": "Sobald Sie das Geld überwiesen haben, setzen Sie den Zahlungsstatus in der Bestellung auf „Erstattet“. Shopproof setzt diesen Widerruf dann auf „Erstattung gesendet“.",
             "orderDate": "Angegebenes Bestelldatum",
             "delete": "Löschen",
             "confirmDelete": "Endgültig löschen",
@@ -100,6 +102,10 @@
                 "today": "Erstattung heute fällig ({date})",
                 "overdue": "Erstattung seit {days} Tag überfällig (fällig am {date}) | Erstattung seit {days} Tagen überfällig (fällig am {date})",
                 "due": "Erstattung fällig bis {date} (noch {days} Tag) | Erstattung fällig bis {date} (noch {days} Tage)",
+                "dueGoods": "Erstattung fällig bis {date} (noch {days} Tag), oder sobald die Ware zurück ist, falls später | Erstattung fällig bis {date} (noch {days} Tage), oder sobald die Ware zurück ist, falls später",
+                "waiting": "Erstattung wartet auf die Ware: fällig, sobald sie zurück ist oder der Kunde den Versand nachweist",
+                "todayBack": "Erstattung heute fällig (Ware zurück am {date})",
+                "overdueBack": "Erstattung seit {days} Tag überfällig (Ware zurück am {date}) | Erstattung seit {days} Tagen überfällig (Ware zurück am {date})",
                 "partly": "Teilweise erstattet am {date}, prüfen: {line}",
                 "insideOrder": "Rechtzeitig: Frist endet am {date} (14 Tage ab Bestellung, wie bei Dienstleistungen)",
                 "performed": "Prüfen: die Dienstleistung war vor dem Widerruf vollständig erbracht, nach dem Verlangen eines früheren Beginns, das Recht kann also erloschen sein (Art. 16 lit. a)",
@@ -113,11 +119,16 @@
                     "share": "Dienstleistung: {share} % erbracht, die Kunden zahlen {owed}, Erstattung {refund}",
                     "unknown": "Dienstleistung: tragen Sie an der Bestellung die Leistungsdaten oder den erbrachten Teil ein (Zusatzfelder, Shopproof), um zu sehen, was die Kunden zahlen"
                 },
-                "help": "Technische Hilfe, keine Rechtsberatung. Die Frist beträgt 14 Tage (oder Ihre längere Frist) ab Lieferung und läuft bis Montag, wenn sie an einem Wochenende endet; auch Feiertage können sie verlängern. Die Erstattung ist 14 Tage nach Eingang des Widerrufs fällig. Bei Dienstleistungen zählt die Frist ab der Bestellung, und mit dem Verlangen eines früheren Beginns zahlen die Kunden für den erbrachten Teil."
+                "help": "Technische Hilfe, keine Rechtsberatung. Die Frist beträgt 14 Tage (oder Ihre längere Frist) ab Lieferung und läuft bis Montag, wenn sie an einem Wochenende endet; auch Feiertage können sie verlängern. Die Erstattung ist 14 Tage nach Eingang des Widerrufs fällig; bei Waren dürfen Sie warten, bis sie zurück sind (Status Rücksendung angekommen) oder der Kunde den Versand nachweist, je nachdem, was früher eintritt, außer Sie haben angeboten, die Waren abzuholen (Art. 13 Abs. 3). Bei Dienstleistungen zählt die Frist ab der Bestellung, und mit dem Verlangen eines früheren Beginns zahlen die Kunden für den erbrachten Teil."
             },
             "items": "Artikel",
             "export": "Alle als CSV exportieren",
-            "exportFailed": "Die CSV-Datei konnte nicht erstellt werden. Bitte versuchen Sie es noch einmal."
+            "exportFailed": "Die CSV-Datei konnte nicht erstellt werden. Bitte versuchen Sie es noch einmal.",
+            "businessTitle": "Bestellung eines Unternehmens?",
+            "business_company": "Diese Bestellung hat einen Firmennamen.",
+            "business_vat": "Diese Bestellung hat eine USt-IdNr.",
+            "business_company_vat": "Diese Bestellung hat einen Firmennamen und eine USt-IdNr.",
+            "businessText": "Das Widerrufsrecht gilt für Verbraucher, ein Unternehmen hat es also womöglich nicht. Das beweist aber nicht, dass der Kauf für das Unternehmen war, und in manchen Ländern, etwa in Polen, behalten Einzelunternehmer das Recht für Käufe außerhalb ihres Gewerbes. Prüfen Sie das, bevor Sie ablehnen. Technische Hilfe, keine Rechtsberatung."
         },
         "products": {
             "warn": "Prüfen",
@@ -175,7 +186,8 @@
                 "snapshot": "Täglicher Stand",
                 "withdrawal": "Widerruf",
                 "retention": "Aufbewahrung geändert",
-                "anchor": "Stempel bei Shopproof"
+                "anchor": "Stempel bei Shopproof",
+                "prices": "Preisverlauf versiegelt"
             }
         },
         "returns": {
@@ -209,6 +221,7 @@
             "disputeStatement_ok": "Ihr Hinweis zur Streitbeilegung steht in Ihren AGB oder im Impressum",
             "disputeStatement_off": "Fügen Sie Ihren Hinweis zur Streitbeilegung in Ihre AGB und Ihr Impressum ein (Inhalte > Erlebniswelten), oder setzen Sie in den Plugin-Einstellungen das Häkchen, dass Sie es getan haben.",
             "disputeIntro": "Ihr Hinweis zur Streitbeilegung, zum Einfügen in der Sprache jeder Seite:",
+            "policyChannel": "Verkaufskanal {channel}:",
             "policyPage_off": "Widerrufsbelehrung: nicht geprüft, weil unter Einstellungen > Stammdaten keine Widerrufsseite gesetzt ist. Setzen Sie sie, dann vergleicht Shopproof sie mit Ihrer Widerrufsfrist und Ihrer Shop-E-Mail.",
             "policyText_off": "Widerrufsbelehrung: nicht geprüft, weil Ihre Widerrufsseite fast keinen Text hat. Wenn sie anders gefüllt wird, vergleichen Sie Frist und E-Mail-Adresse bitte selbst.",
             "policyPeriod_ok": "Widerrufsbelehrung: Ihre Widerrufsseite nennt {detail} Tage, wie die Widerrufsfrist in den Plugin-Einstellungen",
@@ -220,6 +233,20 @@
             "policyEmailDifferent_off": "Widerrufsbelehrung: Ihre Widerrufsseite nennt {detail}, nicht die Shop-E-Mail aus Einstellungen > Stammdaten. Prüfen Sie, ob Nachrichten an diese Adresse bei Ihnen ankommen.",
             "policyEmailUnsure_off": "Widerrufsbelehrung: Ihre Widerrufsseite nennt {detail}, unter Einstellungen > Stammdaten ist aber keine Shop-E-Mail gesetzt, daher kann Shopproof nicht vergleichen.",
             "policyEmailNone_off": "Widerrufsbelehrung: auf Ihrer Widerrufsseite wurde keine E-Mail-Adresse gefunden. Prüfen Sie, ob dort steht, wie Kunden Sie erreichen.",
+            "orderButton_ok": "Bestellbutton: In jeder Sprache des Verkaufskanals sagt er, dass die Bestellung etwas kostet, mit den Worten aus dem Gesetz.",
+            "orderButton_off": "Bestellbutton: was er jetzt sagt, dann die Worte aus dem Gesetz: {detail}. Ändern Sie den Text unter Einstellungen > Textbausteine (checkout.confirmSubmit). Andere Worte sind nur sicher, wenn sie genauso klar sind.",
+            "orderButtonUnknown_off": "Bestellbutton: für {detail} nicht geprüft, weil Shopproof für diese Sprache keine Formulierung hat. Prüfen Sie, dass der Button sagt, dass die Bestellung etwas kostet.",
+            "deliveryLine_ok": "Liefer- und Zahlungshinweis: Warenkorb und Kasse sagen, wohin Sie liefern und welche Zahlungsarten Sie annehmen.",
+            "deliveryLine_off": "Liefer- und Zahlungshinweis: aus. Kunden müssen vor Beginn der Bestellung sehen, wohin Sie liefern und wie sie zahlen können. Schalten Sie ihn in den Shopproof-Einstellungen unter Liefer- und Zahlungshinweis ein, oder prüfen Sie, dass Ihr Warenkorb das schon sagt.",
+            "policyOnline_ok": "Widerrufsbelehrung: Ihre Widerrufsseite sagt, dass Kunden auch online widerrufen können",
+            "policyOnlineNone_off": "Widerrufsbelehrung: Shopproof hat auf Ihrer Widerrufsseite den Satz nicht gefunden, dass Kunden auch online widerrufen können und wo. Seit Juni 2026 gehört er zur Muster-Widerrufsbelehrung. Fügen Sie ihn im Abschnitt zur Ausübung des Widerrufs ein oder prüfen Sie, ob Ihre Seite ihn mit anderen Worten enthält. Der amtliche Satz: „{detail}“",
+            "policyOnlineUnsure_off": "Widerrufsbelehrung: nicht geprüft, ob Ihre Widerrufsseite sagt, dass Kunden auch online widerrufen können, weil Shopproof Seiten in dieser Sprache nicht beurteilen kann. Prüfen Sie es selbst. Der amtliche Satz: „{detail}“",
+            "priorPrice_ok": "Reduzierte Preise zeigen den niedrigsten Preis der 30 Tage vor der Reduzierung.",
+            "priorPriceCapped_off": "Reduzierte Preise zeigen den niedrigsten Preis der 30 Tage vor der Reduzierung, bei den ersten {detail} reduzierten Produkten, die Shopproof geprüft hat. Ihr Shop hat weitere Produkte, die hier nicht geprüft wurden.",
+            "priorPriceOff_off": "{detail} Produkte haben einen Streichpreis, aber „Niedrigsten Preis der 30 Tage vor einer Reduzierung zeigen“ ist in den Shopproof-Einstellungen aus. Die EU-Preisregeln verlangen diese Angabe.",
+            "priorPriceMissing_off": "Diese Produkte haben einen Streichpreis, aber Shopproof hat weniger als 30 Tage ihrer Preise, daher erscheint kein niedrigster Preis. Tragen Sie am Produkt das Shopware-Feld „Günstigster Preis (letzte 30 Tage)“ ein (Preise): {detail}",
+            "priorPriceHigher_off": "Diese Produkte streichen einen Preis durch, der höher ist als ihr niedrigster Preis der letzten 30 Tage, die Reduzierung wirkt also größer, als sie ist. Ein Prozentsatz muss vom niedrigsten Preis der 30 Tage ausgehen (EuGH, C-330/23): {detail}",
+            "priorPriceSeals_off": "{detail} versiegelte Teile des Preisverlaufs passen nicht mehr zu ihrem Siegel im Nachweisprotokoll: Ein aufgezeichneter Preis wurde nach dem Versiegeln geändert oder gelöscht.",
             "where": "Ändern Sie das unter Einstellungen > Erweiterungen > Shopproof > Konfigurieren (Karten Preisangaben, Pfand, Warenkorb und Kasse, Hinweis zur Streitbeilegung). Technische Hilfe, keine Rechtsberatung."
         },
         "bulk": {
@@ -269,7 +296,8 @@
                 "pass": "Bestanden",
                 "warn": "Prüfen",
                 "fail": "Problem",
-                "skip": "Nicht geprüft"
+                "skip": "Nicht geprüft",
+                "info": "Hinweis"
             },
             "text": {
                 "and": "und",
@@ -306,6 +334,10 @@
                 "others": {
                     "pass": "Kein zweiter Widerrufsbutton gefunden.",
                     "warn": "Wir haben einen weiteren Widerrufsbutton gefunden: {items}. Kunden sollten nur einen sehen. Schalten Sie den Button in der anderen Erweiterung aus."
+                },
+                "a11y": {
+                    "pass": "Link zur Erklärung zur Barrierefreiheit gefunden {areas}.",
+                    "info": "Kein Link zur Erklärung zur Barrierefreiheit auf dieser Seite. Die meisten Shops brauchen seit 28. Juni 2025 eine Erklärung zur Barrierefreiheit, meist im Footer verlinkt; Kleinstunternehmen sind ausgenommen."
                 }
             }
         },
@@ -405,6 +437,27 @@
                     "missing": "Die Regelliste konnte nicht geladen werden.",
                     "loaded": "{count} Regel für die EU und Ihre Länder (Version {version}). | {count} Regeln für die EU und Ihre Länder (Version {version})."
                 }
+            },
+            "nonEu": {
+                "title": "Aus dem Ausland in die EU verkaufen",
+                "intro": "Sie haben angegeben, dass Ihr Unternehmen seinen Sitz außerhalb der EU und des EWR hat. Die EU-Verbraucherregeln gelten für Ihre Verkäufe an Käufer in der EU genauso wie für Shops in der EU, der Widerrufsbutton und die anderen Funktionen arbeiten also wie gewohnt. Zusätzlich gelten diese Pflichten für Verkäufer von außerhalb der EU.",
+                "summary": "Zusätzliche Pflichten für Verkäufer aus dem Ausland, noch zu prüfen: {open} von {total}.",
+                "empty": "Nicht geprüft: Die Regelliste in diesem Shop enthält noch keine Pflichten für Verkäufer außerhalb der EU. Nutzen Sie weiter unten „Jetzt nach Regel-Updates suchen“.",
+                "state": {
+                    "good": "Erledigt",
+                    "bad": "Handlung nötig",
+                    "todo": "Selbst prüfen"
+                },
+                "status": {
+                    "good": "Eine verantwortliche Person in der EU ist in den Shopproof-Einstellungen eingetragen und wird bei Ihren Produkten angezeigt.",
+                    "bad": "Noch keine verantwortliche Person in der EU eingetragen. Tragen Sie Name und Anschrift in den Shopproof-Einstellungen (Produktsicherheit) ein, dann zeigt Shopproof sie bei jedem Produkt.",
+                    "todo": "Selbst prüfen. Shopproof kann das in Ihrem Shop nicht sehen."
+                },
+                "source": "Quelle: {basis}.",
+                "official": "Amtlicher Text",
+                "openSettings": "Shopproof-Einstellungen öffnen",
+                "footer": "Shopproof kann nicht Ihre verantwortliche Person in der EU, Ihr IOSS-Vertreter oder Ihr DSGVO-Vertreter sein: Diese benennen Sie selbst. Technische Hilfe, keine Rechts- oder Steuerberatung.",
+                "guide": "Leitfaden für Verkäufer außerhalb der EU (Englisch)"
             }
         },
         "cancel": {
@@ -448,6 +501,77 @@
             "copy": "Adresse kopieren",
             "copied": "Adresse kopiert.",
             "notLegalAdvice": "Shopproof ist technische Hilfe, keine Rechtsberatung."
+        },
+        "greenClaims": {
+            "title": "Umweltaussagen",
+            "intro": "Seit dem 27. September 2026 verbietet das EU-Recht allgemeine Umweltaussagen wie \"umweltfreundlich\", \"klimafreundlich\" oder \"nachhaltig\", wenn das Produkt keine anerkannte hervorragende Umweltleistung hat (zum Beispiel das EU Ecolabel) und dieselbe Seite nicht genau sagt, was gemeint ist. Aussagen, ein Produkt sei klimaneutral oder habe verringerte Klimawirkungen, weil Emissionen kompensiert werden, sind ganz verboten (Richtlinie (EU) 2024/825). Shopproof sucht die Beispielwörter der Richtlinie selbst in den Namen und Beschreibungen Ihrer Produkte (Standardsprache), in allen 24 EU-Sprachen.",
+            "checking": "Produkte werden geprüft...",
+            "notChecked": "Nicht geprüft: Shopproof konnte Ihre Produkte oder seine Wortlisten gerade nicht lesen. Laden Sie die Seite in einer Minute neu.",
+            "noProducts": "Noch nicht geprüft: Der Shop hat keine aktiven Produkte.",
+            "scopeSome": "Geprüft: Ihre {checked} zuletzt geänderten Produkte von {total}.",
+            "scopeAll": "{checked} Produkt geprüft. | Alle {checked} Produkte geprüft.",
+            "aside": "{count} Stelle wurde ausgelassen, weil der Satz das Gegenteil sagt, von der Entsorgung handelt oder die Einzelheiten nennt (einen Prozentwert oder ein Umweltzeichen). | {count} Stellen wurden ausgelassen, weil der Satz das Gegenteil sagt, von der Entsorgung handelt oder die Einzelheiten nennt (einen Prozentwert oder ein Umweltzeichen).",
+            "none": "Keines verwendet die Beispielwörter der Richtlinie.",
+            "limits": "Shopproof findet nur die Beispielwörter der Richtlinie und ihre nahen Formen. Andere Umweltaussagen, Bilder und Farben können trotzdem als Aussage gelten. Technische Hilfe, keine Rechtsberatung.",
+            "worth": "{count} Produkt zum Prüfen | {count} Produkte zum Prüfen",
+            "canBeFine": "Diese Wörter können in Ordnung sein, zum Beispiel mit einem EU Ecolabel für genau diese Aussage, oder wenn dieselbe Seite genau sagt, was gemeint ist (\"100 % der Baumwolle sind aus biologischem Anbau\"). Shopproof entscheidet nicht, ob eine Aussage erlaubt ist: Bitte prüfen Sie jede einzeln. Technische Hilfe, keine Rechtsberatung.",
+            "line": "\"{term}\" ({kind}) {field}: {excerpt}",
+            "kind": {
+                "generic": "allgemeine Umweltaussage",
+                "broad": "weite Nachhaltigkeitsaussage",
+                "offsetting": "Klimaaussage"
+            },
+            "field": {
+                "title": "im Namen",
+                "description": "in der Beschreibung"
+            },
+            "more": "Und {count} weiteres Produkt. | Und {count} weitere Produkte.",
+            "kindsTitle": "Was die drei Arten bedeuten",
+            "genericTitle": "Allgemeine Umweltaussage",
+            "genericText": "Wörter wie \"umweltfreundlich\", \"eco-friendly\" oder \"biologisch abbaubar\". Nur erlaubt mit anerkannter hervorragender Umweltleistung für genau diese Aussage (EU Ecolabel, ein amtlich anerkanntes Zeichen nach EN ISO 14024 oder Höchstleistung nach EU-Recht, etwa Energieeffizienzklasse A für \"energieeffizient\"), oder wenn dieselbe Seite genau sagt, was gemeint ist (UGP-Richtlinie Anhang I Nr. 4a).",
+            "broadTitle": "Weite Nachhaltigkeitsaussage",
+            "broadText": "Wörter wie \"nachhaltig\" oder \"sustainable\". Sie betreffen auch soziale Eigenschaften, daher reicht ein Umweltzeichen allein nicht (Erwägungsgrund 10). Sagen Sie auf derselben Seite genau, was gemeint ist, oder lassen Sie das Wort weg.",
+            "offsettingTitle": "Klimaaussage",
+            "offsettingText": "Wörter wie \"klimaneutral\", \"CO2-neutral\" oder \"mit reduziertem CO2-Fußabdruck\". Verboten, wenn sie auf der Kompensation von Emissionen beruhen, etwa mit CO2-Zertifikaten; nur erlaubt, wenn sie auf dem Lebenszyklus des Produkts selbst beruhen (UGP-Richtlinie Anhang I Nr. 4c). Dass Sie Klimaprojekte unterstützen, dürfen Sie weiter sagen, solange es nicht irreführt."
+        },
+        "a11y": {
+            "title": "Erklärung zur Barrierefreiheit",
+            "intro": "Seit 28. Juni 2025 müssen die meisten Shops, die an Verbraucher in der EU verkaufen, barrierefrei sein und eine Erklärung zur Barrierefreiheit veröffentlichen: was der Shop für Barrierefreiheit tut, welche Barrieren er kennt, wie man eine meldet und welche Behörde zuständig ist. Kleinstunternehmen (weniger als 10 Beschäftigte und höchstens 2 Millionen Euro im Jahr) sind für ihre Dienstleistungen ausgenommen. Die meisten Shops verlinken die Erklärung im Footer, neben Impressum und Datenschutzerklärung.",
+            "linkCheck": "Die Platzierungsprüfung oben zeigt auch für jede Seite, ob sie auf Informationen zur Barrierefreiheit verlinkt.",
+            "draftIntro": "Füllen Sie aus, was Sie wissen. Der Entwurf unten ändert sich beim Tippen; kopieren Sie ihn in eine Erlebniswelt oder CMS-Seite, lesen Sie ihn, ändern Sie, was nicht passt, und verlinken Sie ihn im Footer. Es wird nichts gespeichert oder gesendet. Der Entwurf sagt nie, dass Ihr Shop vollständig barrierefrei ist. Er sagt, worauf Sie hinarbeiten und was Sie getan haben.",
+            "country": "Land Ihres Unternehmens",
+            "language": "Sprache",
+            "languageAuto": "Nach dem Land",
+            "countries": {
+                "AT": "Österreich",
+                "DE": "Deutschland",
+                "FR": "Frankreich",
+                "IT": "Italien",
+                "NL": "Niederlande",
+                "other": "Anderes Land"
+            },
+            "languages": {
+                "en": "Englisch",
+                "de": "Deutsch",
+                "fr": "Französisch",
+                "it": "Italienisch",
+                "nl": "Niederländisch"
+            },
+            "shop": "Name des Shops",
+            "url": "Adresse des Shops",
+            "email": "E-Mail für Meldungen",
+            "emailHelp": "Hier melden Kunden Barrieren. Die Adresse steht auf der Seite.",
+            "about": "Was Kunden tun können (optional)",
+            "aboutHelp": "Ein Satz. Leer lassen für: Produkte ansehen, Optionen wählen, in den Warenkorb legen und bestellen.",
+            "measures": "Was Sie getan haben (optional)",
+            "measuresHelp": "Ein Punkt pro Zeile, zum Beispiel: Alle Produktfotos haben eine Textbeschreibung.",
+            "barriers": "Bekannte Barrieren (optional)",
+            "barriersHelp": "Ein Punkt pro Zeile, zum Beispiel: Der Größenrechner ist mit der Tastatur schwer zu bedienen.",
+            "noAuthority": "Shopproof kennt die Behörde für Österreich, Deutschland, Frankreich, Italien und die Niederlande. Für ein anderes Land lässt der Entwurf eine markierte Lücke, die Sie ausfüllen.",
+            "preview": "Ihr Entwurf",
+            "copy": "Entwurf kopieren",
+            "copied": "Kopiert.",
+            "where": "Technische Hilfe, keine Rechtsberatung. Lesen Sie den Entwurf und ändern Sie, was nicht zu Ihrem Shop passt, bevor Sie ihn veröffentlichen."
         }
     }
 }

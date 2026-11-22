@@ -15,6 +15,7 @@ use Shopproof\Compliance\Command\SettingsExportCommand;
 use Shopproof\Compliance\Command\SettingsImportCommand;
 use Shopproof\Compliance\Command\SetupCheckCommand;
 use Shopproof\Compliance\Controller\ContactController;
+use Shopproof\Compliance\Controller\GreenClaimsController;
 use Shopproof\Compliance\Controller\OverviewController;
 use Shopproof\Compliance\Support\SupportMessage;
 use Shopproof\Compliance\Controller\PlacementController;
@@ -26,14 +27,19 @@ use Shopproof\Compliance\Controller\WithdrawalController;
 use Shopproof\Compliance\Controller\WithdrawalStatusController;
 use Shopproof\Compliance\Controller\ReturnsController;
 use Shopproof\Compliance\Controller\WithdrawalItemsController;
+use Shopproof\Compliance\Notes\GreenClaims;
 use Shopproof\Compliance\Notes\CheckoutBoxesSubscriber;
 use Shopproof\Compliance\Notes\CartFieldsSubscriber;
 use Shopproof\Compliance\Notes\DepositCacheSubscriber;
 use Shopproof\Compliance\Notes\NotesCartProcessor;
 use Shopproof\Compliance\Notes\NotesFacts;
+use Shopproof\Compliance\Notes\OrderButtonFacts;
+use Shopproof\Compliance\Notes\DeliveryLineFacts;
 use Shopproof\Compliance\Notes\NotesSettings;
 use Shopproof\Compliance\Notes\NotesTexts;
 use Shopproof\Compliance\ProofLog\ProofLog;
+use Shopproof\Compliance\Notes\PriceHistory;
+use Shopproof\Compliance\Notes\PriceHistorySubscriber;
 use Shopproof\Compliance\ProofLog\ProofSnapshot;
 use Shopproof\Compliance\Placement\PlacementPages;
 use Shopproof\Compliance\Placement\PreviewSubscriber;
@@ -46,6 +52,7 @@ use Shopproof\Compliance\ScheduledTask\ProofSnapshotTaskHandler;
 use Shopproof\Compliance\ScheduledTask\RefreshRulesTask;
 use Shopproof\Compliance\ScheduledTask\RefreshRulesTaskHandler;
 use Shopproof\Compliance\Storefront\DurabilityLabel;
+use Shopproof\Compliance\Storefront\EnergyLabel;
 use Shopproof\Compliance\Storefront\GuaranteeNotice;
 use Shopproof\Compliance\Storefront\HazardLabel;
 use Shopproof\Compliance\Storefront\Registrations;
@@ -54,6 +61,7 @@ use Shopproof\Compliance\Checkout\ServiceConsentSubscriber;
 use Shopproof\Compliance\Twig\CheckoutExtension;
 use Shopproof\Compliance\Twig\ModelFormExtension;
 use Shopproof\Compliance\Twig\NotesExtension;
+use Shopproof\Compliance\Twig\EnergyExtension;
 use Shopproof\Compliance\Twig\ShopproofExtension;
 use Shopproof\Compliance\Withdrawal\ModelForm;
 use Shopproof\Compliance\Withdrawal\PolicyMatch;
@@ -70,6 +78,7 @@ use Shopproof\Compliance\Withdrawal\WithdrawalSubscriber;
 use Shopproof\Compliance\Withdrawal\WithdrawalStatus;
 use Shopproof\Compliance\Withdrawal\PrefillCacheSubscriber;
 use Shopproof\Compliance\Withdrawal\RefundSubscriber;
+use Shopproof\Compliance\Withdrawal\ReturnSubscriber;
 use Shopproof\Compliance\Withdrawal\ReceiptEmailSubscriber;
 use Shopproof\Compliance\Withdrawal\ReturnsWebhook;
 use Shopproof\Compliance\Withdrawal\ReturnsWebhookHandler;
@@ -102,6 +111,9 @@ return static function (ContainerConfigurator $container): void {
 
     $services->set(DurabilityLabel::class)
         ->args([__DIR__ . '/durability-label.json']);
+
+    $services->set(EnergyLabel::class)
+        ->args([__DIR__ . '/energy-label.json']);
 
     $services->set(HazardLabel::class)
         ->args([__DIR__ . '/hazards.json']);
@@ -159,6 +171,13 @@ return static function (ContainerConfigurator $container): void {
     $services->set(PolicyMatch::class)
         ->args([__DIR__ . '/policy-match.json']);
 
+    $services->set(GreenClaims::class)
+        ->args([__DIR__ . '/green-claims.json']);
+
+    $services->set(GreenClaimsController::class)
+        ->public()
+        ->call('setContainer', [service('service_container')]);
+
     $services->set(ModelFormExtension::class)
         ->tag('twig.extension');
 
@@ -180,6 +199,10 @@ return static function (ContainerConfigurator $container): void {
 
     $services->set(ShopproofExtension::class)
         ->arg('$packages', service('assets.packages'))
+        ->tag('twig.extension');
+
+    $services->set(EnergyExtension::class)
+        ->arg('$mediaRepository', service('media.repository'))
         ->tag('twig.extension');
 
     $services->set(RulesController::class)
@@ -213,7 +236,8 @@ return static function (ContainerConfigurator $container): void {
 
     $services->set(ProofLog::class);
 
-    $services->set(ProofSnapshot::class);
+    $services->set(ProofSnapshot::class)
+        ->arg('$logger', service('logger'));
 
     $services->set(ProofSnapshotTask::class)
         ->tag('shopware.scheduled.task');
@@ -246,6 +270,10 @@ return static function (ContainerConfigurator $container): void {
         ->tag('kernel.event_subscriber');
 
     $services->set(RefundSubscriber::class)
+        ->arg('$logger', service('logger'))
+        ->tag('kernel.event_subscriber');
+
+    $services->set(ReturnSubscriber::class)
         ->arg('$logger', service('logger'))
         ->tag('kernel.event_subscriber');
 
@@ -305,7 +333,18 @@ return static function (ContainerConfigurator $container): void {
         ->arg('$carts', service('Shopware\\Core\\Checkout\\Cart\\SalesChannel\\CartService'))
         ->tag('kernel.event_subscriber');
 
+    $services->set(OrderButtonFacts::class)
+        ->arg('$translator', service('Shopware\\Core\\Framework\\Adapter\\Translation\\Translator'));
+
     $services->set(NotesFacts::class);
+
+    $services->set(DeliveryLineFacts::class);
+    // Price history for the 30-day lowest price before a reduction (decision 0040).
+    $services->set(PriceHistory::class);
+
+    $services->set(PriceHistorySubscriber::class)
+        ->arg('$logger', service('logger'))
+        ->tag('kernel.event_subscriber');
 
     $services->set(DepositCacheSubscriber::class)
         ->tag('kernel.event_subscriber');

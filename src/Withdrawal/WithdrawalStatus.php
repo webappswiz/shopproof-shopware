@@ -15,7 +15,8 @@ use Shopware\Core\System\SystemConfig\SystemConfigService;
 /**
  * Where a withdrawal stands for the customer, as in the WooCommerce plugin: received, return
  * arrived, refund sent. The merchant moves it on the Shopproof page; a payment Shopware marks as
- * fully refunded moves it to "Refund sent" (a partial refund changes nothing, since it may not
+ * fully refunded moves it to "Refund sent", and an order whose deliveries Shopware marks as
+ * returned moves to "Return arrived" (a partial refund changes nothing, since it may not
  * cover what is owed). Moving forward emails the customer through the shop's own mail setup with
  * the Shopware email template for that step, unless the setting is off. The email links to the
  * customer's status page.
@@ -60,6 +61,28 @@ class WithdrawalStatus
         $count = 0;
         foreach ($this->store->openForOrder($orderId) as $id) {
             $count += $this->set($id, WithdrawalStore::STATES[2])['changed'] ? 1 : 0;
+        }
+
+        return $count;
+    }
+
+    /**
+     * Every delivery of the order came back (ReturnSubscriber::allBack): each withdrawal for it that is still at "Received"
+     * moves to "Return arrived". One already further along is left as it is, so a refund that was
+     * sent first is never undone.
+     */
+    public function orderReturned(string $orderId): int
+    {
+        if (!ReturnSubscriber::allBack($this->store->deliveryStates($orderId))) {
+            return 0;
+        }
+        $count = 0;
+        foreach ($this->store->openForOrder($orderId) as $id) {
+            $record = $this->store->find($id);
+            if ($record === null || $record['status'] !== WithdrawalStore::STATES[0]) {
+                continue;
+            }
+            $count += $this->set($id, WithdrawalStore::STATES[1])['changed'] ? 1 : 0;
         }
 
         return $count;

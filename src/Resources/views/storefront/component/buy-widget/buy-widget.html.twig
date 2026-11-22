@@ -7,6 +7,17 @@
    the known defects of used goods. Nothing changes with the default settings. #}
 {% block buy_widget_price %}
     {{ parent() }}
+    {# The energy label arrow and the French index, right next to the price (EU-EL-01, FR-EN-01). #}
+    {% block shopproof_buy_widget_energy %}
+        {% sw_include '@ShopproofCompliance/storefront/shopproof/energy.html.twig' with { product: product } %}
+    {% endblock %}
+    {# The lowest price of the 30 days before a reduction (decision 0040), right below a reduced price. #}
+    {% block shopproof_buy_widget_prior_price %}
+        {% set shopproofPriorPrice = shopproof_prior_price(product, context) %}
+        {% if shopproofPriorPrice %}
+            <p class="shopproof-prior-price small mb-1">{{ shopproofPriorPrice }}</p>
+        {% endif %}
+    {% endblock %}
     {% block shopproof_buy_widget_deposit %}
         {% set shopproofDeposit = shopproof_deposit_note(product, context) %}
         {% if shopproofDeposit %}

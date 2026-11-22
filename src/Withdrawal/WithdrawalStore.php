@@ -116,9 +116,12 @@ class WithdrawalStore
             'SELECT LOWER(HEX(w.id)) AS id, w.first_name, w.last_name, w.email, w.contract_number, w.comment, w.items, w.order_date,
                     LOWER(HEX(w.order_id)) AS order_id, o.order_number, sct.name AS sales_channel, w.submitted_at,
                     w.status, w.return_arrived_at, w.refund_sent_at, w.delivered_on, w.period_days,
-                    w.webhook_status, w.webhook_attempts, w.webhook_code, w.webhook_at
+                    w.webhook_status, w.webhook_attempts, w.webhook_code, w.webhook_at,
+                    oc.company AS customer_company, oc.vat_ids AS customer_vat_ids, ba.company AS billing_company, ba.vat_id AS billing_vat_id
              FROM ' . self::TABLE . ' w
              LEFT JOIN `order` o ON o.id = w.order_id AND o.version_id = :version
+             LEFT JOIN order_customer oc ON oc.order_id = o.id AND oc.order_version_id = o.version_id
+             LEFT JOIN order_address ba ON ba.id = o.billing_address_id AND ba.version_id = o.version_id
              LEFT JOIN sales_channel sc ON sc.id = w.sales_channel_id
              LEFT JOIN sales_channel_translation sct ON sct.sales_channel_id = sc.id AND sct.language_id = sc.language_id'
             . $where . ' ORDER BY w.submitted_at DESC LIMIT ' . $limit . ' OFFSET ' . (($page - 1) * $limit),
@@ -145,6 +148,11 @@ class WithdrawalStore
                 'refundSentAt' => self::atom(self::str($row['refund_sent_at'] ?? null)),
                 'deliveredOn' => WithdrawalClock::cleanDate(substr(self::str($row['delivered_on'] ?? null), 0, 10)),
                 'periodDays' => self::int($row['period_days'] ?? null),
+                // "Business order?" hint: signs only, never a verdict (see businessSigns()).
+                'business' => self::businessSigns(
+                    [self::str($row['billing_company'] ?? null), self::str($row['customer_company'] ?? null)],
+                    [self::str($row['billing_vat_id'] ?? null), ...self::vatIds($row['customer_vat_ids'] ?? null)]
+                ),
                 'webhook' => \is_string($row['webhook_status'] ?? null) ? [
                     'status' => self::str($row['webhook_status']),
                     'attempts' => self::int($row['webhook_attempts'] ?? null),
@@ -159,6 +167,49 @@ class WithdrawalStore
         }
 
         return ['total' => $total, 'items' => $items];
+    }
+
+    /**
+     * The signs that an order may come from a business: "company" for a company name on the
+     * billing address or the customer, "vat" for a VAT ID. The right of withdrawal is for
+     * consumers, but neither sign proves the purchase was for the business, and Polish sole
+     * traders keep the right for purchases outside their trade (rule PL-LI-02). So the admin
+     * shows a hint to check, never a verdict, and the deadline clock stays as it is.
+     *
+     * @param list<string> $companies
+     * @param list<string> $vatIds
+     *
+     * @return list<string>
+     */
+    public static function businessSigns(array $companies, array $vatIds): array
+    {
+        $signs = [];
+        foreach ($companies as $company) {
+            if (trim($company) !== '') {
+                $signs[] = 'company';
+                break;
+            }
+        }
+        foreach ($vatIds as $vat) {
+            if (trim($vat) !== '') {
+                $signs[] = 'vat';
+                break;
+            }
+        }
+
+        return $signs;
+    }
+
+    /**
+     * The customer's VAT IDs from the order_customer.vat_ids JSON column.
+     *
+     * @return list<string>
+     */
+    public static function vatIds(mixed $json): array
+    {
+        $list = \is_string($json) && $json !== '' ? json_decode($json, true) : null;
+
+        return \is_array($list) ? array_values(array_filter($list, 'is_string')) : [];
     }
 
     /**
@@ -295,7 +346,8 @@ class WithdrawalStore
     /**
      * The service facts of an order: its kind from the product line items (their product type and
      * custom fields as kept on the order), when it was placed, the consent record, the dates the
-     * merchant entered, and what the service items cost with tax.
+     * merchant entered, and what the service items cost with tax after vouchers, promotions and
+     * credits (ServiceWithdrawal::priceAfterDiscounts).
      *
      * @param array{order: string, version: string} $params
      *
@@ -313,35 +365,40 @@ class WithdrawalStore
         $net = $order !== false && ($order['tax_status'] ?? null) === 'net';
 
         $kinds = [];
-        $price = 0.0;
+        $lines = [];
         $rows = $this->connection->fetchAllAssociative(
-            'SELECT li.payload, li.total_price, li.price,
+            'SELECT li.identifier, li.type, li.payload, li.total_price, li.price,
                     EXISTS (SELECT 1 FROM order_line_item_download d WHERE d.order_line_item_id = li.id AND d.order_line_item_version_id = li.version_id) AS download
              FROM order_line_item li
-             WHERE li.order_id = :order AND li.order_version_id = :version AND li.version_id = :version AND li.type = :type',
-            $params + ['type' => 'product']
+             WHERE li.order_id = :order AND li.order_version_id = :version AND li.version_id = :version',
+            $params
         );
         foreach ($rows as $row) {
             $payload = json_decode(self::str($row['payload'] ?? null), true);
             $payload = \is_array($payload) ? $payload : [];
-            $type = \is_string($payload['productType'] ?? null) ? $payload['productType'] : null;
-            if (self::int($row['download'] ?? null) > 0) {
-                $type = 'digital';
-            }
-            $kind = ServiceWithdrawal::kindOf($type, \is_array($payload['customFields'] ?? null) ? $payload['customFields'] : null);
-            $kinds[] = $kind;
-            if ($kind === 'service') {
-                $total = (float) (is_numeric($row['total_price'] ?? null) ? $row['total_price'] : 0);
+            $lineType = self::str($row['type'] ?? null);
+            $total = (float) (is_numeric($row['total_price'] ?? null) ? $row['total_price'] : 0);
+            $service = false;
+            $gross = $total;
+            if ($lineType === 'product') {
+                $type = \is_string($payload['productType'] ?? null) ? $payload['productType'] : null;
+                if (self::int($row['download'] ?? null) > 0) {
+                    $type = 'digital';
+                }
+                $kind = ServiceWithdrawal::kindOf($type, \is_array($payload['customFields'] ?? null) ? $payload['customFields'] : null);
+                $kinds[] = $kind;
+                $service = $kind === 'service';
                 if ($net) {
                     $calculated = json_decode(self::str($row['price'] ?? null), true);
                     $taxes = \is_array($calculated) && \is_array($calculated['calculatedTaxes'] ?? null) ? $calculated['calculatedTaxes'] : [];
                     foreach ($taxes as $tax) {
-                        $total += \is_array($tax) && is_numeric($tax['tax'] ?? null) ? (float) $tax['tax'] : 0.0;
+                        $gross += \is_array($tax) && is_numeric($tax['tax'] ?? null) ? (float) $tax['tax'] : 0.0;
                     }
                 }
-                $price += $total;
             }
+            $lines[] = ['id' => self::str($row['identifier'] ?? null), 'type' => $lineType, 'service' => $service, 'total' => $total, 'gross' => $gross, 'payload' => $payload];
         }
+        $price = ServiceWithdrawal::priceAfterDiscounts($lines);
 
         return [
             'kind' => ServiceWithdrawal::contractKind($kinds),
@@ -350,7 +407,7 @@ class WithdrawalStore
             'serviceItems' => \in_array('service', $kinds, true),
             'digitalConsent' => DigitalConsent::given($fields),
             'serviceDone' => ServiceWithdrawal::dateOf($fields[ServiceWithdrawal::DONE_FIELD] ?? null),
-            'servicePrice' => round($price, 2),
+            'servicePrice' => $price,
             'serviceStart' => ServiceWithdrawal::dateOf($fields[ServiceWithdrawal::START_FIELD] ?? null),
             'serviceEnd' => ServiceWithdrawal::dateOf($fields[ServiceWithdrawal::END_FIELD] ?? null),
             'serviceShare' => ServiceWithdrawal::shareOf($fields[ServiceWithdrawal::SHARE_FIELD] ?? null),
@@ -394,6 +451,27 @@ class WithdrawalStore
                 ['order' => Uuid::fromHexToBytes($orderId), 'refunded' => self::STATES[2]]
             )
         );
+    }
+
+    /**
+     * The technical names of the order's delivery states (live version), such as "shipped" or
+     * "returned".
+     *
+     * @return list<string>
+     */
+    public function deliveryStates(string $orderId): array
+    {
+        if (!Uuid::isValid($orderId)) {
+            return [];
+        }
+        $rows = $this->connection->fetchFirstColumn(
+            'SELECT s.technical_name FROM order_delivery d
+             INNER JOIN state_machine_state s ON s.id = d.state_id
+             WHERE d.order_id = :order AND d.order_version_id = :version',
+            ['order' => Uuid::fromHexToBytes($orderId), 'version' => Uuid::fromHexToBytes(Defaults::LIVE_VERSION)]
+        );
+
+        return array_map(static fn (mixed $s): string => \is_string($s) ? $s : '', $rows);
     }
 
     /**

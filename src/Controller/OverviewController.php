@@ -7,6 +7,7 @@ use Shopproof\Compliance\Placement\PlacementResult;
 use Shopproof\Compliance\ProofLog\ProofLog;
 use Shopproof\Compliance\Rules\RulesFile;
 use Shopproof\Compliance\Rules\RulesUpdater;
+use Shopproof\Compliance\Setup\NonEuChecklist;
 use Shopproof\Compliance\Setup\Overview;
 use Shopproof\Compliance\Storefront\Registrations;
 use Shopproof\Compliance\Storefront\SafetyData;
@@ -59,7 +60,7 @@ final class OverviewController extends AbstractController
         $snapshot = $proofAvailable ? $this->log->lastTime('snapshot') : '';
         $snapshotTime = $snapshot !== '' ? strtotime($snapshot . ' UTC') : false;
 
-        return new JsonResponse(Overview::build([
+        $out = Overview::build([
             'check' => $check,
             'placement' => PlacementResult::read($this->config->get(PlacementResult::CONFIG)),
             'manufacturersWithoutDetails' => $facts['manufacturersWithoutDetailsCount'],
@@ -79,7 +80,16 @@ final class OverviewController extends AbstractController
                 'version' => RulesFile::text($file, 'version'),
             ],
             'now' => time(),
-        ]));
+        ]);
+        // Shops established outside the EU get the extra duties for sellers from abroad (decision 0041).
+        $out['nonEu'] = NonEuChecklist::build(
+            $file,
+            NonEuChecklist::abroad($this->config->get(NonEuChecklist::CONFIG), $this->config->get(NonEuChecklist::PRO_CONFIG)),
+            trim($this->config->getString(self::CONFIG . 'safetyResponsibleName')) !== ''
+                && trim($this->config->getString(self::CONFIG . 'safetyResponsibleAddress')) !== ''
+        );
+
+        return new JsonResponse($out);
     }
 
     private function products(): int

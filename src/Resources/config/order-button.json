@@ -1,0 +1,20 @@
+{
+  "_note": "Built from packages/rules/data/strings/withdrawal-labels.json by packages/widgets/scripts/build.mjs; do not edit by hand.",
+  "languages": {
+    "de": {
+      "label": "Zahlungspflichtig bestellen"
+    },
+    "fr": {
+      "label": "Commande avec obligation de paiement"
+    },
+    "it": {
+      "label": "Ordine con obbligo di pagare"
+    },
+    "nl": {
+      "label": "Bestelling met betalingsverplichting"
+    },
+    "en": {
+      "label": "Order with obligation to pay"
+    }
+  }
+}

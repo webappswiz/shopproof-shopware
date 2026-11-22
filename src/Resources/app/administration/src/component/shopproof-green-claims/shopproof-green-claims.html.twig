@@ -1,0 +1,38 @@
+{% block shopproof_green_claims %}
+<mt-card
+    id="shopproof-green-claims"
+    position-identifier="shopproof-overview-green-claims"
+    :title="$t('shopproof.greenClaims.title')"
+>
+    <p>{{ $t('shopproof.greenClaims.intro') }}</p>
+    <p v-if="loading">{{ $t('shopproof.greenClaims.checking') }}</p>
+    <p v-else-if="failed" role="status">{{ $t('shopproof.greenClaims.notChecked') }}</p>
+    <p v-else-if="result.checked === 0">{{ $t('shopproof.greenClaims.noProducts') }}</p>
+    <template v-else-if="result.products.length === 0">
+        <p>{{ scope }} {{ $t('shopproof.greenClaims.none') }} {{ note }}</p>
+        <p>{{ $t('shopproof.greenClaims.limits') }}</p>
+    </template>
+    <template v-else>
+        <p role="status">
+            <strong>{{ $tc('shopproof.greenClaims.worth', result.products.length, { count: result.products.length }) }}</strong>
+            {{ scope }} {{ note }}
+        </p>
+        <p>{{ $t('shopproof.greenClaims.canBeFine') }}</p>
+        <ul class="shopproof-overview__checks">
+            <li v-for="product in result.products.slice(0, shown)" :key="product.id">
+                <router-link :to="{ name: 'sw.product.detail', params: { id: product.id } }">{{ product.title || product.id }}</router-link>
+                <ul class="shopproof-overview__names">
+                    <li v-for="found in product.found" :key="found.term">{{ line(found) }}</li>
+                </ul>
+            </li>
+        </ul>
+        <p v-if="result.products.length > shown">{{ $tc('shopproof.greenClaims.more', result.products.length - shown, { count: result.products.length - shown }) }}</p>
+    </template>
+    <details>
+        <summary>{{ $t('shopproof.greenClaims.kindsTitle') }}</summary>
+        <p><strong>{{ $t('shopproof.greenClaims.genericTitle') }}:</strong> {{ $t('shopproof.greenClaims.genericText') }}</p>
+        <p><strong>{{ $t('shopproof.greenClaims.broadTitle') }}:</strong> {{ $t('shopproof.greenClaims.broadText') }}</p>
+        <p><strong>{{ $t('shopproof.greenClaims.offsettingTitle') }}:</strong> {{ $t('shopproof.greenClaims.offsettingText') }}</p>
+    </details>
+</mt-card>
+{% endblock %}

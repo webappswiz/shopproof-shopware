@@ -55,7 +55,13 @@ final class SetupReport
         'policyEmail' => ['Withdrawal policy: the revocation page names the shop email', ''],
         'policyEmailDifferent' => ['', 'Withdrawal policy: the revocation page names {detail}, not the shop email in Settings > Basic information. Check that customers who write there reach you.'],
         'policyEmailUnsure' => ['', 'Withdrawal policy: the revocation page names {detail}, but no shop email is set in Settings > Basic information, so it cannot be compared.'],
+        'orderButton' => ['Order button: in every storefront language it says the order costs money, in the words the law names', 'Order button: what it says now, then the words the law names: {detail}. Change the text under Settings > Snippets (checkout.confirmSubmit). Other words are only safe if they are as clear.'],
+        'deliveryLine' => ['Delivery and payment line: the cart and checkout say where you deliver and which payment methods you take', 'Delivery and payment line: off. Shoppers must see where you deliver and how they can pay before they start to order. Turn it on in the Shopproof settings, or check that your cart already says this.'],
+        'orderButtonUnknown' => ['', 'Order button: not checked for {detail}, because Shopproof has no wording for this language. Check that the button says the order costs money.'],
         'policyEmailNone' => ['', 'Withdrawal policy: no email address found on the revocation page. Check that it tells customers how to reach you.'],
+        'policyOnline' => ['Withdrawal policy: the revocation page says customers can also withdraw online', ''],
+        'policyOnlineNone' => ['', 'Withdrawal policy: the sentence that customers can also withdraw online, and where, was not found on the revocation page. Since June 2026 the model withdrawal instructions include it. Add it, or check that the page says it in other words: "{detail}"'],
+        'policyOnlineUnsure' => ['', 'Withdrawal policy: not checked whether the revocation page says customers can also withdraw online, because Shopproof cannot judge pages in its language. The official sentence: "{detail}"'],
     ];
 
     private const PARTS = [
@@ -80,7 +86,7 @@ final class SetupReport
     }
 
     /**
-     * @param array{supported: bool, ok: bool, shop: list<array{key: string, ok: bool}>, channels: list<array{id: string, name: string, ok: bool, checks: list<array{key: string, ok: bool, detail?: string}>}>, layouts: list<array{id: string, name: string, ok: bool, missing: list<string>}>, failedRecords: int, products: list<array{key: string, ok: bool}>, manufacturersWithoutDetails: list<array{id: string, name: string}>, hazardProblems: list<array{id: string, name: string, codes: list<array{code: string, reason: string}>}>, registrationBadLines: list<string>, notes?: list<array{key: string, ok: bool, detail?: string}>, unitPriceGaps?: list<array{id: string, name: string}>, depositBadLines?: list<string>, disputeStatements?: list<string>} $result
+     * @param array{supported: bool, ok: bool, shop: list<array{key: string, ok: bool}>, channels: list<array{id: string, name: string, ok: bool, checks: list<array{key: string, ok: bool, detail?: string}>}>, layouts: list<array{id: string, name: string, ok: bool, missing: list<string>}>, failedRecords: int, products: list<array{key: string, ok: bool}>, manufacturersWithoutDetails: list<array{id: string, name: string}>, hazardProblems: list<array{id: string, name: string, codes: list<array{code: string, reason: string}>}>, registrationBadLines: list<string>, notes?: list<array{key: string, ok: bool, detail?: string, channel?: string}>, unitPriceGaps?: list<array{id: string, name: string}>, depositBadLines?: list<string>, disputeStatements?: list<string>} $result
      *
      * @return array{code: int, lines: list<string>}
      */
@@ -180,12 +186,13 @@ final class SetupReport
                 static fn (string $text): string => str_replace('{detail}', $check['detail'] ?? '', $text),
                 self::NOTES[$check['key']] ?? [$check['key'], $check['key']]
             );
+            $channel = ($check['channel'] ?? '') !== '' ? 'Sales channel "' . $check['channel'] . '": ' : '';
             if ($check['ok']) {
-                $lines[] = '[ok] ' . $okText;
+                $lines[] = '[ok] ' . $channel . $okText;
                 continue;
             }
             $needsWork = true;
-            $lines[] = '[check] ' . $offText;
+            $lines[] = '[check] ' . $channel . $offText;
             $details = match ($check['key']) {
                 'unitPrices' => array_map(static fn (array $p): string => $p['name'], $result['unitPriceGaps'] ?? []),
                 'depositTypes' => $result['depositBadLines'] ?? [],

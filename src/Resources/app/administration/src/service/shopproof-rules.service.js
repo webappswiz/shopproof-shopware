@@ -22,6 +22,12 @@ class ShopproofRulesService extends ApiService {
             .then((response) => ApiService.handleResponse(response));
     }
 
+    getGreenClaims() {
+        return this.httpClient
+            .get(`${this.getApiBasePath()}/green-claims`, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
     getWithdrawalCheck() {
         return this.httpClient
             .get(`${this.getApiBasePath()}/withdrawal-check`, { headers: this.getBasicHeaders() })

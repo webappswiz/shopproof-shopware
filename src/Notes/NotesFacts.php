@@ -5,6 +5,7 @@ namespace Shopproof\Compliance\Notes;
 use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\DBAL\Connection;
 use Shopproof\Compliance\Withdrawal\OrderEmailLine;
+use Shopproof\Compliance\Withdrawal\OrderEmailSubscriber;
 use Shopproof\Compliance\Withdrawal\PolicyMatch;
 use Shopware\Core\Defaults;
 use Shopware\Core\Framework\Uuid\Uuid;
@@ -12,7 +13,8 @@ use Shopware\Core\System\SystemConfig\SystemConfigService;
 
 /**
  * Reads what NotesCheck needs from the shop. Uses the shop-wide settings (a sales channel can
- * override them, as for every Shopproof setting).
+ * override them, as for every Shopproof setting), except the withdrawal policy match, which checks
+ * each active storefront with its own revocation page, withdrawal period and shop email.
  */
 class NotesFacts
 {
@@ -30,11 +32,15 @@ class NotesFacts
         private readonly NotesSettings $settings,
         private readonly NotesTexts $texts,
         private readonly ?PolicyMatch $policy = null,
+        private readonly ?OrderButtonFacts $orderButton = null,
+        private readonly string $orderButtonWords = __DIR__ . '/../Resources/config/order-button.json',
+        private readonly ?OrderEmailSubscriber $emails = null,
+        private readonly ?PriceHistory $prices = null,
     ) {
     }
 
     /**
-     * @return array{unitPriceGaps: list<array{id: string, name: string}>, depositBadLines: list<string>, missingPolicyPages: list<string>, dispute: array{choice: string, statements: list<string>, foundOnPages: bool, pasted: bool, pagesChecked: bool}, policyMatch?: array{page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null}}
+     * @return array{unitPriceGaps: list<array{id: string, name: string}>, depositBadLines: list<string>, missingPolicyPages: list<string>, dispute: array{choice: string, statements: list<string>, foundOnPages: bool, pasted: bool, pagesChecked: bool}, policyMatch?: array{page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null, online?: array{status: string, lang: string|null, reason: string|null}, sentence?: string, channels?: list<array{names: list<string>, page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null, online?: array{status: string, lang: string|null, reason: string|null}, sentence?: string}>}, orderButton?: array{buttons: list<array{channel: string, locale: string, text: string}>, words: array<string, string>}, deliveryLine?: array{on: bool}, priorPrice?: array{on: bool, onSale: int, missing: list<string>, higher: list<string>, brokenSeals: int, capped?: bool}}
      */
     public function collect(): array
     {
@@ -58,6 +64,21 @@ class NotesFacts
         if ($this->policy !== null) {
             $policy['policyMatch'] = $this->policyMatch($pages['withdrawal']);
         }
+        $policy['deliveryLine'] = ['on' => $this->settings->bool('deliveryLine', null)];
+        if ($this->orderButton !== null) {
+            $policy['orderButton'] = ['buttons' => $this->orderButton->collect(), 'words' => OrderButtonCheck::words($this->orderButtonWords)];
+        }
+        if ($this->prices !== null) {
+            $sale = $this->prices->saleCheck();
+            $policy['priorPrice'] = [
+                'on' => $this->settings->bool('priorPriceLine', null),
+                'onSale' => $sale['onSale'],
+                'missing' => array_map(static fn (array $p): string => $p['name'] !== '' ? $p['name'] : $p['id'], $sale['missing']),
+                'higher' => array_map(static fn (array $p): string => $p['name'] !== '' ? $p['name'] : $p['id'], $sale['higher']),
+                'brokenSeals' => \count($this->prices->verifySeals()['broken']),
+                'capped' => $sale['capped'],
+            ];
+        }
 
         return [
             'unitPriceGaps' => $this->unitPriceGaps(),
@@ -76,23 +97,128 @@ class NotesFacts
 
     /**
      * The withdrawal policy match check (decision 0039): the revocation page set in Settings >
-     * Basic information, compared with Shopproof's withdrawal period and the shop email.
+     * Basic information, compared with Shopproof's withdrawal period and the shop email. Each of
+     * the three can be set per sales channel, and the withdrawal form, its emails and the deadline
+     * clock use the channel's values, so each active storefront is checked with its own. Storefronts
+     * with the same page, period and email are checked once. When they all agree (or there is no
+     * active storefront, then the "All sales channels" values count) the result has one part as
+     * before; otherwise "channels" holds one part per group, named by its storefronts.
      *
-     * @return array{page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null}
+     * @return array{page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null, online?: array{status: string, lang: string|null, reason: string|null}, sentence?: string, channels?: list<array{names: list<string>, page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null, online?: array{status: string, lang: string|null, reason: string|null}, sentence?: string}>}
      */
-    private function policyMatch(string $pageId): array
+    private function policyMatch(string $shopPageId): array
+    {
+        $groups = [];
+        $channels = $this->storefronts();
+        if ($channels === []) {
+            $channels = [['id' => null, 'name' => '']];
+        }
+        foreach ($channels as $channel) {
+            $pageId = $channel['id'] === null ? $shopPageId : $this->settings->policyPages($channel['id'])['withdrawal'];
+            $days = OrderEmailLine::period($this->config->getInt('ShopproofCompliance.config.withdrawalDays', $channel['id']));
+            $email = $this->config->get('core.basicInformation.email', $channel['id']);
+            $email = \is_string($email) ? trim($email) : '';
+            $key = $pageId . '|' . $days . '|' . strtolower($email);
+            $groups[$key] ??= ['names' => [], 'pageId' => $pageId, 'days' => $days, 'email' => $email, 'channel' => $channel['id']];
+            if ($channel['name'] !== '') {
+                $groups[$key]['names'][] = $channel['name'];
+            }
+        }
+
+        $parts = [];
+        foreach ($groups as $group) {
+            $parts[] = ['names' => $group['names']] + $this->policyPart($group['pageId'], $group['days'], $group['email'], $group['channel']);
+        }
+        $first = $parts[0];
+        $out = ['page' => $first['page'], 'result' => $first['result']];
+        foreach (['online', 'sentence'] as $key) {
+            if (isset($first[$key])) {
+                $out[$key] = $first[$key];
+            }
+        }
+        if (\count($parts) > 1) {
+            $out['channels'] = $parts;
+        }
+
+        return $out;
+    }
+
+    /**
+     * @return array{page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null, online?: array{status: string, lang: string|null, reason: string|null}, sentence?: string}
+     */
+    private function policyPart(string $pageId, int $days, string $email, ?string $channel = null): array
     {
         if ($this->policy === null || $pageId === '' || !$this->pageExists($pageId)) {
             return ['page' => false, 'result' => null];
         }
-
-        return [
+        $text = PolicyMatch::plain($this->pageText([$pageId]));
+        $online = $this->policy->online($text);
+        $out = [
             'page' => true,
-            'result' => $this->policy->match(PolicyMatch::plain($this->pageText([$pageId])), [
-                'days' => OrderEmailLine::period($this->config->getInt('ShopproofCompliance.config.withdrawalDays')),
-                'emails' => [$this->config->getString('core.basicInformation.email')],
+            'result' => $this->policy->match($text, [
+                'days' => $days,
+                'emails' => [$email],
             ]),
+            'online' => $online,
         ];
+        if ($online['status'] !== PolicyMatch::FOUND) {
+            // The official sentence to copy, in the policy's language (else the storefront's), with
+            // the address of the withdrawal button's page when the storefront has one.
+            [$languageId, $locale] = $this->channelLanguage($channel);
+            $url = $channel !== null && $languageId !== '' && $this->emails !== null ? $this->emails->withdrawalUrl($channel, $languageId) : '';
+            $out['sentence'] = $this->policy->onlineSentence($online['lang'] ?? $locale, $url);
+        }
+
+        return $out;
+    }
+
+    /**
+     * The storefront's language id and locale code (for example de-DE); the shop's system
+     * language when there is no storefront.
+     *
+     * @return array{0: string, 1: string}
+     */
+    private function channelLanguage(?string $channel): array
+    {
+        $row = $channel !== null
+            ? $this->connection->fetchAssociative(
+                'SELECT LOWER(HEX(l.id)) AS id, lo.code AS code FROM sales_channel sc INNER JOIN language l ON l.id = sc.language_id LEFT JOIN locale lo ON lo.id = l.locale_id WHERE sc.id = :channel',
+                ['channel' => Uuid::fromHexToBytes($channel)]
+            )
+            : $this->connection->fetchAssociative(
+                'SELECT LOWER(HEX(l.id)) AS id, lo.code AS code FROM language l LEFT JOIN locale lo ON lo.id = l.locale_id WHERE l.id = :id',
+                ['id' => Uuid::fromHexToBytes(Defaults::LANGUAGE_SYSTEM)]
+            );
+        if (!\is_array($row)) {
+            return ['', 'en'];
+        }
+
+        return [\is_string($row['id'] ?? null) ? $row['id'] : '', \is_string($row['code'] ?? null) ? $row['code'] : 'en'];
+    }
+
+    /**
+     * The active storefronts, by name.
+     *
+     * @return list<array{id: string, name: string}>
+     */
+    private function storefronts(): array
+    {
+        $rows = $this->connection->fetchAllAssociative(
+            'SELECT LOWER(HEX(sc.id)) AS id, COALESCE(sct.name, \'\') AS name
+             FROM sales_channel sc
+             LEFT JOIN sales_channel_translation sct ON sct.sales_channel_id = sc.id AND sct.language_id = sc.language_id
+             WHERE sc.type_id = :type AND sc.active = 1 ORDER BY sct.name',
+            ['type' => Uuid::fromHexToBytes(Defaults::SALES_CHANNEL_TYPE_STOREFRONT)]
+        );
+        $channels = [];
+        foreach ($rows as $row) {
+            $id = \is_string($row['id'] ?? null) ? $row['id'] : '';
+            if ($id !== '') {
+                $channels[] = ['id' => $id, 'name' => \is_string($row['name'] ?? null) ? $row['name'] : ''];
+            }
+        }
+
+        return $channels;
     }
 
     private function pageExists(string $pageId): bool

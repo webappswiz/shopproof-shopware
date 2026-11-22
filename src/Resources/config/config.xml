@@ -19,6 +19,14 @@
                 <option><id>NL</id><name>Netherlands</name><name lang="de-DE">Niederlande</name></option>
             </options>
         </input-field>
+        <input-field type="bool">
+            <name>establishedOutsideEu</name>
+            <label>My business is established outside the EU and EEA</label>
+            <label lang="de-DE">Mein Unternehmen hat seinen Sitz außerhalb der EU und des EWR</label>
+            <helpText>For example in the United States, the United Kingdom, Switzerland or China. The Shopproof page then lists the extra EU duties for sellers from abroad: EU responsible person, import VAT and IOSS, customs on small parcels, import charges before the order and the GDPR representative. Technical help, not legal or tax advice.</helpText>
+            <helpText lang="de-DE">Zum Beispiel in den USA, im Vereinigten Königreich, in der Schweiz oder in China. Die Shopproof-Seite zeigt dann die zusätzlichen EU-Pflichten für Verkäufer aus dem Ausland: verantwortliche Person in der EU, Einfuhrumsatzsteuer und IOSS, Zoll auf kleine Sendungen, Einfuhrabgaben vor der Bestellung und der DSGVO-Vertreter. Technische Hilfe, keine Rechts- oder Steuerberatung.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
     </card>
     <card>
         <title>Rule updates</title>
@@ -262,6 +270,25 @@
         </input-field>
     </card>
     <card>
+        <title>Delivery and payment line</title>
+        <title lang="de-DE">Liefer- und Zahlungshinweis</title>
+        <input-field type="bool">
+            <name>deliveryLine</name>
+            <label>Say where you deliver and which payment methods you take</label>
+            <label lang="de-DE">Angeben, wohin Sie liefern und welche Zahlungsarten Sie annehmen</label>
+            <helpText>Shoppers must see both at the latest when they start to order (Art. 8(3) of Directive 2011/83/EU). One short line in the storefront language, right above the Go to checkout button in the cart and at the top of the checkout page. Countries are the storefront's active countries that allow shipping, payment methods its active ones. Leave it off if your cart already says this. Technical help, not legal advice.</helpText>
+            <helpText lang="de-DE">Kunden müssen beides spätestens bei Beginn des Bestellvorgangs sehen (Art. 8 Abs. 3 der Richtlinie 2011/83/EU, § 312j Abs. 1 BGB). Eine kurze Zeile in der Sprache der Storefront, direkt über dem Button „Zur Kasse“ im Warenkorb und oben auf der Kassenseite. Länder sind die aktiven Länder der Storefront mit erlaubtem Versand, Zahlungsarten ihre aktiven Zahlungsarten. Lassen Sie es aus, wenn Ihr Warenkorb das schon sagt. Technische Hilfe, keine Rechtsberatung.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+        <input-field type="text">
+            <name>deliveryNote</name>
+            <label>Delivery restrictions (optional)</label>
+            <label lang="de-DE">Lieferbeschränkungen (optional)</label>
+            <helpText>For example: No delivery to islands or to PO boxes. Shown as you write it. Set it per storefront for other languages.</helpText>
+            <helpText lang="de-DE">Zum Beispiel: Keine Lieferung auf Inseln oder an Packstationen. Wird so gezeigt, wie Sie es schreiben. Für andere Sprachen pro Storefront festlegen.</helpText>
+        </input-field>
+    </card>
+    <card>
         <title>Services</title>
         <title lang="de-DE">Dienstleistungen</title>
         <input-field type="single-select">
@@ -418,6 +445,14 @@
                 <option><id>free</id><name>Free shipping</name><name lang="de-DE">Versandkostenfrei</name></option>
             </options>
         </input-field>
+        <input-field type="bool">
+            <name>priorPriceLine</name>
+            <label>Show the lowest price of the 30 days before a reduction</label>
+            <label lang="de-DE">Niedrigsten Preis der 30 Tage vor einer Reduzierung zeigen</label>
+            <helpText>EU price rules (Omnibus Directive) say a reduced price must show the lowest price you charged in the 30 days before the reduction. Shopproof records every price change of your products in your default currency and, when this is on, shows "Lowest price in the 30 days before the reduction: EUR 89.99" right below prices with a list price, on product pages and in listings. It stays silent when you filled in Shopware's own "Cheapest price (last 30 days)" (Shopware then shows that), in other currencies, for advanced prices, and while Shopproof has less than 30 days of a product's prices: then fill in "Cheapest price (last 30 days)" yourself. The setup check lists those products. Once a day the new price changes are sealed into the proof log. Technical help, not legal advice.</helpText>
+            <helpText lang="de-DE">Nach den EU-Preisregeln (Omnibus-Richtlinie) muss ein reduzierter Preis den niedrigsten Preis der 30 Tage vor der Reduzierung zeigen. Shopproof zeichnet jede Preisänderung Ihrer Produkte in Ihrer Standardwährung auf und zeigt, wenn dies an ist, „Niedrigster Preis der letzten 30 Tage vor der Reduzierung: 89,99 €“ direkt unter Preisen mit Streichpreis, auf Produktseiten und in Listen. Nichts erscheint, wenn Sie das Shopware-Feld „Günstigster Preis (letzte 30 Tage)“ ausgefüllt haben (dann zeigt Shopware diesen), in anderen Währungen, bei erweiterten Preisen und solange Shopproof weniger als 30 Tage Preise eines Produkts hat: dann tragen Sie „Günstigster Preis (letzte 30 Tage)“ selbst ein. Die Einrichtungsprüfung nennt diese Produkte. Einmal am Tag werden die neuen Preisänderungen im Nachweisprotokoll versiegelt. Technische Hilfe, keine Rechtsberatung.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
     </card>
     <card>
         <title>Food information</title>
@@ -554,6 +589,32 @@
             <helpText>The setup check looks for the statement on Shopware's terms and imprint pages (Settings > Basic information) itself. Tick this when it sits elsewhere, for example in a text the check cannot read.</helpText>
             <helpText lang="de-DE">Die Einrichtungsprüfung sucht den Hinweis selbst auf den AGB- und Impressumsseiten von Shopware (Einstellungen > Stammdaten). Setzen Sie das Häkchen, wenn er woanders steht, zum Beispiel in einem Text, den die Prüfung nicht lesen kann.</helpText>
             <defaultValue>false</defaultValue>
+        </input-field>
+    </card>
+    <card>
+        <title>Review check notice</title>
+        <title lang="de-DE">Hinweis zur Prüfung von Bewertungen</title>
+        <input-field type="single-select">
+            <name>reviewsChoice</name>
+            <label>How do you check that reviews come from customers who bought the product?</label>
+            <label lang="de-DE">Wie prüfen Sie, ob Bewertungen von Kunden stammen, die das Produkt gekauft haben?</label>
+            <helpText>A shop that shows customer reviews must say whether and how it checks this (EU Unfair Commercial Practices Directive, Art. 7(6)); saying reviews are checked when they are not is banned outright. Shopproof shows one short line right below the reviews heading on product pages, in the page language. Shopware does not check purchases for reviews by itself, so choose "We do not check" unless a review plugin or your own process does. Technical help, not legal advice.</helpText>
+            <helpText lang="de-DE">Ein Shop, der Kundenbewertungen zeigt, muss sagen, ob und wie er das prüft (EU-Richtlinie über unlautere Geschäftspraktiken, Art. 7 Abs. 6; in Deutschland § 5b Abs. 3 UWG); zu behaupten, Bewertungen seien geprüft, wenn sie es nicht sind, ist immer verboten. Shopproof zeigt eine kurze Zeile direkt unter der Überschrift der Bewertungen auf Produktseiten, in der Sprache der Seite. Shopware prüft Käufe bei Bewertungen nicht selbst, wählen Sie also „Wir prüfen nicht“, außer ein Bewertungs-Plugin oder Ihr eigener Ablauf tut es. Technische Hilfe, keine Rechtsberatung.</helpText>
+            <defaultValue>notSet</defaultValue>
+            <options>
+                <option><id>notSet</id><name>Not chosen yet (nothing shows)</name><name lang="de-DE">Noch nicht gewählt (nichts wird angezeigt)</name></option>
+                <option><id>orders</id><name>Only customers who bought this product can review it. We check each review against our orders.</name><name lang="de-DE">Nur Kundinnen und Kunden, die dieses Produkt gekauft haben, können es bewerten. Wir prüfen jede Bewertung anhand unserer Bestellungen.</name></option>
+                <option><id>marked</id><name>Reviews marked as verified come from customers who bought this product. We check those against our orders. We do not check other reviews.</name><name lang="de-DE">Als verifiziert markierte Bewertungen stammen von Kundinnen und Kunden, die dieses Produkt gekauft haben. Wir prüfen diese anhand unserer Bestellungen. Andere Bewertungen prüfen wir nicht.</name></option>
+                <option><id>none</id><name>We do not check whether reviews come from customers who bought or used this product.</name><name lang="de-DE">Wir prüfen nicht, ob Bewertungen von Kundinnen und Kunden stammen, die dieses Produkt gekauft oder genutzt haben.</name></option>
+                <option><id>own</id><name>We check them another way (only your words below show)</name><name lang="de-DE">Wir prüfen sie anders (nur Ihre Worte unten werden gezeigt)</name></option>
+            </options>
+        </input-field>
+        <input-field type="textarea">
+            <name>reviewsHow</name>
+            <label>More about how you check (optional, up to 300 characters)</label>
+            <label lang="de-DE">Mehr dazu, wie Sie prüfen (optional, bis 300 Zeichen)</label>
+            <helpText>Shown after the line, in your words. For example "We publish all reviews, also negative ones." Needed when you check another way, for example through a review service; without it that answer shows nothing.</helpText>
+            <helpText lang="de-DE">Wird nach der Zeile angezeigt, in Ihren Worten. Zum Beispiel „Wir veröffentlichen alle Bewertungen, auch negative.“ Nötig, wenn Sie anders prüfen, zum Beispiel über einen Bewertungsdienst; ohne Text zeigt diese Antwort nichts.</helpText>
         </input-field>
     </card>
 </config>

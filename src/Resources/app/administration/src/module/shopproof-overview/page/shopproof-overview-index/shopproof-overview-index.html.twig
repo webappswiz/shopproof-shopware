@@ -126,8 +126,9 @@
                 :title="$t('shopproof.notes.title')"
             >
                 <ul class="shopproof-overview__checks">
-                    <li v-for="item in check.notes" :key="item.key">
+                    <li v-for="item in check.notes" :key="`${item.key}-${item.channel || ''}`">
                         <span class="shopproof-overview__state">{{ item.ok ? $t('shopproof.withdrawal.done') : $t('shopproof.products.warn') }}</span>
+                        <strong v-if="item.channel">{{ $t('shopproof.notes.policyChannel', { channel: item.channel }) }}</strong>
                         {{ $t(`shopproof.notes.${item.key}_${item.ok ? 'ok' : 'off'}`, { detail: item.detail || '' }) }}
                         <ul v-if="item.key === 'unitPrices' && check.unitPriceGaps" class="shopproof-overview__names">
                             <li v-for="product in check.unitPriceGaps" :key="product.id">
@@ -148,6 +149,10 @@
                 </template>
                 <p>{{ $t('shopproof.notes.where') }}</p>
             </mt-card>
+
+            <shopproof-green-claims />
+
+            <shopproof-a11y-statement />
 
             <mt-card
                 position-identifier="shopproof-overview-bulk"
@@ -264,6 +269,7 @@
                                     <router-link v-if="item.orderId" :to="orderLink(item.orderId)">{{ item.contractNumber }}</router-link>
                                     <template v-else>{{ item.contractNumber }}<br><small>{{ $t('shopproof.withdrawal.noOrder') }}</small></template>
                                     <template v-if="item.orderDate"><br><small>{{ $t('shopproof.withdrawal.orderDate') }}: {{ item.orderDate }}</small></template>
+                                    <p v-if="item.business && item.business.length" class="shopproof-overview__tone shopproof-overview__tone--warn"><small><strong>{{ $t('shopproof.withdrawal.businessTitle') }}</strong> {{ $t(`shopproof.withdrawal.business_${item.business.join('_')}`) }} {{ $t('shopproof.withdrawal.businessText') }}</small></p>
                                 </td>
                                 <td class="shopproof-overview__comment">
                                     <template v-if="item.items"><strong>{{ $t('shopproof.withdrawal.items') }}</strong><br>{{ item.items }}<br></template>
@@ -298,6 +304,10 @@
                                         @change="setDelivered(item, $event.target.value)"
                                     >
                                     <small v-if="item.clock && item.clock.deliveredSource === 'shipped'"><br>{{ $t('shopproof.withdrawal.estimated') }}</small>
+                                    <p v-if="showRefundLink(item)" class="shopproof-overview__refund">
+                                        <router-link :to="orderLink(item.orderId)">{{ $t('shopproof.withdrawal.refundOnOrder') }}</router-link>
+                                        <br><small>{{ $t('shopproof.withdrawal.refundOnOrderHelp') }}</small>
+                                    </p>
                                 </td>
                                 <td>
                                     <template v-if="confirmId === item.id">

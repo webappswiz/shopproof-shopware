@@ -3,6 +3,10 @@
 namespace Shopproof\Compliance\ProofLog;
 
 use Doctrine\DBAL\Connection;
+use Psr\Log\LoggerInterface;
+use Shopproof\Compliance\Notes\Deposit;
+use Shopproof\Compliance\Notes\PriceHistory;
+use Shopproof\Compliance\Placement\PlacementResult;
 use Shopproof\Compliance\Rules\RulesFile;
 use Shopproof\Compliance\Rules\RulesUpdater;
 use Shopproof\Compliance\Storefront\Registrations;
@@ -14,8 +18,9 @@ use Shopware\Core\System\SystemConfig\SystemConfigService;
 
 /**
  * The daily snapshot for the proof log: plugin and rules versions, countries, the withdrawal
- * button per storefront, which blocks are on, product counts and the shop's own registration
- * numbers as shown to shoppers. Business facts only, no customer data.
+ * button per storefront, which blocks are on, product counts, the shop's own registration
+ * numbers as shown to shoppers, the other feature settings per storefront and the last placement
+ * check. Business facts only, no customer data; free text the shop typed is not repeated.
  */
 class ProofSnapshot
 {
@@ -27,14 +32,23 @@ class ProofSnapshot
         private readonly SetupFacts $facts,
         private readonly RulesUpdater $rules,
         private readonly ProofLog $log,
+        private readonly ?PriceHistory $prices = null,
+        private readonly ?LoggerInterface $logger = null,
     ) {
     }
 
     /**
-     * Records today's snapshot and removes entries past the retention period.
+     * Sweeps the price history and seals its new rows (decision 0040), records today's snapshot
+     * and removes entries past the retention period.
      */
     public function run(): void
     {
+        try {
+            $this->prices?->daily();
+        } catch (\Throwable $e) {
+            // The snapshot still goes in; the next day's sweep catches up.
+            $this->logger?->error('Shopproof could not sweep or seal the price history: ' . $e->getMessage());
+        }
         $this->log->append('snapshot', $this->summary());
         $this->log->prune($this->retentionDays());
     }
@@ -86,6 +100,7 @@ class ProofSnapshot
                 'order_email_line' => $this->config->getBool(self::CONFIG . 'orderEmailWithdrawalLine', $channel['id']),
                 'withdrawal_days' => OrderEmailLine::period($this->config->getInt(self::CONFIG . 'withdrawalDays', $channel['id'])),
                 'registrations_footer' => $this->config->getBool(self::CONFIG . 'registrationsFooter', $channel['id']),
+                'features' => self::features($this->reader($channel['id'])),
             ], $facts['channels']),
             'withdrawal_flow_active' => $facts['flowActive'],
             'order_email_line' => $this->config->getBool(self::CONFIG . 'orderEmailWithdrawalLine'),
@@ -104,7 +119,80 @@ class ProofSnapshot
             'takeback_one_for_one' => $this->config->getBool(self::CONFIG . 'takebackOneForOne'),
             'registrations_product' => $this->config->getString(self::CONFIG . 'registrationsProductPage') ?: 'off',
             'registrations_footer' => $this->config->getBool(self::CONFIG . 'registrationsFooter'),
+            'features' => self::features($this->reader(null)),
+            'placement_check' => self::placement(PlacementResult::read($this->config->get(PlacementResult::CONFIG))),
         ];
+    }
+
+    /**
+     * The other shop and shopper facing settings as they take effect: withdrawal options, order
+     * email lines, checkout boxes and consent, cancel button, notes and statements. Pure, so it is
+     * unit tested alone; `$get` returns a raw setting by its name.
+     *
+     * @param callable(string): mixed $get
+     *
+     * @return array<string, mixed>
+     */
+    public static function features(callable $get): array
+    {
+        $bool = static fn (string $name): bool => (bool) $get($name);
+        $text = static fn (string $name): string => \is_string($get($name)) ? trim($get($name)) : '';
+        $boxes = $get('checkoutBoxes');
+
+        return [
+            'button_wording' => $text('buttonWording') ?: 'auto',
+            'account_link' => $bool('accountWithdrawalLink'),
+            'status_emails' => $bool('statusEmails'),
+            'item_picker' => $bool('itemPicker'),
+            'order_date_field' => $text('withdrawalOrderDate') ?: 'off',
+            'exclude_digital' => $bool('excludeDigital'),
+            'model_form_on_policy_page' => $bool('modelFormOnPolicyPage'),
+            'order_email_legal_links' => $bool('orderEmailLegalLinks'),
+            'checkout_boxes' => \is_array($boxes) ? array_values(array_filter($boxes, 'is_string')) : [],
+            'cart_descriptions' => $bool('cartDescriptions'),
+            'digital_consent' => $bool('digitalConsent'),
+            'service_consent' => $text('serviceConsent') ?: 'off',
+            'cancel_button' => $bool('cancelButton'),
+            'price_note_tax' => $text('priceNoteTax') ?: 'shopware',
+            'price_note_shipping' => $text('priceNoteShipping') ?: 'shopware',
+            'deposit_types' => \count(Deposit::parseTypes($text('depositTypes'))['types']),
+            'deposit_in_price' => $bool('depositInPrice'),
+            'food_business_set' => $text('foodBusiness') !== '',
+            'dispute_statement' => $text('disputeChoice') ?: 'notSet',
+            'dispute_statement_pasted' => $bool('disputePasted'),
+            'review_notice' => $text('reviewsChoice') ?: 'notSet',
+        ];
+    }
+
+    /**
+     * The last placement check that ran in the merchant's browser, or null when it never ran.
+     *
+     * @param array{time: int, pass: int, warn: int, fail: int, skipped: int, linked: int}|null $last
+     *
+     * @return array{checked_at: string, pass: int, warn: int, fail: int, skipped: int, linked: int}|null
+     */
+    public static function placement(?array $last): ?array
+    {
+        if ($last === null) {
+            return null;
+        }
+
+        return [
+            'checked_at' => gmdate('Y-m-d\\TH:i:s\\Z', $last['time']),
+            'pass' => $last['pass'],
+            'warn' => $last['warn'],
+            'fail' => $last['fail'],
+            'skipped' => $last['skipped'],
+            'linked' => $last['linked'],
+        ];
+    }
+
+    /**
+     * @return callable(string): mixed
+     */
+    private function reader(?string $salesChannelId): callable
+    {
+        return fn (string $name): mixed => $this->config->get(self::CONFIG . $name, $salesChannelId);
     }
 
     /**

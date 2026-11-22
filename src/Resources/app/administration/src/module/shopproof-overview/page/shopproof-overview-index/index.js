@@ -1,5 +1,6 @@
 import template from './shopproof-overview-index.html.twig';
 import './shopproof-overview-index.scss';
+import { refundLine, refundLink } from '../../../../withdrawal/refund-line.mjs';
 
 /** Country order and names follow the rules file's launch countries. */
 const ORDER = ['EU', 'AT', 'DE', 'FR', 'IT', 'NL'];
@@ -279,19 +280,9 @@ export default Shopware.Component.wrapComponentConfig({
             } else {
                 windowText = t(clock.window, { date: day(clock.windowEnd) });
             }
-            let refund;
-            if (clock.refund === 'paid') {
-                refund = [t('paid', { date: day(clock.refunded) }), 'ok'];
-            } else if (clock.refund === 'none') {
-                refund = [t(clock.window === 'late' ? 'none' : 'noneRight'), 'none'];
-            } else if (clock.refund === 'today') {
-                refund = [t('today', { date: day(clock.refundDue) }), 'bad'];
-            } else if (clock.refund === 'overdue') {
-                refund = [t('overdue', { days: -clock.daysLeft, date: day(clock.refundDue) }, -clock.daysLeft), 'bad'];
-            } else {
-                refund = [t('due', { days: clock.daysLeft, date: day(clock.refundDue) }, clock.daysLeft), clock.daysLeft <= 3 ? 'warn' : 'ok'];
-            }
-            if (clock.partlyRefunded && ['due', 'today', 'overdue'].includes(clock.refund)) {
+            const line = refundLine(clock, day);
+            let refund = [t(line.key, line.values, line.count), line.tone];
+            if (clock.partlyRefunded && ['due', 'today', 'overdue', 'waiting'].includes(clock.refund)) {
                 refund = [t('partly', { date: day(clock.partlyRefunded), line: refund[0] }), refund[1] === 'bad' ? 'bad' : 'warn'];
             }
             const lines = [[windowText, windowTone], refund];
@@ -489,6 +480,11 @@ export default Shopware.Component.wrapComponentConfig({
 
         orderLink(id) {
             return { name: 'sw.order.detail', params: { id } };
+        },
+
+        /** The shortcut to the order while a refund is still to do (refundLink in refund-line.mjs). */
+        showRefundLink(item) {
+            return refundLink(item);
         },
 
         /** A finished placement check changes the setup steps and the withdrawal button card. */

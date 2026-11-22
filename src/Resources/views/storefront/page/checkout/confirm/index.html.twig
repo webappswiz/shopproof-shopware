@@ -6,6 +6,16 @@
     plugin. The first keeps Shopware's own field, so Shopware still requires it; the plugin requires
     the second and saves both on the order.
 #}
+{# Where the shop delivers and how shoppers can pay (Art. 8(3) of Directive 2011/83/EU), when the
+   merchant turned it on: the same line as in the cart, below the page heading. #}
+{% block page_checkout_confirm_header %}
+    {{ parent() }}
+    {% set shopproofDeliveryLine = shopproof_delivery_line(context ?? null) %}
+    {% if shopproofDeliveryLine %}
+        <p class="shopproof-delivery-line">{{ shopproofDeliveryLine }}</p>
+    {% endif %}
+{% endblock %}
+
 {% block page_checkout_confirm_revocation_control %}
     {% if page.showRevocation() and shopproof_digital_consent(context ?? null) %}
         <div class="form-check shopproof-digital-consent">

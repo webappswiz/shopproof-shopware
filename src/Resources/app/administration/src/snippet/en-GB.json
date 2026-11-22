@@ -66,6 +66,8 @@
             "comment": "Comment",
             "actions": "Actions",
             "noOrder": "No matching order",
+            "refundOnOrder": "Refund on the order",
+            "refundOnOrderHelp": "Once you have sent the money, set the payment status in the order to Refunded. Shopproof then sets this withdrawal to Refund sent.",
             "orderDate": "Order date given",
             "delete": "Delete",
             "confirmDelete": "Delete for good",
@@ -100,6 +102,10 @@
                 "today": "Refund due today ({date})",
                 "overdue": "Refund overdue by {days} day (was due {date}) | Refund overdue by {days} days (was due {date})",
                 "due": "Refund due by {date} ({days} day left) | Refund due by {date} ({days} days left)",
+                "dueGoods": "Refund due by {date} ({days} day left), or once the goods are back if later | Refund due by {date} ({days} days left), or once the goods are back if later",
+                "waiting": "Refund waits for the goods: due once they are back or the customer shows proof of sending",
+                "todayBack": "Refund due today (goods back {date})",
+                "overdueBack": "Refund overdue by {days} day (goods back {date}) | Refund overdue by {days} days (goods back {date})",
                 "partly": "Partly refunded {date}, check: {line}",
                 "insideOrder": "In time: window ends {date} (14 days from the order, as for services)",
                 "performed": "Check: the service was fully provided before the withdrawal, after the early start request, so the right may have ended (Art. 16(a))",
@@ -113,11 +119,16 @@
                     "share": "Service: {share} % provided, the customer pays {owed}, refund {refund}",
                     "unknown": "Service: enter the service dates or the part provided on the order (Custom fields, Shopproof) to see what the customer pays"
                 },
-                "help": "Technical help, not legal advice. The window is 14 days (or your longer period) from delivery and runs to Monday when it ends on a weekend; public holidays can extend it too. The refund is due 14 days after the withdrawal arrived. For services, the window counts from the order, and with the early start request the customer pays for the part provided."
+                "help": "Technical help, not legal advice. The window is 14 days (or your longer period) from delivery and runs to Monday when it ends on a weekend; public holidays can extend it too. The refund is due 14 days after the withdrawal arrived; for goods you may wait until they are back (status Return arrived) or the customer shows proof of sending, whichever comes first, unless you offered to collect them (Art. 13(3)). For services, the window counts from the order, and with the early start request the customer pays for the part provided."
             },
             "items": "Items",
             "export": "Export all as CSV",
-            "exportFailed": "The CSV file could not be made. Please try again."
+            "exportFailed": "The CSV file could not be made. Please try again.",
+            "businessTitle": "Business order?",
+            "business_company": "This order has a company name.",
+            "business_vat": "This order has a VAT ID.",
+            "business_company_vat": "This order has a company name and a VAT ID.",
+            "businessText": "The right of withdrawal is for consumers, so a business customer may not have one. But that does not prove the purchase was for the business, and in some countries, such as Poland, sole traders keep the right for purchases outside their trade. Check before you refuse. Technical help, not legal advice."
         },
         "products": {
             "warn": "Check",
@@ -175,7 +186,8 @@
                 "snapshot": "Daily snapshot",
                 "withdrawal": "Withdrawal",
                 "retention": "Retention changed",
-                "anchor": "Stamp held by Shopproof"
+                "anchor": "Stamp held by Shopproof",
+                "prices": "Price history sealed"
             }
         },
         "returns": {
@@ -209,6 +221,7 @@
             "disputeStatement_ok": "Your dispute resolution statement is on your terms or imprint page",
             "disputeStatement_off": "Paste your dispute resolution statement into your terms and imprint pages (Content > Shopping Experiences), or tick that you did in the plugin settings.",
             "disputeIntro": "Your dispute resolution statement, to paste in the language of each page:",
+            "policyChannel": "Sales channel {channel}:",
             "policyPage_off": "Withdrawal policy: not checked, because no revocation page is set in Settings > Basic information. Set it, and Shopproof compares it with your withdrawal period and shop email.",
             "policyText_off": "Withdrawal policy: not checked, because your revocation page has almost no text. If it is filled in another way, compare the period and the email address yourself.",
             "policyPeriod_ok": "Withdrawal policy: your revocation page says {detail} days, the same as the withdrawal period in the plugin settings",
@@ -220,6 +233,20 @@
             "policyEmailDifferent_off": "Withdrawal policy: your revocation page names {detail}, not the shop email in Settings > Basic information. Check that customers who write to that address reach you.",
             "policyEmailUnsure_off": "Withdrawal policy: your revocation page names {detail}, but no shop email is set in Settings > Basic information, so Shopproof cannot compare it.",
             "policyEmailNone_off": "Withdrawal policy: no email address found on your revocation page. Check that it tells customers how to reach you.",
+            "orderButton_ok": "Order button: in every storefront language it says the order costs money, in the words the law names.",
+            "orderButton_off": "Order button: what it says now, then the words the law names: {detail}. Change the text under Settings > Snippets (checkout.confirmSubmit). Other words are only safe if they are as clear.",
+            "orderButtonUnknown_off": "Order button: not checked for {detail}, because Shopproof has no wording for this language. Check that the button says the order costs money.",
+            "deliveryLine_ok": "Delivery and payment line: the cart and checkout say where you deliver and which payment methods you take.",
+            "deliveryLine_off": "Delivery and payment line: off. Shoppers must see where you deliver and how they can pay before they start to order. Turn it on under Shopproof settings, Delivery and payment line, or check that your cart already says this.",
+            "policyOnline_ok": "Withdrawal policy: your revocation page says customers can also withdraw online",
+            "policyOnlineNone_off": "Withdrawal policy: Shopproof could not find the sentence that customers can also withdraw online, and where, on your revocation page. Since June 2026 the model withdrawal instructions include it. Add it to the section on how to withdraw, or check that your page says it in other words. The official sentence: \"{detail}\"",
+            "policyOnlineUnsure_off": "Withdrawal policy: not checked whether your revocation page says customers can also withdraw online, because Shopproof cannot judge pages in this language. Check it yourself. The official sentence: \"{detail}\"",
+            "priorPrice_ok": "Reduced prices show the lowest price of the 30 days before the reduction.",
+            "priorPriceCapped_off": "Reduced prices show the lowest price of the 30 days before the reduction for the first {detail} products on sale that Shopproof checked. Your shop has more products, which were not checked here.",
+            "priorPriceOff_off": "{detail} products have a list price (shown crossed out), but \"Show the lowest price of the 30 days before a reduction\" is off in the Shopproof settings. EU price rules ask you to show it.",
+            "priorPriceMissing_off": "These products have a list price, but Shopproof has less than 30 days of their prices, so no lowest price shows. Fill in Shopware's own \"Cheapest price (last 30 days)\" on the product (Prices): {detail}",
+            "priorPriceHigher_off": "These products cross out a list price that is higher than their 30-day lowest price, so the reduction looks bigger than it is. A percentage must be worked out from the 30-day lowest price (EU Court of Justice, C-330/23): {detail}",
+            "priorPriceSeals_off": "{detail} sealed parts of the price history no longer match their seal in the proof log: a recorded price was changed or deleted after it was sealed.",
             "where": "Change these in Settings > Extensions > Shopproof > Configure (cards Price notes, Bottle deposit, Cart and checkout, Dispute resolution statement). Technical help, not legal advice."
         },
         "bulk": {
@@ -269,7 +296,8 @@
                 "pass": "Passed",
                 "warn": "Check",
                 "fail": "Problem",
-                "skip": "Not checked"
+                "skip": "Not checked",
+                "info": "Note"
             },
             "text": {
                 "and": "and",
@@ -306,6 +334,10 @@
                 "others": {
                     "pass": "No second withdrawal button found.",
                     "warn": "We found another withdrawal button: {items}. Shoppers should see only one. Turn off the button in the other extension."
+                },
+                "a11y": {
+                    "pass": "Link to accessibility information found {areas}.",
+                    "info": "No link to accessibility information on this page. Most shops need an accessibility statement since 28 June 2025, usually linked in the footer; very small businesses are exempt."
                 }
             }
         },
@@ -405,6 +437,27 @@
                     "missing": "The rules list could not be loaded.",
                     "loaded": "{count} rule for the EU and your countries (version {version}). | {count} rules for the EU and your countries (version {version})."
                 }
+            },
+            "nonEu": {
+                "title": "Selling into the EU from abroad",
+                "intro": "You told Shopproof that your business is established outside the EU and EEA. EU consumer rules apply to your sales to EU buyers in the same way as for EU shops, so the withdrawal button and the other features work as usual. On top of that, these duties apply to sellers from outside the EU.",
+                "summary": "Extra duties for sellers from abroad still to check: {open} of {total}.",
+                "empty": "Not checked: the rules list in this shop has no duties for sellers outside the EU yet. Use \"Check for rule updates now\" further down.",
+                "state": {
+                    "good": "Done",
+                    "bad": "Needs action",
+                    "todo": "Check yourself"
+                },
+                "status": {
+                    "good": "An EU responsible person is entered in the Shopproof settings and shown with your products.",
+                    "bad": "No EU responsible person entered yet. Enter the name and address in the Shopproof settings (Product safety), and Shopproof shows them with every product.",
+                    "todo": "Check yourself. Shopproof cannot see this from your shop."
+                },
+                "source": "Source: {basis}.",
+                "official": "Official text",
+                "openSettings": "Open the Shopproof settings",
+                "footer": "Shopproof cannot act as your EU responsible person, IOSS intermediary or GDPR representative: you appoint them yourself. This is technical help, not legal or tax advice.",
+                "guide": "Guide for sellers outside the EU"
             }
         },
         "cancel": {
@@ -448,6 +501,77 @@
             "copy": "Copy address",
             "copied": "Address copied.",
             "notLegalAdvice": "Shopproof gives technical help. It is not legal advice."
+        },
+        "greenClaims": {
+            "title": "Green claims",
+            "intro": "Since 27 September 2026, EU law bans generic environmental claims such as \"eco-friendly\", \"climate friendly\" or \"sustainable\" unless the product has recognised excellent environmental performance (for example the EU Ecolabel) or the same page says exactly what the claim means. Claims that a product is climate neutral or has a reduced climate impact because of offsetting are banned outright (Directive (EU) 2024/825). Shopproof looks for the Directive's own example words in your product names and descriptions (default language), in all 24 EU languages.",
+            "checking": "Checking your products...",
+            "notChecked": "Not checked: Shopproof could not read your products or its word lists just now. Reload the page in a minute.",
+            "noProducts": "Not checked yet: the shop has no active products.",
+            "scopeSome": "Checked your {checked} most recently changed products of {total}.",
+            "scopeAll": "Checked {checked} product. | Checked all {checked} products.",
+            "aside": "{count} mention was left out because the sentence says the opposite, is about disposal, or gives the details (a percentage or an ecolabel). | {count} mentions were left out because the sentence says the opposite, is about disposal, or gives the details (a percentage or an ecolabel).",
+            "none": "None uses the example words from the Directive.",
+            "limits": "Shopproof only finds the Directive's example words and close forms of them. Other green claims, pictures and colours can still count as claims. Technical help, not legal advice.",
+            "worth": "{count} product worth checking | {count} products worth checking",
+            "canBeFine": "These words can be fine, for example with an EU Ecolabel for that claim, or when the same page says exactly what is meant (\"100% of the cotton is organic\"). Shopproof does not decide whether a claim is allowed: please check each one. Technical help, not legal advice.",
+            "line": "\"{term}\" ({kind}) {field}: {excerpt}",
+            "kind": {
+                "generic": "generic claim",
+                "broad": "broad sustainability claim",
+                "offsetting": "climate claim"
+            },
+            "field": {
+                "title": "in the name",
+                "description": "in the description"
+            },
+            "more": "And {count} more product. | And {count} more products.",
+            "kindsTitle": "What the three kinds mean",
+            "genericTitle": "Generic claim",
+            "genericText": "words such as \"eco-friendly\", \"umweltfreundlich\" or \"biodegradable\". Allowed only with recognised excellent environmental performance for that claim (the EU Ecolabel, an officially recognised EN ISO 14024 label, or top performance under EU law, such as energy class A for \"energy efficient\"), or when the same page says exactly what is meant (UCPD Annex I point 4a).",
+            "broadTitle": "Broad sustainability claim",
+            "broadText": "words such as \"sustainable\" or \"nachhaltig\". They also cover social qualities, so even an ecolabel is not enough on its own (recital 10). Say exactly what is meant on the same page, or leave the word out.",
+            "offsettingTitle": "Climate claim",
+            "offsettingText": "words such as \"climate neutral\", \"CO2 neutral\" or \"reduced climate impact\". Banned when they rest on offsetting emissions, for example with carbon credits; allowed only when they rest on the product's own lifecycle (UCPD Annex I point 4c). Telling shoppers that you support climate projects stays allowed when it is not misleading."
+        },
+        "a11y": {
+            "title": "Accessibility statement",
+            "intro": "Since 28 June 2025, most shops that sell to consumers in the EU must make their shop accessible and publish an accessibility statement: what the shop does for accessibility, the barriers it knows of, how to report one and which authority to contact. Very small businesses (fewer than 10 people and no more than 2 million euros a year) are exempt for their services. Most shops link the statement in the footer, next to the legal notice and privacy policy.",
+            "linkCheck": "The placement check above also shows, for each page, whether it links to accessibility information.",
+            "draftIntro": "Fill in what you know. The draft below changes as you type; copy it into a shopping experience or CMS page, read it, change anything that does not fit and link it in your footer. Nothing is stored or sent. The draft never says your shop is fully accessible. It says what you work towards and what you did.",
+            "country": "Country of your business",
+            "language": "Language",
+            "languageAuto": "From the country",
+            "countries": {
+                "AT": "Austria",
+                "DE": "Germany",
+                "FR": "France",
+                "IT": "Italy",
+                "NL": "Netherlands",
+                "other": "Another country"
+            },
+            "languages": {
+                "en": "English",
+                "de": "German",
+                "fr": "French",
+                "it": "Italian",
+                "nl": "Dutch"
+            },
+            "shop": "Shop name",
+            "url": "Shop address",
+            "email": "Email for reports",
+            "emailHelp": "Where shoppers tell you about a barrier. It goes on the page.",
+            "about": "What shoppers can do (optional)",
+            "aboutHelp": "One sentence. Leave it empty for: browse products, choose options, put them in the cart and order.",
+            "measures": "What you have done (optional)",
+            "measuresHelp": "One item per line, for example: All product photos have a text description.",
+            "barriers": "Barriers you know of (optional)",
+            "barriersHelp": "One item per line, for example: The size guide is hard to use with a keyboard.",
+            "noAuthority": "Shopproof knows the authority for Austria, Germany, France, Italy and the Netherlands. For another country the draft leaves a marked gap for you to fill in.",
+            "preview": "Your draft",
+            "copy": "Copy the draft",
+            "copied": "Copied.",
+            "where": "Technical help, not legal advice. Read the draft and change anything that does not fit your shop before you publish it."
         }
     }
 }
