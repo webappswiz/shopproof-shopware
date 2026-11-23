@@ -1,0 +1,577 @@
+{
+    "shopproof": {
+        "general": {
+            "title": "Shopproof",
+            "description": "EU-regels voor de landen waar u naar verkoopt"
+        },
+        "overview": {
+            "aboutTitle": "Over deze regels",
+            "disclaimer": "Technische informatie om winkels te helpen de regels na te leven. Geen juridisch advies.",
+            "loadFailed": "De regels konden niet worden geladen. Laad de pagina opnieuw en probeer het nog eens.",
+            "notYet": "De regellijst die met de plugin wordt meegeleverd, ontbreekt. Installeer de plugin opnieuw of klik op “Nu op regelupdates controleren”.",
+            "version": "Regelversie {version}, gedownload op {date}.",
+            "countriesHint": "Kies de landen waar u naar verkoopt onder Extensies > Mijn extensies > Shopproof EU Compliance > Configure. EU-brede regels worden altijd getoond.",
+            "groupTitle": "{country}: {count} regels",
+            "effectiveFrom": "Van kracht vanaf",
+            "whereInShop": "Waar in de winkel",
+            "legalBasis": "Officiële bron",
+            "opensNewTab": "(opent in een nieuw tabblad)",
+            "versionBundled": "Regelversie {version}, meegeleverd met de plugin.",
+            "autoOff": "Shopproof werkt zonder contact met een server. Wilt u regelwijzigingen krijgen zodra ze worden gepubliceerd, klik dan op “Nu op regelupdates controleren” of zet “Eén keer per dag regelupdates downloaden” aan in de plugininstellingen. De download gaat naar de regeldienst van Shopproof en verstuurt geen winkel-, klant- of persoonsgegevens.",
+            "autoOn": "Regelupdates worden één keer per dag gedownload van de regeldienst van Shopproof. U kunt dit uitzetten in de plugininstellingen.",
+            "refresh": "Nu op regelupdates controleren",
+            "refresh_updated": "Regels gecontroleerd. De lijst hieronder is de nieuwste versie.",
+            "refresh_failed": "De regeldienst kon niet worden bereikt. De regels die u al hebt, blijven staan; probeer het later opnieuw."
+        },
+        "countries": {
+            "EU": "EU-breed",
+            "AT": "Oostenrijk",
+            "DE": "Duitsland",
+            "FR": "Frankrijk",
+            "IT": "Italië",
+            "NL": "Nederland"
+        },
+        "withdrawal": {
+            "checkTitle": "Herroepingsknop",
+            "checkFailed": "De controle van de herroepingsknop kon niet worden geladen. Probeer het opnieuw.",
+            "unsupported": "Deze Shopware-versie heeft nog geen herroepingsknop. Update naar Shopware 6.7.9 of later om die te gebruiken; Shopproof legt dan elk verzoek vast.",
+            "allGood": "De herroepingsknop van Shopware is ingesteld in elke actieve storefront.",
+            "needsWork": "De herroepingsknop van Shopware moet nog verder worden ingesteld.",
+            "done": "Klaar",
+            "todo": "Nog te doen",
+            "where": "Wijzig dit onder Instellingen > Basisgegevens (Legal and compliance: Show “Revoke a contract” button in footer; Shop pages: Shop page layout for revocation request) en Instellingen > Flow Builder. Het verkoopkanaal kan elke instelling overschrijven. Technische hulp, geen juridisch advies.",
+            "check": {
+                "flowActive": "De flow “Online revocation request sent” is actief, dus e-mails worden verstuurd",
+                "customerMail": "De flow stuurt de klant per e-mail een bevestiging met het verzoek en de datum en tijd ervan",
+                "recordTable": "De tabel van Shopproof voor de vastleggingen bestaat (shopproof_withdrawal_request). Zo niet, installeer de plugin dan opnieuw.",
+                "buttonOn": "De herroepingsknop staat aan",
+                "page": "De knop linkt naar een pagina voor herroepingsverzoeken",
+                "form": "Die pagina heeft het formulier voor herroepingsverzoeken",
+                "labels": "Elke storefronttaal heeft de nationale tekst voor de knop",
+                "labelsMissing": "Deze storefronttalen hebben nog geen nationale tekst voor de knop: {languages}. Stel de knoptekst in onder Instellingen > Tekstfragmenten.",
+                "wording": "De gekozen knoptekst geldt in elke storefronttaal",
+                "wordingMissing": "Deze storefronttalen hebben geen gecontroleerde alternatieve tekst, dus ze houden de nationale tekst: {languages}.",
+                "wordingOwn": "Uw eigen knoptekst wordt nog niet gebruikt: vul beide teksten in en vink aan dat u de wettelijke formulering begrijpt (Shopproof-instellingen, kaart Herroepingsknop). Tot dan geldt de nationale tekst.",
+                "returnsUrl": "Het adres van uw retourtool kan niet worden gebruikt, dus herroepingen worden niet doorgestuurd. Vul het volledige https://-adres in dat uw retourtool u heeft gegeven (Shopproof-instellingen, kaart Retourtool). Herroepingen worden hier nog steeds vastgelegd."
+            },
+            "listTitle": "Herroepingsverzoeken",
+            "listIntro": "Elk verzoek dat via de herroepingsknop van Shopware is verstuurd, bewaard in de database van deze winkel, zodat u kunt laten zien wanneer het binnenkwam. Shopproof ontvangt het nooit.",
+            "searchLabel": "Zoeken op e-mailadres, naam of bestelnummer",
+            "search": "Zoeken",
+            "listFailed": "De herroepingsverzoeken konden niet worden geladen. Uw gebruiker heeft het recht nodig om bestellingen te bekijken.",
+            "none": "Nog geen herroepingsverzoeken.",
+            "received": "Ontvangen",
+            "customer": "Klant",
+            "contract": "Bestel- of contractnummer",
+            "comment": "Opmerking",
+            "actions": "Acties",
+            "noOrder": "Geen bijbehorende bestelling",
+            "refundOnOrder": "Terugbetalen bij de bestelling",
+            "refundOnOrderHelp": "Zet de betaalstatus in de bestelling op Terugbetaald zodra u het geld hebt overgemaakt. Shopproof zet deze herroeping dan op Terugbetaling verstuurd.",
+            "orderDate": "Opgegeven besteldatum",
+            "delete": "Verwijderen",
+            "confirmDelete": "Definitief verwijderen",
+            "cancel": "Annuleren",
+            "failedRecords": "{count} herroepingsverzoek kon niet worden vastgelegd; controleer het logbestand en de e-mails van Shopware. | {count} herroepingsverzoeken konden niet worden vastgelegd; controleer het logbestand en de e-mails van Shopware.",
+            "failedHelp": "Shopware heeft zijn e-mails wel verstuurd, dus de klant heeft een bevestiging gekregen, maar het verzoek ontbreekt in de lijst hieronder. Zoek het op in de e-mails die Shopware naar de winkel heeft gestuurd en in var/log (zoek naar “Shopproof could not record”), en bewaar een kopie.",
+            "failedClear": "Ik heb deze gecontroleerd",
+            "status": "Status",
+            "deadlines": "Termijnen",
+            "deliveredOn": "Goederen ontvangen op",
+            "deliveredHelp": "De dag waarop de klant de goederen heeft ontvangen (het laatste artikel). Zonder deze datum geldt de dag waarop Shopware de levering als verzonden heeft gemarkeerd; dan kan alleen “op tijd” of “controleren” worden getoond.",
+            "states": {
+                "received": "Herroeping ontvangen",
+                "return_arrived": "Retour ontvangen",
+                "refund_sent": "Terugbetaling verstuurd"
+            },
+            "emailed": "De klant heeft een e-mail gekregen.",
+            "notEmailed": "Er is geen e-mail verstuurd (de instelling staat uit, of de winkel heeft geen e-mailadres of sjabloon voor deze storefront).",
+            "statusFailed": "De status kon niet worden opgeslagen. Probeer het opnieuw.",
+            "confirmStatus": "Deze status opslaan? De klant krijgt er een e-mail over, tenzij status-e-mails uitstaan in de instellingen.",
+            "confirmYes": "Opslaan en klant informeren",
+            "confirmNo": "Annuleren",
+            "estimated": "Geschat op basis van de verzenddatum",
+            "clock": {
+                "before_delivery": "Op tijd: verstuurd vóór de levering",
+                "inside": "Op tijd: termijn eindigt op {date}",
+                "late": "{days} dag te laat: termijn eindigde op {date} | {days} dagen te laat: termijn eindigde op {date}",
+                "check": "Controleren: mogelijk te laat, vul de leverdatum in",
+                "unknown": "Termijn onbekend: vul de leverdatum in",
+                "paid": "Terugbetaald op {date}",
+                "none": "Geen termijn voor terugbetaling zolang de herroeping te laat is",
+                "today": "Terugbetaling vandaag verschuldigd ({date})",
+                "overdue": "Terugbetaling {days} dag te laat (verschuldigd op {date}) | Terugbetaling {days} dagen te laat (verschuldigd op {date})",
+                "due": "Terugbetaling verschuldigd uiterlijk {date} (nog {days} dag) | Terugbetaling verschuldigd uiterlijk {date} (nog {days} dagen)",
+                "dueGoods": "Terugbetaling verschuldigd uiterlijk {date} (nog {days} dag), of zodra de goederen terug zijn als dat later is | Terugbetaling verschuldigd uiterlijk {date} (nog {days} dagen), of zodra de goederen terug zijn als dat later is",
+                "waiting": "Terugbetaling wacht op de goederen: verschuldigd zodra ze terug zijn of de klant een verzendbewijs laat zien",
+                "todayBack": "Terugbetaling vandaag verschuldigd (goederen terug op {date})",
+                "overdueBack": "Terugbetaling {days} dag te laat (goederen terug op {date}) | Terugbetaling {days} dagen te laat (goederen terug op {date})",
+                "partly": "Gedeeltelijk terugbetaald op {date}, controleren: {line}",
+                "insideOrder": "Op tijd: termijn eindigt op {date} (14 dagen na de bestelling, zoals bij diensten)",
+                "performed": "Controleren: de dienst was volledig verricht vóór de herroeping, na het verzoek om eerder te beginnen, dus het recht kan zijn vervallen (art. 16, onder a)",
+                "digital": "Controleren: digitale inhoud, en de klant heeft bij het afrekenen ingestemd dat de download eerder mag beginnen en dat het recht dan vervalt. Als de download vóór de herroeping is begonnen, kan het recht zijn vervallen (art. 16, onder m)",
+                "exempt": "Controleren: alleen boekingen op een vaste datum (vrije tijd, reizen en dergelijke), meestal geen herroepingsrecht (art. 16, onder l)",
+                "noneRight": "Geen termijn voor terugbetaling zolang het herroepingsrecht mogelijk niet geldt",
+                "owed": {
+                    "no_consent": "Dienst: de klant betaalt niets voor wat is verricht, omdat er geen verzoek is om eerder te beginnen (art. 14, lid 4)",
+                    "not_started": "Dienst: nog niet begonnen toen de herroeping binnenkwam, niets verschuldigd",
+                    "days": "Dienst: {days} van {of} dagen verricht, de klant betaalt {owed}, terugbetaling {refund}",
+                    "share": "Dienst: {share} % verricht, de klant betaalt {owed}, terugbetaling {refund}",
+                    "unknown": "Dienst: vul de data van de dienst of het verrichte deel in bij de bestelling (Aangepaste velden, Shopproof) om te zien wat de klant betaalt"
+                },
+                "help": "Technische hulp, geen juridisch advies. De termijn is 14 dagen (of uw langere termijn) vanaf de levering en loopt door tot maandag als die in een weekend eindigt; ook feestdagen kunnen de termijn verlengen. De terugbetaling is verschuldigd 14 dagen nadat de herroeping binnenkwam; bij goederen mag u wachten tot ze terug zijn (status Retour ontvangen) of de klant een verzendbewijs laat zien, wat het eerst komt, tenzij u hebt aangeboden ze op te halen (art. 13, lid 3). Bij diensten telt de termijn vanaf de bestelling, en met het verzoek om eerder te beginnen betaalt de klant voor het verrichte deel."
+            },
+            "items": "Artikelen",
+            "export": "Alles exporteren als CSV",
+            "exportFailed": "Het CSV-bestand kon niet worden gemaakt. Probeer het opnieuw.",
+            "businessTitle": "Zakelijke bestelling?",
+            "business_company": "Deze bestelling heeft een bedrijfsnaam.",
+            "business_vat": "Deze bestelling heeft een btw-nummer.",
+            "business_company_vat": "Deze bestelling heeft een bedrijfsnaam en een btw-nummer.",
+            "businessText": "Het herroepingsrecht geldt voor consumenten, dus een zakelijke klant heeft het misschien niet. Maar dat bewijst niet dat de aankoop voor het bedrijf was, en in sommige landen, zoals Polen, houden eenmanszaken het recht voor aankopen buiten hun bedrijf of beroep. Controleer dit voordat u weigert. Technische hulp, geen juridisch advies."
+        },
+        "products": {
+            "warn": "Controleren",
+            "guaranteeNotice_ok": "De EU-garantievermelding over de wettelijke garantie wordt getoond op productpagina’s",
+            "guaranteeNotice_off": "De EU-garantievermelding over de wettelijke garantie staat uit in minstens één storefront. Vanaf 27 september 2026 is die verplicht voor goederen. Zet “De officiële EU-garantievermelding over de wettelijke garantie op productpagina’s tonen” aan in de plugininstellingen.",
+            "manufacturerDetails_ok": "Elke fabrikant van uw producten heeft contactgegevens voor de informatie over productveiligheid",
+            "manufacturerDetails_off": "Deze fabrikanten hebben geen contactgegevens, dus hun producten tonen alleen de naam van de fabrikant. Voeg het adres en e-mailadres toe onder Catalogus > Fabrikant (Shopproof: productveiligheid), of bij elk product:",
+            "hazardStatements_off": "Deze producten hebben gevarenaanduidingen of veiligheidsaanbevelingen die de productpagina niet kan tonen. Codes met een keuze of een open plek (zoals P280 of P501) hebben uw eigen woorden nodig na een dubbele punt, bijvoorbeeld “P280: Beschermende handschoenen dragen.”. Open het product, Aangepaste velden, “Shopproof: gevaarlijke chemische stoffen (CLP)”:",
+            "hazardOwn": "heeft uw eigen woorden nodig",
+            "hazardUnknown": "onbekende code, controleer het etiket",
+            "registrationNumbers_off": "Deze regels van “Uw registratienummers” in de plugininstellingen worden niet getoond, omdat ze geen dubbele punt of geen nummer hebben, of omdat er meer dan 12 zijn. Schrijf ze zo: “WEEE DE: DE 12345678”:",
+            "ownGoodsTitle": "Maakt u uw eigen goederen?",
+            "ownGoodsText": "Dan is uw winkel de fabrikant. Deze gegevens uit Instellingen > Basisgegevens kunnen de lege standaardvelden voor de fabrikant in de Shopproof-instellingen invullen. Producten met een eigen fabrikant houden die. Controleer de gegevens eerst.",
+            "ownGoodsButton": "Deze gegevens gebruiken voor de lege velden",
+            "ownGoods_saved": "Opgeslagen. Controleer ze in de plugininstellingen onder Productveiligheid (GPSR).",
+            "ownGoods_failed": "De gegevens konden niet worden opgeslagen. Probeer het opnieuw."
+        },
+        "cms": {
+            "label": "Shopproof-productinformatie",
+            "previewText": "Duurzaamheidslabel, productveiligheid, garantievermelding",
+            "elementText": "Op de productpagina toont dit het duurzaamheidslabel, de informatie over productveiligheid en de EU-garantievermelding over de wettelijke garantie, elk waar dat van toepassing is. Een blok dat het koopvak of de beschrijving al op de pagina toont, wordt niet herhaald.",
+            "configText": "Hier valt niets in te stellen. De inhoud komt van elk product en van de Shopproof-instellingen onder Extensies > Mijn extensies > Shopproof EU Compliance > Configure."
+        },
+        "layouts": {
+            "title": "Productpagina’s",
+            "intro": "Waar Shopproof het duurzaamheidslabel en de regel over productveiligheid (in het koopvak) en de garantievermelding en de informatie over inname (onder de productbeschrijving) toont, voor elke lay-out van productpagina’s die uw winkel gebruikt.",
+            "ok": "toont de Shopproof-blokken",
+            "missing": "heeft geen plek voor {blocks}. Open de lay-out en voeg het blok “Shopproof-productinformatie” (categorie Handel) toe waar ze moeten verschijnen.",
+            "part": {
+                "durability": "het duurzaamheidslabel",
+                "safety": "productveiligheid",
+                "guarantee": "de garantievermelding en de informatie over inname"
+            }
+        },
+        "proof": {
+            "title": "Bewijslogboek",
+            "intro": "Een gedateerde vastlegging van wat uw winkel toonde en welke herroepingen binnenkwamen, bewaard in de eigen database van uw winkel. Elke vermelding is met een SHA-256-hash gekoppeld aan de vorige, dus een gewijzigde of verwijderde vermelding valt op als u de keten controleert. Er staan geen namen, e-mailadressen of bestelnummers van klanten in. Er wordt één keer per dag een momentopname vastgelegd.",
+            "unavailable": "De tabel van het bewijslogboek ontbreekt. Update de plugin of installeer die opnieuw.",
+            "loadFailed": "Het bewijslogboek kon niet worden geladen.",
+            "none": "Nog geen vermeldingen. De eerste momentopname wordt binnen een dag vastgelegd, of klik op “Nu een momentopname vastleggen”.",
+            "lastSnapshot": "Laatste momentopname: {date}",
+            "retention": "Vermeldingen worden {days} dagen bewaard (plugininstellingen, Bewijslogboek).",
+            "retentionAll": "Alle vermeldingen worden bewaard (plugininstellingen, Bewijslogboek).",
+            "verify": "De keten controleren",
+            "verifyOk": "Keten intact: {count} vermeldingen gecontroleerd.",
+            "verifyBroken": "Keten verbroken bij vermelding {id}, na {count} intacte vermeldingen. Een vermelding is gewijzigd of verwijderd.",
+            "verifyFailed": "De controle kon niet worden uitgevoerd.",
+            "snapshot": "Nu een momentopname vastleggen",
+            "download": "Downloaden als CSV",
+            "time": "Tijd (UTC)",
+            "type": "Type",
+            "summary": "Samenvatting",
+            "hash": "Hash",
+            "types": {
+                "snapshot": "Dagelijkse momentopname",
+                "withdrawal": "Herroeping",
+                "retention": "Bewaartermijn gewijzigd",
+                "anchor": "Stempel bewaard door Shopproof",
+                "prices": "Prijsgeschiedenis verzegeld"
+            }
+        },
+        "returns": {
+            "title": "Retourtool",
+            "intro": "Shopproof kan elke nieuwe herroeping als ondertekende JSON naar uw retourtool of automatisering sturen, en een link naar uw retourportaal toevoegen aan de ontvangstbevestiging van de klant. Stel de adressen in bij de Shopproof-instellingen (kaart Retourtool).",
+            "on": "Aan: elke nieuwe herroeping wordt naar uw retourtool gestuurd.",
+            "off": "Uit: er is geen webhookadres ingesteld.",
+            "secret": "Ondertekeningssleutel",
+            "secretHelp": "Plak deze in uw retourtool. Elk verzoek heeft de header X-Shopproof-Signature: t=<time>,v1=<signature>. De handtekening is de HMAC-SHA256, in hex, van de tijd, een punt en de inhoud van het verzoek, met deze sleutel. Houd de sleutel geheim.",
+            "renew": "Nieuwe sleutel",
+            "renewed": "Nieuwe sleutel gemaakt. Plak die in uw retourtool, want de oude werkt niet meer.",
+            "test": "Een test versturen",
+            "testOk": "Uw retourtool heeft de test geaccepteerd (status {code}).",
+            "testRefused": "Uw retourtool heeft de test geweigerd met status {code}. Controleer daar het adres en de sleutel.",
+            "testUnreachable": "Uw retourtool kon niet worden bereikt. Controleer het adres.",
+            "delivery": {
+                "queued": "Retourtool: wacht op verzending.",
+                "sent": "Retourtool: verstuurd op {time}, status {code}.",
+                "retrying": "Retourtool: niet geaccepteerd op {time} (status {code}). Shopproof probeert het opnieuw.",
+                "failed": "Retourtool: opgegeven op {time} (status {code}). Maak de retour handmatig aan."
+            }
+        },
+        "notes": {
+            "title": "Winkelnotities",
+            "unitPrices_off": "Deze producten lijken per gewicht of volume te worden verkocht (bijvoorbeeld “500 g” in de naam), maar hebben geen inhoud en eenheid ingesteld, dus Shopware toont geen eenheidsprijs. Open het product, Specificaties, Maatregelen & verpakking:",
+            "depositTypes_off": "Deze regels van “Uw soorten statiegeld” in de plugininstellingen worden niet gebruikt. Schrijf ze zo: “de-eenmalig | Einweg | 0.25 | eenmalig | DE”:",
+            "checkoutPolicyPages_off": "Deze vakjes bij het afrekenen die u hebt gekozen, worden niet getoond, omdat hun pagina niet is ingesteld in Instellingen > Basisgegevens:",
+            "box_withdrawal": "Ik heb het herroepingsbeleid gelezen (herroepingspagina)",
+            "box_privacy": "Ik heb de privacyverklaring gelezen (privacypagina)",
+            "disputeBoard_off": "Uw verklaring over geschillenbeslechting noemt nog geen geschillencommissie. Vul de naam in de plugininstellingen in.",
+            "disputeStatement_ok": "Uw verklaring over geschillenbeslechting staat op uw pagina met algemene voorwaarden of bedrijfsgegevens",
+            "disputeStatement_off": "Plak uw verklaring over geschillenbeslechting in uw pagina’s met algemene voorwaarden en bedrijfsgegevens (Inhoud > Belevingswerelden), of vink in de plugininstellingen aan dat u dat hebt gedaan.",
+            "disputeIntro": "Uw verklaring over geschillenbeslechting, om in de taal van elke pagina te plakken:",
+            "policyChannel": "Verkoopkanaal {channel}:",
+            "policyPage_off": "Herroepingsbeleid: niet gecontroleerd, omdat er geen herroepingspagina is ingesteld in Instellingen > Basisgegevens. Stel die in, dan vergelijkt Shopproof die met uw herroepingstermijn en het e-mailadres van uw winkel.",
+            "policyText_off": "Herroepingsbeleid: niet gecontroleerd, omdat uw herroepingspagina bijna geen tekst heeft. Als die op een andere manier wordt gevuld, vergelijk de termijn en het e-mailadres dan zelf.",
+            "policyPeriod_ok": "Herroepingsbeleid: uw herroepingspagina noemt {detail} dagen, net als de herroepingstermijn in de plugininstellingen",
+            "policyPeriodDifferent_off": "Herroepingsbeleid: uw herroepingspagina noemt {detail} dagen, maar de herroepingstermijn in de plugininstellingen is anders. Pas een van beide aan zodat ze overeenkomen.",
+            "policyPeriodMonths_off": "Herroepingsbeleid: uw herroepingspagina geeft de termijn in maanden, dus Shopproof kan die niet vergelijken. Controleer of die gelijk is aan de herroepingstermijn in de plugininstellingen.",
+            "policyPeriodMany_off": "Herroepingsbeleid: uw herroepingspagina noemt meer dan één termijn ({detail} dagen). Controleer of de herroepingstermijn in de plugininstellingen de juiste is.",
+            "policyPeriodNone_off": "Herroepingsbeleid: geen herroepingstermijn gevonden op uw herroepingspagina. Controleer die zelf.",
+            "policyEmail_ok": "Herroepingsbeleid: uw herroepingspagina noemt het e-mailadres van uw winkel",
+            "policyEmailDifferent_off": "Herroepingsbeleid: uw herroepingspagina noemt {detail}, niet het e-mailadres van de winkel in Instellingen > Basisgegevens. Controleer of klanten die naar dat adres schrijven u bereiken.",
+            "policyEmailUnsure_off": "Herroepingsbeleid: uw herroepingspagina noemt {detail}, maar er is geen e-mailadres van de winkel ingesteld in Instellingen > Basisgegevens, dus Shopproof kan het niet vergelijken.",
+            "policyEmailNone_off": "Herroepingsbeleid: geen e-mailadres gevonden op uw herroepingspagina. Controleer of die klanten vertelt hoe ze u kunnen bereiken.",
+            "orderButton_ok": "Bestelknop: in elke storefronttaal staat erop dat de bestelling geld kost, in de woorden die de wet noemt.",
+            "orderButton_off": "Bestelknop: wat er nu op staat, daarna de woorden die de wet noemt: {detail}. Wijzig de tekst onder Instellingen > Tekstfragmenten (checkout.confirmSubmit). Andere woorden zijn alleen veilig als ze net zo duidelijk zijn.",
+            "orderButtonUnknown_off": "Bestelknop: niet gecontroleerd voor {detail}, omdat Shopproof geen formulering voor deze taal heeft. Controleer of op de knop staat dat de bestelling geld kost.",
+            "deliveryLine_ok": "Regel over levering en betaling: de winkelwagen en het afrekenen tonen waar u levert en welke betaalmethoden u accepteert.",
+            "deliveryLine_off": "Regel over levering en betaling: uit. Klanten moeten zien waar u levert en hoe ze kunnen betalen voordat ze beginnen met bestellen. Zet de regel aan onder Shopproof-instellingen, Regel over levering en betaling, of controleer of uw winkelwagen dit al vermeldt.",
+            "policyOnline_ok": "Herroepingsbeleid: uw herroepingspagina vermeldt dat klanten ook online kunnen herroepen",
+            "policyOnlineNone_off": "Herroepingsbeleid: Shopproof kon op uw herroepingspagina de zin niet vinden dat klanten ook online kunnen herroepen, en waar. Sinds juni 2026 staat die in de modelinstructies voor herroeping. Voeg de zin toe aan het deel over hoe de klant kan herroepen, of controleer of uw pagina het in andere woorden zegt. De officiële zin: “{detail}”",
+            "policyOnlineUnsure_off": "Herroepingsbeleid: niet gecontroleerd of uw herroepingspagina vermeldt dat klanten ook online kunnen herroepen, omdat Shopproof pagina’s in deze taal niet kan beoordelen. Controleer dit zelf. De officiële zin: “{detail}”",
+            "priorPrice_ok": "Afgeprijsde producten tonen de laagste prijs van de 30 dagen vóór de korting.",
+            "priorPriceCapped_off": "Afgeprijsde producten tonen de laagste prijs van de 30 dagen vóór de korting voor de eerste {detail} producten in de aanbieding die Shopproof heeft gecontroleerd. Uw winkel heeft meer producten, die hier niet zijn gecontroleerd.",
+            "priorPriceOff_off": "{detail} producten hebben een catalogusprijs (doorgestreept getoond), maar “De laagste prijs van de 30 dagen vóór een korting tonen” staat uit in de Shopproof-instellingen. De EU-prijsregels vragen u die te tonen.",
+            "priorPriceMissing_off": "Deze producten hebben een catalogusprijs, maar Shopproof heeft minder dan 30 dagen aan prijzen van deze producten, dus er wordt geen laagste prijs getoond. Vul het eigen veld “Goedkoopste prijs (afgelopen 30 dagen)” van Shopware in bij het product (Prijzen): {detail}",
+            "priorPriceHigher_off": "Deze producten strepen een catalogusprijs door die hoger is dan hun laagste prijs van 30 dagen, dus de korting lijkt groter dan ze is. Een percentage moet worden berekend op basis van de laagste prijs van 30 dagen (Hof van Justitie van de EU, C-330/23): {detail}",
+            "priorPriceSeals_off": "{detail} verzegelde delen van de prijsgeschiedenis komen niet meer overeen met hun verzegeling in het bewijslogboek: een vastgelegde prijs is gewijzigd of verwijderd nadat die was verzegeld.",
+            "where": "Wijzig dit in Instellingen > Extensies > Shopproof > Configure (kaarten Prijsvermeldingen, Statiegeld op flessen, Winkelwagen en afrekenen, Verklaring over geschillenbeslechting). Technische hulp, geen juridisch advies."
+        },
+        "bulk": {
+            "title": "Veiligheidsgegevens voor veel producten tegelijk",
+            "intro": "Vul de gegevens over productveiligheid van veel producten in een spreadsheet in, met de eigen functie Import/export van Shopware:",
+            "step1": "Open Instellingen > Import/export, tabblad Export, en exporteer met het profiel “Shopproof: productveiligheid”. Vink “Productvarianten exporteren” aan als uw varianten eigen gegevens hebben.",
+            "step2": "Vul de kolommen in het bestand in. Laat de kolom product_number zoals die is. Gevarenpictogrammen houden de vorm van de export, bijvoorbeeld [\"GHS02\",\"GHS07\"].",
+            "step3": "Importeer het bestand met hetzelfde profiel, tabblad Import. Producten worden gekoppeld op productnummer, en een lege cel laat de waarde zoals die is. Een rij met een onbekend nummer wordt niet geïmporteerd: Shopware meldt de import dan als mislukt en biedt een bestand met die rijen aan, terwijl de andere rijen worden opgeslagen.",
+            "manufacturers": "De meeste producten nemen hun gegevens over van hun fabrikant. Het profiel “Shopproof: veiligheidsgegevens van fabrikanten” werkt op dezelfde manier voor fabrikanten, gekoppeld op de kolom id.",
+            "bulkEdit": "Wilt u een paar producten dezelfde gegevens geven, selecteer ze dan in Catalogus > Producten, kies Bulk bewerken en vul “Shopproof: productveiligheid (GPSR)” in onder Vrije tekstvelden.",
+            "openImport": "Import/export openen",
+            "openProducts": "Producten openen"
+        },
+        "placement": {
+            "title": "Controleren waar de herroepingslink verschijnt",
+            "intro": "Hier ziet u uw winkelpagina’s zoals klanten ze zien, op een computer en op een telefoon. De herroepingsknop heeft een blauw kader, en alles wat de inhoud van uw thema bedekt, heeft een rood gestippeld kader. Klik in de voorbeeldweergave rond in uw winkel, dan wordt elke pagina opnieuw gecontroleerd. De controle draait in uw browser en er verlaat niets uw winkel; alleen het aantal goedgekeurde pagina’s wordt opgeslagen.",
+            "loadFailed": "De winkelpagina’s voor de controle konden niet worden geladen. Laad deze pagina opnieuw om het nog eens te proberen.",
+            "noChannel": "Er is geen actieve storefront met een domein gevonden, dus er valt niets te controleren.",
+            "otherOrigin": "{names}: geen enkel storefrontdomein gebruikt het adres waarop deze beheeromgeving open is, dus uw browser toont deze pagina’s hier misschien niet en ze tellen als niet gecontroleerd. Open de beheeromgeving op het eigen domein van de storefront, of voeg dat domein toe aan de storefront, om ze te controleren.",
+            "page": {
+                "label": "Pagina",
+                "home": "Startpagina",
+                "product": "Productpagina",
+                "listing": "Categoriepagina",
+                "cart": "Winkelwagen",
+                "account": "Klantaccount (inloggen)",
+                "withdrawal": "Herroepingspagina"
+            },
+            "width": "Breedte van de voorbeeldweergave",
+            "desktop": "Desktop",
+            "phone": "Telefoon",
+            "again": "Alle pagina’s opnieuw controleren",
+            "open": "Deze pagina openen in een nieuw tabblad",
+            "loading": "De pagina wordt geladen...",
+            "blocked": "We konden deze pagina niet tonen in de voorbeeldweergave. De beheeromgeving en de winkel staan misschien op verschillende webadressen, een beveiligingsinstelling op de server blokkeert misschien voorbeeldweergaven, of de pagina heeft u naar een andere site gestuurd. Open de pagina in een nieuw tabblad en controleer die zelf.",
+            "blockedShort": "Kon niet openen",
+            "checking": "Bezig met controleren...",
+            "sweeping": "Uw pagina’s worden gecontroleerd op een computer en een telefoon...",
+            "swept": "Alle pagina’s gecontroleerd.",
+            "missing": "Geen link",
+            "notNeeded": "Hier niet nodig",
+            "frameTitle": "Voorbeeldweergave van uw winkelpagina",
+            "tableCaption": "Herroepingslink op elke pagina",
+            "last": "Laatste controle {date}: {pass} goedgekeurd, {warn} om naar te kijken, {fail} met een probleem, {skipped} niet gecontroleerd.",
+            "footnote": "Technische hulp, geen juridisch advies. De cookiebanner kan als zwevend element worden getoond totdat u die in de voorbeeldweergave sluit. Kies daarna de pagina opnieuw om die nog eens te controleren.",
+            "status": {
+                "pass": "Goedgekeurd",
+                "warn": "Controleren",
+                "fail": "Probleem",
+                "skip": "Niet gecontroleerd",
+                "info": "Opmerking"
+            },
+            "text": {
+                "and": "en",
+                "area": {
+                    "footer": "in de footer",
+                    "header": "in de header of het menu",
+                    "main": "in de inhoud van de pagina",
+                    "account": "in het accountgedeelte",
+                    "other": "op de pagina"
+                },
+                "found": {
+                    "pass": "Herroepingsknop gevonden {areas}.",
+                    "fail": "Geen herroepingsknop op deze pagina. Klanten moeten die op elke pagina kunnen vinden, bijvoorbeeld in de footer.",
+                    "skip": "Geen herroepingsknop op deze pagina, wat hier geen probleem is."
+                },
+                "visible": {
+                    "pass": "Klanten zien de knop zonder iets te openen.",
+                    "warn": "Bij deze schermbreedte is de knop verborgen {areas}, bijvoorbeeld in een gesloten menu. Zorg dat die ook ergens anders zichtbaar is, zoals in de footer."
+                },
+                "clear": {
+                    "pass": "Niets bedekt de knop.",
+                    "warn": "Iets bedekt een van de knoppen: {items}.",
+                    "fail": "Iets bedekt de knop: {items}. Klanten kunnen die niet bereiken."
+                },
+                "contrast": {
+                    "pass": "Tekstcontrast {value}:1 (de toegankelijkheidsnorm vraagt minstens 4,5:1).",
+                    "warn": "De knop is moeilijk te lezen: het tekstcontrast is maar {value}:1, en de toegankelijkheidsnorm (WCAG 2.2 AA) vraagt 4,5:1. Kies andere knopkleuren in uw thema.",
+                    "skip": "Contrast niet gemeten: er staat een afbeelding of kleurverloop achter de tekst."
+                },
+                "floating": {
+                    "pass": "Niets zweeft over de inhoud van uw thema.",
+                    "warn": "Iets zweeft over de inhoud van uw thema: {items}. Dit komt niet van Shopproof, maar van uw thema of een andere extensie."
+                },
+                "others": {
+                    "pass": "Geen tweede herroepingsknop gevonden.",
+                    "warn": "We hebben nog een herroepingsknop gevonden: {items}. Klanten mogen er maar één zien. Zet de knop in de andere extensie uit."
+                },
+                "a11y": {
+                    "pass": "Link naar informatie over toegankelijkheid gevonden {areas}.",
+                    "info": "Geen link naar informatie over toegankelijkheid op deze pagina. De meeste winkels hebben sinds 28 juni 2025 een toegankelijkheidsverklaring nodig, meestal gelinkt in de footer; zeer kleine bedrijven zijn vrijgesteld."
+                }
+            }
+        },
+        "setup": {
+            "loadFailed": "Het overzicht van de inrichting kon niet worden geladen. Laad deze pagina opnieuw om het nog eens te proberen.",
+            "title": "Shopproof inrichten",
+            "progress": "{done} van {all} stappen klaar.",
+            "doneSr": "(klaar)",
+            "optional": "(optioneel)",
+            "start": "Beginnen",
+            "complete": "De inrichting is klaar. Shopproof blijft controleren en toont hieronder alles wat nieuw is.",
+            "glance": "Uw winkel in één oogopslag",
+            "why": "Waarom is dit nodig?",
+            "whyText": "De wet: {law}. Die geldt vanaf {date}.",
+            "whyLink": "De officiële tekst lezen",
+            "notAdvice": "Shopproof geeft technische hulp. Het is geen juridisch advies.",
+            "state": {
+                "good": "Klaar",
+                "warn": "Even nakijken",
+                "bad": "Actie nodig",
+                "todo": "Nog te doen"
+            },
+            "link": {
+                "open": "Openen",
+                "fix": "Oplossen"
+            },
+            "step": {
+                "button": {
+                    "title": "De herroepingsknop van Shopware aanzetten",
+                    "help": "Zet onder Instellingen > Basisgegevens de herroepingsknop aan en kies de pagina met het herroepingsformulier, voor elke storefront."
+                },
+                "placement": {
+                    "title": "Controleren of klanten de herroepingsknop kunnen vinden",
+                    "help": "We openen uw winkelpagina’s en zoeken de knop op een computer en een telefoon. Dat duurt ongeveer een minuut."
+                },
+                "safety": {
+                    "title": "Toevoegen wie uw producten maakt",
+                    "help": "Geef elke fabrikant een adres en e-mailadres onder Catalogus > Fabrikant, of stel in de plugininstellingen een fabrikant voor de hele winkel in."
+                },
+                "guarantee": {
+                    "title": "De garantievermelding over de wettelijke garantie tonen",
+                    "help": "Een officiële EU-vermelding op uw productpagina’s. Zet die aan met één schakelaar in de plugininstellingen."
+                },
+                "registrations": {
+                    "title": "Uw registratienummers toevoegen",
+                    "help": "Alleen als u elektrische apparaten, batterijen of verpakkingen verkoopt waarvoor een nummer nodig is. Vul ze in de plugininstellingen in."
+                }
+            },
+            "card": {
+                "withdrawal": {
+                    "title": "Herroepingsknop",
+                    "unsupported": "Deze Shopware-versie heeft nog geen herroepingsknop. Update naar Shopware 6.7.9 of later.",
+                    "notReady": "Niet klaar: de knop staat uit of heeft in minstens één storefront geen pagina met het formulier, of de ontvangstmail of de vastlegging van verzoeken werkt niet. De controle van de inrichting hieronder noemt wat u moet oplossen.",
+                    "notChecked": "De knop staat aan. Controleer of klanten die op elke pagina kunnen vinden.",
+                    "problem": "De laatste controle vond een probleem op {count} pagina. | De laatste controle vond een probleem op {count} pagina’s.",
+                    "noPages": "Niet gecontroleerd. De laatste controle heeft geen enkele winkelpagina geopend die de herroepingsknop zou moeten tonen, dus de knop is daar niet gevonden. Voer de controle opnieuw uit.",
+                    "look": "Werkt, maar de laatste controle vond iets om naar te kijken.",
+                    "working": "Werkt. De knop is gevonden op de {count} pagina die we hebben gecontroleerd. | Werkt. De knop is gevonden op alle {count} pagina’s die we hebben gecontroleerd."
+                },
+                "withdrawals": {
+                    "title": "Herroepingen",
+                    "failed": "{count} herroepingsverzoek kon niet worden vastgelegd. | {count} herroepingsverzoeken konden niet worden vastgelegd.",
+                    "overdue": "{count} terugbetaling is vandaag verschuldigd of te laat. | {count} terugbetalingen zijn vandaag verschuldigd of te laat.",
+                    "soon": "{count} terugbetaling is verschuldigd in de komende 3 dagen. | {count} terugbetalingen zijn verschuldigd in de komende 3 dagen.",
+                    "received": "{count} herroeping ontvangen. Er is niets verschuldigd. | {count} herroepingen ontvangen. Er is niets verschuldigd.",
+                    "none": "Nog geen. Ze verschijnen hier als een klant de knop gebruikt."
+                },
+                "safety": {
+                    "title": "Productveiligheid",
+                    "noProducts": "Nog geen actieve producten.",
+                    "noMaker": "{count} van {total} producten toont geen fabrikant. | {count} van {total} producten tonen geen fabrikant.",
+                    "noDetails": "{count} fabrikant heeft geen adres of e-mailadres, dus de producten ervan tonen alleen de naam. | {count} fabrikanten hebben geen adres of e-mailadres, dus hun producten tonen alleen de naam.",
+                    "complete": "Elk product toont de fabrikant met contactgegevens."
+                },
+                "guarantee": {
+                    "title": "Garantievermelding wettelijke garantie",
+                    "on": "Getoond op uw productpagina’s.",
+                    "off": "Uit in minstens één storefront. Het EU-recht vraagt winkels die goederen verkopen om de vermelding te tonen.",
+                    "unknown": "Niet gecontroleerd. Productveiligheid staat uit, dus Shopproof kijkt niet naar de productpagina’s."
+                },
+                "registrations": {
+                    "title": "Registratienummers",
+                    "some": "{count} nummer ingevuld. | {count} nummers ingevuld.",
+                    "none": "Geen ingevuld. Alleen nodig voor elektrische apparaten, batterijen of verpakkingen."
+                },
+                "proof": {
+                    "title": "Bewijslogboek",
+                    "unavailable": "De tabel van het bewijslogboek ontbreekt. Installeer de plugin opnieuw.",
+                    "changed": "Een oude vermelding is gewijzigd of verwijderd.",
+                    "empty": "De eerste dagelijkse vermelding wordt binnen een dag toegevoegd.",
+                    "noSnapshot": "Legt niets vast: er is nog geen dagelijkse vermelding, hoewel het logboek andere vermeldingen heeft. De geplande taken van Shopware draaien misschien niet.",
+                    "stale": "Legt niets vast: de nieuwste dagelijkse vermelding is van {date}. De geplande taken van Shopware draaien misschien niet.",
+                    "recording": "Legt elke dag vast. {count} vermelding, geen wijzigingen gevonden. | Legt elke dag vast. {count} vermeldingen, geen wijzigingen gevonden."
+                },
+                "rules": {
+                    "title": "Regels",
+                    "missing": "De regellijst kon niet worden geladen.",
+                    "loaded": "{count} regel voor de EU en uw landen (versie {version}). | {count} regels voor de EU en uw landen (versie {version})."
+                }
+            },
+            "nonEu": {
+                "title": "Vanuit het buitenland in de EU verkopen",
+                "intro": "U hebt Shopproof verteld dat uw bedrijf buiten de EU en de EER is gevestigd. De EU-consumentenregels gelden voor uw verkopen aan kopers in de EU op dezelfde manier als voor EU-winkels, dus de herroepingsknop en de andere functies werken zoals gewoonlijk. Daarnaast gelden deze plichten voor verkopers van buiten de EU.",
+                "summary": "Extra plichten voor verkopers uit het buitenland die u nog moet controleren: {open} van {total}.",
+                "empty": "Niet gecontroleerd: de regellijst in deze winkel heeft nog geen plichten voor verkopers buiten de EU. Gebruik “Nu op regelupdates controleren” verderop.",
+                "state": {
+                    "good": "Klaar",
+                    "bad": "Actie nodig",
+                    "todo": "Zelf controleren"
+                },
+                "status": {
+                    "good": "Er is een verantwoordelijke persoon in de EU ingevuld in de Shopproof-instellingen en die wordt getoond bij uw producten.",
+                    "bad": "Nog geen verantwoordelijke persoon in de EU ingevuld. Vul de naam en het adres in bij de Shopproof-instellingen (Productveiligheid), dan toont Shopproof die bij elk product.",
+                    "todo": "Zelf controleren. Shopproof kan dit niet zien vanuit uw winkel."
+                },
+                "source": "Bron: {basis}.",
+                "official": "Officiële tekst",
+                "openSettings": "De Shopproof-instellingen openen",
+                "footer": "Shopproof kan niet optreden als uw verantwoordelijke persoon in de EU, IOSS-tussenpersoon of AVG-vertegenwoordiger: die wijst u zelf aan. Dit is technische hulp, geen juridisch of fiscaal advies.",
+                "guide": "Handleiding voor verkopers buiten de EU"
+            }
+        },
+        "cancel": {
+            "title": "Opzeggingen",
+            "intro": "Opzeggingen die klanten op uw opzegpagina hebben verstuurd (Instellingen > Extensies > Shopproof, “Opzegknop”). Elke klant heeft een bevestigingsmail gekregen met de datum en tijd van ontvangst, en het e-mailadres van uw winkel heeft een kopie gekregen.",
+            "failed": "De opzeggingen konden niet worden geladen.",
+            "none": "Nog geen opzeggingen.",
+            "open": "{count} openstaande opzegging | {count} openstaande opzeggingen",
+            "end": "Eindigt",
+            "extraordinary": "Om een dringende reden",
+            "earliest": "Op de vroegst mogelijke datum",
+            "doneOn": "Afgehandeld op {date}",
+            "openState": "Open",
+            "noReceipt": "De klant heeft de bevestigingsmail niet gekregen. Bevestig de opzegging per e-mail aan de klant.",
+            "markDone": "Markeren als afgehandeld",
+            "next": "Beëindig de overeenkomst (bij een abonnement in uw abonnementenapp), laat de klant de einddatum weten als die de vroegst mogelijke datum heeft gekozen, en markeer de opzegging als afgehandeld. Technische hulp, geen juridisch advies."
+        },
+        "contact": {
+            "title": "Hulp en contact",
+            "guides": "Stapsgewijze handleidingen:",
+            "formTitle": "Stuur ons een bericht",
+            "intro": "Vragen, een probleem of een idee? Schrijf ons hier. We lezen elk bericht zelf.",
+            "introPro": "Vragen, een probleem of een idee? Schrijf ons hier. Als klant van Shopproof Pro krijgt u binnen 1 werkdag antwoord.",
+            "name": "Uw naam (optioneel)",
+            "email": "Uw e-mailadres, voor ons antwoord",
+            "message": "Uw bericht",
+            "includeShop": "Mijn winkeladres ({shop}) meesturen, zodat u het probleem kunt bekijken",
+            "what": "Als u op Versturen klikt, stuurt uw winkel uw naam, e-mailadres en bericht, het winkeladres als dat is aangevinkt, en de versienummers hieronder naar shopproof.app. Het komt bij ons binnen als e-mail aan support{'@'}shopproof.app en we gebruiken het alleen om u te antwoorden. Laat klantgegevens weg.",
+            "privacy": "Privacyverklaring",
+            "send": "Bericht versturen",
+            "sent": "Bedankt, uw bericht is onderweg. We antwoorden naar {email}.",
+            "sentPro": "Bedankt, uw bericht is onderweg. We antwoorden binnen 1 werkdag, naar {email}.",
+            "unreachable": "Uw winkel kon shopproof.app niet bereiken.",
+            "stillThere": "Uw bericht staat nog in het formulier hieronder. U kunt het opnieuw proberen, of het in plaats daarvan per e-mail versturen:",
+            "openEmail": "Openen in een e-mail",
+            "errorEmail": "Vul een volledig e-mailadres in, zoals u{'@'}uwwinkel.nl, zodat we u kunnen antwoorden.",
+            "errorShort": "Schrijf een paar woorden, zodat we weten hoe we kunnen helpen.",
+            "errorLong": "Uw bericht is te lang. Houd het onder 4.000 tekens.",
+            "loadFailed": "Het formulier kon uw gegevens niet laden. U kunt ze nog steeds zelf invullen.",
+            "ownEmail": "Liever uw eigen e-mail gebruiken?",
+            "copy": "Adres kopiëren",
+            "copied": "Adres gekopieerd.",
+            "notLegalAdvice": "Shopproof geeft technische hulp. Het is geen juridisch advies."
+        },
+        "greenClaims": {
+            "title": "Groene claims",
+            "intro": "Sinds 27 september 2026 verbiedt het EU-recht algemene milieuclaims zoals “milieuvriendelijk”, “klimaatvriendelijk” of “duurzaam”, tenzij het product erkende uitstekende milieuprestaties heeft (bijvoorbeeld de EU-milieukeur) of dezelfde pagina precies zegt wat de claim betekent. Claims dat een product klimaatneutraal is of een kleinere klimaatimpact heeft door compensatie zijn helemaal verboden (Richtlijn (EU) 2024/825). Shopproof zoekt naar de voorbeeldwoorden uit de richtlijn zelf in uw productnamen en -beschrijvingen (standaardtaal), in alle 24 EU-talen.",
+            "checking": "Uw producten worden gecontroleerd...",
+            "notChecked": "Niet gecontroleerd: Shopproof kon uw producten of zijn woordenlijsten op dit moment niet lezen. Laad de pagina over een minuut opnieuw.",
+            "noProducts": "Nog niet gecontroleerd: de winkel heeft geen actieve producten.",
+            "scopeSome": "Uw {checked} laatst gewijzigde producten van {total} gecontroleerd.",
+            "scopeAll": "{checked} product gecontroleerd. | Alle {checked} producten gecontroleerd.",
+            "aside": "{count} vermelding is weggelaten omdat de zin het tegendeel zegt, over afvalverwerking gaat of de details geeft (een percentage of een milieukeur). | {count} vermeldingen zijn weggelaten omdat de zin het tegendeel zegt, over afvalverwerking gaat of de details geeft (een percentage of een milieukeur).",
+            "none": "Geen enkel product gebruikt de voorbeeldwoorden uit de richtlijn.",
+            "limits": "Shopproof vindt alleen de voorbeeldwoorden uit de richtlijn en vormen die er dicht bij liggen. Andere groene claims, afbeeldingen en kleuren kunnen nog steeds als claim gelden. Technische hulp, geen juridisch advies.",
+            "worth": "{count} product om te controleren | {count} producten om te controleren",
+            "canBeFine": "Deze woorden kunnen in orde zijn, bijvoorbeeld met een EU-milieukeur voor die claim, of als dezelfde pagina precies zegt wat er bedoeld wordt (“100% van het katoen is biologisch”). Shopproof beslist niet of een claim is toegestaan: controleer elke claim zelf. Technische hulp, geen juridisch advies.",
+            "line": "“{term}” ({kind}) {field}: {excerpt}",
+            "kind": {
+                "generic": "algemene claim",
+                "broad": "brede duurzaamheidsclaim",
+                "offsetting": "klimaatclaim"
+            },
+            "field": {
+                "title": "in de naam",
+                "description": "in de beschrijving"
+            },
+            "more": "En nog {count} product. | En nog {count} producten.",
+            "kindsTitle": "Wat de drie soorten betekenen",
+            "genericTitle": "Algemene claim",
+            "genericText": "woorden zoals “milieuvriendelijk”, “umweltfreundlich” of “biologisch afbreekbaar”. Alleen toegestaan met erkende uitstekende milieuprestaties voor die claim (de EU-milieukeur, een officieel erkend EN ISO 14024-label, of topprestaties volgens EU-recht, zoals energieklasse A voor “energiezuinig”), of als dezelfde pagina precies zegt wat er bedoeld wordt (richtlijn oneerlijke handelspraktijken, bijlage I, punt 4 bis).",
+            "broadTitle": "Brede duurzaamheidsclaim",
+            "broadText": "woorden zoals “duurzaam” of “nachhaltig”. Die gaan ook over sociale kenmerken, dus zelfs een milieukeur is op zich niet genoeg (overweging 10). Zeg op dezelfde pagina precies wat er bedoeld wordt, of laat het woord weg.",
+            "offsettingTitle": "Klimaatclaim",
+            "offsettingText": "woorden zoals “klimaatneutraal”, “CO2-neutraal” of “kleinere klimaatimpact”. Verboden als ze berusten op het compenseren van uitstoot, bijvoorbeeld met CO2-credits; alleen toegestaan als ze berusten op de eigen levenscyclus van het product (richtlijn oneerlijke handelspraktijken, bijlage I, punt 4 quater). Klanten vertellen dat u klimaatprojecten steunt, blijft toegestaan zolang het niet misleidend is."
+        },
+        "a11y": {
+            "title": "Toegankelijkheidsverklaring",
+            "intro": "Sinds 28 juni 2025 moeten de meeste winkels die aan consumenten in de EU verkopen hun winkel toegankelijk maken en een toegankelijkheidsverklaring publiceren: wat de winkel doet voor toegankelijkheid, welke drempels bekend zijn, hoe iemand een drempel kan melden en welke instantie men kan benaderen. Zeer kleine bedrijven (minder dan 10 mensen en niet meer dan 2 miljoen euro per jaar) zijn vrijgesteld voor hun diensten. De meeste winkels linken de verklaring in de footer, naast de bedrijfsgegevens en de privacyverklaring.",
+            "linkCheck": "De plaatsingscontrole hierboven toont ook per pagina of die linkt naar informatie over toegankelijkheid.",
+            "draftIntro": "Vul in wat u weet. Het concept hieronder verandert terwijl u typt; kopieer het naar een belevingswereld of CMS-pagina, lees het, pas aan wat niet past en link het in uw footer. Er wordt niets opgeslagen of verstuurd. Het concept zegt nooit dat uw winkel volledig toegankelijk is. Het zegt waar u naartoe werkt en wat u hebt gedaan.",
+            "country": "Land van uw bedrijf",
+            "language": "Taal",
+            "languageAuto": "Op basis van het land",
+            "countries": {
+                "AT": "Oostenrijk",
+                "DE": "Duitsland",
+                "FR": "Frankrijk",
+                "IT": "Italië",
+                "NL": "Nederland",
+                "other": "Een ander land"
+            },
+            "languages": {
+                "en": "Engels",
+                "de": "Duits",
+                "fr": "Frans",
+                "it": "Italiaans",
+                "nl": "Nederlands"
+            },
+            "shop": "Naam van de winkel",
+            "url": "Adres van de winkel",
+            "email": "E-mailadres voor meldingen",
+            "emailHelp": "Waar klanten u een drempel melden. Het komt op de pagina te staan.",
+            "about": "Wat klanten kunnen doen (optioneel)",
+            "aboutHelp": "Eén zin. Laat leeg voor: producten bekijken, opties kiezen, ze in de winkelwagen leggen en bestellen.",
+            "measures": "Wat u hebt gedaan (optioneel)",
+            "measuresHelp": "Eén punt per regel, bijvoorbeeld: Alle productfoto’s hebben een tekstbeschrijving.",
+            "barriers": "Drempels die u kent (optioneel)",
+            "barriersHelp": "Eén punt per regel, bijvoorbeeld: De maattabel is moeilijk te gebruiken met een toetsenbord.",
+            "noAuthority": "Shopproof kent de instantie voor Oostenrijk, Duitsland, Frankrijk, Italië en Nederland. Voor een ander land laat het concept een gemarkeerde open plek die u zelf invult.",
+            "preview": "Uw concept",
+            "copy": "Het concept kopiëren",
+            "copied": "Gekopieerd.",
+            "where": "Technische hulp, geen juridisch advies. Lees het concept en pas aan wat niet bij uw winkel past voordat u het publiceert."
+        }
+    }
+}

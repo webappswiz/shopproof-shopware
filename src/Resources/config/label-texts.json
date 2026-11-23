@@ -1,0 +1,913 @@
+{
+    "_note": "Admin labels the plugin creates (custom fields, options, help texts, Import/Export profiles) in the admin languages beyond English and German, keyed by the English in the installers. Decision 0044. Independently reviewed per language.",
+    "For goods with an EU energy label (appliances, lamps, TVs, heaters). Shoppers see the coloured class arrow and the \"Product information sheet\" link right below the price, on the product page and in listings. Variants can set their own. Technical help, not legal advice.": {
+        "fr-FR": "Pour les marchandises avec une étiquette énergétique de l'UE (appareils, lampes, téléviseurs, appareils de chauffage). Les clients voient la flèche de classe colorée et le lien « Fiche d'information sur le produit » juste sous le prix, sur la page produit et dans les listes de produits. Les variantes peuvent avoir leurs propres valeurs. Aide technique, pas un conseil juridique.",
+        "it-IT": "Per i beni con un'etichetta energetica UE (elettrodomestici, lampade, TV, apparecchi per il riscaldamento). Gli acquirenti vedono la freccia colorata della classe e il link «Scheda informativa del prodotto» subito sotto il prezzo, nella pagina prodotto e negli elenchi. Le varianti possono avere valori propri. Aiuto tecnico, non consulenza legale.",
+        "nl-NL": "Voor goederen met een EU-energielabel (apparaten, lampen, tv’s, verwarmingstoestellen). Klanten zien de gekleurde klassenpijl en de link “Productinformatieblad” direct onder de prijs, op de productpagina en in overzichten. Varianten kunnen eigen waarden instellen. Technische hulp, geen juridisch advies.",
+        "es-ES": "Para bienes con etiqueta energética de la UE (electrodomésticos, lámparas, televisores, calefactores). Los clientes ven la flecha de color de la clase y el enlace «Ficha de información del producto» justo debajo del precio, en la página de producto y en los listados. Las variantes pueden tener sus propios valores. Ayuda técnica, no asesoramiento legal.",
+        "pl-PL": "Dla towarów z unijną etykietą energetyczną (urządzenia, lampy, telewizory, ogrzewacze). Kupujący widzą kolorową strzałkę klasy i link „Karta informacyjna produktu” tuż pod ceną, na stronie produktu i na listach. Warianty mogą mieć własne wartości. Pomoc techniczna, nie porada prawna."
+    },
+    "Empty means A to G, the scale of the new labels. Older labels (ovens, range hoods, heaters) use another range, for example A+++ to D.": {
+        "fr-FR": "Vide signifie de A à G, l'échelle des nouvelles étiquettes. Les anciennes étiquettes (fours, hottes, appareils de chauffage) utilisent une autre échelle, par exemple de A+++ à D.",
+        "it-IT": "Vuoto significa da A a G, la scala delle nuove etichette. Le etichette precedenti (forni, cappe da cucina, apparecchi per il riscaldamento) usano un'altra scala, per esempio da A+++ a D.",
+        "nl-NL": "Leeg betekent A tot en met G, de schaal van de nieuwe labels. Oudere labels (ovens, afzuigkappen, verwarmingstoestellen) gebruiken een andere reeks, bijvoorbeeld A+++ tot en met D.",
+        "es-ES": "Vacío significa de A a G, la escala de las etiquetas nuevas. Las etiquetas antiguas (hornos, campanas extractoras, calefactores) usan otra escala, por ejemplo, de A+++ a D.",
+        "pl-PL": "Puste oznacza od A do G, skalę nowych etykiet. Starsze etykiety (piekarniki, okapy kuchenne, ogrzewacze) mają inny zakres, na przykład od A+++ do D."
+    },
+    "The number in the EU product database EPREL, behind the QR code on the label, or ask your supplier. The arrow and the \"Product information sheet\" link then open the official EPREL page.": {
+        "fr-FR": "Le numéro dans la base de données européenne des produits EPREL, auquel renvoie le code QR de l'étiquette, ou demandez-le à votre fournisseur. La flèche et le lien « Fiche d'information sur le produit » ouvrent alors la page officielle EPREL.",
+        "it-IT": "Il numero nella banca dati UE dei prodotti EPREL, dietro il codice QR sull'etichetta, oppure lo chieda al fornitore. La freccia e il link «Scheda informativa del prodotto» aprono allora la pagina ufficiale EPREL.",
+        "nl-NL": "Het nummer in de EU-productdatabank EPREL, achter de QR-code op het label, of vraag het uw leverancier. De pijl en de link “Productinformatieblad” openen dan de officiële EPREL-pagina.",
+        "es-ES": "El número en EPREL, la base de datos de productos de la UE, al que remite el código QR de la etiqueta; también puede pedírselo a su proveedor. La flecha y el enlace «Ficha de información del producto» abren entonces la página oficial de EPREL.",
+        "pl-PL": "Numer w unijnej bazie danych produktów EPREL, zapisany w kodzie QR na etykiecie, lub podany przez dostawcę. Strzałka i link „Karta informacyjna produktu” otwierają wtedy oficjalną stronę EPREL."
+    },
+    "Optional with an EPREL number: the label file from your supplier, opened when the shopper selects the arrow.": {
+        "fr-FR": "Facultatif avec un numéro EPREL : le fichier de l'étiquette de votre fournisseur, ouvert quand le client sélectionne la flèche.",
+        "it-IT": "Facoltativo con un numero EPREL: il file dell'etichetta del fornitore, aperto quando l'acquirente seleziona la freccia.",
+        "nl-NL": "Optioneel met een EPREL-nummer: het labelbestand van uw leverancier, dat opent als de klant de pijl kiest.",
+        "es-ES": "Opcional con un número EPREL: el archivo de la etiqueta de su proveedor, que se abre cuando el cliente selecciona la flecha.",
+        "pl-PL": "Opcjonalnie przy numerze EPREL: plik etykiety od dostawcy, otwierany po wybraniu strzałki przez kupującego."
+    },
+    "Only without an EPREL number: a https link to the product information sheet.": {
+        "fr-FR": "Uniquement sans numéro EPREL : un lien https vers la fiche d'information sur le produit.",
+        "it-IT": "Solo senza numero EPREL: un link https alla scheda informativa del prodotto.",
+        "nl-NL": "Alleen zonder EPREL-nummer: een https-link naar het productinformatieblad.",
+        "es-ES": "Solo sin número EPREL: un enlace https a la ficha de información del producto.",
+        "pl-PL": "Tylko bez numeru EPREL: link https do karty informacyjnej produktu."
+    },
+    "For sales to France: the repairability index (laptops, dishwashers, vacuum cleaners, lawn mowers, pressure washers) or the durability index (TVs, washing machines).": {
+        "fr-FR": "Pour les ventes en France : l'indice de réparabilité (ordinateurs portables, lave-vaisselle, aspirateurs, tondeuses à gazon, nettoyeurs haute pression) ou l'indice de durabilité (téléviseurs, lave-linge).",
+        "it-IT": "Per le vendite in Francia: l'indice di riparabilità (computer portatili, lavastoviglie, aspirapolvere, tosaerba, idropulitrici) o l'indice di durabilità (TV, lavatrici).",
+        "nl-NL": "Bij verkoop naar Frankrijk: de repareerbaarheidsindex (laptops, vaatwassers, stofzuigers, grasmaaiers, hogedrukreinigers) of de duurzaamheidsindex (tv’s, wasmachines).",
+        "es-ES": "Para ventas a Francia: el índice de reparabilidad (portátiles, lavavajillas, aspiradoras, cortacéspedes, hidrolimpiadoras) o el índice de durabilidad (televisores, lavadoras).",
+        "pl-PL": "Przy sprzedaży do Francji: indeks naprawialności (laptopy, zmywarki, odkurzacze, kosiarki, myjki ciśnieniowe) lub indeks trwałości (telewizory, pralki)."
+    },
+    "From 0 to 10 with one decimal, as the producer gives it.": {
+        "fr-FR": "De 0 à 10 avec une décimale, tel que le producteur l'indique.",
+        "it-IT": "Da 0 a 10 con un decimale, come indicato dal produttore.",
+        "nl-NL": "Van 0 tot en met 10 met één decimaal, zoals de producent die opgeeft.",
+        "es-ES": "De 0 a 10 con un decimal, tal como lo indica el productor.",
+        "pl-PL": "Od 0 do 10 z jednym miejscem po przecinku, tak jak podaje producent."
+    },
+    "The official pictogram with the score, from the producer. Shown next to the price.": {
+        "fr-FR": "Le pictogramme officiel avec la note, fourni par le producteur. Affiché à côté du prix.",
+        "it-IT": "Il pittogramma ufficiale con il punteggio, fornito dal produttore. Mostrato accanto al prezzo.",
+        "nl-NL": "Het officiële pictogram met de score, van de producent. Getoond naast de prijs.",
+        "es-ES": "El pictograma oficial con la puntuación, del productor. Se muestra junto al precio.",
+        "pl-PL": "Oficjalny piktogram z wynikiem, od producenta. Wyświetlany obok ceny."
+    },
+    "A https link to the detail of the score: shoppers must reach it in one click.": {
+        "fr-FR": "Un lien https vers le détail de la note : les clients doivent y accéder en un clic.",
+        "it-IT": "Un link https al dettaglio del punteggio: gli acquirenti devono raggiungerlo con un clic.",
+        "nl-NL": "Een https-link naar de details van de score: klanten moeten die met één klik kunnen bereiken.",
+        "es-ES": "Un enlace https al detalle de la puntuación: los clientes deben llegar a él con un clic.",
+        "pl-PL": "Link https do szczegółów wyniku: kupujący muszą dotrzeć do nich jednym kliknięciem."
+    },
+    "Energy class": {
+        "fr-FR": "Classe d'efficacité énergétique",
+        "it-IT": "Classe di efficienza energetica",
+        "nl-NL": "Energie-efficiëntieklasse",
+        "es-ES": "Clase energética",
+        "pl-PL": "Klasa efektywności energetycznej"
+    },
+    "Class range": {
+        "fr-FR": "Échelle de classes",
+        "it-IT": "Scala delle classi",
+        "nl-NL": "Klassenreeks",
+        "es-ES": "Escala de clases",
+        "pl-PL": "Zakres klas"
+    },
+    "EPREL registration number": {
+        "fr-FR": "Numéro d'enregistrement EPREL",
+        "it-IT": "Numero di registrazione EPREL",
+        "nl-NL": "EPREL-registratienummer",
+        "es-ES": "Número de registro EPREL",
+        "pl-PL": "Numer rejestracyjny EPREL"
+    },
+    "Label file": {
+        "fr-FR": "Fichier de l'étiquette",
+        "it-IT": "File dell'etichetta",
+        "nl-NL": "Labelbestand",
+        "es-ES": "Archivo de la etiqueta",
+        "pl-PL": "Plik etykiety"
+    },
+    "Product information sheet link": {
+        "fr-FR": "Lien vers la fiche d'information sur le produit",
+        "it-IT": "Link alla scheda informativa del prodotto",
+        "nl-NL": "Link naar het productinformatieblad",
+        "es-ES": "Enlace a la ficha de información del producto",
+        "pl-PL": "Link do karty informacyjnej produktu"
+    },
+    "French index": {
+        "fr-FR": "Indice français",
+        "it-IT": "Indice francese",
+        "nl-NL": "Franse index",
+        "es-ES": "Índice francés",
+        "pl-PL": "Francuski indeks"
+    },
+    "French index score": {
+        "fr-FR": "Note de l'indice français",
+        "it-IT": "Punteggio dell'indice francese",
+        "nl-NL": "Score van de Franse index",
+        "es-ES": "Puntuación del índice francés",
+        "pl-PL": "Wynik francuskiego indeksu"
+    },
+    "French index pictogram": {
+        "fr-FR": "Pictogramme de l'indice français",
+        "it-IT": "Pittogramma dell'indice francese",
+        "nl-NL": "Pictogram van de Franse index",
+        "es-ES": "Pictograma del índice francés",
+        "pl-PL": "Piktogram francuskiego indeksu"
+    },
+    "French index detail link": {
+        "fr-FR": "Lien vers le détail de l'indice français",
+        "it-IT": "Link al dettaglio dell'indice francese",
+        "nl-NL": "Link naar de details van de Franse index",
+        "es-ES": "Enlace al detalle del índice francés",
+        "pl-PL": "Link do szczegółów francuskiego indeksu"
+    },
+    "Manufacturer name": {
+        "fr-FR": "Nom du fabricant",
+        "it-IT": "Nome del produttore",
+        "nl-NL": "Naam van de fabrikant",
+        "es-ES": "Nombre del fabricante",
+        "pl-PL": "Nazwa producenta"
+    },
+    "Manufacturer postal address": {
+        "fr-FR": "Adresse postale du fabricant",
+        "it-IT": "Indirizzo postale del produttore",
+        "nl-NL": "Postadres van de fabrikant",
+        "es-ES": "Dirección postal del fabricante",
+        "pl-PL": "Adres pocztowy producenta"
+    },
+    "Manufacturer email": {
+        "fr-FR": "E-mail du fabricant",
+        "it-IT": "Email del produttore",
+        "nl-NL": "E-mailadres van de fabrikant",
+        "es-ES": "Correo electrónico del fabricante",
+        "pl-PL": "E-mail producenta"
+    },
+    "Manufacturer website or contact page": {
+        "fr-FR": "Site web ou page de contact du fabricant",
+        "it-IT": "Sito web o pagina di contatto del produttore",
+        "nl-NL": "Website of contactpagina van de fabrikant",
+        "es-ES": "Sitio web o página de contacto del fabricante",
+        "pl-PL": "Strona internetowa lub strona kontaktowa producenta"
+    },
+    "EU responsible person name (if the manufacturer is outside the EU)": {
+        "fr-FR": "Nom de la personne responsable dans l'UE (si le fabricant est hors UE)",
+        "it-IT": "Nome della persona responsabile nell'UE (se il produttore è fuori dall'UE)",
+        "nl-NL": "Naam van de verantwoordelijke persoon in de EU (als de fabrikant buiten de EU is gevestigd)",
+        "es-ES": "Nombre de la persona responsable en la UE (si el fabricante está fuera de la UE)",
+        "pl-PL": "Nazwa osoby odpowiedzialnej w UE (jeśli producent ma siedzibę poza UE)"
+    },
+    "EU responsible person postal address": {
+        "fr-FR": "Adresse postale de la personne responsable dans l'UE",
+        "it-IT": "Indirizzo postale della persona responsabile nell'UE",
+        "nl-NL": "Postadres van de verantwoordelijke persoon in de EU",
+        "es-ES": "Dirección postal de la persona responsable en la UE",
+        "pl-PL": "Adres pocztowy osoby odpowiedzialnej w UE"
+    },
+    "EU responsible person email": {
+        "fr-FR": "E-mail de la personne responsable dans l'UE",
+        "it-IT": "Email della persona responsabile nell'UE",
+        "nl-NL": "E-mailadres van de verantwoordelijke persoon in de EU",
+        "es-ES": "Correo electrónico de la persona responsable en la UE",
+        "pl-PL": "E-mail osoby odpowiedzialnej w UE"
+    },
+    "EU responsible person website": {
+        "fr-FR": "Site web de la personne responsable dans l'UE",
+        "it-IT": "Sito web della persona responsabile nell'UE",
+        "nl-NL": "Website van de verantwoordelijke persoon in de EU",
+        "es-ES": "Web de la persona responsable en la UE",
+        "pl-PL": "Strona internetowa osoby odpowiedzialnej w UE"
+    },
+    "Product identifiers (one per line, for example \"Model: X1\" or \"Batch: 2026-04\")": {
+        "fr-FR": "Identifiants du produit (un par ligne, par exemple « Modèle : X1 » ou « Lot : 2026-04 »)",
+        "it-IT": "Identificativi del prodotto (uno per riga, per esempio «Modello: X1» o «Lotto: 2026-04»)",
+        "nl-NL": "Productidentificatie (één per regel, bijvoorbeeld “Model: X1” of “Partij: 2026-04”)",
+        "es-ES": "Identificadores del producto (uno por línea, por ejemplo «Modelo: X1» o «Lote: 2026-04»)",
+        "pl-PL": "Identyfikatory produktu (jeden w wierszu, na przykład „Model: X1” lub „Partia: 2026-04”)"
+    },
+    "Warnings and safety information (in the buyer's language)": {
+        "fr-FR": "Avertissements et informations de sécurité (dans la langue de l'acheteur)",
+        "it-IT": "Avvertenze e informazioni sulla sicurezza (nella lingua dell'acquirente)",
+        "nl-NL": "Waarschuwingen en veiligheidsinformatie (in de taal van de koper)",
+        "es-ES": "Advertencias e información de seguridad (en el idioma del comprador)",
+        "pl-PL": "Ostrzeżenia i informacje o bezpieczeństwie (w języku kupującego)"
+    },
+    "Durability guarantee in years (3 to 99; empty: the manufacturer's guarantee, if it has one)": {
+        "fr-FR": "Garantie de durabilité en années (3 à 99 ; vide : la garantie du fabricant, s'il en a une)",
+        "it-IT": "Garanzia di durabilità in anni (da 3 a 99; vuoto: la garanzia del produttore, se ne ha una)",
+        "nl-NL": "Duurzaamheidsgarantie in jaren (3 tot en met 99; leeg: de garantie van de fabrikant, als die er een heeft)",
+        "es-ES": "Garantía de durabilidad en años (de 3 a 99; vacío: la garantía del fabricante, si tiene una)",
+        "pl-PL": "Gwarancja trwałości w latach (od 3 do 99; puste: gwarancja producenta, jeśli ją podał)"
+    },
+    "Free of charge: the shopper gets this guarantee at no extra cost": {
+        "fr-FR": "Gratuite : le client obtient cette garantie sans frais supplémentaires",
+        "it-IT": "Gratuita: l'acquirente riceve questa garanzia senza costi aggiuntivi",
+        "nl-NL": "Kosteloos: de klant krijgt deze garantie zonder extra kosten",
+        "es-ES": "Gratuita: el cliente recibe esta garantía sin coste adicional",
+        "pl-PL": "Bezpłatna: kupujący otrzymuje tę gwarancję bez dodatkowych kosztów"
+    },
+    "Covers the whole product, not only a part of it": {
+        "fr-FR": "Couvre tout le produit, pas seulement une partie",
+        "it-IT": "Copre l'intero prodotto, non solo una sua parte",
+        "nl-NL": "Dekt het hele product, niet alleen een deel ervan",
+        "es-ES": "Cubre el producto entero, no solo una parte",
+        "pl-PL": "Obejmuje cały produkt, a nie tylko jego część"
+    },
+    "Source of the guarantee (link to the producer's terms, for your records)": {
+        "fr-FR": "Source de la garantie (lien vers les conditions du producteur, pour vos archives)",
+        "it-IT": "Fonte della garanzia (link alle condizioni del produttore, per i suoi archivi)",
+        "nl-NL": "Bron van de garantie (link naar de voorwaarden van de producent, voor uw administratie)",
+        "es-ES": "Fuente de la garantía (enlace a las condiciones del productor, para sus archivos)",
+        "pl-PL": "Źródło gwarancji (link do warunków producenta, do Twojej dokumentacji)"
+    },
+    "Guarantee terms last checked on": {
+        "fr-FR": "Conditions de garantie vérifiées pour la dernière fois le",
+        "it-IT": "Condizioni di garanzia controllate l'ultima volta il",
+        "nl-NL": "Garantievoorwaarden laatst gecontroleerd op",
+        "es-ES": "Condiciones de garantía revisadas por última vez el",
+        "pl-PL": "Data ostatniego sprawdzenia warunków gwarancji"
+    },
+    "Durability guarantee in years (3 to 99; products of this manufacturer use it unless they set their own)": {
+        "fr-FR": "Garantie de durabilité en années (3 à 99 ; les produits de ce fabricant l'utilisent, sauf s'ils définissent la leur)",
+        "it-IT": "Garanzia di durabilità in anni (da 3 a 99; i prodotti di questo produttore la usano, a meno che non ne impostino una propria)",
+        "nl-NL": "Duurzaamheidsgarantie in jaren (3 tot en met 99; producten van deze fabrikant gebruiken die, tenzij ze een eigen garantie instellen)",
+        "es-ES": "Garantía de durabilidad en años (de 3 a 99; los productos de este fabricante la usan salvo que configuren la suya)",
+        "pl-PL": "Gwarancja trwałości w latach (od 3 do 99; produkty tego producenta jej używają, chyba że mają własną)"
+    },
+    "Brand on the label (empty: the manufacturer's name)": {
+        "fr-FR": "Marque sur l'étiquette (vide : le nom du fabricant)",
+        "it-IT": "Marchio sull'etichetta (vuoto: il nome del produttore)",
+        "nl-NL": "Merk op het label (leeg: de naam van de fabrikant)",
+        "es-ES": "Marca en la etiqueta (vacío: el nombre del fabricante)",
+        "pl-PL": "Marka na etykiecie (puste: nazwa producenta)"
+    },
+    "Model identifier on the label (empty: the manufacturer number)": {
+        "fr-FR": "Référence du modèle sur l'étiquette (vide : le numéro du fabricant)",
+        "it-IT": "Identificativo del modello sull'etichetta (vuoto: il numero del produttore)",
+        "nl-NL": "Modelaanduiding op het label (leeg: het fabrikantnummer)",
+        "es-ES": "Identificador del modelo en la etiqueta (vacío: el número del fabricante)",
+        "pl-PL": "Identyfikator modelu na etykiecie (puste: numer producenta)"
+    },
+    "How to show the label": {
+        "fr-FR": "Affichage de l'étiquette",
+        "it-IT": "Come mostrare l'etichetta",
+        "nl-NL": "Weergave van het label",
+        "es-ES": "Cómo mostrar la etiqueta",
+        "pl-PL": "Sposób wyświetlania etykiety"
+    },
+    "Hazard pictograms (copy them from the label or safety data sheet)": {
+        "fr-FR": "Pictogrammes de danger (recopiez-les de l'étiquette ou de la fiche de données de sécurité)",
+        "it-IT": "Pittogrammi di pericolo (li copi dall'etichetta o dalla scheda di dati di sicurezza)",
+        "nl-NL": "Gevarenpictogrammen (neem ze over van het etiket of het veiligheidsinformatieblad)",
+        "es-ES": "Pictogramas de peligro (cópielos de la etiqueta o de la ficha de datos de seguridad)",
+        "pl-PL": "Piktogramy określające rodzaj zagrożenia (przepisz je z etykiety lub karty charakterystyki)"
+    },
+    "Signal word": {
+        "fr-FR": "Mention d'avertissement",
+        "it-IT": "Avvertenza",
+        "nl-NL": "Signaalwoord",
+        "es-ES": "Palabra de advertencia",
+        "pl-PL": "Hasło ostrzegawcze"
+    },
+    "Hazard statements, one code per line (H225, EUH066); own words after a colon": {
+        "fr-FR": "Mentions de danger, un code par ligne (H225, EUH066) ; vos propres mots après un deux-points",
+        "it-IT": "Indicazioni di pericolo, un codice per riga (H225, EUH066); parole proprie dopo i due punti",
+        "nl-NL": "Gevarenaanduidingen, één code per regel (H225, EUH066); eigen woorden na een dubbele punt",
+        "es-ES": "Indicaciones de peligro, un código por línea (H225, EUH066); palabras propias después de dos puntos",
+        "pl-PL": "Zwroty wskazujące rodzaj zagrożenia, jeden kod w wierszu (H225, EUH066); własny tekst po dwukropku"
+    },
+    "Precautionary statements, one code per line (P210, P305+P351+P338); own words after a colon": {
+        "fr-FR": "Conseils de prudence, un code par ligne (P210, P305+P351+P338) ; vos propres mots après un deux-points",
+        "it-IT": "Consigli di prudenza, un codice per riga (P210, P305+P351+P338); parole proprie dopo i due punti",
+        "nl-NL": "Veiligheidsaanbevelingen, één code per regel (P210, P305+P351+P338); eigen woorden na een dubbele punt",
+        "es-ES": "Consejos de prudencia, un código por línea (P210, P305+P351+P338); palabras propias después de dos puntos",
+        "pl-PL": "Zwroty wskazujące środki ostrożności, jeden kod w wierszu (P210, P305+P351+P338); własny tekst po dwukropku"
+    },
+    "Electrical equipment: show how to return old devices on this product page": {
+        "fr-FR": "Équipement électrique : indiquer sur cette page produit comment rapporter les appareils usagés",
+        "it-IT": "Apparecchiatura elettrica: mostra in questa pagina prodotto come restituire gli apparecchi usati",
+        "nl-NL": "Elektrisch apparaat: op deze productpagina tonen hoe oude apparaten kunnen worden ingeleverd",
+        "es-ES": "Aparato eléctrico: mostrar en esta página de producto cómo devolver los aparatos usados",
+        "pl-PL": "Sprzęt elektryczny: pokazuj na tej stronie produktu, jak oddać zużyte urządzenia"
+    },
+    "Digital content consent at checkout (what the shopper ticked, and when)": {
+        "fr-FR": "Consentement pour le contenu numérique lors de la commande (ce que le client a coché, et quand)",
+        "it-IT": "Consenso per il contenuto digitale al checkout (cosa ha spuntato l'acquirente, e quando)",
+        "nl-NL": "Toestemming voor digitale inhoud bij het afrekenen (wat de klant heeft aangevinkt, en wanneer)",
+        "es-ES": "Consentimiento para contenido digital al finalizar la compra (lo que marcó el cliente y cuándo)",
+        "pl-PL": "Zgoda dotycząca treści cyfrowych przy składaniu zamówienia (co kupujący zaznaczył i kiedy)"
+    },
+    "Contains batteries: show how to return old batteries on this product page": {
+        "fr-FR": "Contient des piles : indiquer sur cette page produit comment rapporter les piles usagées",
+        "it-IT": "Contiene pile: mostra in questa pagina prodotto come restituire le pile usate",
+        "nl-NL": "Bevat batterijen: op deze productpagina tonen hoe oude batterijen kunnen worden ingeleverd",
+        "es-ES": "Contiene pilas: mostrar en esta página de producto cómo devolver las pilas usadas",
+        "pl-PL": "Zawiera baterie: pokazuj na tej stronie produktu, jak oddać zużyte baterie"
+    },
+    "Name of the food": {
+        "fr-FR": "Dénomination de la denrée alimentaire",
+        "it-IT": "Denominazione dell'alimento",
+        "nl-NL": "Benaming van het levensmiddel",
+        "es-ES": "Denominación del alimento",
+        "pl-PL": "Nazwa żywności"
+    },
+    "Ingredients (mark allergens with stars, for example: sugar, *milk* powder; they show in bold)": {
+        "fr-FR": "Ingrédients (marquez les allergènes avec des étoiles, par exemple : sucre, *lait* en poudre ; ils s'affichent en gras)",
+        "it-IT": "Ingredienti (segnali gli allergeni con degli asterischi, per esempio: zucchero, *latte* in polvere; vengono mostrati in grassetto)",
+        "nl-NL": "Ingrediënten (markeer allergenen met sterretjes, bijvoorbeeld: suiker, *melk*poeder; ze worden vetgedrukt getoond)",
+        "es-ES": "Ingredientes (marque los alérgenos con asteriscos, por ejemplo: azúcar, *leche* en polvo; se muestran en negrita)",
+        "pl-PL": "Składniki (oznacz alergeny gwiazdkami, na przykład: cukier, *mleko* w proszku; są wyświetlane pogrubioną czcionką)"
+    },
+    "Allergens it contains": {
+        "fr-FR": "Allergènes contenus",
+        "it-IT": "Allergeni contenuti",
+        "nl-NL": "Allergenen die het bevat",
+        "es-ES": "Alérgenos que contiene",
+        "pl-PL": "Zawarte alergeny"
+    },
+    "May contain": {
+        "fr-FR": "Peut contenir",
+        "it-IT": "Può contenere",
+        "nl-NL": "Kan sporen bevatten van",
+        "es-ES": "Puede contener",
+        "pl-PL": "Może zawierać"
+    },
+    "Net quantity": {
+        "fr-FR": "Quantité nette",
+        "it-IT": "Quantità netta",
+        "nl-NL": "Nettohoeveelheid",
+        "es-ES": "Cantidad neta",
+        "pl-PL": "Ilość netto"
+    },
+    "Drained net weight": {
+        "fr-FR": "Poids net égoutté",
+        "it-IT": "Peso netto sgocciolato",
+        "nl-NL": "Uitlekgewicht",
+        "es-ES": "Peso neto escurrido",
+        "pl-PL": "Masa netto po odsączeniu"
+    },
+    "Storage and use": {
+        "fr-FR": "Conservation et utilisation",
+        "it-IT": "Conservazione e uso",
+        "nl-NL": "Bewaren en gebruik",
+        "es-ES": "Conservación y uso",
+        "pl-PL": "Przechowywanie i użycie"
+    },
+    "Country of origin": {
+        "fr-FR": "Pays d'origine",
+        "it-IT": "Paese d'origine",
+        "nl-NL": "Land van oorsprong",
+        "es-ES": "País de origen",
+        "pl-PL": "Kraj pochodzenia"
+    },
+    "Alcohol (% vol, only for drinks with more than 1.2 %)": {
+        "fr-FR": "Alcool (% vol, uniquement pour les boissons titrant plus de 1,2 %)",
+        "it-IT": "Alcol (% vol, solo per bevande con più di 1,2 %)",
+        "nl-NL": "Alcohol (% vol, alleen voor dranken met meer dan 1,2 %)",
+        "es-ES": "Alcohol (% vol, solo para bebidas con más de 1,2 %)",
+        "pl-PL": "Alkohol (% obj., tylko dla napojów o zawartości alkoholu powyżej 1,2 %)"
+    },
+    "Food business name and address (empty: the one in the Shopproof settings)": {
+        "fr-FR": "Nom et adresse de l'exploitant du secteur alimentaire (vide : celui des réglages Shopproof)",
+        "it-IT": "Nome e indirizzo dell'operatore del settore alimentare (vuoto: quello nelle impostazioni di Shopproof)",
+        "nl-NL": "Naam en adres van het levensmiddelenbedrijf (leeg: het bedrijf uit de Shopproof-instellingen)",
+        "es-ES": "Nombre y dirección de la empresa alimentaria (vacío: la de los ajustes de Shopproof)",
+        "pl-PL": "Nazwa i adres podmiotu działającego na rynku spożywczym (puste: dane z ustawień Shopproof)"
+    },
+    "Nutri-Score": {
+        "fr-FR": "Nutri-Score",
+        "it-IT": "Nutri-Score",
+        "nl-NL": "Nutri-Score",
+        "es-ES": "Nutri-Score",
+        "pl-PL": "Nutri-Score"
+    },
+    "Nutrition values per": {
+        "fr-FR": "Valeurs nutritionnelles pour",
+        "it-IT": "Valori nutrizionali per",
+        "nl-NL": "Voedingswaarden per",
+        "es-ES": "Valores nutricionales por",
+        "pl-PL": "Wartość odżywcza na"
+    },
+    "Energy (kJ)": {
+        "fr-FR": "Énergie (kJ)",
+        "it-IT": "Energia (kJ)",
+        "nl-NL": "Energie (kJ)",
+        "es-ES": "Valor energético (kJ)",
+        "pl-PL": "Wartość energetyczna (kJ)"
+    },
+    "Energy (kcal; empty: worked out from kJ)": {
+        "fr-FR": "Énergie (kcal ; vide : calculée à partir des kJ)",
+        "it-IT": "Energia (kcal; vuoto: calcolata dai kJ)",
+        "nl-NL": "Energie (kcal; leeg: berekend uit kJ)",
+        "es-ES": "Valor energético (kcal; vacío: se calcula a partir de los kJ)",
+        "pl-PL": "Wartość energetyczna (kcal; puste: obliczona z kJ)"
+    },
+    "Fat (g)": {
+        "fr-FR": "Matières grasses (g)",
+        "it-IT": "Grassi (g)",
+        "nl-NL": "Vetten (g)",
+        "es-ES": "Grasas (g)",
+        "pl-PL": "Tłuszcz (g)"
+    },
+    "of which saturates (g)": {
+        "fr-FR": "dont acides gras saturés (g)",
+        "it-IT": "di cui acidi grassi saturi (g)",
+        "nl-NL": "waarvan verzadigde vetzuren (g)",
+        "es-ES": "de las cuales saturadas (g)",
+        "pl-PL": "w tym kwasy tłuszczowe nasycone (g)"
+    },
+    "Carbohydrate (g)": {
+        "fr-FR": "Glucides (g)",
+        "it-IT": "Carboidrati (g)",
+        "nl-NL": "Koolhydraten (g)",
+        "es-ES": "Hidratos de carbono (g)",
+        "pl-PL": "Węglowodany (g)"
+    },
+    "of which sugars (g)": {
+        "fr-FR": "dont sucres (g)",
+        "it-IT": "di cui zuccheri (g)",
+        "nl-NL": "waarvan suikers (g)",
+        "es-ES": "de los cuales azúcares (g)",
+        "pl-PL": "w tym cukry (g)"
+    },
+    "Fibre (g)": {
+        "fr-FR": "Fibres alimentaires (g)",
+        "it-IT": "Fibre (g)",
+        "nl-NL": "Vezels (g)",
+        "es-ES": "Fibra alimentaria (g)",
+        "pl-PL": "Błonnik (g)"
+    },
+    "Protein (g)": {
+        "fr-FR": "Protéines (g)",
+        "it-IT": "Proteine (g)",
+        "nl-NL": "Eiwitten (g)",
+        "es-ES": "Proteínas (g)",
+        "pl-PL": "Białko (g)"
+    },
+    "Salt (g)": {
+        "fr-FR": "Sel (g)",
+        "it-IT": "Sale (g)",
+        "nl-NL": "Zout (g)",
+        "es-ES": "Sal (g)",
+        "pl-PL": "Sól (g)"
+    },
+    "Description in the cart (one line under the name in the cart, at checkout and in the order, for example: Wool socks, size 42, dark blue)": {
+        "fr-FR": "Description dans le panier (une ligne sous le nom dans le panier, lors de la commande et dans la commande, par exemple : Chaussettes en laine, taille 42, bleu foncé)",
+        "it-IT": "Descrizione nel carrello (una riga sotto il nome nel carrello, al checkout e nell'ordine, per esempio: Calze di lana, taglia 42, blu scuro)",
+        "nl-NL": "Beschrijving in de winkelwagen (één regel onder de naam in de winkelwagen, bij het afrekenen en in de bestelling, bijvoorbeeld: Wollen sokken, maat 42, donkerblauw)",
+        "es-ES": "Descripción en el carrito (una línea debajo del nombre en el carrito, al finalizar la compra y en el pedido, por ejemplo: Calcetines de lana, talla 42, azul oscuro)",
+        "pl-PL": "Opis w koszyku (jeden wiersz pod nazwą w koszyku, przy składaniu zamówienia i w zamówieniu, na przykład: Skarpety wełniane, rozmiar 42, granatowe)"
+    },
+    "Margin scheme (second-hand goods): the tax line says VAT is included but not shown separately": {
+        "fr-FR": "Régime de la marge (biens d'occasion) : la ligne de taxe indique que la TVA est incluse mais n'est pas affichée séparément",
+        "it-IT": "Regime del margine (beni usati): la riga fiscale indica che l'IVA è inclusa ma non indicata separatamente",
+        "nl-NL": "Margeregeling (tweedehands goederen): de btw-regel zegt dat de btw is inbegrepen maar niet apart wordt vermeld",
+        "es-ES": "Régimen de margen (bienes de segunda mano): la línea de impuestos dice que el IVA está incluido, pero no desglosado",
+        "pl-PL": "Procedura marży (towary używane): wiersz podatkowy informuje, że cena zawiera VAT, ale nie jest on wykazany osobno"
+    },
+    "Known defects (used or B-stock goods; shown below the price)": {
+        "fr-FR": "Défauts connus (biens d'occasion ou de second choix ; affichés sous le prix)",
+        "it-IT": "Difetti noti (beni usati o di seconda scelta; mostrati sotto il prezzo)",
+        "nl-NL": "Bekende gebreken (gebruikte goederen of B-keuze; getoond onder de prijs)",
+        "es-ES": "Defectos conocidos (bienes usados o de segunda calidad; se muestran debajo del precio)",
+        "pl-PL": "Znane wady (towary używane lub z drugiego gatunku; wyświetlane pod ceną)"
+    },
+    "Deposit types (codes from the Shopproof settings, comma separated, for example: de-single, at-single, de-crate)": {
+        "fr-FR": "Types de consigne (codes des réglages Shopproof, séparés par des virgules, par exemple : de-single, at-single, de-crate)",
+        "it-IT": "Tipi di cauzione (codici dalle impostazioni di Shopproof, separati da virgole, per esempio: de-single, at-single, de-crate)",
+        "nl-NL": "Soorten statiegeld (codes uit de Shopproof-instellingen, gescheiden door komma’s, bijvoorbeeld: de-eenmalig, at-eenmalig, de-krat)",
+        "es-ES": "Tipos de depósito (códigos de los ajustes de Shopproof, separados por comas, por ejemplo: de-single, at-single, de-crate)",
+        "pl-PL": "Rodzaje kaucji (kody z ustawień Shopproof, rozdzielone przecinkami, na przykład: de-single, at-single, de-crate)"
+    },
+    "Bottles or cans with a deposit (for example 6 for a six-pack; empty means 1)": {
+        "fr-FR": "Bouteilles ou canettes consignées (par exemple 6 pour un pack de six ; vide signifie 1)",
+        "it-IT": "Bottiglie o lattine con cauzione (per esempio 6 per una confezione da sei; vuoto significa 1)",
+        "nl-NL": "Flessen of blikjes met statiegeld (bijvoorbeeld 6 voor een sixpack; leeg betekent 1)",
+        "es-ES": "Botellas o latas con depósito (por ejemplo, 6 para un pack de seis; vacío significa 1)",
+        "pl-PL": "Butelki lub puszki objęte kaucją (na przykład 6 dla sześciopaku; puste oznacza 1)"
+    },
+    "Ticked at checkout": {
+        "fr-FR": "Cochées lors de la commande",
+        "it-IT": "Spuntato al pagamento",
+        "nl-NL": "Aangevinkt bij het afrekenen",
+        "es-ES": "Marcado en la página de finalizar compra",
+        "pl-PL": "Zaznaczone przy składaniu zamówienia"
+    },
+    "Right of withdrawal": {
+        "fr-FR": "Droit de rétractation",
+        "it-IT": "Diritto di recesso",
+        "nl-NL": "Herroepingsrecht",
+        "es-ES": "Derecho de desistimiento",
+        "pl-PL": "Prawo odstąpienia od umowy"
+    },
+    "Services: early start asked at checkout (what the shopper ticked, and when)": {
+        "fr-FR": "Services : début anticipé demandé lors de la commande (ce que le client a coché, et quand)",
+        "it-IT": "Servizi: inizio anticipato richiesto al checkout (cosa ha spuntato l'acquirente, e quando)",
+        "nl-NL": "Diensten: verzoek om eerder te beginnen bij het afrekenen (wat de klant heeft aangevinkt, en wanneer)",
+        "es-ES": "Servicios: inicio anticipado solicitado al finalizar la compra (lo que marcó el cliente y cuándo)",
+        "pl-PL": "Usługi: żądanie wcześniejszego rozpoczęcia przy składaniu zamówienia (co kupujący zaznaczył i kiedy)"
+    },
+    "Services: service starts on": {
+        "fr-FR": "Services : le service commence le",
+        "it-IT": "Servizi: il servizio inizia il",
+        "nl-NL": "Diensten: dienst begint op",
+        "es-ES": "Servicios: el servicio empieza el",
+        "pl-PL": "Usługi: data rozpoczęcia usługi"
+    },
+    "Services: service ends on": {
+        "fr-FR": "Services : le service se termine le",
+        "it-IT": "Servizi: il servizio termina il",
+        "nl-NL": "Diensten: dienst eindigt op",
+        "es-ES": "Servicios: el servicio termina el",
+        "pl-PL": "Usługi: data zakończenia usługi"
+    },
+    "Services: part already provided when the withdrawal arrived (%)": {
+        "fr-FR": "Services : part déjà fournie à l'arrivée de la rétractation (%)",
+        "it-IT": "Servizi: parte già prestata all'arrivo del recesso (%)",
+        "nl-NL": "Diensten: deel dat al was verricht toen de herroeping binnenkwam (%)",
+        "es-ES": "Servicios: parte ya prestada cuando llegó el desistimiento (%)",
+        "pl-PL": "Usługi: część wykonana w chwili otrzymania odstąpienia (%)"
+    },
+    "Services: fully provided on": {
+        "fr-FR": "Services : entièrement fourni le",
+        "it-IT": "Servizi: interamente prestato il",
+        "nl-NL": "Diensten: volledig verricht op",
+        "es-ES": "Servicios: prestado por completo el",
+        "pl-PL": "Usługi: data pełnego wykonania usługi"
+    },
+    "Cereals containing gluten": {
+        "fr-FR": "Céréales contenant du gluten",
+        "it-IT": "Cereali contenenti glutine",
+        "nl-NL": "Glutenbevattende granen",
+        "es-ES": "Cereales que contengan gluten",
+        "pl-PL": "Zboża zawierające gluten"
+    },
+    "Crustaceans": {
+        "fr-FR": "Crustacés",
+        "it-IT": "Crostacei",
+        "nl-NL": "Schaaldieren",
+        "es-ES": "Crustáceos",
+        "pl-PL": "Skorupiaki"
+    },
+    "Eggs": {
+        "fr-FR": "Œufs",
+        "it-IT": "Uova",
+        "nl-NL": "Eieren",
+        "es-ES": "Huevos",
+        "pl-PL": "Jaja"
+    },
+    "Fish": {
+        "fr-FR": "Poissons",
+        "it-IT": "Pesce",
+        "nl-NL": "Vis",
+        "es-ES": "Pescado",
+        "pl-PL": "Ryby"
+    },
+    "Peanuts": {
+        "fr-FR": "Arachides",
+        "it-IT": "Arachidi",
+        "nl-NL": "Aardnoten",
+        "es-ES": "Cacahuetes",
+        "pl-PL": "Orzeszki ziemne (arachidowe)"
+    },
+    "Soybeans": {
+        "fr-FR": "Soja",
+        "it-IT": "Soia",
+        "nl-NL": "Soja",
+        "es-ES": "Soja",
+        "pl-PL": "Soja"
+    },
+    "Milk": {
+        "fr-FR": "Lait",
+        "it-IT": "Latte",
+        "nl-NL": "Melk",
+        "es-ES": "Leche",
+        "pl-PL": "Mleko"
+    },
+    "Nuts": {
+        "fr-FR": "Fruits à coque",
+        "it-IT": "Frutta a guscio",
+        "nl-NL": "Noten",
+        "es-ES": "Frutos de cáscara",
+        "pl-PL": "Orzechy"
+    },
+    "Celery": {
+        "fr-FR": "Céleri",
+        "it-IT": "Sedano",
+        "nl-NL": "Selderij",
+        "es-ES": "Apio",
+        "pl-PL": "Seler"
+    },
+    "Mustard": {
+        "fr-FR": "Moutarde",
+        "it-IT": "Senape",
+        "nl-NL": "Mosterd",
+        "es-ES": "Mostaza",
+        "pl-PL": "Gorczyca"
+    },
+    "Sesame seeds": {
+        "fr-FR": "Graines de sésame",
+        "it-IT": "Semi di sesamo",
+        "nl-NL": "Sesamzaad",
+        "es-ES": "Granos de sésamo",
+        "pl-PL": "Nasiona sezamu"
+    },
+    "Sulphur dioxide and sulphites": {
+        "fr-FR": "Anhydride sulfureux et sulfites",
+        "it-IT": "Anidride solforosa e solfiti",
+        "nl-NL": "Zwaveldioxide en sulfieten",
+        "es-ES": "Dióxido de azufre y sulfitos",
+        "pl-PL": "Dwutlenek siarki i siarczyny"
+    },
+    "Lupin": {
+        "fr-FR": "Lupin",
+        "it-IT": "Lupini",
+        "nl-NL": "Lupine",
+        "es-ES": "Altramuces",
+        "pl-PL": "Łubin"
+    },
+    "Molluscs": {
+        "fr-FR": "Mollusques",
+        "it-IT": "Molluschi",
+        "nl-NL": "Weekdieren",
+        "es-ES": "Moluscos",
+        "pl-PL": "Mięczaki"
+    },
+    "Exploding bomb": {
+        "fr-FR": "Bombe explosant",
+        "it-IT": "Bomba che esplode",
+        "nl-NL": "Ontploffende bom",
+        "es-ES": "Bomba explotando",
+        "pl-PL": "Bomba wybuchająca"
+    },
+    "Flame": {
+        "fr-FR": "Flamme",
+        "it-IT": "Fiamma",
+        "nl-NL": "Vlam",
+        "es-ES": "Llama",
+        "pl-PL": "Płomień"
+    },
+    "Flame over circle": {
+        "fr-FR": "Flamme au-dessus d'un cercle",
+        "it-IT": "Fiamma su cerchio",
+        "nl-NL": "Vlam boven een cirkel",
+        "es-ES": "Llama sobre círculo",
+        "pl-PL": "Płomień nad okręgiem"
+    },
+    "Gas cylinder": {
+        "fr-FR": "Bouteille à gaz",
+        "it-IT": "Bombola per gas",
+        "nl-NL": "Gasfles",
+        "es-ES": "Bombona de gas",
+        "pl-PL": "Butla z gazem"
+    },
+    "Corrosion": {
+        "fr-FR": "Corrosion",
+        "it-IT": "Corrosione",
+        "nl-NL": "Corrosie",
+        "es-ES": "Corrosión",
+        "pl-PL": "Działanie żrące"
+    },
+    "Skull and crossbones": {
+        "fr-FR": "Tête de mort sur deux tibias",
+        "it-IT": "Teschio e tibie incrociate",
+        "nl-NL": "Doodshoofd met gekruiste beenderen",
+        "es-ES": "Calavera y tibias cruzadas",
+        "pl-PL": "Czaszka i skrzyżowane piszczele"
+    },
+    "Exclamation mark": {
+        "fr-FR": "Point d'exclamation",
+        "it-IT": "Punto esclamativo",
+        "nl-NL": "Uitroepteken",
+        "es-ES": "Signo de exclamación",
+        "pl-PL": "Wykrzyknik"
+    },
+    "Health hazard": {
+        "fr-FR": "Danger pour la santé",
+        "it-IT": "Pericolo per la salute",
+        "nl-NL": "Gezondheidsgevaar",
+        "es-ES": "Peligro para la salud",
+        "pl-PL": "Zagrożenie dla zdrowia"
+    },
+    "Environment": {
+        "fr-FR": "Environnement",
+        "it-IT": "Ambiente",
+        "nl-NL": "Milieu",
+        "es-ES": "Medio ambiente",
+        "pl-PL": "Środowisko"
+    },
+    "Automatic: digital products are digital content, all others goods. Service: the 14 days count from the order, and shoppers can ask you to start early. Dated booking: leisure, travel, catering, accommodation or car hire on a fixed date, usually without a right of withdrawal (Art. 16(l) of Directive 2011/83/EU). An order with any goods counts as a sales contract. Technical help, not legal advice.": {
+        "fr-FR": "Automatique : les produits numériques sont du contenu numérique, tous les autres des marchandises. Service : les 14 jours courent à compter de la commande, et les clients peuvent vous demander de commencer plus tôt. Réservation à date fixe : loisirs, voyage, restauration, hébergement ou location de voiture à une date fixe, en général sans droit de rétractation (article 16, point l), de la directive 2011/83/UE). Une commande contenant des marchandises compte comme un contrat de vente. Aide technique, pas un conseil juridique.",
+        "it-IT": "Automatico: i prodotti digitali sono contenuto digitale, tutti gli altri sono beni. Servizio: i 14 giorni decorrono dall'ordine e gli acquirenti possono chiederle di iniziare prima. Prenotazione con data fissa: tempo libero, viaggi, ristorazione, alloggio o noleggio auto in una data fissa, di solito senza diritto di recesso (art. 16, lett. l, della direttiva 2011/83/UE). Un ordine che contiene beni vale come contratto di vendita. Aiuto tecnico, non consulenza legale.",
+        "nl-NL": "Automatisch: digitale producten zijn digitale inhoud, alle andere zijn goederen. Dienst: de 14 dagen tellen vanaf de bestelling, en klanten kunnen u vragen eerder te beginnen. Boeking op een vaste datum: vrije tijd, reizen, catering, accommodatie of autoverhuur op een vaste datum, meestal zonder herroepingsrecht (art. 16, onder l, van Richtlijn 2011/83/EU). Een bestelling met goederen telt als koopovereenkomst. Technische hulp, geen juridisch advies.",
+        "es-ES": "Automático: los productos digitales son contenido digital y todos los demás, bienes. Servicio: los 14 días cuentan desde el pedido y los clientes pueden pedirle que empiece antes. Reserva con fecha: ocio, viajes, restauración, alojamiento o alquiler de coches en una fecha fija, normalmente sin derecho de desistimiento (Directiva 2011/83/UE, artículo 16, letra l). Un pedido con algún bien cuenta como contrato de compraventa. Ayuda técnica, no asesoramiento legal.",
+        "pl-PL": "Automatycznie: produkty cyfrowe to treści cyfrowe, wszystkie pozostałe to towary. Usługa: 14 dni liczy się od zamówienia, a kupujący mogą zażądać wcześniejszego rozpoczęcia. Rezerwacja na określony termin: rekreacja, podróże, gastronomia, zakwaterowanie lub wynajem samochodu w ustalonym terminie, zwykle bez prawa odstąpienia od umowy (art. 16 lit. l dyrektywy 2011/83/UE). Zamówienie zawierające jakiekolwiek towary jest traktowane jako umowa sprzedaży. Pomoc techniczna, nie porada prawna."
+    },
+    "With the start and end, the Shopproof page works out the part provided by days when a withdrawal arrives, unless you enter the part below.": {
+        "fr-FR": "Avec le début et la fin, la page Shopproof calcule la part fournie en jours quand une rétractation arrive, sauf si vous saisissez la part ci-dessous.",
+        "it-IT": "Con inizio e fine, quando arriva un recesso la pagina di Shopproof calcola in giorni la parte prestata, a meno che lei non inserisca la parte qui sotto.",
+        "nl-NL": "Met het begin en het einde berekent de Shopproof-pagina bij een herroeping het verrichte deel op basis van dagen, tenzij u hieronder het deel invult.",
+        "es-ES": "Con el inicio y el fin, la página de Shopproof calcula por días la parte prestada cuando llega un desistimiento, salvo que usted introduzca la parte abajo.",
+        "pl-PL": "Na podstawie daty rozpoczęcia i zakończenia strona Shopproof oblicza po otrzymaniu odstąpienia wykonaną część według dni, chyba że wpiszesz ją poniżej."
+    },
+    "Use this when days do not fit, for example 3 of 10 lessons given: 30. The customer pays this part of the price only if they asked for the early start at checkout (Art. 14(3) and (4) of Directive 2011/83/EU).": {
+        "fr-FR": "Utilisez ce champ quand les jours ne conviennent pas, par exemple 3 cours donnés sur 10 : 30. Le client ne paie cette part du prix que s'il a demandé le début anticipé lors de la commande (article 14, paragraphes 3 et 4, de la directive 2011/83/UE).",
+        "it-IT": "La usi quando i giorni non sono adatti, per esempio 3 lezioni tenute su 10: 30. Il cliente paga questa parte del prezzo solo se al checkout ha chiesto l'inizio anticipato (art. 14, par. 3 e 4, della direttiva 2011/83/UE).",
+        "nl-NL": "Gebruik dit als dagen niet passen, bijvoorbeeld 3 van 10 lessen gegeven: 30. De klant betaalt dit deel van de prijs alleen als die bij het afrekenen heeft gevraagd om eerder te beginnen (art. 14, leden 3 en 4, van Richtlijn 2011/83/EU).",
+        "es-ES": "Úselo cuando los días no encajen, por ejemplo 3 de 10 clases impartidas: 30. El cliente paga esta parte del precio solo si pidió el inicio anticipado al finalizar la compra (Directiva 2011/83/UE, artículo 14, apartados 3 y 4).",
+        "pl-PL": "Użyj tego pola, gdy dni nie pasują, na przykład przy 3 z 10 przeprowadzonych lekcji: 30. Klient płaci tę część ceny tylko wtedy, gdy przy składaniu zamówienia zażądał wcześniejszego rozpoczęcia (art. 14 ust. 3 i 4 dyrektywy 2011/83/UE)."
+    },
+    "Once the service is fully provided, after the shopper asked for the early start and acknowledged the loss of the right, a later withdrawal has no effect (Art. 16(a) of Directive 2011/83/EU).": {
+        "fr-FR": "Une fois le service entièrement fourni, après que le client a demandé le début anticipé et reconnu la perte du droit, une rétractation ultérieure reste sans effet (article 16, point a), de la directive 2011/83/UE).",
+        "it-IT": "Una volta che il servizio è stato interamente prestato, dopo che l'acquirente ha chiesto l'inizio anticipato e preso atto della perdita del diritto, un recesso successivo non ha effetto (art. 16, lett. a, della direttiva 2011/83/UE).",
+        "nl-NL": "Zodra de dienst volledig is verricht, nadat de klant heeft gevraagd om eerder te beginnen en heeft erkend het recht te verliezen, heeft een latere herroeping geen gevolg (art. 16, onder a, van Richtlijn 2011/83/EU).",
+        "es-ES": "Cuando el servicio se ha prestado por completo, después de que el cliente pidiera el inicio anticipado y reconociera la pérdida del derecho, un desistimiento posterior no tiene efecto (Directiva 2011/83/UE, artículo 16, letra a).",
+        "pl-PL": "Gdy usługa zostanie w pełni wykonana po tym, jak kupujący zażądał wcześniejszego rozpoczęcia i przyjął do wiadomości utratę prawa, późniejsze odstąpienie nie ma skutku (art. 16 lit. a dyrektywy 2011/83/UE)."
+    },
+    "The EU \"GARAN\" label shows only when the years are set and both ticks below are on. Technical help, not legal advice.": {
+        "fr-FR": "L'étiquette européenne « GARAN » ne s'affiche que si les années sont indiquées et que les deux cases ci-dessous sont cochées. Aide technique, pas un conseil juridique.",
+        "it-IT": "L'etichetta UE «GARAN» compare solo quando gli anni sono impostati ed entrambe le spunte qui sotto sono attive. Aiuto tecnico, non consulenza legale.",
+        "nl-NL": "Het EU-label “GARAN” verschijnt alleen als de jaren zijn ingevuld en beide vinkjes hieronder zijn gezet. Technische hulp, geen juridisch advies.",
+        "es-ES": "La etiqueta «GARAN» de la UE solo se muestra cuando los años están indicados y las dos casillas de abajo están marcadas. Ayuda técnica, no asesoramiento legal.",
+        "pl-PL": "Unijna etykieta „GARAN” jest wyświetlana tylko wtedy, gdy podano liczbę lat i oba poniższe pola są zaznaczone. Pomoc techniczna, nie porada prawna."
+    },
+    "The EU \"GARAN\" label shows only when the years are set and both ticks below are on. Each product still needs a manufacturer number or its own model identifier. Technical help, not legal advice.": {
+        "fr-FR": "L'étiquette européenne « GARAN » ne s'affiche que si les années sont indiquées et que les deux cases ci-dessous sont cochées. Chaque produit a toujours besoin d'un numéro du fabricant ou de sa propre référence du modèle. Aide technique, pas un conseil juridique.",
+        "it-IT": "L'etichetta UE «GARAN» compare solo quando gli anni sono impostati ed entrambe le spunte qui sotto sono attive. Ogni prodotto ha comunque bisogno di un numero del produttore o di un proprio identificativo del modello. Aiuto tecnico, non consulenza legale.",
+        "nl-NL": "Het EU-label “GARAN” verschijnt alleen als de jaren zijn ingevuld en beide vinkjes hieronder zijn gezet. Elk product heeft nog steeds een fabrikantnummer of een eigen modelaanduiding nodig. Technische hulp, geen juridisch advies.",
+        "es-ES": "La etiqueta «GARAN» de la UE solo se muestra cuando los años están indicados y las dos casillas de abajo están marcadas. Cada producto sigue necesitando un número del fabricante o su propio identificador del modelo. Ayuda técnica, no asesoramiento legal.",
+        "pl-PL": "Unijna etykieta „GARAN” jest wyświetlana tylko wtedy, gdy podano liczbę lat i oba poniższe pola są zaznaczone. Każdy produkt nadal potrzebuje numeru producenta lub własnego identyfikatora modelu. Pomoc techniczna, nie porada prawna."
+    },
+    "A paid or extended warranty is a different offer: describe it in your own words, without the label.": {
+        "fr-FR": "Une garantie payante ou étendue est une autre offre : décrivez-la avec vos propres mots, sans l'étiquette.",
+        "it-IT": "Una garanzia a pagamento o estesa è un'offerta diversa: la descriva con parole sue, senza l'etichetta.",
+        "nl-NL": "Een betaalde of verlengde garantie is een ander aanbod: beschrijf die in uw eigen woorden, zonder het label.",
+        "es-ES": "Una garantía de pago o ampliada es otra oferta: descríbala con sus propias palabras, sin la etiqueta.",
+        "pl-PL": "Płatna lub przedłużona gwarancja to inna oferta: opisz ją własnymi słowami, bez etykiety."
+    },
+    "If the guarantee covers only a part (for example only the motor), do not use the label: say in the product description which part is covered and for how long, so shoppers do not take it for a guarantee on the whole product.": {
+        "fr-FR": "Si la garantie ne couvre qu'une partie (par exemple seulement le moteur), n'utilisez pas l'étiquette : indiquez dans la description du produit quelle partie est couverte et pour combien de temps, pour que les clients ne la prennent pas pour une garantie sur tout le produit.",
+        "it-IT": "Se la garanzia copre solo una parte (per esempio solo il motore), non usi l'etichetta: indichi nella descrizione del prodotto quale parte è coperta e per quanto tempo, così gli acquirenti non la scambiano per una garanzia sull'intero prodotto.",
+        "nl-NL": "Als de garantie maar een deel dekt (bijvoorbeeld alleen de motor), gebruik het label dan niet: vermeld in de productbeschrijving welk deel hoe lang is gedekt, zodat klanten die niet aanzien voor een garantie op het hele product.",
+        "es-ES": "Si la garantía solo cubre una parte (por ejemplo, solo el motor), no use la etiqueta: indique en la descripción del producto qué parte está cubierta y durante cuánto tiempo, para que los clientes no la tomen por una garantía de todo el producto.",
+        "pl-PL": "Jeśli gwarancja obejmuje tylko część produktu (na przykład tylko silnik), nie używaj etykiety: podaj w opisie produktu, która część jest objęta gwarancją i na jak długo, aby kupujący nie uznali jej za gwarancję na cały produkt."
+    },
+    "Check the producer's terms again at least once a year, because producers can change or end a guarantee.": {
+        "fr-FR": "Vérifiez à nouveau les conditions du producteur au moins une fois par an, car les producteurs peuvent modifier ou arrêter une garantie.",
+        "it-IT": "Controlli di nuovo le condizioni del produttore almeno una volta all'anno, perché i produttori possono modificare o terminare una garanzia.",
+        "nl-NL": "Controleer de voorwaarden van de producent minstens één keer per jaar opnieuw, want producenten kunnen een garantie wijzigen of beëindigen.",
+        "es-ES": "Revise de nuevo las condiciones del productor al menos una vez al año, porque los productores pueden cambiar o terminar una garantía.",
+        "pl-PL": "Sprawdzaj warunki producenta co najmniej raz w roku, ponieważ producenci mogą zmienić lub zakończyć gwarancję."
+    },
+    "Shopproof: product safety (GPSR)": {
+        "fr-FR": "Shopproof : sécurité des produits (RSGP)",
+        "it-IT": "Shopproof: sicurezza dei prodotti (GPSR)",
+        "nl-NL": "Shopproof: productveiligheid (GPSR)",
+        "es-ES": "Shopproof: seguridad de productos (GPSR)",
+        "pl-PL": "Shopproof: bezpieczeństwo produktów (GPSR)"
+    },
+    "Shopproof: EU durability label": {
+        "fr-FR": "Shopproof : étiquette européenne de durabilité",
+        "it-IT": "Shopproof: etichetta UE di durabilità",
+        "nl-NL": "Shopproof: EU-duurzaamheidslabel",
+        "es-ES": "Shopproof: etiqueta de durabilidad de la UE",
+        "pl-PL": "Shopproof: unijna etykieta trwałości"
+    },
+    "Shopproof: hazardous chemicals (CLP)": {
+        "fr-FR": "Shopproof : produits chimiques dangereux (CLP)",
+        "it-IT": "Shopproof: sostanze chimiche pericolose (CLP)",
+        "nl-NL": "Shopproof: gevaarlijke chemische stoffen (CLP)",
+        "es-ES": "Shopproof: productos químicos peligrosos (CLP)",
+        "pl-PL": "Shopproof: niebezpieczne chemikalia (CLP)"
+    },
+    "Shopproof: take-back of old devices and batteries": {
+        "fr-FR": "Shopproof : reprise des appareils et piles usagés",
+        "it-IT": "Shopproof: ritiro di apparecchi e pile usati",
+        "nl-NL": "Shopproof: inname van oude apparaten en batterijen",
+        "es-ES": "Shopproof: recogida de aparatos y pilas usados",
+        "pl-PL": "Shopproof: odbiór zużytych urządzeń i baterii"
+    },
+    "Shopproof: food information (food and drinks only)": {
+        "fr-FR": "Shopproof : informations alimentaires (aliments et boissons uniquement)",
+        "it-IT": "Shopproof: informazioni sugli alimenti (solo alimenti e bevande)",
+        "nl-NL": "Shopproof: voedselinformatie (alleen eten en drinken)",
+        "es-ES": "Shopproof: información alimentaria (solo alimentos y bebidas)",
+        "pl-PL": "Shopproof: informacje o żywności (tylko żywność i napoje)"
+    },
+    "Shopproof: price, deposit and cart notes": {
+        "fr-FR": "Shopproof : mentions de prix, de consigne et de panier",
+        "it-IT": "Shopproof: note su prezzo, cauzione e carrello",
+        "nl-NL": "Shopproof: prijs-, statiegeld- en winkelwagenvermeldingen",
+        "es-ES": "Shopproof: avisos de precio, depósito y carrito",
+        "pl-PL": "Shopproof: informacje o cenie, kaucji i koszyku"
+    },
+    "Shopproof": {
+        "fr-FR": "Shopproof",
+        "it-IT": "Shopproof",
+        "nl-NL": "Shopproof",
+        "es-ES": "Shopproof",
+        "pl-PL": "Shopproof"
+    },
+    "Shopproof: right of withdrawal": {
+        "fr-FR": "Shopproof : droit de rétractation",
+        "it-IT": "Shopproof: diritto di recesso",
+        "nl-NL": "Shopproof: herroepingsrecht",
+        "es-ES": "Shopproof: derecho de desistimiento",
+        "pl-PL": "Shopproof: prawo odstąpienia od umowy"
+    },
+    "Shopproof: energy label and French repair index": {
+        "fr-FR": "Shopproof : étiquette énergétique et indice français de réparabilité",
+        "it-IT": "Shopproof: etichetta energetica e indice francese di riparabilità",
+        "nl-NL": "Shopproof: energielabel en Franse repareerbaarheidsindex",
+        "es-ES": "Shopproof: etiqueta energética e índice francés de reparabilidad",
+        "pl-PL": "Shopproof: etykieta energetyczna i francuski indeks naprawialności"
+    },
+    "Short strip that opens the full label (default)": {
+        "fr-FR": "Petite bande qui ouvre l'étiquette complète (par défaut)",
+        "it-IT": "Striscia sottile che apre l'etichetta completa (predefinito)",
+        "nl-NL": "Smalle strook die het volledige label opent (standaard)",
+        "es-ES": "Franja estrecha que abre la etiqueta completa (predeterminado)",
+        "pl-PL": "Wąski pasek, który otwiera pełną etykietę (domyślnie)"
+    },
+    "Full label": {
+        "fr-FR": "Étiquette complète",
+        "it-IT": "Etichetta completa",
+        "nl-NL": "Volledig label",
+        "es-ES": "Etiqueta completa",
+        "pl-PL": "Pełna etykieta"
+    },
+    "Automatic": {
+        "fr-FR": "Automatique",
+        "it-IT": "Automatico",
+        "nl-NL": "Automatisch",
+        "es-ES": "Automático",
+        "pl-PL": "Automatycznie"
+    },
+    "Goods (14 days from delivery)": {
+        "fr-FR": "Marchandises (14 jours à compter de la livraison)",
+        "it-IT": "Beni (14 giorni dalla consegna)",
+        "nl-NL": "Goederen (14 dagen vanaf levering)",
+        "es-ES": "Bienes (14 días desde la entrega)",
+        "pl-PL": "Towary (14 dni od dostawy)"
+    },
+    "Service (14 days from the order)": {
+        "fr-FR": "Service (14 jours à compter de la commande)",
+        "it-IT": "Servizio (14 giorni dall'ordine)",
+        "nl-NL": "Dienst (14 dagen vanaf de bestelling)",
+        "es-ES": "Servicio (14 días desde el pedido)",
+        "pl-PL": "Usługa (14 dni od zamówienia)"
+    },
+    "Dated booking (usually no right of withdrawal)": {
+        "fr-FR": "Réservation à date fixe (en général pas de droit de rétractation)",
+        "it-IT": "Prenotazione con data fissa (di solito nessun diritto di recesso)",
+        "nl-NL": "Boeking op een vaste datum (meestal geen herroepingsrecht)",
+        "es-ES": "Reserva con fecha (normalmente sin derecho de desistimiento)",
+        "pl-PL": "Rezerwacja na określony termin (zwykle bez prawa odstąpienia od umowy)"
+    },
+    "Danger": {
+        "fr-FR": "Danger",
+        "it-IT": "Pericolo",
+        "nl-NL": "Gevaar",
+        "es-ES": "Peligro",
+        "pl-PL": "Niebezpieczeństwo"
+    },
+    "Warning": {
+        "fr-FR": "Attention",
+        "it-IT": "Attenzione",
+        "nl-NL": "Waarschuwing",
+        "es-ES": "Atención",
+        "pl-PL": "Uwaga"
+    },
+    "Repairability index": {
+        "fr-FR": "Indice de réparabilité",
+        "it-IT": "Indice di riparabilità (indice de réparabilité)",
+        "nl-NL": "Repareerbaarheidsindex (indice de réparabilité)",
+        "es-ES": "Índice de reparabilidad (indice de réparabilité)",
+        "pl-PL": "Indeks naprawialności (indice de réparabilité)"
+    },
+    "Durability index": {
+        "fr-FR": "Indice de durabilité",
+        "it-IT": "Indice di durabilità (indice de durabilité)",
+        "nl-NL": "Duurzaamheidsindex (indice de durabilité)",
+        "es-ES": "Índice de durabilidad (indice de durabilité)",
+        "pl-PL": "Indeks trwałości (indice de durabilité)"
+    },
+    "Shopproof: product safety": {
+        "fr-FR": "Shopproof : sécurité des produits",
+        "it-IT": "Shopproof: sicurezza dei prodotti",
+        "nl-NL": "Shopproof: productveiligheid",
+        "es-ES": "Shopproof: seguridad de productos",
+        "pl-PL": "Shopproof: bezpieczeństwo produktów"
+    },
+    "Shopproof: manufacturer safety details": {
+        "fr-FR": "Shopproof : informations de sécurité des fabricants",
+        "it-IT": "Shopproof: dati del produttore sulla sicurezza dei prodotti",
+        "nl-NL": "Shopproof: veiligheidsgegevens van fabrikanten",
+        "es-ES": "Shopproof: datos de seguridad del fabricante",
+        "pl-PL": "Shopproof: dane o bezpieczeństwie producenta"
+    }
+}

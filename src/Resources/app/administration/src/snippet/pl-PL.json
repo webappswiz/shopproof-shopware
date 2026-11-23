@@ -1,0 +1,577 @@
+{
+    "shopproof": {
+        "general": {
+            "title": "Shopproof",
+            "description": "Przepisy UE dla krajów, do których sprzedajesz"
+        },
+        "overview": {
+            "aboutTitle": "O tych przepisach",
+            "disclaimer": "Informacje techniczne, które pomagają sklepom stosować przepisy. To nie jest porada prawna.",
+            "loadFailed": "Nie udało się wczytać przepisów. Odśwież stronę i spróbuj ponownie.",
+            "notYet": "Brakuje listy przepisów dostarczanej z wtyczką. Zainstaluj wtyczkę ponownie lub kliknij „Sprawdź aktualizacje przepisów teraz”.",
+            "version": "Wersja przepisów {version}, pobrana {date}.",
+            "countriesHint": "Wybierz kraje, do których sprzedajesz, w sekcji Rozszerzenia > Moje rozszerzenia > Shopproof EU Compliance > „Configure”. Przepisy obowiązujące w całej UE są zawsze wyświetlane.",
+            "groupTitle": "{country}: przepisy ({count})",
+            "effectiveFrom": "Obowiązuje od",
+            "whereInShop": "Gdzie w sklepie",
+            "legalBasis": "Oficjalne źródło",
+            "opensNewTab": "(otwiera się w nowej karcie)",
+            "versionBundled": "Wersja przepisów {version}, dostarczona z wtyczką.",
+            "autoOff": "Shopproof działa bez łączenia się z jakimkolwiek serwerem. Aby otrzymywać zmiany przepisów zaraz po ich opublikowaniu, kliknij „Sprawdź aktualizacje przepisów teraz” lub włącz „Pobieraj aktualizacje przepisów raz dziennie” w ustawieniach wtyczki. Pobieranie odbywa się z serwisu przepisów Shopproof i nie wysyła żadnych danych sklepu, klientów ani danych osobowych.",
+            "autoOn": "Aktualizacje przepisów są pobierane raz dziennie z serwisu przepisów Shopproof. Można to wyłączyć w ustawieniach wtyczki.",
+            "refresh": "Sprawdź aktualizacje przepisów teraz",
+            "refresh_updated": "Przepisy sprawdzone. Poniższa lista to najnowsza wersja.",
+            "refresh_failed": "Nie udało się połączyć z serwisem przepisów. Dotychczasowe przepisy pozostają bez zmian; spróbuj ponownie później."
+        },
+        "countries": {
+            "EU": "Cała UE",
+            "AT": "Austria",
+            "DE": "Niemcy",
+            "FR": "Francja",
+            "IT": "Włochy",
+            "NL": "Holandia"
+        },
+        "withdrawal": {
+            "checkTitle": "Przycisk odstąpienia",
+            "checkFailed": "Nie udało się wczytać kontroli przycisku odstąpienia. Spróbuj ponownie.",
+            "unsupported": "Ta wersja Shopware nie ma jeszcze przycisku odstąpienia. Aby z niego korzystać, zaktualizuj Shopware do wersji 6.7.9 lub nowszej; Shopproof będzie wtedy zapisywać każde zgłoszenie.",
+            "allGood": "Przycisk odstąpienia Shopware jest skonfigurowany we wszystkich aktywnych witrynach sklepu.",
+            "needsWork": "Przycisk odstąpienia Shopware wymaga jeszcze konfiguracji.",
+            "done": "Gotowe",
+            "todo": "Do zrobienia",
+            "where": "Zmień to w sekcji Ustawienia > Dane podstawowe (Legal and compliance: Show „Revoke a contract” button in footer; Shop pages: Shop page layout for revocation request) oraz Ustawienia > Konstruktor przepływu. Kanał sprzedaży może nadpisać każde z tych ustawień. Pomoc techniczna, nie porada prawna.",
+            "check": {
+                "flowActive": "Przepływ „Online revocation request sent” jest aktywny, więc e-maile są wysyłane",
+                "customerMail": "Przepływ wysyła kupującemu e-mail z potwierdzeniem, zawierający zgłoszenie oraz jego datę i godzinę",
+                "recordTable": "Tabela Shopproof na zapisy istnieje (shopproof_withdrawal_request). Jeśli nie, zainstaluj wtyczkę ponownie.",
+                "buttonOn": "Przycisk odstąpienia jest włączony",
+                "page": "Przycisk prowadzi do strony wniosku o odstąpienie",
+                "form": "Ta strona zawiera formularz wniosku o odstąpienie",
+                "labels": "Każdy język witryny sklepu ma krajowe brzmienie przycisku",
+                "labelsMissing": "Te języki witryny sklepu nie mają jeszcze krajowego brzmienia przycisku: {languages}. Ustaw tekst przycisku w sekcji Ustawienia > Moduły tekstowe.",
+                "wording": "Wybrane brzmienie przycisku obowiązuje we wszystkich językach witryny sklepu",
+                "wordingMissing": "Te języki witryny sklepu nie mają sprawdzonego alternatywnego brzmienia, więc zachowują brzmienie krajowe: {languages}.",
+                "wordingOwn": "Własne brzmienie przycisku nie jest jeszcze używane: wpisz oba teksty i zaznacz, że rozumiesz wymogi prawne dotyczące brzmienia (ustawienia Shopproof, karta Przycisk odstąpienia). Do tego czasu obowiązuje brzmienie krajowe.",
+                "returnsUrl": "Adresu narzędzia do zwrotów nie można użyć, więc odstąpienia nie są przekazywane dalej. Wpisz pełny adres https:// otrzymany od narzędzia do zwrotów (ustawienia Shopproof, karta Narzędzie do zwrotów). Odstąpienia są nadal zapisywane tutaj."
+            },
+            "listTitle": "Wnioski o odstąpienie",
+            "listIntro": "Każdy wniosek wysłany przyciskiem odstąpienia Shopware, przechowywany w bazie danych tego sklepu, aby można było wykazać, kiedy dotarł. Shopproof nigdy go nie otrzymuje.",
+            "searchLabel": "Szukaj według adresu e-mail, nazwiska lub numeru zamówienia",
+            "search": "Szukaj",
+            "listFailed": "Nie udało się wczytać wniosków o odstąpienie. Twój użytkownik potrzebuje uprawnienia do wyświetlania zamówień.",
+            "none": "Brak wniosków o odstąpienie.",
+            "received": "Otrzymano",
+            "customer": "Klient",
+            "contract": "Numer zamówienia lub umowy",
+            "comment": "Komentarz",
+            "actions": "Działania",
+            "noOrder": "Brak pasującego zamówienia",
+            "refundOnOrder": "Zwrot płatności w zamówieniu",
+            "refundOnOrderHelp": "Po przelaniu pieniędzy ustaw w zamówieniu status płatności na Zwrócono. Shopproof ustawi wtedy to odstąpienie na Zwrot płatności wysłany.",
+            "orderDate": "Podana data zamówienia",
+            "delete": "Usuń",
+            "confirmDelete": "Usuń na stałe",
+            "cancel": "Anuluj",
+            "failedRecords": "Nie udało się zapisać {count} wniosku o odstąpienie; sprawdź dziennik i e-maile Shopware. | Nie udało się zapisać wniosków o odstąpienie (liczba: {count}); sprawdź dziennik i e-maile Shopware.",
+            "failedHelp": "Shopware i tak wysłał swoje e-maile, więc kupujący otrzymał potwierdzenie, ale wniosku brakuje na liście poniżej. Znajdź go w e-mailach, które Shopware wysłał do sklepu, oraz w var/log (wyszukaj „Shopproof could not record”) i zachowaj kopię.",
+            "failedClear": "Oznacz jako sprawdzone",
+            "status": "Status",
+            "deadlines": "Terminy",
+            "deliveredOn": "Towar dotarł",
+            "deliveredHelp": "Dzień, w którym klient otrzymał towar (ostatnią pozycję). Bez tej daty używany jest dzień, w którym Shopware oznaczył dostawę jako wysłaną; wtedy wynik może brzmieć tylko „w terminie” lub „sprawdź”.",
+            "states": {
+                "received": "Otrzymano odstąpienie",
+                "return_arrived": "Zwrot dotarł do sklepu",
+                "refund_sent": "Zwrot płatności wysłany"
+            },
+            "emailed": "Klient otrzymał e-mail.",
+            "notEmailed": "Nie wysłano e-maila (ustawienie jest wyłączone albo sklep nie ma adresu e-mail lub szablonu dla tej witryny sklepu).",
+            "statusFailed": "Nie udało się zapisać statusu. Spróbuj ponownie.",
+            "confirmStatus": "Zapisać ten status? Klient otrzyma o nim e-mail, chyba że e-maile o statusie są wyłączone w ustawieniach.",
+            "confirmYes": "Zapisz i powiadom",
+            "confirmNo": "Anuluj",
+            "estimated": "Oszacowano na podstawie daty wysyłki",
+            "clock": {
+                "before_delivery": "W terminie: wysłane przed dostawą",
+                "inside": "W terminie: termin upływa {date}",
+                "late": "Po terminie o {days} dzień: termin upłynął {date} | Po terminie (dni: {days}): termin upłynął {date}",
+                "check": "Sprawdź: może być po terminie, wpisz datę dostawy",
+                "unknown": "Termin nieznany: wpisz datę dostawy",
+                "paid": "Zwrócono {date}",
+                "none": "Termin zwrotu płatności nie biegnie, ponieważ odstąpienie jest po terminie",
+                "today": "Zwrot płatności należny dzisiaj ({date})",
+                "overdue": "Zwrot płatności opóźniony o {days} dzień (termin: {date}) | Zwrot płatności opóźniony (dni: {days}, termin: {date})",
+                "due": "Zwrot płatności należny do {date} (pozostał {days} dzień) | Zwrot płatności należny do {date} (pozostało dni: {days})",
+                "dueGoods": "Zwrot płatności należny do {date} (pozostał {days} dzień) lub po zwrocie towaru, jeśli nastąpi później | Zwrot płatności należny do {date} (pozostało dni: {days}) lub po zwrocie towaru, jeśli nastąpi później",
+                "waiting": "Zwrot płatności czeka na towar: należny po zwrocie towaru lub gdy klient przedstawi dowód nadania",
+                "todayBack": "Zwrot płatności należny dzisiaj (towar zwrócony {date})",
+                "overdueBack": "Zwrot płatności opóźniony o {days} dzień (towar zwrócony {date}) | Zwrot płatności opóźniony (dni: {days}, towar zwrócony {date})",
+                "partly": "Częściowo zwrócono {date}, sprawdź: {line}",
+                "insideOrder": "W terminie: termin upływa {date} (14 dni od zamówienia, jak w przypadku usług)",
+                "performed": "Sprawdź: usługa została w pełni wykonana przed odstąpieniem, po żądaniu wcześniejszego rozpoczęcia, więc prawo mogło wygasnąć (art. 16 lit. a)",
+                "digital": "Sprawdź: treści cyfrowe, a klient zgodził się przy składaniu zamówienia, że pobieranie może rozpocząć się wcześniej i że prawo wtedy wygasa. Jeśli pobieranie rozpoczęło się przed odstąpieniem, prawo mogło wygasnąć (art. 16 lit. m)",
+                "exempt": "Sprawdź: tylko rezerwacje na określony termin (rekreacja, podróże itp.), zwykle bez prawa odstąpienia od umowy (art. 16 lit. l)",
+                "noneRight": "Termin zwrotu płatności nie biegnie, dopóki prawo odstąpienia od umowy może nie przysługiwać",
+                "owed": {
+                    "no_consent": "Usługa: klient nic nie płaci za wykonaną część, ponieważ nie było żądania wcześniejszego rozpoczęcia (art. 14 ust. 4)",
+                    "not_started": "Usługa: nierozpoczęta w chwili otrzymania odstąpienia, nic nie jest należne",
+                    "days": "Usługa: wykonano {days} z {of} dni, klient płaci {owed}, zwrot {refund}",
+                    "share": "Usługa: wykonano {share} %, klient płaci {owed}, zwrot {refund}",
+                    "unknown": "Usługa: wpisz w zamówieniu daty usługi lub wykonaną część (Pola niestandardowe, Shopproof), aby zobaczyć, ile płaci klient"
+                },
+                "help": "Pomoc techniczna, nie porada prawna. Termin wynosi 14 dni (lub Twój dłuższy okres) od dostawy, a jeśli kończy się w weekend, przesuwa się na poniedziałek; dni ustawowo wolne również mogą go wydłużyć. Zwrot płatności jest należny 14 dni po otrzymaniu odstąpienia; w przypadku towarów można wstrzymać się do ich zwrotu (status Zwrot dotarł do sklepu) lub do przedstawienia przez klienta dowodu nadania, w zależności od tego, co nastąpi wcześniej, chyba że zaproponowano odbiór towaru (art. 13 ust. 3). W przypadku usług termin liczy się od zamówienia, a przy żądaniu wcześniejszego rozpoczęcia klient płaci za wykonaną część."
+            },
+            "items": "Pozycje",
+            "export": "Eksportuj wszystko jako CSV",
+            "exportFailed": "Nie udało się utworzyć pliku CSV. Spróbuj ponownie.",
+            "businessTitle": "Zamówienie firmowe?",
+            "business_company": "To zamówienie zawiera nazwę firmy.",
+            "business_vat": "To zamówienie zawiera numer VAT.",
+            "business_company_vat": "To zamówienie zawiera nazwę firmy i numer VAT.",
+            "businessText": "Prawo odstąpienia od umowy przysługuje konsumentom, więc klient biznesowy może go nie mieć. Nie dowodzi to jednak, że zakup był dla firmy, a w niektórych krajach, np. w Polsce, przedsiębiorcy jednoosobowi zachowują to prawo przy zakupach niezwiązanych z ich działalnością zawodową. Sprawdź przed odmową. Pomoc techniczna, nie porada prawna."
+        },
+        "products": {
+            "warn": "Sprawdź",
+            "guaranteeNotice_ok": "Unijna informacja o rękojmi jest wyświetlana na stronach produktów",
+            "guaranteeNotice_off": "Unijna informacja o rękojmi jest wyłączona w co najmniej jednej witrynie sklepu. Od 27 września 2026 r. jest wymagana dla towarów. Włącz „Pokazuj oficjalną unijną informację o rękojmi na stronach produktów” w ustawieniach wtyczki.",
+            "manufacturerDetails_ok": "Każdy producent Twoich produktów ma dane kontaktowe do informacji o bezpieczeństwie produktów",
+            "manufacturerDetails_off": "Ci producenci nie mają danych kontaktowych, więc przy ich produktach widać tylko nazwę producenta. Dodaj adres i e-mail w sekcji Katalogi > Producent (Shopproof: bezpieczeństwo produktów) lub przy każdym produkcie:",
+            "hazardStatements_off": "Te produkty mają zwroty wskazujące rodzaj zagrożenia lub zwroty wskazujące środki ostrożności, których strona produktu nie może wyświetlić. Kody z wyborem lub pustym miejscem (np. P280 lub P501) wymagają własnego tekstu po dwukropku, na przykład „P280: Stosować rękawice ochronne.”. Otwórz produkt, Pola niestandardowe, „Shopproof: niebezpieczne chemikalia (CLP)”:",
+            "hazardOwn": "wymaga własnego tekstu",
+            "hazardUnknown": "nieznany kod, sprawdź etykietę",
+            "registrationNumbers_off": "Te wiersze pola „Twoje numery rejestrowe” w ustawieniach wtyczki nie są wyświetlane, ponieważ nie mają dwukropka lub numeru albo jest ich więcej niż 12. Zapisz je w formie „WEEE DE: DE 12345678”:",
+            "ownGoodsTitle": "Produkujesz własne towary?",
+            "ownGoodsText": "W takim razie Twój sklep jest producentem. Te dane z sekcji Ustawienia > Dane podstawowe mogą uzupełnić puste pola domyślnego producenta w ustawieniach Shopproof. Produkty z własnym producentem zachowują swoje dane. Najpierw je sprawdź.",
+            "ownGoodsButton": "Użyj tych danych do pustych pól",
+            "ownGoods_saved": "Zapisano. Sprawdź je w ustawieniach wtyczki w sekcji Bezpieczeństwo produktów (GPSR).",
+            "ownGoods_failed": "Nie udało się zapisać danych. Spróbuj ponownie."
+        },
+        "cms": {
+            "label": "Informacje o produkcie Shopproof",
+            "previewText": "Etykieta trwałości, bezpieczeństwo produktów, informacja o rękojmi",
+            "elementText": "Na stronie produktu ten element pokazuje etykietę trwałości, informacje o bezpieczeństwie produktu i unijną informację o rękojmi, każdą tam, gdzie ma zastosowanie. Blok, który pole zakupu lub opis już pokazuje na stronie, nie jest powtarzany.",
+            "configText": "Nie ma tu nic do ustawienia. Treść pochodzi z każdego produktu oraz z ustawień Shopproof w sekcji Rozszerzenia > Moje rozszerzenia > Shopproof EU Compliance > „Configure”."
+        },
+        "layouts": {
+            "title": "Strony produktów",
+            "intro": "Gdzie Shopproof pokazuje etykietę trwałości i wiersz o bezpieczeństwie produktu (w polu zakupu) oraz informację o rękojmi i informacje o odbiorze zużytego sprzętu (pod opisem produktu), dla każdego układu strony produktu używanego w sklepie.",
+            "ok": "pokazuje bloki Shopproof",
+            "missing": "nie ma miejsca na: {blocks}. Otwórz układ i dodaj blok „Informacje o produkcie Shopproof” (kategoria Handel) tam, gdzie mają się pojawić.",
+            "part": {
+                "durability": "etykietę trwałości",
+                "safety": "bezpieczeństwo produktów",
+                "guarantee": "informację o rękojmi i informacje o odbiorze zużytego sprzętu"
+            }
+        },
+        "proof": {
+            "title": "Rejestr dowodów",
+            "intro": "Datowany zapis tego, co pokazywał Twój sklep i jakie odstąpienia otrzymał, przechowywany we własnej bazie danych sklepu. Każdy wpis jest powiązany z poprzednim za pomocą skrótu SHA-256, więc zmieniony lub usunięty wpis wychodzi na jaw przy sprawdzaniu łańcucha. Rejestr nie zawiera imion i nazwisk klientów, adresów e-mail ani numerów zamówień. Migawka jest zapisywana raz dziennie.",
+            "unavailable": "Brakuje tabeli rejestru dowodów. Zaktualizuj lub zainstaluj ponownie wtyczkę.",
+            "loadFailed": "Nie udało się wczytać rejestru dowodów.",
+            "none": "Brak wpisów. Pierwsza migawka zostanie zapisana w ciągu doby; możesz też kliknąć „Zapisz migawkę teraz”.",
+            "lastSnapshot": "Ostatnia migawka: {date}",
+            "retention": "Wpisy są przechowywane przez {days} dni (ustawienia wtyczki, Rejestr dowodów).",
+            "retentionAll": "Wszystkie wpisy są przechowywane (ustawienia wtyczki, Rejestr dowodów).",
+            "verify": "Sprawdź łańcuch",
+            "verifyOk": "Łańcuch nienaruszony. Sprawdzone wpisy: {count}.",
+            "verifyBroken": "Łańcuch przerwany na wpisie {id}, po nienaruszonych wpisach (liczba: {count}). Wpis został zmieniony lub usunięty.",
+            "verifyFailed": "Nie udało się przeprowadzić kontroli.",
+            "snapshot": "Zapisz migawkę teraz",
+            "download": "Pobierz jako CSV",
+            "time": "Czas (UTC)",
+            "type": "Typ",
+            "summary": "Podsumowanie",
+            "hash": "Skrót",
+            "types": {
+                "snapshot": "Codzienna migawka",
+                "withdrawal": "Odstąpienie",
+                "retention": "Zmieniono okres przechowywania",
+                "anchor": "Znacznik przechowywany przez Shopproof",
+                "prices": "Zapieczętowano historię cen"
+            }
+        },
+        "returns": {
+            "title": "Narzędzie do zwrotów",
+            "intro": "Shopproof może wysyłać każde nowe odstąpienie do Twojego narzędzia do zwrotów lub automatyzacji jako podpisany JSON i dodawać link do Twojego portalu zwrotów w potwierdzeniu dla klienta. Ustaw adresy w ustawieniach Shopproof (karta Narzędzie do zwrotów).",
+            "on": "Włączone: każde nowe odstąpienie jest wysyłane do narzędzia do zwrotów.",
+            "off": "Wyłączone: nie ustawiono adresu webhooka.",
+            "secret": "Sekret do podpisu",
+            "secretHelp": "Wklej go w narzędziu do zwrotów. Każde żądanie zawiera nagłówek X-Shopproof-Signature: t=<time>,v1=<signature>. Podpis to HMAC-SHA256 w zapisie szesnastkowym z czasu, kropki i treści żądania, z tym sekretem jako kluczem. Nie udostępniaj sekretu.",
+            "renew": "Nowy sekret",
+            "renewed": "Utworzono nowy sekret. Wklej go w narzędziu do zwrotów, ponieważ stary już nie działa.",
+            "test": "Wyślij test",
+            "testOk": "Narzędzie do zwrotów przyjęło test (kod {code}).",
+            "testRefused": "Narzędzie do zwrotów odrzuciło test z kodem {code}. Sprawdź w nim adres i sekret.",
+            "testUnreachable": "Nie udało się połączyć z narzędziem do zwrotów. Sprawdź adres.",
+            "delivery": {
+                "queued": "Narzędzie do zwrotów: oczekuje na wysłanie.",
+                "sent": "Narzędzie do zwrotów: wysłano {time}, kod {code}.",
+                "retrying": "Narzędzie do zwrotów: nie przyjęto {time} (kod {code}). Shopproof spróbuje ponownie.",
+                "failed": "Narzędzie do zwrotów: wysyłanie przerwano {time} (kod {code}). Utwórz zwrot ręcznie."
+            }
+        },
+        "notes": {
+            "title": "Informacje o sklepie",
+            "unitPrices_off": "Te produkty wyglądają na sprzedawane na wagę lub objętość (np. „500 g” w nazwie), ale nie mają ustawionej zawartości i jednostki, więc Shopware nie pokazuje ceny jednostkowej. Otwórz produkt, Dane techniczne, Środki i opakowania:",
+            "depositTypes_off": "Te wiersze pola „Twoje rodzaje kaucji” w ustawieniach wtyczki nie są używane. Zapisz je w formie „de-single | Einweg | 0.25 | single | DE”:",
+            "checkoutPolicyPages_off": "Te wybrane pola przy zamówieniu nie są wyświetlane, ponieważ ich strona nie jest ustawiona w sekcji Ustawienia > Dane podstawowe:",
+            "box_withdrawal": "Potwierdzam zapoznanie się z zasadami odstąpienia od umowy (strona odstąpienia)",
+            "box_privacy": "Potwierdzam zapoznanie się z informacją o ochronie prywatności (strona prywatności)",
+            "disputeBoard_off": "Twoje oświadczenie o rozwiązywaniu sporów nie wskazuje jeszcze żadnego sądu polubownego. Wpisz jego nazwę w ustawieniach wtyczki.",
+            "disputeStatement_ok": "Twoje oświadczenie o rozwiązywaniu sporów jest na stronie regulaminu lub danych firmy",
+            "disputeStatement_off": "Wklej oświadczenie o rozwiązywaniu sporów na strony regulaminu i danych firmy (Treści > Wrażenia Zakupowe) lub zaznacz w ustawieniach wtyczki, że to zostało zrobione.",
+            "disputeIntro": "Twoje oświadczenie o rozwiązywaniu sporów do wklejenia w języku każdej strony:",
+            "policyChannel": "Kanał sprzedaży {channel}:",
+            "policyPage_off": "Zasady odstąpienia od umowy: nie sprawdzono, ponieważ w sekcji Ustawienia > Dane podstawowe nie ustawiono strony odstąpienia. Ustaw ją, a Shopproof porówna ją z okresem na odstąpienie i e-mailem sklepu.",
+            "policyText_off": "Zasady odstąpienia od umowy: nie sprawdzono, ponieważ strona odstąpienia prawie nie zawiera tekstu. Jeśli jest wypełniana w inny sposób, porównaj okres i adres e-mail samodzielnie.",
+            "policyPeriod_ok": "Zasady odstąpienia od umowy: strona odstąpienia podaje {detail} dni, tyle samo co okres na odstąpienie w ustawieniach wtyczki",
+            "policyPeriodDifferent_off": "Zasady odstąpienia od umowy: strona odstąpienia podaje {detail} dni, ale okres na odstąpienie w ustawieniach wtyczki jest inny. Zmień jedno z nich, aby były zgodne.",
+            "policyPeriodMonths_off": "Zasady odstąpienia od umowy: strona odstąpienia podaje okres w miesiącach, więc Shopproof nie może go porównać. Sprawdź, czy jest taki sam jak okres na odstąpienie w ustawieniach wtyczki.",
+            "policyPeriodMany_off": "Zasady odstąpienia od umowy: strona odstąpienia podaje więcej niż jeden okres ({detail} dni). Sprawdź, czy okres na odstąpienie w ustawieniach wtyczki jest właściwy.",
+            "policyPeriodNone_off": "Zasady odstąpienia od umowy: na stronie odstąpienia nie znaleziono okresu na odstąpienie. Sprawdź to samodzielnie.",
+            "policyEmail_ok": "Zasady odstąpienia od umowy: strona odstąpienia podaje e-mail sklepu",
+            "policyEmailDifferent_off": "Zasady odstąpienia od umowy: strona odstąpienia podaje {detail}, a nie e-mail sklepu z sekcji Ustawienia > Dane podstawowe. Sprawdź, czy wiadomości wysłane przez klientów na ten adres do Ciebie docierają.",
+            "policyEmailUnsure_off": "Zasady odstąpienia od umowy: strona odstąpienia podaje {detail}, ale w sekcji Ustawienia > Dane podstawowe nie ustawiono e-maila sklepu, więc Shopproof nie może go porównać.",
+            "policyEmailNone_off": "Zasady odstąpienia od umowy: na stronie odstąpienia nie znaleziono adresu e-mail. Sprawdź, czy strona informuje klientów, jak się z Tobą skontaktować.",
+            "orderButton_ok": "Przycisk zamówienia: w każdym języku witryny sklepu informuje, że zamówienie wiąże się z obowiązkiem zapłaty, słowami wskazanymi w przepisach.",
+            "orderButton_off": "Przycisk zamówienia: obecne brzmienie, a następnie słowa wskazane w przepisach: {detail}. Zmień tekst w sekcji Ustawienia > Moduły tekstowe (checkout.confirmSubmit). Inne słowa są bezpieczne tylko wtedy, gdy są równie jasne.",
+            "orderButtonUnknown_off": "Przycisk zamówienia: nie sprawdzono dla {detail}, ponieważ Shopproof nie ma brzmienia dla tego języka. Sprawdź, czy przycisk informuje, że zamówienie wiąże się z obowiązkiem zapłaty.",
+            "deliveryLine_ok": "Wiersz o dostawie i płatności: koszyk i strona zamówienia podają, dokąd dostarczasz i jakie metody płatności przyjmujesz.",
+            "deliveryLine_off": "Wiersz o dostawie i płatności: wyłączony. Kupujący muszą widzieć, dokąd dostarczasz i jak mogą zapłacić, zanim zaczną składać zamówienie. Włącz go w ustawieniach Shopproof, Wiersz o dostawie i płatności, lub sprawdź, czy koszyk już to podaje.",
+            "policyOnline_ok": "Zasady odstąpienia od umowy: strona odstąpienia informuje, że klienci mogą odstąpić od umowy także online",
+            "policyOnlineNone_off": "Zasady odstąpienia od umowy: Shopproof nie znalazł na stronie odstąpienia zdania, że klienci mogą odstąpić od umowy także online, i gdzie to zrobić. Od czerwca 2026 r. zawiera je wzór pouczenia o odstąpieniu od umowy. Dodaj je do części o sposobie odstąpienia lub sprawdź, czy strona mówi to innymi słowami. Oficjalne zdanie: „{detail}”",
+            "policyOnlineUnsure_off": "Zasady odstąpienia od umowy: nie sprawdzono, czy strona odstąpienia informuje, że klienci mogą odstąpić od umowy także online, ponieważ Shopproof nie potrafi ocenić stron w tym języku. Sprawdź to samodzielnie. Oficjalne zdanie: „{detail}”",
+            "priorPrice_ok": "Obniżone ceny pokazują najniższą cenę z 30 dni przed obniżką.",
+            "priorPriceCapped_off": "Obniżone ceny pokazują najniższą cenę z 30 dni przed obniżką dla pierwszych przecenionych produktów sprawdzonych przez Shopproof (liczba: {detail}). Sklep ma więcej produktów, których tutaj nie sprawdzono.",
+            "priorPriceOff_off": "Produkty z ceną katalogową (wyświetlaną jako przekreślona): {detail}, ale opcja „Pokazuj najniższą cenę z 30 dni przed obniżką” jest wyłączona w ustawieniach Shopproof. Unijne przepisy o cenach wymagają jej wyświetlania.",
+            "priorPriceMissing_off": "Te produkty mają cenę katalogową, ale Shopproof ma mniej niż 30 dni ich cen, więc najniższa cena nie jest wyświetlana. Uzupełnij w produkcie własne pole Shopware „Najniższa cena (ostatnie 30 dni)” (Ceny): {detail}",
+            "priorPriceHigher_off": "Te produkty przekreślają cenę katalogową wyższą niż ich najniższa cena z 30 dni, więc obniżka wygląda na większą, niż jest. Procent należy liczyć od najniższej ceny z 30 dni (Trybunał Sprawiedliwości UE, C-330/23): {detail}",
+            "priorPriceSeals_off": "Zapieczętowane części historii cen, które nie zgadzają się już ze swoją pieczęcią w rejestrze dowodów: {detail}. Zapisana cena została zmieniona lub usunięta po zapieczętowaniu.",
+            "where": "Zmień to w sekcji Ustawienia > Rozszerzenia > Shopproof > „Configure” (karty Informacje o cenie, Kaucja za butelki, Koszyk i zamówienie, Oświadczenie o rozwiązywaniu sporów). Pomoc techniczna, nie porada prawna."
+        },
+        "bulk": {
+            "title": "Dane o bezpieczeństwie wielu produktów naraz",
+            "intro": "Uzupełnij dane o bezpieczeństwie wielu produktów w arkuszu kalkulacyjnym, korzystając z własnego narzędzia Import/eksport Shopware:",
+            "step1": "Otwórz Ustawienia > Import/eksport, kartę Eksportuj, i wyeksportuj z profilem „Shopproof: bezpieczeństwo produktów”. Zaznacz „Eksportuj warianty produktów”, jeśli Twoje warianty mają własne dane.",
+            "step2": "Uzupełnij kolumny w pliku. Kolumnę product_number pozostaw bez zmian. Piktogramy określające rodzaj zagrożenia zachowują format z eksportu, na przykład [\"GHS02\",\"GHS07\"].",
+            "step3": "Zaimportuj plik z tym samym profilem na karcie Importuj. Produkty są dopasowywane według numeru produktu, a pusta komórka pozostawia wartość bez zmian. Wiersz z nieznanym numerem nie jest importowany: Shopware zgłasza wtedy import jako nieudany i oferuje plik z tymi wierszami, a pozostałe wiersze zostają zapisane.",
+            "manufacturers": "Większość produktów przejmuje dane od swojego producenta. Profil „Shopproof: dane o bezpieczeństwie producenta” działa tak samo dla producentów, dopasowywanych według kolumny id.",
+            "bulkEdit": "Aby nadać kilku produktom te same dane, zaznacz je w sekcji Katalogi > Produkty, wybierz „Edycja zbiorcza” i uzupełnij „Shopproof: bezpieczeństwo produktów (GPSR)” w karcie „Dodatkowe pole”.",
+            "openImport": "Otwórz Import/eksport",
+            "openProducts": "Otwórz produkty"
+        },
+        "placement": {
+            "title": "Sprawdź, gdzie pojawia się link do odstąpienia",
+            "intro": "Tutaj widać strony sklepu tak, jak widzą je kupujący, na komputerze i na telefonie. Przycisk odstąpienia ma niebieską ramkę, a wszystko, co zasłania treść motywu, ma czerwoną przerywaną ramkę. Klikaj po sklepie w podglądzie, a każda strona zostanie sprawdzona ponownie. Kontrola działa w przeglądarce i nic nie opuszcza sklepu; zapisywana jest tylko liczba stron, które przeszły kontrolę.",
+            "loadFailed": "Nie udało się wczytać stron sklepu do kontroli. Odśwież tę stronę, aby spróbować ponownie.",
+            "noChannel": "Nie znaleziono aktywnej witryny sklepu z domeną, więc nie ma czego sprawdzać.",
+            "otherOrigin": "{names}: żadna domena witryny sklepu nie używa adresu, pod którym otwarty jest ten panel administracyjny, więc przeglądarka może nie pokazać tutaj tych stron i są one liczone jako niesprawdzone. Aby je sprawdzić, otwórz panel administracyjny we własnej domenie witryny sklepu lub dodaj tę domenę do witryny sklepu.",
+            "page": {
+                "label": "Strona",
+                "home": "Strona główna",
+                "product": "Strona produktu",
+                "listing": "Strona kategorii",
+                "cart": "Koszyk",
+                "account": "Konto klienta (logowanie)",
+                "withdrawal": "Strona odstąpienia"
+            },
+            "width": "Szerokość podglądu",
+            "desktop": "Komputer",
+            "phone": "Telefon",
+            "again": "Sprawdź ponownie wszystkie strony",
+            "open": "Otwórz tę stronę w nowej karcie",
+            "loading": "Wczytywanie strony...",
+            "blocked": "Nie udało się pokazać tej strony w podglądzie. Panel administracyjny i sklep mogą mieć różne adresy internetowe, ustawienie bezpieczeństwa na serwerze może blokować podglądy albo strona przekierowała do innej witryny. Otwórz stronę w nowej karcie i sprawdź ją samodzielnie.",
+            "blockedShort": "Nie udało się otworzyć",
+            "checking": "Sprawdzanie...",
+            "sweeping": "Sprawdzanie stron na komputerze i telefonie...",
+            "swept": "Sprawdzono wszystkie strony.",
+            "missing": "Brak linku",
+            "notNeeded": "Tutaj niepotrzebny",
+            "frameTitle": "Podgląd strony sklepu",
+            "tableCaption": "Link do odstąpienia na każdej stronie",
+            "last": "Ostatnia kontrola {date}: zaliczone {pass}, do sprawdzenia {warn}, z problemem {fail}, niesprawdzone {skipped}.",
+            "footnote": "Pomoc techniczna, nie porada prawna. Baner cookie może być widoczny jako element pływający, dopóki nie zamkniesz go w podglądzie. Następnie wybierz stronę ponownie, aby sprawdzić ją jeszcze raz.",
+            "status": {
+                "pass": "Zaliczone",
+                "warn": "Sprawdź",
+                "fail": "Problem",
+                "skip": "Nie sprawdzono",
+                "info": "Uwaga"
+            },
+            "text": {
+                "and": "i",
+                "area": {
+                    "footer": "w stopce",
+                    "header": "w nagłówku lub menu",
+                    "main": "w treści strony",
+                    "account": "w obszarze konta",
+                    "other": "na stronie"
+                },
+                "found": {
+                    "pass": "Przycisk odstąpienia znaleziono {areas}.",
+                    "fail": "Na tej stronie nie ma przycisku odstąpienia. Kupujący muszą go znaleźć na każdej stronie, na przykład w stopce.",
+                    "skip": "Na tej stronie nie ma przycisku odstąpienia, co w tym miejscu jest w porządku."
+                },
+                "visible": {
+                    "pass": "Kupujący widzą go bez otwierania czegokolwiek.",
+                    "warn": "Przy tej szerokości ekranu przycisk jest ukryty {areas}, na przykład w zamkniętym menu. Upewnij się, że jest widoczny także w innym miejscu, np. w stopce."
+                },
+                "clear": {
+                    "pass": "Nic nie zasłania przycisku.",
+                    "warn": "Coś zasłania jeden z przycisków: {items}.",
+                    "fail": "Coś zasłania przycisk: {items}. Kupujący nie mogą do niego dotrzeć."
+                },
+                "contrast": {
+                    "pass": "Kontrast tekstu {value}:1 (standard dostępności wymaga co najmniej 4,5:1).",
+                    "warn": "Przycisk jest trudny do odczytania: kontrast tekstu wynosi tylko {value}:1, a standard dostępności (WCAG 2.2 AA) wymaga 4,5:1. Wybierz w motywie inne kolory przycisku.",
+                    "skip": "Nie zmierzono kontrastu: za tekstem znajduje się obraz lub gradient."
+                },
+                "floating": {
+                    "pass": "Nic nie unosi się nad treścią motywu.",
+                    "warn": "Coś unosi się nad treścią motywu: {items}. Nie pochodzi to z Shopproof, tylko z motywu lub innego rozszerzenia."
+                },
+                "others": {
+                    "pass": "Nie znaleziono drugiego przycisku odstąpienia.",
+                    "warn": "Znaleźliśmy inny przycisk odstąpienia: {items}. Kupujący powinni widzieć tylko jeden. Wyłącz przycisk w drugim rozszerzeniu."
+                },
+                "a11y": {
+                    "pass": "Link do informacji o dostępności znaleziono {areas}.",
+                    "info": "Na tej stronie nie ma linku do informacji o dostępności. Od 28 czerwca 2025 r. większość sklepów potrzebuje deklaracji dostępności, zwykle podlinkowanej w stopce; mikroprzedsiębiorstwa są zwolnione."
+                }
+            }
+        },
+        "setup": {
+            "loadFailed": "Nie udało się wczytać przeglądu konfiguracji. Odśwież tę stronę, aby spróbować ponownie.",
+            "title": "Skonfiguruj Shopproof",
+            "progress": "Wykonane kroki: {done} z {all}.",
+            "doneSr": "(gotowe)",
+            "optional": "(opcjonalnie)",
+            "start": "Rozpocznij",
+            "complete": "Konfiguracja zakończona. Shopproof nadal prowadzi kontrole i pokazuje poniżej wszystko, co nowe.",
+            "glance": "Twój sklep w skrócie",
+            "why": "Dlaczego to jest potrzebne?",
+            "whyText": "Przepis: {law}. Obowiązuje od {date}.",
+            "whyLink": "Przeczytaj oficjalny tekst",
+            "notAdvice": "Shopproof zapewnia pomoc techniczną. To nie jest porada prawna.",
+            "state": {
+                "good": "Gotowe",
+                "warn": "Do przejrzenia",
+                "bad": "Wymaga działania",
+                "todo": "Do zrobienia"
+            },
+            "link": {
+                "open": "Otwórz",
+                "fix": "Napraw"
+            },
+            "step": {
+                "button": {
+                    "title": "Włącz przycisk odstąpienia Shopware",
+                    "help": "W sekcji Ustawienia > Dane podstawowe włącz przycisk odstąpienia i wybierz stronę z formularzem odstąpienia, dla każdej witryny sklepu."
+                },
+                "placement": {
+                    "title": "Sprawdź, czy klienci mogą znaleźć przycisk odstąpienia",
+                    "help": "Otwieramy strony sklepu i szukamy przycisku na komputerze i telefonie. Trwa to około minuty."
+                },
+                "safety": {
+                    "title": "Dodaj, kto produkuje Twoje produkty",
+                    "help": "Podaj adres i e-mail każdego producenta w sekcji Katalogi > Producent lub ustaw producenta dla całego sklepu w ustawieniach wtyczki."
+                },
+                "guarantee": {
+                    "title": "Pokazuj informację o rękojmi",
+                    "help": "Oficjalna informacja UE na stronach produktów. Włącz ją jednym przełącznikiem w ustawieniach wtyczki."
+                },
+                "registrations": {
+                    "title": "Dodaj numery rejestrowe",
+                    "help": "Tylko jeśli sprzedajesz urządzenia elektryczne, baterie lub opakowania wymagające numeru. Wpisz je w ustawieniach wtyczki."
+                }
+            },
+            "card": {
+                "withdrawal": {
+                    "title": "Przycisk odstąpienia",
+                    "unsupported": "Ta wersja Shopware nie ma jeszcze przycisku odstąpienia. Zaktualizuj Shopware do wersji 6.7.9 lub nowszej.",
+                    "notReady": "Nie jest gotowy: w co najmniej jednej witrynie sklepu przycisk jest wyłączony lub nie ma strony z formularzem albo nie działa e-mail z potwierdzeniem lub zapis wniosków. Poniższa kontrola konfiguracji wskazuje, co naprawić.",
+                    "notChecked": "Przycisk jest włączony. Sprawdź, czy klienci mogą go znaleźć na każdej stronie.",
+                    "problem": "Ostatnia kontrola wykryła problem na {count} stronie. | Ostatnia kontrola wykryła problem na stronach (liczba: {count}).",
+                    "noPages": "Nie sprawdzono. Ostatnia kontrola nie otworzyła żadnej strony sklepu, na której powinien być przycisk odstąpienia, więc go tam nie znaleziono. Uruchom kontrolę ponownie.",
+                    "look": "Działa, ale ostatnia kontrola znalazła coś do sprawdzenia.",
+                    "working": "Działa. Przycisk znaleziono na {count} sprawdzonej stronie. | Działa. Przycisk znaleziono na wszystkich sprawdzonych stronach (liczba: {count})."
+                },
+                "withdrawals": {
+                    "title": "Odstąpienia od umowy",
+                    "failed": "Nie udało się zapisać {count} wniosku o odstąpienie. | Nie udało się zapisać wniosków o odstąpienie (liczba: {count}).",
+                    "overdue": "Zwroty płatności należne dzisiaj lub opóźnione: {count}. | Zwroty płatności należne dzisiaj lub opóźnione: {count}.",
+                    "soon": "Zwroty płatności należne w ciągu najbliższych 3 dni: {count}. | Zwroty płatności należne w ciągu najbliższych 3 dni: {count}.",
+                    "received": "Otrzymane odstąpienia: {count}. Nic nie jest należne. | Otrzymane odstąpienia: {count}. Nic nie jest należne.",
+                    "none": "Na razie brak. Pojawią się tutaj, gdy klient użyje przycisku."
+                },
+                "safety": {
+                    "title": "Bezpieczeństwo produktów",
+                    "noProducts": "Brak aktywnych produktów.",
+                    "noMaker": "Produkty bez producenta: {count} z {total}. | Produkty bez producenta: {count} z {total}.",
+                    "noDetails": "Producenci bez adresu lub e-maila (ich produkty pokazują tylko nazwę): {count}. | Producenci bez adresu lub e-maila (ich produkty pokazują tylko nazwę): {count}.",
+                    "complete": "Każdy produkt pokazuje swojego producenta z danymi kontaktowymi."
+                },
+                "guarantee": {
+                    "title": "Informacja o rękojmi",
+                    "on": "Wyświetlana na stronach produktów.",
+                    "off": "Wyłączona w co najmniej jednej witrynie sklepu. Prawo UE wymaga, aby sklepy sprzedające towary ją pokazywały.",
+                    "unknown": "Nie sprawdzono. Bezpieczeństwo produktów jest wyłączone, więc Shopproof nie analizuje stron produktów."
+                },
+                "registrations": {
+                    "title": "Numery rejestrowe",
+                    "some": "Wpisane numery: {count}. | Wpisane numery: {count}.",
+                    "none": "Nie wpisano żadnych. Potrzebne tylko dla urządzeń elektrycznych, baterii lub opakowań."
+                },
+                "proof": {
+                    "title": "Rejestr dowodów",
+                    "unavailable": "Brakuje tabeli rejestru dowodów. Zainstaluj wtyczkę ponownie.",
+                    "changed": "Stary wpis został zmieniony lub usunięty.",
+                    "empty": "Pierwszy codzienny wpis zostanie dodany w ciągu doby.",
+                    "noSnapshot": "Zapis nie działa: nie ma jeszcze codziennego wpisu, choć rejestr zawiera inne wpisy. Zaplanowane zadania Shopware mogą nie działać.",
+                    "stale": "Zapis nie działa: najnowszy codzienny wpis pochodzi z {date}. Zaplanowane zadania Shopware mogą nie działać.",
+                    "recording": "Zapis odbywa się codziennie. Wpisy: {count}, nie znaleziono zmian. | Zapis odbywa się codziennie. Wpisy: {count}, nie znaleziono zmian."
+                },
+                "rules": {
+                    "title": "Przepisy",
+                    "missing": "Nie udało się wczytać listy przepisów.",
+                    "loaded": "Przepisy dla UE i Twoich krajów: {count} (wersja {version}). | Przepisy dla UE i Twoich krajów: {count} (wersja {version})."
+                }
+            },
+            "nonEu": {
+                "title": "Sprzedaż do UE z zagranicy",
+                "intro": "W ustawieniach Shopproof podano, że Twoja firma ma siedzibę poza UE i EOG. Przepisy konsumenckie UE obowiązują przy sprzedaży kupującym z UE tak samo jak w przypadku sklepów z UE, więc przycisk odstąpienia i pozostałe funkcje działają jak zwykle. Dodatkowo sprzedawców spoza UE obowiązują poniższe obowiązki.",
+                "summary": "Dodatkowe obowiązki sprzedawców z zagranicy do sprawdzenia: {open} z {total}.",
+                "empty": "Nie sprawdzono: lista przepisów w tym sklepie nie zawiera jeszcze obowiązków dla sprzedawców spoza UE. Użyj opcji „Sprawdź aktualizacje przepisów teraz” niżej.",
+                "state": {
+                    "good": "Gotowe",
+                    "bad": "Wymaga działania",
+                    "todo": "Sprawdź samodzielnie"
+                },
+                "status": {
+                    "good": "Osoba odpowiedzialna w UE jest wpisana w ustawieniach Shopproof i wyświetlana przy produktach.",
+                    "bad": "Nie wpisano jeszcze osoby odpowiedzialnej w UE. Wpisz nazwę i adres w ustawieniach Shopproof (Bezpieczeństwo produktów), a Shopproof pokaże je przy każdym produkcie.",
+                    "todo": "Sprawdź samodzielnie. Shopproof nie może tego zobaczyć w sklepie."
+                },
+                "source": "Źródło: {basis}.",
+                "official": "Oficjalny tekst",
+                "openSettings": "Otwórz ustawienia Shopproof",
+                "footer": "Shopproof nie może pełnić roli Twojej osoby odpowiedzialnej w UE, pośrednika IOSS ani przedstawiciela RODO: wyznaczasz ich samodzielnie. To pomoc techniczna, nie porada prawna ani podatkowa.",
+                "guide": "Poradnik dla sprzedawców spoza UE"
+            }
+        },
+        "cancel": {
+            "title": "Wypowiedzenia",
+            "intro": "Wypowiedzenia wysłane przez klientów na Twojej stronie wypowiedzenia (Ustawienia > Rozszerzenia > Shopproof, „Przycisk wypowiedzenia”). Każdy klient otrzymał e-mail z potwierdzeniem daty i godziny otrzymania, a e-mail sklepu otrzymał kopię.",
+            "failed": "Nie udało się wczytać wypowiedzeń.",
+            "none": "Brak wypowiedzeń.",
+            "open": "Otwarte wypowiedzenia: {count} | Otwarte wypowiedzenia: {count}",
+            "end": "Koniec",
+            "extraordinary": "Nadzwyczajne",
+            "earliest": "W najwcześniejszym możliwym terminie",
+            "doneOn": "Zakończono {date}",
+            "openState": "Otwarte",
+            "noReceipt": "Klient nie otrzymał e-maila z potwierdzeniem. Potwierdź mu to e-mailem.",
+            "markDone": "Oznacz jako zakończone",
+            "next": "Zakończ umowę (w przypadku subskrypcji w aplikacji do subskrypcji), podaj klientowi datę zakończenia, jeśli wybrał najwcześniejszy możliwy termin, i oznacz wypowiedzenie jako zakończone. Pomoc techniczna, nie porada prawna."
+        },
+        "contact": {
+            "title": "Pomoc i kontakt",
+            "guides": "Poradniki krok po kroku:",
+            "formTitle": "Wyślij nam wiadomość",
+            "intro": "Pytania, problem lub pomysł? Napisz do nas tutaj. Każdą wiadomość czytamy sami.",
+            "introPro": "Pytania, problem lub pomysł? Napisz do nas tutaj. Jako klient Shopproof Pro otrzymasz odpowiedź w ciągu 1 dnia roboczego.",
+            "name": "Imię i nazwisko (opcjonalnie)",
+            "email": "Adres e-mail do odpowiedzi",
+            "message": "Wiadomość",
+            "includeShop": "Dołącz adres mojego sklepu ({shop}), abyście mogli przyjrzeć się problemowi",
+            "what": "Po kliknięciu Wyślij sklep wysyła Twoje imię i nazwisko, adres e-mail i wiadomość, adres sklepu (jeśli zaznaczono) oraz poniższe numery wersji do shopproof.app. Trafiają one do nas jako e-mail na adres support{'@'}shopproof.app i używamy ich wyłącznie do odpowiedzi. Nie podawaj danych klientów.",
+            "privacy": "Informacja o ochronie prywatności",
+            "send": "Wyślij wiadomość",
+            "sent": "Dziękujemy, wiadomość została wysłana. Odpowiemy na adres {email}.",
+            "sentPro": "Dziękujemy, wiadomość została wysłana. Odpowiemy w ciągu 1 dnia roboczego na adres {email}.",
+            "unreachable": "Sklep nie mógł połączyć się z shopproof.app.",
+            "stillThere": "Wiadomość nadal znajduje się w formularzu poniżej. Możesz spróbować ponownie lub wysłać ją e-mailem:",
+            "openEmail": "Otwórz w e-mailu",
+            "errorEmail": "Wpisz pełny adres e-mail, np. ty{'@'}twojsklep.pl, abyśmy mogli odpowiedzieć.",
+            "errorShort": "Napisz kilka słów, abyśmy wiedzieli, jak pomóc.",
+            "errorLong": "Wiadomość jest za długa. Skróć ją do mniej niż 4000 znaków.",
+            "loadFailed": "Formularz nie mógł wczytać Twoich danych. Nadal możesz je wpisać.",
+            "ownEmail": "Wolisz użyć własnej poczty e-mail?",
+            "copy": "Kopiuj adres",
+            "copied": "Adres skopiowany.",
+            "notLegalAdvice": "Shopproof zapewnia pomoc techniczną. To nie jest porada prawna."
+        },
+        "greenClaims": {
+            "title": "Twierdzenia ekologiczne",
+            "intro": "Od 27 września 2026 r. prawo UE zakazuje ogólnikowych twierdzeń dotyczących ochrony środowiska, takich jak „przyjazny dla środowiska”, „przyjazny dla klimatu” czy „zrównoważony”, chyba że produkt ma uznaną doskonałą efektywność środowiskową (na przykład oznakowanie ekologiczne UE) albo ta sama strona wyjaśnia dokładnie, co oznacza twierdzenie. Twierdzenia, że produkt jest neutralny dla klimatu lub ma ograniczony wpływ na klimat dzięki kompensacji emisji, są całkowicie zakazane (dyrektywa (UE) 2024/825). Shopproof wyszukuje przykładowe słowa z dyrektywy w nazwach i opisach produktów (język domyślny), we wszystkich 24 językach UE.",
+            "checking": "Sprawdzanie produktów...",
+            "notChecked": "Nie sprawdzono: Shopproof nie mógł teraz odczytać produktów ani swoich list słów. Odśwież stronę za minutę.",
+            "noProducts": "Jeszcze nie sprawdzono: sklep nie ma aktywnych produktów.",
+            "scopeSome": "Sprawdzono ostatnio zmienione produkty: {checked} z {total}.",
+            "scopeAll": "Sprawdzono {checked} produkt. | Sprawdzono wszystkie produkty (liczba: {checked}).",
+            "aside": "Pominięto {count} wzmiankę, ponieważ zdanie mówi coś przeciwnego, dotyczy utylizacji lub podaje szczegóły (procent lub oznakowanie ekologiczne). | Pominięte wzmianki: {count}, ponieważ zdanie mówi coś przeciwnego, dotyczy utylizacji lub podaje szczegóły (procent lub oznakowanie ekologiczne).",
+            "none": "Żaden nie używa przykładowych słów z dyrektywy.",
+            "limits": "Shopproof znajduje tylko przykładowe słowa z dyrektywy i ich bliskie formy. Inne twierdzenia ekologiczne, obrazy i kolory również mogą być uznane za twierdzenia. Pomoc techniczna, nie porada prawna.",
+            "worth": "Produkty do sprawdzenia: {count} | Produkty do sprawdzenia: {count}",
+            "canBeFine": "Te słowa mogą być w porządku, na przykład przy oznakowaniu ekologicznym UE dla danego twierdzenia lub gdy ta sama strona wyjaśnia dokładnie, o co chodzi („100% bawełny pochodzi z upraw ekologicznych”). Shopproof nie rozstrzyga, czy twierdzenie jest dozwolone: sprawdź każde z nich. Pomoc techniczna, nie porada prawna.",
+            "line": "„{term}” ({kind}) {field}: {excerpt}",
+            "kind": {
+                "generic": "ogólnikowe twierdzenie",
+                "broad": "szerokie twierdzenie o zrównoważeniu",
+                "offsetting": "twierdzenie klimatyczne"
+            },
+            "field": {
+                "title": "w nazwie",
+                "description": "w opisie"
+            },
+            "more": "I jeszcze {count} produkt. | Pozostałe produkty: {count}.",
+            "kindsTitle": "Co oznaczają trzy rodzaje",
+            "genericTitle": "Ogólnikowe twierdzenie",
+            "genericText": "słowa takie jak „przyjazny dla środowiska”, „umweltfreundlich” czy „biodegradowalny”. Dozwolone tylko przy uznanej doskonałej efektywności środowiskowej w zakresie danego twierdzenia (oznakowanie ekologiczne UE, oficjalnie uznane oznakowanie EN ISO 14024 lub najwyższa efektywność według prawa UE, na przykład klasa energetyczna A dla „energooszczędny”) albo gdy ta sama strona wyjaśnia dokładnie, o co chodzi (dyrektywa o nieuczciwych praktykach handlowych, załącznik I pkt 4a).",
+            "broadTitle": "Szerokie twierdzenie o zrównoważeniu",
+            "broadText": "słowa takie jak „zrównoważony” czy „nachhaltig”. Obejmują one także cechy społeczne, więc nawet oznakowanie ekologiczne samo w sobie nie wystarcza (motyw 10). Wyjaśnij dokładnie na tej samej stronie, o co chodzi, albo zrezygnuj z tego słowa.",
+            "offsettingTitle": "Twierdzenie klimatyczne",
+            "offsettingText": "słowa takie jak „neutralny dla klimatu”, „neutralny pod względem CO2” czy „ograniczony wpływ na klimat”. Zakazane, gdy opierają się na kompensacji emisji, na przykład za pomocą jednostek emisji dwutlenku węgla; dozwolone tylko wtedy, gdy opierają się na własnym cyklu życia produktu (dyrektywa o nieuczciwych praktykach handlowych, załącznik I pkt 4c). Informowanie kupujących o wspieraniu projektów klimatycznych pozostaje dozwolone, jeśli nie wprowadza w błąd."
+        },
+        "a11y": {
+            "title": "Deklaracja dostępności",
+            "intro": "Od 28 czerwca 2025 r. większość sklepów sprzedających konsumentom w UE musi zapewnić dostępność sklepu i opublikować deklarację dostępności: co sklep robi na rzecz dostępności, jakie znane bariery istnieją, jak je zgłaszać i z którym organem się kontaktować. Mikroprzedsiębiorstwa (mniej niż 10 osób i nie więcej niż 2 mln euro rocznie) są zwolnione w zakresie swoich usług. Większość sklepów umieszcza link do deklaracji w stopce, obok danych firmy i polityki prywatności.",
+            "linkCheck": "Powyższa kontrola umiejscowienia pokazuje też dla każdej strony, czy zawiera link do informacji o dostępności.",
+            "draftIntro": "Uzupełnij to, co wiesz. Poniższy projekt zmienia się w trakcie pisania; skopiuj go na stronę CMS (Wrażenia Zakupowe), przeczytaj, zmień wszystko, co nie pasuje, i umieść link w stopce. Nic nie jest zapisywane ani wysyłane. Projekt nigdy nie twierdzi, że sklep jest w pełni dostępny. Mówi, do czego dążysz i co już zrobiono.",
+            "country": "Kraj siedziby firmy",
+            "language": "Język",
+            "languageAuto": "Według kraju",
+            "countries": {
+                "AT": "Austria",
+                "DE": "Niemcy",
+                "FR": "Francja",
+                "IT": "Włochy",
+                "NL": "Holandia",
+                "other": "Inny kraj"
+            },
+            "languages": {
+                "en": "Angielski",
+                "de": "Niemiecki",
+                "fr": "Francuski",
+                "it": "Włoski",
+                "nl": "Niderlandzki"
+            },
+            "shop": "Nazwa sklepu",
+            "url": "Adres sklepu",
+            "email": "E-mail do zgłoszeń",
+            "emailHelp": "Tutaj kupujący informują o barierze. Adres pojawi się na stronie.",
+            "about": "Co mogą robić kupujący (opcjonalnie)",
+            "aboutHelp": "Jedno zdanie. Pozostaw puste, aby użyć tekstu: przeglądanie produktów, wybór opcji, dodanie do koszyka i złożenie zamówienia.",
+            "measures": "Co zostało zrobione (opcjonalnie)",
+            "measuresHelp": "Jedna pozycja w wierszu, na przykład: Wszystkie zdjęcia produktów mają opis tekstowy.",
+            "barriers": "Znane bariery (opcjonalnie)",
+            "barriersHelp": "Jedna pozycja w wierszu, na przykład: Tabela rozmiarów jest trudna w obsłudze za pomocą klawiatury.",
+            "noAuthority": "Shopproof zna organ właściwy dla Austrii, Niemiec, Francji, Włoch i Holandii. W przypadku innego kraju projekt zostawia oznaczone miejsce do uzupełnienia.",
+            "preview": "Twój projekt",
+            "copy": "Kopiuj projekt",
+            "copied": "Skopiowano.",
+            "where": "Pomoc techniczna, nie porada prawna. Przeczytaj projekt i zmień wszystko, co nie pasuje do sklepu, zanim go opublikujesz."
+        }
+    }
+}

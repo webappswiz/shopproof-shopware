@@ -1,8 +1,22 @@
 import enGB from '../../snippet/en-GB.json';
 import deDE from '../../snippet/de-DE.json';
+import frFR from '../../snippet/fr-FR.json';
+import itIT from '../../snippet/it-IT.json';
+import nlNL from '../../snippet/nl-NL.json';
+import esES from '../../snippet/es-ES.json';
+import plPL from '../../snippet/pl-PL.json';
 
-Shopware.Locale.extend('en-GB', enGB);
-Shopware.Locale.extend('de-DE', deDE);
+// English and German always exist. The other admin languages exist once Shopware's language
+// pack (or the merchant) adds them; register the locale if nobody has yet, so the texts are
+// there whatever loads first (decision 0044).
+const snippets = { 'en-GB': enGB, 'de-DE': deDE, 'fr-FR': frFR, 'it-IT': itIT, 'nl-NL': nlNL, 'es-ES': esES, 'pl-PL': plPL };
+Object.entries(snippets).forEach(([locale, messages]) => {
+    if (Shopware.Locale.getByName(locale)) {
+        Shopware.Locale.extend(locale, messages);
+    } else {
+        Shopware.Locale.register(locale, messages);
+    }
+});
 
 Shopware.Component.register('shopproof-overview-index', () => import('./page/shopproof-overview-index'));
 Shopware.Component.register('shopproof-setup-overview', () => import('../../component/shopproof-setup-overview'));

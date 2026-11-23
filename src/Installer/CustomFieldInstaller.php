@@ -318,7 +318,7 @@ final class CustomFieldInstaller
                 'componentName' => \in_array($field, self::MULTILINE, true) ? 'sw-textarea-field' : 'sw-text-field',
                 'customFieldType' => \in_array($field, self::MULTILINE, true) ? 'textarea' : 'text',
                 'customFieldPosition' => $position + 1,
-                'label' => ['en-GB' => self::LABELS[$field][0], 'de-DE' => self::LABELS[$field][1]],
+                'label' => LabelTexts::of(self::LABELS[$field][0], self::LABELS[$field][1]),
             ];
             $type = CustomFieldTypes::TEXT;
             if ($field === 'display') {
@@ -328,8 +328,8 @@ final class CustomFieldInstaller
                     'componentName' => 'sw-single-select',
                     'customFieldType' => 'select',
                     'options' => [
-                        ['value' => 'nested', 'label' => ['en-GB' => 'Short strip that opens the full label (default)', 'de-DE' => 'Schmaler Streifen, der das ganze Label öffnet (Standard)']],
-                        ['value' => 'full', 'label' => ['en-GB' => 'Full label', 'de-DE' => 'Ganzes Label']],
+                        ['value' => 'nested', 'label' => LabelTexts::of('Short strip that opens the full label (default)', 'Schmaler Streifen, der das ganze Label öffnet (Standard)')],
+                        ['value' => 'full', 'label' => LabelTexts::of('Full label', 'Ganzes Label')],
                     ],
                 ];
             }
@@ -341,7 +341,7 @@ final class CustomFieldInstaller
                     'customFieldType' => 'select',
                     'options' => array_map(static fn (string $code): array => [
                         'value' => $code,
-                        'label' => ['en-GB' => $code . ' ' . self::PICTOGRAM_NAMES[$code][0], 'de-DE' => $code . ' ' . self::PICTOGRAM_NAMES[$code][1]],
+                        'label' => LabelTexts::of(self::PICTOGRAM_NAMES[$code][0], self::PICTOGRAM_NAMES[$code][1], $code . ' '),
                     ], HazardLabel::PICTOGRAMS),
                 ];
             }
@@ -351,11 +351,11 @@ final class CustomFieldInstaller
                     ...$config,
                     'componentName' => 'sw-single-select',
                     'customFieldType' => 'select',
-                    'placeholder' => ['en-GB' => 'Automatic', 'de-DE' => 'Automatisch'],
+                    'placeholder' => LabelTexts::of('Automatic', 'Automatisch'),
                     'options' => [
-                        ['value' => 'goods', 'label' => ['en-GB' => 'Goods (14 days from delivery)', 'de-DE' => 'Ware (14 Tage ab Lieferung)']],
-                        ['value' => 'service', 'label' => ['en-GB' => 'Service (14 days from the order)', 'de-DE' => 'Dienstleistung (14 Tage ab Bestellung)']],
-                        ['value' => 'dated', 'label' => ['en-GB' => 'Dated booking (usually no right of withdrawal)', 'de-DE' => 'Termingebundene Buchung (meist kein Widerrufsrecht)']],
+                        ['value' => 'goods', 'label' => LabelTexts::of('Goods (14 days from delivery)', 'Ware (14 Tage ab Lieferung)')],
+                        ['value' => 'service', 'label' => LabelTexts::of('Service (14 days from the order)', 'Dienstleistung (14 Tage ab Bestellung)')],
+                        ['value' => 'dated', 'label' => LabelTexts::of('Dated booking (usually no right of withdrawal)', 'Termingebundene Buchung (meist kein Widerrufsrecht)')],
                     ],
                 ];
             }
@@ -378,8 +378,8 @@ final class CustomFieldInstaller
                     'componentName' => 'sw-single-select',
                     'customFieldType' => 'select',
                     'options' => [
-                        ['value' => 'danger', 'label' => ['en-GB' => 'Danger', 'de-DE' => 'Gefahr']],
-                        ['value' => 'warning', 'label' => ['en-GB' => 'Warning', 'de-DE' => 'Achtung']],
+                        ['value' => 'danger', 'label' => LabelTexts::of('Danger', 'Gefahr')],
+                        ['value' => 'warning', 'label' => LabelTexts::of('Warning', 'Achtung')],
                     ],
                 ];
             }
@@ -391,7 +391,7 @@ final class CustomFieldInstaller
                     'customFieldType' => 'select',
                     'options' => array_map(static fn (string $code): array => [
                         'value' => $code,
-                        'label' => ['en-GB' => self::ALLERGEN_NAMES[$code][0], 'de-DE' => self::ALLERGEN_NAMES[$code][1]],
+                        'label' => LabelTexts::of(self::ALLERGEN_NAMES[$code][0], self::ALLERGEN_NAMES[$code][1]),
                     ], FoodInformation::ALLERGENS),
                 ];
             }
@@ -451,7 +451,7 @@ final class CustomFieldInstaller
             $type = self::energyType($field) ?? $type;
             $help = $prefix === DurabilityLabel::PREFIX ? (self::HELP[$field] ?? self::HELP[str_replace('maker_', '', $field)] ?? null) : (self::SERVICE_HELP[$field] ?? self::ENERGY_HELP[$field] ?? null);
             if ($help !== null) {
-                $config['helpText'] = ['en-GB' => $help[0], 'de-DE' => $help[1]];
+                $config['helpText'] = LabelTexts::of($help[0], $help[1]);
             }
             $customField = [
                 'id' => \is_string($fieldId) ? $fieldId : Uuid::fromStringToHex($fieldName),
@@ -475,7 +475,7 @@ final class CustomFieldInstaller
         return [
             'id' => $setId,
             'name' => $name,
-            'config' => ['label' => ['en-GB' => $label[0], 'de-DE' => $label[1]], 'translated' => true],
+            'config' => ['label' => LabelTexts::of($label[0], $label[1]), 'translated' => true],
             'relations' => [[
                 'id' => \is_string($relationId) ? $relationId : Uuid::fromStringToHex($name . '.' . $entity),
                 'entityName' => $entity,
@@ -511,7 +511,7 @@ final class CustomFieldInstaller
             'componentName' => 'sw-single-select',
             'customFieldType' => 'select',
             'options' => array_map(
-                static fn (array $o): array => ['value' => $o[0], 'label' => ['en-GB' => $o[1], 'de-DE' => $o[2]]],
+                static fn (array $o): array => ['value' => $o[0], 'label' => LabelTexts::of($o[1], $o[2])],
                 $options,
             ),
         ];

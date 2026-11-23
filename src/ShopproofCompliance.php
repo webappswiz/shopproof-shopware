@@ -88,8 +88,9 @@ class ShopproofCompliance extends Plugin
     private function importProfiles(): ?ImportExportProfileInstaller
     {
         $repository = $this->container?->get('import_export_profile.repository');
+        $connection = $this->container?->get(Connection::class);
 
-        return $repository instanceof EntityRepository ? new ImportExportProfileInstaller($repository) : null;
+        return $repository instanceof EntityRepository ? new ImportExportProfileInstaller($repository, $connection instanceof Connection ? $connection : null) : null;
     }
 
     private function mailTemplates(): ?MailTemplateInstaller

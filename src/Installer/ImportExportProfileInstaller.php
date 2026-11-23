@@ -2,6 +2,7 @@
 
 namespace Shopproof\Compliance\Installer;
 
+use Doctrine\DBAL\Connection;
 use Shopproof\Compliance\Storefront\HazardLabel;
 use Shopproof\Compliance\Storefront\SafetyData;
 use Shopware\Core\Content\ImportExport\ImportExportProfileEntity;
@@ -30,13 +31,31 @@ final class ImportExportProfileInstaller
     /**
      * @param EntityRepository<EntityCollection<ImportExportProfileEntity>> $profileRepository
      */
-    public function __construct(private readonly EntityRepository $profileRepository)
-    {
+    public function __construct(
+        private readonly EntityRepository $profileRepository,
+        private readonly ?Connection $connection = null,
+    ) {
     }
 
     public function install(Context $context): void
     {
-        $this->profileRepository->upsert(self::profiles(), $context);
+        $this->profileRepository->upsert(self::profiles($this->locales()), $context);
+    }
+
+    /**
+     * Locale codes of the shop's languages. A profile label can only be written for a language
+     * the shop has.
+     *
+     * @return list<string>
+     */
+    private function locales(): array
+    {
+        if ($this->connection === null) {
+            return [];
+        }
+        $codes = $this->connection->fetchFirstColumn('SELECT lo.code FROM language l JOIN locale lo ON lo.id = l.locale_id');
+
+        return array_values(array_filter($codes, 'is_string'));
     }
 
     public function uninstall(Context $context): void
@@ -53,9 +72,11 @@ final class ImportExportProfileInstaller
     /**
      * Both profiles as Shopware entity payloads. Pure, so the columns are unit tested.
      *
+     * @param list<string> $locales the shop's locale codes, for labels beyond English and German
+     *
      * @return list<array<string, mixed>>
      */
-    public static function profiles(): array
+    public static function profiles(array $locales = []): array
     {
         $productFields = [...SafetyData::PARTY_FIELDS, ...SafetyData::PRODUCT_FIELDS, ...HazardLabel::FIELDS];
 
@@ -73,6 +94,7 @@ final class ImportExportProfileInstaller
                     ], $productFields),
                 ],
                 [['entityName' => 'product', 'mappedKey' => 'productNumber']],
+                $locales,
             ),
             self::profile(
                 self::MANUFACTURER_PROFILE,
@@ -87,6 +109,7 @@ final class ImportExportProfileInstaller
                     ], SafetyData::MANUFACTURER_FIELDS),
                 ],
                 [],
+                $locales,
             ),
         ];
     }
@@ -95,11 +118,19 @@ final class ImportExportProfileInstaller
      * @param array{string, string}                              $label English and German
      * @param list<array{key: string, mappedKey: string}>         $columns
      * @param list<array{entityName: string, mappedKey: string}> $updateBy
+     * @param list<string>                                         $locales
      *
      * @return array<string, mixed>
      */
-    private static function profile(string $name, string $entity, array $label, array $columns, array $updateBy): array
+    private static function profile(string $name, string $entity, array $label, array $columns, array $updateBy, array $locales): array
     {
+        $translations = [];
+        foreach (LabelTexts::of($label[0], $label[1]) as $locale => $text) {
+            if ($locale === 'en-GB' || $locale === 'de-DE' || \in_array($locale, $locales, true)) {
+                $translations[$locale] = ['label' => $text];
+            }
+        }
+
         $mapping = [];
         foreach ($columns as $position => $column) {
             $mapping[] = [...$column, 'position' => $position];
@@ -110,10 +141,7 @@ final class ImportExportProfileInstaller
             'id' => md5('shopproof.import-export.' . $name),
             'technicalName' => $name,
             'label' => $label[0],
-            'translations' => [
-                'en-GB' => ['label' => $label[0]],
-                'de-DE' => ['label' => $label[1]],
-            ],
+            'translations' => $translations,
             'systemDefault' => false,
             'sourceEntity' => $entity,
             'fileType' => 'text/csv',

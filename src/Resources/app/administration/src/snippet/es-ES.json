@@ -1,0 +1,577 @@
+{
+    "shopproof": {
+        "general": {
+            "title": "Shopproof",
+            "description": "Normas de la UE para los países a los que vende"
+        },
+        "overview": {
+            "aboutTitle": "Sobre estas normas",
+            "disclaimer": "Información técnica para ayudar a las tiendas a cumplir. No es asesoramiento legal.",
+            "loadFailed": "No se han podido cargar las normas. Vuelva a cargar la página e inténtelo de nuevo.",
+            "notYet": "Falta la lista de normas que viene con el plugin. Reinstale el plugin o pulse «Buscar actualizaciones de normas ahora».",
+            "version": "Versión de las normas {version}, descargada el {date}.",
+            "countriesHint": "Elija los países a los que vende en Extensiones > Mis extensiones > Shopproof EU Compliance > Configure. Las normas de toda la UE se muestran siempre.",
+            "groupTitle": "{country}: {count} normas",
+            "effectiveFrom": "En vigor desde",
+            "whereInShop": "Dónde en la tienda",
+            "legalBasis": "Fuente oficial",
+            "opensNewTab": "(se abre en una pestaña nueva)",
+            "versionBundled": "Versión de las normas {version}, incluida en el plugin.",
+            "autoOff": "Shopproof funciona sin contactar con ningún servidor. Para recibir los cambios de normas en cuanto se publican, pulse «Buscar actualizaciones de normas ahora» o active «Descargar actualizaciones de normas una vez al día» en los ajustes del plugin. La descarga va al servicio de normas de Shopproof y no envía datos de la tienda, de clientes ni datos personales.",
+            "autoOn": "Las actualizaciones de normas se descargan una vez al día del servicio de normas de Shopproof. Puede desactivarlo en los ajustes del plugin.",
+            "refresh": "Buscar actualizaciones de normas ahora",
+            "refresh_updated": "Normas revisadas. La lista de abajo es la versión más reciente.",
+            "refresh_failed": "No se ha podido contactar con el servicio de normas. Las normas que ya tiene se mantienen; inténtelo de nuevo más tarde."
+        },
+        "countries": {
+            "EU": "Toda la UE",
+            "AT": "Austria",
+            "DE": "Alemania",
+            "FR": "Francia",
+            "IT": "Italia",
+            "NL": "Países Bajos"
+        },
+        "withdrawal": {
+            "checkTitle": "Botón de desistimiento",
+            "checkFailed": "No se ha podido cargar la revisión del botón de desistimiento. Inténtelo de nuevo.",
+            "unsupported": "Esta versión de Shopware todavía no tiene botón de desistimiento. Actualice a Shopware 6.7.9 o posterior para usarlo; Shopproof guardará entonces un registro de cada solicitud.",
+            "allGood": "El botón de desistimiento de Shopware está configurado en todos los escaparates activos.",
+            "needsWork": "El botón de desistimiento de Shopware todavía necesita algo de configuración.",
+            "done": "Hecho",
+            "todo": "Pendiente",
+            "where": "Cámbielos en Ajustes > Datos maestros (Legal and compliance: Show «Revoke a contract» button in footer; Shop pages: Shop page layout for revocation request) y en Ajustes > Generador de flujo. El canal de venta puede sobrescribir cada ajuste. Ayuda técnica, no asesoramiento legal.",
+            "check": {
+                "flowActive": "El flujo «Online revocation request sent» está activo, así que los correos electrónicos se envían",
+                "customerMail": "El flujo envía al cliente un correo electrónico de confirmación con la solicitud y su fecha y hora",
+                "recordTable": "La tabla de Shopproof para los registros existe (shopproof_withdrawal_request). Si no, reinstale el plugin.",
+                "buttonOn": "El botón de desistimiento está activado",
+                "page": "El botón enlaza con una página de solicitud de desistimiento",
+                "form": "Esa página tiene el formulario de solicitud de desistimiento",
+                "labels": "Todos los idiomas del escaparate tienen el texto nacional del botón",
+                "labelsMissing": "Estos idiomas del escaparate todavía no tienen el texto nacional del botón: {languages}. Defina el texto del botón en Ajustes > Bloques de texto.",
+                "wording": "El texto del botón elegido se aplica en todos los idiomas del escaparate",
+                "wordingMissing": "Estos idiomas del escaparate no tienen un texto alternativo revisado, así que mantienen el texto nacional: {languages}.",
+                "wordingOwn": "Su propio texto del botón todavía no se usa: introduzca ambos textos y marque que entiende el texto legal (ajustes de Shopproof, tarjeta Botón de desistimiento). Hasta entonces se aplica el texto nacional.",
+                "returnsUrl": "No se puede usar la dirección de su herramienta de devoluciones, así que los desistimientos no se reenvían. Introduzca la dirección https:// completa que le dio su herramienta de devoluciones (ajustes de Shopproof, tarjeta Herramienta de devoluciones). Los desistimientos se siguen registrando aquí."
+            },
+            "listTitle": "Solicitudes de desistimiento",
+            "listIntro": "Cada solicitud enviada con el botón de desistimiento de Shopware, guardada en la base de datos de esta tienda para que pueda demostrar cuándo llegó. Shopproof nunca la recibe.",
+            "searchLabel": "Buscar por correo electrónico, nombre o número de pedido",
+            "search": "Buscar",
+            "listFailed": "No se han podido cargar las solicitudes de desistimiento. Su usuario necesita el permiso para ver pedidos.",
+            "none": "Todavía no hay solicitudes de desistimiento.",
+            "received": "Recibida",
+            "customer": "Cliente",
+            "contract": "Número de pedido o de contrato",
+            "comment": "Comentario",
+            "actions": "Acciones",
+            "noOrder": "Ningún pedido coincide",
+            "refundOnOrder": "Reembolso en el pedido",
+            "refundOnOrderHelp": "Cuando haya enviado el dinero, ponga el estado de pago del pedido en Reembolsado. Shopproof pondrá entonces este desistimiento en Reembolso enviado.",
+            "orderDate": "Fecha de pedido indicada",
+            "delete": "Eliminar",
+            "confirmDelete": "Eliminar definitivamente",
+            "cancel": "Cancelar",
+            "failedRecords": "No se ha podido registrar {count} solicitud de desistimiento; revise el registro y los correos electrónicos de Shopware. | No se han podido registrar {count} solicitudes de desistimiento; revise el registro y los correos electrónicos de Shopware.",
+            "failedHelp": "Shopware envió igualmente sus correos electrónicos, así que el cliente recibió una confirmación, pero la solicitud falta en la lista de abajo. Búsquela en los correos electrónicos que Shopware envió a la tienda y en var/log (busque «Shopproof could not record») y guarde una copia.",
+            "failedClear": "Ya los he revisado",
+            "status": "Estado",
+            "deadlines": "Plazos",
+            "deliveredOn": "Bienes recibidos el",
+            "deliveredHelp": "El día en que el cliente recibió los bienes (el último artículo). Sin esta fecha se usa el día en que Shopware marcó la entrega como enviada, con lo que solo se puede indicar «a tiempo» o «revisar».",
+            "states": {
+                "received": "Desistimiento recibido",
+                "return_arrived": "Devolución recibida",
+                "refund_sent": "Reembolso enviado"
+            },
+            "emailed": "El cliente ha recibido un correo electrónico.",
+            "notEmailed": "No se ha enviado ningún correo electrónico (el ajuste está desactivado o la tienda no tiene dirección de correo electrónico ni plantilla para este escaparate).",
+            "statusFailed": "No se ha podido guardar el estado. Inténtelo de nuevo.",
+            "confirmStatus": "¿Guardar este estado? El cliente recibirá un correo electrónico sobre él, salvo que los correos de estado estén desactivados en los ajustes.",
+            "confirmYes": "Guardar y avisar",
+            "confirmNo": "Cancelar",
+            "estimated": "Estimada a partir de la fecha de envío",
+            "clock": {
+                "before_delivery": "A tiempo: enviado antes de la entrega",
+                "inside": "A tiempo: el plazo termina el {date}",
+                "late": "Con {days} día de retraso: el plazo terminó el {date} | Con {days} días de retraso: el plazo terminó el {date}",
+                "check": "Revisar: puede estar fuera de plazo, introduzca la fecha de entrega",
+                "unknown": "Plazo desconocido: introduzca la fecha de entrega",
+                "paid": "Reembolsado el {date}",
+                "none": "Sin plazo de reembolso mientras el desistimiento esté fuera de plazo",
+                "today": "El reembolso vence hoy ({date})",
+                "overdue": "Reembolso con {days} día de retraso (vencía el {date}) | Reembolso con {days} días de retraso (vencía el {date})",
+                "due": "Reembolso a más tardar el {date} (queda {days} día) | Reembolso a más tardar el {date} (quedan {days} días)",
+                "dueGoods": "Reembolso a más tardar el {date} (queda {days} día), o cuando vuelvan los bienes si es más tarde | Reembolso a más tardar el {date} (quedan {days} días), o cuando vuelvan los bienes si es más tarde",
+                "waiting": "El reembolso espera a los bienes: vence cuando vuelvan o el cliente demuestre que los ha enviado",
+                "todayBack": "El reembolso vence hoy (bienes devueltos el {date})",
+                "overdueBack": "Reembolso con {days} día de retraso (bienes devueltos el {date}) | Reembolso con {days} días de retraso (bienes devueltos el {date})",
+                "partly": "Reembolsado en parte el {date}, revisar: {line}",
+                "insideOrder": "A tiempo: el plazo termina el {date} (14 días desde el pedido, como para los servicios)",
+                "performed": "Revisar: el servicio se prestó por completo antes del desistimiento, tras la solicitud de inicio anticipado, así que el derecho puede haber terminado (art. 16, letra a)",
+                "digital": "Revisar: contenido digital, y el cliente aceptó al finalizar la compra que la descarga podía empezar antes y que entonces el derecho termina. Si la descarga empezó antes del desistimiento, el derecho puede haber terminado (art. 16, letra m)",
+                "exempt": "Revisar: solo reservas con fecha (ocio, viajes y similares), normalmente sin derecho de desistimiento (art. 16, letra l)",
+                "noneRight": "Sin plazo de reembolso mientras el derecho de desistimiento pueda no aplicarse",
+                "owed": {
+                    "no_consent": "Servicio: el cliente no paga nada por lo ya prestado, porque no hay solicitud de inicio anticipado (art. 14, apartado 4)",
+                    "not_started": "Servicio: no había empezado cuando llegó el desistimiento, no se debe nada",
+                    "days": "Servicio: {days} de {of} días prestados, el cliente paga {owed}, reembolso {refund}",
+                    "share": "Servicio: {share} % prestado, el cliente paga {owed}, reembolso {refund}",
+                    "unknown": "Servicio: introduzca en el pedido las fechas del servicio o la parte prestada (Campos adicionales, Shopproof) para ver lo que paga el cliente"
+                },
+                "help": "Ayuda técnica, no asesoramiento legal. El plazo es de 14 días (o su plazo más largo) desde la entrega y se alarga hasta el lunes cuando termina en fin de semana; los días festivos también pueden alargarlo. El reembolso vence 14 días después de que llegara el desistimiento; para bienes puede esperar hasta que vuelvan (estado Devolución recibida) o hasta que el cliente demuestre que los ha enviado, lo que ocurra primero, salvo que usted ofreciera recogerlos (art. 13, apartado 3). Para servicios, el plazo cuenta desde el pedido y, con la solicitud de inicio anticipado, el cliente paga la parte prestada."
+            },
+            "items": "Artículos",
+            "export": "Exportar todo como CSV",
+            "exportFailed": "No se ha podido crear el archivo CSV. Inténtelo de nuevo.",
+            "businessTitle": "¿Pedido de empresa?",
+            "business_company": "Este pedido tiene un nombre de empresa.",
+            "business_vat": "Este pedido tiene un NIF-IVA.",
+            "business_company_vat": "Este pedido tiene un nombre de empresa y un NIF-IVA.",
+            "businessText": "El derecho de desistimiento es para consumidores, así que un cliente empresa puede no tenerlo. Pero eso no demuestra que la compra fuera para la empresa, y en algunos países, como Polonia, los autónomos conservan el derecho para compras ajenas a su actividad. Compruébelo antes de rechazar el desistimiento. Ayuda técnica, no asesoramiento legal."
+        },
+        "products": {
+            "warn": "Revisión",
+            "guaranteeNotice_ok": "El aviso de garantía legal de la UE se muestra en las páginas de producto",
+            "guaranteeNotice_off": "El aviso de garantía legal de la UE está desactivado en al menos un escaparate. Es obligatorio para bienes desde el 27 de septiembre de 2026. Active «Mostrar el aviso oficial de garantía legal de la UE en las páginas de producto» en los ajustes del plugin.",
+            "manufacturerDetails_ok": "Todos los fabricantes de sus productos tienen datos de contacto para la información de seguridad de productos",
+            "manufacturerDetails_off": "Estos fabricantes no tienen datos de contacto, así que sus productos muestran solo el nombre del fabricante. Añada la dirección y el correo electrónico en Catálogos > Fabricante (Shopproof: seguridad de productos) o en cada producto:",
+            "hazardStatements_off": "Estos productos tienen indicaciones de peligro o consejos de prudencia que la página de producto no puede mostrar. Los códigos con una opción o un hueco (como P280 o P501) necesitan sus propias palabras después de dos puntos, por ejemplo «P280: Llevar guantes de protección». Abra el producto, Campos adicionales, «Shopproof: productos químicos peligrosos (CLP)»:",
+            "hazardOwn": "necesita sus propias palabras",
+            "hazardUnknown": "código desconocido, revise la etiqueta",
+            "registrationNumbers_off": "Estas líneas de «Sus números de registro» en los ajustes del plugin no se muestran, porque les faltan los dos puntos o el número, o porque hay más de 12. Escríbalas así: «WEEE DE: DE 12345678»:",
+            "ownGoodsTitle": "¿Fabrica sus propios productos?",
+            "ownGoodsText": "Entonces su tienda es el fabricante. Estos datos de Ajustes > Datos maestros pueden rellenar los campos vacíos del fabricante predeterminado en los ajustes de Shopproof. Los productos con su propio fabricante conservan el suyo. Revíselos antes.",
+            "ownGoodsButton": "Usar estos datos para los campos vacíos",
+            "ownGoods_saved": "Guardado. Revíselos en los ajustes del plugin, en Seguridad de productos (GPSR).",
+            "ownGoods_failed": "No se han podido guardar los datos. Inténtelo de nuevo."
+        },
+        "cms": {
+            "label": "Información de producto de Shopproof",
+            "previewText": "Etiqueta de durabilidad, seguridad de productos, aviso de garantía",
+            "elementText": "En la página de producto muestra la etiqueta de durabilidad, la información de seguridad de productos y el aviso de garantía legal de la UE, cada uno donde corresponda. Un bloque que la zona de compra o la descripción ya muestran en la página no se repite.",
+            "configText": "Aquí no hay nada que configurar. El contenido viene de cada producto y de los ajustes de Shopproof en Extensiones > Mis extensiones > Shopproof EU Compliance > Configure."
+        },
+        "layouts": {
+            "title": "Páginas de producto",
+            "intro": "Dónde muestra Shopproof la etiqueta de durabilidad y la línea de seguridad de productos (en la zona de compra) y el aviso de garantía y la información sobre la recogida (debajo de la descripción del producto), para cada diseño de página de producto que usa su tienda.",
+            "ok": "muestra los bloques de Shopproof",
+            "missing": "no tiene sitio para {blocks}. Abra el diseño y añada el bloque «Información de producto de Shopproof» (categoría Comercio) donde deban aparecer.",
+            "part": {
+                "durability": "la etiqueta de durabilidad",
+                "safety": "la seguridad de productos",
+                "guarantee": "el aviso de garantía y la información sobre la recogida"
+            }
+        },
+        "proof": {
+            "title": "Registro de pruebas",
+            "intro": "Un registro con fecha de lo que mostró su tienda y de los desistimientos que recibió, guardado en la propia base de datos de su tienda. Cada entrada está encadenada a la anterior con un hash SHA-256, así que una entrada cambiada o eliminada se detecta al revisar la cadena. No contiene nombres de clientes, direcciones de correo electrónico ni números de pedido. Se registra una instantánea una vez al día.",
+            "unavailable": "Falta la tabla del registro de pruebas. Actualice o reinstale el plugin.",
+            "loadFailed": "No se ha podido cargar el registro de pruebas.",
+            "none": "Todavía no hay entradas. La primera instantánea se registra en un plazo de un día, o pulse «Registrar una instantánea ahora».",
+            "lastSnapshot": "Última instantánea: {date}",
+            "retention": "Las entradas se conservan {days} días (ajustes del plugin, Registro de pruebas).",
+            "retentionAll": "Se conservan todas las entradas (ajustes del plugin, Registro de pruebas).",
+            "verify": "Revisar la cadena",
+            "verifyOk": "Cadena intacta: {count} entradas revisadas.",
+            "verifyBroken": "Cadena rota en la entrada {id}, después de {count} entradas intactas. Se cambió o eliminó una entrada.",
+            "verifyFailed": "No se ha podido realizar la revisión.",
+            "snapshot": "Registrar una instantánea ahora",
+            "download": "Descargar como CSV",
+            "time": "Hora (UTC)",
+            "type": "Tipo",
+            "summary": "Resumen",
+            "hash": "Hash",
+            "types": {
+                "snapshot": "Instantánea diaria",
+                "withdrawal": "Desistimiento",
+                "retention": "Plazo de conservación cambiado",
+                "anchor": "Sello guardado por Shopproof",
+                "prices": "Historial de precios sellado"
+            }
+        },
+        "returns": {
+            "title": "Herramienta de devoluciones",
+            "intro": "Shopproof puede enviar cada nuevo desistimiento a su herramienta de devoluciones o automatización como JSON firmado, y añadir al acuse de recibo del cliente un enlace a su portal de devoluciones. Configure las direcciones en los ajustes de Shopproof (tarjeta Herramienta de devoluciones).",
+            "on": "Activado: cada nuevo desistimiento se envía a su herramienta de devoluciones.",
+            "off": "Desactivado: no hay ninguna dirección de webhook configurada.",
+            "secret": "Secreto de firma",
+            "secretHelp": "Péguelo en su herramienta de devoluciones. Cada solicitud lleva la cabecera X-Shopproof-Signature: t=<time>,v1=<signature>. La firma es el HMAC-SHA256, en hexadecimal, de la hora, un punto y el cuerpo de la solicitud, con este secreto como clave. Mantenga el secreto en privado.",
+            "renew": "Nuevo secreto",
+            "renewed": "Nuevo secreto creado. Péguelo en su herramienta de devoluciones, porque el anterior ya no funciona.",
+            "test": "Enviar una prueba",
+            "testOk": "Su herramienta de devoluciones aceptó la prueba (estado {code}).",
+            "testRefused": "Su herramienta de devoluciones rechazó la prueba con el estado {code}. Revise allí la dirección y el secreto.",
+            "testUnreachable": "No se ha podido contactar con su herramienta de devoluciones. Revise la dirección.",
+            "delivery": {
+                "queued": "Herramienta de devoluciones: pendiente de envío.",
+                "sent": "Herramienta de devoluciones: enviado {time}, estado {code}.",
+                "retrying": "Herramienta de devoluciones: no aceptado {time} (estado {code}). Shopproof lo intentará de nuevo.",
+                "failed": "Herramienta de devoluciones: Shopproof dejó de intentarlo {time} (estado {code}). Cree la devolución a mano."
+            }
+        },
+        "notes": {
+            "title": "Avisos de la tienda",
+            "unitPrices_off": "Estos productos parecen venderse por peso o volumen (por ejemplo, «500 g» en el nombre), pero no tienen contenido ni unidad, así que Shopware no muestra precio unitario. Abra el producto, Especificaciones, Medidas y embalaje:",
+            "depositTypes_off": "Estas líneas de «Sus tipos de depósito» en los ajustes del plugin no se usan. Escríbalas así: «de-single | Einweg | 0.25 | single | DE»:",
+            "checkoutPolicyPages_off": "Estas casillas de finalizar compra que eligió no se muestran, porque su página no está configurada en Ajustes > Datos maestros:",
+            "box_withdrawal": "He leído la política de desistimiento (página de revocación)",
+            "box_privacy": "He leído el aviso de privacidad (página de privacidad)",
+            "disputeBoard_off": "Su declaración sobre resolución de litigios todavía no indica ningún organismo de arbitraje. Introduzca su nombre en los ajustes del plugin.",
+            "disputeStatement_ok": "Su declaración sobre resolución de litigios está en su página de términos o de aviso legal",
+            "disputeStatement_off": "Pegue su declaración sobre resolución de litigios en sus páginas de términos y de aviso legal (Contenidos > Mundos de experiencias), o marque en los ajustes del plugin que ya lo ha hecho.",
+            "disputeIntro": "Su declaración sobre resolución de litigios, para pegar en el idioma de cada página:",
+            "policyChannel": "Canal de venta {channel}:",
+            "policyPage_off": "Política de desistimiento: no revisada, porque no hay ninguna página de revocación configurada en Ajustes > Datos maestros. Configúrela y Shopproof la comparará con su plazo de desistimiento y el correo electrónico de la tienda.",
+            "policyText_off": "Política de desistimiento: no revisada, porque su página de revocación casi no tiene texto. Si se rellena de otra forma, compare usted el plazo y la dirección de correo electrónico.",
+            "policyPeriod_ok": "Política de desistimiento: su página de revocación indica {detail} días, lo mismo que el plazo de desistimiento de los ajustes del plugin",
+            "policyPeriodDifferent_off": "Política de desistimiento: su página de revocación indica {detail} días, pero el plazo de desistimiento de los ajustes del plugin es distinto. Cambie uno de los dos para que coincidan.",
+            "policyPeriodMonths_off": "Política de desistimiento: su página de revocación indica el plazo en meses, así que Shopproof no puede compararlo. Compruebe que es el mismo que el plazo de desistimiento de los ajustes del plugin.",
+            "policyPeriodMany_off": "Política de desistimiento: su página de revocación indica más de un plazo ({detail} días). Compruebe que el plazo de desistimiento de los ajustes del plugin es el correcto.",
+            "policyPeriodNone_off": "Política de desistimiento: no se ha encontrado ningún plazo de desistimiento en su página de revocación. Compruébelo usted.",
+            "policyEmail_ok": "Política de desistimiento: su página de revocación indica el correo electrónico de su tienda",
+            "policyEmailDifferent_off": "Política de desistimiento: su página de revocación indica {detail}, no el correo electrónico de la tienda de Ajustes > Datos maestros. Compruebe que le llegan los mensajes de los clientes que escriben a esa dirección.",
+            "policyEmailUnsure_off": "Política de desistimiento: su página de revocación indica {detail}, pero no hay ningún correo electrónico de la tienda configurado en Ajustes > Datos maestros, así que Shopproof no puede compararlo.",
+            "policyEmailNone_off": "Política de desistimiento: no se ha encontrado ninguna dirección de correo electrónico en su página de revocación. Compruebe que indica a los clientes cómo contactar con usted.",
+            "orderButton_ok": "Botón de pedido: en todos los idiomas del escaparate dice que el pedido implica un pago, con las palabras que indica la ley.",
+            "orderButton_off": "Botón de pedido: lo que dice ahora y, después, las palabras que indica la ley: {detail}. Cambie el texto en Ajustes > Bloques de texto (checkout.confirmSubmit). Otras palabras solo son seguras si son igual de claras.",
+            "orderButtonUnknown_off": "Botón de pedido: no revisado para {detail}, porque Shopproof no tiene ningún texto para este idioma. Compruebe que el botón dice que el pedido implica un pago.",
+            "deliveryLine_ok": "Línea de entrega y pago: el carrito y la página de finalizar compra indican adónde entrega y qué métodos de pago acepta.",
+            "deliveryLine_off": "Línea de entrega y pago: desactivada. Los clientes deben ver adónde entrega y cómo pueden pagar antes de empezar a pedir. Actívela en los ajustes de Shopproof, Línea de entrega y pago, o compruebe que su carrito ya lo indica.",
+            "policyOnline_ok": "Política de desistimiento: su página de revocación dice que los clientes también pueden desistir en línea",
+            "policyOnlineNone_off": "Política de desistimiento: Shopproof no ha encontrado en su página de revocación la frase que dice que los clientes también pueden desistir en línea y dónde. Desde junio de 2026, el modelo de información sobre el desistimiento la incluye. Añádala a la sección sobre cómo desistir o compruebe que su página lo dice con otras palabras. La frase oficial: «{detail}»",
+            "policyOnlineUnsure_off": "Política de desistimiento: no se ha revisado si su página de revocación dice que los clientes también pueden desistir en línea, porque Shopproof no puede valorar páginas en este idioma. Compruébelo usted. La frase oficial: «{detail}»",
+            "priorPrice_ok": "Los precios rebajados muestran el precio más bajo de los 30 días anteriores a la reducción.",
+            "priorPriceCapped_off": "Los precios rebajados muestran el precio más bajo de los 30 días anteriores a la reducción en los primeros {detail} productos rebajados que revisó Shopproof. Su tienda tiene más productos, que no se han revisado aquí.",
+            "priorPriceOff_off": "{detail} productos tienen un precio de lista (que se muestra tachado), pero «Mostrar el precio más bajo de los 30 días anteriores a una reducción» está desactivado en los ajustes de Shopproof. Las normas de precios de la UE piden mostrarlo.",
+            "priorPriceMissing_off": "Estos productos tienen un precio de lista, pero Shopproof tiene menos de 30 días de sus precios, así que no se muestra ningún precio más bajo. Rellene el campo propio de Shopware «Precio más barato (últimos 30 días)» en el producto (Precios): {detail}",
+            "priorPriceHigher_off": "Estos productos tachan un precio de lista más alto que su precio más bajo de 30 días, así que la reducción parece mayor de lo que es. Un porcentaje debe calcularse a partir del precio más bajo de 30 días (Tribunal de Justicia de la UE, C-330/23): {detail}",
+            "priorPriceSeals_off": "{detail} partes selladas del historial de precios ya no coinciden con su sello en el registro de pruebas: se cambió o eliminó un precio registrado después de sellarlo.",
+            "where": "Cámbielos en Ajustes > Extensiones > Shopproof > Configure (tarjetas Avisos de precio, Depósito de botellas, Carrito y finalizar compra, Declaración sobre resolución de litigios). Ayuda técnica, no asesoramiento legal."
+        },
+        "bulk": {
+            "title": "Datos de seguridad para muchos productos a la vez",
+            "intro": "Rellene los datos de seguridad de productos de muchos productos en una hoja de cálculo, con la función Importación/exportación de Shopware:",
+            "step1": "Abra Ajustes > Importación/exportación, pestaña Exportar, y exporte con el perfil «Shopproof: seguridad de productos». Marque «Exportar variantes de producto» si sus variantes tienen datos propios.",
+            "step2": "Rellene las columnas del archivo. Deje la columna product_number como está. Los pictogramas de peligro mantienen el formato de la exportación, por ejemplo [\"GHS02\",\"GHS07\"].",
+            "step3": "Importe el archivo con el mismo perfil, pestaña Importar. Los productos se asignan por número de producto y una celda vacía deja el valor como está. Una fila con un número desconocido no se importa: Shopware indica entonces que la importación ha fallado y ofrece un archivo con esas filas, mientras que las demás filas se guardan.",
+            "manufacturers": "La mayoría de los productos toman sus datos de su fabricante. El perfil «Shopproof: datos de seguridad del fabricante» funciona igual para los fabricantes, que se asignan por la columna id.",
+            "bulkEdit": "Para dar los mismos datos a unos pocos productos, selecciónelos en Catálogos > Productos, elija Edición masiva y rellene «Shopproof: seguridad de productos (GPSR)» en Campos adicionales.",
+            "openImport": "Abrir Importación/exportación",
+            "openProducts": "Abrir productos"
+        },
+        "placement": {
+            "title": "Revisar dónde aparece el enlace de desistimiento",
+            "intro": "Aquí ve las páginas de su tienda como las ven los clientes, en un ordenador y en un móvil. El botón de desistimiento tiene un marco azul, y todo lo que tapa el contenido de su tema tiene un marco rojo discontinuo. Navegue por su tienda en la vista previa y cada página se revisa de nuevo. La revisión se hace en su navegador y nada sale de su tienda; solo se guarda el número de páginas que la superaron.",
+            "loadFailed": "No se han podido cargar las páginas de la tienda para la revisión. Vuelva a cargar esta página para intentarlo de nuevo.",
+            "noChannel": "No se ha encontrado ningún escaparate activo con dominio, así que no hay nada que revisar.",
+            "otherOrigin": "{names}: ningún dominio de escaparate usa la dirección en la que está abierta esta administración, así que puede que su navegador no muestre estas páginas aquí y cuentan como no revisadas. Abra la administración en el propio dominio del escaparate, o añada ese dominio al escaparate, para revisarlas.",
+            "page": {
+                "label": "Página",
+                "home": "Página de inicio",
+                "product": "Página de producto",
+                "listing": "Página de categoría",
+                "cart": "Carrito",
+                "account": "Cuenta de cliente (inicio de sesión)",
+                "withdrawal": "Página de desistimiento"
+            },
+            "width": "Ancho de la vista previa",
+            "desktop": "Ordenador",
+            "phone": "Móvil",
+            "again": "Revisar de nuevo todas las páginas",
+            "open": "Abrir esta página en una pestaña nueva",
+            "loading": "Cargando la página...",
+            "blocked": "No hemos podido mostrar esta página en la vista previa. Puede que la administración y la tienda estén en direcciones web distintas, que un ajuste de seguridad del servidor bloquee las vistas previas o que la página le haya enviado a otro sitio. Abra la página en una pestaña nueva y revísela usted.",
+            "blockedShort": "No se pudo abrir",
+            "checking": "Revisando...",
+            "sweeping": "Revisando sus páginas en un ordenador y en un móvil...",
+            "swept": "Todas las páginas revisadas.",
+            "missing": "Sin enlace",
+            "notNeeded": "Aquí no es necesario",
+            "frameTitle": "Vista previa de la página de su tienda",
+            "tableCaption": "Enlace de desistimiento en cada página",
+            "last": "Última revisión {date}: {pass} correctas, {warn} para revisar, {fail} con un problema, {skipped} no revisadas.",
+            "footnote": "Ayuda técnica, no asesoramiento legal. El banner de cookies puede aparecer como elemento flotante hasta que lo cierre en la vista previa. Después, elija de nuevo la página para revisarla otra vez.",
+            "status": {
+                "pass": "Correcto",
+                "warn": "Revisión",
+                "fail": "Problema",
+                "skip": "No revisado",
+                "info": "Nota"
+            },
+            "text": {
+                "and": "y",
+                "area": {
+                    "footer": "en el pie de página",
+                    "header": "en la cabecera o el menú",
+                    "main": "en el contenido de la página",
+                    "account": "en el área de la cuenta",
+                    "other": "en la página"
+                },
+                "found": {
+                    "pass": "Botón de desistimiento encontrado {areas}.",
+                    "fail": "No hay botón de desistimiento en esta página. Los clientes deben encontrarlo en cada página, por ejemplo en el pie de página.",
+                    "skip": "No hay botón de desistimiento en esta página, lo que aquí no es un problema."
+                },
+                "visible": {
+                    "pass": "Los clientes lo ven sin abrir nada.",
+                    "warn": "Con este ancho de pantalla el botón está oculto {areas}, por ejemplo en un menú cerrado. Asegúrese de que también se ve en otro lugar, como el pie de página."
+                },
+                "clear": {
+                    "pass": "Nada tapa el botón.",
+                    "warn": "Algo tapa uno de los botones: {items}.",
+                    "fail": "Algo tapa el botón: {items}. Los clientes no pueden llegar a él."
+                },
+                "contrast": {
+                    "pass": "Contraste del texto {value}:1 (la norma de accesibilidad pide al menos 4,5:1).",
+                    "warn": "El botón es difícil de leer: el contraste del texto es solo de {value}:1, y la norma de accesibilidad (WCAG 2.2 AA) pide 4,5:1. Elija otros colores para los botones en su tema.",
+                    "skip": "Contraste no medido: hay una imagen o un degradado detrás del texto."
+                },
+                "floating": {
+                    "pass": "Nada flota sobre el contenido de su tema.",
+                    "warn": "Algo flota sobre el contenido de su tema: {items}. No viene de Shopproof, sino de su tema o de otra extensión."
+                },
+                "others": {
+                    "pass": "No se ha encontrado un segundo botón de desistimiento.",
+                    "warn": "Hemos encontrado otro botón de desistimiento: {items}. Los clientes deberían ver solo uno. Desactive el botón en la otra extensión."
+                },
+                "a11y": {
+                    "pass": "Enlace a información sobre accesibilidad encontrado {areas}.",
+                    "info": "No hay enlace a información sobre accesibilidad en esta página. La mayoría de las tiendas necesitan una declaración de accesibilidad desde el 28 de junio de 2025, normalmente enlazada en el pie de página; las microempresas están exentas."
+                }
+            }
+        },
+        "setup": {
+            "loadFailed": "No se ha podido cargar el resumen de la configuración. Vuelva a cargar esta página para intentarlo de nuevo.",
+            "title": "Configurar Shopproof",
+            "progress": "{done} de {all} pasos hechos.",
+            "doneSr": "(hecho)",
+            "optional": "(opcional)",
+            "start": "Empezar",
+            "complete": "La configuración está completa. Shopproof sigue revisando y muestra abajo cualquier novedad.",
+            "glance": "Su tienda de un vistazo",
+            "why": "¿Por qué es necesario?",
+            "whyText": "La ley: {law}. Se aplica desde el {date}.",
+            "whyLink": "Leer el texto oficial",
+            "notAdvice": "Shopproof ofrece ayuda técnica. No es asesoramiento legal.",
+            "state": {
+                "good": "Hecho",
+                "warn": "Conviene revisarlo",
+                "bad": "Requiere acción",
+                "todo": "Pendiente"
+            },
+            "link": {
+                "open": "Abrir",
+                "fix": "Solucionarlo"
+            },
+            "step": {
+                "button": {
+                    "title": "Activar el botón de desistimiento de Shopware",
+                    "help": "En Ajustes > Datos maestros, active el botón de desistimiento y elija la página con el formulario de desistimiento, para cada escaparate."
+                },
+                "placement": {
+                    "title": "Comprobar que los clientes encuentran el botón de desistimiento",
+                    "help": "Abrimos las páginas de su tienda y buscamos el botón en un ordenador y en un móvil. Tarda alrededor de un minuto."
+                },
+                "safety": {
+                    "title": "Añadir quién fabrica sus productos",
+                    "help": "Indique la dirección y el correo electrónico de cada fabricante en Catálogos > Fabricante, o configure un fabricante para toda la tienda en los ajustes del plugin."
+                },
+                "guarantee": {
+                    "title": "Mostrar el aviso de garantía legal",
+                    "help": "Un aviso oficial de la UE en sus páginas de producto. Actívelo con un solo interruptor en los ajustes del plugin."
+                },
+                "registrations": {
+                    "title": "Añadir sus números de registro",
+                    "help": "Solo si vende aparatos eléctricos, pilas o envases que necesitan un número. Introdúzcalos en los ajustes del plugin."
+                }
+            },
+            "card": {
+                "withdrawal": {
+                    "title": "Botón de desistimiento",
+                    "unsupported": "Esta versión de Shopware todavía no tiene botón de desistimiento. Actualice a Shopware 6.7.9 o posterior.",
+                    "notReady": "No está listo: el botón está desactivado o no tiene página con el formulario en al menos un escaparate, o el correo electrónico de acuse de recibo o el registro de solicitudes no funciona. La revisión de la configuración de abajo indica qué corregir.",
+                    "notChecked": "El botón está activado. Compruebe que los clientes lo encuentran en cada página.",
+                    "problem": "La última revisión encontró un problema en {count} página. | La última revisión encontró un problema en {count} páginas.",
+                    "noPages": "No revisado. La última revisión no abrió ninguna página de la tienda que deba mostrar el botón de desistimiento, así que el botón no se encontró allí. Vuelva a hacer la revisión.",
+                    "look": "Funciona, pero la última revisión encontró algo que conviene mirar.",
+                    "working": "Funciona. El botón se encontró en {count} página revisada. | Funciona. El botón se encontró en las {count} páginas revisadas."
+                },
+                "withdrawals": {
+                    "title": "Desistimientos",
+                    "failed": "No se ha podido registrar {count} solicitud de desistimiento. | No se han podido registrar {count} solicitudes de desistimiento.",
+                    "overdue": "{count} reembolso vence hoy o va con retraso. | {count} reembolsos vencen hoy o van con retraso.",
+                    "soon": "{count} reembolso vence en los próximos 3 días. | {count} reembolsos vencen en los próximos 3 días.",
+                    "received": "{count} desistimiento recibido. No hay nada pendiente. | {count} desistimientos recibidos. No hay nada pendiente.",
+                    "none": "Todavía ninguno. Aparecen aquí cuando un cliente usa el botón."
+                },
+                "safety": {
+                    "title": "Seguridad de productos",
+                    "noProducts": "Todavía no hay productos activos.",
+                    "noMaker": "{count} de {total} productos no muestra fabricante. | {count} de {total} productos no muestran fabricante.",
+                    "noDetails": "{count} fabricante no tiene dirección ni correo electrónico, así que sus productos muestran solo el nombre. | {count} fabricantes no tienen dirección ni correo electrónico, así que sus productos muestran solo el nombre.",
+                    "complete": "Todos los productos muestran su fabricante con datos de contacto."
+                },
+                "guarantee": {
+                    "title": "Aviso de garantía legal",
+                    "on": "Se muestra en sus páginas de producto.",
+                    "off": "Desactivado en al menos un escaparate. La ley de la UE pide mostrarlo a las tiendas que venden bienes.",
+                    "unknown": "No revisado. La seguridad de productos está desactivada, así que Shopproof no mira las páginas de producto."
+                },
+                "registrations": {
+                    "title": "Números de registro",
+                    "some": "{count} número introducido. | {count} números introducidos.",
+                    "none": "Ninguno introducido. Solo es necesario para aparatos eléctricos, pilas o envases."
+                },
+                "proof": {
+                    "title": "Registro de pruebas",
+                    "unavailable": "Falta la tabla del registro de pruebas. Reinstale el plugin.",
+                    "changed": "Se ha cambiado o borrado una entrada antigua.",
+                    "empty": "La primera entrada diaria se añade en un plazo de un día.",
+                    "noSnapshot": "No se está registrando: todavía no hay ninguna entrada diaria, aunque el registro tiene otras entradas. Puede que las tareas programadas de Shopware no se estén ejecutando.",
+                    "stale": "No se está registrando: la entrada diaria más reciente es del {date}. Puede que las tareas programadas de Shopware no se estén ejecutando.",
+                    "recording": "Registrando cada día. {count} entrada, no se han encontrado cambios. | Registrando cada día. {count} entradas, no se han encontrado cambios."
+                },
+                "rules": {
+                    "title": "Normas",
+                    "missing": "No se ha podido cargar la lista de normas.",
+                    "loaded": "{count} norma para la UE y sus países (versión {version}). | {count} normas para la UE y sus países (versión {version})."
+                }
+            },
+            "nonEu": {
+                "title": "Vender en la UE desde el extranjero",
+                "intro": "Ha indicado a Shopproof que su empresa está establecida fuera de la UE y del EEE. Las normas de consumo de la UE se aplican a sus ventas a compradores de la UE igual que a las tiendas de la UE, así que el botón de desistimiento y las demás funciones funcionan como siempre. Además, estas obligaciones se aplican a los vendedores de fuera de la UE.",
+                "summary": "Obligaciones adicionales para vendedores del extranjero aún por revisar: {open} de {total}.",
+                "empty": "No revisado: la lista de normas de esta tienda todavía no tiene obligaciones para vendedores de fuera de la UE. Use «Buscar actualizaciones de normas ahora» más abajo.",
+                "state": {
+                    "good": "Hecho",
+                    "bad": "Requiere acción",
+                    "todo": "Compruébelo usted"
+                },
+                "status": {
+                    "good": "Hay una persona responsable en la UE introducida en los ajustes de Shopproof que se muestra con sus productos.",
+                    "bad": "Todavía no hay ninguna persona responsable en la UE introducida. Introduzca el nombre y la dirección en los ajustes de Shopproof (Seguridad de productos), y Shopproof los mostrará con cada producto.",
+                    "todo": "Compruébelo usted. Shopproof no puede verlo desde su tienda."
+                },
+                "source": "Fuente: {basis}.",
+                "official": "Texto oficial",
+                "openSettings": "Abrir los ajustes de Shopproof",
+                "footer": "Shopproof no puede actuar como su persona responsable en la UE, su intermediario de IOSS ni su representante del RGPD: los designa usted. Esto es ayuda técnica, no asesoramiento legal ni fiscal.",
+                "guide": "Guía para vendedores de fuera de la UE"
+            }
+        },
+        "cancel": {
+            "title": "Cancelaciones",
+            "intro": "Cancelaciones que los clientes enviaron en su página de cancelación (Ajustes > Extensiones > Shopproof, «Botón de cancelación»). Cada cliente recibió un correo electrónico de confirmación con la fecha y la hora de recepción, y el correo electrónico de su tienda recibió una copia.",
+            "failed": "No se han podido cargar las cancelaciones.",
+            "none": "Todavía no hay cancelaciones.",
+            "open": "{count} cancelación abierta | {count} cancelaciones abiertas",
+            "end": "Termina",
+            "extraordinary": "Extraordinaria",
+            "earliest": "En la fecha más temprana posible",
+            "doneOn": "Hecha el {date}",
+            "openState": "Abierta",
+            "noReceipt": "El cliente no recibió el correo electrónico de confirmación. Confírmeselo por correo electrónico.",
+            "markDone": "Marcar como hecha",
+            "next": "Termine el contrato (para una suscripción, en su app de suscripciones), indique al cliente la fecha de fin si eligió la fecha más temprana posible y marque la cancelación como hecha. Ayuda técnica, no asesoramiento legal."
+        },
+        "contact": {
+            "title": "Ayuda y contacto",
+            "guides": "Guías paso a paso:",
+            "formTitle": "Envíenos un mensaje",
+            "intro": "¿Preguntas, un problema o una idea? Escríbanos aquí. Leemos cada mensaje nosotros mismos.",
+            "introPro": "¿Preguntas, un problema o una idea? Escríbanos aquí. Como cliente de Shopproof Pro, recibirá respuesta en un plazo de 1 día laborable.",
+            "name": "Su nombre (opcional)",
+            "email": "Su dirección de correo electrónico, para nuestra respuesta",
+            "message": "Su mensaje",
+            "includeShop": "Incluir la dirección de mi tienda ({shop}), para que puedan revisar el problema",
+            "what": "Cuando pulse Enviar, su tienda envía a shopproof.app su nombre, su dirección de correo electrónico y su mensaje, la dirección de la tienda si la marcó y los números de versión de abajo. Nos llega como correo electrónico a support{'@'}shopproof.app y solo lo usamos para responderle. No incluya datos de clientes.",
+            "privacy": "Aviso de privacidad",
+            "send": "Enviar mensaje",
+            "sent": "Gracias, su mensaje está en camino. Le responderemos a {email}.",
+            "sentPro": "Gracias, su mensaje está en camino. Le responderemos a {email} en un plazo de 1 día laborable.",
+            "unreachable": "Su tienda no ha podido contactar con shopproof.app.",
+            "stillThere": "Su mensaje sigue en el formulario de abajo. Puede intentarlo de nuevo o enviarlo por correo electrónico:",
+            "openEmail": "Abrirlo en un correo electrónico",
+            "errorEmail": "Introduzca una dirección de correo electrónico completa, como usted{'@'}sutienda.com, para que podamos responderle.",
+            "errorShort": "Escriba unas palabras para que sepamos cómo ayudarle.",
+            "errorLong": "Su mensaje es demasiado largo. No supere los 4.000 caracteres.",
+            "loadFailed": "El formulario no ha podido cargar sus datos. Puede escribirlos usted.",
+            "ownEmail": "¿Prefiere usar su propio correo electrónico?",
+            "copy": "Copiar dirección",
+            "copied": "Dirección copiada.",
+            "notLegalAdvice": "Shopproof ofrece ayuda técnica. No es asesoramiento legal."
+        },
+        "greenClaims": {
+            "title": "Alegaciones medioambientales",
+            "intro": "Desde el 27 de septiembre de 2026, la ley de la UE prohíbe las alegaciones medioambientales genéricas como «respetuoso con el medio ambiente», «respetuoso con el clima» o «sostenible», salvo que el producto tenga un excelente comportamiento medioambiental reconocido (por ejemplo, la etiqueta ecológica de la UE) o que la misma página diga exactamente qué significa la alegación. Las alegaciones de que un producto es neutro para el clima o tiene un impacto climático reducido gracias a la compensación están prohibidas sin excepción (Directiva (UE) 2024/825). Shopproof busca las palabras de ejemplo de la propia Directiva en los nombres y las descripciones de sus productos (idioma predeterminado), en las 24 lenguas de la UE.",
+            "checking": "Revisando sus productos...",
+            "notChecked": "No revisado: Shopproof no ha podido leer ahora sus productos ni sus listas de palabras. Vuelva a cargar la página dentro de un minuto.",
+            "noProducts": "Todavía no revisado: la tienda no tiene productos activos.",
+            "scopeSome": "Se han revisado los {checked} productos modificados más recientemente, de un total de {total}.",
+            "scopeAll": "Revisado {checked} producto. | Revisados los {checked} productos.",
+            "aside": "Se ha omitido {count} mención porque la frase dice lo contrario, trata de la eliminación o da los detalles (un porcentaje o una etiqueta ecológica). | Se han omitido {count} menciones porque la frase dice lo contrario, trata de la eliminación o da los detalles (un porcentaje o una etiqueta ecológica).",
+            "none": "Ninguno usa las palabras de ejemplo de la Directiva.",
+            "limits": "Shopproof solo encuentra las palabras de ejemplo de la Directiva y formas parecidas. Otras alegaciones medioambientales, imágenes y colores también pueden contar como alegaciones. Ayuda técnica, no asesoramiento legal.",
+            "worth": "{count} producto que conviene revisar | {count} productos que conviene revisar",
+            "canBeFine": "Estas palabras pueden estar bien, por ejemplo con una etiqueta ecológica de la UE para esa alegación, o cuando la misma página dice exactamente qué significa («el 100 % del algodón es ecológico»). Shopproof no decide si una alegación está permitida: revise cada una. Ayuda técnica, no asesoramiento legal.",
+            "line": "«{term}» ({kind}) {field}: {excerpt}",
+            "kind": {
+                "generic": "alegación genérica",
+                "broad": "alegación amplia de sostenibilidad",
+                "offsetting": "alegación climática"
+            },
+            "field": {
+                "title": "en el nombre",
+                "description": "en la descripción"
+            },
+            "more": "Y {count} producto más. | Y {count} productos más.",
+            "kindsTitle": "Qué significan los tres tipos",
+            "genericTitle": "Alegación genérica",
+            "genericText": "palabras como «eco-friendly», «umweltfreundlich» o «biodegradable». Solo se permiten con un excelente comportamiento medioambiental reconocido para esa alegación (la etiqueta ecológica de la UE, una etiqueta EN ISO 14024 reconocida oficialmente o el máximo rendimiento según la ley de la UE, como la clase energética A para «eficiente energéticamente»), o cuando la misma página dice exactamente qué significa (anexo I de la Directiva sobre prácticas comerciales desleales, punto 4 bis).",
+            "broadTitle": "Alegación amplia de sostenibilidad",
+            "broadText": "palabras como «sostenible» o «nachhaltig». También abarcan cualidades sociales, así que ni siquiera una etiqueta ecológica basta por sí sola (considerando 10). Diga exactamente qué significa en la misma página, o no use la palabra.",
+            "offsettingTitle": "Alegación climática",
+            "offsettingText": "palabras como «neutro para el clima», «neutro en CO2» o «impacto climático reducido». Están prohibidas cuando se basan en compensar emisiones, por ejemplo con créditos de carbono; solo se permiten cuando se basan en el propio ciclo de vida del producto (anexo I de la Directiva sobre prácticas comerciales desleales, punto 4 quater). Decir a los clientes que apoya proyectos climáticos sigue estando permitido cuando no es engañoso."
+        },
+        "a11y": {
+            "title": "Declaración de accesibilidad",
+            "intro": "Desde el 28 de junio de 2025, la mayoría de las tiendas que venden a consumidores en la UE deben ser accesibles y publicar una declaración de accesibilidad: qué hace la tienda por la accesibilidad, qué barreras conoce, cómo comunicar una barrera y a qué autoridad dirigirse. Las microempresas (menos de 10 personas y no más de 2 millones de euros al año) están exentas para sus servicios. La mayoría de las tiendas enlazan la declaración en el pie de página, junto al aviso legal y la política de privacidad.",
+            "linkCheck": "La revisión de ubicación de arriba también muestra, para cada página, si enlaza con información sobre accesibilidad.",
+            "draftIntro": "Rellene lo que sepa. El borrador de abajo cambia mientras escribe; cópielo en una página de Mundos de experiencias (CMS), léalo, cambie lo que no encaje y enlácelo en su pie de página. No se guarda ni se envía nada. El borrador nunca dice que su tienda sea totalmente accesible. Dice hacia qué trabaja y qué ha hecho.",
+            "country": "País de su empresa",
+            "language": "Idioma",
+            "languageAuto": "Según el país",
+            "countries": {
+                "AT": "Austria",
+                "DE": "Alemania",
+                "FR": "Francia",
+                "IT": "Italia",
+                "NL": "Países Bajos",
+                "other": "Otro país"
+            },
+            "languages": {
+                "en": "Inglés",
+                "de": "Alemán",
+                "fr": "Francés",
+                "it": "Italiano",
+                "nl": "Neerlandés"
+            },
+            "shop": "Nombre de la tienda",
+            "url": "Dirección de la tienda",
+            "email": "Correo electrónico para avisos",
+            "emailHelp": "Donde los clientes le avisan de una barrera. Aparece en la página.",
+            "about": "Qué pueden hacer los clientes (opcional)",
+            "aboutHelp": "Una frase. Déjelo vacío para: ver productos, elegir opciones, añadirlos al carrito y hacer el pedido.",
+            "measures": "Qué ha hecho usted (opcional)",
+            "measuresHelp": "Un punto por línea, por ejemplo: Todas las fotos de producto tienen una descripción de texto.",
+            "barriers": "Barreras que conoce (opcional)",
+            "barriersHelp": "Un punto por línea, por ejemplo: La guía de tallas es difícil de usar con el teclado.",
+            "noAuthority": "Shopproof conoce la autoridad de Austria, Alemania, Francia, Italia y los Países Bajos. Para otro país, el borrador deja un hueco marcado para que lo rellene usted.",
+            "preview": "Su borrador",
+            "copy": "Copiar el borrador",
+            "copied": "Copiado.",
+            "where": "Ayuda técnica, no asesoramiento legal. Lea el borrador y cambie todo lo que no encaje con su tienda antes de publicarlo."
+        }
+    }
+}
