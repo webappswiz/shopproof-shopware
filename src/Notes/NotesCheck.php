@@ -20,7 +20,7 @@ use Shopproof\Compliance\Withdrawal\PolicyMatch;
 final class NotesCheck
 {
     /**
-     * @param array{unitPriceGaps?: list<array{id: string, name: string}>, depositBadLines?: list<string>, missingPolicyPages?: list<string>, dispute?: array{choice: string, statements: list<string>, foundOnPages: bool, pasted: bool, pagesChecked: bool}, policyMatch?: array{page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null, online?: array{status: string, lang: string|null, reason: string|null}, sentence?: string, channels?: list<array{names: list<string>, page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null, online?: array{status: string, lang: string|null, reason: string|null}, sentence?: string}>}, orderButton?: array{buttons: list<array{channel: string, locale: string, text: string}>, words: array<string, string>}, deliveryLine?: array{on: bool}, priorPrice?: array{on: bool, onSale: int, missing: list<string>, higher: list<string>, brokenSeals: int, capped?: bool}} $facts
+     * @param array{unitPriceGaps?: list<array{id: string, name: string}>, depositBadLines?: list<string>, missingPolicyPages?: list<string>, dispute?: array{choice: string, statements: list<string>, foundOnPages: bool, pasted: bool, pagesChecked: bool}, policyMatch?: array{page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null, online?: array{status: string, lang: string|null, reason: string|null}, sentence?: string, channels?: list<array{names: list<string>, page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null, online?: array{status: string, lang: string|null, reason: string|null}, sentence?: string}>}, orderButton?: array{buttons: list<array{channel: string, locale: string, text: string}>, words: array<string, string>}, deliveryLine?: array{on: bool}, priorPrice?: array{on: bool, onSale: int, missing: list<string>, higher: list<string>, brokenSeals: int, capped?: bool}, legalTexts?: array{provider: string, button: bool}} $facts
      *
      * @return array{notes: list<array{key: string, ok: bool, detail?: string, channel?: string}>, unitPriceGaps: list<array{id: string, name: string}>, depositBadLines: list<string>, disputeStatements: list<string>}
      */
@@ -64,6 +64,9 @@ final class NotesCheck
                 }
             } else {
                 array_push($notes, ...self::policy($facts['policyMatch']));
+            }
+            if (isset($facts['legalTexts'])) {
+                $notes = self::legalTexts($notes, $facts['legalTexts']);
             }
         }
         if (isset($facts['priorPrice'])) {
@@ -116,6 +119,38 @@ final class NotesCheck
         }
 
         return $lines;
+    }
+
+    /**
+     * A legal text provider's plugin fills the revocation page (decision 0048). A page with almost
+     * no text says the plugin may load its text only when the page is shown (still not checked);
+     * a page that was read gets one line that names the provider and says to fix a difference in
+     * the Shopproof settings or with the provider, never on the page. A second withdrawal button
+     * from the provider's plugin is a to do.
+     *
+     * @param list<array{key: string, ok: bool, detail?: string, channel?: string}> $notes
+     * @param array{provider: string, button: bool}                                $legal
+     *
+     * @return list<array{key: string, ok: bool, detail?: string, channel?: string}>
+     */
+    private static function legalTexts(array $notes, array $legal): array
+    {
+        $read = false;
+        foreach ($notes as $i => $note) {
+            if ($note['key'] === 'policyText') {
+                $notes[$i] = ['key' => 'policyTextProvider', 'ok' => false, 'detail' => $legal['provider']] + $note;
+            } elseif (str_starts_with($note['key'], 'policyPeriod')) {
+                $read = true;
+            }
+        }
+        if ($read) {
+            $notes[] = ['key' => 'policyProvider', 'ok' => true, 'detail' => $legal['provider']];
+        }
+        if ($legal['button']) {
+            $notes[] = ['key' => 'providerButton', 'ok' => false, 'detail' => $legal['provider']];
+        }
+
+        return $notes;
     }
 
     /**

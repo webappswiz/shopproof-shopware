@@ -187,7 +187,8 @@
                 "withdrawal": "Widerruf",
                 "retention": "Aufbewahrung geändert",
                 "anchor": "Stempel bei Shopproof",
-                "prices": "Preisverlauf versiegelt"
+                "prices": "Preisverlauf versiegelt",
+                "assistant": "Von KI-Assistent geändert"
             }
         },
         "returns": {
@@ -241,6 +242,9 @@
             "policyOnline_ok": "Widerrufsbelehrung: Ihre Widerrufsseite sagt, dass Kunden auch online widerrufen können",
             "policyOnlineNone_off": "Widerrufsbelehrung: Shopproof hat auf Ihrer Widerrufsseite den Satz nicht gefunden, dass Kunden auch online widerrufen können und wo. Seit Juni 2026 gehört er zur Muster-Widerrufsbelehrung. Fügen Sie ihn im Abschnitt zur Ausübung des Widerrufs ein oder prüfen Sie, ob Ihre Seite ihn mit anderen Worten enthält. Der amtliche Satz: „{detail}“",
             "policyOnlineUnsure_off": "Widerrufsbelehrung: nicht geprüft, ob Ihre Widerrufsseite sagt, dass Kunden auch online widerrufen können, weil Shopproof Seiten in dieser Sprache nicht beurteilen kann. Prüfen Sie es selbst. Der amtliche Satz: „{detail}“",
+            "policyTextProvider_off": "Widerrufsbelehrung: nicht geprüft, weil Ihre Widerrufsseite fast keinen Text enthält, den Shopproof lesen kann. Das Plugin von {detail} lädt seinen Text vielleicht erst, wenn die Seite angezeigt wird. Vergleichen Sie Frist und E-Mail-Adresse bitte selbst.",
+            "policyProvider_ok": "Widerrufsbelehrung: Das Plugin von {detail} ist aktiv. Wenn es Ihre Widerrufsseite füllt, hält es den Text aktuell. Weicht hier eine Zeile ab, ändern Sie also die Shopproof-Einstellungen oder fragen Sie {detail}, nicht die Seite.",
+            "providerButton_off": "Widerrufsbutton: Im Plugin von {detail} ist eine Shop-ID für den eigenen Widerrufsbutton eingetragen, und der Widerrufsbutton von Shopware ist ebenfalls an. Kunden sehen dann womöglich zwei. Behalten Sie einen: den Button von Shopware (Einstellungen > Stammdaten), den Shopproof ergänzt, oder den Button von {detail}.",
             "priorPrice_ok": "Reduzierte Preise zeigen den niedrigsten Preis der 30 Tage vor der Reduzierung.",
             "priorPriceCapped_off": "Reduzierte Preise zeigen den niedrigsten Preis der 30 Tage vor der Reduzierung, bei den ersten {detail} reduzierten Produkten, die Shopproof geprüft hat. Ihr Shop hat weitere Produkte, die hier nicht geprüft wurden.",
             "priorPriceOff_off": "{detail} Produkte haben einen Streichpreis, aber „Niedrigsten Preis der 30 Tage vor einer Reduzierung zeigen“ ist in den Shopproof-Einstellungen aus. Die EU-Preisregeln verlangen diese Angabe.",
@@ -673,6 +677,49 @@
                 "responsibleMissing": "Der Hersteller sitzt außerhalb der EU und keine EU-Verantwortliche Person ist eingetragen.",
                 "responsibleCleared": "Keine EU-Verantwortliche Person eingetragen, daher entfernt eBay eine vorhandene in diesem Angebot."
             }
+        },
+        "assistant": {
+            "title": "KI-Assistent",
+            "intro": "Verbinden Sie einen KI-Assistenten, der MCP unterstützt (zum Beispiel Claude Desktop, Cursor oder eine andere MCP-App), und lassen Sie ihn Shopproof für Sie einrichten oder fragen Sie ihn nach Ihren Widerrufen und dem Nachweisprotokoll. Der Assistent spricht direkt mit diesem Shop; Shopproof sieht und speichert nicht, was er liest. Technische Hilfe, keine Rechtsberatung.",
+            "where": "Was der Assistent liest, geht an den KI-Dienst, den Sie nutzen, zu dessen Bedingungen. Änderungen werden Ihnen zuerst gezeigt, im Nachweisprotokoll festgehalten und können unten rückgängig gemacht werden. Der Assistent ändert nie Bestellungen, Kunden oder Widerrufe, sendet nie E-Mails und löscht nie etwas.",
+            "loadFailed": "Die Einstellungen für den KI-Assistenten konnten nicht geladen werden. Laden Sie die Seite neu, um es noch einmal zu versuchen.",
+            "switchesTitle": "Schalter",
+            "on": "KI-Assistenten mit Shopproof verbinden lassen (nur lesen)",
+            "changes": "Änderungen erlauben: Der Assistent darf Shopproof-Einstellungen für alle Verkaufskanäle ändern, nachdem Sie seiner Vorschau zugestimmt haben",
+            "details": "Kundendaten einbeziehen: Namen, E-Mail-Adressen und Kommentare in Antworten zu Widerrufen. Aus: Der Assistent sieht nur Daten, Status und Anzahlen.",
+            "save": "Speichern",
+            "saved": "Gespeichert.",
+            "error": {
+                "save": "Die Schalter konnten nicht gespeichert werden. Versuchen Sie es noch einmal.",
+                "key": "Der Schlüssel konnte nicht erstellt werden. Speichern Sie die Schalter mit dem ersten eingeschaltet und versuchen Sie es dann noch einmal.",
+                "remove": "Der Schlüssel konnte nicht entfernt werden. Versuchen Sie es noch einmal."
+            },
+            "keysTitle": "Verbindungsschlüssel",
+            "copyNow": "Kopieren Sie das jetzt. Es wird nur einmal angezeigt.",
+            "address": "Adresse",
+            "key": "Schlüssel",
+            "howToConnect": "Ihr Assistent meldet sich mit dem Schlüssel an (Header Authorization: Bearer und der Schlüssel). Für Claude Desktop oder Cursor fügen Sie diesen Server hinzu:",
+            "copy": "Einstellungen kopieren",
+            "copied": "Kopiert.",
+            "noKeys": "Noch keine Schlüssel.",
+            "created": "Erstellt",
+            "worksUntil": "Gültig bis",
+            "lastUsed": "Zuletzt genutzt",
+            "user": "Admin-Benutzer",
+            "remove": "Entfernen",
+            "expired": "Abgelaufen",
+            "never": "Nie",
+            "createKey": "Verbindungsschlüssel erstellen (gültig für {days} Tage)",
+            "changesTitle": "Änderungen durch Assistenten",
+            "noChanges": "Noch keine Änderungen.",
+            "when": "Wann",
+            "what": "Was sich geändert hat",
+            "undoneColumn": "Rückgängig gemacht",
+            "undo": "Rückgängig machen",
+            "undone": "Rückgängig gemacht. Die Einstellungen sind wieder wie vor dieser Änderung.",
+            "undoneKept": "Rückgängig gemacht. Einstellungen, die seitdem jemand geändert hat, bleiben, wie sie sind.",
+            "undoFailed": "Diese Änderung konnte nicht rückgängig gemacht werden. Vielleicht wurde sie schon rückgängig gemacht.",
+            "notLegalAdvice": "Technische Hilfe, keine Rechtsberatung. Shopproof bezeichnet einen Shop nie als rechtskonform."
         }
     }
 }

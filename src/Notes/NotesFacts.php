@@ -40,7 +40,7 @@ class NotesFacts
     }
 
     /**
-     * @return array{unitPriceGaps: list<array{id: string, name: string}>, depositBadLines: list<string>, missingPolicyPages: list<string>, dispute: array{choice: string, statements: list<string>, foundOnPages: bool, pasted: bool, pagesChecked: bool}, policyMatch?: array{page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null, online?: array{status: string, lang: string|null, reason: string|null}, sentence?: string, channels?: list<array{names: list<string>, page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null, online?: array{status: string, lang: string|null, reason: string|null}, sentence?: string}>}, orderButton?: array{buttons: list<array{channel: string, locale: string, text: string}>, words: array<string, string>}, deliveryLine?: array{on: bool}, priorPrice?: array{on: bool, onSale: int, missing: list<string>, higher: list<string>, brokenSeals: int, capped?: bool}}
+     * @return array{unitPriceGaps: list<array{id: string, name: string}>, depositBadLines: list<string>, missingPolicyPages: list<string>, dispute: array{choice: string, statements: list<string>, foundOnPages: bool, pasted: bool, pagesChecked: bool}, policyMatch?: array{page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null, online?: array{status: string, lang: string|null, reason: string|null}, sentence?: string, channels?: list<array{names: list<string>, page: bool, result: array{checked: bool, period: array{status: string, found: list<int>, month: bool}, email: array{status: string, found: list<string>}}|null, online?: array{status: string, lang: string|null, reason: string|null}, sentence?: string}>}, orderButton?: array{buttons: list<array{channel: string, locale: string, text: string}>, words: array<string, string>}, deliveryLine?: array{on: bool}, priorPrice?: array{on: bool, onSale: int, missing: list<string>, higher: list<string>, brokenSeals: int, capped?: bool}, legalTexts?: array{provider: string, button: bool}}
      */
     public function collect(): array
     {
@@ -63,6 +63,10 @@ class NotesFacts
         $policy = [];
         if ($this->policy !== null) {
             $policy['policyMatch'] = $this->policyMatch($pages['withdrawal']);
+            $legal = $this->legalTexts();
+            if ($legal !== null) {
+                $policy['legalTexts'] = $legal;
+            }
         }
         $policy['deliveryLine'] = ['on' => $this->settings->bool('deliveryLine', null)];
         if ($this->orderButton !== null) {
@@ -170,6 +174,113 @@ class NotesFacts
         }
 
         return $out;
+    }
+
+    /**
+     * Legal text providers' Shopware plugins, by technical name prefix and author (decision 0048),
+     * in order: when several are active, the notes name the first. Names come from the Shopware Store
+     * (24 Nov 2026); the author match catches a renamed plugin. Händlerbund: its own plugin
+     * ("Händlerbund Integration for Shopware 6", technical names starting with Hbdev) and the
+     * older nvii-media one (NviimHaendlerbundApiplugin). IT-Recht Kanzlei: "AGB-Schnittstelle"
+     * (nwdxxItRechtConnector6). Protected Shops: "AGB Connect" (PSAGBConnect6). janolaw and
+     * avalex: their legal text plugins.
+     */
+    public const PROVIDERS = [
+        'Händlerbund' => ['names' => ['Hbdev', 'NviimHaendlerbundApiplugin'], 'author' => 'ndlerbund'],
+        'IT-Recht Kanzlei' => ['names' => ['nwdxxItRecht'], 'author' => 'IT-Recht'],
+        'Protected Shops' => ['names' => ['PSAGBConnect'], 'author' => 'Protected Shops'],
+        'janolaw' => ['names' => ['Janolaw'], 'author' => 'janolaw'],
+        'avalex' => ['names' => ['Avalex'], 'author' => 'avalex'],
+    ];
+
+    /**
+     * The provider of an installed plugin, or null when it is not a known legal text plugin.
+     */
+    public static function providerOf(string $name, string $author): ?string
+    {
+        foreach (self::PROVIDERS as $provider => $match) {
+            foreach ($match['names'] as $prefix) {
+                if (stripos($name, $prefix) === 0) {
+                    return $provider;
+                }
+            }
+            if (stripos($author, $match['author']) !== false) {
+                return $provider;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Is this Händlerbund setting the public shop ID that turns on its own withdrawal button? Only
+     * a key whose last part is the shop ID itself (shopId, publicShopId, shop_id) counts. Other
+     * settings that name the revocation or withdrawal, such as which page holds the text, say
+     * nothing about the button, so they stay silent.
+     */
+    public static function isButtonShopId(string $key): bool
+    {
+        $last = substr($key, (int) strrpos('.' . $key, '.'));
+
+        return preg_match('/^(public_?)?shop_?id$/i', $last) === 1;
+    }
+
+    /**
+     * A legal text provider's plugin that fills the shop's legal pages (decision 0048), so the
+     * notes can name it and say where to fix a difference. Since version 4.0 Händlerbund's own
+     * plugin can also add a withdrawal button to the footer once a public shop ID is entered;
+     * "button" is true only when such a value is set in its settings and Shopware's own
+     * withdrawal button is on too, so customers would see two. The other providers' plugins add
+     * no button. Unknown settings stay silent.
+     *
+     * @return array{provider: string, button: bool}|null
+     */
+    private function legalTexts(): ?array
+    {
+        try {
+            $rows = $this->connection->fetchAllAssociative(
+                "SELECT name, COALESCE(author, '') AS author, version FROM plugin
+                 WHERE active = 1 AND installed_at IS NOT NULL"
+            );
+        } catch (\Throwable) {
+            return null;
+        }
+        $found = [];
+        $button = false;
+        foreach ($rows as $row) {
+            $name = \is_string($row['name'] ?? null) ? $row['name'] : '';
+            $author = \is_string($row['author'] ?? null) ? $row['author'] : '';
+            $provider = $name !== '' ? self::providerOf($name, $author) : null;
+            if ($provider === null) {
+                continue;
+            }
+            $found[$provider] = true;
+            $version = \is_string($row['version'] ?? null) ? $row['version'] : '0';
+            if ($provider !== 'Händlerbund' || $name === 'NviimHaendlerbundApiplugin' || version_compare($version, '4.0.0', '<')) {
+                continue;
+            }
+            $values = $this->connection->fetchAllAssociative(
+                'SELECT configuration_key, configuration_value FROM system_config WHERE configuration_key LIKE :prefix',
+                ['prefix' => addcslashes($name, '%_') . '.config.%']
+            );
+            foreach ($values as $value) {
+                $key = \is_string($value['configuration_key'] ?? null) ? $value['configuration_key'] : '';
+                $decoded = \is_string($value['configuration_value'] ?? null) ? json_decode($value['configuration_value'], true) : null;
+                $set = \is_array($decoded) && \is_string($decoded['_value'] ?? null) && trim($decoded['_value']) !== '';
+                if ($set && self::isButtonShopId($key)) {
+                    $button = true;
+                }
+            }
+        }
+        $names = array_values(array_filter(array_keys(self::PROVIDERS), static fn (string $p): bool => isset($found[$p])));
+        if ($names === []) {
+            return null;
+        }
+
+        return [
+            'provider' => $names[0],
+            'button' => $button && $this->config->getBool(\Shopproof\Compliance\Withdrawal\SetupFacts::BUTTON),
+        ];
     }
 
     /**

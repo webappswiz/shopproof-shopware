@@ -187,7 +187,8 @@
                 "withdrawal": "Desistimiento",
                 "retention": "Plazo de conservación cambiado",
                 "anchor": "Sello guardado por Shopproof",
-                "prices": "Historial de precios sellado"
+                "prices": "Historial de precios sellado",
+                "assistant": "Cambiado por el asistente de IA"
             }
         },
         "returns": {
@@ -241,6 +242,9 @@
             "policyOnline_ok": "Política de desistimiento: su página de revocación dice que los clientes también pueden desistir en línea",
             "policyOnlineNone_off": "Política de desistimiento: Shopproof no ha encontrado en su página de revocación la frase que dice que los clientes también pueden desistir en línea y dónde. Desde junio de 2026, el modelo de información sobre el desistimiento la incluye. Añádala a la sección sobre cómo desistir o compruebe que su página lo dice con otras palabras. La frase oficial: «{detail}»",
             "policyOnlineUnsure_off": "Política de desistimiento: no se ha revisado si su página de revocación dice que los clientes también pueden desistir en línea, porque Shopproof no puede valorar páginas en este idioma. Compruébelo usted. La frase oficial: «{detail}»",
+            "policyTextProvider_off": "Política de desistimiento: no comprobada, porque su página de desistimiento casi no tiene texto que Shopproof pueda leer. El plugin de {detail} quizá carga su texto solo cuando se muestra la página. Compare usted mismo el plazo y la dirección de correo.",
+            "policyProvider_ok": "Política de desistimiento: el plugin de {detail} está activo. Si rellena su página de desistimiento, mantiene el texto al día: si alguna línea aquí no coincide, cambie los ajustes de Shopproof o pregunte a {detail}, no en la página.",
+            "providerButton_off": "Botón de desistimiento: el plugin de {detail} tiene un ID de tienda para su propio botón de desistimiento, y el botón de desistimiento de Shopware también está activado, así que los clientes pueden ver dos. Deje uno: el botón de Shopware (Ajustes > Datos maestros), que Shopproof completa, o el de {detail}.",
             "priorPrice_ok": "Los precios rebajados muestran el precio más bajo de los 30 días anteriores a la reducción.",
             "priorPriceCapped_off": "Los precios rebajados muestran el precio más bajo de los 30 días anteriores a la reducción en los primeros {detail} productos rebajados que revisó Shopproof. Su tienda tiene más productos, que no se han revisado aquí.",
             "priorPriceOff_off": "{detail} productos tienen un precio de lista (que se muestra tachado), pero «Mostrar el precio más bajo de los 30 días anteriores a una reducción» está desactivado en los ajustes de Shopproof. Las normas de precios de la UE piden mostrarlo.",
@@ -673,6 +677,49 @@
                 "responsibleMissing": "El fabricante está fuera de la UE y no hay ninguna persona responsable en la UE indicada.",
                 "responsibleCleared": "No hay persona responsable en la UE indicada, así que eBay elimina la que tenga este anuncio."
             }
+        },
+        "assistant": {
+            "title": "Asistente de IA",
+            "intro": "Conecte un asistente de IA compatible con MCP (por ejemplo Claude Desktop, Cursor u otra app MCP) y deje que configure Shopproof por usted, o pregúntele por sus desistimientos y el registro de pruebas. El asistente habla directamente con esta tienda; Shopproof no ve ni guarda lo que lee. Ayuda técnica, no asesoramiento jurídico.",
+            "where": "Lo que el asistente lee se envía al servicio de IA que usted utiliza, según las condiciones de ese servicio. Los cambios se le muestran primero, se anotan en el registro de pruebas y se pueden deshacer abajo. El asistente nunca cambia pedidos, clientes ni desistimientos, nunca envía correos y nunca borra nada.",
+            "loadFailed": "No se pudieron cargar los ajustes del asistente de IA. Vuelva a cargar la página para intentarlo de nuevo.",
+            "switchesTitle": "Interruptores",
+            "on": "Permitir que los asistentes de IA se conecten a Shopproof (solo lectura)",
+            "changes": "Permitir cambios: el asistente puede cambiar los ajustes de Shopproof para todos los canales de venta después de que usted acepte su vista previa",
+            "details": "Incluir datos de clientes: nombres, direcciones de correo y comentarios en las respuestas sobre desistimientos. Desactivado: el asistente solo ve fechas, estados y cantidades.",
+            "save": "Guardar",
+            "saved": "Guardado.",
+            "error": {
+                "save": "No se pudieron guardar los interruptores. Inténtelo de nuevo.",
+                "key": "No se pudo crear la clave. Guarde los interruptores con el primero activado y vuelva a intentarlo.",
+                "remove": "No se pudo eliminar la clave. Inténtelo de nuevo."
+            },
+            "keysTitle": "Claves de conexión",
+            "copyNow": "Cópielo ahora. Solo se muestra una vez.",
+            "address": "Dirección",
+            "key": "Clave",
+            "howToConnect": "Su asistente inicia sesión con la clave (cabecera Authorization: Bearer y la clave). Para Claude Desktop o Cursor, añada este servidor:",
+            "copy": "Copiar los ajustes",
+            "copied": "Copiado.",
+            "noKeys": "Todavía no hay claves.",
+            "created": "Creada",
+            "worksUntil": "Válida hasta",
+            "lastUsed": "Último uso",
+            "user": "Usuario admin",
+            "remove": "Eliminar",
+            "expired": "Caducada",
+            "never": "Nunca",
+            "createKey": "Crear una clave de conexión (válida {days} días)",
+            "changesTitle": "Cambios hechos por asistentes",
+            "noChanges": "Todavía no hay cambios.",
+            "when": "Cuándo",
+            "what": "Qué cambió",
+            "undoneColumn": "Deshecho",
+            "undo": "Deshacer",
+            "undone": "Deshecho. Los ajustes vuelven a estar como antes de este cambio.",
+            "undoneKept": "Deshecho. Los ajustes que alguien cambió después se quedan como están.",
+            "undoFailed": "No se pudo deshacer este cambio. Puede que ya se haya deshecho.",
+            "notLegalAdvice": "Ayuda técnica, no asesoramiento jurídico. Shopproof nunca califica una tienda de conforme."
         }
     }
 }

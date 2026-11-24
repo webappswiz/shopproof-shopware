@@ -187,7 +187,8 @@
                 "withdrawal": "Rétractation",
                 "retention": "Durée de conservation modifiée",
                 "anchor": "Horodatage conservé par Shopproof",
-                "prices": "Historique des prix scellé"
+                "prices": "Historique des prix scellé",
+                "assistant": "Modifié par l'assistant IA"
             }
         },
         "returns": {
@@ -241,6 +242,9 @@
             "policyOnline_ok": "Politique de rétractation : votre page de rétractation indique que les clients peuvent aussi se rétracter en ligne",
             "policyOnlineNone_off": "Politique de rétractation : Shopproof n'a pas trouvé sur votre page de rétractation la phrase indiquant que les clients peuvent aussi se rétracter en ligne, et où. Depuis juin 2026, les informations types sur la rétractation la contiennent. Ajoutez-la à la partie expliquant comment se rétracter, ou vérifiez que votre page le dit avec d'autres mots. La phrase officielle : « {detail} »",
             "policyOnlineUnsure_off": "Politique de rétractation : non vérifié si votre page de rétractation indique que les clients peuvent aussi se rétracter en ligne, car Shopproof ne peut pas évaluer les pages dans cette langue. Vérifiez-le vous-même. La phrase officielle : « {detail} »",
+            "policyTextProvider_off": "Politique de rétractation : non vérifiée, car votre page de rétractation ne contient presque aucun texte que Shopproof peut lire. L'extension {detail} ne charge peut-être son texte qu'à l'affichage de la page. Comparez vous-même le délai et l'adresse e-mail.",
+            "policyProvider_ok": "Politique de rétractation : l'extension {detail} est active. Si elle remplit votre page de rétractation, elle tient le texte à jour : si une ligne ici diffère, modifiez donc les réglages de Shopproof ou demandez à {detail}, pas sur la page.",
+            "providerButton_off": "Bouton de rétractation : l'extension {detail} a un identifiant de boutique pour son propre bouton de rétractation, et le bouton de rétractation de Shopware est aussi activé. Les clients peuvent donc en voir deux. Gardez-en un : le bouton de Shopware (Paramètres > Données de base), que Shopproof complète, ou celui de {detail}.",
             "priorPrice_ok": "Les prix réduits affichent le prix le plus bas des 30 jours précédant la réduction.",
             "priorPriceCapped_off": "Les prix réduits affichent le prix le plus bas des 30 jours précédant la réduction pour les {detail} premiers produits en promotion vérifiés par Shopproof. Votre boutique a d'autres produits, qui n'ont pas été vérifiés ici.",
             "priorPriceOff_off": "{detail} produits ont un prix de référence (affiché barré), mais « Afficher le prix le plus bas des 30 jours précédant une réduction » est désactivé dans les réglages Shopproof. Les règles de l'UE sur les prix demandent de l'afficher.",
@@ -673,6 +677,49 @@
                 "responsibleMissing": "Le fabricant est hors de l'UE et aucune personne responsable dans l'UE n'est renseignée.",
                 "responsibleCleared": "Aucune personne responsable dans l'UE n'est renseignée, eBay retire donc celle de cette annonce."
             }
+        },
+        "assistant": {
+            "title": "Assistant IA",
+            "intro": "Connectez un assistant IA compatible MCP (par exemple Claude Desktop, Cursor ou une autre application MCP) et laissez-le configurer Shopproof pour vous, ou interrogez-le sur vos rétractations et votre journal de preuves. L'assistant communique directement avec cette boutique ; Shopproof ne voit ni ne conserve ce qu'il lit. Aide technique, pas un conseil juridique.",
+            "where": "Ce que l'assistant lit est envoyé au service d'IA que vous utilisez, selon les conditions de ce service. Les modifications vous sont d'abord montrées, enregistrées dans le journal de preuves et peuvent être annulées ci-dessous. L'assistant ne modifie jamais les commandes, les clients ou les rétractations, n'envoie jamais d'e-mails et ne supprime jamais rien.",
+            "loadFailed": "Les réglages de l'assistant IA n'ont pas pu être chargés. Rechargez la page pour réessayer.",
+            "switchesTitle": "Interrupteurs",
+            "on": "Permettre aux assistants IA de se connecter à Shopproof (lecture seule)",
+            "changes": "Autoriser les modifications : l'assistant peut modifier les réglages Shopproof pour tous les canaux de vente après que vous avez accepté son aperçu",
+            "details": "Inclure les données des clients : noms, adresses e-mail et commentaires dans les réponses sur les rétractations. Désactivé : l'assistant ne voit que les dates, les statuts et les nombres.",
+            "save": "Enregistrer",
+            "saved": "Enregistré.",
+            "error": {
+                "save": "Les interrupteurs n'ont pas pu être enregistrés. Réessayez.",
+                "key": "La clé n'a pas pu être créée. Enregistrez les interrupteurs avec le premier activé, puis réessayez.",
+                "remove": "La clé n'a pas pu être supprimée. Réessayez."
+            },
+            "keysTitle": "Clés de connexion",
+            "copyNow": "Copiez ceci maintenant. Ce n'est affiché qu'une seule fois.",
+            "address": "Adresse",
+            "key": "Clé",
+            "howToConnect": "Votre assistant se connecte avec la clé (en-tête Authorization: Bearer suivi de la clé). Pour Claude Desktop ou Cursor, ajoutez ce serveur :",
+            "copy": "Copier les réglages",
+            "copied": "Copié.",
+            "noKeys": "Aucune clé pour l'instant.",
+            "created": "Créée le",
+            "worksUntil": "Valable jusqu'au",
+            "lastUsed": "Dernière utilisation",
+            "user": "Utilisateur admin",
+            "remove": "Supprimer",
+            "expired": "Expirée",
+            "never": "Jamais",
+            "createKey": "Créer une clé de connexion (valable {days} jours)",
+            "changesTitle": "Modifications faites par des assistants",
+            "noChanges": "Aucune modification pour l'instant.",
+            "when": "Quand",
+            "what": "Ce qui a changé",
+            "undoneColumn": "Annulée",
+            "undo": "Annuler",
+            "undone": "Annulée. Les réglages sont revenus à leur état d'avant cette modification.",
+            "undoneKept": "Annulée. Les réglages modifiés depuis par quelqu'un d'autre restent tels quels.",
+            "undoFailed": "Cette modification n'a pas pu être annulée. Elle a peut-être déjà été annulée.",
+            "notLegalAdvice": "Aide technique, pas un conseil juridique. Shopproof ne déclare jamais une boutique conforme."
         }
     }
 }

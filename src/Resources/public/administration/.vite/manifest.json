@@ -8,6 +8,15 @@
       "assets/index-B2fW76u3.css"
     ]
   },
+  "component/shopproof-assistant/index.js": {
+    "file": "assets/index-MkNhQP1S.js",
+    "name": "index",
+    "src": "component/shopproof-assistant/index.js",
+    "isDynamicEntry": true,
+    "css": [
+      "assets/index-MUBNiA9e.css"
+    ]
+  },
   "component/shopproof-contact/index.js": {
     "file": "assets/index-BUX_Goyk.js",
     "name": "index",
@@ -48,7 +57,7 @@
     ]
   },
   "main.js": {
-    "file": "assets/shopproof-compliance-BcUtED-i.js",
+    "file": "assets/shopproof-compliance-DUwIql5X.js",
     "name": "shopproof-compliance",
     "src": "main.js",
     "isEntry": true,
@@ -57,6 +66,7 @@
       "component/shopproof-setup-overview/index.js",
       "component/shopproof-placement/index.js",
       "component/shopproof-contact/index.js",
+      "component/shopproof-assistant/index.js",
       "component/shopproof-green-claims/index.js",
       "component/shopproof-marketplaces/index.js",
       "component/shopproof-a11y-statement/index.js"
@@ -66,7 +76,7 @@
     ]
   },
   "module/shopproof-overview/page/shopproof-overview-index/index.js": {
-    "file": "assets/index-CKbBXImQ.js",
+    "file": "assets/index-DTD0EYR7.js",
     "name": "index",
     "src": "module/shopproof-overview/page/shopproof-overview-index/index.js",
     "isDynamicEntry": true,

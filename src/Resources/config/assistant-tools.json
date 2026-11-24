@@ -1,0 +1,115 @@
+{
+  "about": "Tools Shopproof offers to a shop owner's AI assistant over MCP (decision 0047). Every platform offers exactly these names and inputs; each plugin keeps a copy and a test keeps the copies equal. Edit here, then copy.",
+  "version": 1,
+  "protocolVersions": ["2026-07-28", "2025-11-25", "2025-06-18", "2025-03-26", "2024-11-05"],
+  "tools": [
+    {
+      "name": "get_setup_status",
+      "kind": "read",
+      "title": "Setup status",
+      "description": "What Shopproof has set up in this shop, what is still missing and what needs the owner. Start here. Technical help, not legal advice.",
+      "inputSchema": { "type": "object", "properties": {}, "additionalProperties": false }
+    },
+    {
+      "name": "list_settings",
+      "kind": "read",
+      "title": "List settings",
+      "description": "Every Shopproof setting the assistant may read or change, with its current value, the allowed values, a plain description and whether shoppers see it.",
+      "inputSchema": { "type": "object", "properties": {}, "additionalProperties": false }
+    },
+    {
+      "name": "recommend_settings",
+      "kind": "read",
+      "title": "Recommended switches",
+      "description": "The features this shop's own facts call for (country, products, taxes, shipping, payments) that are still off. Pass their keys to preview_change as switch_on.",
+      "inputSchema": { "type": "object", "properties": {}, "additionalProperties": false }
+    },
+    {
+      "name": "preview_change",
+      "kind": "read",
+      "title": "Preview a change",
+      "description": "Checks a change and says in plain words what would change and what shoppers would see. Nothing is saved. Show the preview to the owner, then call apply_change with its preview_code once they agree.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "settings": { "type": "object", "description": "Setting keys from list_settings with their new values." },
+          "switch_on": { "type": "array", "items": { "type": "string" }, "description": "Keys from recommend_settings." },
+          "create_withdrawal_page": { "type": "boolean", "description": "Create and publish the page with the withdrawal form." }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "apply_change",
+      "kind": "write",
+      "title": "Apply a previewed change",
+      "description": "Saves a change the owner agreed to, using the preview_code from preview_change. Works only when the owner has turned on Allow changes. Every change is recorded and can be undone with undo_change.",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "preview_code": { "type": "string" } },
+        "required": ["preview_code"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "list_changes",
+      "kind": "read",
+      "title": "Changes made by assistants",
+      "description": "The latest changes made through an AI assistant, newest first, with what changed and whether they were undone.",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "limit": { "type": "integer", "minimum": 1, "maximum": 50 } },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "undo_change",
+      "kind": "write",
+      "title": "Undo a change",
+      "description": "Puts back the values from before one change. Settings changed since by someone else stay as they are.",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "change_id": { "type": "string" } },
+        "required": ["change_id"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "list_withdrawals",
+      "kind": "read",
+      "title": "Withdrawals",
+      "description": "Withdrawal requests, newest first, with their state, deadline and refund clock. Customer names and emails are hidden unless the owner turned on Include customer details.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "state": { "type": "string", "enum": ["all", "received", "return_arrived", "refund_sent", "refund_overdue"] },
+          "limit": { "type": "integer", "minimum": 1, "maximum": 100 }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_withdrawal",
+      "kind": "read",
+      "title": "One withdrawal",
+      "description": "One withdrawal request by its reference, with items, dates and refund clock. Customer details only with Include customer details on.",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "reference": { "type": "string" } },
+        "required": ["reference"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "proof_log",
+      "kind": "read",
+      "title": "Proof log",
+      "description": "The latest entries of the shop's tamper-evident proof log and whether the chain checks out. Entries hold no direct customer identifiers.",
+      "inputSchema": {
+        "type": "object",
+        "properties": { "limit": { "type": "integer", "minimum": 1, "maximum": 50 } },
+        "additionalProperties": false
+      }
+    }
+  ]
+}

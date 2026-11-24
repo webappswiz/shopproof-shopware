@@ -187,7 +187,8 @@
                 "withdrawal": "Withdrawal",
                 "retention": "Retention changed",
                 "anchor": "Stamp held by Shopproof",
-                "prices": "Price history sealed"
+                "prices": "Price history sealed",
+                "assistant": "Changed by AI assistant"
             }
         },
         "returns": {
@@ -241,6 +242,9 @@
             "policyOnline_ok": "Withdrawal policy: your revocation page says customers can also withdraw online",
             "policyOnlineNone_off": "Withdrawal policy: Shopproof could not find the sentence that customers can also withdraw online, and where, on your revocation page. Since June 2026 the model withdrawal instructions include it. Add it to the section on how to withdraw, or check that your page says it in other words. The official sentence: \"{detail}\"",
             "policyOnlineUnsure_off": "Withdrawal policy: not checked whether your revocation page says customers can also withdraw online, because Shopproof cannot judge pages in this language. Check it yourself. The official sentence: \"{detail}\"",
+            "policyTextProvider_off": "Withdrawal policy: not checked, because your revocation page has almost no text Shopproof can read. The {detail} plugin may load its text only when the page is shown. Compare the period and the email address yourself.",
+            "policyProvider_ok": "Withdrawal policy: the {detail} plugin is active. If it fills your revocation page, it keeps the text up to date, so when a line here differs, change the Shopproof settings or ask {detail}, not the page.",
+            "providerButton_off": "Withdrawal button: the {detail} plugin has a shop ID set for its own withdrawal button, and Shopware's withdrawal button is on too, so customers may see two. Keep one: Shopware's button (Settings > Basic information), which Shopproof completes, or the {detail} button.",
             "priorPrice_ok": "Reduced prices show the lowest price of the 30 days before the reduction.",
             "priorPriceCapped_off": "Reduced prices show the lowest price of the 30 days before the reduction for the first {detail} products on sale that Shopproof checked. Your shop has more products, which were not checked here.",
             "priorPriceOff_off": "{detail} products have a list price (shown crossed out), but \"Show the lowest price of the 30 days before a reduction\" is off in the Shopproof settings. EU price rules ask you to show it.",
@@ -673,6 +677,49 @@
                 "responsibleMissing": "The manufacturer is outside the EU and no EU responsible person is set.",
                 "responsibleCleared": "No EU responsible person is set, so eBay removes one this listing has."
             }
+        },
+        "assistant": {
+            "title": "AI assistant",
+            "intro": "Connect an AI assistant that supports MCP (for example Claude Desktop, Cursor or another MCP app) and let it set up Shopproof for you, or ask it about your withdrawals and proof log. The assistant talks to this shop directly; Shopproof does not see or keep what it reads. Technical help, not legal advice.",
+            "where": "Whatever the assistant reads is sent to the AI service you use, under that service's terms. Changes are shown to you first, recorded in the proof log and can be undone below. The assistant never changes orders, customers or withdrawals, never sends emails and never deletes anything.",
+            "loadFailed": "The AI assistant settings could not be loaded. Reload the page to try again.",
+            "switchesTitle": "Switches",
+            "on": "Let AI assistants connect to Shopproof (read only)",
+            "changes": "Allow changes: the assistant may change Shopproof settings for all sales channels after you agree to its preview",
+            "details": "Include customer details: names, email addresses and comments in withdrawal answers. Off: the assistant sees dates, states and counts only.",
+            "save": "Save",
+            "saved": "Saved.",
+            "error": {
+                "save": "The switches could not be saved. Try again.",
+                "key": "The key could not be created. Save the switches with the first one on, then try again.",
+                "remove": "The key could not be removed. Try again."
+            },
+            "keysTitle": "Connection keys",
+            "copyNow": "Copy this now. It is shown only once.",
+            "address": "Address",
+            "key": "Key",
+            "howToConnect": "Your assistant signs in with the key (header Authorization: Bearer and the key). For Claude Desktop or Cursor, add this server:",
+            "copy": "Copy the settings",
+            "copied": "Copied.",
+            "noKeys": "No keys yet.",
+            "created": "Created",
+            "worksUntil": "Works until",
+            "lastUsed": "Last used",
+            "user": "Admin user",
+            "remove": "Remove",
+            "expired": "Expired",
+            "never": "Never",
+            "createKey": "Create a connection key (works for {days} days)",
+            "changesTitle": "Changes made by assistants",
+            "noChanges": "No changes yet.",
+            "when": "When",
+            "what": "What changed",
+            "undoneColumn": "Undone",
+            "undo": "Undo",
+            "undone": "Undone. The settings are back as they were before this change.",
+            "undoneKept": "Undone. Settings someone changed since stay as they are.",
+            "undoFailed": "This change could not be undone. It may have been undone already.",
+            "notLegalAdvice": "Technical help, not legal advice. Shopproof never calls a shop compliant."
         }
     }
 }

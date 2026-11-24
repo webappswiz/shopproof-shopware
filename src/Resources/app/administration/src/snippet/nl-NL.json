@@ -187,7 +187,8 @@
                 "withdrawal": "Herroeping",
                 "retention": "Bewaartermijn gewijzigd",
                 "anchor": "Stempel bewaard door Shopproof",
-                "prices": "Prijsgeschiedenis verzegeld"
+                "prices": "Prijsgeschiedenis verzegeld",
+                "assistant": "Gewijzigd door AI-assistent"
             }
         },
         "returns": {
@@ -241,6 +242,9 @@
             "policyOnline_ok": "Herroepingsbeleid: uw herroepingspagina vermeldt dat klanten ook online kunnen herroepen",
             "policyOnlineNone_off": "Herroepingsbeleid: Shopproof kon op uw herroepingspagina de zin niet vinden dat klanten ook online kunnen herroepen, en waar. Sinds juni 2026 staat die in de modelinstructies voor herroeping. Voeg de zin toe aan het deel over hoe de klant kan herroepen, of controleer of uw pagina het in andere woorden zegt. De officiële zin: “{detail}”",
             "policyOnlineUnsure_off": "Herroepingsbeleid: niet gecontroleerd of uw herroepingspagina vermeldt dat klanten ook online kunnen herroepen, omdat Shopproof pagina’s in deze taal niet kan beoordelen. Controleer dit zelf. De officiële zin: “{detail}”",
+            "policyTextProvider_off": "Herroepingsbeleid: niet gecontroleerd, omdat uw herroepingspagina bijna geen tekst bevat die Shopproof kan lezen. De plugin van {detail} laadt de tekst misschien pas als de pagina wordt getoond. Vergelijk de termijn en het e-mailadres zelf.",
+            "policyProvider_ok": "Herroepingsbeleid: de plugin van {detail} is actief. Als die uw herroepingspagina vult, houdt die de tekst actueel. Wijkt een regel hier af, pas dan de Shopproof-instellingen aan of vraag het aan {detail}, niet op de pagina.",
+            "providerButton_off": "Herroepingsknop: in de plugin van {detail} is een winkel-ID ingesteld voor de eigen herroepingsknop, en de herroepingsknop van Shopware staat ook aan, dus klanten zien er mogelijk twee. Houd er één: de knop van Shopware (Instellingen > Basisgegevens), die Shopproof aanvult, of de knop van {detail}.",
             "priorPrice_ok": "Afgeprijsde producten tonen de laagste prijs van de 30 dagen vóór de korting.",
             "priorPriceCapped_off": "Afgeprijsde producten tonen de laagste prijs van de 30 dagen vóór de korting voor de eerste {detail} producten in de aanbieding die Shopproof heeft gecontroleerd. Uw winkel heeft meer producten, die hier niet zijn gecontroleerd.",
             "priorPriceOff_off": "{detail} producten hebben een catalogusprijs (doorgestreept getoond), maar “De laagste prijs van de 30 dagen vóór een korting tonen” staat uit in de Shopproof-instellingen. De EU-prijsregels vragen u die te tonen.",
@@ -673,6 +677,49 @@
                 "responsibleMissing": "De fabrikant zit buiten de EU en er is geen verantwoordelijke persoon in de EU ingevuld.",
                 "responsibleCleared": "Geen verantwoordelijke persoon in de EU ingevuld, dus eBay verwijdert die van deze advertentie."
             }
+        },
+        "assistant": {
+            "title": "AI-assistent",
+            "intro": "Verbind een AI-assistent die MCP ondersteunt (bijvoorbeeld Claude Desktop, Cursor of een andere MCP-app) en laat die Shopproof voor u instellen, of stel vragen over uw herroepingen en het bewijslogboek. De assistent praat rechtstreeks met deze winkel; Shopproof ziet en bewaart niet wat hij leest. Technische hulp, geen juridisch advies.",
+            "where": "Wat de assistent leest, gaat naar de AI-dienst die u gebruikt, onder de voorwaarden van die dienst. Wijzigingen worden u eerst getoond, vastgelegd in het bewijslogboek en kunnen hieronder ongedaan worden gemaakt. De assistent wijzigt nooit bestellingen, klanten of herroepingen, verstuurt nooit e-mails en verwijdert nooit iets.",
+            "loadFailed": "De instellingen voor de AI-assistent konden niet worden geladen. Laad de pagina opnieuw om het nog eens te proberen.",
+            "switchesTitle": "Schakelaars",
+            "on": "AI-assistenten verbinding laten maken met Shopproof (alleen lezen)",
+            "changes": "Wijzigingen toestaan: de assistent mag Shopproof-instellingen voor alle verkoopkanalen wijzigen nadat u met zijn voorbeeld hebt ingestemd",
+            "details": "Klantgegevens meenemen: namen, e-mailadressen en opmerkingen in antwoorden over herroepingen. Uit: de assistent ziet alleen datums, statussen en aantallen.",
+            "save": "Opslaan",
+            "saved": "Opgeslagen.",
+            "error": {
+                "save": "De schakelaars konden niet worden opgeslagen. Probeer het opnieuw.",
+                "key": "De sleutel kon niet worden gemaakt. Sla de schakelaars op met de eerste aan en probeer het dan opnieuw.",
+                "remove": "De sleutel kon niet worden verwijderd. Probeer het opnieuw."
+            },
+            "keysTitle": "Verbindingssleutels",
+            "copyNow": "Kopieer dit nu. Het wordt maar één keer getoond.",
+            "address": "Adres",
+            "key": "Sleutel",
+            "howToConnect": "Uw assistent meldt zich aan met de sleutel (header Authorization: Bearer en de sleutel). Voor Claude Desktop of Cursor voegt u deze server toe:",
+            "copy": "Instellingen kopiëren",
+            "copied": "Gekopieerd.",
+            "noKeys": "Nog geen sleutels.",
+            "created": "Gemaakt",
+            "worksUntil": "Geldig tot",
+            "lastUsed": "Laatst gebruikt",
+            "user": "Admingebruiker",
+            "remove": "Verwijderen",
+            "expired": "Verlopen",
+            "never": "Nooit",
+            "createKey": "Verbindingssleutel maken (geldig voor {days} dagen)",
+            "changesTitle": "Wijzigingen door assistenten",
+            "noChanges": "Nog geen wijzigingen.",
+            "when": "Wanneer",
+            "what": "Wat er is gewijzigd",
+            "undoneColumn": "Ongedaan gemaakt",
+            "undo": "Ongedaan maken",
+            "undone": "Ongedaan gemaakt. De instellingen zijn weer zoals vóór deze wijziging.",
+            "undoneKept": "Ongedaan gemaakt. Instellingen die iemand sindsdien heeft gewijzigd, blijven zoals ze zijn.",
+            "undoFailed": "Deze wijziging kon niet ongedaan worden gemaakt. Misschien is dat al gebeurd.",
+            "notLegalAdvice": "Technische hulp, geen juridisch advies. Shopproof noemt een winkel nooit conform."
         }
     }
 }

@@ -25,7 +25,7 @@ class ProofLog
      * stamp of Shopproof Pro, decision 0013); the free plugin never writes one itself. "prices"
      * seals the price history rows added since the last one (decision 0040).
      */
-    public const TYPES = ['snapshot', 'withdrawal', 'retention', 'anchor', 'prices'];
+    public const TYPES = ['snapshot', 'withdrawal', 'retention', 'anchor', 'prices', 'assistant'];
 
     public const DEFAULT_RETENTION = 730;
 

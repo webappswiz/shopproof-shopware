@@ -1,0 +1,85 @@
+{% block shopproof_assistant %}
+<mt-card
+    id="shopproof-assistant"
+    class="shopproof-assistant"
+    position-identifier="shopproof-overview-assistant"
+    :title="$t('shopproof.assistant.title')"
+>
+    <p>{{ $t('shopproof.assistant.intro') }}</p>
+    <p>{{ $t('shopproof.assistant.where') }}</p>
+    <p v-if="loadFailed" class="shopproof-assistant__notice is-error" role="alert">{{ $t('shopproof.assistant.loadFailed') }}</p>
+
+    <form v-if="state" @submit.prevent="save">
+        <fieldset class="shopproof-assistant__switches">
+            <legend class="shopproof-assistant__heading">{{ $t('shopproof.assistant.switchesTitle') }}</legend>
+            <p><label><input v-model="on" type="checkbox"> {{ $t('shopproof.assistant.on') }}</label></p>
+            <p><label><input v-model="changes" type="checkbox" :disabled="!on"> {{ $t('shopproof.assistant.changes') }}</label></p>
+            <p><label><input v-model="details" type="checkbox" :disabled="!on"> {{ $t('shopproof.assistant.details') }}</label></p>
+        </fieldset>
+        <mt-button type="submit" variant="primary" :is-loading="saving" :disabled="saving">{{ $t('shopproof.assistant.save') }}</mt-button>
+        <span v-if="saved" class="shopproof-assistant__copied" role="status">{{ $t('shopproof.assistant.saved') }}</span>
+    </form>
+    <p v-if="error" class="shopproof-assistant__notice is-error" role="alert">{{ $t('shopproof.assistant.error.' + error) }}</p>
+
+    <template v-if="state && state.switches.on">
+        <h3 class="shopproof-assistant__heading">{{ $t('shopproof.assistant.keysTitle') }}</h3>
+        <div v-if="newKey" class="shopproof-assistant__key" role="status">
+            <p><strong>{{ $t('shopproof.assistant.copyNow') }}</strong></p>
+            <p>{{ $t('shopproof.assistant.address') }}: <code>{{ newKey.endpoint }}</code></p>
+            <p>{{ $t('shopproof.assistant.key') }}: <code>{{ newKey.key }}</code></p>
+            <p>{{ $t('shopproof.assistant.howToConnect') }}</p>
+            <pre>{{ newKey.clientConfig }}</pre>
+            <mt-button v-if="canCopy" variant="secondary" size="small" @click="copyConfig">{{ $t('shopproof.assistant.copy') }}</mt-button>
+            <span class="shopproof-assistant__copied" role="status">{{ copied ? $t('shopproof.assistant.copied') : '' }}</span>
+        </div>
+        <p v-if="state.keys.length === 0">{{ $t('shopproof.assistant.noKeys') }}</p>
+        <table v-else class="shopproof-assistant__table">
+            <thead>
+                <tr>
+                    <th scope="col">{{ $t('shopproof.assistant.created') }}</th>
+                    <th scope="col">{{ $t('shopproof.assistant.worksUntil') }}</th>
+                    <th scope="col">{{ $t('shopproof.assistant.lastUsed') }}</th>
+                    <th scope="col">{{ $t('shopproof.assistant.user') }}</th>
+                    <th scope="col"><span class="shopproof-overview__sr">{{ $t('shopproof.assistant.remove') }}</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in state.keys" :key="item.id">
+                    <td>{{ day(item.created) }}</td>
+                    <td>{{ item.expired ? $t('shopproof.assistant.expired') : day(item.expires) }}</td>
+                    <td>{{ item.lastUsed ? dayTime(item.lastUsed) : $t('shopproof.assistant.never') }}</td>
+                    <td>{{ item.user }}</td>
+                    <td><mt-button variant="secondary" size="small" @click="removeKey(item.id)">{{ $t('shopproof.assistant.remove') }}</mt-button></td>
+                </tr>
+            </tbody>
+        </table>
+        <mt-button variant="secondary" @click="createKey">{{ $t('shopproof.assistant.createKey', { days: state.keyDays }) }}</mt-button>
+    </template>
+
+    <template v-if="state">
+        <h3 class="shopproof-assistant__heading">{{ $t('shopproof.assistant.changesTitle') }}</h3>
+        <p v-if="undoMessage" class="shopproof-assistant__notice is-success" role="status">{{ undoMessage }}</p>
+        <p v-if="state.changes.length === 0">{{ $t('shopproof.assistant.noChanges') }}</p>
+        <table v-else class="shopproof-assistant__table">
+            <thead>
+                <tr>
+                    <th scope="col">{{ $t('shopproof.assistant.when') }}</th>
+                    <th scope="col">{{ $t('shopproof.assistant.what') }}</th>
+                    <th scope="col">{{ $t('shopproof.assistant.undoneColumn') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="change in state.changes" :key="change.id">
+                    <td>{{ dayTime(change.time) }}<br><span class="shopproof-assistant__small">{{ change.user }}</span></td>
+                    <td><div v-for="(line, index) in lines(change)" :key="index">{{ line }}</div></td>
+                    <td>
+                        <span v-if="change.undone">{{ day(change.undone) }}</span>
+                        <mt-button v-else variant="secondary" size="small" @click="undo(change.id)">{{ $t('shopproof.assistant.undo') }}</mt-button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+    <p class="shopproof-assistant__small">{{ $t('shopproof.assistant.notLegalAdvice') }}</p>
+</mt-card>
+{% endblock %}

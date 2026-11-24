@@ -187,7 +187,8 @@
                 "withdrawal": "Recesso",
                 "retention": "Conservazione modificata",
                 "anchor": "Marcatura conservata da Shopproof",
-                "prices": "Storico prezzi sigillato"
+                "prices": "Storico prezzi sigillato",
+                "assistant": "Modificato dall'assistente IA"
             }
         },
         "returns": {
@@ -241,6 +242,9 @@
             "policyOnline_ok": "Informazioni sul recesso: la sua pagina del recesso indica che i clienti possono recedere anche online",
             "policyOnlineNone_off": "Informazioni sul recesso: Shopproof non ha trovato nella sua pagina del recesso la frase secondo cui i clienti possono recedere anche online, e dove. Da giugno 2026 il modello di istruzioni sul recesso la contiene. La aggiunga alla sezione su come recedere, oppure verifichi che la sua pagina lo dica con altre parole. La frase ufficiale: «{detail}»",
             "policyOnlineUnsure_off": "Informazioni sul recesso: non è stato controllato se la sua pagina del recesso indica che i clienti possono recedere anche online, perché Shopproof non sa valutare pagine in questa lingua. Lo verifichi lei. La frase ufficiale: «{detail}»",
+            "policyTextProvider_off": "Informazioni sul recesso: non controllate, perché la sua pagina di recesso non contiene quasi testo che Shopproof possa leggere. Il plugin di {detail} forse carica il suo testo solo quando la pagina viene mostrata. Confronti lei stesso il periodo e l'indirizzo email.",
+            "policyProvider_ok": "Informazioni sul recesso: il plugin di {detail} è attivo. Se compila la sua pagina di recesso, mantiene il testo aggiornato: se una riga qui è diversa, modifichi quindi le impostazioni di Shopproof o chieda a {detail}, non sulla pagina.",
+            "providerButton_off": "Pulsante di recesso: nel plugin di {detail} è impostato un ID negozio per il suo pulsante di recesso, e anche il pulsante di recesso di Shopware è attivo, quindi i clienti potrebbero vederne due. Ne tenga uno: il pulsante di Shopware (Impostazioni > Dati principali), che Shopproof completa, o quello di {detail}.",
             "priorPrice_ok": "I prezzi ridotti mostrano il prezzo più basso dei 30 giorni precedenti la riduzione.",
             "priorPriceCapped_off": "I prezzi ridotti mostrano il prezzo più basso dei 30 giorni precedenti la riduzione per i primi {detail} prodotti in saldo controllati da Shopproof. Il suo negozio ha altri prodotti, che qui non sono stati controllati.",
             "priorPriceOff_off": "{detail} prodotti hanno un prezzo di listino (mostrato barrato), ma «Mostra il prezzo più basso dei 30 giorni precedenti una riduzione» è disattivato nelle impostazioni di Shopproof. Le norme UE sui prezzi chiedono di mostrarlo.",
@@ -673,6 +677,49 @@
                 "responsibleMissing": "Il fabbricante è fuori dall'UE e non è indicata alcuna persona responsabile nell'UE.",
                 "responsibleCleared": "Nessuna persona responsabile nell'UE indicata, quindi eBay rimuove quella presente in questa inserzione."
             }
+        },
+        "assistant": {
+            "title": "Assistente IA",
+            "intro": "Colleghi un assistente IA che supporta MCP (per esempio Claude Desktop, Cursor o un'altra app MCP) e lo lasci configurare Shopproof per lei, oppure gli chieda dei suoi recessi e del registro delle prove. L'assistente comunica direttamente con questo negozio; Shopproof non vede né conserva ciò che legge. Aiuto tecnico, non consulenza legale.",
+            "where": "Ciò che l'assistente legge viene inviato al servizio di IA che usa, alle condizioni di quel servizio. Le modifiche le vengono mostrate prima, registrate nel registro delle prove e possono essere annullate qui sotto. L'assistente non modifica mai ordini, clienti o recessi, non invia mai email e non elimina mai nulla.",
+            "loadFailed": "Non è stato possibile caricare le impostazioni dell'assistente IA. Ricarichi la pagina per riprovare.",
+            "switchesTitle": "Interruttori",
+            "on": "Consenti agli assistenti IA di collegarsi a Shopproof (sola lettura)",
+            "changes": "Consenti modifiche: l'assistente può modificare le impostazioni di Shopproof per tutti i canali di vendita dopo che lei ha approvato la sua anteprima",
+            "details": "Includi i dati dei clienti: nomi, indirizzi email e commenti nelle risposte sui recessi. Disattivato: l'assistente vede solo date, stati e numeri.",
+            "save": "Salva",
+            "saved": "Salvato.",
+            "error": {
+                "save": "Non è stato possibile salvare gli interruttori. Riprovi.",
+                "key": "Non è stato possibile creare la chiave. Salvi gli interruttori con il primo attivo, poi riprovi.",
+                "remove": "Non è stato possibile rimuovere la chiave. Riprovi."
+            },
+            "keysTitle": "Chiavi di collegamento",
+            "copyNow": "Copi questo adesso. Viene mostrato una sola volta.",
+            "address": "Indirizzo",
+            "key": "Chiave",
+            "howToConnect": "Il suo assistente accede con la chiave (intestazione Authorization: Bearer seguita dalla chiave). Per Claude Desktop o Cursor, aggiunga questo server:",
+            "copy": "Copia le impostazioni",
+            "copied": "Copiato.",
+            "noKeys": "Ancora nessuna chiave.",
+            "created": "Creata il",
+            "worksUntil": "Valida fino al",
+            "lastUsed": "Ultimo uso",
+            "user": "Utente admin",
+            "remove": "Rimuovi",
+            "expired": "Scaduta",
+            "never": "Mai",
+            "createKey": "Crea una chiave di collegamento (valida per {days} giorni)",
+            "changesTitle": "Modifiche fatte dagli assistenti",
+            "noChanges": "Ancora nessuna modifica.",
+            "when": "Quando",
+            "what": "Cosa è cambiato",
+            "undoneColumn": "Annullata",
+            "undo": "Annulla",
+            "undone": "Annullata. Le impostazioni sono tornate come prima di questa modifica.",
+            "undoneKept": "Annullata. Le impostazioni che qualcuno ha cambiato nel frattempo restano come sono.",
+            "undoFailed": "Non è stato possibile annullare questa modifica. Forse è già stata annullata.",
+            "notLegalAdvice": "Aiuto tecnico, non consulenza legale. Shopproof non definisce mai un negozio conforme."
         }
     }
 }

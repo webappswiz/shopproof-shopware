@@ -219,6 +219,36 @@ class ShopproofRulesService extends ApiService {
             .post(`${this.getApiBasePath()}/returns/test`, {}, { headers: this.getBasicHeaders() })
             .then((response) => ApiService.handleResponse(response));
     }
+
+    getAssistant() {
+        return this.httpClient
+            .get(`${this.getApiBasePath()}/assistant`, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    saveAssistantSwitches(switches) {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/assistant/switches`, switches, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    createAssistantKey() {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/assistant/keys`, {}, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    removeAssistantKey(id) {
+        return this.httpClient
+            .delete(`${this.getApiBasePath()}/assistant/keys/${encodeURIComponent(id)}`, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    undoAssistantChange(id) {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/assistant/changes/${encodeURIComponent(id)}/undo`, {}, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
 }
 
 Shopware.Service().register('shopproofRulesService', (container) => {

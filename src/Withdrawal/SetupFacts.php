@@ -33,7 +33,7 @@ class SetupFacts
     private const HAZARD_PAGE = 500;
 
     /** Shopware's class for the event, present from 6.7.9. */
-    private const EVENT_CLASS = 'Shopware\\Core\\Content\\RevocationRequest\\Event\\RevocationRequestEvent';
+    public const EVENT_CLASS = 'Shopware\\Core\\Content\\RevocationRequest\\Event\\RevocationRequestEvent';
 
     public function __construct(
         private readonly Connection $connection,
@@ -287,7 +287,7 @@ class SetupFacts
         ];
     }
 
-    private function pageExists(string $pageId): bool
+    public function pageExists(string $pageId): bool
     {
         return (bool) $this->connection->fetchOne(
             'SELECT 1 FROM cms_page WHERE id = :id AND version_id = :version',
@@ -295,7 +295,7 @@ class SetupFacts
         );
     }
 
-    private function pageHasForm(string $pageId): bool
+    public function pageHasForm(string $pageId): bool
     {
         return (bool) $this->connection->fetchOne(
             'SELECT 1 FROM cms_slot s

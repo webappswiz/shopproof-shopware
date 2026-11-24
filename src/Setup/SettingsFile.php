@@ -14,7 +14,7 @@ final class SettingsFile
 {
     public const FORMAT = 1;
 
-    /** @var array<string, array{type: string, options: list<string>, min: ?int, max: ?int}> */
+    /** @var array<string, array{type: string, options: list<string>, min: ?int, max: ?int, label: string, default: mixed}> */
     private array $fields = [];
 
     /** @var list<string> settings that point at this shop's own records (component fields) */
@@ -43,13 +43,28 @@ final class SettingsFile
             foreach ($field->xpath('options/option/id') ?: [] as $id) {
                 $options[] = trim((string) $id);
             }
+            $type = trim((string) ($field['type'] ?? 'text')) ?: 'text';
+            $label = '';
+            foreach ($field->label as $text) {
+                if (!isset($text['lang'])) {
+                    $label = trim((string) $text);
+                    break;
+                }
+            }
             $this->fields[$name] = [
-                'type' => trim((string) ($field['type'] ?? 'text')) ?: 'text',
+                'type' => $type,
                 'options' => $options,
                 'min' => isset($field->min) ? (int) $field->min : null,
                 'max' => isset($field->max) ? (int) $field->max : null,
+                'label' => $label,
+                'default' => isset($field->defaultValue) ? self::typed($type, trim((string) $field->defaultValue)) : null,
             ];
         }
+    }
+
+    public static function fromFile(string $path): self
+    {
+        return new self((string) file_get_contents($path));
     }
 
     /**
@@ -67,6 +82,53 @@ final class SettingsFile
     public function names(): array
     {
         return array_keys($this->fields);
+    }
+
+    /**
+     * One setting as config.xml describes it: type, choices, limits, English label and default
+     * value (null when config.xml names none). Null for a name the schema does not know.
+     *
+     * @return array{type: string, options: list<string>, min: ?int, max: ?int, label: string, default: mixed}|null
+     */
+    public function field(string $name): ?array
+    {
+        return $this->fields[$name] ?? null;
+    }
+
+    /**
+     * Checks one value with the same rules as a settings file, so the AI assistant (decision 0047)
+     * can never set anything the settings page cannot.
+     *
+     * @return array{value: bool|int|string|list<string>, error: ?string}
+     */
+    public function checkValue(string $name, mixed $value): array
+    {
+        $field = $this->fields[$name] ?? null;
+        if ($field === null) {
+            return ['value' => '', 'error' => \sprintf('"%s" is not a Shopproof setting.', $name)];
+        }
+
+        return self::check($name, $field, $value);
+    }
+
+    /**
+     * A stored value as the type the setting has: Shopware may keep a number or a switch as text.
+     */
+    public function normalise(string $name, mixed $value): mixed
+    {
+        $field = $this->fields[$name] ?? null;
+
+        return $field === null ? $value : self::typed($field['type'], $value);
+    }
+
+    private static function typed(string $type, mixed $value): mixed
+    {
+        return match (true) {
+            $type === 'int' && \is_string($value) && preg_match('/^-?\d+$/', $value) === 1 => (int) $value,
+            $type === 'bool' && \in_array($value, ['1', '0', 1, 0, 'true', 'false'], true) => $value === 'true' || ($value !== 'false' && (bool) $value),
+            $type === 'multi-select' && \is_string($value) && $value !== '' => array_values(array_filter(array_map('trim', explode(',', $value)), static fn (string $v): bool => $v !== '')),
+            default => $value,
+        };
     }
 
     /**
@@ -136,7 +198,7 @@ final class SettingsFile
     }
 
     /**
-     * @param array{type: string, options: list<string>, min: ?int, max: ?int} $field
+     * @param array{type: string, options: list<string>, min: ?int, max: ?int, label: string, default: mixed} $field
      *
      * @return array{value: bool|int|string|list<string>, error: ?string}
      */

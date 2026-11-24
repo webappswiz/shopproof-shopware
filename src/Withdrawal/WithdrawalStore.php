@@ -94,11 +94,12 @@ class WithdrawalStore
 
     /**
      * Newest first, optionally filtered by email, name or contract number. Each item has its
-     * deadline clock, with days in the given time zone (the admin user's).
+     * deadline clock, with days in the given time zone (the admin user's). With $id, only that
+     * record (the AI assistant's get_withdrawal, decision 0047).
      *
      * @return array{total: int, items: list<array<string, mixed>>}
      */
-    public function list(int $page, int $limit, string $term = '', ?\DateTimeZone $zone = null, int $defaultDays = WithdrawalClock::DAYS): array
+    public function list(int $page, int $limit, string $term = '', ?\DateTimeZone $zone = null, int $defaultDays = WithdrawalClock::DAYS, ?string $id = null): array
     {
         $zone ??= new \DateTimeZone('UTC');
         $today = (new \DateTimeImmutable('now', $zone))->format('Y-m-d');
@@ -110,6 +111,13 @@ class WithdrawalStore
         if (trim($term) !== '') {
             $where = ' WHERE (w.email LIKE :term OR w.contract_number LIKE :term OR w.first_name LIKE :term OR w.last_name LIKE :term)';
             $params['term'] = '%' . addcslashes(trim($term), '%_\\') . '%';
+        }
+        if ($id !== null) {
+            if (!Uuid::isValid($id)) {
+                return ['total' => 0, 'items' => []];
+            }
+            $where .= ($where === '' ? ' WHERE ' : ' AND ') . 'w.id = :id';
+            $params['id'] = Uuid::fromHexToBytes(strtolower($id));
         }
         $total = self::int($this->connection->fetchOne('SELECT COUNT(*) FROM ' . self::TABLE . ' w' . $where, $params));
         $rows = $this->connection->fetchAllAssociative(

@@ -24,7 +24,7 @@ class ShopproofCompliance extends Plugin
     /**
      * Tables this plugin owns. Removed on uninstall unless the merchant keeps the data.
      */
-    public const TABLES = ['shopproof_rules_cache', 'shopproof_withdrawal_request', 'shopproof_proof_log', 'shopproof_cancellation', 'shopproof_price_history'];
+    public const TABLES = ['shopproof_rules_cache', 'shopproof_withdrawal_request', 'shopproof_proof_log', 'shopproof_cancellation', 'shopproof_price_history', 'shopproof_assistant'];
 
     public function install(InstallContext $installContext): void
     {

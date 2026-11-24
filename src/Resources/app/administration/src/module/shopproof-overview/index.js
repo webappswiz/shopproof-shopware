@@ -22,6 +22,7 @@ Shopware.Component.register('shopproof-overview-index', () => import('./page/sho
 Shopware.Component.register('shopproof-setup-overview', () => import('../../component/shopproof-setup-overview'));
 Shopware.Component.register('shopproof-placement', () => import('../../component/shopproof-placement'));
 Shopware.Component.register('shopproof-contact', () => import('../../component/shopproof-contact'));
+Shopware.Component.register('shopproof-assistant', () => import('../../component/shopproof-assistant'));
 Shopware.Component.register('shopproof-green-claims', () => import('../../component/shopproof-green-claims'));
 Shopware.Component.register('shopproof-marketplaces', () => import('../../component/shopproof-marketplaces'));
 Shopware.Component.register('shopproof-a11y-statement', () => import('../../component/shopproof-a11y-statement'));

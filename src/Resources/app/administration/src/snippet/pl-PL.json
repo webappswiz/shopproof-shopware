@@ -187,7 +187,8 @@
                 "withdrawal": "Odstąpienie",
                 "retention": "Zmieniono okres przechowywania",
                 "anchor": "Znacznik przechowywany przez Shopproof",
-                "prices": "Zapieczętowano historię cen"
+                "prices": "Zapieczętowano historię cen",
+                "assistant": "Zmienione przez asystenta AI"
             }
         },
         "returns": {
@@ -241,6 +242,9 @@
             "policyOnline_ok": "Zasady odstąpienia od umowy: strona odstąpienia informuje, że klienci mogą odstąpić od umowy także online",
             "policyOnlineNone_off": "Zasady odstąpienia od umowy: Shopproof nie znalazł na stronie odstąpienia zdania, że klienci mogą odstąpić od umowy także online, i gdzie to zrobić. Od czerwca 2026 r. zawiera je wzór pouczenia o odstąpieniu od umowy. Dodaj je do części o sposobie odstąpienia lub sprawdź, czy strona mówi to innymi słowami. Oficjalne zdanie: „{detail}”",
             "policyOnlineUnsure_off": "Zasady odstąpienia od umowy: nie sprawdzono, czy strona odstąpienia informuje, że klienci mogą odstąpić od umowy także online, ponieważ Shopproof nie potrafi ocenić stron w tym języku. Sprawdź to samodzielnie. Oficjalne zdanie: „{detail}”",
+            "policyTextProvider_off": "Zasady odstąpienia od umowy: nie sprawdzono, bo strona odstąpienia prawie nie ma tekstu, który Shopproof może odczytać. Wtyczka {detail} może wczytywać tekst dopiero przy wyświetleniu strony. Porównaj termin i adres e-mail samodzielnie.",
+            "policyProvider_ok": "Zasady odstąpienia od umowy: wtyczka {detail} jest aktywna. Jeśli wypełnia stronę odstąpienia, aktualizuje jej tekst, więc gdy coś tutaj się różni, zmień ustawienia Shopproof albo zapytaj {detail}, nie edytuj strony.",
+            "providerButton_off": "Przycisk odstąpienia: we wtyczce {detail} ustawiono ID sklepu dla jej własnego przycisku odstąpienia, a przycisk odstąpienia Shopware też jest włączony, więc klienci mogą zobaczyć dwa. Zostaw jeden: przycisk Shopware (Ustawienia > Dane podstawowe), który Shopproof uzupełnia, albo przycisk {detail}.",
             "priorPrice_ok": "Obniżone ceny pokazują najniższą cenę z 30 dni przed obniżką.",
             "priorPriceCapped_off": "Obniżone ceny pokazują najniższą cenę z 30 dni przed obniżką dla pierwszych przecenionych produktów sprawdzonych przez Shopproof (liczba: {detail}). Sklep ma więcej produktów, których tutaj nie sprawdzono.",
             "priorPriceOff_off": "Produkty z ceną katalogową (wyświetlaną jako przekreślona): {detail}, ale opcja „Pokazuj najniższą cenę z 30 dni przed obniżką” jest wyłączona w ustawieniach Shopproof. Unijne przepisy o cenach wymagają jej wyświetlania.",
@@ -673,6 +677,49 @@
                 "responsibleMissing": "Producent jest spoza UE i nie podano osoby odpowiedzialnej w UE.",
                 "responsibleCleared": "Nie podano osoby odpowiedzialnej w UE, więc eBay usunie tę, którą ma ta oferta."
             }
+        },
+        "assistant": {
+            "title": "Asystent AI",
+            "intro": "Połącz asystenta AI obsługującego MCP (na przykład Claude Desktop, Cursor lub inna aplikacja MCP) i pozwól mu skonfigurować Shopproof za Ciebie albo zapytaj go o odstąpienia i dziennik dowodów. Asystent łączy się bezpośrednio z tym sklepem; Shopproof nie widzi ani nie przechowuje tego, co on czyta. Pomoc techniczna, nie porada prawna.",
+            "where": "To, co czyta asystent, trafia do usługi AI, z której korzystasz, na jej warunkach. Zmiany są najpierw pokazywane Tobie, zapisywane w dzienniku dowodów i można je cofnąć poniżej. Asystent nigdy nie zmienia zamówień, klientów ani odstąpień, nigdy nie wysyła e-maili i nigdy niczego nie usuwa.",
+            "loadFailed": "Nie udało się wczytać ustawień asystenta AI. Odśwież stronę, aby spróbować ponownie.",
+            "switchesTitle": "Przełączniki",
+            "on": "Pozwól asystentom AI łączyć się z Shopproof (tylko odczyt)",
+            "changes": "Zezwalaj na zmiany: asystent może zmieniać ustawienia Shopproof dla wszystkich kanałów sprzedaży po tym, jak zaakceptujesz jego podgląd",
+            "details": "Uwzględniaj dane klientów: imiona i nazwiska, adresy e-mail i komentarze w odpowiedziach o odstąpieniach. Wyłączone: asystent widzi tylko daty, statusy i liczby.",
+            "save": "Zapisz",
+            "saved": "Zapisano.",
+            "error": {
+                "save": "Nie udało się zapisać przełączników. Spróbuj ponownie.",
+                "key": "Nie udało się utworzyć klucza. Zapisz przełączniki z włączonym pierwszym i spróbuj ponownie.",
+                "remove": "Nie udało się usunąć klucza. Spróbuj ponownie."
+            },
+            "keysTitle": "Klucze połączenia",
+            "copyNow": "Skopiuj to teraz. Jest pokazywane tylko raz.",
+            "address": "Adres",
+            "key": "Klucz",
+            "howToConnect": "Asystent loguje się kluczem (nagłówek Authorization: Bearer i klucz). W Claude Desktop lub Cursor dodaj ten serwer:",
+            "copy": "Skopiuj ustawienia",
+            "copied": "Skopiowano.",
+            "noKeys": "Brak kluczy.",
+            "created": "Utworzono",
+            "worksUntil": "Ważny do",
+            "lastUsed": "Ostatnie użycie",
+            "user": "Użytkownik admina",
+            "remove": "Usuń",
+            "expired": "Wygasł",
+            "never": "Nigdy",
+            "createKey": "Utwórz klucz połączenia (ważny {days} dni)",
+            "changesTitle": "Zmiany wprowadzone przez asystentów",
+            "noChanges": "Brak zmian.",
+            "when": "Kiedy",
+            "what": "Co się zmieniło",
+            "undoneColumn": "Cofnięto",
+            "undo": "Cofnij",
+            "undone": "Cofnięto. Ustawienia są takie jak przed tą zmianą.",
+            "undoneKept": "Cofnięto. Ustawienia, które ktoś zmienił w międzyczasie, pozostają bez zmian.",
+            "undoFailed": "Nie udało się cofnąć tej zmiany. Możliwe, że już została cofnięta.",
+            "notLegalAdvice": "Pomoc techniczna, nie porada prawna. Shopproof nigdy nie nazywa sklepu zgodnym z przepisami."
         }
     }
 }

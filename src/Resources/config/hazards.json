@@ -16,7 +16,8 @@
         "fi": "Räjähtävä pommi",
         "pt": "Bomba a explodir",
         "hu": "Robbanó bomba",
-        "el": "Εκρηγνυόμενη βόμβα"
+        "el": "Εκρηγνυόμενη βόμβα",
+        "nb": "Eksploderende bombe"
       }
     },
     "GHS02": {
@@ -34,7 +35,8 @@
         "fi": "Liekki",
         "pt": "Chama",
         "hu": "Láng",
-        "el": "Φλόγα"
+        "el": "Φλόγα",
+        "nb": "Flamme"
       }
     },
     "GHS03": {
@@ -52,7 +54,8 @@
         "fi": "Liekki ympyrän päällä",
         "pt": "Chama sobre círculo",
         "hu": "Láng egy körön",
-        "el": "Φλόγα υπέρανω κύκλου"
+        "el": "Φλόγα υπέρανω κύκλου",
+        "nb": "Flamme over sirkel"
       }
     },
     "GHS04": {
@@ -70,7 +73,8 @@
         "fi": "Kaasupullo",
         "pt": "Garrafa de gás",
         "hu": "Gázpalack",
-        "el": "Φιάλη αερίου"
+        "el": "Φιάλη αερίου",
+        "nb": "Gassflaske"
       }
     },
     "GHS05": {
@@ -88,7 +92,8 @@
         "fi": "Syöpyminen",
         "pt": "Corrosão",
         "hu": "Maró anyagok",
-        "el": "Διάβρωση"
+        "el": "Διάβρωση",
+        "nb": "Etsende stoff"
       }
     },
     "GHS06": {
@@ -106,7 +111,8 @@
         "fi": "Pääkallo ja ristikkäiset luut",
         "pt": "Caveira sobre tíbias cruzadas",
         "hu": "Halálfej",
-        "el": "Νεκροκεφαλή με διασταυρούμενα οστά"
+        "el": "Νεκροκεφαλή με διασταυρούμενα οστά",
+        "nb": "Hodeskalle og bein i kors"
       }
     },
     "GHS07": {
@@ -124,7 +130,8 @@
         "fi": "Huutomerkki",
         "pt": "Ponto de exclamação",
         "hu": "Felkiáltójel",
-        "el": "Θαυμαστικό"
+        "el": "Θαυμαστικό",
+        "nb": "Utropstegn"
       }
     },
     "GHS08": {
@@ -142,7 +149,8 @@
         "fi": "Terveysvaara",
         "pt": "Perigo para a saúde",
         "hu": "Egészségi veszély",
-        "el": "Κίνδυνος για την υγεία"
+        "el": "Κίνδυνος για την υγεία",
+        "nb": "Helsefare"
       }
     },
     "GHS09": {
@@ -160,7 +168,8 @@
         "fi": "Ympäristö",
         "pt": "Ambiente",
         "hu": "Környezet",
-        "el": "Περιβάλλον"
+        "el": "Περιβάλλον",
+        "nb": "Miljø"
       }
     }
   },
@@ -178,7 +187,8 @@
       "fi": "Vaara",
       "pt": "Perigo",
       "hu": "Veszély",
-      "el": "Κίνδυνος"
+      "el": "Κίνδυνος",
+      "nb": "Fare"
     },
     "warning": {
       "en": "Warning",
@@ -193,7 +203,8 @@
       "fi": "Varoitus",
       "pt": "Atenção",
       "hu": "Figyelem",
-      "el": "Προσοχή"
+      "el": "Προσοχή",
+      "nb": "Advarsel"
     }
   },
   "hazard_statements": {
@@ -210,7 +221,8 @@
       "fi": "Epästabiili räjähde.",
       "pt": "Explosivo instável.",
       "hu": "Instabil robbanóanyagok.",
-      "el": "Ασταθή εκρηκτικά."
+      "el": "Ασταθή εκρηκτικά.",
+      "nb": "Ustabile eksplosive varer."
     },
     "H201": {
       "en": "Explosive; mass explosion hazard.",
@@ -225,7 +237,8 @@
       "fi": "Räjähde; massaräjähdysvaara.",
       "pt": "Explosivo; perigo de explosão em massa.",
       "hu": "Robbanóanyag; teljes tömeg felrobbanásának veszélye.",
-      "el": "Εκρηκτικό· κίνδυνος μαζικής έκρηξης."
+      "el": "Εκρηκτικό· κίνδυνος μαζικής έκρηξης.",
+      "nb": "Eksplosjonsfarlig; fare for masseeksplosjon."
     },
     "H202": {
       "en": "Explosive, severe projection hazard.",
@@ -240,7 +253,8 @@
       "fi": "Räjähde; vakava sirpalevaara.",
       "pt": "Explosivo, perigo grave de projecções.",
       "hu": "Robbanóanyag; kivetés súlyos veszélye.",
-      "el": "Εκρηκτικό· σοβαρός κίνδυνος εκτόξευσης."
+      "el": "Εκρηκτικό· σοβαρός κίνδυνος εκτόξευσης.",
+      "nb": "Eksplosjonsfarlig; stor fare for utkast av fragmenter."
     },
     "H203": {
       "en": "Explosive; fire, blast or projection hazard.",
@@ -255,7 +269,8 @@
       "fi": "Räjähde; palo-, räjähdys- tai sirpalevaara.",
       "pt": "Explosivo; perigo de incêndio, sopro ou projecções.",
       "hu": "Robbanóanyag; tűz, robbanás vagy kivetés veszélye.",
-      "el": "Εκρηκτικό· κίνδυνος πυρκαγιάς, ανατίναξης ή εκτόξευσης."
+      "el": "Εκρηκτικό· κίνδυνος πυρκαγιάς, ανατίναξης ή εκτόξευσης.",
+      "nb": "Eksplosjonsfarlig; fare for brann, trykkbølge eller utkast av fragmenter."
     },
     "H204": {
       "en": "Fire or projection hazard.",
@@ -270,7 +285,8 @@
       "fi": "Palo- tai sirpalevaara.",
       "pt": "Perigo de incêndio ou projecções.",
       "hu": "Tűz vagy kivetés veszélye.",
-      "el": "Κίνδυνος πυρκαγιάς ή εκτόξευσης."
+      "el": "Κίνδυνος πυρκαγιάς ή εκτόξευσης.",
+      "nb": "Fare for brann eller utkast av fragmenter."
     },
     "H205": {
       "en": "May mass explode in fire.",
@@ -285,7 +301,8 @@
       "fi": "Koko massa voi räjähtää tulessa.",
       "pt": "Perigo de explosão em massa em caso de incêndio.",
       "hu": "Tűz hatására a teljes tömeg felrobbanhat.",
-      "el": "Κίνδυνος μαζικής έκρηξης σε περίπτωση πυρκαγιάς."
+      "el": "Κίνδυνος μαζικής έκρηξης σε περίπτωση πυρκαγιάς.",
+      "nb": "Fare for masseeksplosjon ved brann."
     },
     "H206": {
       "en": "Fire, blast or projection hazard; increased risk of explosion if desensitising agent is reduced.",
@@ -300,7 +317,8 @@
       "fi": "Palo-, räjähdys- tai sirpalevaara; suurentunut, jos flegmatointitekijää vähennetään.",
       "pt": "Perigo de incêndio, sopro ou projeções; risco acrescido de explosão se houver redução do agente dessensibilizante.",
       "hu": "Tűz, robbanás vagy kivetés veszélye; fokozott robbanásveszély a deszenzibilizáló szer csökkenésével.",
-      "el": "Κίνδυνος πυρκαγιάς, ανατίναξης ή εκτόξευσης· αυξημένος κίνδυνος έκρηξης εάν μειωθεί ο παράγοντας απευαισθητοποίησης."
+      "el": "Κίνδυνος πυρκαγιάς, ανατίναξης ή εκτόξευσης· αυξημένος κίνδυνος έκρηξης εάν μειωθεί ο παράγοντας απευαισθητοποίησης.",
+      "nb": "Fare for brann, trykkbølge eller utkast av fragmenter; økt risiko for eksplosjon dersom desensibiliseringsmiddelet reduseres"
     },
     "H207": {
       "en": "Fire or projection hazard; increased risk of explosion if desensitising agent is reduced.",
@@ -315,7 +333,8 @@
       "fi": "Palo- tai sirpalevaara; suurentunut, jos flegmatointitekijää vähennetään.",
       "pt": "Perigo de incêndio ou projeções; risco acrescido de explosão se houver redução do agente dessensibilizante.",
       "hu": "Tűz vagy kivetés veszélye; fokozott robbanásveszély a deszenzibilizáló szer csökkenésével.",
-      "el": "Κίνδυνος πυρκαγιάς ή εκτόξευσης· αυξημένος κίνδυνος έκρηξης εάν μειωθεί ο παράγοντας απευαισθητοποίησης."
+      "el": "Κίνδυνος πυρκαγιάς ή εκτόξευσης· αυξημένος κίνδυνος έκρηξης εάν μειωθεί ο παράγοντας απευαισθητοποίησης.",
+      "nb": "Fare for brann eller utkast av fragmenter; økt risiko for eksplosjon dersom desensibiliseringsmiddelet reduseres"
     },
     "H208": {
       "en": "Fire hazard; increased risk of explosion if desensitising agent is reduced.",
@@ -330,7 +349,8 @@
       "fi": "Palovaara; suurentunut, jos flegmatointitekijää vähennetään.",
       "pt": "Perigo de incêndio; risco acrescido de explosão se houver redução do agente dessensibilizante.",
       "hu": "Tűz veszélye; fokozott robbanásveszély a deszenzibilizáló szer csökkenésével.",
-      "el": "Κίνδυνος πυρκαγιάς· αυξημένος κίνδυνος έκρηξης εάν μειωθεί ο παράγοντας απευαισθητοποίησης."
+      "el": "Κίνδυνος πυρκαγιάς· αυξημένος κίνδυνος έκρηξης εάν μειωθεί ο παράγοντας απευαισθητοποίησης.",
+      "nb": "Brannfare; økt risiko for eksplosjon dersom desensibiliseringsmiddelet reduseres"
     },
     "H220": {
       "en": "Extremely flammable gas.",
@@ -345,7 +365,8 @@
       "fi": "Erittäin helposti syttyvä kaasu.",
       "pt": "Gás extremamente inflamável.",
       "hu": "Rendkívül tűzveszélyes gáz.",
-      "el": "Εξαιρετικά εύφλεκτο αέριο."
+      "el": "Εξαιρετικά εύφλεκτο αέριο.",
+      "nb": "Ekstremt brannfarlig gass."
     },
     "H221": {
       "en": "Flammable gas.",
@@ -360,7 +381,8 @@
       "fi": "Syttyvä kaasu.",
       "pt": "Gás inflamável.",
       "hu": "Tűzveszélyes gáz.",
-      "el": "Εύφλεκτο αέριο."
+      "el": "Εύφλεκτο αέριο.",
+      "nb": "Brannfarlig gass."
     },
     "H222": {
       "en": "Extremely flammable aerosol.",
@@ -375,7 +397,8 @@
       "fi": "Erittäin helposti syttyvä aerosoli.",
       "pt": "Aerossol extremamente inflamável.",
       "hu": "Rendkívül tűzveszélyes aeroszol.",
-      "el": "Εξαιρετικά εύφλεκτο αερόλυμα."
+      "el": "Εξαιρετικά εύφλεκτο αερόλυμα.",
+      "nb": "Ekstremt brannfarlig aerosol."
     },
     "H223": {
       "en": "Flammable aerosol.",
@@ -390,7 +413,8 @@
       "fi": "Syttyvä aerosoli.",
       "pt": "Aerossol inflamável.",
       "hu": "Tűzveszélyes aeroszol.",
-      "el": "Εύφλεκτο αερόλυμα."
+      "el": "Εύφλεκτο αερόλυμα.",
+      "nb": "Brannfarlig aerosol."
     },
     "H224": {
       "en": "Extremely flammable liquid and vapour.",
@@ -405,7 +429,8 @@
       "fi": "Erittäin helposti syttyvä neste ja höyry.",
       "pt": "Líquido e vapor extremamente inflamáveis.",
       "hu": "Rendkívül tűzveszélyes folyadék és gőz.",
-      "el": "Υγρό και ατμοί εξαιρετικά εύφλεκτα."
+      "el": "Υγρό και ατμοί εξαιρετικά εύφλεκτα.",
+      "nb": "Ekstremt brannfarlig væske og damp."
     },
     "H225": {
       "en": "Highly flammable liquid and vapour.",
@@ -420,7 +445,8 @@
       "fi": "Helposti syttyvä neste ja höyry.",
       "pt": "Líquido e vapor facilmente inflamáveis.",
       "hu": "Fokozottan tűzveszélyes folyadék és gőz.",
-      "el": "Υγρό και ατμοί πολύ εύφλεκτα."
+      "el": "Υγρό και ατμοί πολύ εύφλεκτα.",
+      "nb": "Meget brannfarlig væske og damp."
     },
     "H226": {
       "en": "Flammable liquid and vapour.",
@@ -435,7 +461,8 @@
       "fi": "Syttyvä neste ja höyry.",
       "pt": "Líquido e vapor inflamáveis.",
       "hu": "Tűzveszélyes folyadék és gőz.",
-      "el": "Υγρό και ατμοί εύφλεκτα."
+      "el": "Υγρό και ατμοί εύφλεκτα.",
+      "nb": "Brannfarlig væske og damp."
     },
     "H228": {
       "en": "Flammable solid.",
@@ -450,7 +477,8 @@
       "fi": "Syttyvä kiinteä aine.",
       "pt": "Sólido inflamável.",
       "hu": "Tűzveszélyes szilárd anyag.",
-      "el": "Εύφλεκτο στερεό."
+      "el": "Εύφλεκτο στερεό.",
+      "nb": "Brannfarlig fast stoff."
     },
     "H229": {
       "en": "Pressurised container: May burst if heated.",
@@ -465,7 +493,8 @@
       "fi": "Painesäiliö: Voi revetä kuumennettaessa.",
       "pt": "Recipiente sob pressão: risco de explosão sob a ação do calor.",
       "hu": "Az edényben túlnyomás uralkodik: hő hatására megrepedhet.",
-      "el": "Δοχείο υπό πίεση. Κατά τη θέρμανση μπορεί να διαρραγεί."
+      "el": "Δοχείο υπό πίεση. Κατά τη θέρμανση μπορεί να διαρραγεί.",
+      "nb": "Beholder under trykk: Kan eksplodere ved oppvarming"
     },
     "H230": {
       "en": "May react explosively even in the absence of air.",
@@ -480,7 +509,8 @@
       "fi": "Voi reagoida räjähtäen jopa ilmattomassa tilassa.",
       "pt": "Pode reagir explosivamente mesmo na ausência de ar.",
       "hu": "Még levegő hiányában is robbanásszerű reakcióba léphet.",
-      "el": "Δύναται να εκραγεί ακόμη και απουσία αέρος."
+      "el": "Δύναται να εκραγεί ακόμη και απουσία αέρος.",
+      "nb": "Kan reagere eksplosivt også ved fravær av luft"
     },
     "H231": {
       "en": "May react explosively even in the absence of air at elevated pressure and/or temperature.",
@@ -495,7 +525,8 @@
       "fi": "Voi reagoida räjähtäen jopa ilmattomassa tilassa kohonneessa paineessa ja/tai lämpötilassa.",
       "pt": "Pode reagir explosivamente mesmo na ausência de ar a alta pressão e/ou temperatura.",
       "hu": "Magas nyomáson és/vagy hőmérsékleten még levegő hiányában is robbanásszerű reakcióba léphet.",
-      "el": "Δύναται να εκραγεί σε υψηλή θερμοκρασία και/ή πίεση ακόμη και απουσία αέρος."
+      "el": "Δύναται να εκραγεί σε υψηλή θερμοκρασία και/ή πίεση ακόμη και απουσία αέρος.",
+      "nb": "Kan reagere eksplosivt også ved fravær av luft ved høyt trykk og/eller høy temperatur"
     },
     "H232": {
       "en": "May ignite spontaneously if exposed to air.",
@@ -510,7 +541,8 @@
       "fi": "Voi syttyä itsestään palamaan joutuessaan kosketuksiin ilman kanssa.",
       "pt": "Pode inflamar-se espontaneamente em contacto com o ar.",
       "hu": "Levegővel érintkezve öngyulladásra hajlamos.",
-      "el": "Ενδέχεται να αυτοαναφλεγεί εάν εκτεθεί στον αέρα."
+      "el": "Ενδέχεται να αυτοαναφλεγεί εάν εκτεθεί στον αέρα.",
+      "nb": "Kan selvantenne ved kontakt med luft"
     },
     "H240": {
       "en": "Heating may cause an explosion.",
@@ -525,7 +557,8 @@
       "fi": "Räjähdysvaarallinen kuumennettaessa.",
       "pt": "Risco de explosão sob a acção do calor.",
       "hu": "Hő hatására robbanhat.",
-      "el": "Η θέρμανση μπορεί να προκαλέσει έκρηξη."
+      "el": "Η θέρμανση μπορεί να προκαλέσει έκρηξη.",
+      "nb": "Eksplosjonsfarlig ved oppvarming."
     },
     "H241": {
       "en": "Heating may cause a fire or explosion.",
@@ -540,7 +573,8 @@
       "fi": "Räjähdys- tai palovaarallinen kuumennettaessa.",
       "pt": "Risco de explosão ou de incêndio sob a acção do calor.",
       "hu": "Hő hatására meggyulladhat vagy robbanhat.",
-      "el": "Η θέρμανση μπορεί να προκαλέσει πυρκαγιά ή έκρηξη."
+      "el": "Η θέρμανση μπορεί να προκαλέσει πυρκαγιά ή έκρηξη.",
+      "nb": "Brann- eller eksplosjonsfarlig ved oppvarming."
     },
     "H242": {
       "en": "Heating may cause a fire.",
@@ -555,7 +589,8 @@
       "fi": "Palovaarallinen kuumennettaessa.",
       "pt": "Risco de incêndio sob a acção do calor.",
       "hu": "Hő hatására meggyulladhat.",
-      "el": "Η θέρμανση μπορεί να προκαλέσει πυρκαγιά."
+      "el": "Η θέρμανση μπορεί να προκαλέσει πυρκαγιά.",
+      "nb": "Brannfarlig ved oppvarming."
     },
     "H250": {
       "en": "Catches fire spontaneously if exposed to air.",
@@ -570,7 +605,8 @@
       "fi": "Syttyy itsestään palamaan joutuessaan kosketuksiin ilman kanssa.",
       "pt": "Risco de inflamação espontânea em contacto com o ar.",
       "hu": "Levegővel érintkezve önmagától meggyullad.",
-      "el": "Αυταναφλέγεται εάν εκτεθεί στον αέρα."
+      "el": "Αυταναφλέγεται εάν εκτεθεί στον αέρα.",
+      "nb": "Selvantenner ved kontakt med luft."
     },
     "H251": {
       "en": "Self-heating: may catch fire.",
@@ -585,7 +621,8 @@
       "fi": "Itsestään kuumeneva; voi syttyä palamaan.",
       "pt": "Susceptível de auto-aquecimento: risco de inflamação.",
       "hu": "Önmelegedő: meggyulladhat.",
-      "el": "Αυτοθερμαίνεται: μπορεί να αναφλεγεί."
+      "el": "Αυτοθερμαίνεται: μπορεί να αναφλεγεί.",
+      "nb": "Selvopphetende; kan selvantenne."
     },
     "H252": {
       "en": "Self-heating in large quantities; may catch fire.",
@@ -600,7 +637,8 @@
       "fi": "Suurina määrinä itsestään kuumeneva; voi syttyä palamaan.",
       "pt": "Susceptível de auto-aquecimento em grandes quantidades: risco de inflamação.",
       "hu": "Nagy mennyiségben önmelegedő; meggyulladhat.",
-      "el": "Σε μεγάλες ποσότητες αυτοθερμαίνεται: μπορεί να αναφλεγεί."
+      "el": "Σε μεγάλες ποσότητες αυτοθερμαίνεται: μπορεί να αναφλεγεί.",
+      "nb": "Selvopphetende i store mengder; kan selvantenne."
     },
     "H260": {
       "en": "In contact with water releases flammable gases which may ignite spontaneously.",
@@ -615,7 +653,8 @@
       "fi": "Kehittää itsestään syttyviä kaasuja veden kanssa.",
       "pt": "Em contacto com a água liberta gases que se podem inflamar espontaneamente.",
       "hu": "Vízzel érintkezve öngyulladásra hajlamos tűzveszélyes gázokat bocsát ki.",
-      "el": "Σε επαφή με το νερό ελευθερώνει εύφλεκτα αέρια τα οποία μπορούν να αυτοαναφλεγούν."
+      "el": "Σε επαφή με το νερό ελευθερώνει εύφλεκτα αέρια τα οποία μπορούν να αυτοαναφλεγούν.",
+      "nb": "Ved kontakt med vann utvikles brannfarlige gasser som kan selvantenne."
     },
     "H261": {
       "en": "In contact with water releases flammable gases.",
@@ -630,7 +669,8 @@
       "fi": "Kehittää syttyviä kaasuja veden kanssa.",
       "pt": "Em contacto com a água liberta gases inflamáveis.",
       "hu": "Vízzel érintkezve tűzveszélyes gázokat bocsát ki.",
-      "el": "Σε επαφή με το νερό ελευθερώνει εύφλεκτα αέρια."
+      "el": "Σε επαφή με το νερό ελευθερώνει εύφλεκτα αέρια.",
+      "nb": "Ved kontakt med vann utvikles brannfarlige gasser."
     },
     "H270": {
       "en": "May cause or intensify fire; oxidiser.",
@@ -645,7 +685,8 @@
       "fi": "Aiheuttaa tulipalon vaaran tai edistää tulipaloa; hapettava.",
       "pt": "Pode provocar ou agravar incêndios; comburente.",
       "hu": "Tüzet okozhat vagy fokozhatja a tűz intenzitását, oxidáló hatású.",
-      "el": "Μπορεί να προκαλέσει ή να αναζωπυρώσει πυρκαγιά· οξειδωτικό."
+      "el": "Μπορεί να προκαλέσει ή να αναζωπυρώσει πυρκαγιά· οξειδωτικό.",
+      "nb": "Kan forårsake eller forsterke brann; oksiderende."
     },
     "H271": {
       "en": "May cause fire or explosion; strong oxidiser.",
@@ -660,7 +701,8 @@
       "fi": "Aiheuttaa tulipalo- tai räjähdysvaaran; voimakkaasti hapettava.",
       "pt": "Risco de incêndio ou de explosão; muito comburente.",
       "hu": "Tüzet vagy robbanást okozhat; erősen oxidáló hatású.",
-      "el": "Μπορεί να προκαλέσει πυρκαγιά ή έκρηξη· ισχυρό οξειδωτικό."
+      "el": "Μπορεί να προκαλέσει πυρκαγιά ή έκρηξη· ισχυρό οξειδωτικό.",
+      "nb": "Kan forårsake brann eller eksplosjon; sterkt oksiderende."
     },
     "H272": {
       "en": "May intensify fire; oxidiser.",
@@ -675,7 +717,8 @@
       "fi": "Voi edistää tulipaloa; hapettava.",
       "pt": "Pode agravar incêndios; comburente.",
       "hu": "Fokozhatja a tűz intenzitását; oxidáló hatású.",
-      "el": "Μπορεί να αναζωπυρώσει την πυρκαγιά· οξειδωτικό."
+      "el": "Μπορεί να αναζωπυρώσει την πυρκαγιά· οξειδωτικό.",
+      "nb": "Kan forsterke brann; oksiderende."
     },
     "H280": {
       "en": "Contains gas under pressure; may explode if heated.",
@@ -690,7 +733,8 @@
       "fi": "Sisältää paineen alaista kaasua; voi räjähtää kuumennettaessa.",
       "pt": "Contém gás sob pressão; risco de explosão sob a acção do calor.",
       "hu": "Nyomás alatt lévő gázt tartalmaz; hő hatására robbanhat.",
-      "el": "Περιέχει αέριο υπό πίεση· εάν θερμανθεί, μπορεί να εκραγεί."
+      "el": "Περιέχει αέριο υπό πίεση· εάν θερμανθεί, μπορεί να εκραγεί.",
+      "nb": "Inneholder gass under trykk; kan eksplodere ved oppvarming."
     },
     "H281": {
       "en": "Contains refrigerated gas; may cause cryogenic burns or injury.",
@@ -705,7 +749,8 @@
       "fi": "Sisältää jäähdytettyä kaasua; voi aiheuttaa jäätymisvamman.",
       "pt": "Contém gás refrigerado; pode provocar queimaduras ou lesões criogénicas.",
       "hu": "Mélyhűtött gázt tartalmaz; fagymarást vagy sérülést okozhat.",
-      "el": "Περιέχει αέριο υπό ψύξη· μπορεί να προκαλέσει εγκαύματα ψύχους ή τραυματισμούς."
+      "el": "Περιέχει αέριο υπό ψύξη· μπορεί να προκαλέσει εγκαύματα ψύχους ή τραυματισμούς.",
+      "nb": "Inneholder nedkjølt gass; kan forårsake alvorlige forfrysninger."
     },
     "H290": {
       "en": "May be corrosive to metals.",
@@ -720,7 +765,8 @@
       "fi": "Voi syövyttää metalleja.",
       "pt": "Pode ser corrosivo para os metais.",
       "hu": "Fémekre korrozív hatású lehet.",
-      "el": "Μπορεί να διαβρώσει μέταλλα."
+      "el": "Μπορεί να διαβρώσει μέταλλα.",
+      "nb": "Kan være etsende for metaller."
     },
     "H300": {
       "en": "Fatal if swallowed.",
@@ -735,7 +781,8 @@
       "fi": "Tappavaa nieltynä.",
       "pt": "Mortal por ingestão.",
       "hu": "Lenyelve halálos.",
-      "el": "Θανατηφόρο σε περίπτωση κατάποσης."
+      "el": "Θανατηφόρο σε περίπτωση κατάποσης.",
+      "nb": "Dødelig ved svelging."
     },
     "H301": {
       "en": "Toxic if swallowed.",
@@ -750,7 +797,8 @@
       "fi": "Myrkyllistä nieltynä.",
       "pt": "Tóxico por ingestão.",
       "hu": "Lenyelve mérgező.",
-      "el": "Τοξικό σε περίπτωση κατάποσης."
+      "el": "Τοξικό σε περίπτωση κατάποσης.",
+      "nb": "Giftig ved svelging."
     },
     "H302": {
       "en": "Harmful if swallowed.",
@@ -765,7 +813,8 @@
       "fi": "Haitallista nieltynä.",
       "pt": "Nocivo por ingestão.",
       "hu": "Lenyelve ártalmas.",
-      "el": "Επιβλαβές σε περίπτωση κατάποσης."
+      "el": "Επιβλαβές σε περίπτωση κατάποσης.",
+      "nb": "Farlig ved svelging."
     },
     "H304": {
       "en": "May be fatal if swallowed and enters airways.",
@@ -780,7 +829,8 @@
       "fi": "Voi olla tappavaa nieltynä ja joutuessaan hengitysteihin.",
       "pt": "Pode ser mortal por ingestão e penetração nas vias respiratórias.",
       "hu": "Lenyelve és a légutakba kerülve halálos lehet.",
-      "el": "Μπορεί να προκαλέσει θάνατο σε περίπτωση κατάποσης και διείσδυσης στις αναπνευστικές οδούς."
+      "el": "Μπορεί να προκαλέσει θάνατο σε περίπτωση κατάποσης και διείσδυσης στις αναπνευστικές οδούς.",
+      "nb": "Kan være dødelig ved svelging om det kommer ned i luftveiene."
     },
     "H310": {
       "en": "Fatal in contact with skin.",
@@ -795,7 +845,8 @@
       "fi": "Tappavaa joutuessaan iholle.",
       "pt": "Mortal em contacto com a pele.",
       "hu": "Bőrrel érintkezve halálos.",
-      "el": "Θανατηφόρο σε επαφή με το δέρμα."
+      "el": "Θανατηφόρο σε επαφή με το δέρμα.",
+      "nb": "Dødelig ved hudkontakt."
     },
     "H311": {
       "en": "Toxic in contact with skin.",
@@ -810,7 +861,8 @@
       "fi": "Myrkyllistä joutuessaan iholle.",
       "pt": "Tóxico em contacto com a pele.",
       "hu": "Bőrrel érintkezve mérgező.",
-      "el": "Τοξικό σε επαφή με το δέρμα."
+      "el": "Τοξικό σε επαφή με το δέρμα.",
+      "nb": "Giftig ved hudkontakt."
     },
     "H312": {
       "en": "Harmful in contact with skin.",
@@ -825,7 +877,8 @@
       "fi": "Haitallista joutuessaan iholle.",
       "pt": "Nocivo em contacto com a pele.",
       "hu": "Bőrrel érintkezve ártalmas.",
-      "el": "Επιβλαβές σε επαφή με το δέρμα."
+      "el": "Επιβλαβές σε επαφή με το δέρμα.",
+      "nb": "Farlig ved hudkontakt."
     },
     "H314": {
       "en": "Causes severe skin burns and eye damage.",
@@ -840,7 +893,8 @@
       "fi": "Voimakkaasti ihoa syövyttävää ja silmiä vaurioittavaa.",
       "pt": "Provoca queimaduras na pele e lesões oculares graves.",
       "hu": "Súlyos égési sérülést és szemkárosodást okoz.",
-      "el": "Προκαλεί σοβαρά δερματικά εγκαύματα και οφθαλμικές βλάβες."
+      "el": "Προκαλεί σοβαρά δερματικά εγκαύματα και οφθαλμικές βλάβες.",
+      "nb": "Gir alvorlige etseskader på hud og øyne."
     },
     "H315": {
       "en": "Causes skin irritation.",
@@ -855,7 +909,8 @@
       "fi": "Ärsyttää ihoa.",
       "pt": "Provoca irritação cutânea.",
       "hu": "Bőrirritáló hatású.",
-      "el": "Προκαλεί ερεθισμό του δέρματος."
+      "el": "Προκαλεί ερεθισμό του δέρματος.",
+      "nb": "Irriterer huden."
     },
     "H317": {
       "en": "May cause an allergic skin reaction.",
@@ -870,7 +925,8 @@
       "fi": "Voi aiheuttaa allergisen ihoreaktion.",
       "pt": "Pode provocar uma reacção alérgica cutânea.",
       "hu": "Allergiás bőrreakciót válthat ki.",
-      "el": "Μπορεί να προκαλέσει αλλεργική δερματική αντίδραση."
+      "el": "Μπορεί να προκαλέσει αλλεργική δερματική αντίδραση.",
+      "nb": "Kan utløse en allergisk hudreaksjon."
     },
     "H318": {
       "en": "Causes serious eye damage.",
@@ -885,7 +941,8 @@
       "fi": "Vaurioittaa vakavasti silmiä.",
       "pt": "Provoca lesões oculares graves.",
       "hu": "Súlyos szemkárosodást okoz.",
-      "el": "Προκαλεί σοβαρή οφθαλμική βλάβη."
+      "el": "Προκαλεί σοβαρή οφθαλμική βλάβη.",
+      "nb": "Gir alvorlig øyeskade."
     },
     "H319": {
       "en": "Causes serious eye irritation.",
@@ -900,7 +957,8 @@
       "fi": "Ärsyttää voimakkaasti silmiä.",
       "pt": "Provoca irritação ocular grave.",
       "hu": "Súlyos szemirritációt okoz.",
-      "el": "Προκαλεί σοβαρό οφθαλμικό ερεθισμό."
+      "el": "Προκαλεί σοβαρό οφθαλμικό ερεθισμό.",
+      "nb": "Gir alvorlig øyeirritasjon."
     },
     "H330": {
       "en": "Fatal if inhaled.",
@@ -915,7 +973,8 @@
       "fi": "Tappavaa hengitettynä.",
       "pt": "Mortal por inalação.",
       "hu": "Belélegezve halálos.",
-      "el": "Θανατηφόρο σε περίπτωση εισπνοής."
+      "el": "Θανατηφόρο σε περίπτωση εισπνοής.",
+      "nb": "Dødelig ved innånding."
     },
     "H331": {
       "en": "Toxic if inhaled.",
@@ -930,7 +989,8 @@
       "fi": "Myrkyllistä hengitettynä.",
       "pt": "Tóxico por inalação.",
       "hu": "Belélegezve mérgező.",
-      "el": "Τοξικό σε περίπτωση εισπνοής."
+      "el": "Τοξικό σε περίπτωση εισπνοής.",
+      "nb": "Giftig ved innånding."
     },
     "H332": {
       "en": "Harmful if inhaled.",
@@ -945,7 +1005,8 @@
       "fi": "Haitallista hengitettynä.",
       "pt": "Nocivo por inalação.",
       "hu": "Belélegezve ártalmas.",
-      "el": "Επιβλαβές σε περίπτωση εισπνοής."
+      "el": "Επιβλαβές σε περίπτωση εισπνοής.",
+      "nb": "Farlig ved innånding."
     },
     "H334": {
       "en": "May cause allergy or asthma symptoms or breathing difficulties if inhaled.",
@@ -960,7 +1021,8 @@
       "fi": "Voi aiheuttaa hengitettynä allergia- tai astmaoireita tai hengitysvaikeuksia.",
       "pt": "Quando inalado, pode provocar sintomas de alergia ou de asma ou dificuldades respiratórias.",
       "hu": "Belélegezve allergiás és asztmás tüneteket, és nehéz légzést okozhat.",
-      "el": "Μπορεί να προκαλέσει αλλεργία ή συμπτώματα άσθματος ή δύσπνοια σε περίπτωση εισπνοής."
+      "el": "Μπορεί να προκαλέσει αλλεργία ή συμπτώματα άσθματος ή δύσπνοια σε περίπτωση εισπνοής.",
+      "nb": "Kan gi allergi eller astmasymptomer eller pustevansker ved innånding."
     },
     "H335": {
       "en": "May cause respiratory irritation.",
@@ -975,7 +1037,8 @@
       "fi": "Saattaa aiheuttaa hengitysteiden ärsytystä.",
       "pt": "Pode provocar irritação das vias respiratórias.",
       "hu": "Légúti irritációt okozhat.",
-      "el": "Μπορεί να προκαλέσει ερεθισμό της αναπνευστικής οδού."
+      "el": "Μπορεί να προκαλέσει ερεθισμό της αναπνευστικής οδού.",
+      "nb": "Kan forårsake irritasjon av luftveiene."
     },
     "H336": {
       "en": "May cause drowsiness or dizziness.",
@@ -990,7 +1053,8 @@
       "fi": "Saattaa aiheuttaa uneliaisuutta ja huimausta.",
       "pt": "Pode provocar sonolência ou vertigens.",
       "hu": "Álmosságot vagy szédülést okozhat.",
-      "el": "Μπορεί να προκαλέσει υπνηλία ή ζάλη."
+      "el": "Μπορεί να προκαλέσει υπνηλία ή ζάλη.",
+      "nb": "Kan forårsake døsighet eller svimmelhet."
     },
     "H340": {
       "en": "May cause genetic defects.",
@@ -1005,7 +1069,8 @@
       "fi": "Saattaa aiheuttaa perimävaurioita.",
       "pt": "Pode provocar anomalias genéticas.",
       "hu": "Genetikai károsodást okozhat.",
-      "el": "Μπορεί να προκαλέσει γενετικά ελαττώματα."
+      "el": "Μπορεί να προκαλέσει γενετικά ελαττώματα.",
+      "nb": "Kan gi genetiske skader."
     },
     "H341": {
       "en": "Suspected of causing genetic defects.",
@@ -1020,7 +1085,8 @@
       "fi": "Epäillään aiheuttavan perimävaurioita.",
       "pt": "Suspeito de provocar anomalias genéticas.",
       "hu": "Feltehetően genetikai károsodást okoz.",
-      "el": "Ύποπτο για πρόκληση γενετικών ελαττωμάτων."
+      "el": "Ύποπτο για πρόκληση γενετικών ελαττωμάτων.",
+      "nb": "Mistenkes å kunne gi genetiske skader."
     },
     "H350": {
       "en": "May cause cancer.",
@@ -1035,7 +1101,8 @@
       "fi": "Saattaa aiheuttaa syöpää.",
       "pt": "Pode provocar cancro.",
       "hu": "Rákot okozhat.",
-      "el": "Μπορεί να προκαλέσει καρκίνο."
+      "el": "Μπορεί να προκαλέσει καρκίνο.",
+      "nb": "Kan forårsake kreft."
     },
     "H351": {
       "en": "Suspected of causing cancer.",
@@ -1050,7 +1117,8 @@
       "fi": "Epäillään aiheuttavan syöpää.",
       "pt": "Suspeito de provocar cancro.",
       "hu": "Feltehetően rákot okoz.",
-      "el": "Ύποπτο για πρόκληση καρκίνου."
+      "el": "Ύποπτο για πρόκληση καρκίνου.",
+      "nb": "Mistenkes for å kunne forårsake kreft."
     },
     "H360": {
       "en": "May damage fertility or the unborn child.",
@@ -1065,7 +1133,8 @@
       "fi": "Saattaa heikentää hedelmällisyyttä tai vaurioittaa sikiötä.",
       "pt": "Pode afectar a fertilidade ou o nascituro.",
       "hu": "Károsíthatja a termékenységet vagy a születendő gyermeket.",
-      "el": "Μπορεί να βλάψει τη γονιμότητα ή το έμβρυο."
+      "el": "Μπορεί να βλάψει τη γονιμότητα ή το έμβρυο.",
+      "nb": "Kan skade forplantningsevnen eller gi fosterskader."
     },
     "H361": {
       "en": "Suspected of damaging fertility or the unborn child.",
@@ -1080,7 +1149,8 @@
       "fi": "Epäillään heikentävän hedelmällisyyttä tai vaurioittavan sikiötä.",
       "pt": "Suspeito de afectar a fertilidade ou o nascituro.",
       "hu": "Feltehetően károsítja a termékenységet vagy a születendő gyermeket.",
-      "el": "Ύποπτο για πρόκληση βλάβης στη γονιμότητα ή στο έμβρυο."
+      "el": "Ύποπτο για πρόκληση βλάβης στη γονιμότητα ή στο έμβρυο.",
+      "nb": "Mistenkes for å kunne skade forplantningsevnen eller gi fosterskader"
     },
     "H362": {
       "en": "May cause harm to breast-fed children.",
@@ -1095,7 +1165,8 @@
       "fi": "Saattaa aiheuttaa haittaa rintaruokinnassa oleville lapsille.",
       "pt": "Pode ser nocivo para as crianças alimentadas com leite materno.",
       "hu": "A szoptatott gyermeket károsíthatja.",
-      "el": "Μπορεί να βλάψει τα βρέφη που τρέφονται με μητρικό γάλα."
+      "el": "Μπορεί να βλάψει τα βρέφη που τρέφονται με μητρικό γάλα.",
+      "nb": "Kan skade barn som ammes."
     },
     "H370": {
       "en": "Causes damage to organs.",
@@ -1110,7 +1181,8 @@
       "fi": "Vahingoittaa elimiä.",
       "pt": "Afecta os órgãos.",
       "hu": "Károsítja a szerveket.",
-      "el": "Προκαλεί βλάβες στα όργανα."
+      "el": "Προκαλεί βλάβες στα όργανα.",
+      "nb": "Forårsaker organskader."
     },
     "H371": {
       "en": "May cause damage to organs.",
@@ -1125,7 +1197,8 @@
       "fi": "Saattaa vahingoittaa elimiä.",
       "pt": "Pode afectar os órgãos.",
       "hu": "Károsíthatja a szerveket.",
-      "el": "Μπορεί να προκαλέσει βλάβες στα όργανα."
+      "el": "Μπορεί να προκαλέσει βλάβες στα όργανα.",
+      "nb": "Kan forårsake organskader."
     },
     "H372": {
       "en": "Causes damage to organs through prolonged or repeated exposure.",
@@ -1140,7 +1213,8 @@
       "fi": "Vahingoittaa elimiä pitkäaikaisessa tai toistuvassa altistumisessa.",
       "pt": "Afecta os órgãos após exposição prolongada ou repetida.",
       "hu": "Ismétlődő vagy hosszabb expozíció esetén károsítja a szerveket.",
-      "el": "Προκαλεί βλάβες στα όργανα ύστερα από παρατεταμένη ή επανειλημμένη έκθεση."
+      "el": "Προκαλεί βλάβες στα όργανα ύστερα από παρατεταμένη ή επανειλημμένη έκθεση.",
+      "nb": "Forårsaker organskader ved langvarig eller gjentatt eksponering."
     },
     "H373": {
       "en": "May cause damage to organs through prolonged or repeated exposure.",
@@ -1155,7 +1229,8 @@
       "fi": "Saattaa vahingoittaa elimiä pitkäaikaisessa tai toistuvassa altistumisessa",
       "pt": "Pode afectar os órgãos após exposição prolongada ou repetida.",
       "hu": "Ismétlődő vagy hosszabb expozíció esetén károsíthatja a szerveket.",
-      "el": "Μπορεί να προκαλέσει βλάβες στα όργανα ύστερα από παρατεταμένη ή επανειλημμένη έκθεση."
+      "el": "Μπορεί να προκαλέσει βλάβες στα όργανα ύστερα από παρατεταμένη ή επανειλημμένη έκθεση.",
+      "nb": "Kan forårsake organskader ved langvarig eller gjentatt eksponering."
     },
     "H300+H310": {
       "en": "Fatal if swallowed or in contact with skin",
@@ -1350,7 +1425,8 @@
       "fi": "Saattaa aiheuttaa hormonitoiminnan häiriöitä ihmisissä",
       "pt": "Pode causar desregulação endócrina nos seres humanos",
       "hu": "Endokrin károsító hatású lehet az embereknél",
-      "el": "Μπορεί να προκαλέσει ενδοκρινική διαταραχή στον άνθρωπο"
+      "el": "Μπορεί να προκαλέσει ενδοκρινική διαταραχή στον άνθρωπο",
+      "nb": "Kan forårsake hormonforstyrrelser hos mennesker"
     },
     "EUH381": {
       "en": "Suspected of causing endocrine disruption in humans",
@@ -1365,7 +1441,8 @@
       "fi": "Epäillään aiheuttavan hormonitoiminnan häiriöitä ihmisissä",
       "pt": "Suspeito de causar desregulação endócrina nos seres humanos",
       "hu": "Feltételezhetően endokrin zavart okozhat az embereknél",
-      "el": "Ύποπτο για πρόκληση ενδοκρινικής διαταραχής στον άνθρωπο"
+      "el": "Ύποπτο για πρόκληση ενδοκρινικής διαταραχής στον άνθρωπο",
+      "nb": "Mistenkes å kunne forårsake hormonforstyrrelser hos mennesker"
     },
     "H400": {
       "en": "Very toxic to aquatic life.",
@@ -1380,7 +1457,8 @@
       "fi": "Erittäin myrkyllistä vesieliöille.",
       "pt": "Muito tóxico para os organismos aquáticos.",
       "hu": "Nagyon mérgező a vízi élővilágra.",
-      "el": "Πολύ τοξικό για τους υδρόβιους οργανισμούς."
+      "el": "Πολύ τοξικό για τους υδρόβιους οργανισμούς.",
+      "nb": "Meget giftig for liv i vann."
     },
     "H410": {
       "en": "Very toxic to aquatic life with long lasting effects.",
@@ -1395,7 +1473,8 @@
       "fi": "Erittäin myrkyllistä vesieliöille, pitkäaikaisia haittavaikutuksia.",
       "pt": "Muito tóxico para os organismos aquáticos com efeitos duradouros.",
       "hu": "Nagyon mérgező a vízi élővilágra, hosszan tartó károsodást okoz.",
-      "el": "Πολύ τοξικό για τους υδρόβιους οργανισμούς, με μακροχρόνιες επιπτώσεις."
+      "el": "Πολύ τοξικό για τους υδρόβιους οργανισμούς, με μακροχρόνιες επιπτώσεις.",
+      "nb": "Meget giftig, med langtidsvirkning, for liv i vann."
     },
     "H411": {
       "en": "Toxic to aquatic life with long lasting effects.",
@@ -1410,7 +1489,8 @@
       "fi": "Myrkyllistä vesieliöille, pitkäaikaisia haittavaikutuksia.",
       "pt": "Tóxico para os organismos aquáticos com efeitos duradouros.",
       "hu": "Mérgező a vízi élővilágra, hosszan tartó károsodást okoz.",
-      "el": "Τοξικό για τους υδρόβιους οργανισμούς, με μακροχρόνιες επιπτώσεις."
+      "el": "Τοξικό για τους υδρόβιους οργανισμούς, με μακροχρόνιες επιπτώσεις.",
+      "nb": "Giftig, med langtidsvirkning, for liv i vann."
     },
     "H412": {
       "en": "Harmful to aquatic life with long lasting effects.",
@@ -1425,7 +1505,8 @@
       "fi": "Haitallista vesieliöille, pitkäaikaisia haittavaikutuksia.",
       "pt": "Nocivo para os organismos aquáticos com efeitos duradouros.",
       "hu": "Ártalmas a vízi élővilágra, hosszan tartó károsodást okoz.",
-      "el": "Επιβλαβές για τους υδρόβιους οργανισμούς, με μακροχρόνιες επιπτώσεις."
+      "el": "Επιβλαβές για τους υδρόβιους οργανισμούς, με μακροχρόνιες επιπτώσεις.",
+      "nb": "Skadelig, med langtidsvirkning, for liv i vann."
     },
     "H413": {
       "en": "May cause long lasting harmful effects to aquatic life.",
@@ -1440,7 +1521,8 @@
       "fi": "Voi aiheuttaa pitkäaikaisia haittavaikutuksia vesieliöille.",
       "pt": "Pode provocar efeitos nocivos duradouros nos organismos aquáticos.",
       "hu": "Hosszan tartó ártalmas hatást gyakorolhat a vízi élővilágra.",
-      "el": "Μπορεί να προκαλέσει μακροχρόνιες επιπτώσεις στους υδρόβιους οργανισμούς."
+      "el": "Μπορεί να προκαλέσει μακροχρόνιες επιπτώσεις στους υδρόβιους οργανισμούς.",
+      "nb": "Kan forårsake skadelige langtidsvirkninger for liv i vann."
     },
     "H420": {
       "en": "Harms public health and the environment by destroying ozone in the upper atmosphere",
@@ -1455,7 +1537,8 @@
       "fi": "Vahingoittaa kansanterveyttä ja ympäristöä tuhoamalla otsonia ylemmässä ilmakehässä",
       "pt": "Prejudica a saúde pública e o ambiente ao destruir o ozono na alta atmosfera",
       "hu": "Károsítja a közegészséget és a környezetet, mert a légkör felső rétegeiben lebontja az ózont",
-      "el": "Βλάπτει τη δημόσια υγεία και το περιβάλλον καταστρέφοντας το όζον στην ανώτερη ατμόσφαιρα"
+      "el": "Βλάπτει τη δημόσια υγεία και το περιβάλλον καταστρέφοντας το όζον στην ανώτερη ατμόσφαιρα",
+      "nb": "Skader folkehelsen og miljøet ved å ødelegge ozon i øvre del av atmosfæren"
     },
     "EUH430": {
       "en": "May cause endocrine disruption in the environment",
@@ -1470,7 +1553,8 @@
       "fi": "Saattaa aiheuttaa hormonitoiminnan häiriöitä ympäristössä",
       "pt": "Pode causar desregulação endócrina no ambiente",
       "hu": "Endokrin károsító hatású lehet a környezetben",
-      "el": "Μπορεί να προκαλέσει ενδοκρινική διαταραχή στο περιβάλλον"
+      "el": "Μπορεί να προκαλέσει ενδοκρινική διαταραχή στο περιβάλλον",
+      "nb": "Kan forårsake hormonforstyrrelser i miljøet"
     },
     "EUH431": {
       "en": "Suspected of causing endocrine disruption in the environment",
@@ -1485,7 +1569,8 @@
       "fi": "Epäillään aiheuttavan hormonitoiminnan häiriöitä ympäristössä",
       "pt": "Suspeito de causar desregulação endócrina no ambiente",
       "hu": "Feltételezhetően endokrin zavart okozhat a környezetben",
-      "el": "Ύποπτο για πρόκληση ενδοκρινικής διαταραχής στο περιβάλλον"
+      "el": "Ύποπτο για πρόκληση ενδοκρινικής διαταραχής στο περιβάλλον",
+      "nb": "Mistenkes å kunne forårsake hormonforstyrrelser i miljøet"
     },
     "EUH440": {
       "en": "Accumulates in the environment and living organisms including in humans",
@@ -1500,7 +1585,8 @@
       "fi": "Kertyy ympäristöön ja eläviin eliöihin, myös ihmisiin",
       "pt": "Acumula-se no ambiente e nos organismos vivos, inclusive no ser humano",
       "hu": "Felhalmozódik a környezetben és az élő szervezetekben, beleértve az embereket is",
-      "el": "Συσσωρεύεται στο περιβάλλον και σε ζωντανούς οργανισμούς, συμπεριλαμβανομένου του ανθρώπου"
+      "el": "Συσσωρεύεται στο περιβάλλον και σε ζωντανούς οργανισμούς, συμπεριλαμβανομένου του ανθρώπου",
+      "nb": "Akkumuleres i miljøet og levende organismer, inkludert i mennesker"
     },
     "EUH441": {
       "en": "Strongly accumulates in the environment and living organisms including in humans",
@@ -1515,7 +1601,8 @@
       "fi": "Kertyy voimakkaasti ympäristöön ja eläviin eliöihin, myös ihmisiin",
       "pt": "Acumula-se fortemente no ambiente e nos organismos vivos, inclusive no ser humano",
       "hu": "Nagymértékben felhalmozódik a környezetben és az élő szervezetekben, beleértve az embereket is",
-      "el": "Συσσωρεύεται έντονα στο περιβάλλον και σε ζωντανούς οργανισμούς, συμπεριλαμβανομένου του ανθρώπου"
+      "el": "Συσσωρεύεται έντονα στο περιβάλλον και σε ζωντανούς οργανισμούς, συμπεριλαμβανομένου του ανθρώπου",
+      "nb": "Akkumuleres i høy grad i miljøet og levende organismer, inkludert i mennesker"
     },
     "EUH450": {
       "en": "Can cause long-lasting and diffuse contamination of water resources",
@@ -1530,7 +1617,8 @@
       "fi": "Voi aiheuttaa vesivarojen pitkäkestoista hajakuormitusta",
       "pt": "Pode causar uma contaminação prolongada e difusa dos recursos hídricos",
       "hu": "Tartós, diffúz szennyezést okozhat a vízkészletekben",
-      "el": "Μπορεί να προκαλέσει μακροχρόνια και διάχυτη μόλυνση υδάτινων πόρων"
+      "el": "Μπορεί να προκαλέσει μακροχρόνια και διάχυτη μόλυνση υδάτινων πόρων",
+      "nb": "Kan forårsake langvarig og diffus forurensning av vannressurser"
     },
     "EUH451": {
       "en": "Can cause very long-lasting and diffuse contamination of water resources",
@@ -1545,7 +1633,8 @@
       "fi": "Voi aiheuttaa vesivarojen erittäin pitkäkestoista hajakuormitusta",
       "pt": "Pode causar uma contaminação muito prolongada e difusa dos recursos hídricos",
       "hu": "Rendkívül tartós, diffúz szennyezést okozhat a vízkészletekben",
-      "el": "Μπορεί να προκαλέσει πολύ μακροχρόνια και διάχυτη μόλυνση υδάτινων πόρων"
+      "el": "Μπορεί να προκαλέσει πολύ μακροχρόνια και διάχυτη μόλυνση υδάτινων πόρων",
+      "nb": "Kan forårsake svært langvarig og diffus forurensning av vannressurser"
     },
     "EUH014": {
       "en": "Reacts violently with water.",
@@ -1560,7 +1649,8 @@
       "fi": "Reagoi voimakkaasti veden kanssa.",
       "pt": "Reage violentamente em contacto com a água.",
       "hu": "Vízzel hevesen reagál.",
-      "el": "Αντιδρά βίαια με νερό."
+      "el": "Αντιδρά βίαια με νερό.",
+      "nb": "Reagerer voldsomt med vann."
     },
     "EUH018": {
       "en": "In use may form flammable/explosive vapour-air mixture.",
@@ -1575,7 +1665,8 @@
       "fi": "Käytössä voi muodostua syttyvä/räjähtävä höyry-ilmaseos.",
       "pt": "Pode formar mistura vapor-ar explosiva/inflamável durante a utilização.",
       "hu": "A használat során tűzveszélyes/robbanásveszélyes gőz/levegő elegy keletkezhet.",
-      "el": "Κατά τη χρήση μπορεί να σχηματίσει εύφλεκτα/εκρηκτικά μείγματα ατμού-αέρος."
+      "el": "Κατά τη χρήση μπορεί να σχηματίσει εύφλεκτα/εκρηκτικά μείγματα ατμού-αέρος.",
+      "nb": "Ved bruk kan brennbar damp/eksplosive damp-luft-blandinger dannes."
     },
     "EUH019": {
       "en": "May form explosive peroxides.",
@@ -1590,7 +1681,8 @@
       "fi": "Saattaa muodostaa räjähtäviä peroksideja.",
       "pt": "Pode formar peróxidos explosivos.",
       "hu": "Robbanásveszélyes peroxidokat képezhet.",
-      "el": "Μπορεί να σχηματίσει εκρηκτικά υπεροξείδια."
+      "el": "Μπορεί να σχηματίσει εκρηκτικά υπεροξείδια.",
+      "nb": "Kan danne eksplosive peroksider."
     },
     "EUH044": {
       "en": "Risk of explosion if heated under confinement.",
@@ -1605,7 +1697,8 @@
       "fi": "Räjähdysvaara kuumennettaessa suljetussa astiassa.",
       "pt": "Risco de explosão se aquecido em ambiente fechado.",
       "hu": "Zárt térben hő hatására robbanhat.",
-      "el": "Κίνδυνος εκρήξεως εάν θερμανθεί υπό περιορισμό."
+      "el": "Κίνδυνος εκρήξεως εάν θερμανθεί υπό περιορισμό.",
+      "nb": "Eksplosjonsfarlig ved oppvarming i lukket rom."
     },
     "EUH029": {
       "en": "Contact with water liberates toxic gas.",
@@ -1620,7 +1713,8 @@
       "fi": "Kehittää myrkyllistä kaasua veden kanssa.",
       "pt": "Em contacto com a água liberta gases tóxicos.",
       "hu": "Vízzel érintkezve mérgező gázok képződnek.",
-      "el": "Σε επαφή με το νερό ελευθερώνονται τοξικά αέρια."
+      "el": "Σε επαφή με το νερό ελευθερώνονται τοξικά αέρια.",
+      "nb": "Ved kontakt med vann utvikles giftig gass."
     },
     "EUH031": {
       "en": "Contact with acids liberates toxic gas.",
@@ -1635,7 +1729,8 @@
       "fi": "Kehittää myrkyllistä kaasua hapon kanssa.",
       "pt": "Em contacto com ácidos liberta gases tóxicos.",
       "hu": "Savval érintkezve mérgező gázok képződnek.",
-      "el": "Σε επαφή με οξέα ελευθερώνονται τοξικά αέρια."
+      "el": "Σε επαφή με οξέα ελευθερώνονται τοξικά αέρια.",
+      "nb": "Ved kontakt med syrer utvikles giftig gass."
     },
     "EUH032": {
       "en": "Contact with acids liberates very toxic gas.",
@@ -1650,7 +1745,8 @@
       "fi": "Kehittää erittäin myrkyllistä kaasua hapon kanssa.",
       "pt": "Em contacto com ácidos liberta gases muito tóxicos.",
       "hu": "Savval érintkezve nagyon mérgező gázok képződnek.",
-      "el": "Σε επαφή με οξέα ελευθερώνονται πολύ τοξικά αέρια."
+      "el": "Σε επαφή με οξέα ελευθερώνονται πολύ τοξικά αέρια.",
+      "nb": "Ved kontakt med syrer utvikles meget giftig gass."
     },
     "EUH066": {
       "en": "Repeated exposure may cause skin dryness or cracking.",
@@ -1665,7 +1761,8 @@
       "fi": "Toistuva altistus voi aiheuttaa ihon kuivumista tai halkeilua.",
       "pt": "Pode provocar pele seca ou gretada, por exposição repetida.",
       "hu": "Ismétlődő expozíció a bőr kiszáradását vagy megrepedezését okozhatja.",
-      "el": "Παρατεταμένη έκθεση μπορεί να προκαλέσει ξηρότητα δέρματος ή σκάσιμο."
+      "el": "Παρατεταμένη έκθεση μπορεί να προκαλέσει ξηρότητα δέρματος ή σκάσιμο.",
+      "nb": "Gjentatt eksponering kan gi tørr eller sprukket hud."
     },
     "EUH070": {
       "en": "Toxic by eye contact.",
@@ -1680,7 +1777,8 @@
       "fi": "Myrkyllistä joutuessaan silmään.",
       "pt": "Tóxico por contacto com os olhos.",
       "hu": "Szembe kerülve mérgező.",
-      "el": "Τοξικό σε επαφή με τα μάτια."
+      "el": "Τοξικό σε επαφή με τα μάτια.",
+      "nb": "Giftig ved øyekontakt."
     },
     "EUH071": {
       "en": "Corrosive to the respiratory tract.",
@@ -1695,7 +1793,8 @@
       "fi": "Hengityselimiä syövyttävää.",
       "pt": "Corrosivo para as vias respiratórias.",
       "hu": "Maró hatású a légutakra.",
-      "el": "Διαβρωτικό της αναπνευστικής οδού."
+      "el": "Διαβρωτικό της αναπνευστικής οδού.",
+      "nb": "Etsende for luftveiene."
     },
     "EUH201": {
       "en": "Contains lead. Should not be used on surfaces liable to be chewed or sucked by children.",
@@ -1710,7 +1809,8 @@
       "fi": "Sisältää lyijyä. Ei saa käyttää pintoihin, joita lapset voivat pureskella tai imeä.",
       "pt": "Contém chumbo. Não utilizar em superfícies que possam ser mordidas ou chupadas por crianças.",
       "hu": "Ólmot tartalmaz. Tilos olyan felületeken használni, amelyeket gyermekek szájukba vehetnek.",
-      "el": "Περιέχει μόλυβδο. Να μη χρησιμοποιείται σε επιφάνειες που είναι πιθανόν να μασήσουν ή να πιπιλίσουν τα παιδιά."
+      "el": "Περιέχει μόλυβδο. Να μη χρησιμοποιείται σε επιφάνειες που είναι πιθανόν να μασήσουν ή να πιπιλίσουν τα παιδιά.",
+      "nb": "Inneholder bly. Må ikke brukes på gjenstander som barn vil kunne tygge eller suge på."
     },
     "EUH201A": {
       "en": "Warning! Contains lead.",
@@ -1725,7 +1825,8 @@
       "fi": "Varoitus! Sisältää lyijyä.",
       "pt": "Atenção! Contém chumbo.",
       "hu": "Figyelem! Ólmot tartalmaz.",
-      "el": "Προσοχή! Περιέχει μόλυβδο."
+      "el": "Προσοχή! Περιέχει μόλυβδο.",
+      "nb": "Advarsel! Inneholder bly."
     },
     "EUH202": {
       "en": "Cyanoacrylate. Danger. Bonds skin and eyes in seconds. Keep out of the reach of children.",
@@ -1740,7 +1841,8 @@
       "fi": "Syanoakrylaattia. Vaara. Liimaa ihon ja silmät hetkessä. Säilytettävä lasten ulottumattomissa.",
       "pt": "Cianoacrilato. Perigo. Cola à pele e aos olhos em poucos segundos. Manter fora do alcance das crianças.",
       "hu": "Cianoakrilát. Veszély! Néhány másodperc alatt a bőrre és a szembe ragad. Gyermekektől elzárva tartandó.",
-      "el": "Κυανοακρυλική ένωση. Κίνδυνος. Κολλάει στην επιδερμίδα και στα μάτια μέσα σε λίγα δευτερόλεπτα. Να φυλάσσεται μακριά από παιδιά."
+      "el": "Κυανοακρυλική ένωση. Κίνδυνος. Κολλάει στην επιδερμίδα και στα μάτια μέσα σε λίγα δευτερόλεπτα. Να φυλάσσεται μακριά από παιδιά.",
+      "nb": "Cyanoakrylat. Fare. Klistrer sammen hud og øyne på sekunder. Oppbevares utilgjengelig for barn."
     },
     "EUH203": {
       "en": "Contains chromium (VI). May produce an allergic reaction.",
@@ -1755,7 +1857,8 @@
       "fi": "Sisältää kromi(VI)-yhdisteitä. Voi aiheuttaa allergisen reaktion.",
       "pt": "Contém crómio (VI). Pode provocar uma reacção alérgica.",
       "hu": "Krómot (VI) tartalmaz. Allergiás reakciót válthat ki.",
-      "el": "Περιέχει χρώμιο (VI). Μπορεί να προκαλέσει αλλεργική αντίδραση."
+      "el": "Περιέχει χρώμιο (VI). Μπορεί να προκαλέσει αλλεργική αντίδραση.",
+      "nb": "Inneholder krom (VI). Kan gi en allergisk reaksjon."
     },
     "EUH204": {
       "en": "Contains isocyanates. May produce an allergic reaction.",
@@ -1770,7 +1873,8 @@
       "fi": "Sisältää isosyanaatteja. Voi aiheuttaa allergisen reaktion.",
       "pt": "Contém isocianatos. Pode provocar uma reacção alérgica.",
       "hu": "Izocianátokat tartalmaz. Allergiás reakciót válthat ki.",
-      "el": "Περιέχει ισοκυανικές ενώσεις. Μπορεί να προκαλέσει αλλεργική αντίδραση."
+      "el": "Περιέχει ισοκυανικές ενώσεις. Μπορεί να προκαλέσει αλλεργική αντίδραση.",
+      "nb": "Inneholder isocyanater. Kan gi en allergisk reaksjon."
     },
     "EUH205": {
       "en": "Contains epoxy constituents. May produce an allergic reaction.",
@@ -1785,7 +1889,8 @@
       "fi": "Sisältää epoksihartseja. Voi aiheuttaa allergisen reaktion.",
       "pt": "Contém componentes epoxídicos. Pode provocar uma reacção alérgica.",
       "hu": "Epoxid tartalmú vegyületeket tartalmaz. Allergiás reakciót válthat ki.",
-      "el": "Περιέχει εποξειδικές ενώσεις. Μπορεί να προκαλέσει αλλεργική αντίδραση."
+      "el": "Περιέχει εποξειδικές ενώσεις. Μπορεί να προκαλέσει αλλεργική αντίδραση.",
+      "nb": "Inneholder epoksyforbindelser. Kan gi en allergisk reaksjon."
     },
     "EUH206": {
       "en": "Warning! Do not use together with other products. May release dangerous gases (chlorine).",
@@ -1800,7 +1905,8 @@
       "fi": "Varoitus! Älä käytä yhdessä muiden tuotteiden kanssa. Tuotteesta voi vapautua vaarallista kaasua (klooria).",
       "pt": "Atenção! Não utilizar juntamente com outros produtos. Podem libertar-se gases perigosos (cloro).",
       "hu": "Figyelem! Tilos más termékekkel együtt használni. Veszélyes gázok (klór) szabadulhatnak fel.",
-      "el": "Προσοχή! Να μην χρησιμοποιείται σε συνδυασμό με άλλα προϊόντα. Μπορεί να ελευθερωθούν επικίνδυνα αέρια (χλώριο)."
+      "el": "Προσοχή! Να μην χρησιμοποιείται σε συνδυασμό με άλλα προϊόντα. Μπορεί να ελευθερωθούν επικίνδυνα αέρια (χλώριο).",
+      "nb": "Advarsel! Må ikke brukes sammen med andre produkter. Kan frigjøre farlige gasser (klor)."
     },
     "EUH207": {
       "en": "Warning! Contains cadmium. Dangerous fumes are formed during use. See information supplied by the manufacturer. Comply with the safety instructions.",
@@ -1815,7 +1921,8 @@
       "fi": "Varoitus! Sisältää kadmiumia. Käytettäessä muodostuu vaarallisia huuruja. Noudata valmistajan antamia ohjeita. Noudata turvallisuusohjeita.",
       "pt": "Atenção! Contém cádmio. Libertam-se fumos perigosos durante a utilização. Ver as informações fornecidas pelo fabricante. Respeitar as instruções de segurança.",
       "hu": "Figyelem! Kadmiumot tartalmaz! A használat során veszélyes füstök képződnek. Lásd a gyártó által közölt információt. Be kell tartani a biztonsági előírásokat.",
-      "el": "Προσοχή! Περιέχει κάδμιο. Κατά τη χρήση αναπτύσσονται επικίνδυνες αναθυμιάσεις. Βλέπετε πληροφορίες του κατασκευαστή. Τηρείτε τις οδηγίες ασφαλείας."
+      "el": "Προσοχή! Περιέχει κάδμιο. Κατά τη χρήση αναπτύσσονται επικίνδυνες αναθυμιάσεις. Βλέπετε πληροφορίες του κατασκευαστή. Τηρείτε τις οδηγίες ασφαλείας.",
+      "nb": "Advarsel! Inneholder kadmium. Det utvikles farlige gasser under bruk. Se informasjon fra produsenten. Følg sikkerhetsinstruksjonene."
     },
     "EUH209": {
       "en": "Can become highly flammable in use.",
@@ -1830,7 +1937,8 @@
       "fi": "Voi muuttua helposti syttyväksi käytössä.",
       "pt": "Pode tornar-se facilmente inflamável durante o uso.",
       "hu": "A használat során fokozottan tűzveszélyessé válhat.",
-      "el": "Μπορεί να γίνει πολύ εύφλεκτο κατά τη χρήση."
+      "el": "Μπορεί να γίνει πολύ εύφλεκτο κατά τη χρήση.",
+      "nb": "Kan bli meget brannfarlig ved bruk."
     },
     "EUH209A": {
       "en": "Can become flammable in use.",
@@ -1845,7 +1953,8 @@
       "fi": "Voi muuttua syttyväksi käytössä.",
       "pt": "Pode tornar-se inflamável durante o uso.",
       "hu": "A használat során tűzveszélyessé válhat.",
-      "el": "Μπορεί να γίνει εύφλεκτο κατά τη χρήση."
+      "el": "Μπορεί να γίνει εύφλεκτο κατά τη χρήση.",
+      "nb": "Kan bli brannfarlig ved bruk."
     },
     "EUH210": {
       "en": "Safety data sheet available on request.",
@@ -1860,7 +1969,8 @@
       "fi": "Käyttöturvallisuustiedote toimitetaan pyynnöstä.",
       "pt": "Ficha de segurança fornecida a pedido.",
       "hu": "Kérésre biztonsági adatlap kapható.",
-      "el": "Δελτίο δεδομένων ασφαλείας παρέχεται εφόσον ζητηθεί."
+      "el": "Δελτίο δεδομένων ασφαλείας παρέχεται εφόσον ζητηθεί.",
+      "nb": "Sikkerhetsdatablad er tilgjengelig på anmodning."
     },
     "EUH211": {
       "en": "Warning! Hazardous respirable droplets may be formed when sprayed. Do not breathe spray or mist.",
@@ -1875,7 +1985,8 @@
       "fi": "Varoitus! Vaarallisia keuhkorakkuloihin kulkeutuvia pisaroita saattaa muodostua suihkutuksen yhteydessä. Älä hengitä suihketta tai sumua.",
       "pt": "Atenção! Podem formar-se gotículas inaláveis perigosas ao pulverizar. Não respirar a pulverização ou névoas.",
       "hu": "Figyelem! Permetezés közben veszélyes, belélegezhető cseppek képződhetnek. A permetet vagy a ködöt nem szabad belélegezni.",
-      "el": "Προσοχή! Κατά τον ψεκασμό μπορούν να σχηματιστούν επικίνδυνα εισπνεύσιμα σταγονίδια. Μην αναπνέετε το εκνέφωμα ή τα σταγονίδια."
+      "el": "Προσοχή! Κατά τον ψεκασμό μπορούν να σχηματιστούν επικίνδυνα εισπνεύσιμα σταγονίδια. Μην αναπνέετε το εκνέφωμα ή τα σταγονίδια.",
+      "nb": "Advarsel! Farlige respirable dråper kan dannes ved sprøyting. Sprøytetåke må ikke innåndes."
     },
     "EUH212": {
       "en": "Warning! Hazardous respirable dust may be formed when used. Do not breathe dust.",
@@ -1890,7 +2001,8 @@
       "fi": "Varoitus! Vaarallista keuhkorakkuloihin kulkeutuvaa pölyä saattaa muodostua käytön yhteydessä. Älä hengitä pölyä.",
       "pt": "Atenção! Podem formar-se poeiras inaláveis perigosas ao pulverizar. Não respirar as poeiras.",
       "hu": "Figyelem! Használatkor veszélyes, belélegezhető por képződhet. A port nem szabad belélegezni.",
-      "el": "Προσοχή! Κατά τη χρήση μπορεί να σχηματιστεί επικίνδυνη εισπνεύσιμη σκόνη. Μην αναπνέετε τη σκόνη."
+      "el": "Προσοχή! Κατά τη χρήση μπορεί να σχηματιστεί επικίνδυνη εισπνεύσιμη σκόνη. Μην αναπνέετε τη σκόνη.",
+      "nb": "Advarsel! Farlig respirabelt støv kan dannes ved bruk. Støv må ikke innåndes."
     },
     "EUH401": {
       "en": "To avoid risks to human health and the environment, comply with the instructions for use.",
@@ -1905,7 +2017,8 @@
       "fi": "Noudata käyttöohjeita ihmisen terveydelle ja ympäristölle aiheutuvien vaarojen välttämiseksi.",
       "pt": "Para evitar riscos para a saúde humana e para o ambiente, respeitar as instruções de utilização.",
       "hu": "Az emberi egészség és a környezet veszélyeztetésének elkerülése érdekében be kell tartani a használati utasítás előírásait.",
-      "el": "Για να αποφύγετε τους κινδύνους για την ανθρώπινη υγεία και το περιβάλλον, ακολουθήστε τις οδηγίες χρήσης."
+      "el": "Για να αποφύγετε τους κινδύνους για την ανθρώπινη υγεία και το περιβάλλον, ακολουθήστε τις οδηγίες χρήσης.",
+      "nb": "Bruksanvisningen må følges, slik at man unngår risiko for menneskers helse og miljøet."
     }
   },
   "precautionary_statements": {
@@ -1922,7 +2035,8 @@
       "fi": "Jos tarvitaan lääkinnällistä apua, näytä pakkaus tai varoitusetiketti.",
       "pt": "Se for necessário consultar um médico, mostre-lhe a embalagem ou o rótulo.",
       "hu": "Orvosi tanácsadás esetén tartsa kéznél a termék edényét vagy címkéjét.",
-      "el": "Εάν ζητήσετε ιατρική συμβουλή, να έχετε μαζί σας τον περιέκτη του προϊόντος ή την ετικέτα."
+      "el": "Εάν ζητήσετε ιατρική συμβουλή, να έχετε μαζί σας τον περιέκτη του προϊόντος ή την ετικέτα.",
+      "nb": "Dersom det er nødvendig med legehjelp, ha produktets beholder eller etikett for hånden."
     },
     "P102": {
       "en": "Keep out of reach of children.",
@@ -1937,7 +2051,8 @@
       "fi": "Säilytä lasten ulottumattomissa.",
       "pt": "Manter fora do alcance das crianças.",
       "hu": "Gyermekektől elzárva tartandó.",
-      "el": "Μακριά από παιδιά."
+      "el": "Μακριά από παιδιά.",
+      "nb": "Oppbevares utilgjengelig for barn."
     },
     "P103": {
       "en": "Read label before use.",
@@ -1952,7 +2067,8 @@
       "fi": "Lue merkinnät ennen käyttöä.",
       "pt": "Ler o rótulo antes da utilização.",
       "hu": "Használat előtt olvassa el a címkén közölt információkat.",
-      "el": "Διαβάστε την ετικέτα πριν από τη χρήση."
+      "el": "Διαβάστε την ετικέτα πριν από τη χρήση.",
+      "nb": "Les etiketten før bruk."
     },
     "P201": {
       "en": "Obtain special instructions before use.",
@@ -1967,7 +2083,8 @@
       "fi": "Lue erityisohjeet ennen käyttöä.",
       "pt": "Pedir instruções específicas antes da utilização.",
       "hu": "Használat előtt ismerje meg az anyagra vonatkozó különleges utasításokat.",
-      "el": "Εφοδιαστείτε με τις ειδικές οδηγίες πριν από τη χρήση."
+      "el": "Εφοδιαστείτε με τις ειδικές οδηγίες πριν από τη χρήση.",
+      "nb": "Innhent særskilt instruks før bruk."
     },
     "P202": {
       "en": "Do not handle until all safety precautions have been read and understood.",
@@ -1982,7 +2099,8 @@
       "fi": "Lue varoitukset huolellisesti ennen käsittelyä.",
       "pt": "Não manuseie o produto antes de ter lido e percebido todas as precauções de segurança.",
       "hu": "Ne használja addig, amíg az összes biztonsági óvintézkedést el nem olvasta és meg nem értette.",
-      "el": "Μην το χρησιμοποιήσετε πριν διαβάσετε και κατανοήσετε τις οδηγίες προφύλαξης."
+      "el": "Μην το χρησιμοποιήσετε πριν διαβάσετε και κατανοήσετε τις οδηγίες προφύλαξης.",
+      "nb": "Skal ikke håndteres før alle advarsler er lest og oppfattet."
     },
     "P210": {
       "en": "Keep away from heat, hot surfaces, sparks, open flames and other ignition sources. No smoking.",
@@ -1997,7 +2115,8 @@
       "fi": "Suojaa lämmöltä, kuumilta pinnoilta, kipinöiltä, avotulelta ja muilta sytytyslähteiltä. Tupakointi kielletty.",
       "pt": "Manter afastado do calor, superfícies quentes, faísca, chama aberta e outras fontes de ignição. Não fumar.",
       "hu": "Hőtől, forró felületektől, szikrától, nyílt lángtól és más gyújtóforrástól távol tartandó. Tilos a dohányzás.",
-      "el": "Μακριά από θερμότητα, θερμές επιφάνειες, σπινθήρες, γυμνές φλόγες και άλλες πηγές ανάφλεξης. Μην καπνίζετε."
+      "el": "Μακριά από θερμότητα, θερμές επιφάνειες, σπινθήρες, γυμνές φλόγες και άλλες πηγές ανάφλεξης. Μην καπνίζετε.",
+      "nb": "Holdes borte fra varme, varme overflater, gnister, åpen flamme og andre antenningskilder. Røyking forbudt."
     },
     "P211": {
       "en": "Do not spray on an open flame or other ignition source.",
@@ -2012,7 +2131,8 @@
       "fi": "Ei saa suihkuttaa avotuleen tai muuhun sytytyslähteeseen.",
       "pt": "Não pulverizar sobre chama aberta ou outra fonte de ignição.",
       "hu": "Tilos nyílt lángra vagy más gyújtóforrásra permetezni.",
-      "el": "Μην ψεκάζετε κοντά σε γυμνή φλόγα ή άλλη πηγή ανάφλεξης."
+      "el": "Μην ψεκάζετε κοντά σε γυμνή φλόγα ή άλλη πηγή ανάφλεξης.",
+      "nb": "Ikke spray mot åpen flamme eller annen tennkilde."
     },
     "P212": {
       "en": "Avoid heating under confinement or reduction of the desensitising agent.",
@@ -2027,7 +2147,8 @@
       "fi": "Vältettävä kuumentamista suljetussa astiassa tai flegmatointiaineen vähentämistä.",
       "pt": "Evitar o aquecimento em ambiente fechado ou a redução do agente dessensibilizado.",
       "hu": "Kerülje a hevítést zárt térben vagy a deszenzibilizáló szer mennyiségének csökkenése esetén.",
-      "el": "Να αποφεύγεται η θέρμανση σε περιορισμένο χώρο και η μείωση του παράγοντα απευαισθητοποίησης."
+      "el": "Να αποφεύγεται η θέρμανση σε περιορισμένο χώρο και η μείωση του παράγοντα απευαισθητοποίησης.",
+      "nb": "Unngå oppvarming under inneslutning eller reduksjon av desensibiliseringsmiddel."
     },
     "P220": {
       "en": "Keep away from clothing and other combustible materials.",
@@ -2042,7 +2163,8 @@
       "fi": "Pidä erillään vaatetuksesta ja muista syttyvistä materiaaleista.",
       "pt": "Manter afastado da roupa e de outras matérias combustíveis.",
       "hu": "Ruhától és más éghető anyagoktól távol tartandó.",
-      "el": "Να φυλάσσεται μακριά από ενδύματα και άλλα καύσιμα υλικά."
+      "el": "Να φυλάσσεται μακριά από ενδύματα και άλλα καύσιμα υλικά.",
+      "nb": "Holdes borte fra klær og andre brennbare materialer."
     },
     "P222": {
       "en": "Do not allow contact with air.",
@@ -2057,7 +2179,8 @@
       "fi": "Ei saa joutua kosketuksiin ilman kanssa.",
       "pt": "Não deixar entrar em contacto com o ar.",
       "hu": "Nem érintkezhet levegővel.",
-      "el": "Να μην έρθει σε επαφή με τον αέρα."
+      "el": "Να μην έρθει σε επαφή με τον αέρα.",
+      "nb": "Unngå kontakt med luft."
     },
     "P223": {
       "en": "Do not allow contact with water.",
@@ -2072,7 +2195,8 @@
       "fi": "Ei saa joutua kosketuksiin veden kanssa.",
       "pt": "Não deixar entrar em contacto com a água.",
       "hu": "Nem érintkezhet vízzel.",
-      "el": "Μην επιτρέπετε την επαφή με το νερό."
+      "el": "Μην επιτρέπετε την επαφή με το νερό.",
+      "nb": "Unngå kontakt med vann."
     },
     "P232": {
       "en": "Protect from moisture.",
@@ -2087,7 +2211,8 @@
       "fi": "Suojaa kosteudelta.",
       "pt": "Manter ao abrigo da humidade.",
       "hu": "Nedvességtől védendő.",
-      "el": "Προστετέψτε από την υγρασία."
+      "el": "Προστετέψτε από την υγρασία.",
+      "nb": "Beskyttes mot fuktighet."
     },
     "P233": {
       "en": "Keep container tightly closed.",
@@ -2102,7 +2227,8 @@
       "fi": "Säilytä tiiviisti suljettuna.",
       "pt": "Manter o recipiente bem fechado.",
       "hu": "Az edény szorosan lezárva tartandó.",
-      "el": "Να διατηρείται ο περιέκτης ερμητικά κλειστός."
+      "el": "Να διατηρείται ο περιέκτης ερμητικά κλειστός.",
+      "nb": "Hold beholderen tett lukket."
     },
     "P234": {
       "en": "Keep only in original packaging.",
@@ -2117,7 +2243,8 @@
       "fi": "Säilytä alkuperäispakkauksessa.",
       "pt": "Mantenha sempre o produto na sua embalagem original.",
       "hu": "Az eredeti csomagolásban tartandó.",
-      "el": "Να διατηρείται μόνο στην αρχική συσκευασία."
+      "el": "Να διατηρείται μόνο στην αρχική συσκευασία.",
+      "nb": "Oppbevares bare i originalemballasjen."
     },
     "P235": {
       "en": "Keep cool.",
@@ -2132,7 +2259,8 @@
       "fi": "Säilytä viileässä.",
       "pt": "Conservar em ambiente fresco.",
       "hu": "Hűvös helyen tartandó.",
-      "el": "Να διατηρείται δροσερό."
+      "el": "Να διατηρείται δροσερό.",
+      "nb": "Oppbevares kjølig."
     },
     "P240": {
       "en": "Ground and bond container and receiving equipment.",
@@ -2147,7 +2275,8 @@
       "fi": "Maadoita ja yhdistä säiliö ja vastaanottavat laitteet.",
       "pt": "Ligação à terra/equipotencial do recipiente e do equipamento recetor.",
       "hu": "A tárolóedényt és a fogadóedényt le kell földelni és át kell kötni.",
-      "el": "Γείωση και ισοδυναμική σύνδεση του περιέκτη και του εξοπλισμού του δέκτη."
+      "el": "Γείωση και ισοδυναμική σύνδεση του περιέκτη και του εξοπλισμού του δέκτη.",
+      "nb": "Beholder og mottaksutstyr jordes/potensialutlignes."
     },
     "P242": {
       "en": "Use non-sparking tools.",
@@ -2162,7 +2291,8 @@
       "fi": "Käytä kipinöimättömiä työkaluja.",
       "pt": "Utilizar ferramentas antichispa.",
       "hu": "Szikramentes eszközök használandók.",
-      "el": "Να χρησιμοποιούνται μη σπινθηρογόνα εργαλεία."
+      "el": "Να χρησιμοποιούνται μη σπινθηρογόνα εργαλεία.",
+      "nb": "Bruk verktøy som ikke avgir gnister."
     },
     "P243": {
       "en": "Take action to prevent static discharges.",
@@ -2177,7 +2307,8 @@
       "fi": "Estä staattisen sähkön aiheuttama kipinöinti.",
       "pt": "Tomar medidas para evitar acumulação de cargas eletrostáticas.",
       "hu": "Az elektrosztatikus kisülés megakadályozására óvintézkedéseket kell tenni.",
-      "el": "Λάβετε μέτρα για την αποτροπή ηλεκτροστατικών εκκενώσεων."
+      "el": "Λάβετε μέτρα για την αποτροπή ηλεκτροστατικών εκκενώσεων.",
+      "nb": "Treff tiltak mot statisk elektrisitet."
     },
     "P244": {
       "en": "Keep valves and fittings free from oil and grease.",
@@ -2192,7 +2323,8 @@
       "fi": "Pidä venttiilit ja liittimet vapaana öljystä ja rasvasta.",
       "pt": "Manter válvulas e conexões isentas de óleo e gordura.",
       "hu": "A szelepeket és szerelvényeket zsírtól és olajtól mentesen kell tartani.",
-      "el": "Διατηρείτε τα κλείστρα και τους συνδέσμους καθαρά από λάδια και γράσα."
+      "el": "Διατηρείτε τα κλείστρα και τους συνδέσμους καθαρά από λάδια και γράσα.",
+      "nb": "Ventiler og tilbehør skal holdes fri for fett og olje."
     },
     "P251": {
       "en": "Do not pierce or burn, even after use.",
@@ -2207,7 +2339,8 @@
       "fi": "Ei saa puhkaista tai polttaa edes tyhjänä.",
       "pt": "Não furar nem queimar, mesmo após utilização.",
       "hu": "Ne lyukassza ki vagy égesse el, még használat után sem.",
-      "el": "Να μην τρυπηθεί ή καεί ακόμη και μετά τη χρήση."
+      "el": "Να μην τρυπηθεί ή καεί ακόμη και μετά τη χρήση.",
+      "nb": "Må ikke punkteres eller brennes, selv ikke etter bruk."
     },
     "P262": {
       "en": "Do not get in eyes, on skin, or on clothing.",
@@ -2222,7 +2355,8 @@
       "fi": "Varo kemikaalin joutumista silmiin, iholle tai vaatteisiin.",
       "pt": "Não pode entrar em contacto com os olhos, a pele ou a roupa.",
       "hu": "Szembe, bőrre vagy ruhára nem kerülhet.",
-      "el": "Να μην έρθει σε επαφή με τα μάτια, με το δέρμα ή με τα ρούχα."
+      "el": "Να μην έρθει σε επαφή με τα μάτια, με το δέρμα ή με τα ρούχα.",
+      "nb": "Må ikke komme i kontakt med øyne, huden eller klær."
     },
     "P263": {
       "en": "Avoid contact during pregnancy and while nursing.",
@@ -2237,7 +2371,8 @@
       "fi": "Vältä kosketusta raskauden ja imetyksen aikana.",
       "pt": "Evitar o contacto durante a gravidez e o aleitamento.",
       "hu": "Terhesség és szoptatás alatt kerülni kell az anyaggal való érintkezést.",
-      "el": "Αποφεύγετε την επαφή στη διάρκεια της εγκυμοσύνης και της γαλουχίας."
+      "el": "Αποφεύγετε την επαφή στη διάρκεια της εγκυμοσύνης και της γαλουχίας.",
+      "nb": "Unngå kontakt under graviditet og amming."
     },
     "P270": {
       "en": "Do not eat, drink or smoke when using this product.",
@@ -2252,7 +2387,8 @@
       "fi": "Syöminen, juominen ja tupakointi kielletty kemikaalia käytettäessä.",
       "pt": "Não comer, beber ou fumar durante a utilização deste produto.",
       "hu": "A termék használata közben tilos enni, inni vagy dohányozni.",
-      "el": "Μην τρώτε, πίνετε ή καπνίζετε, όταν χρησιμοποιείτε αυτό το προϊόν."
+      "el": "Μην τρώτε, πίνετε ή καπνίζετε, όταν χρησιμοποιείτε αυτό το προϊόν.",
+      "nb": "Ikke spis, drikk eller røyk ved bruk av produktet."
     },
     "P271": {
       "en": "Use only outdoors or in a well-ventilated area.",
@@ -2267,7 +2403,8 @@
       "fi": "Käytä ainoastaan ulkona tai tiloissa, joissa on hyvä ilmanvaihto.",
       "pt": "Utilizar apenas ao ar livre ou em locais bem ventilados.",
       "hu": "Kizárólag szabadban vagy jól szellőző helyiségben használható.",
-      "el": "Να χρησιμοποιείται μόνο σε ανοικτό ή καλά αεριζόμενο χώρο."
+      "el": "Να χρησιμοποιείται μόνο σε ανοικτό ή καλά αεριζόμενο χώρο.",
+      "nb": "Brukes bare utendørs eller i et godt ventilert område."
     },
     "P272": {
       "en": "Contaminated work clothing should not be allowed out of the workplace.",
@@ -2282,7 +2419,8 @@
       "fi": "Saastuneita työvaatteita ei saa viedä työpaikalta.",
       "pt": "A roupa de trabalho contaminada não pode sair do local de trabalho.",
       "hu": "Szennyezett munkaruhát tilos kivinni a munkahely területéről.",
-      "el": "Τα μολυσμένα ενδύματα εργασίας δεν πρέπει να βγαίνουν από το χώρο εργασίας."
+      "el": "Τα μολυσμένα ενδύματα εργασίας δεν πρέπει να βγαίνουν από το χώρο εργασίας.",
+      "nb": "Tilsølte arbeidsklær må ikke fjernes fra arbeidsplassen."
     },
     "P273": {
       "en": "Avoid release to the environment.",
@@ -2297,7 +2435,8 @@
       "fi": "Vältettävä päästämistä ympäristöön.",
       "pt": "Evitar a libertação para o ambiente.",
       "hu": "Kerülni kell az anyagnak a környezetbe való kijutását.",
-      "el": "Να αποφεύγεται η ελευθέρωση στο περιβάλλον."
+      "el": "Να αποφεύγεται η ελευθέρωση στο περιβάλλον.",
+      "nb": "Unngå utslipp til miljøet."
     },
     "P282": {
       "en": "Wear cold insulating gloves and either face shield or eye protection.",
@@ -2312,7 +2451,8 @@
       "fi": "Käytä kylmäeristäviä suojakäsineitä ja joko kasvonsuojainta tai silmiensuojainta.",
       "pt": "Usar luvas de proteção contra o frio e escudo facial ou proteção ocular.",
       "hu": "Hidegszigetelő kesztyű és arcvédő vagy szemvédő használata kötelező.",
-      "el": "Να φοράτε μονωτικά γάντια και προστατευτικό κάλυμμα προσώπου ή εξοπλισμό προστασίας ματιών."
+      "el": "Να φοράτε μονωτικά γάντια και προστατευτικό κάλυμμα προσώπου ή εξοπλισμό προστασίας ματιών.",
+      "nb": "Bruk kuldeisolerende hansker og visir eller øyevern."
     },
     "P283": {
       "en": "Wear fire resistant or flame retardant clothing.",
@@ -2327,7 +2467,8 @@
       "fi": "Käytä palosuojattua tai paloturvallista vaatetusta.",
       "pt": "Usar vestuário ignífugo ou retardador de chamas.",
       "hu": "Tűzálló vagy lángkésleltető ruházat viselése kötelező.",
-      "el": "Να φοράτε αντιπυρικό ρουχισμό ή ρουχισμό με επιβραδυντικό φλόγας."
+      "el": "Να φοράτε αντιπυρικό ρουχισμό ή ρουχισμό με επιβραδυντικό φλόγας.",
+      "nb": "Benytt brannbestandige eller flammehemmende klær."
     },
     "P301": {
       "en": "IF SWALLOWED:",
@@ -2342,7 +2483,8 @@
       "fi": "JOS KEMIKAALIA ON NIELTY:",
       "pt": "EM CASO DE INGESTÃO:",
       "hu": "LENYELÉS ESETÉN:",
-      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΚΑΤΑΠΟΣΗΣ:"
+      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΚΑΤΑΠΟΣΗΣ:",
+      "nb": "VED SVELGING:"
     },
     "P302": {
       "en": "IF ON SKIN:",
@@ -2357,7 +2499,8 @@
       "fi": "JOS KEMIKAALIA JOUTUU IHOLLE:",
       "pt": "SE ENTRAR EM CONTACTO COM A PELE:",
       "hu": "HA BŐRRE KERÜL:",
-      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΠΑΦΗΣ ΜΕ ΤΟ ΔΕΡΜΑ:"
+      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΠΑΦΗΣ ΜΕ ΤΟ ΔΕΡΜΑ:",
+      "nb": "VED HUDKONTAKT:"
     },
     "P303": {
       "en": "IF ON SKIN (or hair):",
@@ -2372,7 +2515,8 @@
       "fi": "JOS KEMIKAALIA JOUTUU IHOLLE (tai hiuksiin):",
       "pt": "SE ENTRAR EM CONTACTO COM A PELE (ou o cabelo):",
       "hu": "HA BŐRRE (vagy hajra) KERÜL:",
-      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΠΑΦΗΣ ΜΕ ΤΟ ΔΕΡΜΑ (ή με τα μαλλιά):"
+      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΠΑΦΗΣ ΜΕ ΤΟ ΔΕΡΜΑ (ή με τα μαλλιά):",
+      "nb": "VED HUDKONTAKT (eller håret):"
     },
     "P304": {
       "en": "IF INHALED:",
@@ -2387,7 +2531,8 @@
       "fi": "JOS KEMIKAALIA ON HENGITETTY:",
       "pt": "EM CASO DE INALAÇÃO:",
       "hu": "BELÉLEGZÉS ESETÉN:",
-      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΙΣΠΝΟΗΣ:"
+      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΙΣΠΝΟΗΣ:",
+      "nb": "VED INNÅNDING:"
     },
     "P305": {
       "en": "IF IN EYES:",
@@ -2402,7 +2547,8 @@
       "fi": "JOS KEMIKAALIA JOUTUU SILMIIN:",
       "pt": "SE ENTRAR EM CONTACTO COM OS OLHOS:",
       "hu": "SZEMBE KERÜLÉS ESETÉN:",
-      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΠΑΦΗΣ ΜΕ ΤΑ ΜΑΤΙΑ:"
+      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΠΑΦΗΣ ΜΕ ΤΑ ΜΑΤΙΑ:",
+      "nb": "VED KONTAKT MED ØYNENE"
     },
     "P306": {
       "en": "IF ON CLOTHING:",
@@ -2417,7 +2563,8 @@
       "fi": "JOS KEMIKAALIA JOUTUU VAATTEISIIN:",
       "pt": "SE ENTRAR EM CONTACTO COM A ROUPA:",
       "hu": "HA RUHÁRA KERÜL:",
-      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΠΑΦΗΣ ΜΕ ΤΑ ΡΟΥΧΑ:"
+      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΠΑΦΗΣ ΜΕ ΤΑ ΡΟΥΧΑ:",
+      "nb": "VED KONTAKT MED KLÆR:"
     },
     "P308": {
       "en": "IF exposed or concerned:",
@@ -2432,7 +2579,8 @@
       "fi": "Altistumisen tapahduttua tai jos epäillään altistumista:",
       "pt": "EM CASO DE exposição ou suspeita de exposição:",
       "hu": "Expozíció vagy annak gyanúja esetén:",
-      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ έκθεσης ή πιθανής έκθεσης:"
+      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ έκθεσης ή πιθανής έκθεσης:",
+      "nb": "Ved eksponering eller mistanke om eksponering:"
     },
     "P330": {
       "en": "Rinse mouth.",
@@ -2447,7 +2595,8 @@
       "fi": "Huuhdo suu.",
       "pt": "Enxaguar a boca.",
       "hu": "A szájat ki kell öblíteni.",
-      "el": "Ξεπλύνετε το στόμα."
+      "el": "Ξεπλύνετε το στόμα.",
+      "nb": "Skyll munnen."
     },
     "P331": {
       "en": "Do NOT induce vomiting.",
@@ -2462,7 +2611,8 @@
       "fi": "EI saa oksennuttaa.",
       "pt": "NÃO provocar o vómito.",
       "hu": "TILOS hánytatni.",
-      "el": "ΜΗΝ προκαλέσετε εμετό."
+      "el": "ΜΗΝ προκαλέσετε εμετό.",
+      "nb": "IKKE framkall brekning."
     },
     "P332": {
       "en": "If skin irritation occurs:",
@@ -2477,7 +2627,8 @@
       "fi": "Jos ilmenee ihoärsytystä:",
       "pt": "Em caso de irritação cutânea:",
       "hu": "Bőrirritáció esetén:",
-      "el": "Εάν παρατηρηθεί ερεθισμός του δέρματος:"
+      "el": "Εάν παρατηρηθεί ερεθισμός του δέρματος:",
+      "nb": "Ved hudirritasjon:"
     },
     "P333": {
       "en": "If skin irritation or rash occurs:",
@@ -2492,7 +2643,8 @@
       "fi": "Jos ilmenee ihoärsytystä tai ihottumaa:",
       "pt": "Em caso de irritação ou erupção cutânea:",
       "hu": "Bőrirritáció vagy kiütések megjelenése esetén:",
-      "el": "Εάν παρατηρηθεί ερεθισμός του δέρματος ή εμφανιστεί εξάνθημα:"
+      "el": "Εάν παρατηρηθεί ερεθισμός του δέρματος ή εμφανιστεί εξάνθημα:",
+      "nb": "Ved hudirritasjon eller utslett:"
     },
     "P335": {
       "en": "Brush off loose particles from skin.",
@@ -2507,7 +2659,8 @@
       "fi": "Poista irtohiukkaset iholta.",
       "pt": "Sacudir da pele as partículas soltas.",
       "hu": "A bőrre lazán tapadó szemcséket óvatosan le kell kefélni.",
-      "el": "Αφαιρέστε προσεκτικά τα σωματίδια που έχουν μείνει στο δέρμα."
+      "el": "Αφαιρέστε προσεκτικά τα σωματίδια που έχουν μείνει στο δέρμα.",
+      "nb": "Børst bort løse partikler fra huden."
     },
     "P336": {
       "en": "Thaw frosted parts with lukewarm water. Do no rub affected area.",
@@ -2522,7 +2675,8 @@
       "fi": "Sulata jäätyneet alueet haalealla vedellä. Vahingoittunutta aluetta ei saa hangata.",
       "pt": "Derreter as zonas congeladas com água morna. Não friccionar a zona afectada.",
       "hu": "A fagyott részeket langyos vízzel fel kell melegíteni. Tilos az érintett terület dörzsölése.",
-      "el": "Ξεπαγώστε τα παγωμένα μέρη με χλιαρό νερό. Μην τρίβετε την περιοχή που πάγωσε."
+      "el": "Ξεπαγώστε τα παγωμένα μέρη με χλιαρό νερό. Μην τρίβετε την περιοχή που πάγωσε.",
+      "nb": "Varm opp frostskadede legemsdeler med lunkent vann. Ikke gni på det skadede området."
     },
     "P337": {
       "en": "If eye irritation persists:",
@@ -2537,7 +2691,8 @@
       "fi": "Jos silmä-ärsytys jatkuu:",
       "pt": "Caso a irritação ocular persista:",
       "hu": "Ha a szemirritáció nem múlik el:",
-      "el": "Εάν δεν υποχωρεί ο οφθαλμικός ερεθισμός:"
+      "el": "Εάν δεν υποχωρεί ο οφθαλμικός ερεθισμός:",
+      "nb": "Ved vedvarende øyeirritasjon:"
     },
     "P338": {
       "en": "Remove contact lenses, if present and easy to do. Continue rinsing.",
@@ -2552,7 +2707,8 @@
       "fi": "Poista piilolinssit, jos sen voi tehdä helposti. Jatka huuhtomista.",
       "pt": "Se usar lentes de contacto, retire-as, se tal lhe for possível. Continue a enxaguar.",
       "hu": "Adott esetben kontaktlencsék eltávolítása, ha könnyen megoldható. Az öblítés folytatása.",
-      "el": "Εάν υπάρχουν φακοί επαφής, αφαιρέστε τους, εφόσον είναι εύκολο. Συνεχίστε να ξεπλένετε."
+      "el": "Εάν υπάρχουν φακοί επαφής, αφαιρέστε τους, εφόσον είναι εύκολο. Συνεχίστε να ξεπλένετε.",
+      "nb": "Fjern eventuelle kontaktlinser dersom dette enkelt lar seg gjøre. Fortsett skyllingen."
     },
     "P340": {
       "en": "Remove person to fresh air and keep comfortable for breathing.",
@@ -2567,7 +2723,8 @@
       "fi": "Siirrä henkilö raittiiseen ilmaan ja varmista vaivaton hengitys.",
       "pt": "Retirar a pessoa para uma zona ao ar livre e mantê-la numa posição que não dificulte a respiração.",
       "hu": "Az érintett személyt friss levegőre kell vinni, és olyan nyugalmi testhelyzetbe kell helyezni, hogy könnyen tudjon lélegezni.",
-      "el": "Μεταφέρετε τον παθόντα στον καθαρό αέρα και αφήστε τον να ξεκουραστεί σε στάση που διευκολύνει την αναπνοή."
+      "el": "Μεταφέρετε τον παθόντα στον καθαρό αέρα και αφήστε τον να ξεκουραστεί σε στάση που διευκολύνει την αναπνοή.",
+      "nb": "Flytt personen til frisk luft og sørg for at vedkommende har en stilling som letter åndedrettet."
     },
     "P342": {
       "en": "If experiencing respiratory symptoms:",
@@ -2582,7 +2739,8 @@
       "fi": "Jos ilmenee hengitysoireita:",
       "pt": "Em caso de sintomas respiratórios:",
       "hu": "Légzési problémák esetén:",
-      "el": "Εάν παρουσιάζονται αναπνευστικά συμπτώματα:"
+      "el": "Εάν παρουσιάζονται αναπνευστικά συμπτώματα:",
+      "nb": "Ved symptomer i luftveiene:"
     },
     "P351": {
       "en": "Rinse cautiously with water for several minutes.",
@@ -2597,7 +2755,8 @@
       "fi": "Huuhdo huolellisesti vedellä usean minuutin ajan.",
       "pt": "Enxaguar cuidadosamente com água durante vários minutos.",
       "hu": "Óvatos öblítés vízzel több percen keresztül.",
-      "el": "Ξεπλύνετε προσεκτικά με νερό για αρκετά λεπτά."
+      "el": "Ξεπλύνετε προσεκτικά με νερό για αρκετά λεπτά.",
+      "nb": "Skyll forsiktig med vann i flere minutter."
     },
     "P360": {
       "en": "Rinse immediately contaminated clothing and skin with plenty of water before removing clothes.",
@@ -2612,7 +2771,8 @@
       "fi": "Huuhdo saastunut vaatetus ja iho välittömästi runsaalla vedellä ennen vaatetuksen riisumista.",
       "pt": "Enxaguar imediatamente com muita água a roupa e a pele contaminadas antes de se despir.",
       "hu": "A ruhák levetése előtt a szennyezett ruházatot és a bőrt bő vízzel azonnal le kell öblíteni.",
-      "el": "Ξεπλύνετε αμέσως τα μολυσμένα ρούχα και την επιδερμίδα με άφθονο νερό πριν αφαιρέσετε τα ρούχα."
+      "el": "Ξεπλύνετε αμέσως τα μολυσμένα ρούχα και την επιδερμίδα με άφθονο νερό πριν αφαιρέσετε τα ρούχα.",
+      "nb": "Skyll umiddelbart tilsølte klær og hud med mye vann før klærne fjernes."
     },
     "P361": {
       "en": "Take off immediately all contaminated clothing.",
@@ -2627,7 +2787,8 @@
       "fi": "Riisu saastunut vaatetus välittömästi.",
       "pt": "Retirar imediatamente toda a roupa contaminada.",
       "hu": "Az összes szennyezett ruhadarabot azonnal le kell vetni.",
-      "el": "Βγάλτε αμέσως όλα τα μολυσμένα ρούχα."
+      "el": "Βγάλτε αμέσως όλα τα μολυσμένα ρούχα.",
+      "nb": "Tilsølte klær må fjernes straks."
     },
     "P362": {
       "en": "Take off contaminated clothing.",
@@ -2642,7 +2803,8 @@
       "fi": "Riisu saastunut vaatetus.",
       "pt": "Retirar a roupa contaminada.",
       "hu": "A szennyezett ruhadarabot le kell vetni.",
-      "el": "Βγάλτε τα μολυσμένα ρούχα."
+      "el": "Βγάλτε τα μολυσμένα ρούχα.",
+      "nb": "Tilsølte klær må fjernes."
     },
     "P363": {
       "en": "Wash contaminated clothing before reuse.",
@@ -2657,7 +2819,8 @@
       "fi": "Pese saastunut vaatetus ennen uudelleenkäyttöä.",
       "pt": "Lavar a roupa contaminada antes de a voltar a usar.",
       "hu": "A szennyezett ruhát újbóli használat előtt ki kell mosni.",
-      "el": "Πλύνετε τα μολυσμένα ενδύματα πριν τα ξαναχρησιμοποιήσετε."
+      "el": "Πλύνετε τα μολυσμένα ενδύματα πριν τα ξαναχρησιμοποιήσετε.",
+      "nb": "Tilsølte klær må vaskes før de brukes på nytt."
     },
     "P364": {
       "en": "And wash it before reuse.",
@@ -2672,7 +2835,8 @@
       "fi": "Ja pese ennen uudelleenkäyttöä.",
       "pt": "E lavar antes de voltar a usar.",
       "hu": "És újbóli használat előtt ki kell mosni.",
-      "el": "Και πλύντε τα πριν τα ξαναχρησιμοποιήσετε."
+      "el": "Και πλύντε τα πριν τα ξαναχρησιμοποιήσετε.",
+      "nb": "Og vaskes før bruk."
     },
     "P370": {
       "en": "In case of fire:",
@@ -2687,7 +2851,8 @@
       "fi": "Tulipalon sattuessa:",
       "pt": "Em caso de incêndio:",
       "hu": "Tűz esetén:",
-      "el": "Σε περίπτωση πυρκαγιάς:"
+      "el": "Σε περίπτωση πυρκαγιάς:",
+      "nb": "Ved brann:"
     },
     "P371": {
       "en": "In case of major fire and large quantities:",
@@ -2702,7 +2867,8 @@
       "fi": "Jos tulipalo ja ainemäärät ovat suuret:",
       "pt": "Em caso de incêndio importante e de grandes quantidades:",
       "hu": "Nagyobb tűz és nagy mennyiség esetén:",
-      "el": "Σε περίπτωση σοβαρής πυρκαγιάς και εάν πρόκειται για μεγάλες ποσότητες:"
+      "el": "Σε περίπτωση σοβαρής πυρκαγιάς και εάν πρόκειται για μεγάλες ποσότητες:",
+      "nb": "Ved større brann og store mengder:"
     },
     "P372": {
       "en": "Explosion risk.",
@@ -2717,7 +2883,8 @@
       "fi": "Räjähdysvaara.",
       "pt": "Risco de explosão.",
       "hu": "Robbanásveszély.",
-      "el": "Κίνδυνος έκρηξης."
+      "el": "Κίνδυνος έκρηξης.",
+      "nb": "Eksplosjonsfare."
     },
     "P373": {
       "en": "DO NOT fight fire when fire reaches explosives.",
@@ -2732,7 +2899,8 @@
       "fi": "Tulta EI SAA yrittää sammuttaa sen saavutettua räjähteet.",
       "pt": "Se o fogo atingir os explosivos, NÃO tentar combatê-lo.",
       "hu": "TILOS a tűz oltása, ha az robbanóanyagra átterjedt.",
-      "el": "ΜΗΝ προσπαθείτε να σβήσετε την πυρκαγιά, όταν η φωτιά πλησιάζει σε εκρηκτικά."
+      "el": "ΜΗΝ προσπαθείτε να σβήσετε την πυρκαγιά, όταν η φωτιά πλησιάζει σε εκρηκτικά.",
+      "nb": "IKKE bekjemp brannen når den når eksplosive varer."
     },
     "P375": {
       "en": "Fight fire remotely due to the risk of explosion.",
@@ -2747,7 +2915,8 @@
       "fi": "Sammuta palo etäältä räjähdysvaaran takia.",
       "pt": "Combater o incêndio à distância, devido ao risco de explosão.",
       "hu": "A tűz oltását robbanásveszély miatt távolból kell végezni.",
-      "el": "Προσπαθήστε να σβήσετε την πυρκαγιά από απόσταση, επειδή υπάρχει κίνδυνος έκρηξης."
+      "el": "Προσπαθήστε να σβήσετε την πυρκαγιά από απόσταση, επειδή υπάρχει κίνδυνος έκρηξης.",
+      "nb": "Bekjemp brannen på avstand på grunn av eksplosjonsfare."
     },
     "P376": {
       "en": "Stop leak if safe to do so.",
@@ -2762,7 +2931,8 @@
       "fi": "Sulje vuoto, jos sen voi tehdä turvallisesti.",
       "pt": "Deter a fuga se tal puder ser feito em segurança.",
       "hu": "Meg kell szüntetni a szivárgást, ha ez biztonságosan megtehető.",
-      "el": "Σταματήστε τη διαρροή, εφόσον δεν υπάρχει κίνδυνος."
+      "el": "Σταματήστε τη διαρροή, εφόσον δεν υπάρχει κίνδυνος.",
+      "nb": "Stopp lekkasje dersom dette kan gjøres på en sikker måte."
     },
     "P377": {
       "en": "Leaking gas fire: Do not extinguish, unless leak can be stopped safely.",
@@ -2777,7 +2947,8 @@
       "fi": "Vuotavasta kaasusta johtuva palo: Ei saa sammuttaa, jollei vuotoa voida pysäyttää turvallisesti.",
       "pt": "Incêndio por fuga de gás: não apagar, a menos que se possa deter a fuga em segurança.",
       "hu": "Égő szivárgó gáz: Csak akkor szabad a tüzet oltani, ha a szivárgás biztonságosan megszüntethető.",
-      "el": "Διαρροή φλεγόμενου αερίου: Μην την σβήσετε, εκτός εάν μπορείτε να σταματήσετε τη διαρροή χωρίς κίνδυνο."
+      "el": "Διαρροή φλεγόμενου αερίου: Μην την σβήσετε, εκτός εάν μπορείτε να σταματήσετε τη διαρροή χωρίς κίνδυνο.",
+      "nb": "Brann ved gasslekkasje: Ikke slukk med mindre lekkasjen kan stanses på en sikker måte."
     },
     "P380": {
       "en": "Evacuate area.",
@@ -2792,7 +2963,8 @@
       "fi": "Evakuoi alue.",
       "pt": "Evacuar a zona.",
       "hu": "A területet ki kell üríteni.",
-      "el": "Εκκενώστε την περιοχή."
+      "el": "Εκκενώστε την περιοχή.",
+      "nb": "Evakuer området."
     },
     "P381": {
       "en": "In case of leakage, eliminate all ignition sources.",
@@ -2807,7 +2979,8 @@
       "fi": "Vuototapauksessa poista kaikki sytytyslähteet.",
       "pt": "Em caso de fuga, eliminar todas as fontes de ignição.",
       "hu": "Szivárgás esetén meg kell szüntetni az összes gyújtóforrást.",
-      "el": "Σε περίπτωση διαρροής, εξαλείψτε όλες τις πηγές ανάφλεξης."
+      "el": "Σε περίπτωση διαρροής, εξαλείψτε όλες τις πηγές ανάφλεξης.",
+      "nb": "Fjern alle tennkilder ved lekkasje."
     },
     "P390": {
       "en": "Absorb spillage to prevent material damage.",
@@ -2822,7 +2995,8 @@
       "fi": "Imeytä valumat vahinkojen estämiseksi.",
       "pt": "Absorver o produto derramado a fim de evitar danos materiais.",
       "hu": "A kiömlött anyagot fel kell itatni a körülvevő anyagok károsodásának megelőzése érdekében.",
-      "el": "Σκουπίστε τη χυμένη ποσότητα για να προλάβετε υλικές ζημιές."
+      "el": "Σκουπίστε τη χυμένη ποσότητα για να προλάβετε υλικές ζημιές.",
+      "nb": "Absorber spill for å hindre materiell skade."
     },
     "P391": {
       "en": "Collect spillage.",
@@ -2837,7 +3011,8 @@
       "fi": "Valumat on kerättävä.",
       "pt": "Recolher o produto derramado.",
       "hu": "A kiömlött anyagot össze kell gyűjteni.",
-      "el": "Μαζέψτε τη χυμένη ποσότητα."
+      "el": "Μαζέψτε τη χυμένη ποσότητα.",
+      "nb": "Samle opp spill."
     },
     "P302+P334": {
       "en": "IF ON SKIN: Immerse in cool water or wrap in wet bandages.",
@@ -2852,7 +3027,8 @@
       "fi": "JOS KEMIKAALIA JOUTUU IHOLLE: Upota kylmään veteen tai kääri märkiin siteisiin.",
       "pt": "SE ENTRAR EM CONTACTO COM A PELE: Mergulhar em água fria ou aplicar compressas húmidas.",
       "hu": "HA BŐRRE KERÜL: Hideg vízzel vagy nedves kötéssel kell hűteni.",
-      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΠΑΦΗΣ ΜΕ ΤΟ ΔΕΡΜΑ: Βυθίστε σε δροσερό νερό ή τυλίξτε με βρεγμένους επιδέσμους."
+      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΠΑΦΗΣ ΜΕ ΤΟ ΔΕΡΜΑ: Βυθίστε σε δροσερό νερό ή τυλίξτε με βρεγμένους επιδέσμους.",
+      "nb": "VED HUDKONTAKT: Skyll i kaldt vann eller anvend våt kompress."
     },
     "P304+P340": {
       "en": "IF INHALED: Remove person to fresh air and keep comfortable for breathing.",
@@ -2867,7 +3043,8 @@
       "fi": "JOS KEMIKAALIA ON HENGITETTY: Siirrä henkilö raittiiseen ilmaan ja varmista vaivaton hengitys.",
       "pt": "EM CASO DE INALAÇÃO: retirar a pessoa para uma zona ao ar livre e mantê-la numa posição que não dificulte a respiração.",
       "hu": "BELÉLEGZÉS ESETÉN: Az érintett személyt friss levegőre kell vinni, és olyan nyugalmi testhelyzetbe kell helyezni, hogy könnyen tudjon lélegezni.",
-      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΙΣΠΝΟΗΣ: Μεταφέρατε τον παθόντα στον καθαρό αέρα και αφήστε τον να ξεκουραστεί σε στάση που διευκολύνει την αναπνοή."
+      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΙΣΠΝΟΗΣ: Μεταφέρατε τον παθόντα στον καθαρό αέρα και αφήστε τον να ξεκουραστεί σε στάση που διευκολύνει την αναπνοή.",
+      "nb": "VED INNÅNDING: Flytt personen til frisk luft og sørg for at vedkommende har en stilling som letter åndedrettet."
     },
     "P306+P360": {
       "en": "IF ON CLOTHING: rinse immediately contaminated clothing and skin with plenty of water before removing clothes.",
@@ -2882,7 +3059,8 @@
       "fi": "JOS KEMIKAALIA JOUTUU VAATTEISIIN: Huuhdo saastunut vaatetus ja iho välittömästi runsaalla vedellä ennen vaatetuksen riisumista.",
       "pt": "SE ENTRAR EM CONTACTO COM A ROUPA: enxaguar imediatamente com muita água a roupa e a pele contaminadas antes de se despir.",
       "hu": "HA RUHÁRA KERÜL: A ruhák levetése előtt a szennyezett ruházatot és a bőrt bő vízzel azonnal le kell öblíteni.",
-      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΠΑΦΗΣ ΜΕ ΤΑ ΡΟΥΧΑ: Ξεπλύντε αμέσως τα μολυσμένα ρούχα και την επιδερμίδα με άφθονο νερό πριν αφαιρέσετε τα ρούχα."
+      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΠΑΦΗΣ ΜΕ ΤΑ ΡΟΥΧΑ: Ξεπλύντε αμέσως τα μολυσμένα ρούχα και την επιδερμίδα με άφθονο νερό πριν αφαιρέσετε τα ρούχα.",
+      "nb": "VED KONTAKT MED KLÆR: Skyll umiddelbart tilsølte klær og hud med mye vann før klærne fjernes."
     },
     "P361+P364": {
       "en": "Take off immediately all contaminated clothing and wash it before reuse.",
@@ -2897,7 +3075,8 @@
       "fi": "Riisu saastunut vaatetus välittömästi ja pese ennen uudelleenkäyttöä.",
       "pt": "Retirar imediatamente a roupa contaminada e lavá-la antes de a voltar a usar.",
       "hu": "Az összes szennyezett ruhadarabot azonnal le kell vetni és újbóli használat előtt ki kell mosni.",
-      "el": "Βγάλτε αμέσως όλα τα μολυσμένα ρούχα και πλύντε τα πριν τα ξαναχρησιμοποιήσετε."
+      "el": "Βγάλτε αμέσως όλα τα μολυσμένα ρούχα και πλύντε τα πριν τα ξαναχρησιμοποιήσετε.",
+      "nb": "Tilsølte klær må fjernes straks og vaskes før bruk."
     },
     "P362+P364": {
       "en": "Take off contaminated clothing and wash it before reuse.",
@@ -2912,7 +3091,8 @@
       "fi": "Riisu saastunut vaatetus ja pese ennen uudelleenkäyttöä.",
       "pt": "Retirar a roupa contaminada e lavá-la antes de a voltar a usar.",
       "hu": "A szennyezett ruhadarabot le kell vetni és újbóli használat előtt ki kell mosni.",
-      "el": "Βγάλτε τα μολυσμένα ρούχα και πλύντε τα πριν τα ξαναχρησιμοποιήσετε."
+      "el": "Βγάλτε τα μολυσμένα ρούχα και πλύντε τα πριν τα ξαναχρησιμοποιήσετε.",
+      "nb": "Tilsølte klær må fjernes og vaskes før bruk."
     },
     "P370+P376": {
       "en": "In case of fire: Stop leak if safe to do so.",
@@ -2927,7 +3107,8 @@
       "fi": "Tulipalon sattuessa: Sulje vuoto, jos sen voi tehdä turvallisesti.",
       "pt": "Em caso de incêndio: deter a fuga se tal puder ser feito em segurança.",
       "hu": "Tűz esetén: Meg kell szüntetni a szivárgást, ha ez biztonságosan megtehető.",
-      "el": "Σε περίπτωση πυρκαγιάς: Σταματήστε τη διαρροή, εφόσον δεν υπάρχει κίνδυνος."
+      "el": "Σε περίπτωση πυρκαγιάς: Σταματήστε τη διαρροή, εφόσον δεν υπάρχει κίνδυνος.",
+      "nb": "Ved brann: Stopp lekkasje dersom dette kan gjøres på en sikker måte."
     },
     "P301+P330+P331": {
       "en": "IF SWALLOWED: Rinse mouth. Do NOT induce vomiting.",
@@ -2942,7 +3123,8 @@
       "fi": "JOS KEMIKAALIA ON NIELTY: Huuhdo suu. EI saa oksennuttaa.",
       "pt": "EM CASO DE INGESTÃO: Enxaguar a boca. NÃO provocar o vómito.",
       "hu": "LENYELÉS ESETÉN: A szájat ki kell öblíteni. TILOS hánytatni.",
-      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΚΑΤΑΠΟΣΗΣ: Ξεπλύνετε το στόμα. ΜΗΝ προκαλέσετε εμετό."
+      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΚΑΤΑΠΟΣΗΣ: Ξεπλύνετε το στόμα. ΜΗΝ προκαλέσετε εμετό.",
+      "nb": "VED SVELGING: Skyll munnen. IKKE framkall brekning."
     },
     "P305+P351+P338": {
       "en": "IF IN EYES: Rinse cautiously with water for several minutes. Remove contact lenses, if present and easy to do. Continue rinsing.",
@@ -2957,7 +3139,8 @@
       "fi": "JOS KEMIKAALIA JOUTUU SILMIIN: Huuhdo huolellisesti vedellä usean minuutin ajan. Poista mahdolliset piilolinssit, jos sen voi tehdä helposti. Jatka huuhtomista.",
       "pt": "SE ENTRAR EM CONTACTO COM OS OLHOS: Enxaguar cuidadosamente com água durante vários minutos. Se usar lentes de contacto, retire-as, se tal lhe for possível. Continue a enxaguar.",
       "hu": "SZEMBE KERÜLÉS ESETÉN: Több percig tartó óvatos öblítés vízzel. Adott esetben a kontaktlencsék eltávolítása, ha könnyen megoldható. Az öblítés folytatása.",
-      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΠΑΦΗΣ ΜΕ ΤΑ ΜΑΤΙΑ: Ξεπλύνετε προσεκτικά με νερό για αρκετά λεπτά. Αν υπάρχουν φακοί επαφής, αφαιρέστε τους, αν είναι εύκολο. Συνεχίστε να ξεπλένετε."
+      "el": "ΣΕ ΠΕΡΙΠΤΩΣΗ ΕΠΑΦΗΣ ΜΕ ΤΑ ΜΑΤΙΑ: Ξεπλύνετε προσεκτικά με νερό για αρκετά λεπτά. Αν υπάρχουν φακοί επαφής, αφαιρέστε τους, αν είναι εύκολο. Συνεχίστε να ξεπλένετε.",
+      "nb": "VED KONTAKT MED ØYNENE: Skyll forsiktig med vann i flere minutter. Fjern eventuelle kontaktlinser dersom dette enkelt lar seg gjøre. Fortsett skyllingen."
     },
     "P370+P380+P375": {
       "en": "In case of fire: Evacuate area. Fight fire remotely due to the risk of explosion.",
@@ -2972,7 +3155,8 @@
       "fi": "Tulipalon sattuessa: Evakuoi alue. Sammuta palo etäältä räjähdysvaaran takia.",
       "pt": "Em caso de incêndio: evacuar a zona. Combater o incêndio à distância, devido ao risco de explosão.",
       "hu": "Tűz esetén: Ki kell üríteni a területet. A tűz oltását robbanásveszély miatt távolból kell végezni.",
-      "el": "Σε περίπτωση πυρκαγιάς: Εκκενώστε την περιοχή. Προσπαθήστε να σβήσετε την πυρκαγιά από απόσταση, επειδή υπάρχει κίνδυνος έκρηξης."
+      "el": "Σε περίπτωση πυρκαγιάς: Εκκενώστε την περιοχή. Προσπαθήστε να σβήσετε την πυρκαγιά από απόσταση, επειδή υπάρχει κίνδυνος έκρηξης.",
+      "nb": "Ved brann: Evakuer området. Bekjemp brannen på avstand på grunn av eksplosjonsfare."
     },
     "P371+P380+P375": {
       "en": "In case of major fire and large quantities: Evacuate area. Fight fire remotely due to the risk of explosion.",
@@ -2987,7 +3171,8 @@
       "fi": "Jos tulipalo ja ainemäärät ovat suuret: Evakuoi alue. Sammuta palo etäältä räjähdysvaaran takia.",
       "pt": "Em caso de incêndio importante e de grandes quantidades: evacuar a zona. Combater o incêndio à distância, devido ao risco de explosão.",
       "hu": "Nagyobb tűz és nagy mennyiség esetén: Ki kell üríteni a területet. A tűz oltását robbanásveszély miatt távolból kell végezni.",
-      "el": "Σε περίπτωση σοβαρής πυρκαγιάς και εάν πρόκειται για μεγάλες ποσότητες: Εκκενώστε την περιοχή. Προσπαθήστε να σβήσετε την πυρκαγιά από απόσταση, επειδή υπάρχει κίνδυνος έκρηξης."
+      "el": "Σε περίπτωση σοβαρής πυρκαγιάς και εάν πρόκειται για μεγάλες ποσότητες: Εκκενώστε την περιοχή. Προσπαθήστε να σβήσετε την πυρκαγιά από απόσταση, επειδή υπάρχει κίνδυνος έκρηξης.",
+      "nb": "Ved større brann og store mengder: Evakuer området. Bekjemp brannen på avstand på grunn av eksplosjonsfare."
     },
     "P370+P372+P380+P373": {
       "en": "In case of fire: Explosion risk. Evacuate area. DO NOT fight fire when fire reaches explosives.",
@@ -3002,7 +3187,8 @@
       "fi": "Tulipalon sattuessa: Räjähdysvaara. Evakuoi alue. Tulta EI SAA yrittää sammuttaa sen saavutettua räjähteet.",
       "pt": "Em caso de incêndio: Risco de explosão. Evacuar a zona. Se o fogo atingir os explosivos, NÃO tentar combatê-lo.",
       "hu": "Tűz esetén: Robbanásveszély. A területet ki kell üríteni. TILOS a tűz oltása, ha az robbanóanyagra átterjedt.",
-      "el": "Σε περίπτωση πυρκαγιάς: Κίνδυνος έκρηξης. Εκκενώστε την περιοχή. ΜΗΝ προσπαθείτε να σβήσετε την πυρκαγιά, όταν η φωτιά πλησιάζει σε εκρηκτικά."
+      "el": "Σε περίπτωση πυρκαγιάς: Κίνδυνος έκρηξης. Εκκενώστε την περιοχή. ΜΗΝ προσπαθείτε να σβήσετε την πυρκαγιά, όταν η φωτιά πλησιάζει σε εκρηκτικά.",
+      "nb": "Ved brann: Eksplosjonsfare. Evakuer området. IKKE bekjemp brannen når den når eksplosive varer."
     },
     "P402": {
       "en": "Store in a dry place.",
@@ -3017,7 +3203,8 @@
       "fi": "Varastoi kuivassa paikassa.",
       "pt": "Armazenar em local seco.",
       "hu": "Száraz helyen tárolandó.",
-      "el": "Αποθηκεύεται σε στεγνό μέρος."
+      "el": "Αποθηκεύεται σε στεγνό μέρος.",
+      "nb": "Oppbevares tørt."
     },
     "P403": {
       "en": "Store in a well-ventilated place.",
@@ -3032,7 +3219,8 @@
       "fi": "Varastoi paikassa, jossa on hyvä ilmanvaihto.",
       "pt": "Armazenar em local bem ventilado.",
       "hu": "Jól szellőző helyen tárolandó.",
-      "el": "Αποθηκεύεται σε καλά αεριζόμενο χώρο."
+      "el": "Αποθηκεύεται σε καλά αεριζόμενο χώρο.",
+      "nb": "Oppbevares på et godt ventilert sted."
     },
     "P404": {
       "en": "Store in a closed container.",
@@ -3047,7 +3235,8 @@
       "fi": "Varastoi suljettuna.",
       "pt": "Armazenar em recipiente fechado.",
       "hu": "Zárt edényben tárolandó.",
-      "el": "Φυλάσσεται σε κλειστό περιέκτη."
+      "el": "Φυλάσσεται σε κλειστό περιέκτη.",
+      "nb": "Oppbevares i lukket beholder."
     },
     "P405": {
       "en": "Store locked up.",
@@ -3062,7 +3251,8 @@
       "fi": "Varastoi lukitussa tilassa.",
       "pt": "Armazenar em local fechado à chave.",
       "hu": "Elzárva tárolandó.",
-      "el": "Φυλάσσεται κλειδωμένο."
+      "el": "Φυλάσσεται κλειδωμένο.",
+      "nb": "Oppbevares innelåst."
     },
     "P407": {
       "en": "Maintain air gap between stacks or pallets.",
@@ -3077,7 +3267,8 @@
       "fi": "Jätä pinojen tai kuormalavojen väliin ilmarako.",
       "pt": "Respeitar as distâncias mínimas entre pilhas ou paletes.",
       "hu": "A rakatok vagy raklapok között térközt kell hagyni.",
-      "el": "Να υπάρχει κενό αέρος μεταξύ των σωρών ή παλετών."
+      "el": "Να υπάρχει κενό αέρος μεταξύ των σωρών ή παλετών.",
+      "nb": "Se til at det er luft mellom stabler eller paller."
     },
     "P410": {
       "en": "Protect from sunlight.",
@@ -3092,7 +3283,8 @@
       "fi": "Suojaa auringonvalolta.",
       "pt": "Manter ao abrigo da luz solar.",
       "hu": "Napfénytől védendő.",
-      "el": "Να προστατεύεται από τις ηλιακές ακτίνες."
+      "el": "Να προστατεύεται από τις ηλιακές ακτίνες.",
+      "nb": "Beskyttes mot sollys."
     },
     "P420": {
       "en": "Store separately.",
@@ -3107,7 +3299,8 @@
       "fi": "Varastoi erillään.",
       "pt": "Armazenar separadamente.",
       "hu": "Elkülönítve tárolandó.",
-      "el": "Αποθηκεύεται χωριστά."
+      "el": "Αποθηκεύεται χωριστά.",
+      "nb": "Lagres separat."
     },
     "P402+P404": {
       "en": "Store in a dry place. Store in a closed container.",
@@ -3122,7 +3315,8 @@
       "fi": "Varastoi kuivassa paikassa. Varastoi suljettuna.",
       "pt": "Armazenar em local seco. Armazenar em recipiente fechado.",
       "hu": "Száraz helyen tárolandó. Zárt edényben tárolandó.",
-      "el": "Αποθηκεύεται σε στεγνό μέρος. Φυλάσσεται σε κλειστό περιέκτη."
+      "el": "Αποθηκεύεται σε στεγνό μέρος. Φυλάσσεται σε κλειστό περιέκτη.",
+      "nb": "Oppbevares tørt. Oppbevares i lukket beholder."
     },
     "P403+P233": {
       "en": "Store in a well-ventilated place. Keep container tightly closed.",
@@ -3137,7 +3331,8 @@
       "fi": "Varastoi paikassa, jossa on hyvä ilmanvaihto. Säilytä tiiviisti suljettuna.",
       "pt": "Armazenar em local bem ventilado. Manter o recipiente bem fechado.",
       "hu": "Jól szellőző helyen tárolandó. Az edény szorosan lezárva tartandó.",
-      "el": "Αποθηκεύεται σε καλά αεριζόμενο χώρο. Ο περιέκτης διατηρείται ερμητικά κλειστός."
+      "el": "Αποθηκεύεται σε καλά αεριζόμενο χώρο. Ο περιέκτης διατηρείται ερμητικά κλειστός.",
+      "nb": "Oppbevares på et godt ventilert sted. Hold beholderen tett lukket."
     },
     "P403+P235": {
       "en": "Store in a well-ventilated place. Keep cool.",
@@ -3152,7 +3347,8 @@
       "fi": "Varastoi paikassa, jossa on hyvä ilmanvaihto. Säilytä viileässä.",
       "pt": "Armazenar em local bem ventilado. Conservar em ambiente fresco.",
       "hu": "Jól szellőző helyen tárolandó. Hűvös helyen tartandó.",
-      "el": "Αποθηκεύεται σε καλά αεριζόμενο χώρο. Διατηρείται δροσερό."
+      "el": "Αποθηκεύεται σε καλά αεριζόμενο χώρο. Διατηρείται δροσερό.",
+      "nb": "Oppbevares på et godt ventilert sted. Oppbevares kjølig."
     },
     "P410+P403": {
       "en": "Protect from sunlight. Store in a well-ventilated place.",
@@ -3167,7 +3363,8 @@
       "fi": "Suojaa auringonvalolta. Varastoi paikassa, jossa on hyvä ilmanvaihto.",
       "pt": "Manter ao abrigo da luz solar. Armazenar em local bem ventilado.",
       "hu": "Napfénytől védendő. Jól szellőző helyen tárolandó.",
-      "el": "Να προστατεύεται από τις ηλιακές ακτίνες. Αποθηκεύεται σε καλά αεριζόμενο χώρο."
+      "el": "Να προστατεύεται από τις ηλιακές ακτίνες. Αποθηκεύεται σε καλά αεριζόμενο χώρο.",
+      "nb": "Beskyttes mot sollys. Oppbevares på et godt ventilert sted."
     },
     "P502": {
       "en": "Refer to manufacturer or supplier for information on recovery or recycling.",
@@ -3182,7 +3379,8 @@
       "fi": "Hanki valmistajalta tai toimittajalta tietoja uudelleenkäytöstä tai kierrätyksestä.",
       "pt": "Solicitar ao fabricante ou fornecedor informações relativas à recuperação ou reciclagem.",
       "hu": "A gyártó vagy a szállító határozza meg a hasznosításra vagy az újrafeldolgozásra vonatkozó információkat.",
-      "el": "Ανατρέξτε στον παρασκευαστή ή τον προμηθευτή για πληροφορίες όσον αφορά την ανάκτηση ή την ανακύκλωση."
+      "el": "Ανατρέξτε στον παρασκευαστή ή τον προμηθευτή για πληροφορίες όσον αφορά την ανάκτηση ή την ανακύκλωση.",
+      "nb": "Henvend deg til framstiller eller leverandør for informasjon om gjenvinning"
     }
   },
   "needs_own_text": [

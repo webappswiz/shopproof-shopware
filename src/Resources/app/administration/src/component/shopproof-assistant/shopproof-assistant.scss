@@ -1,0 +1,16 @@
+.shopproof-assistant {
+    &__heading { margin: 16px 0 4px; font-size: 16px; }
+    &__switches { border: 0; padding: 0; margin: 0 0 12px; }
+    &__switches p { margin: 0 0 8px; }
+    &__switches label { font-weight: 400; }
+    &__notice { padding: 8px 12px; border-radius: 4px; margin: 12px 0; }
+    &__notice.is-success { background: #e8f5ee; color: #0b5c2e; }
+    &__notice.is-error { background: #fdecea; color: #8a1c14; }
+    &__key { background: #f4f6f8; border-radius: 4px; padding: 12px; margin: 12px 0; }
+    &__key code, &__key pre { word-break: break-all; white-space: pre-wrap; }
+    &__key pre { background: #fff; border: 1px solid #d1d9e0; border-radius: 4px; padding: 8px; font-size: 12px; }
+    &__table { width: 100%; border-collapse: collapse; margin: 8px 0 12px; }
+    &__table th, &__table td { text-align: left; vertical-align: top; padding: 6px 8px; border-bottom: 1px solid #d1d9e0; }
+    &__small { font-size: 13px; color: #52667a; }
+    &__copied { margin-left: 6px; color: #0b5c2e; }
+}

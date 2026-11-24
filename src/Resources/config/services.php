@@ -7,6 +7,9 @@ use Shopproof\Compliance\Cache\ManufacturerCacheSubscriber;
 use Shopproof\Compliance\Cancel\CancelForm;
 use Shopproof\Compliance\Cancel\CancelService;
 use Shopproof\Compliance\Cancel\CancelStore;
+use Shopproof\Compliance\Assistant\AssistantStore;
+use Shopproof\Compliance\Assistant\AssistantTools;
+use Shopproof\Compliance\Controller\AssistantController;
 use Shopproof\Compliance\Controller\CancelController;
 use Shopproof\Compliance\Controller\CancellationController;
 use Shopproof\Compliance\Twig\CancelExtension;
@@ -23,7 +26,9 @@ use Shopproof\Compliance\Controller\PlacementController;
 use Shopproof\Compliance\Controller\ProofLogController;
 use Shopproof\Compliance\Controller\RulesController;
 use Shopproof\Compliance\Controller\SafetyController;
+use Shopproof\Compliance\Setup\OverviewData;
 use Shopproof\Compliance\Setup\Recommended;
+use Shopproof\Compliance\Setup\SettingsFile;
 use Shopproof\Compliance\Setup\ShopDetails;
 use Shopproof\Compliance\Controller\WithdrawalController;
 use Shopproof\Compliance\Controller\WithdrawalStatusController;
@@ -149,6 +154,27 @@ return static function (ContainerConfigurator $container): void {
         ->call('setContainer', [service('service_container')]);
 
     $services->set(Recommended::class);
+
+    $services->set(OverviewData::class);
+
+    // AI assistant connection (decision 0047): what the assistant may change is checked against config.xml.
+    $services->set(SettingsFile::class)
+        ->factory([SettingsFile::class, 'fromFile'])
+        ->args([__DIR__ . '/config.xml']);
+
+    $services->set(AssistantStore::class);
+
+    $services->set(AssistantTools::class);
+
+    $services->set(AssistantController::class)
+        ->public()
+        ->arg('$contractFile', __DIR__ . '/assistant-tools.json')
+        ->arg('$version', (static function (): string {
+            $plugin = json_decode((string) file_get_contents(__DIR__ . '/../../../composer.json'), true);
+
+            return \is_array($plugin) && \is_string($plugin['version'] ?? null) ? $plugin['version'] : '';
+        })())
+        ->call('setContainer', [service('service_container')]);
 
     $services->set(OverviewController::class)
         ->public()

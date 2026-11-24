@@ -21,7 +21,16 @@ final class HazardLabel
 
     public const SIGNAL_WORDS = ['danger', 'warning'];
 
-    public const LANGUAGES = ['en', 'de', 'fr', 'it', 'nl', 'es', 'pl', 'sv', 'da', 'fi', 'pt', 'hu', 'el'];
+    public const LANGUAGES = ['en', 'de', 'fr', 'it', 'nl', 'es', 'pl', 'sv', 'da', 'fi', 'pt', 'hu', 'el', 'nb'];
+
+    /**
+     * Languages outside the EU editions of CLP: official texts for some codes only (Norwegian, from
+     * Norway's EEA texts). A label that needs a code without one is shown in English as a whole.
+     */
+    public const PARTIAL_LANGUAGES = ['nb'];
+
+    /** Page languages that read the Norwegian (bokmål) texts: bokmål, nynorsk and plain "no". */
+    public const NORWEGIAN = ['nb', 'nn', 'no'];
 
     /** @var array<mixed>|null */
     private ?array $data = null;
@@ -44,6 +53,11 @@ final class HazardLabel
     {
         $lang = self::language($localeCode, $fallback);
         $get = static fn (string $key): mixed => \is_array($fields) ? ($fields[self::PREFIX . $key] ?? null) : null;
+        // Never a label in two languages: Norwegian only when every official text has one.
+        if (!$this->complete(self::text($get('hazard_statements')), 'hazard_statements', $lang)
+            || !$this->complete(self::text($get('precautionary_statements')), 'precautionary_statements', $lang)) {
+            $lang = 'en';
+        }
 
         $pictograms = [];
         $names = $this->group('pictograms');
@@ -161,6 +175,9 @@ final class HazardLabel
     public static function language(string $localeCode, string $fallback): string
     {
         $page = strtolower(substr($localeCode, 0, 2));
+        if (\in_array($page, self::NORWEGIAN, true)) {
+            return 'nb';
+        }
         if (\in_array($page, self::LANGUAGES, true)) {
             return $page;
         }
@@ -190,6 +207,26 @@ final class HazardLabel
         }
 
         return $out;
+    }
+
+    /**
+     * Whether every official statement in the lines has a text in the language. Always true for the
+     * EU languages; for Norwegian false when a code has no official Norwegian text.
+     */
+    private function complete(string $raw, string $group, string $lang): bool
+    {
+        if (!\in_array($lang, self::PARTIAL_LANGUAGES, true)) {
+            return true;
+        }
+        $table = $this->group($group);
+        foreach (self::parse($raw) as $line) {
+            $texts = $table[$line['code']] ?? null;
+            if ($line['text'] === '' && \is_array($texts) && !\is_string($texts[$lang] ?? null)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private static function text(mixed $value): string
