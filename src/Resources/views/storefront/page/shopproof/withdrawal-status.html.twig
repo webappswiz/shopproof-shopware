@@ -21,6 +21,11 @@
                 {% endfor %}
             </ol>
             <p>{{ 'shopproof.withdrawal.status.note'|trans }}</p>
+            {% if shopproofCredit %}
+                {# The opt-in credit line: only the brand word links, with no tracking and no referrer. #}
+                {% set shopproofCreditParts = ('shopproof.withdrawal.status.credit'|trans)|split('Shopproof', 2) %}
+                <p class="shopproof-credit"><small>{{ shopproofCreditParts[0] }}<a href="https://shopproof.app/" rel="noreferrer">Shopproof</a>{{ shopproofCreditParts[1] ?? '' }}</small></p>
+            {% endif %}
         {% else %}
             <p>{{ 'shopproof.withdrawal.status.notFound'|trans }}</p>
         {% endif %}

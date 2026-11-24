@@ -16,12 +16,14 @@ use Shopproof\Compliance\Command\SettingsImportCommand;
 use Shopproof\Compliance\Command\SetupCheckCommand;
 use Shopproof\Compliance\Controller\ContactController;
 use Shopproof\Compliance\Controller\GreenClaimsController;
+use Shopproof\Compliance\Controller\MarketplaceController;
 use Shopproof\Compliance\Controller\OverviewController;
 use Shopproof\Compliance\Support\SupportMessage;
 use Shopproof\Compliance\Controller\PlacementController;
 use Shopproof\Compliance\Controller\ProofLogController;
 use Shopproof\Compliance\Controller\RulesController;
 use Shopproof\Compliance\Controller\SafetyController;
+use Shopproof\Compliance\Setup\Recommended;
 use Shopproof\Compliance\Setup\ShopDetails;
 use Shopproof\Compliance\Controller\WithdrawalController;
 use Shopproof\Compliance\Controller\WithdrawalStatusController;
@@ -146,6 +148,8 @@ return static function (ContainerConfigurator $container): void {
         ->public()
         ->call('setContainer', [service('service_container')]);
 
+    $services->set(Recommended::class);
+
     $services->set(OverviewController::class)
         ->public()
         ->call('setContainer', [service('service_container')]);
@@ -175,6 +179,11 @@ return static function (ContainerConfigurator $container): void {
         ->args([__DIR__ . '/green-claims.json']);
 
     $services->set(GreenClaimsController::class)
+        ->public()
+        ->call('setContainer', [service('service_container')]);
+
+    $services->set(MarketplaceController::class)
+        ->arg('$products', service('product.repository'))
         ->public()
         ->call('setContainer', [service('service_container')]);
 

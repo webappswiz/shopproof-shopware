@@ -32,7 +32,8 @@
                 "reference": "Referencia",
                 "receivedOn": "Recibido el %date%",
                 "notFound": "No hemos encontrado este desistimiento. Utilice el enlace de su correo de confirmación o póngase en contacto con la tienda.",
-                "note": "La tienda actualiza esta página. Si tiene preguntas, responda a su correo de confirmación."
+                "note": "La tienda actualiza esta página. Si tiene preguntas, responda a su correo de confirmación.",
+                "credit": "Formulario de desistimiento de Shopproof"
             }
         },
         "digital": {

@@ -21,7 +21,7 @@ final class HazardLabel
 
     public const SIGNAL_WORDS = ['danger', 'warning'];
 
-    public const LANGUAGES = ['en', 'de', 'fr', 'it', 'nl'];
+    public const LANGUAGES = ['en', 'de', 'fr', 'it', 'nl', 'es', 'pl', 'sv', 'da', 'fi', 'pt', 'hu', 'el'];
 
     /** @var array<mixed>|null */
     private ?array $data = null;

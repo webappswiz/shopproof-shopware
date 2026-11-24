@@ -348,7 +348,6 @@
             "doneSr": "(terminé)",
             "optional": "(facultatif)",
             "start": "Commencer",
-            "complete": "La configuration est terminée. Shopproof continue de vérifier et affiche ci-dessous tout ce qui est nouveau.",
             "glance": "Votre boutique en un coup d'œil",
             "why": "Pourquoi est-ce nécessaire ?",
             "whyText": "La loi : {law}. Elle s'applique à partir du {date}.",
@@ -400,10 +399,15 @@
                 "withdrawals": {
                     "title": "Rétractations",
                     "failed": "{count} demande de rétractation n'a pas pu être enregistrée. | {count} demandes de rétractation n'ont pas pu être enregistrées.",
+                    "received": "{count} rétractation reçue. | {count} rétractations reçues.",
+                    "none": "Aucune pour l'instant. Elles apparaissent ici quand un client utilise le bouton."
+                },
+                "refunds": {
+                    "title": "Remboursements",
                     "overdue": "{count} remboursement est dû aujourd'hui ou en retard. | {count} remboursements sont dus aujourd'hui ou en retard.",
                     "soon": "{count} remboursement est dû dans les 3 prochains jours. | {count} remboursements sont dus dans les 3 prochains jours.",
-                    "received": "{count} rétractation reçue. Rien n'est dû. | {count} rétractations reçues. Rien n'est dû.",
-                    "none": "Aucune pour l'instant. Elles apparaissent ici quand un client utilise le bouton."
+                    "open": "{count} rétractation attend encore un remboursement. Aucun n'est dû dans les 3 prochains jours. | {count} rétractations attendent encore un remboursement. Aucun n'est dû dans les 3 prochains jours.",
+                    "none": "Aucun remboursement en attente."
                 },
                 "safety": {
                     "title": "Sécurité des produits",
@@ -458,6 +462,46 @@
                 "openSettings": "Ouvrir les réglages Shopproof",
                 "footer": "Shopproof ne peut pas être votre personne responsable dans l'UE, votre intermédiaire IOSS ni votre représentant RGPD : vous les désignez vous-même. Il s'agit d'une aide technique, pas d'un conseil juridique ou fiscal.",
                 "guide": "Guide pour les vendeurs hors UE"
+            },
+            "verdict": {
+                "clearTitle": "Rien à faire pour vous pour le moment",
+                "needsTitle": "{count} point vous attend | {count} points vous attendent",
+                "unchecked": "Non vérifié",
+                "note": "Shopproof voit vos réglages et les pages de votre boutique. Vos CGV et autres textes juridiques restent à vérifier par vous. Aide technique, pas un conseil juridique."
+            },
+            "recommended": {
+                "title": "Activer ce dont votre boutique a besoin",
+                "lastTitle": "Activé en un clic",
+                "intro": "Shopproof a lu vos produits et vos vitrines. Un clic active ces fonctions pour tous les canaux de vente, chacune à l'endroit où les boutiques l'affichent habituellement. Vous pouvez annuler, ou modifier chacune dans les réglages de Shopproof.",
+                "item": {
+                    "guarantee": {
+                        "title": "Mention de garantie légale",
+                        "where": "Sur les pages produit, sous la description du produit.",
+                        "why": "Le droit de l'UE demande aux boutiques qui vendent des biens de l'afficher."
+                    },
+                    "priorPrice": {
+                        "title": "Prix le plus bas avant une promotion",
+                        "where": "Seulement à côté des prix réduits. Les produits sans réduction n'affichent rien.",
+                        "why": "Les règles de l'UE demandent le prix le plus bas des 30 jours avant une réduction."
+                    },
+                    "deliveryLine": {
+                        "title": "Ligne livraison et paiement",
+                        "where": "Au-dessus du bouton Passer commande dans le panier et en haut de la page de paiement, d'après les pays et moyens de paiement de vos vitrines.",
+                        "why": "Les clients doivent voir où vous livrez et comment payer avant de commander."
+                    },
+                    "digital": {
+                        "title": "Consentement pour les téléchargements au paiement",
+                        "where": "Deux cases à cocher au paiement, seulement quand le panier contient un téléchargement.",
+                        "why": "Sans elles, les clients gardent leur droit de rétractation après le téléchargement."
+                    }
+                },
+                "button": "Activer ces fonctions",
+                "last": "Vous avez activé {count} fonction en un clic. | Vous avez activé {count} fonctions en un clic.",
+                "undo": "Annuler",
+                "undone": "Annulé. Les réglages sont revenus à leur état d'avant le clic.",
+                "nothingToUndo": "Rien à annuler. L'annulation est possible pendant 14 jours après le clic. Sinon, modifiez chaque réglage dans la configuration du plugin.",
+                "failed": "Cela n'a pas fonctionné. Rechargez la page pour voir les réglages actuels.",
+                "note": "Les choix qui vous reviennent, comme un délai de rétractation plus long ou votre mention sur le règlement des litiges, ne sont jamais activés à votre place. Un canal de vente qui a sa propre valeur pour un réglage la garde. Aide technique, pas un conseil juridique."
             }
         },
         "cancel": {
@@ -572,6 +616,63 @@
             "copy": "Copier le brouillon",
             "copied": "Copié.",
             "where": "Aide technique, pas un conseil juridique. Lisez le brouillon et modifiez ce qui ne convient pas à votre boutique avant de le publier."
+        },
+        "marketplaces": {
+            "title": "Vendre sur eBay ou Amazon",
+            "intro": "eBay et Amazon demandent les mêmes informations de sécurité des produits que vos pages produit. Shopproof les remplit à partir des réglages de sécurité des produits, de vos fabricants et de vos produits, associés par numéro de produit (Custom label chez eBay, SKU chez Amazon). Rien n'est envoyé : vous téléchargez les fichiers et les importez vous-même. Aide technique, pas un conseil juridique.",
+            "ebay": "eBay",
+            "ebayStep1": "Dans le Seller Hub d'eBay, ouvrez Rapports, puis Importations. Choisissez « Obtenir un modèle », puis Annonces et « Modifier le prix et la quantité », et téléchargez le fichier.",
+            "ebayStep2": "Choisissez ce fichier ici et cliquez sur « Remplir les informations de sécurité ».",
+            "ebayStep3": "Importez le fichier obtenu sur la même page d'eBay, puis consultez le rapport de résultats d'eBay.",
+            "ebayNote": "eBay supprime les informations envoyées vides, donc les annonces que Shopproof ne peut pas remplir entièrement ne sont pas dans le fichier. Le fichier contient aussi vos prix et stocks tels qu'eBay les avait : importez-le peu après l'avoir téléchargé.",
+            "ebayFile": "Fichier d'eBay (CSV)",
+            "ebayButton": "Remplir les informations de sécurité",
+            "amazon": "Amazon",
+            "amazonStep1": "Cliquez sur « Créer les fichiers Amazon ».",
+            "amazonStep2": "Dans Seller Central, saisissez une fois chaque fabricant et chaque personne responsable dans l'UE du fichier des contacts. Amazon relie les annonces à eux par leur adresse e-mail.",
+            "amazonStep3": "Copiez les colonnes du fichier des annonces dans le fichier d'inventaire d'Amazon pour vos produits et importez-le en mise à jour partielle.",
+            "amazonNote": "Amazon accepte les avertissements et les informations de sécurité sous forme de documents ou d'images, pas de texte. Ajoutez-les dans Seller Central.",
+            "amazonButton": "Créer les fichiers Amazon",
+            "ebayFilled": "{filled} annonce sur {total} remplie. | {filled} annonces sur {total} remplies.",
+            "amazonFilled": "{filled} produit actif sur {total} est dans les fichiers. | {filled} produits actifs sur {total} sont dans les fichiers.",
+            "downloadEbay": "Télécharger le fichier eBay rempli",
+            "downloadContacts": "Télécharger les contacts",
+            "downloadListings": "Télécharger les annonces",
+            "itemNumber": "Numéro d'objet eBay",
+            "sku": "Numéro de produit",
+            "inFile": "Dans le fichier",
+            "check": "À vérifier",
+            "yes": "Oui",
+            "no": "Non",
+            "more": "Et {count} de plus.",
+            "party": "{who} : {reason}",
+            "failed": "Non fait : la boutique n'a pas pu créer le fichier. Réessayez et, si cela échoue encore, contactez le support Shopproof.",
+            "who": {
+                "manufacturer": "Fabricant",
+                "responsible": "Personne responsable dans l'UE"
+            },
+            "reason": {
+                "address": "L'adresse postale est vide ou n'a pas pu être lue.",
+                "street": "L'adresse n'a pas de rue.",
+                "postcode": "Le code postal n'a pas pu être lu. Écrivez l'adresse ainsi : rue, puis code postal et ville, puis pays, chacun sur sa propre ligne.",
+                "country": "Le pays n'a pas pu être lu. Mettez le pays sur la dernière ligne de l'adresse.",
+                "email": "Une adresse e-mail est nécessaire.",
+                "tooLong": "Une information est plus longue que ce qu'eBay accepte.",
+                "emailShared": "La même adresse e-mail est utilisée avec d'autres coordonnées. Amazon retrouve les contacts par leur adresse e-mail, chacun a donc besoin de la sienne."
+            },
+            "problem": {
+                "notEbayFile": "Ce n'est pas un fichier du Seller Hub d'eBay. Téléchargez sur eBay le fichier « Modifier le prix et la quantité » et choisissez-le ici sans le modifier.",
+                "itemNumberFormat": "Un tableur a modifié les numéros d'objet de ce fichier (par exemple en 1.23E+11). Téléchargez à nouveau le fichier sur eBay et choisissez-le ici sans l'ouvrir.",
+                "noFile": "Choisissez d'abord le fichier d'eBay.",
+                "tooBig": "Ce fichier dépasse 8 Mo. Téléchargez moins d'annonces à la fois sur eBay.",
+                "notRevise": "Pas une annonce à modifier (l'action n'est pas Revise).",
+                "noSku": "Pas de Custom label sur eBay pour retrouver le produit par son numéro de produit.",
+                "notInShop": "Aucun produit avec ce numéro de produit dans votre boutique.",
+                "variationsDiffer": "Ses variantes ont des informations de sécurité différentes. eBay en prend une seule par annonce.",
+                "manufacturerMissing": "Aucun fabricant n'est renseigné.",
+                "responsibleMissing": "Le fabricant est hors de l'UE et aucune personne responsable dans l'UE n'est renseignée.",
+                "responsibleCleared": "Aucune personne responsable dans l'UE n'est renseignée, eBay retire donc celle de cette annonce."
+            }
         }
     }
 }

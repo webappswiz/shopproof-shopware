@@ -32,7 +32,8 @@
                 "reference": "Nuorodos numeris",
                 "receivedOn": "Gauta %date%",
                 "notFound": "Šio atsisakymo neradome. Naudokite nuorodą iš patvirtinimo el. laiško arba susisiekite su parduotuve.",
-                "note": "Parduotuvė atnaujina šį puslapį. Kilus klausimų, atsakykite į patvirtinimo el. laišką."
+                "note": "Parduotuvė atnaujina šį puslapį. Kilus klausimų, atsakykite į patvirtinimo el. laišką.",
+                "credit": "Atsisakymo formą teikia Shopproof"
             }
         },
         "digital": {

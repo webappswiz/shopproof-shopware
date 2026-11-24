@@ -32,7 +32,8 @@
                 "reference": "Riferimento",
                 "receivedOn": "Ricevuto il %date%",
                 "notFound": "Non abbiamo trovato questo recesso. Usa il link nella tua conferma di ricezione o contatta il negozio.",
-                "note": "Il negozio aggiorna questa pagina. Per domande, rispondi alla tua conferma di ricezione."
+                "note": "Il negozio aggiorna questa pagina. Per domande, rispondi alla tua conferma di ricezione.",
+                "credit": "Modulo di recesso di Shopproof"
             }
         },
         "digital": {

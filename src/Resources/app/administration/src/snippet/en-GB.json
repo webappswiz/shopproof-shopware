@@ -348,7 +348,6 @@
             "doneSr": "(done)",
             "optional": "(optional)",
             "start": "Start",
-            "complete": "Setup is complete. Shopproof keeps checking and shows anything new below.",
             "glance": "Your shop at a glance",
             "why": "Why is this needed?",
             "whyText": "The law: {law}. It applies from {date}.",
@@ -400,10 +399,15 @@
                 "withdrawals": {
                     "title": "Withdrawals",
                     "failed": "{count} withdrawal request could not be recorded. | {count} withdrawal requests could not be recorded.",
+                    "received": "{count} withdrawal received. | {count} withdrawals received.",
+                    "none": "None yet. They appear here when a customer uses the button."
+                },
+                "refunds": {
+                    "title": "Refunds",
                     "overdue": "{count} refund is due today or late. | {count} refunds are due today or late.",
                     "soon": "{count} refund is due in the next 3 days. | {count} refunds are due in the next 3 days.",
-                    "received": "{count} withdrawal received. Nothing is due. | {count} withdrawals received. Nothing is due.",
-                    "none": "None yet. They appear here when a customer uses the button."
+                    "open": "{count} withdrawal still waits for a refund. None is due in the next 3 days. | {count} withdrawals still wait for a refund. None is due in the next 3 days.",
+                    "none": "No refund is waiting."
                 },
                 "safety": {
                     "title": "Product safety",
@@ -458,6 +462,46 @@
                 "openSettings": "Open the Shopproof settings",
                 "footer": "Shopproof cannot act as your EU responsible person, IOSS intermediary or GDPR representative: you appoint them yourself. This is technical help, not legal or tax advice.",
                 "guide": "Guide for sellers outside the EU"
+            },
+            "verdict": {
+                "clearTitle": "Nothing for you to do right now",
+                "needsTitle": "{count} thing needs you | {count} things need you",
+                "unchecked": "Not checked",
+                "note": "Shopproof sees your settings and shop pages. Your terms and other legal texts stay yours to check. Technical help, not legal advice."
+            },
+            "recommended": {
+                "title": "Switch on what your shop needs",
+                "lastTitle": "Switched on with one press",
+                "intro": "Shopproof read your products and storefronts. One press switches on these for all sales channels, each in the place shops usually show it. You can undo it, or change each one in the Shopproof settings.",
+                "item": {
+                    "guarantee": {
+                        "title": "Legal guarantee notice",
+                        "where": "On product pages, below the product description.",
+                        "why": "EU law asks shops that sell goods to show it."
+                    },
+                    "priorPrice": {
+                        "title": "Lowest price before a sale",
+                        "where": "Next to reduced prices only. Products not on sale show nothing.",
+                        "why": "EU rules ask for the lowest price of the 30 days before a reduction."
+                    },
+                    "deliveryLine": {
+                        "title": "Delivery and payment line",
+                        "where": "Above the Go to checkout button in the cart and at the top of the checkout page, read from your storefronts' countries and payment methods.",
+                        "why": "Shoppers must see where you deliver and how they can pay before they order."
+                    },
+                    "digital": {
+                        "title": "Download consent at checkout",
+                        "where": "Two tick boxes at checkout, only when the cart has a download.",
+                        "why": "Without them, customers keep the right to withdraw after downloading."
+                    }
+                },
+                "button": "Switch these on",
+                "last": "You switched on {count} feature with one press. | You switched on {count} features with one press.",
+                "undo": "Undo",
+                "undone": "Undone. The settings are back as they were before the press.",
+                "nothingToUndo": "Nothing to undo. Undo is offered for 14 days after a press. Change each setting in the plugin configuration instead.",
+                "failed": "That did not work. Reload the page to see the current settings.",
+                "note": "Choices only you can make, such as a longer withdrawal period or your dispute statement, are never switched on for you. A sales channel with its own value for a setting keeps it. Technical help, not legal advice."
             }
         },
         "cancel": {
@@ -572,6 +616,63 @@
             "copy": "Copy the draft",
             "copied": "Copied.",
             "where": "Technical help, not legal advice. Read the draft and change anything that does not fit your shop before you publish it."
+        },
+        "marketplaces": {
+            "title": "Sell on eBay or Amazon",
+            "intro": "eBay and Amazon ask for the same product safety details as your product pages. Shopproof fills them in from the product safety settings, your manufacturers and your products, matched by product number (eBay calls it Custom label, Amazon calls it SKU). Nothing is sent: you download the files and upload them yourself. Technical help, not legal advice.",
+            "ebay": "eBay",
+            "ebayStep1": "In eBay Seller Hub, open Reports, then Uploads. Choose \"Get template\", then Listings and \"Edit price and quantity\", and download the file.",
+            "ebayStep2": "Choose that file here and click \"Fill in safety details\".",
+            "ebayStep3": "Upload the file you get back on the same eBay page, then check eBay's results report.",
+            "ebayNote": "eBay removes details that are sent blank, so listings Shopproof cannot fill completely are left out of the file. The file also holds your prices and stock as eBay had them, so upload it soon after downloading it.",
+            "ebayFile": "File from eBay (CSV)",
+            "ebayButton": "Fill in safety details",
+            "amazon": "Amazon",
+            "amazonStep1": "Click \"Make Amazon files\".",
+            "amazonStep2": "In Seller Central, enter each manufacturer and EU responsible person from the contacts file once. Amazon links listings to them by email address.",
+            "amazonStep3": "Copy the columns of the listings file into Amazon's inventory file for your products and upload it as a partial update.",
+            "amazonNote": "Amazon takes warnings and safety information as documents or pictures, not as text. Add them in Seller Central.",
+            "amazonButton": "Make Amazon files",
+            "ebayFilled": "{filled} of {total} listing filled in. | {filled} of {total} listings filled in.",
+            "amazonFilled": "{filled} of {total} active product is in the files. | {filled} of {total} active products are in the files.",
+            "downloadEbay": "Download the filled eBay file",
+            "downloadContacts": "Download contacts",
+            "downloadListings": "Download listings",
+            "itemNumber": "eBay item number",
+            "sku": "Product number",
+            "inFile": "In the file",
+            "check": "What to check",
+            "yes": "Yes",
+            "no": "No",
+            "more": "And {count} more.",
+            "party": "{who}: {reason}",
+            "failed": "Not done: the shop could not make the file. Try again, and if it keeps failing, contact Shopproof support.",
+            "who": {
+                "manufacturer": "Manufacturer",
+                "responsible": "EU responsible person"
+            },
+            "reason": {
+                "address": "the postal address is empty or could not be read.",
+                "street": "the address has no street.",
+                "postcode": "the postcode could not be read. Write the address as street, then postcode and town, then country, each on its own line.",
+                "country": "the country could not be read. Put the country on the last line of the address.",
+                "email": "an email address is needed.",
+                "tooLong": "a detail is longer than eBay allows.",
+                "emailShared": "the same email address is used with other details. Amazon finds contacts by email address, so each needs its own."
+            },
+            "problem": {
+                "notEbayFile": "This is not an eBay Seller Hub file. Download the \"Edit price and quantity\" file from eBay and choose it here without changing it.",
+                "itemNumberFormat": "A spreadsheet changed the item numbers in this file (for example to 1.23E+11). Download the file from eBay again and choose it here without opening it.",
+                "noFile": "Choose the file from eBay first.",
+                "tooBig": "This file is larger than 8 MB. Download fewer listings from eBay at a time.",
+                "notRevise": "Not a listing to edit (the action is not Revise).",
+                "noSku": "No Custom label on eBay to find the product by its product number.",
+                "notInShop": "No product with this product number in your shop.",
+                "variationsDiffer": "Its variations have different safety details. eBay takes one set per listing.",
+                "manufacturerMissing": "No manufacturer is set.",
+                "responsibleMissing": "The manufacturer is outside the EU and no EU responsible person is set.",
+                "responsibleCleared": "No EU responsible person is set, so eBay removes one this listing has."
+            }
         }
     }
 }

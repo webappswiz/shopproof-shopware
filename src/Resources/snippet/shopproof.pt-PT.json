@@ -32,7 +32,8 @@
                 "reference": "Referência",
                 "receivedOn": "Recebida em %date%",
                 "notFound": "Não encontrámos esta retratação. Utilize a ligação do seu e-mail de confirmação ou contacte a loja.",
-                "note": "A loja atualiza esta página. Se tiver perguntas, responda ao seu e-mail de confirmação."
+                "note": "A loja atualiza esta página. Se tiver perguntas, responda ao seu e-mail de confirmação.",
+                "credit": "Formulário de retratação da Shopproof"
             }
         },
         "digital": {

@@ -32,7 +32,8 @@
                 "reference": "Referenčné číslo",
                 "receivedOn": "Prijaté %date%",
                 "notFound": "Toto odstúpenie sme nenašli. Použite odkaz z potvrdzujúceho e-mailu alebo kontaktujte obchod.",
-                "note": "Obchod túto stránku aktualizuje. S otázkami odpovedzte na potvrdzujúci e-mail."
+                "note": "Obchod túto stránku aktualizuje. S otázkami odpovedzte na potvrdzujúci e-mail.",
+                "credit": "Formulár na odstúpenie poskytuje Shopproof"
             }
         },
         "digital": {

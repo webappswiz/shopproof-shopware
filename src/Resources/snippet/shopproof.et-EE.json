@@ -32,7 +32,8 @@
                 "reference": "Viitenumber",
                 "receivedOn": "Kätte saadud %date%",
                 "notFound": "Me ei leidnud seda taganemist. Kasutage kinnituskirjas olevat linki või võtke poega ühendust.",
-                "note": "Pood uuendab seda lehte. Küsimuste korral vastake kinnituskirjale."
+                "note": "Pood uuendab seda lehte. Küsimuste korral vastake kinnituskirjale.",
+                "credit": "Taganemisvormi pakub Shopproof"
             }
         },
         "digital": {

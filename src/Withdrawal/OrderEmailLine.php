@@ -22,6 +22,12 @@ final class OrderEmailLine
     public const DIGITAL_MARKER = 'shopproof-digital-consent';
     public const SERVICE_MARKER = 'shopproof-service-consent';
     public const LEGAL_MARKER = 'shopproof-legal-links';
+    /** Marker class of the opt-in "Withdrawal form by Shopproof" line. */
+    public const CREDIT_MARKER = 'shopproof-credit';
+
+    /** Where the credit line links, with no tracking parameters (as on WooCommerce and Shopify). */
+    public const CREDIT_URL = 'https://shopproof.app/';
+    public const CREDIT_BRAND = 'Shopproof';
 
     /** @var array<mixed>|null */
     private ?array $data = null;
@@ -204,6 +210,38 @@ final class OrderEmailLine
         $lines = array_map(static fn (array $l): string => $safe($l[0] . ': ' . $l[1]), $links);
 
         return ['html' => $html, 'plain' => rtrim($plain) . "\n\n" . implode("\n", $lines) . "\n"];
+    }
+
+    /**
+     * The opt-in credit line ("Withdrawal form by Shopproof") for a locale, English for a
+     * language without one.
+     */
+    public function creditWords(string $localeCode): ?string
+    {
+        return $this->sentence($localeCode, 'credit') ?? $this->sentence('en', 'credit');
+    }
+
+    /**
+     * Adds the opt-in credit line to the end of the receipt email, once, in small print, with
+     * only the brand word linked. Nothing is added when the words do not name the brand.
+     *
+     * @return array{html: string, plain: string}
+     */
+    public static function addCredit(string $html, string $plain, string $words): array
+    {
+        $at = strpos($words, self::CREDIT_BRAND);
+        if ($at === false || str_contains($html, self::CREDIT_MARKER)) {
+            return ['html' => $html, 'plain' => $plain];
+        }
+        $e = static fn (string $text): string => str_replace(['{', '}'], ['&#123;', '&#125;'], htmlspecialchars($text, \ENT_QUOTES | \ENT_HTML5, 'UTF-8'));
+        $link = '<a href="' . $e(self::CREDIT_URL) . '" rel="noreferrer">' . $e(self::CREDIT_BRAND) . '</a>';
+        $line = '<p class="' . self::CREDIT_MARKER . '" style="margin-top:2em;font-size:0.85em;">'
+            . $e(substr($words, 0, $at)) . $link . $e(substr($words, $at + \strlen(self::CREDIT_BRAND))) . '</p>';
+        $trimmed = rtrim($html);
+        $html = str_ends_with(strtolower($trimmed), '</div>') ? substr($trimmed, 0, -6) . $line . "\n</div>\n" : $trimmed . "\n" . $line . "\n";
+        $safe = static fn (string $text): string => str_replace(['{{', '{%', '{#'], ['{ {', '{ %', '{ #'], $text);
+
+        return ['html' => $html, 'plain' => rtrim($plain) . "\n\n" . $safe($words) . ' (' . self::CREDIT_URL . ")\n"];
     }
 
     private function sentence(string $localeCode, string $key): ?string

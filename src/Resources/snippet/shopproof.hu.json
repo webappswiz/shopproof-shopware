@@ -32,7 +32,8 @@
                 "reference": "Hivatkozási szám",
                 "receivedOn": "Beérkezett: %date%",
                 "notFound": "Nem találtuk ezt az elállást. Kérjük, használja a visszaigazoló e-mailben található linket, vagy forduljon az üzlethez.",
-                "note": "Az üzlet frissíti ezt az oldalt. Kérdés esetén válaszoljon a visszaigazoló e-mailre."
+                "note": "Az üzlet frissíti ezt az oldalt. Kérdés esetén válaszoljon a visszaigazoló e-mailre.",
+                "credit": "Az elállási űrlapot a Shopproof biztosítja"
             }
         },
         "digital": {

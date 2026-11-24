@@ -32,7 +32,8 @@
                 "reference": "Reference",
                 "receivedOn": "Received on %date%",
                 "notFound": "We could not find this withdrawal. Please use the link in your receipt email, or contact the shop.",
-                "note": "The shop updates this page. For questions, reply to your receipt email."
+                "note": "The shop updates this page. For questions, reply to your receipt email.",
+                "credit": "Withdrawal form by Shopproof"
             }
         },
         "digital": {

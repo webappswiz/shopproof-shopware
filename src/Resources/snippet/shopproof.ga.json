@@ -32,7 +32,8 @@
                 "reference": "Tagairt",
                 "receivedOn": "Fuarthas ar %date%",
                 "notFound": "Níor aimsíomar an tarraingt siar seo. Úsáid an nasc i do ríomhphost admhála, nó déan teagmháil leis an siopa.",
-                "note": "Nuashonraíonn an siopa an leathanach seo. Má tá ceist agat, freagair do ríomhphost admhála."
+                "note": "Nuashonraíonn an siopa an leathanach seo. Má tá ceist agat, freagair do ríomhphost admhála.",
+                "credit": "Foirm tarraingthe siar ó Shopproof"
             }
         },
         "digital": {

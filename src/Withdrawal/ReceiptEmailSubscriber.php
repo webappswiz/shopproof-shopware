@@ -5,12 +5,14 @@ namespace Shopproof\Compliance\Withdrawal;
 use Psr\Log\LoggerInterface;
 use Shopware\Core\Content\MailTemplate\Service\Event\MailBeforeValidateEvent;
 use Shopware\Core\Framework\Uuid\Uuid;
+use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Adds the items the customer ticked, the customer's status page link, and the shop's returns
- * portal when it has one, to the confirmation Shopware's withdrawal flow sends the customer, as
- * the WooCommerce plugin and the Shopify app do in their receipts. The shop's copy gets the items
+ * Adds the items the customer ticked, the customer's status page link, the shop's returns
+ * portal when it has one, and the opt-in credit line when the shop turned it on, to the
+ * confirmation Shopware's withdrawal flow sends the customer, as the WooCommerce plugin and the
+ * Shopify app do in their receipts. The shop's copy gets the items
  * and names those the shop excludes from withdrawal. The record is kept
  * just before that email goes out, so it is found by the customer's email in the same storefront.
  */
@@ -27,6 +29,7 @@ final class ReceiptEmailSubscriber implements EventSubscriberInterface
         private readonly LoggerInterface $logger,
         private readonly ReturnsWebhook $returns,
         private readonly WithdrawalItems $items,
+        private readonly SystemConfigService $config,
     ) {
     }
 
@@ -78,6 +81,11 @@ final class ReceiptEmailSubscriber implements EventSubscriberInterface
             $portal = $this->returns->portalUrl($channel);
             if ($words !== null && $portal !== '') {
                 ['html' => $html, 'plain' => $plain] = OrderEmailLine::addReturns($html, $plain, $words, $portal);
+            }
+            // The opt-in "Withdrawal form by Shopproof" line, last, only when the shop turned it on.
+            $credit = $this->line->creditWords($locale);
+            if ($credit !== null && $this->config->getBool('ShopproofCompliance.config.withdrawalCreditLine', $channel)) {
+                ['html' => $html, 'plain' => $plain] = OrderEmailLine::addCredit($html, $plain, $credit);
             }
             if ($html !== $data['contentHtml']) {
                 $event->addData('contentHtml', $html);

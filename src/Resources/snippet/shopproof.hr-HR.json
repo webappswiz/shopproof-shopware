@@ -32,7 +32,8 @@
                 "reference": "Referentni broj",
                 "receivedOn": "Primljeno %date%",
                 "notFound": "Nismo pronašli ovaj odustanak. Upotrijebite poveznicu iz e-poruke s potvrdom ili se obratite trgovini.",
-                "note": "Trgovina ažurira ovu stranicu. Za pitanja odgovorite na e-poruku s potvrdom."
+                "note": "Trgovina ažurira ovu stranicu. Za pitanja odgovorite na e-poruku s potvrdom.",
+                "credit": "Obrazac za odustanak omogućuje Shopproof"
             }
         },
         "digital": {

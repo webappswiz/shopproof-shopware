@@ -5,6 +5,7 @@ namespace Shopproof\Compliance\Controller;
 use Shopproof\Compliance\Withdrawal\OrderLink;
 use Shopproof\Compliance\Withdrawal\WithdrawalStore;
 use Shopware\Core\PlatformRequest;
+use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Shopware\Storefront\Controller\StorefrontController;
 use Shopware\Storefront\Page\GenericPageLoaderInterface;
@@ -24,6 +25,7 @@ final class WithdrawalStatusController extends StorefrontController
         private readonly GenericPageLoaderInterface $pages,
         private readonly WithdrawalStore $store,
         private readonly OrderLink $link,
+        private readonly SystemConfigService $config,
     ) {
     }
 
@@ -51,6 +53,8 @@ final class WithdrawalStatusController extends StorefrontController
                 ],
                 'current' => $record['status'],
             ],
+            // The opt-in "Withdrawal form by Shopproof" line, only when the shop turned it on.
+            'shopproofCredit' => $record !== null && $this->config->getBool('ShopproofCompliance.config.withdrawalCreditLine', $context->getSalesChannelId()),
         ]);
         $response->setStatusCode($record === null ? Response::HTTP_NOT_FOUND : Response::HTTP_OK);
         $response->headers->set('Cache-Control', 'no-store, private');

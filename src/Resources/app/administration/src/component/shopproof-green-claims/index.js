@@ -37,11 +37,11 @@ export default Shopware.Component.wrapComponentConfig({
             if (r.total > r.checked) {
                 return this.$t('shopproof.greenClaims.scopeSome', { checked: r.checked, total: r.total });
             }
-            return this.$tc('shopproof.greenClaims.scopeAll', r.checked, { checked: r.checked });
+            return this.$t('shopproof.greenClaims.scopeAll', { checked: r.checked }, r.checked);
         },
 
         note() {
-            return this.aside > 0 ? this.$tc('shopproof.greenClaims.aside', this.aside, { count: this.aside }) : '';
+            return this.aside > 0 ? this.$t('shopproof.greenClaims.aside', { count: this.aside }, this.aside) : '';
         },
     },
 

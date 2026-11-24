@@ -10,10 +10,10 @@ namespace Shopproof\Compliance\Notes;
  */
 final class NotesTexts
 {
-    public const LANGUAGES = ['en', 'de', 'fr', 'it', 'nl'];
+    public const LANGUAGES = ['en', 'de', 'fr', 'it', 'nl', 'es', 'pl', 'sv', 'da', 'fi', 'pt', 'hu', 'el'];
 
-    /** Language of each launch country, for text when the page language has none. */
-    public const COUNTRY_LANGUAGE = ['AT' => 'de', 'DE' => 'de', 'FR' => 'fr', 'IT' => 'it', 'NL' => 'nl'];
+    /** Language of each country with texts, for text when the page language has none. */
+    public const COUNTRY_LANGUAGE = ['AT' => 'de', 'DE' => 'de', 'FR' => 'fr', 'IT' => 'it', 'NL' => 'nl', 'ES' => 'es', 'PL' => 'pl', 'SE' => 'sv', 'DK' => 'da', 'FI' => 'fi', 'PT' => 'pt', 'HU' => 'hu', 'GR' => 'el', 'CY' => 'el'];
 
     /** @var array<string, array<string, mixed>>|null */
     private ?array $data = null;

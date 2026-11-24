@@ -27,13 +27,13 @@ final class Overview
      *     productsWithoutMaker: int,
      *     products: int,
      *     registrationNumbers: int,
-     *     withdrawals: array{total: int, overdue: int, soon: int},
+     *     withdrawals: array{total: int, overdue: int, soon: int, open: int},
      *     proof: array{available: bool, ok: bool, checked: int, lastSnapshot: int|null},
      *     rules: array{available: bool, count: int, version: string},
      *     now: int,
      * } $in
      *
-     * @return array{steps: list<array{key: string, done: bool, optional: bool}>, done: int, required: int, cards: list<array{key: string, state: string, text: string, values: array<string, int|string>}>}
+     * @return array{steps: list<array{key: string, done: bool, optional: bool}>, done: int, required: int, cards: list<array{key: string, state: string, text: string, values: array<string, int|string>}>, verdict: array{clear: bool, items: list<array{key: string, state: string, text: string, values: array<string, int|string>, step: bool}>}}
      */
     public static function build(array $in): array
     {
@@ -54,13 +54,10 @@ final class Overview
         $required = array_filter($steps, static fn (array $s): bool => !$s['optional']);
         $done = \count(array_filter($required, static fn (array $s): bool => $s['done']));
 
-        return [
-            'steps' => $steps,
-            'done' => $done,
-            'required' => \count($required),
-            'cards' => [
+        $cards = [
                 self::withdrawalCard($check, $button, $in['placement']),
                 self::withdrawalsCard($check, $in['withdrawals']),
+                ...self::refundsCard($in['withdrawals']),
                 self::safetyCard($in),
                 self::card('guarantee', $guarantee === null ? 'warn' : ($guarantee ? 'good' : 'warn'), $guarantee === null ? 'unknown' : ($guarantee ? 'on' : 'off')),
                 self::card('registrations', $in['registrationNumbers'] > 0 ? 'good' : 'info', $in['registrationNumbers'] > 0 ? 'some' : 'none', ['count' => $in['registrationNumbers']]),
@@ -68,8 +65,68 @@ final class Overview
                 $in['rules']['available']
                     ? self::card('rules', 'good', 'loaded', ['count' => $in['rules']['count'], 'version' => $in['rules']['version']])
                     : self::card('rules', 'bad', 'missing'),
-            ],
         ];
+
+        return [
+            'steps' => $steps,
+            'done' => $done,
+            'required' => \count($required),
+            'cards' => $cards,
+            'verdict' => self::verdict($cards, $steps),
+        ];
+    }
+
+    /** Card states that need a person, most urgent first. "good" and "info" never do. */
+    private const VERDICT_ORDER = ['bad' => 0, 'unchecked' => 1, 'warn' => 2, 'todo' => 3];
+
+    /** Card texts that mean Shopproof could not check: listed as not checked, never as fine. */
+    private const UNCHECKED = ['guarantee' => 'unknown', 'withdrawal' => 'noPages'];
+
+    /** Cards named before everything else when they need a person: a refund deadline cannot wait. */
+    private const FIRST = ['refunds'];
+
+    /** Setup steps and the card that shows them, so a step and its card are listed once. */
+    private const STEP_CARDS = ['button' => 'withdrawal', 'placement' => 'withdrawal', 'safety' => 'safety', 'guarantee' => 'guarantee'];
+
+    /**
+     * The one answer at the top of the page: nothing needs the shop owner, or what does, by name.
+     * Built only from the cards and steps, so it never says more than they do. An open setup step
+     * always counts, so it never reads "nothing to do" while setup is open.
+     *
+     * @param list<array{key: string, state: string, text: string, values: array<string, int|string>}> $cards
+     * @param list<array{key: string, done: bool, optional: bool}> $steps
+     *
+     * @return array{clear: bool, items: list<array{key: string, state: string, text: string, values: array<string, int|string>, step: bool}>}
+     */
+    public static function verdict(array $cards, array $steps): array
+    {
+        $items = [];
+        $keys = [];
+        foreach ($cards as $card) {
+            $state = (self::UNCHECKED[$card['key']] ?? null) === $card['text'] ? 'unchecked' : $card['state'];
+            if (!isset(self::VERDICT_ORDER[$state])) {
+                continue;
+            }
+            $keys[] = $card['key'];
+            $items[] = ['key' => $card['key'], 'state' => $state, 'text' => $card['text'], 'values' => $card['values'], 'step' => false];
+        }
+        foreach ($steps as $step) {
+            if ($step['optional'] || $step['done']) {
+                continue;
+            }
+            $card = self::STEP_CARDS[$step['key']] ?? $step['key'];
+            if (\in_array($card, $keys, true)) {
+                continue;
+            }
+            $keys[] = $card;
+            $items[] = ['key' => $step['key'], 'state' => 'todo', 'text' => '', 'values' => [], 'step' => true];
+        }
+        // A refund deadline close or past first, then most urgent first; usort is stable since PHP 8,
+        // so card order stays inside each state.
+        $first = static fn (array $i): int => !$i['step'] && \in_array($i['key'], self::FIRST, true) && \in_array($i['state'], ['bad', 'warn'], true) ? 0 : 1;
+        usort($items, static fn (array $a, array $b): int => [$first($a), self::VERDICT_ORDER[$a['state']]] <=> [$first($b), self::VERDICT_ORDER[$b['state']]]);
+
+        return ['clear' => $items === [], 'items' => $items];
     }
 
     /**
@@ -145,8 +202,11 @@ final class Overview
     }
 
     /**
+     * Withdrawals received; their refunds have a card of their own, so a request that could not be
+     * recorded never hides a refund deadline.
+     *
      * @param array{failedRecords: int} $check
-     * @param array{total: int, overdue: int, soon: int} $w
+     * @param array{total: int, overdue: int, soon: int, open: int} $w
      *
      * @return array{key: string, state: string, text: string, values: array<string, int|string>}
      */
@@ -155,17 +215,34 @@ final class Overview
         if ($check['failedRecords'] > 0) {
             return self::card('withdrawals', 'bad', 'failed', ['count' => $check['failedRecords']]);
         }
-        if ($w['overdue'] > 0) {
-            return self::card('withdrawals', 'bad', 'overdue', ['count' => $w['overdue']]);
-        }
-        if ($w['soon'] > 0) {
-            return self::card('withdrawals', 'warn', 'soon', ['count' => $w['soon']]);
-        }
         if ($w['total'] > 0) {
             return self::card('withdrawals', 'good', 'received', ['count' => $w['total']]);
         }
 
         return self::card('withdrawals', 'info', 'none');
+    }
+
+    /**
+     * Refunds: due today or late, due within 3 days, still waiting, or none waiting. No card
+     * before the first withdrawal.
+     *
+     * @param array{total: int, overdue: int, soon: int, open: int} $w
+     *
+     * @return list<array{key: string, state: string, text: string, values: array<string, int|string>}>
+     */
+    private static function refundsCard(array $w): array
+    {
+        if ($w['overdue'] > 0) {
+            return [self::card('refunds', 'bad', 'overdue', ['count' => $w['overdue']])];
+        }
+        if ($w['soon'] > 0) {
+            return [self::card('refunds', 'warn', 'soon', ['count' => $w['soon']])];
+        }
+        if ($w['open'] > 0) {
+            return [self::card('refunds', 'todo', 'open', ['count' => $w['open']])];
+        }
+
+        return $w['total'] > 0 ? [self::card('refunds', 'good', 'none')] : [];
     }
 
     /**

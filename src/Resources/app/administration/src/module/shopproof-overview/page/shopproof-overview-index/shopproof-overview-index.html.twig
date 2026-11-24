@@ -12,7 +12,7 @@
         <sw-card-view>
             <div v-if="check && check.failedRecords > 0" class="shopproof-overview__alert" role="alert">
                 <p>
-                    <strong>{{ $tc('shopproof.withdrawal.failedRecords', check.failedRecords, { count: check.failedRecords }) }}</strong>
+                    <strong>{{ $t('shopproof.withdrawal.failedRecords', { count: check.failedRecords }, check.failedRecords) }}</strong>
                 </p>
                 <p>{{ $t('shopproof.withdrawal.failedHelp') }}</p>
                 <mt-button size="small" variant="secondary" :disabled="clearing" @click="clearFailures">
@@ -171,6 +171,8 @@
                     <router-link :to="{ name: 'sw.product.index' }">{{ $t('shopproof.bulk.openProducts') }}</router-link>
                 </div>
             </mt-card>
+
+            <shopproof-marketplaces />
 
             <mt-card
                 id="shopproof-proof-log"
@@ -340,7 +342,7 @@
                 <p v-if="cancellationsFailed" role="alert">{{ $t('shopproof.cancel.failed') }}</p>
                 <p v-else-if="cancellations && cancellations.total === 0">{{ $t('shopproof.cancel.none') }}</p>
                 <template v-else-if="cancellations">
-                    <p v-if="cancellations.open > 0"><strong>{{ $tc('shopproof.cancel.open', cancellations.open, { count: cancellations.open }) }}</strong></p>
+                    <p v-if="cancellations.open > 0"><strong>{{ $t('shopproof.cancel.open', { count: cancellations.open }, cancellations.open) }}</strong></p>
                     <table class="shopproof-overview__table">
                         <caption class="shopproof-overview__sr">{{ $t('shopproof.cancel.title') }}</caption>
                         <thead>

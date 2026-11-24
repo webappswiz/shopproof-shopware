@@ -32,7 +32,8 @@
                 "reference": "Atsauce",
                 "receivedOn": "Saņemts %date%",
                 "notFound": "Mēs neatradām šo atteikumu. Lūdzu, izmantojiet saiti no apstiprinājuma e-pasta vai sazinieties ar veikalu.",
-                "note": "Veikals atjaunina šo lapu. Ja jums ir jautājumi, atbildiet uz apstiprinājuma e-pastu."
+                "note": "Veikals atjaunina šo lapu. Ja jums ir jautājumi, atbildiet uz apstiprinājuma e-pastu.",
+                "credit": "Atteikuma veidlapu nodrošina Shopproof"
             }
         },
         "digital": {

@@ -32,7 +32,8 @@
                 "reference": "Referință",
                 "receivedOn": "Primită pe %date%",
                 "notFound": "Nu am găsit această retragere. Folosiți linkul din e-mailul de confirmare sau contactați magazinul.",
-                "note": "Magazinul actualizează această pagină. Pentru întrebări, răspundeți la e-mailul de confirmare."
+                "note": "Magazinul actualizează această pagină. Pentru întrebări, răspundeți la e-mailul de confirmare.",
+                "credit": "Formular de retragere oferit de Shopproof"
             }
         },
         "digital": {

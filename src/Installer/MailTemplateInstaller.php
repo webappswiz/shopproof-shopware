@@ -51,6 +51,46 @@ final class MailTemplateInstaller
                 '{{ salesChannel.translated.name }}: uw retour is aangekomen ({{ withdrawal.contractNumber }})',
                 'Uw retour voor bestelling {{ withdrawal.contractNumber }} is aangekomen bij {{ salesChannel.translated.name }}. Daarna volgt uw terugbetaling.',
             ],
+            'es' => [
+                'Desistimiento: devolución recibida (Shopproof)',
+                '{{ salesChannel.translated.name }}: su devolución ha llegado ({{ withdrawal.contractNumber }})',
+                'Su devolución del pedido {{ withdrawal.contractNumber }} ha llegado a {{ salesChannel.translated.name }}. A continuación recibirá su reembolso.',
+            ],
+            'pl' => [
+                'Odstąpienie od umowy: zwrot dotarł (Shopproof)',
+                '{{ salesChannel.translated.name }}: Twój zwrot dotarł ({{ withdrawal.contractNumber }})',
+                'Twój zwrot do zamówienia {{ withdrawal.contractNumber }} dotarł do {{ salesChannel.translated.name }}. Następnym krokiem jest zwrot pieniędzy.',
+            ],
+            'sv' => [
+                'Frånträdande: returen har kommit fram (Shopproof)',
+                '{{ salesChannel.translated.name }}: din retur har kommit fram ({{ withdrawal.contractNumber }})',
+                'Din retur för order {{ withdrawal.contractNumber }} har kommit fram till {{ salesChannel.translated.name }}. Därefter följer din återbetalning.',
+            ],
+            'da' => [
+                'Fortrydelse: returnering modtaget (Shopproof)',
+                '{{ salesChannel.translated.name }}: din returnering er modtaget ({{ withdrawal.contractNumber }})',
+                'Din returnering for ordre {{ withdrawal.contractNumber }} er modtaget hos {{ salesChannel.translated.name }}. Derefter følger din tilbagebetaling.',
+            ],
+            'fi' => [
+                'Peruutus: palautus saapunut (Shopproof)',
+                '{{ salesChannel.translated.name }}: palautuksesi on saapunut ({{ withdrawal.contractNumber }})',
+                'Palautuksesi tilaukseen {{ withdrawal.contractNumber }} on saapunut kauppaan {{ salesChannel.translated.name }}. Seuraavaksi saat hyvityksen.',
+            ],
+            'pt' => [
+                'Retratação: devolução recebida (Shopproof)',
+                '{{ salesChannel.translated.name }}: a sua devolução chegou ({{ withdrawal.contractNumber }})',
+                'A sua devolução da encomenda {{ withdrawal.contractNumber }} chegou a {{ salesChannel.translated.name }}. Segue-se o seu reembolso.',
+            ],
+            'hu' => [
+                'Elállás: a visszaküldött termék megérkezett (Shopproof)',
+                '{{ salesChannel.translated.name }}: visszaküldött terméke megérkezett ({{ withdrawal.contractNumber }})',
+                'A(z) {{ withdrawal.contractNumber }} számú rendeléshez tartozó visszaküldött terméke megérkezett ide: {{ salesChannel.translated.name }}. A következő lépés a visszatérítés.',
+            ],
+            'el' => [
+                'Υπαναχώρηση: η επιστροφή παραλήφθηκε (Shopproof)',
+                '{{ salesChannel.translated.name }}: η επιστροφή σας παραλήφθηκε ({{ withdrawal.contractNumber }})',
+                'Η επιστροφή σας για την παραγγελία {{ withdrawal.contractNumber }} παραλήφθηκε από το κατάστημα {{ salesChannel.translated.name }}. Στη συνέχεια θα λάβετε την επιστροφή χρημάτων.',
+            ],
         ],
         self::REFUND_SENT => [
             'en' => [
@@ -78,6 +118,46 @@ final class MailTemplateInstaller
                 '{{ salesChannel.translated.name }}: uw terugbetaling is onderweg ({{ withdrawal.contractNumber }})',
                 '{{ salesChannel.translated.name }} heeft de terugbetaling voor uw herroeping van bestelling {{ withdrawal.contractNumber }} verzonden. Afhankelijk van uw betaalmethode kan het een paar dagen duren voordat het bedrag op uw rekening staat.',
             ],
+            'es' => [
+                'Desistimiento: reembolso enviado (Shopproof)',
+                '{{ salesChannel.translated.name }}: su reembolso está en camino ({{ withdrawal.contractNumber }})',
+                '{{ salesChannel.translated.name }} ha enviado el reembolso de su desistimiento del pedido {{ withdrawal.contractNumber }}. Según el método de pago, puede tardar unos días en llegar a su cuenta.',
+            ],
+            'pl' => [
+                'Odstąpienie od umowy: zwrot pieniędzy wysłany (Shopproof)',
+                '{{ salesChannel.translated.name }}: zwrot pieniędzy jest w drodze ({{ withdrawal.contractNumber }})',
+                'Sklep {{ salesChannel.translated.name }} wysłał zwrot pieniędzy za odstąpienie od umowy dotyczącej zamówienia {{ withdrawal.contractNumber }}. W zależności od metody płatności może minąć kilka dni, zanim środki pojawią się na koncie.',
+            ],
+            'sv' => [
+                'Frånträdande: återbetalning skickad (Shopproof)',
+                '{{ salesChannel.translated.name }}: din återbetalning är på väg ({{ withdrawal.contractNumber }})',
+                '{{ salesChannel.translated.name }} har skickat återbetalningen för ditt frånträdande av order {{ withdrawal.contractNumber }}. Beroende på betalningssätt kan det ta några dagar innan pengarna finns på ditt konto.',
+            ],
+            'da' => [
+                'Fortrydelse: tilbagebetaling sendt (Shopproof)',
+                '{{ salesChannel.translated.name }}: din tilbagebetaling er på vej ({{ withdrawal.contractNumber }})',
+                '{{ salesChannel.translated.name }} har sendt tilbagebetalingen for din fortrydelse af ordre {{ withdrawal.contractNumber }}. Afhængigt af betalingsmetoden kan der gå nogle dage, før beløbet står på din konto.',
+            ],
+            'fi' => [
+                'Peruutus: hyvitys lähetetty (Shopproof)',
+                '{{ salesChannel.translated.name }}: hyvityksesi on matkalla ({{ withdrawal.contractNumber }})',
+                '{{ salesChannel.translated.name }} on lähettänyt hyvityksen tilauksen {{ withdrawal.contractNumber }} peruutuksesta. Maksutavasta riippuen voi kestää muutaman päivän, ennen kuin raha näkyy tililläsi.',
+            ],
+            'pt' => [
+                'Retratação: reembolso enviado (Shopproof)',
+                '{{ salesChannel.translated.name }}: o seu reembolso está a caminho ({{ withdrawal.contractNumber }})',
+                '{{ salesChannel.translated.name }} enviou o reembolso da sua retratação da encomenda {{ withdrawal.contractNumber }}. Consoante o método de pagamento, pode demorar alguns dias a chegar à sua conta.',
+            ],
+            'hu' => [
+                'Elállás: a visszatérítés elküldve (Shopproof)',
+                '{{ salesChannel.translated.name }}: visszatérítése úton van ({{ withdrawal.contractNumber }})',
+                '{{ salesChannel.translated.name }} elküldte a(z) {{ withdrawal.contractNumber }} számú rendeléstől való elállásához tartozó visszatérítést. A fizetési módtól függően néhány napig tarthat, amíg az összeg megjelenik a számláján.',
+            ],
+            'el' => [
+                'Υπαναχώρηση: η επιστροφή χρημάτων στάλθηκε (Shopproof)',
+                '{{ salesChannel.translated.name }}: η επιστροφή χρημάτων είναι καθ\' οδόν ({{ withdrawal.contractNumber }})',
+                'Το κατάστημα {{ salesChannel.translated.name }} έστειλε την επιστροφή χρημάτων για την υπαναχώρησή σας από την παραγγελία {{ withdrawal.contractNumber }}. Ανάλογα με τον τρόπο πληρωμής, μπορεί να χρειαστούν μερικές ημέρες μέχρι να εμφανιστεί το ποσό στον λογαριασμό σας.',
+            ],
         ],
     ];
 
@@ -93,10 +173,18 @@ final class MailTemplateInstaller
         'fr' => ['Bonjour {{ withdrawal.firstName }} {{ withdrawal.lastName }},', 'Suivez l\'état de votre rétractation ici :', 'Cordialement,'],
         'it' => ['Gentile {{ withdrawal.firstName }} {{ withdrawal.lastName }},', 'Segui lo stato del tuo recesso qui:', 'Cordiali saluti,'],
         'nl' => ['Beste {{ withdrawal.firstName }} {{ withdrawal.lastName }},', 'Bekijk de status van uw herroeping hier:', 'Met vriendelijke groet,'],
+        'es' => ['Hola, {{ withdrawal.firstName }} {{ withdrawal.lastName }}:', 'Consulte el estado de su desistimiento aquí:', 'Saludos cordiales,'],
+        'pl' => ['Dzień dobry {{ withdrawal.firstName }} {{ withdrawal.lastName }},', 'Status odstąpienia od umowy sprawdzisz tutaj:', 'Z poważaniem'],
+        'sv' => ['Hej {{ withdrawal.firstName }} {{ withdrawal.lastName }},', 'Se status för ditt frånträdande här:', 'Vänliga hälsningar'],
+        'da' => ['Hej {{ withdrawal.firstName }} {{ withdrawal.lastName }}', 'Se status for din fortrydelse her:', 'Venlig hilsen'],
+        'fi' => ['Hei {{ withdrawal.firstName }} {{ withdrawal.lastName }},', 'Katso peruutuksesi tila täältä:', 'Ystävällisin terveisin'],
+        'pt' => ['Olá, {{ withdrawal.firstName }} {{ withdrawal.lastName }},', 'Veja o estado da sua retratação aqui:', 'Com os melhores cumprimentos,'],
+        'hu' => ['Kedves {{ withdrawal.firstName }} {{ withdrawal.lastName }}!', 'Elállása állapotát itt követheti:', 'Üdvözlettel:'],
+        'el' => ['Αγαπητέ/ή {{ withdrawal.firstName }} {{ withdrawal.lastName }},', 'Δείτε την κατάσταση της υπαναχώρησής σας εδώ:', 'Με εκτίμηση,'],
     ];
 
     /** The template languages; any other locale gets English. */
-    public const LANGUAGES = ['en', 'de', 'fr', 'it', 'nl'];
+    public const LANGUAGES = ['en', 'de', 'fr', 'it', 'nl', 'es', 'pl', 'sv', 'da', 'fi', 'pt', 'hu', 'el'];
 
     public function __construct(private readonly Connection $connection)
     {

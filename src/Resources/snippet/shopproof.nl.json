@@ -32,7 +32,8 @@
                 "reference": "Referentie",
                 "receivedOn": "Ontvangen op %date%",
                 "notFound": "We konden deze herroeping niet vinden. Gebruik de link in uw ontvangstbevestiging of neem contact op met de winkel.",
-                "note": "De winkel werkt deze pagina bij. Hebt u vragen, beantwoord dan uw ontvangstbevestiging."
+                "note": "De winkel werkt deze pagina bij. Hebt u vragen, beantwoord dan uw ontvangstbevestiging.",
+                "credit": "Herroepingsformulier van Shopproof"
             }
         },
         "digital": {

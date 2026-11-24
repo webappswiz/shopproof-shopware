@@ -9,6 +9,7 @@ use Shopproof\Compliance\Rules\RulesFile;
 use Shopproof\Compliance\Rules\RulesUpdater;
 use Shopproof\Compliance\Setup\NonEuChecklist;
 use Shopproof\Compliance\Setup\Overview;
+use Shopproof\Compliance\Setup\Recommended;
 use Shopproof\Compliance\Storefront\Registrations;
 use Shopproof\Compliance\Storefront\SafetyData;
 use Shopproof\Compliance\Withdrawal\OrderEmailLine;
@@ -41,6 +42,7 @@ final class OverviewController extends AbstractController
         private readonly RulesUpdater $rules,
         private readonly SystemConfigService $config,
         private readonly Connection $connection,
+        private readonly Recommended $recommended,
     ) {
     }
 
@@ -89,7 +91,41 @@ final class OverviewController extends AbstractController
                 && trim($this->config->getString(self::CONFIG . 'safetyResponsibleAddress')) !== ''
         );
 
+        // "Switch on what your shop needs": what one press would switch on, and the last press while it can be undone.
+        $out['recommended'] = [
+            'plan' => Recommended::plan($this->recommended->facts()),
+            'last' => $this->recommended->last(time()),
+        ];
+
         return new JsonResponse($out);
+    }
+
+    /**
+     * The press: switches on what the shop's facts call for right now (read again here, never
+     * taken from the request).
+     */
+    #[Route(
+        path: '/api/_action/shopproof/recommended/apply',
+        name: 'api.action.shopproof.recommended.apply',
+        defaults: [PlatformRequest::ATTRIBUTE_ACL => ['system_config:update']],
+        methods: ['POST']
+    )]
+    public function applyRecommended(): JsonResponse
+    {
+        $done = $this->recommended->apply(Recommended::plan($this->recommended->facts()), time());
+
+        return new JsonResponse(['switched' => $done]);
+    }
+
+    #[Route(
+        path: '/api/_action/shopproof/recommended/undo',
+        name: 'api.action.shopproof.recommended.undo',
+        defaults: [PlatformRequest::ATTRIBUTE_ACL => ['system_config:update']],
+        methods: ['POST']
+    )]
+    public function undoRecommended(): JsonResponse
+    {
+        return new JsonResponse(['undone' => $this->recommended->undo()]);
     }
 
     private function products(): int
@@ -124,15 +160,17 @@ final class OverviewController extends AbstractController
     }
 
     /**
-     * Refunds due today, overdue or due within 3 days, over every withdrawal: the refund clock
-     * needs each order's delivery and payment state, so the list is read page by page.
+     * Refunds due today, overdue or due within 3 days, and the others still waiting for a refund,
+     * over every withdrawal: the refund clock needs each order's delivery and payment state, so the
+     * list is read page by page. A withdrawal sent late or usually without a right runs no refund
+     * clock and is not counted; the list shows it with its own badge.
      *
-     * @return array{total: int, overdue: int, soon: int}
+     * @return array{total: int, overdue: int, soon: int, open: int}
      */
     private function withdrawalCounts(\DateTimeZone $zone): array
     {
         $days = OrderEmailLine::period($this->config->getInt(self::CONFIG . 'withdrawalDays'));
-        $out = ['total' => 0, 'overdue' => 0, 'soon' => 0];
+        $out = ['total' => 0, 'overdue' => 0, 'soon' => 0, 'open' => 0];
         $seen = 0;
         for ($page = 1; ; ++$page) {
             $list = $this->withdrawals->list($page, 100, '', $zone, $days);
@@ -144,6 +182,8 @@ final class OverviewController extends AbstractController
                     ++$out['overdue'];
                 } elseif ($refund === 'due' && \is_int($clock['daysLeft'] ?? null) && $clock['daysLeft'] <= 3) {
                     ++$out['soon'];
+                } elseif ($refund === 'due' || $refund === 'waiting') {
+                    ++$out['open'];
                 }
             }
             $seen += \count($list['items']);

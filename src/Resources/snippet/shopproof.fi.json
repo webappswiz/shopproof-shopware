@@ -32,7 +32,8 @@
                 "reference": "Viite",
                 "receivedOn": "Vastaanotettu %date%",
                 "notFound": "Emme löytäneet tätä peruutusta. Käytä vahvistussähköpostissa olevaa linkkiä tai ota yhteyttä kauppaan.",
-                "note": "Kauppa päivittää tätä sivua. Jos sinulla on kysyttävää, vastaa vahvistussähköpostiin."
+                "note": "Kauppa päivittää tätä sivua. Jos sinulla on kysyttävää, vastaa vahvistussähköpostiin.",
+                "credit": "Peruutuslomakkeen tarjoaa Shopproof"
             }
         },
         "digital": {

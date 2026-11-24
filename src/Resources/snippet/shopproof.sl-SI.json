@@ -32,7 +32,8 @@
                 "reference": "Referenčna številka",
                 "receivedOn": "Prejeto %date%",
                 "notFound": "Tega odstopa nismo našli. Uporabite povezavo iz potrditvenega e-poštnega sporočila ali se obrnite na trgovino.",
-                "note": "Trgovina posodablja to stran. Za vprašanja odgovorite na potrditveno e-poštno sporočilo."
+                "note": "Trgovina posodablja to stran. Za vprašanja odgovorite na potrditveno e-poštno sporočilo.",
+                "credit": "Obrazec za odstop zagotavlja Shopproof"
             }
         },
         "digital": {

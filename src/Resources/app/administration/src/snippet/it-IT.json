@@ -348,7 +348,6 @@
             "doneSr": "(completato)",
             "optional": "(facoltativo)",
             "start": "Inizia",
-            "complete": "La configurazione è completa. Shopproof continua a controllare e mostra qui sotto ogni novità.",
             "glance": "Il suo negozio in sintesi",
             "why": "Perché serve?",
             "whyText": "La legge: {law}. Si applica dal {date}.",
@@ -400,10 +399,15 @@
                 "withdrawals": {
                     "title": "Recessi",
                     "failed": "Non è stato possibile registrare {count} richiesta di recesso. | Non è stato possibile registrare {count} richieste di recesso.",
+                    "received": "{count} recesso ricevuto. | {count} recessi ricevuti.",
+                    "none": "Ancora nessuno. Compaiono qui quando un cliente usa il pulsante."
+                },
+                "refunds": {
+                    "title": "Rimborsi",
                     "overdue": "{count} rimborso è dovuto oggi o è in ritardo. | {count} rimborsi sono dovuti oggi o sono in ritardo.",
                     "soon": "{count} rimborso è dovuto nei prossimi 3 giorni. | {count} rimborsi sono dovuti nei prossimi 3 giorni.",
-                    "received": "{count} recesso ricevuto. Nulla è dovuto. | {count} recessi ricevuti. Nulla è dovuto.",
-                    "none": "Ancora nessuno. Compaiono qui quando un cliente usa il pulsante."
+                    "open": "{count} recesso attende ancora il rimborso. Nessuno scade nei prossimi 3 giorni. | {count} recessi attendono ancora il rimborso. Nessuno scade nei prossimi 3 giorni.",
+                    "none": "Nessun rimborso in attesa."
                 },
                 "safety": {
                     "title": "Sicurezza dei prodotti",
@@ -458,6 +462,46 @@
                 "openSettings": "Apri le impostazioni di Shopproof",
                 "footer": "Shopproof non può fare da persona responsabile nell'UE, intermediario IOSS o rappresentante GDPR: li nomina lei. Questo è aiuto tecnico, non consulenza legale o fiscale.",
                 "guide": "Guida per venditori fuori dall'UE"
+            },
+            "verdict": {
+                "clearTitle": "Per ora non c'è nulla da fare per Lei",
+                "needsTitle": "{count} cosa richiede il Suo intervento | {count} cose richiedono il Suo intervento",
+                "unchecked": "Non verificato",
+                "note": "Shopproof vede le Sue impostazioni e le pagine del negozio. Le condizioni di vendita e gli altri testi legali restano da verificare a Lei. Aiuto tecnico, non consulenza legale."
+            },
+            "recommended": {
+                "title": "Attiva ciò che serve al Suo negozio",
+                "lastTitle": "Attivato con un clic",
+                "intro": "Shopproof ha letto i Suoi prodotti e storefront. Un clic attiva queste funzioni per tutti i canali di vendita, ognuna nel punto in cui i negozi di solito la mostrano. Può annullare, oppure modificare ognuna nelle impostazioni di Shopproof.",
+                "item": {
+                    "guarantee": {
+                        "title": "Avviso sulla garanzia legale",
+                        "where": "Nelle pagine prodotto, sotto la descrizione del prodotto.",
+                        "why": "Il diritto UE chiede ai negozi che vendono beni di mostrarla."
+                    },
+                    "priorPrice": {
+                        "title": "Prezzo più basso prima di uno sconto",
+                        "where": "Solo accanto ai prezzi ridotti. I prodotti non in saldo non mostrano nulla.",
+                        "why": "Le regole UE chiedono il prezzo più basso dei 30 giorni prima di una riduzione."
+                    },
+                    "deliveryLine": {
+                        "title": "Riga su consegna e pagamento",
+                        "where": "Sopra il pulsante Vai alla cassa nel carrello e in cima alla pagina di pagamento, letta dai paesi e dai metodi di pagamento dei Suoi storefront.",
+                        "why": "I clienti devono vedere dove consegna e come possono pagare prima di ordinare."
+                    },
+                    "digital": {
+                        "title": "Consenso per i download alla cassa",
+                        "where": "Due caselle da spuntare alla cassa, solo quando il carrello contiene un download.",
+                        "why": "Senza di esse, i clienti mantengono il diritto di recesso anche dopo il download."
+                    }
+                },
+                "button": "Attiva queste funzioni",
+                "last": "Ha attivato {count} funzione con un clic. | Ha attivato {count} funzioni con un clic.",
+                "undo": "Annulla",
+                "undone": "Annullato. Le impostazioni sono tornate come prima del clic.",
+                "nothingToUndo": "Niente da annullare. L'annullamento è possibile per 14 giorni dopo il clic. Altrimenti modifichi ogni impostazione nella configurazione del plugin.",
+                "failed": "Non ha funzionato. Ricarichi la pagina per vedere le impostazioni attuali.",
+                "note": "Le scelte che spettano solo a Lei, come un periodo di recesso più lungo o la Sua dichiarazione sulla risoluzione delle controversie, non vengono mai attivate al posto Suo. Un canale di vendita con un proprio valore per un'impostazione lo mantiene. Aiuto tecnico, non consulenza legale."
             }
         },
         "cancel": {
@@ -572,6 +616,63 @@
             "copy": "Copia la bozza",
             "copied": "Copiato.",
             "where": "Aiuto tecnico, non consulenza legale. Legga la bozza e modifichi tutto ciò che non corrisponde al suo negozio prima di pubblicarla."
+        },
+        "marketplaces": {
+            "title": "Vendere su eBay o Amazon",
+            "intro": "eBay e Amazon chiedono gli stessi dati sulla sicurezza dei prodotti delle tue pagine prodotto. Shopproof li compila dalle impostazioni sulla sicurezza dei prodotti, dai tuoi produttori e dai tuoi prodotti, abbinati per numero prodotto (Custom label su eBay, SKU su Amazon). Non viene inviato nulla: scarichi i file e li carichi tu. Aiuto tecnico, non consulenza legale.",
+            "ebay": "eBay",
+            "ebayStep1": "Nel Seller Hub di eBay apra Report, poi Caricamenti. Scelga «Ottieni modello», poi Inserzioni e «Modifica prezzo e quantità», e scarichi il file.",
+            "ebayStep2": "Scelga qui quel file e clicchi su «Compila i dati di sicurezza».",
+            "ebayStep3": "Carichi il file ricevuto sulla stessa pagina di eBay, poi controlli il report dei risultati di eBay.",
+            "ebayNote": "eBay rimuove i dati inviati vuoti, quindi le inserzioni che Shopproof non può compilare per intero non sono nel file. Il file contiene anche i suoi prezzi e le giacenze come li aveva eBay: lo carichi poco dopo averlo scaricato.",
+            "ebayFile": "File di eBay (CSV)",
+            "ebayButton": "Compila i dati di sicurezza",
+            "amazon": "Amazon",
+            "amazonStep1": "Clicchi su «Crea i file per Amazon».",
+            "amazonStep2": "In Seller Central inserisca una volta ogni fabbricante e ogni persona responsabile nell'UE del file dei contatti. Amazon collega le inserzioni a loro tramite l'indirizzo email.",
+            "amazonStep3": "Copi le colonne del file delle inserzioni nel file di inventario di Amazon per i suoi prodotti e lo carichi come aggiornamento parziale.",
+            "amazonNote": "Amazon accetta avvertenze e informazioni di sicurezza come documenti o immagini, non come testo. Le aggiunga in Seller Central.",
+            "amazonButton": "Crea i file per Amazon",
+            "ebayFilled": "{filled} inserzione su {total} compilata. | {filled} inserzioni su {total} compilate.",
+            "amazonFilled": "{filled} prodotto attivo su {total} è nei file. | {filled} prodotti attivi su {total} sono nei file.",
+            "downloadEbay": "Scarica il file eBay compilato",
+            "downloadContacts": "Scarica i contatti",
+            "downloadListings": "Scarica le inserzioni",
+            "itemNumber": "Numero oggetto eBay",
+            "sku": "Numero prodotto",
+            "inFile": "Nel file",
+            "check": "Da controllare",
+            "yes": "Sì",
+            "no": "No",
+            "more": "E altri {count}.",
+            "party": "{who}: {reason}",
+            "failed": "Non fatto: il negozio non è riuscito a creare il file. Riprova e, se continua a non funzionare, contatta il supporto Shopproof.",
+            "who": {
+                "manufacturer": "Fabbricante",
+                "responsible": "Persona responsabile nell'UE"
+            },
+            "reason": {
+                "address": "L'indirizzo postale è vuoto o non è stato possibile leggerlo.",
+                "street": "L'indirizzo non ha una via.",
+                "postcode": "Non è stato possibile leggere il CAP. Scriva l'indirizzo così: via, poi CAP e città, poi paese, ognuno su una riga.",
+                "country": "Non è stato possibile leggere il paese. Metta il paese sull'ultima riga dell'indirizzo.",
+                "email": "Serve un indirizzo email.",
+                "tooLong": "Un dato è più lungo di quanto eBay consenta.",
+                "emailShared": "Lo stesso indirizzo email è usato con altri dati. Amazon trova i contatti tramite l'indirizzo email, quindi ognuno ne ha bisogno di uno proprio."
+            },
+            "problem": {
+                "notEbayFile": "Questo non è un file del Seller Hub di eBay. Scarichi da eBay il file «Modifica prezzo e quantità» e lo scelga qui senza modificarlo.",
+                "itemNumberFormat": "Un foglio di calcolo ha modificato i numeri oggetto in questo file (per esempio in 1.23E+11). Scarichi di nuovo il file da eBay e lo scelga qui senza aprirlo.",
+                "noFile": "Scelga prima il file di eBay.",
+                "tooBig": "Questo file supera 8 MB. Scarichi da eBay meno inserzioni alla volta.",
+                "notRevise": "Non è un'inserzione da modificare (l'azione non è Revise).",
+                "noSku": "Nessun Custom label su eBay per trovare il prodotto tramite il suo numero prodotto.",
+                "notInShop": "Nessun prodotto con questo numero prodotto nel tuo negozio.",
+                "variationsDiffer": "Le sue varianti hanno dati di sicurezza diversi. eBay ne accetta uno per inserzione.",
+                "manufacturerMissing": "Nessun fabbricante indicato.",
+                "responsibleMissing": "Il fabbricante è fuori dall'UE e non è indicata alcuna persona responsabile nell'UE.",
+                "responsibleCleared": "Nessuna persona responsabile nell'UE indicata, quindi eBay rimuove quella presente in questa inserzione."
+            }
         }
     }
 }

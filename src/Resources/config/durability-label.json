@@ -127,6 +127,46 @@
       "alt": "GARAN-label: de producent garandeert de duurzaamheid van dit product gedurende {years} jaar. Producent: {brand}. Model: {model}. Uw rechten uit de wettelijke garantie blijven ook gelden.",
       "alt_nested": "GARAN-label: duurzaamheidsgarantie van de producent voor {years} jaar. Selecteer om het volledige label te tonen.",
       "link": "Meer over de duurzaamheidsgarantie van de producent (Uw Europa)"
+    },
+    "es": {
+      "alt": "Etiqueta GARAN: el productor garantiza la durabilidad de este producto durante {years} años. Productor: {brand}. Modelo: {model}. Sus derechos de garantía legal también se aplican.",
+      "alt_nested": "Etiqueta GARAN: garantía comercial de durabilidad del productor durante {years} años. Seleccione para ver la etiqueta completa.",
+      "link": "Más información sobre la garantía de durabilidad del productor (Tu Europa)"
+    },
+    "pl": {
+      "alt": "Etykieta GARAN: producent gwarantuje trwałość tego produktu, okres gwarancji w latach: {years}. Producent: {brand}. Model: {model}. Prawny obowiązek zapewnienia zgodności towaru z umową obowiązuje niezależnie od tej gwarancji.",
+      "alt_nested": "Etykieta GARAN: gwarancja trwałości producenta, okres w latach: {years}. Wybierz, aby wyświetlić całą etykietę.",
+      "link": "Więcej o gwarancji trwałości producenta (Twoja Europa)"
+    },
+    "sv": {
+      "alt": "GARAN-märkning: tillverkaren garanterar att den här produkten håller i {years} år. Tillverkare: {brand}. Modell: {model}. Din reklamationsrätt gäller också.",
+      "alt_nested": "GARAN-märkning: tillverkarens hållbarhetsgaranti i {years} år. Välj för att visa hela märkningen.",
+      "link": "Om tillverkarens hållbarhetsgaranti (Ditt Europa)"
+    },
+    "da": {
+      "alt": "GARAN-mærke: producenten garanterer dette produkts holdbarhed i {years} år. Producent: {brand}. Model: {model}. Dine rettigheder efter den retlige garanti gælder også.",
+      "alt_nested": "GARAN-mærke: producentens garanti for holdbarhed i {years} år. Vælg for at vise hele mærket.",
+      "link": "Om producentens garanti for holdbarhed (Dit Europa)"
+    },
+    "fi": {
+      "alt": "GARAN-merkintä: tuottaja takaa tämän tuotteen kestävyyden {years} vuoden ajan. Tuottaja: {brand}. Malli: {model}. Lakisääteinen virhevastuu on voimassa tämän lisäksi.",
+      "alt_nested": "GARAN-merkintä: tuottajan kestävyystakuu {years} vuoden ajan. Valitse, niin koko merkintä näytetään.",
+      "link": "Lisätietoa tuottajan kestävyystakuusta (Sinun Eurooppasi)"
+    },
+    "pt": {
+      "alt": "Rótulo GARAN: o produtor garante a durabilidade deste produto durante {years} anos. Produtor: {brand}. Modelo: {model}. Os seus direitos de garantia legal também se aplicam.",
+      "alt_nested": "Rótulo GARAN: garantia comercial de durabilidade do produtor durante {years} anos. Selecione para ver o rótulo completo.",
+      "link": "Mais informações sobre a garantia de durabilidade do produtor (A sua Europa)"
+    },
+    "hu": {
+      "alt": "GARAN címke: a gyártó {years} évig jótállást vállal a termék tartósságáért. Gyártó: {brand}. Modell: {model}. Önt a jogszabályi szavatosságból eredő jogok is megilletik.",
+      "alt_nested": "GARAN címke: a gyártó tartósságra vonatkozó jótállása {years} évig. Válassza ki a teljes címke megjelenítéséhez.",
+      "link": "A gyártó tartósságra vonatkozó jótállásáról (Az Ön Európája)"
+    },
+    "el": {
+      "alt": "Σήμα GARAN: ο παραγωγός εγγυάται την ανθεκτικότητα αυτού του προϊόντος για {years} έτη. Παραγωγός: {brand}. Μοντέλο: {model}. Ισχύουν επίσης τα δικαιώματά σας από τη νόμιμη εγγύηση.",
+      "alt_nested": "Σήμα GARAN: εμπορική εγγύηση ανθεκτικότητας του παραγωγού για {years} έτη. Επιλέξτε για να εμφανιστεί ολόκληρο το σήμα.",
+      "link": "Σχετικά με την εγγύηση ανθεκτικότητας του παραγωγού (Η Ευρώπη σου)"
     }
   }
 }

@@ -32,7 +32,8 @@
                 "reference": "Numer referencyjny",
                 "receivedOn": "Otrzymano %date%",
                 "notFound": "Nie znaleźliśmy tego odstąpienia. Użyj linku z e-maila z potwierdzeniem lub skontaktuj się ze sklepem.",
-                "note": "Sklep aktualizuje tę stronę. W razie pytań odpowiedz na e-mail z potwierdzeniem."
+                "note": "Sklep aktualizuje tę stronę. W razie pytań odpowiedz na e-mail z potwierdzeniem.",
+                "credit": "Formularz odstąpienia od umowy dostarcza Shopproof"
             }
         },
         "digital": {

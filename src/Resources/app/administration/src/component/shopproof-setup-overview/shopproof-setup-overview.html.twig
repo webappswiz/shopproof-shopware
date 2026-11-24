@@ -2,6 +2,52 @@
 <div class="shopproof-setup">
     <p v-if="failed" role="alert">{{ $t('shopproof.setup.loadFailed') }}</p>
     <template v-else-if="result">
+        <div v-if="result.verdict" :class="['shopproof-setup__verdict', result.verdict.clear ? 'is-clear' : 'is-needs']">
+            <template v-if="result.verdict.clear">
+                <h2>{{ $t('shopproof.setup.verdict.clearTitle') }}</h2>
+            </template>
+            <template v-else>
+                <h2>{{ $t('shopproof.setup.verdict.needsTitle', { count: result.verdict.items.length }, result.verdict.items.length) }}</h2>
+                <ol class="shopproof-setup__verdict-list">
+                    <li v-for="item in result.verdict.items" :key="item.key" :class="`is-${item.state}`">
+                        <strong>{{ item.step ? $t(`shopproof.setup.step.${item.key}.title`) : $t(`shopproof.setup.card.${item.key}.title`) }}</strong>
+                        <span class="shopproof-setup__pill">{{ item.state === 'unchecked' ? $t('shopproof.setup.verdict.unchecked') : $t(`shopproof.setup.state.${item.state}`) }}</span>
+                        <span class="shopproof-setup__verdict-text">{{ item.step ? $t(`shopproof.setup.step.${item.key}.help`) : cardText(item) }}</span>
+                        <template v-if="place(item.key).route || place(item.key).anchor">
+                            <router-link v-if="place(item.key).route" :to="place(item.key).route">{{ $t('shopproof.setup.link.fix') }}<span class="shopproof-overview__sr">: {{ item.step ? $t(`shopproof.setup.step.${item.key}.title`) : $t(`shopproof.setup.card.${item.key}.title`) }}</span></router-link>
+                            <button v-else type="button" class="shopproof-setup__go" @click="go(item.key)">{{ $t('shopproof.setup.link.fix') }}<span class="shopproof-overview__sr">: {{ item.step ? $t(`shopproof.setup.step.${item.key}.title`) : $t(`shopproof.setup.card.${item.key}.title`) }}</span></button>
+                        </template>
+                    </li>
+                </ol>
+            </template>
+            <p><small>{{ $t('shopproof.setup.verdict.note') }}</small></p>
+        </div>
+        <p v-if="switchResult === 'undone'" class="shopproof-setup__switched" role="status">{{ $t('shopproof.setup.recommended.undone') }}</p>
+        <p v-if="switchResult === 'nothing'" role="status">{{ $t('shopproof.setup.recommended.nothingToUndo') }}</p>
+        <p v-if="switchResult === 'failed'" role="alert">{{ $t('shopproof.setup.recommended.failed') }}</p>
+        <mt-card
+            v-if="result.recommended && (result.recommended.plan.length || result.recommended.last)"
+            class="shopproof-recommended"
+            position-identifier="shopproof-overview-recommended"
+            :title="result.recommended.plan.length ? $t('shopproof.setup.recommended.title') : $t('shopproof.setup.recommended.lastTitle')"
+        >
+            <template v-if="result.recommended.plan.length">
+                <p>{{ $t('shopproof.setup.recommended.intro') }}</p>
+                <ul class="shopproof-recommended__list">
+                    <li v-for="key in result.recommended.plan" :key="key">
+                        <strong>{{ $t(`shopproof.setup.recommended.item.${key}.title`) }}</strong>
+                        <span>{{ $t(`shopproof.setup.recommended.item.${key}.where`) }}</span>
+                        <span class="shopproof-setup__help">{{ $t(`shopproof.setup.recommended.item.${key}.why`) }}</span>
+                    </li>
+                </ul>
+                <mt-button variant="primary" :disabled="switching" @click="switchOn">{{ $t('shopproof.setup.recommended.button') }}</mt-button>
+            </template>
+            <template v-if="result.recommended.last">
+                <p class="shopproof-setup__switched" role="status">{{ $tc('shopproof.setup.recommended.last', result.recommended.last.keys.length, { count: result.recommended.last.keys.length }) }}</p>
+                <mt-button variant="secondary" :disabled="switching" @click="undoSwitch">{{ $t('shopproof.setup.recommended.undo') }}</mt-button>
+            </template>
+            <p><small>{{ $t('shopproof.setup.recommended.note') }}</small></p>
+        </mt-card>
         <mt-card
             v-if="!setupDone"
             position-identifier="shopproof-overview-setup"
@@ -35,7 +81,6 @@
                 </li>
             </ol>
         </mt-card>
-        <p v-else class="shopproof-setup__complete" role="status">{{ $t('shopproof.setup.complete') }}</p>
 
         <mt-card
             v-if="result.nonEu"

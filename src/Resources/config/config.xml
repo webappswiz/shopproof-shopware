@@ -354,6 +354,24 @@
             <helpText lang="pl-PL">Na stronie Shopproof ustawiasz każde odstąpienie na „Zwrot dotarł do sklepu” lub „Zwrot płatności wysłany”; płatność oznaczona przez Shopware jako zwrócona również ustawia „Zwrot płatności wysłany”. E-maile zawierają link do strony, na której klient widzi, na jakim etapie jest odstąpienie. Ich treść zmienisz w sekcji Ustawienia > Szablony e-maili („Odstąpienie: zwrot dotarł do sklepu” i „Odstąpienie: zwrot płatności wysłany”).</helpText>
             <defaultValue>true</defaultValue>
         </input-field>
+        <input-field type="bool">
+            <name>withdrawalCreditLine</name>
+            <label>Add a small "Withdrawal form by Shopproof" line at the very bottom of the withdrawal confirmation email and the status page</label>
+            <label lang="de-DE">Eine kleine Zeile „Widerrufsformular von Shopproof“ ganz unten in die Widerrufsbestätigung und die Statusseite einfügen</label>
+            <label lang="fr-FR">Ajouter une petite ligne « Formulaire de rétractation par Shopproof » tout en bas de l'e-mail de confirmation de la rétractation et de la page de suivi</label>
+            <label lang="it-IT">Aggiungi una piccola riga «Modulo di recesso di Shopproof» in fondo all'email di conferma del recesso e alla pagina di stato</label>
+            <label lang="nl-NL">Een kleine regel “Herroepingsformulier van Shopproof” helemaal onderaan de bevestigingsmail van de herroeping en de statuspagina toevoegen</label>
+            <label lang="es-ES">Añadir una pequeña línea «Formulario de desistimiento de Shopproof» al final del correo electrónico de confirmación del desistimiento y de la página de estado</label>
+            <label lang="pl-PL">Dodawaj mały wiersz „Formularz odstąpienia od umowy dostarcza Shopproof” na samym dole e-maila z potwierdzeniem odstąpienia i strony statusu</label>
+            <helpText>Off unless you turn it on. Customers see it in their language, with a link to shopproof.app. The link has no tracking, and nothing is sent to Shopproof unless a customer clicks it.</helpText>
+            <helpText lang="de-DE">Aus, solange Sie es nicht einschalten. Kunden sehen die Zeile in ihrer Sprache, mit einem Link zu shopproof.app. Der Link enthält kein Tracking, und an Shopproof geht nur dann etwas, wenn ein Kunde den Link anklickt.</helpText>
+            <helpText lang="fr-FR">Désactivé tant que vous ne l'activez pas. Vos clients la voient dans leur langue, avec un lien vers shopproof.app. Le lien ne contient aucun suivi, et rien n'est envoyé à Shopproof sauf si un client clique dessus.</helpText>
+            <helpText lang="it-IT">Disattivata finché non la attiva. I clienti la vedono nella loro lingua, con un link a shopproof.app. Il link non contiene tracciamento e a Shopproof non viene inviato nulla, a meno che un cliente non lo clicchi.</helpText>
+            <helpText lang="nl-NL">Uit totdat u het aanzet. Klanten zien de regel in hun eigen taal, met een link naar shopproof.app. De link bevat geen tracking en er wordt niets naar Shopproof verzonden, tenzij een klant erop klikt.</helpText>
+            <helpText lang="es-ES">Desactivado hasta que usted lo active. Los clientes la ven en su idioma, con un enlace a shopproof.app. El enlace no lleva seguimiento y no se envía nada a Shopproof salvo que un cliente haga clic en él.</helpText>
+            <helpText lang="pl-PL">Wyłączone, dopóki tego nie włączysz. Klienci widzą ten wiersz w swoim języku, z linkiem do shopproof.app. Link nie zawiera śledzenia i nic nie jest wysyłane do Shopproof, chyba że klient go kliknie.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
         <input-field type="single-select">
             <name>withdrawalOrderDate</name>
             <label>Order date on the withdrawal form</label>

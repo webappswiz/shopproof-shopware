@@ -1,0 +1,75 @@
+{% block shopproof_marketplaces %}
+<mt-card
+    id="shopproof-marketplaces"
+    position-identifier="shopproof-overview-marketplaces"
+    :title="$t('shopproof.marketplaces.title')"
+>
+    <p>{{ $t('shopproof.marketplaces.intro') }}</p>
+
+    <h3 class="shopproof-overview__part">{{ $t('shopproof.marketplaces.ebay') }}</h3>
+    <ol class="shopproof-overview__steps">
+        <li>{{ $t('shopproof.marketplaces.ebayStep1') }}</li>
+        <li>{{ $t('shopproof.marketplaces.ebayStep2') }}</li>
+        <li>{{ $t('shopproof.marketplaces.ebayStep3') }}</li>
+    </ol>
+    <p>{{ $t('shopproof.marketplaces.ebayNote') }}</p>
+    <p>
+        <label for="shopproof-ebay-file">{{ $t('shopproof.marketplaces.ebayFile') }}</label><br>
+        <input id="shopproof-ebay-file" type="file" accept=".csv,text/csv" @change="pick">
+    </p>
+    <div class="shopproof-overview__actions">
+        <mt-button variant="secondary" :disabled="busy !== ''" :is-loading="busy === 'ebay'" @click="fillEbay">{{ $t('shopproof.marketplaces.ebayButton') }}</mt-button>
+    </div>
+
+    <h3 class="shopproof-overview__part">{{ $t('shopproof.marketplaces.amazon') }}</h3>
+    <ol class="shopproof-overview__steps">
+        <li>{{ $t('shopproof.marketplaces.amazonStep1') }}</li>
+        <li>{{ $t('shopproof.marketplaces.amazonStep2') }}</li>
+        <li>{{ $t('shopproof.marketplaces.amazonStep3') }}</li>
+    </ol>
+    <p>{{ $t('shopproof.marketplaces.amazonNote') }}</p>
+    <div class="shopproof-overview__actions">
+        <mt-button variant="secondary" :disabled="busy !== ''" :is-loading="busy === 'amazon'" @click="makeAmazon">{{ $t('shopproof.marketplaces.amazonButton') }}</mt-button>
+    </div>
+
+    <div role="status">
+        <p v-if="failed">{{ $t('shopproof.marketplaces.failed') }}</p>
+        <p v-else-if="result && result.error">{{ message(result.error) }}</p>
+        <template v-else-if="result">
+            <p><strong>{{ summary }}</strong></p>
+            <div class="shopproof-overview__actions">
+                <template v-if="result.kind === 'ebay'">
+                    <mt-button v-if="result.filled > 0" variant="primary" @click="download('ebay')">{{ $t('shopproof.marketplaces.downloadEbay') }}</mt-button>
+                </template>
+                <template v-else-if="result.filled > 0">
+                    <mt-button variant="primary" @click="download('contacts')">{{ $t('shopproof.marketplaces.downloadContacts') }}</mt-button>
+                    <mt-button variant="primary" @click="download('listings')">{{ $t('shopproof.marketplaces.downloadListings') }}</mt-button>
+                </template>
+            </div>
+        </template>
+    </div>
+    <template v-if="result && !result.error && notes.length">
+        <table class="shopproof-overview__table">
+            <thead>
+                <tr>
+                    <th v-if="result.kind === 'ebay'" scope="col">{{ $t('shopproof.marketplaces.itemNumber') }}</th>
+                    <th scope="col">{{ $t('shopproof.marketplaces.sku') }}</th>
+                    <th scope="col">{{ $t('shopproof.marketplaces.inFile') }}</th>
+                    <th scope="col">{{ $t('shopproof.marketplaces.check') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(row, index) in notes.slice(0, shown)" :key="index">
+                    <td v-if="result.kind === 'ebay'">{{ row.item }}</td>
+                    <td>{{ row.sku }}</td>
+                    <td>{{ row.status === 'filled' ? $t('shopproof.marketplaces.yes') : $t('shopproof.marketplaces.no') }}</td>
+                    <td>
+                        <span v-for="(line, i) in lines(row)" :key="i">{{ line }}<br v-if="i < lines(row).length - 1"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p v-if="notes.length > shown">{{ $t('shopproof.marketplaces.more', { count: notes.length - shown }, notes.length - shown) }}</p>
+    </template>
+</mt-card>
+{% endblock %}

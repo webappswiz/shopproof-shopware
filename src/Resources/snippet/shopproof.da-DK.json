@@ -32,7 +32,8 @@
                 "reference": "Reference",
                 "receivedOn": "Modtaget den %date%",
                 "notFound": "Vi kunne ikke finde denne fortrydelse. Brug linket i din kvitteringsmail, eller kontakt butikken.",
-                "note": "Butikken opdaterer denne side. Har du spørgsmål, så svar på din kvitteringsmail."
+                "note": "Butikken opdaterer denne side. Har du spørgsmål, så svar på din kvitteringsmail.",
+                "credit": "Fortrydelsesformular fra Shopproof"
             }
         },
         "digital": {

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "0.16.0",
+  "version": "0.18.0",
   "disclaimer": "Technical information to help shops comply. Not legal advice.",
   "strings": {
     "AT": {
@@ -68,6 +68,15 @@
       "FR": "fr",
       "IT": "it",
       "NL": "nl",
+      "ES": "es",
+      "PL": "pl",
+      "SE": "sv",
+      "DK": "da",
+      "FI": "fi",
+      "PT": "pt",
+      "HU": "hu",
+      "GR": "el",
+      "CY": "el",
       "EU": "en"
     },
     "notices": {
@@ -215,6 +224,238 @@
         "effective_from": "2026-09-27",
         "confidence": "high",
         "verification": "verified_official"
+      },
+      "es": {
+        "title": "Garantía legal",
+        "artwork": "assets/guarantee-notice-es.jpg",
+        "width": 1181,
+        "height": 1561,
+        "sha256": "fc44afd162fa85dcf086aa2548eaccfd2b02a34792c7a01a4eaa656661ffcf99",
+        "alt": "Garantía legal: aviso armonizado de la UE sobre la garantía legal de conformidad",
+        "text": [
+          "GARANTÍA LEGAL",
+          "Garantía legal mínima de dos años para los bienes vendidos en la Unión Europea.",
+          "Los consumidores pueden hacer valer los derechos que les otorga la garantía legal de conformidad, por ejemplo, si los bienes:",
+          "no coinciden con la descripción;",
+          "no funcionan según lo previsto.",
+          "Los vendedores son responsables de cualquier falta de conformidad que existiera en el momento de la entrega de los bienes y que se ponga de manifiesto dentro del período de garantía legal. Los vendedores que se encuentren en tal situación están obligados a ofrecer:",
+          "la reparación o sustitución gratuitas;",
+          "en algunos casos, una reducción del precio o un reembolso total.",
+          "Algunos países tienen un período de garantía legal más largo. En el caso de los bienes de segunda mano, dicho período puede ser más corto, pero nunca inferior a un año.",
+          "Para obtener más información sobre sus derechos en un país específico, escanee el código QR que figura a continuación o consulte al vendedor.",
+          "europa.eu/youreurope/garantías",
+          "Qué hacer si recibe bienes no conformes:",
+          "1. Póngase en contacto con el vendedor lo antes posible para notificar el problema.",
+          "2. Aporte pruebas de la compra, como un recibo, una factura o un extracto bancario.",
+          "Los vendedores y los productores también pueden ofrecer garantías comerciales, que se aplican independientemente de la garantía legal. Por ejemplo, la etiqueta GARAN representa una garantía comercial de durabilidad ofrecida por el productor sin coste adicional y que cubre la totalidad del bien."
+        ],
+        "source": "https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32025R1960",
+        "effective_from": "2026-09-27",
+        "confidence": "high",
+        "verification": "verified_official"
+      },
+      "pl": {
+        "title": "Prawny obowiązek zapewnienia zgodności towaru z umową",
+        "artwork": "assets/guarantee-notice-pl.jpg",
+        "width": 1152,
+        "height": 1623,
+        "sha256": "c912357eb920ff8e3fb3aea2df99c60a6a0b37858dd8a950ff1e1d2728954ab2",
+        "alt": "Prawny obowiązek zapewnienia zgodności towaru z umową: zharmonizowana informacja UE",
+        "text": [
+          "PRAWNY OBOWIĄZEK ZAPEWNIENIA ZGODNOŚCI TOWARU Z UMOWĄ",
+          "Towary sprzedawane w Unii Europejskiej objęte są prawnym obowiązkiem zapewnienia ich zgodności z umową przez okres co najmniej dwóch lat.",
+          "Konsumenci mogą dochodzić swoich praw na podstawie tego prawnego obowiązku zapewnienia zgodności towaru z umową, na przykład jeżeli towar:",
+          "jest niezgodny z opisem",
+          "funkcjonuje niezgodnie z przeznaczeniem.",
+          "Sprzedawcy odpowiadają za wszelkie niezgodności towaru z umową, które istnieją w momencie dostawy towaru i które ujawnią się w czasie trwania prawnego obowiązku zapewnienia zgodności z umową. W takiej sytuacji sprzedawcy są zobowiązani zaoferować:",
+          "bezpłatną naprawę lub bezpłatną wymianę towaru",
+          "w niektórych przypadkach obniżenie ceny lub jej całkowity zwrot.",
+          "W niektórych krajach obowiązuje dłuższy okres prawnego obowiązku zapewnienia zgodności towaru z umową. Krótszy okres może obowiązywać w przypadku towarów używanych, jednak nie może on być krótszy niż rok.",
+          "Aby uzyskać więcej informacji na temat przysługujących Ci praw w danym kraju, zeskanuj poniższy kod QR lub zwróć się do sprzedawcy.",
+          "europa.eu/youreurope/gwarancje",
+          "Co zrobić, jeżeli otrzymany towar jest niezgodny z umową?",
+          "1. Jak najszybciej skontaktuj się ze sprzedawcą, by zgłosić ewentualny problem.",
+          "2. Przedstaw dowód potwierdzający zakup, taki jak pokwitowanie, faktura lub wyciąg bankowy.",
+          "Sprzedawcy i producenci mogą również oferować gwarancje handlowe, które są stosowane niezależnie od prawnego obowiązku zapewnienia zgodności towaru z umową. Na przykład etykieta GARAN oznacza handlową gwarancję trwałości, którą producent oferuje bez dodatkowych kosztów na cały towar."
+        ],
+        "source": "https://eur-lex.europa.eu/legal-content/PL/TXT/?uri=CELEX:32025R1960",
+        "effective_from": "2026-09-27",
+        "confidence": "high",
+        "verification": "verified_official"
+      },
+      "sv": {
+        "title": "Reklamationsrätt",
+        "artwork": "assets/guarantee-notice-sv.jpg",
+        "width": 1255,
+        "height": 1673,
+        "sha256": "11962a0b1c8a603db816625bce61a60d0b09056aff9ffb41878441ac44233cde",
+        "alt": "Reklamationsrätt: EU:s harmoniserade information om reklamationsrätt",
+        "text": [
+          "REKLAMATIONSRÄTT",
+          "Du har minst två års reklamationsrätt för en vara du köpt i EU.",
+          "Som konsument har du rätt att reklamera en vara om den till exempel",
+          "inte motsvarar beskrivningen",
+          "inte fungerar som avsett.",
+          "Säljaren är ansvarig för brister som fanns när varan levererades och som upptäcks inom den period som reklamationsrätten gäller. Säljaren måste i så fall erbjuda",
+          "gratis reparation eller gratis byte av varan",
+          "i vissa fall prisavdrag eller alla pengarna tillbaka.",
+          "I vissa länder kan reklamationsrätten vara längre än två år. För begagnade varor kan den vara kortare, men aldrig kortare än ett år.",
+          "För mer information om dina rättigheter i ett visst land kan du skanna qr-koden nedan eller fråga säljaren.",
+          "europa.eu/youreurope/reklamationsrätt",
+          "Vad du ska göra om en vara är bristfällig",
+          "1. Kontakta säljaren så snart som möjligt och rapportera problemet.",
+          "2. Visa upp bevis på köpet, till exempel kvitto, faktura eller kontoutdrag.",
+          "Säljarna och tillverkarna kan ibland erbjuda kommersiella garantier som gäller oberoende av reklamationsrätten. Du kan till exempel se den här GARAN-märkningen för hållbarhetsgarantier som tillverkaren erbjuder utan kostnad och som omfattar hela varan."
+        ],
+        "source": "https://eur-lex.europa.eu/legal-content/SV/TXT/?uri=CELEX:32025R1960",
+        "effective_from": "2026-09-27",
+        "confidence": "high",
+        "verification": "verified_official"
+      },
+      "da": {
+        "title": "Retlig garanti",
+        "artwork": "assets/guarantee-notice-da.jpg",
+        "width": 1194,
+        "height": 1539,
+        "sha256": "e2e9320c117e2fb0d09fee81ed2230ec956b7b67cd9f7411836247ab11755095",
+        "alt": "Retlig garanti: EU's harmoniserede oplysning om den retlige garanti for kontraktmæssighed",
+        "text": [
+          "RETLIG GARANTI",
+          "Retlig garanti på mindst to år for varer, der sælges i Den Europæiske Union.",
+          "Forbrugere kan gøre deres rettigheder gældende under henvisning til den retlige garanti for kontraktmæssighed, f.eks. hvis varer:",
+          "ikke svarer til beskrivelsen",
+          "ikke fungerer efter hensigten.",
+          "Sælgerne er ansvarlige for enhver mangel, der eksisterede på det tidspunkt, hvor varerne blev leveret, og som viser sig inden for den retlige garantiperiode. Sælgere skal i en sådan situation tilbyde:",
+          "gratis reparation eller gratis omlevering",
+          "i nogle tilfælde et forholdsmæssigt afslag i prisen eller fuld tilbagebetaling.",
+          "Nogle lande har en længere retlig garantiperiode. For brugte varer kan der gælde en kortere periode, dog mindst et år.",
+          "Hvis du vil vide mere om dine rettigheder i et bestemt land, kan du scanne QR-koden nedenfor eller spørge sælgeren.",
+          "europa.eu/youreurope/garantier",
+          "Hvad skal du gøre, hvis du modtager mangelfulde varer:",
+          "1. Kontakt sælgeren så hurtigt som muligt for at gøre opmærksom på problemet",
+          "2. Fremlæg bevis for købet, f.eks. i form af en kvittering, en faktura eller et kontoudtog.",
+          "Sælgere og producenter kan også tilbyde handelsmæssige garantier, som gælder uafhængigt af den retlige garanti. For eksempel kan du se dette GARAN-mærke, der giver en handelsmæssig garanti for holdbarhed, som producenten tilbyder uden yderligere omkostninger, og som omfatter hele varen."
+        ],
+        "source": "https://eur-lex.europa.eu/legal-content/DA/TXT/?uri=CELEX:32025R1960",
+        "effective_from": "2026-09-27",
+        "confidence": "high",
+        "verification": "verified_official"
+      },
+      "fi": {
+        "title": "Lakisääteinen virhevastuu",
+        "artwork": "assets/guarantee-notice-fi.jpg",
+        "width": 1159,
+        "height": 1562,
+        "sha256": "87e5a469d7fcd36290a2ac3a4e4786b1a5fdce8ee286292022ed97cf6ac6d393",
+        "alt": "Lakisääteinen virhevastuu: EU:n yhdenmukaistettu ilmoitus lakisääteisestä virhevastuusta",
+        "text": [
+          "LAKISÄÄTEINEN VIRHEVASTUU",
+          "Ostaessasi EU:ssa tavaran sitä koskee lakisääteinen virhevastuu, jonka kesto on vähintään kaksi vuotta.",
+          "Voit kuluttajana vedota lakisääteiseen virhevastuuseen, jos tavara esimerkiksi",
+          "ei vastaa kuvausta",
+          "ei toimi tarkoitetulla tavalla.",
+          "Myyjä on vastuussa kaikista virheistä, jotka olivat olemassa tavaran toimitushetkellä ja jotka ilmenevät lakisääteisen virhevastuun voimassaoloaikana. Tällaisessa tilanteessa myyjän on tarjottava sinulle",
+          "maksuton korjaus tai maksuton vaihto",
+          "joissakin tapauksissa hinnanalennus tai koko kauppahinnan palautus.",
+          "Joissakin maissa lakisääteisen virhevastuun kesto on pidempi kuin kaksi vuotta. Käytettyjen tavaroiden osalta aika voi olla lyhyempi mutta ei koskaan alle yhden vuoden.",
+          "Saat lisätietoa oikeuksistasi eri EU-maissa skannaamalla tämän QR-koodin tai kysymällä myyjältä.",
+          "europa.eu/youreurope/virhevastuu",
+          "Mitä voit tehdä, jos saat virheellisen tavaran?",
+          "1. Ota yhteyttä myyjään mahdollisimman pian ja ilmoita virheestä.",
+          "2. Esitä todiste ostoksesta (esimerkiksi kuitti, lasku tai tiliote).",
+          "Myyjät ja tuottajat voivat tarjota myös kaupallisia takuita, joita sovelletaan lakisääteisestä virhevastuusta riippumatta. Jos tavarassa on esimerkiksi GARAN-merkintä, se tarkoittaa tuottajan antamaa kaupallista kestävyystakuuta, joka kattaa koko tavaran ilman lisäkustannuksia."
+        ],
+        "source": "https://eur-lex.europa.eu/legal-content/FI/TXT/?uri=CELEX:32025R1960",
+        "effective_from": "2026-09-27",
+        "confidence": "high",
+        "verification": "verified_official"
+      },
+      "pt": {
+        "title": "Garantia legal",
+        "artwork": "assets/guarantee-notice-pt.jpg",
+        "width": 1259,
+        "height": 1674,
+        "sha256": "07f7b803e21ba59d71a850f64279870c1ebaeebec6f0beb2feb6d5c3ec0eb6c8",
+        "alt": "Garantia legal: informação harmonizada da UE sobre a garantia legal de conformidade",
+        "text": [
+          "GARANTIA LEGAL",
+          "Proteção da garantia legal mínima de dois anos para os bens vendidos na União Europeia.",
+          "Os consumidores podem invocar os seus direitos ao abrigo da garantia legal de conformidade, por exemplo, se os bens:",
+          "não corresponderem à descrição;",
+          "não funcionarem como previsto.",
+          "Os vendedores são responsáveis por qualquer falta de conformidade que exista no momento em que os bens forem entregues e se manifeste no período de garantia legal. Os vendedores nessa situação estão obrigados a oferecer:",
+          "reparação gratuita ou substituição gratuita;",
+          "em alguns casos, redução do preço ou reembolso integral.",
+          "Alguns países têm um período de garantia legal mais longo. Para os bens em segunda mão, pode aplicar-se um período mais curto, mas não inferior a um ano.",
+          "Para mais informações sobre os seus direitos num determinado país, digitalize o código QR abaixo ou consulte o vendedor.",
+          "europa.eu/youreurope/garantias",
+          "O que fazer se receber bens não conformes:",
+          "1. Contactar o vendedor o mais rapidamente possível para expor o problema;",
+          "2. Apresentar uma prova de compra, como um recibo, uma fatura ou um extrato bancário.",
+          "Os vendedores e os produtores também podem oferecer garantias comerciais, que se aplicam independentemente da garantia legal. Por exemplo, pode ver este rótulo GARAN, que representa uma garantia comercial de durabilidade oferecida pelo produtor sem custos adicionais e cobrindo a totalidade do bem."
+        ],
+        "source": "https://eur-lex.europa.eu/legal-content/PT/TXT/?uri=CELEX:32025R1960",
+        "effective_from": "2026-09-27",
+        "confidence": "high",
+        "verification": "verified_official"
+      },
+      "hu": {
+        "title": "Jogszabályi szavatosság",
+        "artwork": "assets/guarantee-notice-hu.jpg",
+        "width": 1186,
+        "height": 1671,
+        "sha256": "538d71ee88d63e36cb473e49ca646e516c1232259e9abb6a130d8fc7e134f297",
+        "alt": "Jogszabályi szavatosság: az EU egységes tájékoztatója a megfelelőség szavatolásáról",
+        "text": [
+          "JOGSZABÁLYI SZAVATOSSÁG",
+          "Legalább kétéves szavatosság az Európai Unióban értékesített áruk esetében",
+          "A fogyasztók érvényesíthetik a megfelelőség szavatolására vonatkozó jogszabályi kötelezettség alapján őket megillető jogokat, például akkor, ha az általuk megvásárolt termék:",
+          "nem felel meg a leírásnak;",
+          "nem rendeltetésszerűen működik.",
+          "Az eladó felelős minden olyan hibáért, amely az áru átadásakor fennállt, és amely a szavatossági időn belül válik nyilvánvalóvá. Ilyen esetben az eladónak fel kell ajánlania a következőket:",
+          "ingyenes javítás vagy ingyenes csere;",
+          "egyes esetekben árcsökkentés vagy teljes árvisszatérítés.",
+          "Egyes országokban hosszabb a jogszabályban előírt szavatossági idő. Használt cikkek esetében rövidebb időszak alkalmazható, de annak legalább egy évnek kell lennie.",
+          "Ha szeretne többet megtudni arról, hogy milyen jogok illetik meg egy adott országban, olvassa be az alábbi QR-kódot, vagy kérdezze meg az eladót.",
+          "europa.eu/youreurope/jótállás",
+          "Teendők abban az esetben, ha... Ön olyan árut vett át, amely nem megfelelő:",
+          "1. A lehető leghamarabb vegye fel a kapcsolatot az eladóval, és közölje vele a hibát.",
+          "2. Mutassa be a vásárlást igazoló dokumentumot, amely lehet például nyugta, számla vagy bankszámlakivonat.",
+          "Az eladók és a gyártók a jogszabályban előírt szavatosságtól függetlenül kereskedelmi jótállást is kínálhatnak. Például ez a GARAN címke a gyártó által többletköltségek nélkül kínált, tartósságra vonatkozó kereskedelmi jótállást jelöl, mely a termék egészére kiterjed."
+        ],
+        "source": "https://eur-lex.europa.eu/legal-content/HU/TXT/?uri=CELEX:32025R1960",
+        "effective_from": "2026-09-27",
+        "confidence": "high",
+        "verification": "verified_official"
+      },
+      "el": {
+        "title": "Νόμιμη εγγύηση",
+        "artwork": "assets/guarantee-notice-el.jpg",
+        "width": 1040,
+        "height": 1477,
+        "sha256": "4e33b901a33a7a2ffc59e29199215e0f27538cc2239290717854cda7b4287b7b",
+        "alt": "Νόμιμη εγγύηση: εναρμονισμένη ενημέρωση της ΕΕ για τη νόμιμη εγγύηση συμμόρφωσης",
+        "text": [
+          "ΝΟΜΙΜΗ ΕΓΓΥΗΣΗ",
+          "Ελάχιστη νόμιμη εγγύηση δύο ετών για τα αγαθά που πωλούνται στην Ευρωπαϊκή Ένωση.",
+          "Οι καταναλωτές μπορούν να ασκήσουν τα δικαιώματά τους βάσει της νόμιμης εγγύησης συμμόρφωσης, για παράδειγμα εάν τα αγαθά:",
+          "δεν ανταποκρίνονται στην περιγραφή·",
+          "δεν λειτουργούν όπως προβλέπεται.",
+          "Οι πωλητές ευθύνονται για κάθε έλλειψη συμμόρφωσης που υφίσταται κατά την παράδοση των αγαθών και καθίσταται εμφανής εντός της περιόδου της νόμιμης εγγύησης. Οι πωλητές σε τέτοιες περιπτώσεις υποχρεούνται να προσφέρουν:",
+          "δωρεάν επισκευή ή δωρεάν αντικατάσταση·",
+          "σε ορισμένες περιπτώσεις, μείωση του τιμήματος ή πλήρη επιστροφή του τιμήματος.",
+          "Ορισμένες χώρες έχουν πιο μακρά περίοδο νόμιμης εγγύησης. Για τα μεταχειρισμένα αγαθά μπορεί να προβλέπεται συντομότερη περίοδος, αλλά όχι μικρότερη του ενός έτους.",
+          "Για περισσότερες πληροφορίες σχετικά με τα δικαιώματά σας σε μια ορισμένη χώρα, σαρώστε τον παρακάτω κωδικό QR ή ρωτήστε τον πωλητή.",
+          "europa.eu/youreurope/εγγυήσεις",
+          "Τι πρέπει να κάνετε εάν παραλάβετε μη συμμορφούμενα αγαθά:",
+          "1. επικοινωνήστε με τον πωλητή το συντομότερο δυνατόν για να αναφέρετε το πρόβλημα·",
+          "2. προσκομίστε παραστατικό αγοράς, όπως απόδειξη, τιμολόγιο ή αντίγραφο κίνησης τραπεζικού λογαριασμού.",
+          "Οι πωλητές και οι παραγωγοί μπορούν επίσης να προσφέρουν εμπορικές εγγυήσεις, οι οποίες ισχύουν ανεξάρτητα από τη νόμιμη εγγύηση. Για παράδειγμα, μπορεί να δείτε το σήμα GARAN, που δηλώνει εμπορική εγγύηση όσον αφορά την ανθεκτικότητα η οποία προσφέρεται από τον παραγωγό χωρίς πρόσθετο κόστος και καλύπτει ολόκληρο το αγαθό."
+        ],
+        "source": "https://eur-lex.europa.eu/legal-content/EL/TXT/?uri=CELEX:32025R1960",
+        "effective_from": "2026-09-27",
+        "confidence": "high",
+        "verification": "verified_official"
       }
     }
   },
@@ -335,6 +576,46 @@
         "alt": "GARAN-label: de producent garandeert de duurzaamheid van dit product gedurende {years} jaar. Producent: {brand}. Model: {model}. Uw rechten uit de wettelijke garantie blijven ook gelden.",
         "alt_nested": "GARAN-label: duurzaamheidsgarantie van de producent voor {years} jaar. Selecteer om het volledige label te tonen.",
         "link": "Meer over de duurzaamheidsgarantie van de producent (Uw Europa)"
+      },
+      "es": {
+        "alt": "Etiqueta GARAN: el productor garantiza la durabilidad de este producto durante {years} años. Productor: {brand}. Modelo: {model}. Sus derechos de garantía legal también se aplican.",
+        "alt_nested": "Etiqueta GARAN: garantía comercial de durabilidad del productor durante {years} años. Seleccione para ver la etiqueta completa.",
+        "link": "Más información sobre la garantía de durabilidad del productor (Tu Europa)"
+      },
+      "pl": {
+        "alt": "Etykieta GARAN: producent gwarantuje trwałość tego produktu, okres gwarancji w latach: {years}. Producent: {brand}. Model: {model}. Prawny obowiązek zapewnienia zgodności towaru z umową obowiązuje niezależnie od tej gwarancji.",
+        "alt_nested": "Etykieta GARAN: gwarancja trwałości producenta, okres w latach: {years}. Wybierz, aby wyświetlić całą etykietę.",
+        "link": "Więcej o gwarancji trwałości producenta (Twoja Europa)"
+      },
+      "sv": {
+        "alt": "GARAN-märkning: tillverkaren garanterar att den här produkten håller i {years} år. Tillverkare: {brand}. Modell: {model}. Din reklamationsrätt gäller också.",
+        "alt_nested": "GARAN-märkning: tillverkarens hållbarhetsgaranti i {years} år. Välj för att visa hela märkningen.",
+        "link": "Om tillverkarens hållbarhetsgaranti (Ditt Europa)"
+      },
+      "da": {
+        "alt": "GARAN-mærke: producenten garanterer dette produkts holdbarhed i {years} år. Producent: {brand}. Model: {model}. Dine rettigheder efter den retlige garanti gælder også.",
+        "alt_nested": "GARAN-mærke: producentens garanti for holdbarhed i {years} år. Vælg for at vise hele mærket.",
+        "link": "Om producentens garanti for holdbarhed (Dit Europa)"
+      },
+      "fi": {
+        "alt": "GARAN-merkintä: tuottaja takaa tämän tuotteen kestävyyden {years} vuoden ajan. Tuottaja: {brand}. Malli: {model}. Lakisääteinen virhevastuu on voimassa tämän lisäksi.",
+        "alt_nested": "GARAN-merkintä: tuottajan kestävyystakuu {years} vuoden ajan. Valitse, niin koko merkintä näytetään.",
+        "link": "Lisätietoa tuottajan kestävyystakuusta (Sinun Eurooppasi)"
+      },
+      "pt": {
+        "alt": "Rótulo GARAN: o produtor garante a durabilidade deste produto durante {years} anos. Produtor: {brand}. Modelo: {model}. Os seus direitos de garantia legal também se aplicam.",
+        "alt_nested": "Rótulo GARAN: garantia comercial de durabilidade do produtor durante {years} anos. Selecione para ver o rótulo completo.",
+        "link": "Mais informações sobre a garantia de durabilidade do produtor (A sua Europa)"
+      },
+      "hu": {
+        "alt": "GARAN címke: a gyártó {years} évig jótállást vállal a termék tartósságáért. Gyártó: {brand}. Modell: {model}. Önt a jogszabályi szavatosságból eredő jogok is megilletik.",
+        "alt_nested": "GARAN címke: a gyártó tartósságra vonatkozó jótállása {years} évig. Válassza ki a teljes címke megjelenítéséhez.",
+        "link": "A gyártó tartósságra vonatkozó jótállásáról (Az Ön Európája)"
+      },
+      "el": {
+        "alt": "Σήμα GARAN: ο παραγωγός εγγυάται την ανθεκτικότητα αυτού του προϊόντος για {years} έτη. Παραγωγός: {brand}. Μοντέλο: {model}. Ισχύουν επίσης τα δικαιώματά σας από τη νόμιμη εγγύηση.",
+        "alt_nested": "Σήμα GARAN: εμπορική εγγύηση ανθεκτικότητας του παραγωγού για {years} έτη. Επιλέξτε για να εμφανιστεί ολόκληρο το σήμα.",
+        "link": "Σχετικά με την εγγύηση ανθεκτικότητας του παραγωγού (Η Ευρώπη σου)"
       }
     }
   },

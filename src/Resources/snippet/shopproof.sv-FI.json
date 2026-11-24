@@ -32,7 +32,8 @@
                 "reference": "Referens",
                 "receivedOn": "Mottaget %date%",
                 "notFound": "Vi kunde inte hitta det här frånträdandet. Använd länken i ditt bekräftelsemejl eller kontakta butiken.",
-                "note": "Butiken uppdaterar den här sidan. Om du har frågor, svara på ditt bekräftelsemejl."
+                "note": "Butiken uppdaterar den här sidan. Om du har frågor, svara på ditt bekräftelsemejl.",
+                "credit": "Ångerformulär från Shopproof"
             }
         },
         "digital": {

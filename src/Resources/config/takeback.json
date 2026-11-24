@@ -178,6 +178,278 @@
         ],
         "one_for_one": "Als u bij ons een nieuw apparaat koopt, nemen wij een oud apparaat van dezelfde soort en functie gratis terug."
       }
+    },
+    "es": {
+      "heading": "Números de registro y recogida",
+      "registrations": "Números de registro",
+      "kinds": {
+        "weee": "Número de registro RAEE",
+        "batteries": "Número de registro de productor de pilas y baterías",
+        "packaging": "Número de registro de envases",
+        "epr": "Identificador único (IDU)",
+        "textiles": "Número de registro de textiles"
+      },
+      "symbol_alt": "Símbolo del contenedor de basura tachado",
+      "return_to_us": "Devolución en nuestra tienda",
+      "batteries": {
+        "heading": "Devolución de pilas y baterías usadas",
+        "text": [
+          "Las pilas y baterías usadas no deben tirarse con la basura doméstica. La ley le obliga a llevarlas a una recogida separada.",
+          "Puede devolver las pilas y baterías usadas de forma gratuita y sin necesidad de comprar nada en un punto de recogida público (por ejemplo, el punto limpio de su municipio) o en una tienda que venda pilas y baterías, también en la nuestra.",
+          "El contenedor de basura tachado en una pila o batería significa que no debe tirarse con la basura doméstica. Los símbolos químicos Hg, Cd o Pb debajo de él significan que contiene más mercurio, cadmio o plomo del permitido.",
+          "Las pilas y baterías pueden contener sustancias perjudiciales para el medio ambiente y la salud, y las baterías de litio dañadas pueden incendiarse. Cubra con cinta adhesiva los polos de las baterías de litio antes de devolverlas y retire las pilas y baterías de los aparatos cuando pueda hacerlo sin dañarlos.",
+          "Ayuda a evitar residuos si elige pilas recargables y aparatos de larga duración."
+        ]
+      },
+      "weee": {
+        "heading": "Devolución de aparatos eléctricos y electrónicos usados",
+        "text": [
+          "Los aparatos eléctricos y electrónicos usados no deben tirarse con la basura doméstica. El contenedor de basura tachado en un aparato significa que debe recogerse por separado.",
+          "Lleve los aparatos usados a un punto de recogida separada, por ejemplo el punto limpio de su municipio, donde puede entregarlos de forma gratuita.",
+          "Antes de devolver un aparato, retire las pilas, baterías y lámparas que puedan extraerse sin dañarlo y devuélvalas por separado.",
+          "Borre los datos personales del aparato (por ejemplo, en teléfonos, ordenadores o cámaras) antes de devolverlo. Usted es responsable de hacerlo.",
+          "Los aparatos usados pueden contener sustancias peligrosas. La recogida separada permite tratarlos de forma segura y reutilizar sus materiales."
+        ],
+        "one_for_one": "Cuando nos compra un aparato nuevo, recogemos gratuitamente un aparato usado del mismo tipo y función."
+      }
+    },
+    "pl": {
+      "heading": "Numery rejestrowe i odbiór zużytego sprzętu",
+      "registrations": "Numery rejestrowe",
+      "kinds": {
+        "weee": "Numer rejestrowy ZSEE",
+        "batteries": "Numer rejestrowy producenta baterii",
+        "packaging": "Numer rejestrowy opakowań",
+        "epr": "Unikalny identyfikator (IDU)",
+        "textiles": "Numer rejestrowy tekstyliów"
+      },
+      "symbol_alt": "Symbol przekreślonego kosza na odpady",
+      "return_to_us": "Zwrot w naszym sklepie",
+      "batteries": {
+        "heading": "Zwrot zużytych baterii",
+        "text": [
+          "Zużytych baterii nie wolno wyrzucać razem z odpadami domowymi. Przepisy wymagają oddania ich do selektywnej zbiórki.",
+          "Zużyte baterie można bezpłatnie i bez obowiązku zakupu oddać w publicznym punkcie zbiórki (na przykład w punkcie selektywnego zbierania odpadów komunalnych) lub w sklepie, który sprzedaje baterie, także u nas.",
+          "Przekreślony kosz na odpady na baterii oznacza, że nie wolno jej wyrzucać razem z odpadami domowymi. Symbole chemiczne Hg, Cd lub Pb pod nim oznaczają, że bateria zawiera więcej rtęci, kadmu lub ołowiu, niż jest to dozwolone.",
+          "Baterie mogą zawierać substancje szkodliwe dla środowiska i zdrowia, a uszkodzone baterie litowe mogą się zapalić. Przed zwrotem należy zakleić bieguny baterii litowych taśmą i wyjąć baterie z urządzeń, jeśli można to zrobić bez ich uszkodzenia.",
+          "Wybór baterii wielokrotnego ładowania i trwałych urządzeń pomaga ograniczać ilość odpadów."
+        ]
+      },
+      "weee": {
+        "heading": "Zwrot zużytego sprzętu elektrycznego i elektronicznego",
+        "text": [
+          "Zużytego sprzętu elektrycznego i elektronicznego nie wolno wyrzucać razem z odpadami domowymi. Przekreślony kosz na odpady na urządzeniu oznacza, że należy je zbierać selektywnie.",
+          "Zużyty sprzęt można bezpłatnie oddać w punkcie selektywnej zbiórki, na przykład w punkcie selektywnego zbierania odpadów komunalnych.",
+          "Przed zwrotem urządzenia należy wyjąć baterie i lampy, które można usunąć bez uszkodzenia, i oddać je osobno.",
+          "Przed zwrotem należy usunąć z urządzenia dane osobowe (na przykład z telefonów, komputerów lub aparatów). Odpowiada za to użytkownik urządzenia.",
+          "Zużyty sprzęt może zawierać substancje niebezpieczne. Selektywna zbiórka pozwala bezpiecznie go przetworzyć i ponownie wykorzystać surowce."
+        ],
+        "one_for_one": "Przy zakupie nowego urządzenia w naszym sklepie bezpłatnie odbieramy zużyte urządzenie tego samego rodzaju, pełniące te same funkcje."
+      }
+    },
+    "sv": {
+      "heading": "Registreringsnummer och återtagande",
+      "registrations": "Registreringsnummer",
+      "kinds": {
+        "weee": "Registreringsnummer för elutrustning (WEEE)",
+        "batteries": "Registreringsnummer för batteriproducent",
+        "packaging": "Registreringsnummer för förpackningar",
+        "epr": "Unik identifierare (IDU)",
+        "textiles": "Registreringsnummer för textilier"
+      },
+      "symbol_alt": "Symbol med överkryssad soptunna på hjul",
+      "return_to_us": "Lämna tillbaka hos oss",
+      "batteries": {
+        "heading": "Lämna tillbaka gamla batterier",
+        "text": [
+          "Gamla batterier ska inte slängas i hushållsavfallet. Enligt lag måste du lämna dem till separat insamling.",
+          "Du kan lämna gamla batterier utan kostnad och utan att köpa något till en offentlig insamlingsplats (till exempel kommunens återvinningscentral) eller till en butik som säljer batterier, även hos oss.",
+          "Den överkryssade soptunnan på ett batteri betyder att det inte får slängas i hushållsavfallet. De kemiska beteckningarna Hg, Cd eller Pb under den betyder att batteriet innehåller mer kvicksilver, kadmium eller bly än tillåtet.",
+          "Batterier kan innehålla ämnen som skadar miljön och hälsan, och skadade litiumbatterier kan börja brinna. Tejpa över polerna på litiumbatterier innan du lämnar tillbaka dem, och ta ut batterier ur apparater när det går utan att skada dem.",
+          "Du hjälper till att minska avfallet genom att välja laddningsbara batterier och apparater med lång livslängd."
+        ]
+      },
+      "weee": {
+        "heading": "Lämna tillbaka gammal elektrisk och elektronisk utrustning",
+        "text": [
+          "Gammal elektrisk och elektronisk utrustning ska inte slängas i hushållsavfallet. Den överkryssade soptunnan på en apparat betyder att den ska samlas in separat.",
+          "Lämna gamla apparater till en separat insamlingsplats, till exempel kommunens återvinningscentral, där du kan lämna dem utan kostnad.",
+          "Ta ut batterier och lampor som kan tas bort utan att skada apparaten innan du lämnar tillbaka den, och lämna dem separat.",
+          "Radera personuppgifter på apparaten (till exempel i telefoner, datorer eller kameror) innan du lämnar tillbaka den. Det är ditt ansvar.",
+          "Gamla apparater kan innehålla farliga ämnen. Separat insamling gör att de kan tas om hand på ett säkert sätt och att materialen kan återanvändas."
+        ],
+        "one_for_one": "När du köper en ny apparat av oss tar vi utan kostnad tillbaka en gammal apparat av samma typ och med samma funktion."
+      }
+    },
+    "da": {
+      "heading": "Registreringsnumre og tilbagetagning",
+      "registrations": "Registreringsnumre",
+      "kinds": {
+        "weee": "Registreringsnummer for elektronikudstyr (WEEE)",
+        "batteries": "Registreringsnummer som batteriproducent",
+        "packaging": "Registreringsnummer for emballage",
+        "epr": "Unik identifikator (IDU)",
+        "textiles": "Registreringsnummer for tekstiler"
+      },
+      "symbol_alt": "Symbol med overkrydset affaldsspand på hjul",
+      "return_to_us": "Aflevering hos os",
+      "batteries": {
+        "heading": "Aflevering af brugte batterier",
+        "text": [
+          "Brugte batterier må ikke smides ud sammen med husholdningsaffaldet. Ifølge loven skal du aflevere dem til separat indsamling.",
+          "Du kan aflevere brugte batterier gratis og uden at købe noget på et offentligt indsamlingssted (for eksempel kommunens genbrugsplads) eller i en butik, der sælger batterier, også hos os.",
+          "Den overkrydsede affaldsspand på et batteri betyder, at det ikke må smides ud sammen med husholdningsaffaldet. De kemiske tegn Hg, Cd eller Pb under den betyder, at batteriet indeholder mere kviksølv, cadmium eller bly end tilladt.",
+          "Batterier kan indeholde stoffer, der skader miljøet og sundheden, og beskadigede litiumbatterier kan gå i brand. Sæt tape over polerne på litiumbatterier, før du afleverer dem, og tag batterierne ud af apparater, når det kan gøres uden at beskadige dem.",
+          "Du hjælper med at undgå affald ved at vælge genopladelige batterier og apparater med lang levetid."
+        ]
+      },
+      "weee": {
+        "heading": "Aflevering af brugt elektrisk og elektronisk udstyr",
+        "text": [
+          "Brugt elektrisk og elektronisk udstyr må ikke smides ud sammen med husholdningsaffaldet. Den overkrydsede affaldsspand på et apparat betyder, at det skal indsamles separat.",
+          "Aflever brugte apparater på et indsamlingssted, for eksempel kommunens genbrugsplads, hvor du kan aflevere dem gratis.",
+          "Tag batterier og pærer, der kan fjernes uden at beskadige apparatet, ud, før du afleverer det, og aflever dem separat.",
+          "Slet personoplysninger på apparatet (for eksempel på telefoner, computere eller kameraer), før du afleverer det. Det er dit ansvar.",
+          "Brugte apparater kan indeholde farlige stoffer. Separat indsamling gør, at de kan behandles sikkert, og at materialerne kan genbruges."
+        ],
+        "one_for_one": "Når du køber et nyt apparat hos os, tager vi gratis et brugt apparat af samme type og med samme funktion retur."
+      }
+    },
+    "fi": {
+      "heading": "Rekisterinumerot ja vastaanotto",
+      "registrations": "Rekisterinumerot",
+      "kinds": {
+        "weee": "Sähkö- ja elektroniikkalaitteiden rekisterinumero (SER)",
+        "batteries": "Paristojen ja akkujen tuottajarekisterinumero",
+        "packaging": "Pakkausten rekisterinumero",
+        "epr": "Yksilöllinen tunniste (IDU)",
+        "textiles": "Tekstiilien rekisterinumero"
+      },
+      "symbol_alt": "Yliviivatun pyörällisen jäteastian symboli",
+      "return_to_us": "Palautus meille",
+      "batteries": {
+        "heading": "Käytettyjen paristojen ja akkujen palautus",
+        "text": [
+          "Käytetyt paristot ja akut eivät kuulu sekajätteeseen. Lain mukaan ne on vietävä erilliskeräykseen.",
+          "Voit palauttaa käytetyt paristot ja akut maksutta ja ostamatta mitään julkiseen keräyspisteeseen (esimerkiksi kunnan jäteasemalle) tai paristoja ja akkuja myyvään kauppaan, myös meille.",
+          "Yliviivattu pyörällinen jäteastia paristossa tai akussa tarkoittaa, että sitä ei saa laittaa sekajätteeseen. Sen alla olevat kemialliset merkit Hg, Cd tai Pb tarkoittavat, että paristo tai akku sisältää elohopeaa, kadmiumia tai lyijyä enemmän kuin on sallittua.",
+          "Paristot ja akut voivat sisältää ympäristölle ja terveydelle haitallisia aineita, ja vaurioituneet litiumakut voivat syttyä palamaan. Teippaa litiumparistojen ja -akkujen navat ennen palautusta ja poista paristot ja akut laitteista, jos sen voi tehdä vahingoittamatta niitä.",
+          "Voit vähentää jätettä valitsemalla ladattavia akkuja ja pitkäikäisiä laitteita."
+        ]
+      },
+      "weee": {
+        "heading": "Käytettyjen sähkö- ja elektroniikkalaitteiden palautus",
+        "text": [
+          "Käytetyt sähkö- ja elektroniikkalaitteet eivät kuulu sekajätteeseen. Yliviivattu pyörällinen jäteastia laitteessa tarkoittaa, että se on kerättävä erikseen.",
+          "Vie käytetyt laitteet erilliseen keräyspisteeseen, esimerkiksi kunnan jäteasemalle, jossa voit jättää ne maksutta.",
+          "Poista ennen palautusta paristot, akut ja lamput, jotka voi irrottaa vahingoittamatta laitetta, ja palauta ne erikseen.",
+          "Poista laitteelta henkilötiedot (esimerkiksi puhelimista, tietokoneista tai kameroista) ennen palautusta. Olet itse vastuussa tästä.",
+          "Käytetyt laitteet voivat sisältää vaarallisia aineita. Erilliskeräyksen ansiosta ne voidaan käsitellä turvallisesti ja niiden materiaalit voidaan käyttää uudelleen."
+        ],
+        "one_for_one": "Kun ostat meiltä uuden laitteen, otamme maksutta vastaan käytetyn laitteen, joka on samaa tyyppiä ja jolla on sama käyttötarkoitus."
+      }
+    },
+    "pt": {
+      "heading": "Números de registo e retoma",
+      "registrations": "Números de registo",
+      "kinds": {
+        "weee": "Número de registo REEE",
+        "batteries": "Número de registo de produtor de pilhas e baterias",
+        "packaging": "Número de registo de embalagens",
+        "epr": "Identificador único (IDU)",
+        "textiles": "Número de registo de têxteis"
+      },
+      "symbol_alt": "Símbolo do contentor de lixo com rodas barrado com uma cruz",
+      "return_to_us": "Devolução na nossa loja",
+      "batteries": {
+        "heading": "Devolução de pilhas e baterias usadas",
+        "text": [
+          "As pilhas e baterias usadas não devem ser colocadas no lixo doméstico. Por lei, tem de as entregar numa recolha seletiva.",
+          "Pode devolver pilhas e baterias usadas gratuitamente e sem ter de comprar nada num ponto de recolha público (por exemplo, o ecocentro do seu município) ou numa loja que venda pilhas e baterias, incluindo a nossa.",
+          "O contentor de lixo barrado com uma cruz numa pilha ou bateria significa que não pode ser colocada no lixo doméstico. Os símbolos químicos Hg, Cd ou Pb por baixo significam que contém mais mercúrio, cádmio ou chumbo do que o permitido.",
+          "As pilhas e baterias podem conter substâncias nocivas para o ambiente e a saúde, e as baterias de lítio danificadas podem incendiar-se. Cubra os polos das baterias de lítio com fita adesiva antes de as devolver e retire as pilhas e baterias dos aparelhos quando o puder fazer sem os danificar.",
+          "Ajuda a evitar resíduos se escolher pilhas recarregáveis e aparelhos de longa duração."
+        ]
+      },
+      "weee": {
+        "heading": "Devolução de equipamentos elétricos e eletrónicos usados",
+        "text": [
+          "Os equipamentos elétricos e eletrónicos usados não devem ser colocados no lixo doméstico. O contentor de lixo barrado com uma cruz num aparelho significa que tem de ser recolhido separadamente.",
+          "Entregue os aparelhos usados num ponto de recolha seletiva, por exemplo o ecocentro do seu município, onde os pode entregar gratuitamente.",
+          "Antes de devolver um aparelho, retire as pilhas, baterias e lâmpadas que possam ser removidas sem o danificar e devolva-as separadamente.",
+          "Apague os dados pessoais do aparelho (por exemplo, em telemóveis, computadores ou câmaras) antes de o devolver. Esta responsabilidade é sua.",
+          "Os aparelhos usados podem conter substâncias perigosas. A recolha seletiva permite tratá-los em segurança e reutilizar os seus materiais."
+        ],
+        "one_for_one": "Quando nos compra um aparelho novo, recebemos gratuitamente um aparelho usado do mesmo tipo e com a mesma função."
+      }
+    },
+    "hu": {
+      "heading": "Nyilvántartási számok és visszavétel",
+      "registrations": "Nyilvántartási számok",
+      "kinds": {
+        "weee": "Elektromos és elektronikus berendezések nyilvántartási száma (WEEE)",
+        "batteries": "Elemgyártói nyilvántartási szám",
+        "packaging": "Csomagolási nyilvántartási szám",
+        "epr": "Egyedi azonosító (IDU)",
+        "textiles": "Textiltermékek nyilvántartási száma"
+      },
+      "symbol_alt": "Áthúzott kerekes kuka szimbóluma",
+      "return_to_us": "Visszavétel nálunk",
+      "batteries": {
+        "heading": "Használt elemek és akkumulátorok visszavétele",
+        "text": [
+          "A használt elemek és akkumulátorok nem kerülhetnek a háztartási hulladékba. A jogszabály szerint elkülönített gyűjtésre kell leadnia őket.",
+          "A használt elemeket és akkumulátorokat díjmentesen és vásárlási kötelezettség nélkül leadhatja egy nyilvános gyűjtőhelyen (például a település hulladékudvarában) vagy olyan üzletben, ahol elemeket és akkumulátorokat árusítanak, így nálunk is.",
+          "Az elemen vagy akkumulátoron látható áthúzott kerekes kuka azt jelenti, hogy nem kerülhet a háztartási hulladékba. Az alatta lévő Hg, Cd vagy Pb vegyjel azt jelenti, hogy a megengedettnél több higanyt, kadmiumot vagy ólmot tartalmaz.",
+          "Az elemek és akkumulátorok a környezetre és az egészségre káros anyagokat tartalmazhatnak, a sérült lítiumakkumulátorok pedig kigyulladhatnak. Leadás előtt ragassza le a lítiumelemek és -akkumulátorok pólusait, és vegye ki az elemeket és akkumulátorokat a készülékekből, ha ez sérülés nélkül lehetséges.",
+          "Újratölthető akkumulátorok és hosszú élettartamú készülékek választásával segít csökkenteni a hulladék mennyiségét."
+        ]
+      },
+      "weee": {
+        "heading": "Használt elektromos és elektronikus berendezések visszavétele",
+        "text": [
+          "A használt elektromos és elektronikus berendezések nem kerülhetnek a háztartási hulladékba. A készüléken látható áthúzott kerekes kuka azt jelenti, hogy elkülönítetten kell gyűjteni.",
+          "A használt készülékeket vigye el egy elkülönített gyűjtőhelyre, például a település hulladékudvarába, ahol díjmentesen leadhatja őket.",
+          "Leadás előtt vegye ki a készülékből azokat az elemeket, akkumulátorokat és lámpákat, amelyek sérülés nélkül eltávolíthatók, és adja le őket külön.",
+          "Leadás előtt törölje a készüléken tárolt személyes adatokat (például telefonon, számítógépen vagy fényképezőgépen). Ez az Ön felelőssége.",
+          "A használt készülékek veszélyes anyagokat tartalmazhatnak. Az elkülönített gyűjtés lehetővé teszi biztonságos kezelésüket és anyagaik újrahasznosítását."
+        ],
+        "one_for_one": "Ha nálunk új készüléket vásárol, díjmentesen visszavesszük az azonos típusú és funkciójú használt készülékét."
+      }
+    },
+    "el": {
+      "heading": "Αριθμοί μητρώου και επιστροφή",
+      "registrations": "Αριθμοί μητρώου",
+      "kinds": {
+        "weee": "Αριθμός μητρώου ΑΗΗΕ",
+        "batteries": "Αριθμός μητρώου παραγωγού μπαταριών",
+        "packaging": "Αριθμός μητρώου συσκευασιών",
+        "epr": "Μοναδικό αναγνωριστικό (IDU)",
+        "textiles": "Αριθμός μητρώου κλωστοϋφαντουργικών προϊόντων"
+      },
+      "symbol_alt": "Σύμβολο διαγραμμένου κάδου απορριμμάτων με τροχούς",
+      "return_to_us": "Επιστροφή σε εμάς",
+      "batteries": {
+        "heading": "Επιστροφή παλιών μπαταριών",
+        "text": [
+          "Οι παλιές μπαταρίες δεν πρέπει να πετιούνται στα οικιακά απορρίμματα. Σύμφωνα με τον νόμο, πρέπει να τις παραδίδετε για χωριστή συλλογή.",
+          "Μπορείτε να επιστρέψετε τις παλιές μπαταρίες δωρεάν και χωρίς υποχρέωση αγοράς σε δημόσιο σημείο συλλογής (για παράδειγμα, στο σημείο ανακύκλωσης του δήμου σας) ή σε κατάστημα που πωλεί μπαταρίες, όπως και σε εμάς.",
+          "Ο διαγραμμένος κάδος απορριμμάτων με τροχούς σε μια μπαταρία σημαίνει ότι δεν πρέπει να πεταχτεί στα οικιακά απορρίμματα. Τα χημικά σύμβολα Hg, Cd ή Pb κάτω από αυτόν σημαίνουν ότι η μπαταρία περιέχει περισσότερο υδράργυρο, κάδμιο ή μόλυβδο από το επιτρεπόμενο.",
+          "Οι μπαταρίες μπορεί να περιέχουν ουσίες επιβλαβείς για το περιβάλλον και την υγεία, και οι κατεστραμμένες μπαταρίες λιθίου μπορεί να πάρουν φωτιά. Καλύψτε με ταινία τους πόλους των μπαταριών λιθίου πριν τις επιστρέψετε και αφαιρέστε τις μπαταρίες από τις συσκευές, όταν αυτό είναι δυνατό χωρίς ζημιά.",
+          "Βοηθάτε να μειωθούν τα απόβλητα όταν επιλέγετε επαναφορτιζόμενες μπαταρίες και συσκευές με μεγάλη διάρκεια ζωής."
+        ]
+      },
+      "weee": {
+        "heading": "Επιστροφή παλιών ηλεκτρικών και ηλεκτρονικών συσκευών",
+        "text": [
+          "Οι παλιές ηλεκτρικές και ηλεκτρονικές συσκευές δεν πρέπει να πετιούνται στα οικιακά απορρίμματα. Ο διαγραμμένος κάδος απορριμμάτων με τροχούς σε μια συσκευή σημαίνει ότι πρέπει να συλλέγεται χωριστά.",
+          "Παραδώστε τις παλιές συσκευές σε σημείο χωριστής συλλογής, για παράδειγμα στο σημείο ανακύκλωσης του δήμου σας, όπου μπορείτε να τις παραδώσετε δωρεάν.",
+          "Πριν επιστρέψετε μια συσκευή, αφαιρέστε τις μπαταρίες και τους λαμπτήρες που μπορούν να αφαιρεθούν χωρίς ζημιά και επιστρέψτε τα χωριστά.",
+          "Διαγράψτε τα προσωπικά δεδομένα από τη συσκευή (για παράδειγμα σε τηλέφωνα, υπολογιστές ή κάμερες) πριν την επιστρέψετε. Η ευθύνη γι' αυτό είναι δική σας.",
+          "Οι παλιές συσκευές μπορεί να περιέχουν επικίνδυνες ουσίες. Η χωριστή συλλογή επιτρέπει την ασφαλή επεξεργασία τους και την επαναχρησιμοποίηση των υλικών τους."
+        ],
+        "one_for_one": "Όταν αγοράζετε από εμάς μια καινούργια συσκευή, παραλαμβάνουμε δωρεάν μια παλιά συσκευή του ίδιου τύπου και της ίδιας λειτουργίας."
+      }
     }
   }
 }

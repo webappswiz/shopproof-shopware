@@ -348,7 +348,6 @@
             "doneSr": "(klaar)",
             "optional": "(optioneel)",
             "start": "Beginnen",
-            "complete": "De inrichting is klaar. Shopproof blijft controleren en toont hieronder alles wat nieuw is.",
             "glance": "Uw winkel in één oogopslag",
             "why": "Waarom is dit nodig?",
             "whyText": "De wet: {law}. Die geldt vanaf {date}.",
@@ -400,10 +399,15 @@
                 "withdrawals": {
                     "title": "Herroepingen",
                     "failed": "{count} herroepingsverzoek kon niet worden vastgelegd. | {count} herroepingsverzoeken konden niet worden vastgelegd.",
+                    "received": "{count} herroeping ontvangen. | {count} herroepingen ontvangen.",
+                    "none": "Nog geen. Ze verschijnen hier als een klant de knop gebruikt."
+                },
+                "refunds": {
+                    "title": "Terugbetalingen",
                     "overdue": "{count} terugbetaling is vandaag verschuldigd of te laat. | {count} terugbetalingen zijn vandaag verschuldigd of te laat.",
                     "soon": "{count} terugbetaling is verschuldigd in de komende 3 dagen. | {count} terugbetalingen zijn verschuldigd in de komende 3 dagen.",
-                    "received": "{count} herroeping ontvangen. Er is niets verschuldigd. | {count} herroepingen ontvangen. Er is niets verschuldigd.",
-                    "none": "Nog geen. Ze verschijnen hier als een klant de knop gebruikt."
+                    "open": "{count} herroeping wacht nog op terugbetaling. Geen enkele vervalt in de komende 3 dagen. | {count} herroepingen wachten nog op terugbetaling. Geen enkele vervalt in de komende 3 dagen.",
+                    "none": "Geen terugbetaling open."
                 },
                 "safety": {
                     "title": "Productveiligheid",
@@ -458,6 +462,46 @@
                 "openSettings": "De Shopproof-instellingen openen",
                 "footer": "Shopproof kan niet optreden als uw verantwoordelijke persoon in de EU, IOSS-tussenpersoon of AVG-vertegenwoordiger: die wijst u zelf aan. Dit is technische hulp, geen juridisch of fiscaal advies.",
                 "guide": "Handleiding voor verkopers buiten de EU"
+            },
+            "verdict": {
+                "clearTitle": "U hoeft nu niets te doen",
+                "needsTitle": "{count} punt vraagt om u | {count} punten vragen om u",
+                "unchecked": "Niet gecontroleerd",
+                "note": "Shopproof ziet uw instellingen en winkelpagina's. Uw algemene voorwaarden en andere juridische teksten controleert u zelf. Technische hulp, geen juridisch advies."
+            },
+            "recommended": {
+                "title": "Zet aan wat uw winkel nodig heeft",
+                "lastTitle": "Met één klik aangezet",
+                "intro": "Shopproof heeft uw producten en storefronts gelezen. Eén klik zet deze functies aan voor alle verkoopkanalen, elk op de plek waar winkels ze meestal tonen. U kunt dit ongedaan maken, of elke functie apart wijzigen in de Shopproof-instellingen.",
+                "item": {
+                    "guarantee": {
+                        "title": "Garantievermelding wettelijke garantie",
+                        "where": "Op productpagina's, onder de productbeschrijving.",
+                        "why": "Het EU-recht vraagt winkels die goederen verkopen om deze te tonen."
+                    },
+                    "priorPrice": {
+                        "title": "Laagste prijs vóór een korting",
+                        "where": "Alleen naast verlaagde prijzen. Producten zonder korting tonen niets.",
+                        "why": "De EU-regels vragen om de laagste prijs van de 30 dagen voor een verlaging."
+                    },
+                    "deliveryLine": {
+                        "title": "Regel over levering en betaling",
+                        "where": "Boven de knop Naar de kassa in de winkelwagen en bovenaan de afrekenpagina, gelezen uit de landen en betaalmethoden van uw storefronts.",
+                        "why": "Klanten moeten voor de bestelling zien waar u levert en hoe ze kunnen betalen."
+                    },
+                    "digital": {
+                        "title": "Toestemming voor downloads bij het afrekenen",
+                        "where": "Twee vinkjes bij het afrekenen, alleen als de winkelwagen een download bevat.",
+                        "why": "Zonder deze houden klanten hun herroepingsrecht ook na het downloaden."
+                    }
+                },
+                "button": "Deze aanzetten",
+                "last": "U hebt {count} functie met één klik aangezet. | U hebt {count} functies met één klik aangezet.",
+                "undo": "Ongedaan maken",
+                "undone": "Ongedaan gemaakt. De instellingen staan weer zoals vóór de klik.",
+                "nothingToUndo": "Niets om ongedaan te maken. Ongedaan maken kan tot 14 dagen na de klik. Wijzig anders elke instelling in de pluginconfiguratie.",
+                "failed": "Dat is niet gelukt. Laad de pagina opnieuw om de huidige instellingen te zien.",
+                "note": "Keuzes die alleen u kunt maken, zoals een langere herroepingstermijn of uw verklaring over geschillenbeslechting, worden nooit voor u aangezet. Een verkoopkanaal met een eigen waarde voor een instelling houdt die. Technische hulp, geen juridisch advies."
             }
         },
         "cancel": {
@@ -572,6 +616,63 @@
             "copy": "Het concept kopiëren",
             "copied": "Gekopieerd.",
             "where": "Technische hulp, geen juridisch advies. Lees het concept en pas aan wat niet bij uw winkel past voordat u het publiceert."
+        },
+        "marketplaces": {
+            "title": "Verkopen op eBay of Amazon",
+            "intro": "eBay en Amazon vragen om dezelfde productveiligheidsgegevens als je productpagina's. Shopproof vult ze in vanuit de instellingen voor productveiligheid, je fabrikanten en je producten, gekoppeld op productnummer (bij eBay Custom label, bij Amazon SKU). Er wordt niets verstuurd: je downloadt de bestanden en uploadt ze zelf. Technische hulp, geen juridisch advies.",
+            "ebay": "eBay",
+            "ebayStep1": "Open in eBay Seller Hub Rapporten en dan Uploads. Kies 'Sjabloon ophalen', dan Advertenties en 'Prijs en aantal bewerken', en download het bestand.",
+            "ebayStep2": "Kies dat bestand hier en klik op 'Veiligheidsgegevens invullen'.",
+            "ebayStep3": "Upload het bestand dat u terugkrijgt op dezelfde pagina van eBay en bekijk daarna het resultatenrapport van eBay.",
+            "ebayNote": "eBay verwijdert gegevens die leeg worden verstuurd, dus advertenties die Shopproof niet volledig kan invullen, staan niet in het bestand. Het bestand bevat ook uw prijzen en voorraad zoals eBay die had: upload het kort na het downloaden.",
+            "ebayFile": "Bestand van eBay (CSV)",
+            "ebayButton": "Veiligheidsgegevens invullen",
+            "amazon": "Amazon",
+            "amazonStep1": "Klik op 'Amazon-bestanden maken'.",
+            "amazonStep2": "Vul in Seller Central elke fabrikant en elke verantwoordelijke persoon in de EU uit het contactenbestand één keer in. Amazon koppelt advertenties via het e-mailadres aan hen.",
+            "amazonStep3": "Kopieer de kolommen van het advertentiebestand naar het voorraadbestand van Amazon voor uw producten en upload het als gedeeltelijke update.",
+            "amazonNote": "Amazon neemt waarschuwingen en veiligheidsinformatie aan als documenten of afbeeldingen, niet als tekst. Voeg ze toe in Seller Central.",
+            "amazonButton": "Amazon-bestanden maken",
+            "ebayFilled": "{filled} van {total} advertentie ingevuld. | {filled} van {total} advertenties ingevuld.",
+            "amazonFilled": "{filled} van {total} actief product staat in de bestanden. | {filled} van {total} actieve producten staan in de bestanden.",
+            "downloadEbay": "Ingevuld eBay-bestand downloaden",
+            "downloadContacts": "Contacten downloaden",
+            "downloadListings": "Advertenties downloaden",
+            "itemNumber": "eBay-objectnummer",
+            "sku": "Productnummer",
+            "inFile": "In het bestand",
+            "check": "Wat te controleren",
+            "yes": "Ja",
+            "no": "Nee",
+            "more": "En nog {count}.",
+            "party": "{who}: {reason}",
+            "failed": "Niet gelukt: de winkel kon het bestand niet maken. Probeer het opnieuw en neem contact op met Shopproof support als het blijft mislukken.",
+            "who": {
+                "manufacturer": "Fabrikant",
+                "responsible": "Verantwoordelijke persoon in de EU"
+            },
+            "reason": {
+                "address": "Het postadres is leeg of kon niet worden gelezen.",
+                "street": "Het adres heeft geen straat.",
+                "postcode": "De postcode kon niet worden gelezen. Schrijf het adres zo: straat, dan postcode en plaats, dan land, elk op een eigen regel.",
+                "country": "Het land kon niet worden gelezen. Zet het land op de laatste regel van het adres.",
+                "email": "Een e-mailadres is nodig.",
+                "tooLong": "Een gegeven is langer dan eBay toestaat.",
+                "emailShared": "Hetzelfde e-mailadres wordt met andere gegevens gebruikt. Amazon vindt contacten via het e-mailadres, dus elk heeft een eigen adres nodig."
+            },
+            "problem": {
+                "notEbayFile": "Dit is geen bestand uit eBay Seller Hub. Download bij eBay het bestand 'Prijs en aantal bewerken' en kies het hier zonder het te wijzigen.",
+                "itemNumberFormat": "Een spreadsheet heeft de objectnummers in dit bestand veranderd (bijvoorbeeld in 1.23E+11). Download het bestand opnieuw bij eBay en kies het hier zonder het te openen.",
+                "noFile": "Kies eerst het bestand van eBay.",
+                "tooBig": "Dit bestand is groter dan 8 MB. Download minder advertenties tegelijk bij eBay.",
+                "notRevise": "Geen advertentie om te bewerken (de actie is niet Revise).",
+                "noSku": "Geen Custom label op eBay om het product op productnummer te vinden.",
+                "notInShop": "Geen product met dit productnummer in je winkel.",
+                "variationsDiffer": "De varianten hebben verschillende veiligheidsgegevens. eBay neemt één set per advertentie.",
+                "manufacturerMissing": "Geen fabrikant ingevuld.",
+                "responsibleMissing": "De fabrikant zit buiten de EU en er is geen verantwoordelijke persoon in de EU ingevuld.",
+                "responsibleCleared": "Geen verantwoordelijke persoon in de EU ingevuld, dus eBay verwijdert die van deze advertentie."
+            }
         }
     }
 }

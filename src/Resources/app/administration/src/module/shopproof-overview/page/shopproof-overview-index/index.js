@@ -269,7 +269,7 @@ export default Shopware.Component.wrapComponentConfig({
             }
             const t = (key, values, count) => (count === undefined
                 ? this.$t(`shopproof.withdrawal.clock.${key}`, values)
-                : this.$tc(`shopproof.withdrawal.clock.${key}`, count, values));
+                : this.$t(`shopproof.withdrawal.clock.${key}`, values, count));
             const day = (value) => (value ? Shopware.Utils.format.date(`${value}T12:00:00`, { hour: undefined, minute: undefined }) : '');
             const windowTone = { inside: 'ok', before_delivery: 'ok', late: 'bad', check: 'warn', performed: 'warn', digital: 'warn', exempt: 'warn' }[clock.window] || 'none';
             let windowText;

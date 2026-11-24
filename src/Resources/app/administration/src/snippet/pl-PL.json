@@ -348,7 +348,6 @@
             "doneSr": "(gotowe)",
             "optional": "(opcjonalnie)",
             "start": "Rozpocznij",
-            "complete": "Konfiguracja zakończona. Shopproof nadal prowadzi kontrole i pokazuje poniżej wszystko, co nowe.",
             "glance": "Twój sklep w skrócie",
             "why": "Dlaczego to jest potrzebne?",
             "whyText": "Przepis: {law}. Obowiązuje od {date}.",
@@ -400,10 +399,15 @@
                 "withdrawals": {
                     "title": "Odstąpienia od umowy",
                     "failed": "Nie udało się zapisać {count} wniosku o odstąpienie. | Nie udało się zapisać wniosków o odstąpienie (liczba: {count}).",
+                    "received": "Otrzymane odstąpienia: {count}. | Otrzymane odstąpienia: {count}.",
+                    "none": "Na razie brak. Pojawią się tutaj, gdy klient użyje przycisku."
+                },
+                "refunds": {
+                    "title": "Zwroty płatności",
                     "overdue": "Zwroty płatności należne dzisiaj lub opóźnione: {count}. | Zwroty płatności należne dzisiaj lub opóźnione: {count}.",
                     "soon": "Zwroty płatności należne w ciągu najbliższych 3 dni: {count}. | Zwroty płatności należne w ciągu najbliższych 3 dni: {count}.",
-                    "received": "Otrzymane odstąpienia: {count}. Nic nie jest należne. | Otrzymane odstąpienia: {count}. Nic nie jest należne.",
-                    "none": "Na razie brak. Pojawią się tutaj, gdy klient użyje przycisku."
+                    "open": "Odstąpienia czekające na zwrot płatności: {count}. Żaden nie przypada w ciągu najbliższych 3 dni. | Odstąpienia czekające na zwrot płatności: {count}. Żaden nie przypada w ciągu najbliższych 3 dni.",
+                    "none": "Brak oczekujących zwrotów płatności."
                 },
                 "safety": {
                     "title": "Bezpieczeństwo produktów",
@@ -458,6 +462,46 @@
                 "openSettings": "Otwórz ustawienia Shopproof",
                 "footer": "Shopproof nie może pełnić roli Twojej osoby odpowiedzialnej w UE, pośrednika IOSS ani przedstawiciela RODO: wyznaczasz ich samodzielnie. To pomoc techniczna, nie porada prawna ani podatkowa.",
                 "guide": "Poradnik dla sprzedawców spoza UE"
+            },
+            "verdict": {
+                "clearTitle": "Na razie nie ma nic do zrobienia",
+                "needsTitle": "Sprawy wymagające Państwa działania: {count} | Sprawy wymagające Państwa działania: {count}",
+                "unchecked": "Nie sprawdzono",
+                "note": "Shopproof widzi ustawienia i strony sklepu. Regulamin i inne teksty prawne nadal sprawdzają Państwo sami. Pomoc techniczna, nie porada prawna."
+            },
+            "recommended": {
+                "title": "Włącz to, czego potrzebuje sklep",
+                "lastTitle": "Włączono jednym kliknięciem",
+                "intro": "Shopproof odczytał Państwa produkty i storefronty. Jedno kliknięcie włącza te funkcje dla wszystkich kanałów sprzedaży, każdą w miejscu, w którym sklepy zwykle ją pokazują. Mogą to Państwo cofnąć lub zmienić każdą z nich w ustawieniach Shopproof.",
+                "item": {
+                    "guarantee": {
+                        "title": "Informacja o rękojmi",
+                        "where": "Na stronach produktów, pod opisem produktu.",
+                        "why": "Prawo UE wymaga jej od sklepów sprzedających towary."
+                    },
+                    "priorPrice": {
+                        "title": "Najniższa cena przed obniżką",
+                        "where": "Tylko przy obniżonych cenach. Produkty bez obniżki nie pokazują nic.",
+                        "why": "Przepisy UE wymagają najniższej ceny z 30 dni przed obniżką."
+                    },
+                    "deliveryLine": {
+                        "title": "Wiersz o dostawie i płatności",
+                        "where": "Nad przyciskiem Przejdź do kasy w koszyku i na górze strony kasy, na podstawie krajów i metod płatności Państwa storefrontów.",
+                        "why": "Klienci muszą przed zamówieniem widzieć, dokąd Państwo wysyłają i jak mogą zapłacić."
+                    },
+                    "digital": {
+                        "title": "Zgoda przy plikach do pobrania w kasie",
+                        "where": "Dwa pola do zaznaczenia w kasie, tylko gdy koszyk zawiera plik do pobrania.",
+                        "why": "Bez nich klienci zachowują prawo odstąpienia także po pobraniu."
+                    }
+                },
+                "button": "Włącz te funkcje",
+                "last": "Funkcje włączone jednym kliknięciem: {count} | Funkcje włączone jednym kliknięciem: {count}",
+                "undo": "Cofnij",
+                "undone": "Cofnięto. Ustawienia są takie jak przed kliknięciem.",
+                "nothingToUndo": "Nie ma nic do cofnięcia. Cofnięcie jest możliwe przez 14 dni od kliknięcia. W przeciwnym razie proszę zmienić każde ustawienie w konfiguracji wtyczki.",
+                "failed": "To się nie udało. Proszę odświeżyć stronę, aby zobaczyć aktualne ustawienia.",
+                "note": "Decyzje, które mogą podjąć tylko Państwo, na przykład dłuższy termin odstąpienia czy informacja o rozstrzyganiu sporów, nigdy nie są włączane za Państwa. Kanał sprzedaży z własną wartością ustawienia ją zachowuje. Pomoc techniczna, nie porada prawna."
             }
         },
         "cancel": {
@@ -572,6 +616,63 @@
             "copy": "Kopiuj projekt",
             "copied": "Skopiowano.",
             "where": "Pomoc techniczna, nie porada prawna. Przeczytaj projekt i zmień wszystko, co nie pasuje do sklepu, zanim go opublikujesz."
+        },
+        "marketplaces": {
+            "title": "Sprzedaż na eBay lub Amazon",
+            "intro": "eBay i Amazon wymagają tych samych danych o bezpieczeństwie produktu co Twoje strony produktów. Shopproof uzupełnia je na podstawie ustawień bezpieczeństwa produktu, Twoich producentów i produktów, dopasowanych po numerze produktu (w eBay Custom label, w Amazon SKU). Nic nie jest wysyłane: pobierasz pliki i sam je przesyłasz. Pomoc techniczna, nie porada prawna.",
+            "ebay": "eBay",
+            "ebayStep1": "W eBay Seller Hub otwórz Raporty, a potem Przesyłanie. Wybierz „Pobierz szablon”, potem Oferty i „Edytuj cenę i ilość”, i pobierz plik.",
+            "ebayStep2": "Wybierz tutaj ten plik i kliknij „Uzupełnij dane bezpieczeństwa”.",
+            "ebayStep3": "Prześlij otrzymany plik na tej samej stronie eBay, a potem sprawdź raport wyników eBay.",
+            "ebayNote": "eBay usuwa dane wysłane jako puste, więc oferty, których Shopproof nie może w pełni uzupełnić, nie trafiają do pliku. Plik zawiera też ceny i stany magazynowe w takiej postaci, w jakiej miał je eBay: prześlij go wkrótce po pobraniu.",
+            "ebayFile": "Plik z eBay (CSV)",
+            "ebayButton": "Uzupełnij dane bezpieczeństwa",
+            "amazon": "Amazon",
+            "amazonStep1": "Kliknij „Utwórz pliki dla Amazon”.",
+            "amazonStep2": "W Seller Central wpisz raz każdego producenta i każdą osobę odpowiedzialną w UE z pliku kontaktów. Amazon łączy z nimi oferty po adresie e-mail.",
+            "amazonStep3": "Skopiuj kolumny z pliku ofert do pliku magazynowego Amazon dla swoich produktów i prześlij go jako częściową aktualizację.",
+            "amazonNote": "Amazon przyjmuje ostrzeżenia i informacje o bezpieczeństwie jako dokumenty lub obrazy, nie jako tekst. Dodaj je w Seller Central.",
+            "amazonButton": "Utwórz pliki dla Amazon",
+            "ebayFilled": "Uzupełniono {filled} z {total} oferty. | Uzupełniono {filled} z {total} ofert.",
+            "amazonFilled": "W plikach: {filled} z {total} aktywnego produktu. | W plikach: {filled} z {total} aktywnych produktów.",
+            "downloadEbay": "Pobierz uzupełniony plik eBay",
+            "downloadContacts": "Pobierz kontakty",
+            "downloadListings": "Pobierz oferty",
+            "itemNumber": "Numer przedmiotu eBay",
+            "sku": "Numer produktu",
+            "inFile": "W pliku",
+            "check": "Do sprawdzenia",
+            "yes": "Tak",
+            "no": "Nie",
+            "more": "I jeszcze {count}.",
+            "party": "{who}: {reason}",
+            "failed": "Nie udało się: sklep nie mógł utworzyć pliku. Spróbuj ponownie, a jeśli dalej się nie uda, skontaktuj się z pomocą Shopproof.",
+            "who": {
+                "manufacturer": "Producent",
+                "responsible": "Osoba odpowiedzialna w UE"
+            },
+            "reason": {
+                "address": "Adres pocztowy jest pusty lub nie udało się go odczytać.",
+                "street": "Adres nie zawiera ulicy.",
+                "postcode": "Nie udało się odczytać kodu pocztowego. Zapisz adres tak: ulica, potem kod pocztowy i miejscowość, potem kraj, każde w osobnym wierszu.",
+                "country": "Nie udało się odczytać kraju. Wpisz kraj w ostatnim wierszu adresu.",
+                "email": "Potrzebny jest adres e-mail.",
+                "tooLong": "Jedna z danych jest dłuższa, niż pozwala eBay.",
+                "emailShared": "Ten sam adres e-mail jest używany z innymi danymi. Amazon wyszukuje kontakty po adresie e-mail, więc każdy potrzebuje własnego."
+            },
+            "problem": {
+                "notEbayFile": "To nie jest plik z eBay Seller Hub. Pobierz z eBay plik „Edytuj cenę i ilość” i wybierz go tutaj bez zmian.",
+                "itemNumberFormat": "Arkusz kalkulacyjny zmienił numery przedmiotów w tym pliku (na przykład na 1.23E+11). Pobierz plik ponownie z eBay i wybierz go tutaj bez otwierania.",
+                "noFile": "Najpierw wybierz plik z eBay.",
+                "tooBig": "Ten plik jest większy niż 8 MB. Pobieraj z eBay mniej ofert naraz.",
+                "notRevise": "To nie jest oferta do edycji (akcja to nie Revise).",
+                "noSku": "Brak Custom label w eBay, aby znaleźć produkt po numerze produktu.",
+                "notInShop": "Brak produktu o tym numerze w Twoim sklepie.",
+                "variationsDiffer": "Jej warianty mają różne dane bezpieczeństwa. eBay przyjmuje jeden zestaw na ofertę.",
+                "manufacturerMissing": "Nie podano producenta.",
+                "responsibleMissing": "Producent jest spoza UE i nie podano osoby odpowiedzialnej w UE.",
+                "responsibleCleared": "Nie podano osoby odpowiedzialnej w UE, więc eBay usunie tę, którą ma ta oferta."
+            }
         }
     }
 }

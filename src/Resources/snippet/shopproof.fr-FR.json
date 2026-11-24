@@ -32,7 +32,8 @@
                 "reference": "Référence",
                 "receivedOn": "Reçue le %date%",
                 "notFound": "Nous n'avons pas trouvé cette rétractation. Utilisez le lien de votre accusé de réception ou contactez la boutique.",
-                "note": "La boutique met cette page à jour. Pour toute question, répondez à votre accusé de réception."
+                "note": "La boutique met cette page à jour. Pour toute question, répondez à votre accusé de réception.",
+                "credit": "Formulaire de rétractation par Shopproof"
             }
         },
         "digital": {

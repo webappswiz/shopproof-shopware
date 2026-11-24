@@ -28,6 +28,18 @@ class ShopproofRulesService extends ApiService {
             .then((response) => ApiService.handleResponse(response));
     }
 
+    fillEbayFile(csv) {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/marketplace/ebay`, { csv }, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    makeAmazonFiles() {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/marketplace/amazon`, {}, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
     getWithdrawalCheck() {
         return this.httpClient
             .get(`${this.getApiBasePath()}/withdrawal-check`, { headers: this.getBasicHeaders() })
@@ -127,6 +139,18 @@ class ShopproofRulesService extends ApiService {
                 headers: this.getBasicHeaders(),
                 params: { timezone: ShopproofRulesService.timeZone() },
             })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    applyRecommended() {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/recommended/apply`, {}, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    undoRecommended() {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/recommended/undo`, {}, { headers: this.getBasicHeaders() })
             .then((response) => ApiService.handleResponse(response));
     }
 

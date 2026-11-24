@@ -14,7 +14,7 @@
     </template>
     <template v-else>
         <p role="status">
-            <strong>{{ $tc('shopproof.greenClaims.worth', result.products.length, { count: result.products.length }) }}</strong>
+            <strong>{{ $t('shopproof.greenClaims.worth', { count: result.products.length }, result.products.length) }}</strong>
             {{ scope }} {{ note }}
         </p>
         <p>{{ $t('shopproof.greenClaims.canBeFine') }}</p>
@@ -26,7 +26,7 @@
                 </ul>
             </li>
         </ul>
-        <p v-if="result.products.length > shown">{{ $tc('shopproof.greenClaims.more', result.products.length - shown, { count: result.products.length - shown }) }}</p>
+        <p v-if="result.products.length > shown">{{ $t('shopproof.greenClaims.more', { count: result.products.length - shown }, result.products.length - shown) }}</p>
     </template>
     <details>
         <summary>{{ $t('shopproof.greenClaims.kindsTitle') }}</summary>

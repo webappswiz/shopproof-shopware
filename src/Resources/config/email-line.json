@@ -15,7 +15,8 @@
         "terms": "Terms and conditions",
         "withdrawal": "Withdrawal policy",
         "privacy": "Privacy notice"
-      }
+      },
+      "credit": "Withdrawal form by Shopproof"
     },
     "de": {
       "link": "Vertrag widerrufen",
@@ -31,10 +32,11 @@
         "terms": "AGB",
         "withdrawal": "Widerrufsbelehrung",
         "privacy": "Datenschutzerklärung"
-      }
+      },
+      "credit": "Widerrufsformular von Shopproof"
     },
     "fr": {
-      "link": "renoncer au contrat ici",
+      "link": "Renoncer au contrat ici",
       "question": "Vous avez changé d'avis ?",
       "period": "Vous pouvez vous rétracter dans un délai de {days} jours.",
       "status": "Suivez l'état de votre rétractation ici :",
@@ -47,10 +49,11 @@
         "terms": "Conditions générales de vente",
         "withdrawal": "Politique de rétractation",
         "privacy": "Politique de confidentialité"
-      }
+      },
+      "credit": "Formulaire de rétractation par Shopproof"
     },
     "it": {
-      "link": "recedere dal contratto qui",
+      "link": "Recedere dal contratto qui",
       "question": "Hai cambiato idea?",
       "period": "Puoi recedere entro {days} giorni.",
       "status": "Segui lo stato del tuo recesso qui:",
@@ -63,10 +66,11 @@
         "terms": "Condizioni generali di vendita",
         "withdrawal": "Informazioni sul recesso",
         "privacy": "Informativa sulla privacy"
-      }
+      },
+      "credit": "Modulo di recesso di Shopproof"
     },
     "nl": {
-      "link": "hier de overeenkomst ontbinden",
+      "link": "Hier de overeenkomst ontbinden",
       "question": "Van gedachten veranderd?",
       "period": "U kunt binnen {days} dagen herroepen.",
       "status": "Bekijk de status van uw herroeping hier:",
@@ -79,10 +83,11 @@
         "terms": "Algemene voorwaarden",
         "withdrawal": "Herroepingsbeleid",
         "privacy": "Privacyverklaring"
-      }
+      },
+      "credit": "Herroepingsformulier van Shopproof"
     },
     "bg": {
-      "link": "откажете се от договора тук",
+      "link": "Откажете се от договора тук",
       "question": null,
       "period": null,
       "status": "Вижте състоянието на Вашия отказ тук:",
@@ -95,10 +100,11 @@
         "terms": "Общи условия",
         "withdrawal": "Правила за отказ",
         "privacy": "Уведомление за поверителност"
-      }
+      },
+      "credit": "Формулярът за отказ се предоставя от Shopproof"
     },
     "cs": {
-      "link": "zde odstoupit od smlouvy",
+      "link": "Zde odstoupit od smlouvy",
       "question": null,
       "period": null,
       "status": "Stav svého odstoupení najdete zde:",
@@ -111,12 +117,13 @@
         "terms": "Obchodní podmínky",
         "withdrawal": "Poučení o odstoupení od smlouvy",
         "privacy": "Informace o ochraně osobních údajů"
-      }
+      },
+      "credit": "Formulář pro odstoupení poskytuje Shopproof"
     },
     "da": {
       "link": "Fortryd aftale",
-      "question": null,
-      "period": null,
+      "question": "Fortryder du?",
+      "period": "Du kan fortryde inden for {days} dage.",
       "status": "Se status for din fortrydelse her:",
       "returns": "Start din returnering her:",
       "items": "Varer",
@@ -127,12 +134,13 @@
         "terms": "Handelsbetingelser",
         "withdrawal": "Fortrydelsesvilkår",
         "privacy": "Privatlivspolitik"
-      }
+      },
+      "credit": "Fortrydelsesformular fra Shopproof"
     },
     "el": {
       "link": "Πατήστε εδώ για υπαναχώρηση",
-      "question": null,
-      "period": null,
+      "question": "Αλλάξατε γνώμη;",
+      "period": "Μπορείτε να υπαναχωρήσετε εντός {days} ημερών.",
       "status": "Δείτε την κατάσταση της υπαναχώρησής σας εδώ:",
       "returns": "Ξεκινήστε την επιστροφή σας εδώ:",
       "items": "Είδη",
@@ -143,23 +151,25 @@
         "terms": "Όροι και προϋποθέσεις",
         "withdrawal": "Πολιτική υπαναχώρησης",
         "privacy": "Ενημέρωση απορρήτου"
-      }
+      },
+      "credit": "Φόρμα υπαναχώρησης από τη Shopproof"
     },
     "es": {
-      "link": "desistir del contrato aquí",
-      "question": null,
-      "period": null,
+      "link": "Desistir del contrato aquí",
+      "question": "¿Ha cambiado de opinión?",
+      "period": "Puede desistir del contrato en un plazo de {days} días.",
       "status": "Consulte el estado de su desistimiento aquí:",
       "returns": "Inicie su devolución aquí:",
       "items": "Artículos",
-      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "excluded": "Este pedido contiene artículos que usted excluyó del desistimiento: %s. Compruebe si la exclusión se aplica antes de rechazar el desistimiento para ellos.",
       "digital": "Contenido digital: usted dio su consentimiento para que comencemos el suministro antes de que finalice el plazo de desistimiento y reconoció que pierde su derecho de desistimiento una vez iniciado el suministro.",
       "service": "Servicios: nos pidió que comenzáramos antes de que termine el plazo de desistimiento. Si desiste, pagará la parte ya prestada, y pierde su derecho de desistimiento una vez que hayamos prestado el servicio por completo.",
       "legal": {
         "terms": "Condiciones generales",
         "withdrawal": "Política de desistimiento",
         "privacy": "Política de privacidad"
-      }
+      },
+      "credit": "Formulario de desistimiento de Shopproof"
     },
     "et": {
       "link": "Taganen lepingust",
@@ -175,12 +185,13 @@
         "terms": "Müügitingimused",
         "withdrawal": "Taganemisõiguse teave",
         "privacy": "Privaatsusteade"
-      }
+      },
+      "credit": "Taganemisvormi pakub Shopproof"
     },
     "fi": {
       "link": "Peruuta sopimus tästä",
-      "question": null,
-      "period": null,
+      "question": "Muutitko mielesi?",
+      "period": "Voit peruuttaa sopimuksen {days} päivän kuluessa.",
       "status": "Katso peruutuksesi tila täältä:",
       "returns": "Aloita palautus täältä:",
       "items": "Tuotteet",
@@ -191,10 +202,11 @@
         "terms": "Toimitusehdot",
         "withdrawal": "Peruutusoikeus",
         "privacy": "Tietosuojaseloste"
-      }
+      },
+      "credit": "Peruutuslomakkeen tarjoaa Shopproof"
     },
     "ga": {
-      "link": "tarraing siar ón gconradh anseo",
+      "link": "Tarraing siar ón gconradh anseo",
       "question": null,
       "period": null,
       "status": "Féach stádas do tharraingthe siar anseo:",
@@ -207,10 +219,11 @@
         "terms": "Téarmaí agus coinníollacha",
         "withdrawal": "Beartas tarraingthe siar",
         "privacy": "Fógra príobháideachais"
-      }
+      },
+      "credit": "Foirm tarraingthe siar ó Shopproof"
     },
     "hr": {
-      "link": "odustati od ugovora",
+      "link": "Odustati od ugovora",
       "question": null,
       "period": null,
       "status": "Status svog odustanka pogledajte ovdje:",
@@ -223,12 +236,13 @@
         "terms": "Opći uvjeti",
         "withdrawal": "Pravila o odustanku",
         "privacy": "Obavijest o privatnosti"
-      }
+      },
+      "credit": "Obrazac za odustanak omogućuje Shopproof"
     },
     "hu": {
-      "link": "elállás a szerződéstől",
-      "question": null,
-      "period": null,
+      "link": "Elállás a szerződéstől",
+      "question": "Meggondolta magát?",
+      "period": "{days} napon belül elállhat a szerződéstől.",
       "status": "Elállása állapotát itt követheti:",
       "returns": "A visszaküldést itt indíthatja el:",
       "items": "Termékek",
@@ -239,10 +253,11 @@
         "terms": "Általános szerződési feltételek",
         "withdrawal": "Elállási tájékoztató",
         "privacy": "Adatvédelmi tájékoztató"
-      }
+      },
+      "credit": "Az elállási űrlapot a Shopproof biztosítja"
     },
     "lt": {
-      "link": "atsisakyti sutarties čia",
+      "link": "Atsisakyti sutarties čia",
       "question": null,
       "period": null,
       "status": "Atsisakymo būseną matysite čia:",
@@ -255,7 +270,8 @@
         "terms": "Pirkimo taisyklės",
         "withdrawal": "Atsisakymo taisyklės",
         "privacy": "Privatumo pranešimas"
-      }
+      },
+      "credit": "Atsisakymo formą teikia Shopproof"
     },
     "lv": {
       "link": "Atteikties no līguma",
@@ -271,10 +287,11 @@
         "terms": "Lietošanas noteikumi",
         "withdrawal": "Atteikuma tiesības",
         "privacy": "Privātuma paziņojums"
-      }
+      },
+      "credit": "Atteikuma veidlapu nodrošina Shopproof"
     },
     "mt": {
-      "link": "irtira mill-kuntratt hawnhekk",
+      "link": "Irtira mill-kuntratt hawnhekk",
       "question": null,
       "period": null,
       "status": "Ara l-istatus tar-reċess tiegħek hawn:",
@@ -287,28 +304,30 @@
         "terms": "Termini u kundizzjonijiet",
         "withdrawal": "Politika tar-reċess",
         "privacy": "Avviż ta' privatezza"
-      }
+      },
+      "credit": "Formola tal-irtirar minn Shopproof"
     },
     "pl": {
-      "link": "odstąp od umowy tutaj",
-      "question": null,
-      "period": null,
+      "link": "Odstąp od umowy tutaj",
+      "question": "Zmiana zdania?",
+      "period": "Od umowy można odstąpić w ciągu {days} dni.",
       "status": "Status odstąpienia od umowy sprawdzisz tutaj:",
       "returns": "Zwrot rozpoczniesz tutaj:",
       "items": "Produkty",
-      "excluded": "This order contains items you excluded from withdrawal: %s. Please check whether the exclusion applies before you refuse the withdrawal for them.",
+      "excluded": "To zamówienie zawiera produkty wyłączone z odstąpienia: %s. Przed odmową odstąpienia w ich przypadku sprawdź, czy wyłączenie ma zastosowanie.",
       "digital": "Treści cyfrowe: wyraziłeś zgodę na rozpoczęcie dostarczania przed upływem terminu do odstąpienia od umowy i przyjąłeś do wiadomości, że z chwilą rozpoczęcia dostarczania tracisz prawo odstąpienia od umowy.",
       "service": "Usługi: zażądali Państwo rozpoczęcia przed upływem terminu do odstąpienia od umowy. W razie odstąpienia płacą Państwo za część już wykonaną, a po pełnym wykonaniu usługi tracą Państwo prawo odstąpienia od umowy.",
       "legal": {
         "terms": "Regulamin",
         "withdrawal": "Pouczenie o odstąpieniu od umowy",
         "privacy": "Polityka prywatności"
-      }
+      },
+      "credit": "Formularz odstąpienia od umowy dostarcza Shopproof"
     },
     "pt": {
-      "link": "retrate-se do contrato aqui",
-      "question": null,
-      "period": null,
+      "link": "Retrate-se do contrato aqui",
+      "question": "Mudou de ideias?",
+      "period": "Pode retratar-se do contrato no prazo de {days} dias.",
       "status": "Veja o estado da sua retratação aqui:",
       "returns": "Inicie a sua devolução aqui:",
       "items": "Artigos",
@@ -319,10 +338,11 @@
         "terms": "Termos e condições",
         "withdrawal": "Política de retratação",
         "privacy": "Aviso de privacidade"
-      }
+      },
+      "credit": "Formulário de retratação da Shopproof"
     },
     "ro": {
-      "link": "retrageți-vă din contract aici",
+      "link": "Retrageți-vă din contract aici",
       "question": null,
       "period": null,
       "status": "Vedeți stadiul retragerii dumneavoastră aici:",
@@ -335,10 +355,11 @@
         "terms": "Termeni și condiții",
         "withdrawal": "Politica de retragere",
         "privacy": "Nota de confidențialitate"
-      }
+      },
+      "credit": "Formular de retragere oferit de Shopproof"
     },
     "sk": {
-      "link": "odstúpiť od zmluvy tu",
+      "link": "Odstúpiť od zmluvy tu",
       "question": null,
       "period": null,
       "status": "Stav svojho odstúpenia nájdete tu:",
@@ -351,10 +372,11 @@
         "terms": "Obchodné podmienky",
         "withdrawal": "Poučenie o odstúpení od zmluvy",
         "privacy": "Informácie o ochrane osobných údajov"
-      }
+      },
+      "credit": "Formulár na odstúpenie poskytuje Shopproof"
     },
     "sl": {
-      "link": "kliknite tukaj za odstop od pogodbe",
+      "link": "Kliknite tukaj za odstop od pogodbe",
       "question": null,
       "period": null,
       "status": "Stanje svojega odstopa si oglejte tukaj:",
@@ -367,12 +389,13 @@
         "terms": "Splošni pogoji",
         "withdrawal": "Pravila o odstopu",
         "privacy": "Obvestilo o zasebnosti"
-      }
+      },
+      "credit": "Obrazec za odstop zagotavlja Shopproof"
     },
     "sv": {
-      "link": "ångra avtalet här",
-      "question": null,
-      "period": null,
+      "link": "Ångra avtalet här",
+      "question": "Har du ångrat dig?",
+      "period": "Du kan ångra köpet inom {days} dagar.",
       "status": "Se status för ditt frånträdande här:",
       "returns": "Starta din retur här:",
       "items": "Artiklar",
@@ -383,7 +406,8 @@
         "terms": "Köpvillkor",
         "withdrawal": "Ångerrätt",
         "privacy": "Integritetspolicy"
-      }
+      },
+      "credit": "Ångerformulär från Shopproof"
     }
   }
 }

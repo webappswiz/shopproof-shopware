@@ -10,6 +10,7 @@ const PLACES = {
     registrations: { route: { name: 'sw.extension.config', params: { namespace: 'ShopproofCompliance' } } },
     withdrawal: { anchor: 'shopproof-placement' },
     withdrawals: { anchor: 'shopproof-withdrawals' },
+    refunds: { anchor: 'shopproof-withdrawals' },
     proof: { anchor: 'shopproof-proof-log' },
     rules: { anchor: 'shopproof-rules' },
 };
@@ -39,6 +40,8 @@ export default Shopware.Component.wrapComponentConfig({
         return {
             result: null,
             failed: false,
+            switching: false,
+            switchResult: '',
         };
     },
 
@@ -62,6 +65,39 @@ export default Shopware.Component.wrapComponentConfig({
                 })
                 .catch(() => {
                     this.failed = true;
+                });
+        },
+
+        /** "Switch on what your shop needs": the server reads the shop's facts again on the press. */
+        switchOn() {
+            this.switching = true;
+            this.switchResult = '';
+            return this.shopproofRulesService
+                .applyRecommended()
+                .then(() => this.load())
+                .catch(() => {
+                    this.switchResult = 'failed';
+                })
+                .finally(() => {
+                    this.switching = false;
+                });
+        },
+
+        undoSwitch() {
+            this.switching = true;
+            this.switchResult = '';
+            return this.shopproofRulesService
+                .undoRecommended()
+                .then((response) => {
+                    // The server says whether anything was put back; after 14 days nothing is.
+                    this.switchResult = response && response.undone === true ? 'undone' : 'nothing';
+                    return this.load();
+                })
+                .catch(() => {
+                    this.switchResult = 'failed';
+                })
+                .finally(() => {
+                    this.switching = false;
                 });
         },
 
@@ -102,7 +138,7 @@ export default Shopware.Component.wrapComponentConfig({
             if (card.values.date) {
                 values.date = Shopware.Utils.format.date(`${card.values.date}T12:00:00`, { hour: undefined, minute: undefined });
             }
-            return typeof card.values.count === 'number' ? this.$tc(key, card.values.count, values) : this.$t(key, values);
+            return typeof card.values.count === 'number' ? this.$t(key, values, card.values.count) : this.$t(key, values);
         },
 
         cardLink(card) {

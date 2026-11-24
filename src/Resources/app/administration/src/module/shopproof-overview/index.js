@@ -23,6 +23,7 @@ Shopware.Component.register('shopproof-setup-overview', () => import('../../comp
 Shopware.Component.register('shopproof-placement', () => import('../../component/shopproof-placement'));
 Shopware.Component.register('shopproof-contact', () => import('../../component/shopproof-contact'));
 Shopware.Component.register('shopproof-green-claims', () => import('../../component/shopproof-green-claims'));
+Shopware.Component.register('shopproof-marketplaces', () => import('../../component/shopproof-marketplaces'));
 Shopware.Component.register('shopproof-a11y-statement', () => import('../../component/shopproof-a11y-statement'));
 
 Shopware.Module.register('shopproof-overview', {
