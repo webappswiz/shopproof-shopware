@@ -174,7 +174,9 @@ final class Recommended
      */
     private function hasProduct(bool $download): bool
     {
-        $digital = 'COALESCE(p.type, parent.type, \'\') = \'digital\' OR EXISTS (SELECT 1 FROM product_download d WHERE d.product_id = p.id AND d.product_version_id = p.version_id)';
+        // Shopware added the product type (digital) after 6.7.2; before it, a download is a file to download.
+        $files = 'EXISTS (SELECT 1 FROM product_download d WHERE d.product_id = p.id AND d.product_version_id = p.version_id)';
+        $digital = $this->hasProductType() ? 'COALESCE(p.type, parent.type, \'\') = \'digital\' OR ' . $files : $files;
 
         return $this->connection->fetchOne(
             'SELECT 1 FROM product p
@@ -183,6 +185,15 @@ final class Recommended
                AND ' . ($download ? '(' . $digital . ')' : 'NOT (' . $digital . ')') . '
              LIMIT 1',
             ['version' => Uuid::fromHexToBytes(Defaults::LIVE_VERSION)]
+        ) !== false;
+    }
+
+    private ?bool $productType = null;
+
+    private function hasProductType(): bool
+    {
+        return $this->productType ??= $this->connection->fetchOne(
+            'SELECT 1 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = \'product\' AND COLUMN_NAME = \'type\' LIMIT 1'
         ) !== false;
     }
 }
