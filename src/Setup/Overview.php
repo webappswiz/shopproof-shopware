@@ -2,6 +2,7 @@
 
 namespace Shopproof\Compliance\Setup;
 
+use Shopproof\Compliance\Placement\LinkCheck;
 use Shopproof\Compliance\Placement\PlacementResult;
 
 /**
@@ -23,13 +24,14 @@ final class Overview
      * @param array{
      *     check: array{supported: bool, ok: bool, shop: list<array{key: string, ok: bool}>, channels: list<array{checks: list<array{key: string, ok: bool}>}>, failedRecords: int, products: list<array{key: string, ok: bool}>},
      *     placement: array{time: int, pass: int, warn: int, fail: int, skipped: int, linked: int}|null,
+     *     linkCheck?: array{time: int, found: int, missing: int, unchecked: int}|null,
      *     manufacturersWithoutDetails: int,
      *     productsWithoutMaker: int,
      *     products: int,
      *     registrationNumbers: int,
      *     withdrawals: array{total: int, overdue: int, soon: int, open: int},
      *     proof: array{available: bool, ok: bool, checked: int, lastSnapshot: int|null},
-     *     rules: array{available: bool, count: int, version: string},
+     *     rules: array{available: bool, count: int, version: string, autoUpdate?: bool, checked?: int|null},
      *     now: int,
      * } $in
      *
@@ -55,16 +57,14 @@ final class Overview
         $done = \count(array_filter($required, static fn (array $s): bool => $s['done']));
 
         $cards = [
-                self::withdrawalCard($check, $button, $in['placement']),
+                self::withdrawalCard($check, $button, $in['placement'], $in['linkCheck'] ?? null),
                 self::withdrawalsCard($check, $in['withdrawals']),
                 ...self::refundsCard($in['withdrawals']),
                 self::safetyCard($in),
                 self::card('guarantee', $guarantee === null ? 'warn' : ($guarantee ? 'good' : 'warn'), $guarantee === null ? 'unknown' : ($guarantee ? 'on' : 'off')),
                 self::card('registrations', $in['registrationNumbers'] > 0 ? 'good' : 'info', $in['registrationNumbers'] > 0 ? 'some' : 'none', ['count' => $in['registrationNumbers']]),
                 self::proofCard($in['proof'], $in['now']),
-                $in['rules']['available']
-                    ? self::card('rules', 'good', 'loaded', ['count' => $in['rules']['count'], 'version' => $in['rules']['version']])
-                    : self::card('rules', 'bad', 'missing'),
+                self::rulesCard($in['rules'], $in['now']),
         ];
 
         return [
@@ -80,7 +80,7 @@ final class Overview
     private const VERDICT_ORDER = ['bad' => 0, 'unchecked' => 1, 'warn' => 2, 'todo' => 3];
 
     /** Card texts that mean Shopproof could not check: listed as not checked, never as fine. */
-    private const UNCHECKED = ['guarantee' => 'unknown', 'withdrawal' => 'noPages'];
+    public const UNCHECKED = ['guarantee' => 'unknown', 'withdrawal' => 'noPages', 'rules' => 'notChecked'];
 
     /** Cards named before everything else when they need a person: a refund deadline cannot wait. */
     private const FIRST = ['refunds'];
@@ -171,19 +171,62 @@ final class Overview
         return null;
     }
 
+    /** A daily rule check older than this has stopped running: the card says not checked. */
+    private const RULES_STALE = 2 * 86400;
+
     /**
-     * @param array{supported: bool, shop: list<array{key: string, ok: bool}>, channels: list<array{checks: list<array{key: string, ok: bool}>}>} $check
-     * @param array{time: int, pass: int, warn: int, fail: int, skipped: int, linked: int}|null $placement
+     * The rules card (zero-thought item 5): while new rules come only with plugin updates, one
+     * step ("Keep rules up to date" turns on the daily rule check); once on, nothing to do only
+     * while the last check worked and is recent. A failed last check says so, and a check that
+     * never ran or stopped running reads as not checked, never as fine.
+     *
+     * @param array{available: bool, count: int, version: string, autoUpdate?: bool, checked?: int|null, attempt?: array{time: int, ok: bool}|null} $rules
      *
      * @return array{key: string, state: string, text: string, values: array<string, int|string>}
      */
-    private static function withdrawalCard(array $check, bool $button, ?array $placement): array
+    private static function rulesCard(array $rules, int $now): array
+    {
+        if (!$rules['available']) {
+            return self::card('rules', 'bad', 'missing');
+        }
+        $values = ['count' => $rules['count'], 'version' => $rules['version']];
+        if (!($rules['autoUpdate'] ?? false)) {
+            return self::card('rules', 'todo', 'manual', $values);
+        }
+        $fetched = $rules['checked'] ?? null;
+        $lastOk = \is_int($fetched) && $fetched > 0 ? $fetched : 0;
+        $attempt = $rules['attempt'] ?? null;
+        if (\is_array($attempt) && $attempt['ok']) {
+            $lastOk = max($lastOk, $attempt['time']);
+        }
+        if (\is_array($attempt) && !$attempt['ok'] && $attempt['time'] >= $lastOk && $now - $attempt['time'] <= self::RULES_STALE) {
+            return self::card('rules', 'warn', 'failed', $values + ['date' => gmdate('Y-m-d', $attempt['time'])]);
+        }
+        if ($lastOk === 0 || $now - $lastOk > self::RULES_STALE) {
+            return self::card('rules', 'warn', 'notChecked', $values);
+        }
+
+        return self::card('rules', 'good', 'currentChecked', $values + ['date' => gmdate('Y-m-d', $lastOk)]);
+    }
+
+    /**
+     * @param array{supported: bool, shop: list<array{key: string, ok: bool}>, channels: list<array{checks: list<array{key: string, ok: bool}>}>} $check
+     * @param array{time: int, pass: int, warn: int, fail: int, skipped: int, linked: int}|null $placement
+     * @param array{time: int, found: int, missing: int, unchecked: int}|null $linkCheck
+     *
+     * @return array{key: string, state: string, text: string, values: array<string, int|string>}
+     */
+    private static function withdrawalCard(array $check, bool $button, ?array $placement, ?array $linkCheck = null): array
     {
         if (!$check['supported']) {
             return self::card('withdrawal', 'info', 'unsupported');
         }
         if (!$button) {
             return self::card('withdrawal', 'bad', 'notReady');
+        }
+        $gone = LinkCheck::missingSince($linkCheck, $placement);
+        if ($gone > 0) {
+            return self::card('withdrawal', 'bad', 'gone', ['count' => $gone]);
         }
         if ($placement === null) {
             return self::card('withdrawal', 'todo', 'notChecked');

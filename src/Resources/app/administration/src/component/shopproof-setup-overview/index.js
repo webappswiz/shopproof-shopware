@@ -42,12 +42,27 @@ export default Shopware.Component.wrapComponentConfig({
             failed: false,
             switching: false,
             switchResult: '',
+            ticked: [],
+            answering: false,
+            answerResult: null,
+            hintsTicked: [],
+            hinting: false,
+            hintResult: null,
+            quietSaving: false,
+            quietFailed: false,
+            keeping: false,
+            keepFailed: false,
         };
     },
 
     computed: {
         setupDone() {
             return this.result && this.result.done === this.result.required;
+        },
+
+        /** New rules come only with plugin updates: the "Keep rules up to date" button shows. */
+        rulesManual() {
+            return !!(this.result && this.result.cards.some((card) => card.key === 'rules' && card.text === 'manual'));
         },
     },
 
@@ -59,9 +74,14 @@ export default Shopware.Component.wrapComponentConfig({
         load() {
             this.failed = false;
             return this.shopproofRulesService
-                .getOverview()
+                .getOverview(String(Shopware.State?.get('session')?.currentLocale || ''))
                 .then((result) => {
                     this.result = result;
+                    // A ticked answer that is no longer offered is dropped, never saved later.
+                    const offered = (result && Array.isArray(result.answers) ? result.answers : []).map((a) => a.key);
+                    this.ticked = this.ticked.filter((key) => offered.includes(key));
+                    const hints = (result && Array.isArray(result.exclusionHints) ? result.exclusionHints : []).map((h) => h.key);
+                    this.hintsTicked = this.hintsTicked.filter((key) => hints.includes(key));
                 })
                 .catch(() => {
                     this.failed = true;
@@ -83,6 +103,110 @@ export default Shopware.Component.wrapComponentConfig({
                 });
         },
 
+        /** Ready-made answers: only the ones the merchant ticked are saved. */
+        saveAnswers() {
+            if (!this.ticked.length) {
+                this.answerResult = { saved: 0 };
+                return Promise.resolve();
+            }
+            this.answering = true;
+            this.answerResult = null;
+            return this.shopproofRulesService
+                .applyAnswers(this.ticked)
+                .then((response) => {
+                    // ticked: the merchant did tick something, so nothing saved means it was already done elsewhere.
+                    this.answerResult = { saved: response && Array.isArray(response.saved) ? response.saved.length : 0, ticked: true };
+                    this.ticked = [];
+                    return this.load();
+                })
+                .catch(() => {
+                    this.answerResult = { failed: true };
+                })
+                .finally(() => {
+                    this.answering = false;
+                });
+        },
+
+        /** Suggested withdrawal exclusions: only the ticked ones are excluded. */
+        excludeHints() {
+            if (!this.hintsTicked.length) {
+                this.hintResult = { excluded: 0 };
+                return Promise.resolve();
+            }
+            return this.runHints(() => this.shopproofRulesService.applyExclusionHints(this.hintsTicked), (response) => ({
+                excluded: response && Array.isArray(response.excluded) ? response.excluded.length : 0,
+                ticked: true,
+            }));
+        },
+
+        hideHints() {
+            return this.runHints(() => this.shopproofRulesService.hideExclusionHints(), () => ({ hidden: true }));
+        },
+
+        runHints(call, outcome) {
+            this.hinting = true;
+            this.hintResult = null;
+            return call()
+                .then((response) => {
+                    this.hintResult = outcome(response);
+                    this.hintsTicked = [];
+                    return this.load();
+                })
+                .catch(() => {
+                    this.hintResult = { failed: true };
+                })
+                .finally(() => {
+                    this.hinting = false;
+                });
+        },
+
+        /**
+         * The quiet email switch: saved as soon as it is ticked or unticked. When the save fails, the
+         * box goes back to the saved state, so it never shows a choice that was not kept.
+         */
+        setQuietEmail(on, box = null) {
+            this.quietSaving = true;
+            this.quietFailed = false;
+            return this.shopproofRulesService
+                .setQuietEmail(on)
+                .then((response) => {
+                    if (this.result && this.result.quietEmail) {
+                        this.result.quietEmail.on = response && response.on === true;
+                    }
+                })
+                .catch(() => {
+                    this.quietFailed = true;
+                    if (box && this.result && this.result.quietEmail) {
+                        box.checked = this.result.quietEmail.on === true;
+                    }
+                })
+                .finally(() => {
+                    this.quietSaving = false;
+                });
+        },
+
+        /** "Keep rules up to date": turns on the daily rule check and checks once now. */
+        keepCurrent() {
+            this.keeping = true;
+            this.keepFailed = false;
+            return this.shopproofRulesService
+                .keepRulesCurrent()
+                .then(() => this.load())
+                .catch(() => {
+                    this.keepFailed = true;
+                })
+                .finally(() => {
+                    this.keeping = false;
+                });
+        },
+
+        hintTitle(hint) {
+            if (hint.kind === 'download') {
+                return this.$t('shopproof.setup.exclusionHints.digital');
+            }
+            return this.$tc('shopproof.setup.exclusionHints.category', hint.count, { name: hint.name, count: hint.count });
+        },
+
         undoSwitch() {
             this.switching = true;
             this.switchResult = '';
@@ -102,6 +226,9 @@ export default Shopware.Component.wrapComponentConfig({
         },
 
         place(key) {
+            if (key === 'rules' && this.rulesManual) {
+                return { anchor: 'shopproof-keep-current' };
+            }
             return PLACES[key] || {};
         },
 

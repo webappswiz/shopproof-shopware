@@ -22,6 +22,19 @@
             </template>
             <p><small>{{ $t('shopproof.setup.verdict.note') }}</small></p>
         </div>
+        <div v-if="result.quietEmail" id="shopproof-quiet-email" class="shopproof-setup__quiet">
+            <label>
+                <input type="checkbox" :checked="result.quietEmail.on" :disabled="quietSaving" @change="setQuietEmail($event.target.checked, $event.target)">
+                {{ $t('shopproof.quietEmail.switch', { to: result.quietEmail.to }) }}
+            </label>
+            <p v-if="result.quietEmail.on && !result.quietEmail.to" class="shopproof-setup__help">{{ $t('shopproof.quietEmail.noAddress') }}</p>
+            <p v-if="quietFailed" role="alert">{{ $t('shopproof.quietEmail.failed') }}</p>
+        </div>
+        <div v-if="rulesManual" id="shopproof-keep-current" class="shopproof-setup__quiet">
+            <p>{{ $t('shopproof.keepCurrent.text') }}</p>
+            <mt-button variant="secondary" :is-loading="keeping" :disabled="keeping" @click="keepCurrent">{{ $t('shopproof.keepCurrent.button') }}</mt-button>
+            <p v-if="keepFailed" role="alert">{{ $t('shopproof.keepCurrent.failed') }}</p>
+        </div>
         <p v-if="switchResult === 'undone'" class="shopproof-setup__switched" role="status">{{ $t('shopproof.setup.recommended.undone') }}</p>
         <p v-if="switchResult === 'nothing'" role="status">{{ $t('shopproof.setup.recommended.nothingToUndo') }}</p>
         <p v-if="switchResult === 'failed'" role="alert">{{ $t('shopproof.setup.recommended.failed') }}</p>
@@ -47,6 +60,56 @@
                 <mt-button variant="secondary" :disabled="switching" @click="undoSwitch">{{ $t('shopproof.setup.recommended.undo') }}</mt-button>
             </template>
             <p><small>{{ $t('shopproof.setup.recommended.note') }}</small></p>
+        </mt-card>
+        <p v-if="answerResult && answerResult.saved > 0" class="shopproof-setup__switched" role="status">{{ $tc('shopproof.setup.answers.saved', answerResult.saved, { count: answerResult.saved }) }}</p>
+        <p v-if="answerResult && answerResult.saved === 0 && !answerResult.ticked" role="status">{{ $t('shopproof.setup.answers.noneTicked') }}</p>
+        <p v-if="answerResult && answerResult.saved === 0 && answerResult.ticked" role="status">{{ $t('shopproof.setup.answers.alreadyDone') }}</p>
+        <p v-if="answerResult && answerResult.failed" role="alert">{{ $t('shopproof.setup.answers.failed') }}</p>
+        <mt-card
+            v-if="result.answers && result.answers.length"
+            class="shopproof-answers"
+            position-identifier="shopproof-overview-answers"
+            :title="$t('shopproof.setup.answers.title')"
+        >
+            <p>{{ $t('shopproof.setup.answers.intro') }}</p>
+            <ul class="shopproof-recommended__list">
+                <li v-for="answer in result.answers" :key="answer.key">
+                    <strong>{{ $t(`shopproof.setup.answers.item.${answer.key}.title`) }}</strong>
+                    <span>{{ $t('shopproof.setup.answers.shoppersSee', { text: answer.text }) }}</span>
+                    <span class="shopproof-setup__help">{{ $t(`shopproof.setup.answers.item.${answer.key}.why`) }}</span>
+                    <label class="shopproof-answers__tick">
+                        <input v-model="ticked" type="checkbox" :value="answer.key">
+                        {{ $t(`shopproof.setup.answers.item.${answer.key}.tick`) }}
+                    </label>
+                </li>
+            </ul>
+            <mt-button variant="secondary" :disabled="answering" @click="saveAnswers">{{ $t('shopproof.setup.answers.button') }}</mt-button>
+            <p><small>{{ $t('shopproof.setup.answers.note') }}</small></p>
+        </mt-card>
+        <p v-if="hintResult && hintResult.excluded > 0" class="shopproof-setup__switched" role="status">{{ $tc('shopproof.setup.exclusionHints.saved', hintResult.excluded, { count: hintResult.excluded }) }}</p>
+        <p v-if="hintResult && hintResult.excluded === 0 && !hintResult.ticked" role="status">{{ $t('shopproof.setup.exclusionHints.noneTicked') }}</p>
+        <p v-if="hintResult && hintResult.excluded === 0 && hintResult.ticked" role="status">{{ $t('shopproof.setup.exclusionHints.alreadyDone') }}</p>
+        <p v-if="hintResult && hintResult.hidden" role="status">{{ $t('shopproof.setup.exclusionHints.hidden') }}</p>
+        <p v-if="hintResult && hintResult.failed" role="alert">{{ $t('shopproof.setup.exclusionHints.failed') }}</p>
+        <mt-card
+            v-if="result.exclusionHints && result.exclusionHints.length"
+            class="shopproof-answers"
+            position-identifier="shopproof-overview-exclusion-hints"
+            :title="$t('shopproof.setup.exclusionHints.title')"
+        >
+            <p>{{ $t('shopproof.setup.exclusionHints.intro') }}</p>
+            <ul class="shopproof-recommended__list">
+                <li v-for="hint in result.exclusionHints" :key="hint.key">
+                    <label class="shopproof-answers__tick">
+                        <input v-model="hintsTicked" type="checkbox" :value="hint.key">
+                        <strong>{{ hintTitle(hint) }}</strong>
+                    </label>
+                    <span class="shopproof-setup__help">{{ $t(`shopproof.setup.exclusionHints.why.${hint.kind}`) }}</span>
+                </li>
+            </ul>
+            <mt-button variant="secondary" :disabled="hinting" @click="excludeHints">{{ $t('shopproof.setup.exclusionHints.button') }}</mt-button>
+            <mt-button variant="secondary" :disabled="hinting" @click="hideHints">{{ $t('shopproof.setup.exclusionHints.hide') }}</mt-button>
+            <p><small>{{ $t('shopproof.setup.exclusionHints.note') }}</small></p>
         </mt-card>
         <mt-card
             v-if="!setupDone"

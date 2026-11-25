@@ -4,6 +4,7 @@ namespace Shopproof\Compliance\Rules;
 
 use GuzzleHttp\ClientInterface;
 use Psr\Log\LoggerInterface;
+use Shopware\Core\System\SystemConfig\SystemConfigService;
 
 /**
  * The rules the plugin works with: the copy shipped inside the plugin, or a newer one the merchant
@@ -16,10 +17,14 @@ class RulesUpdater
     /** The public rules file as it was when this plugin version was built. */
     public const BUNDLED = __DIR__ . '/../Resources/rules/rules.json';
 
+    /** The time and result of the last download attempt, so a failed check never reads as fine. */
+    public const ATTEMPT = 'ShopproofCompliance.rulesCheck';
+
     public function __construct(
         private readonly ClientInterface $client,
         private readonly RulesStore $store,
         private readonly LoggerInterface $logger,
+        private readonly ?SystemConfigService $config = null,
     ) {
     }
 
@@ -27,6 +32,28 @@ class RulesUpdater
      * @return bool true when a new copy was stored
      */
     public function refresh(): bool
+    {
+        $ok = $this->download();
+        $this->config?->set(self::ATTEMPT, ['time' => time(), 'ok' => $ok]);
+
+        return $ok;
+    }
+
+    /**
+     * The last download attempt, null when none was recorded.
+     *
+     * @return array{time: int, ok: bool}|null
+     */
+    public static function attempt(mixed $value): ?array
+    {
+        if (!\is_array($value) || !\is_int($value['time'] ?? null) || !\is_bool($value['ok'] ?? null)) {
+            return null;
+        }
+
+        return ['time' => $value['time'], 'ok' => $value['ok']];
+    }
+
+    private function download(): bool
     {
         try {
             $response = $this->client->request('GET', RulesFile::URL, [
@@ -58,6 +85,14 @@ class RulesUpdater
         $this->store->save($file, $body, new \DateTimeImmutable('now', new \DateTimeZone('UTC')));
 
         return true;
+    }
+
+    /**
+     * When the last usable rules file was downloaded, null when never.
+     */
+    public function fetchedAt(): ?\DateTimeImmutable
+    {
+        return $this->store->fetchedAt();
     }
 
     /**

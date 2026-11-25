@@ -398,7 +398,8 @@
                     "problem": "Le dernier contrôle a trouvé un problème sur {count} page. | Le dernier contrôle a trouvé un problème sur {count} pages.",
                     "noPages": "Non vérifié. Le dernier contrôle n'a ouvert aucune page de la boutique qui devrait afficher le bouton de rétractation : le bouton n'y a donc pas été trouvé. Relancez le contrôle.",
                     "look": "Fonctionne, mais le dernier contrôle a trouvé un point à examiner.",
-                    "working": "Fonctionne. Le bouton a été trouvé sur la page vérifiée ({count}). | Fonctionne. Le bouton a été trouvé sur les {count} pages vérifiées."
+                    "working": "Fonctionne. Le bouton a été trouvé sur la page vérifiée ({count}). | Fonctionne. Le bouton a été trouvé sur les {count} pages vérifiées.",
+                    "gone": "La vérification hebdomadaire n'a pas trouvé le lien de rétractation sur {count} page. Une modification du thème ou du menu l'a peut-être retiré. | La vérification hebdomadaire n'a pas trouvé le lien de rétractation sur {count} pages. Une modification du thème ou du menu l'a peut-être retiré."
                 },
                 "withdrawals": {
                     "title": "Rétractations",
@@ -443,7 +444,11 @@
                 "rules": {
                     "title": "Règles",
                     "missing": "La liste des règles n'a pas pu être chargée.",
-                    "loaded": "{count} règle pour l'UE et vos pays (version {version}). | {count} règles pour l'UE et vos pays (version {version})."
+                    "manual": "{count} règle pour l'UE et vos pays (version {version}). Les nouvelles règles n'arrivent dans votre boutique qu'avec les mises à jour du plugin. Cliquez sur « Garder les règles à jour » et elles arrivent d'elles-mêmes. | {count} règles pour l'UE et vos pays (version {version}). Les nouvelles règles n'arrivent dans votre boutique qu'avec les mises à jour du plugin. Cliquez sur « Garder les règles à jour » et elles arrivent d'elles-mêmes.",
+                    "current": "{count} règle pour l'UE et vos pays (version {version}). Les nouvelles règles arrivent d'elles-mêmes. Rien à faire pour vous. | {count} règles pour l'UE et vos pays (version {version}). Les nouvelles règles arrivent d'elles-mêmes. Rien à faire pour vous.",
+                    "currentChecked": "{count} règle pour l'UE et vos pays (version {version}). Les nouvelles règles arrivent d'elles-mêmes. Rien à faire pour vous. Dernière vérification le {date}. | {count} règles pour l'UE et vos pays (version {version}). Les nouvelles règles arrivent d'elles-mêmes. Rien à faire pour vous. Dernière vérification le {date}.",
+                    "failed": "{count} règle pour l'UE et vos pays (version {version}). La recherche de nouvelles règles du {date} n'a pas fonctionné, de nouvelles règles peuvent donc manquer. Shopproof réessaie de lui-même chaque jour. Si cela dure, vérifiez que la boutique peut joindre shopproof.app. | {count} règles pour l'UE et vos pays (version {version}). La recherche de nouvelles règles du {date} n'a pas fonctionné, de nouvelles règles peuvent donc manquer. Shopproof réessaie de lui-même chaque jour. Si cela dure, vérifiez que la boutique peut joindre shopproof.app.",
+                    "notChecked": "{count} règle pour l'UE et vos pays (version {version}). Non vérifié : la recherche quotidienne de nouvelles règles n'a pas tourné depuis 2 jours. Shopware la lance avec ses tâches planifiées ; vérifiez qu'elles tournent. | {count} règles pour l'UE et vos pays (version {version}). Non vérifié : la recherche quotidienne de nouvelles règles n'a pas tourné depuis 2 jours. Shopware la lance avec ses tâches planifiées ; vérifiez qu'elles tournent."
                 }
             },
             "nonEu": {
@@ -506,6 +511,48 @@
                 "nothingToUndo": "Rien à annuler. L'annulation est possible pendant 14 jours après le clic. Sinon, modifiez chaque réglage dans la configuration du plugin.",
                 "failed": "Cela n'a pas fonctionné. Rechargez la page pour voir les réglages actuels.",
                 "note": "Les choix qui vous reviennent, comme un délai de rétractation plus long ou votre mention sur le règlement des litiges, ne sont jamais activés à votre place. Un canal de vente qui a sa propre valeur pour un réglage la garde. Aide technique, pas un conseil juridique."
+            },
+            "answers": {
+                "title": "Réponses toutes prêtes",
+                "intro": "Vous seul le savez, donc rien n'est coché à votre place. La plupart des boutiques répondent comme ci-dessous. Cochez chaque réponse vraie pour votre boutique et enregistrez.",
+                "shoppersSee": "Les clients voient : « {text} »",
+                "button": "Enregistrer les réponses cochées",
+                "saved": "{count} réponse enregistrée. Vous pouvez la modifier dans les paramètres Shopproof. | {count} réponses enregistrées. Vous pouvez les modifier dans les paramètres Shopproof.",
+                "noneTicked": "Rien n'a été enregistré : cochez d'abord les réponses qui sont vraies pour votre boutique.",
+                "alreadyDone": "Rien n'a changé : les réponses cochées étaient déjà enregistrées, par exemple dans les réglages Shopproof.",
+                "failed": "Les réponses n'ont pas pu être enregistrées. Veuillez réessayer.",
+                "note": "Enregistré pour tous les canaux de vente ; un canal de vente qui a sa propre réponse la garde. Vous ajoutez toujours vous-même la déclaration sur les litiges à vos pages de conditions générales et de mentions légales ; la page Shopproof l'affiche pour la copier. Aide technique, pas un conseil juridique.",
+                "item": {
+                    "dispute": {
+                        "title": "Déclaration sur les litiges",
+                        "tick": "Vrai pour ma boutique : nous n'avons pas accepté d'y participer et n'y sommes pas tenus.",
+                        "why": "La plupart des petites boutiques répondent ainsi. En Allemagne, les boutiques de plus de 10 salariés doivent indiquer si elles participent (§ 36 VSBG). Si un organisme de médiation ou une règle de votre fédération professionnelle vous lie, choisissez plutôt dans les paramètres Shopproof."
+                    },
+                    "reviews": {
+                        "title": "Mention sur la vérification des avis",
+                        "tick": "Vrai pour ma boutique : nos avis sont ceux de Shopware, et aucune autre extension ni aucun service ne les vérifie.",
+                        "why": "Shopware ne vérifie pas si l'auteur d'un avis a acheté le produit. Les boutiques qui affichent des avis doivent indiquer si elles les vérifient ; dire qu'ils sont vérifiés alors qu'ils ne le sont pas est interdit."
+                    }
+                }
+            },
+            "exclusionHints": {
+                "title": "Exclusions de la rétractation suggérées",
+                "intro": "La loi permet aux boutiques d'exclure certains biens de la rétractation. Shopproof a trouvé ceux-ci dans votre boutique. Rien n'est exclu à votre place : cochez seulement ce qui convient et enregistrez. Les articles exclus restent affichés dans le formulaire de rétractation avec votre explication, et votre copie de chaque rétractation les cite, pour que vous puissiez vérifier chaque cas.",
+                "digital": "Produits numériques",
+                "category": "Catégorie « {name} » ({count} produit) | Catégorie « {name} » ({count} produits)",
+                "why": {
+                    "download": "Les produits numériques, une fois que le client a accepté que le téléchargement commence avant la fin du délai de rétractation et confirmé qu'il perd son droit de rétractation (art. 16, point m), de la directive 2011/83/UE). Vos cases de consentement au téléchargement lors de la commande demandent les deux.",
+                    "custom": "Le nom laisse penser à des biens confectionnés selon les spécifications du client ou nettement personnalisés (art. 16, point c), de la directive 2011/83/UE). Excluez-la seulement si chaque produit qu'elle contient est fabriqué ainsi.",
+                    "hygiene": "Le nom laisse penser à des biens scellés qui ne peuvent être renvoyés pour des raisons de protection de la santé ou d'hygiène une fois descellés après la livraison (art. 16, point e), de la directive 2011/83/UE). L'exception ne couvre que les articles dont le scellé a été brisé, vérifiez donc chaque rétractation."
+                },
+                "button": "Exclure les éléments cochés",
+                "hide": "Ne plus suggérer ces éléments",
+                "saved": "{count} suggestion exclue de la rétractation, pour tous les canaux de vente. Vous pouvez la modifier dans les paramètres Shopproof. | {count} suggestions exclues de la rétractation, pour tous les canaux de vente. Vous pouvez les modifier dans les paramètres Shopproof.",
+                "noneTicked": "Rien n'a été exclu : cochez d'abord les suggestions qui conviennent à votre boutique.",
+                "alreadyDone": "Rien n'a changé : les suggestions cochées étaient déjà exclues ou ne sont plus trouvées, par exemple après un changement dans les réglages Shopproof.",
+                "hidden": "Ces suggestions ne seront plus affichées. Vous pouvez toujours exclure des catégories dans les paramètres Shopproof.",
+                "failed": "Les exclusions n'ont pas pu être enregistrées. Veuillez réessayer.",
+                "note": "Enregistré pour tous les canaux de vente ; un canal de vente qui a sa propre liste la garde. C'est à vous de décider si une exception s'applique. Aide technique, pas un conseil juridique."
             }
         },
         "cancel": {
@@ -720,6 +767,20 @@
             "undoneKept": "Annulée. Les réglages modifiés depuis par quelqu'un d'autre restent tels quels.",
             "undoFailed": "Cette modification n'a pas pu être annulée. Elle a peut-être déjà été annulée.",
             "notLegalAdvice": "Aide technique, pas un conseil juridique. Shopproof ne déclare jamais une boutique conforme."
+        },
+        "quietEmail": {
+            "subject": "{count} point dans {shop} a besoin de vous | {count} points dans {shop} ont besoin de vous",
+            "intro": "Shopproof a trouvé dans votre boutique quelque chose qui demande une intervention humaine :",
+            "overview": "Tout le reste se trouve sur la page Shopproof de votre administration Shopware : {url}",
+            "footer": "Shopproof n'envoie cet e-mail que lorsque quelque chose a besoin de vous, au plus une fois par jour. Pour l'arrêter, décochez \"M'envoyer un e-mail quand quelque chose a besoin de moi\" sur la page Shopproof. Aide technique, pas un conseil juridique.",
+            "switch": "M'envoyer un e-mail quand quelque chose a besoin de moi (au plus une fois par jour, à {to})",
+            "noAddress": "Shopproof n'a pas d'adresse où envoyer l'e-mail. Saisissez l'e-mail de la boutique sous Paramètres, Informations de base.",
+            "failed": "Le réglage n'a pas pu être enregistré. Veuillez réessayer."
+        },
+        "keepCurrent": {
+            "text": "Garder les règles à jour : Shopproof cherche de nouvelles règles une fois par jour, sans envoyer de données de boutique, de clients ni de commandes. Vous pouvez le désactiver dans les réglages du plugin (Mises à jour des règles).",
+            "button": "Garder les règles à jour",
+            "failed": "L'enregistrement a échoué. Veuillez réessayer."
         }
     }
 }

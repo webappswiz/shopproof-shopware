@@ -398,7 +398,8 @@
                     "problem": "De laatste controle vond een probleem op {count} pagina. | De laatste controle vond een probleem op {count} pagina’s.",
                     "noPages": "Niet gecontroleerd. De laatste controle heeft geen enkele winkelpagina geopend die de herroepingsknop zou moeten tonen, dus de knop is daar niet gevonden. Voer de controle opnieuw uit.",
                     "look": "Werkt, maar de laatste controle vond iets om naar te kijken.",
-                    "working": "Werkt. De knop is gevonden op de {count} pagina die we hebben gecontroleerd. | Werkt. De knop is gevonden op alle {count} pagina’s die we hebben gecontroleerd."
+                    "working": "Werkt. De knop is gevonden op de {count} pagina die we hebben gecontroleerd. | Werkt. De knop is gevonden op alle {count} pagina’s die we hebben gecontroleerd.",
+                    "gone": "De wekelijkse controle vond de herroepingslink niet op {count} pagina. Misschien heeft een wijziging van het thema of menu hem verwijderd. | De wekelijkse controle vond de herroepingslink niet op {count} pagina's. Misschien heeft een wijziging van het thema of menu hem verwijderd."
                 },
                 "withdrawals": {
                     "title": "Herroepingen",
@@ -443,7 +444,11 @@
                 "rules": {
                     "title": "Regels",
                     "missing": "De regellijst kon niet worden geladen.",
-                    "loaded": "{count} regel voor de EU en uw landen (versie {version}). | {count} regels voor de EU en uw landen (versie {version})."
+                    "manual": "{count} regel voor de EU en uw landen (versie {version}). Nieuwe regels komen alleen met plugin-updates in uw winkel. Klik op \"Regels actueel houden\" en ze komen vanzelf. | {count} regels voor de EU en uw landen (versie {version}). Nieuwe regels komen alleen met plugin-updates in uw winkel. Klik op \"Regels actueel houden\" en ze komen vanzelf.",
+                    "current": "{count} regel voor de EU en uw landen (versie {version}). Nieuwe regels komen vanzelf. U hoeft niets te doen. | {count} regels voor de EU en uw landen (versie {version}). Nieuwe regels komen vanzelf. U hoeft niets te doen.",
+                    "currentChecked": "{count} regel voor de EU en uw landen (versie {version}). Nieuwe regels komen vanzelf. U hoeft niets te doen. Laatst gecontroleerd op {date}. | {count} regels voor de EU en uw landen (versie {version}). Nieuwe regels komen vanzelf. U hoeft niets te doen. Laatst gecontroleerd op {date}.",
+                    "failed": "{count} regel voor de EU en uw landen (versie {version}). Het zoeken naar nieuwe regels op {date} is niet gelukt, dus nieuwe regels kunnen ontbreken. Shopproof probeert het elke dag vanzelf opnieuw. Blijft dit zo, controleer dan of de shop shopproof.app kan bereiken. | {count} regels voor de EU en uw landen (versie {version}). Het zoeken naar nieuwe regels op {date} is niet gelukt, dus nieuwe regels kunnen ontbreken. Shopproof probeert het elke dag vanzelf opnieuw. Blijft dit zo, controleer dan of de shop shopproof.app kan bereiken.",
+                    "notChecked": "{count} regel voor de EU en uw landen (versie {version}). Niet gecontroleerd: het dagelijkse zoeken naar nieuwe regels is de laatste 2 dagen niet gelopen. Shopware start het met de geplande taken; controleer of die lopen. | {count} regels voor de EU en uw landen (versie {version}). Niet gecontroleerd: het dagelijkse zoeken naar nieuwe regels is de laatste 2 dagen niet gelopen. Shopware start het met de geplande taken; controleer of die lopen."
                 }
             },
             "nonEu": {
@@ -506,6 +511,48 @@
                 "nothingToUndo": "Niets om ongedaan te maken. Ongedaan maken kan tot 14 dagen na de klik. Wijzig anders elke instelling in de pluginconfiguratie.",
                 "failed": "Dat is niet gelukt. Laad de pagina opnieuw om de huidige instellingen te zien.",
                 "note": "Keuzes die alleen u kunt maken, zoals een langere herroepingstermijn of uw verklaring over geschillenbeslechting, worden nooit voor u aangezet. Een verkoopkanaal met een eigen waarde voor een instelling houdt die. Technische hulp, geen juridisch advies."
+            },
+            "answers": {
+                "title": "Kant-en-klare antwoorden",
+                "intro": "Alleen u weet dit, dus er is niets voor u aangevinkt. De meeste winkels antwoorden zoals hieronder. Vink elk antwoord aan dat voor uw winkel klopt en sla op.",
+                "shoppersSee": "Klanten zien: \"{text}\"",
+                "button": "Aangevinkte antwoorden opslaan",
+                "saved": "{count} antwoord opgeslagen. U kunt het in de Shopproof-instellingen wijzigen. | {count} antwoorden opgeslagen. U kunt ze in de Shopproof-instellingen wijzigen.",
+                "noneTicked": "Niets opgeslagen: vink eerst de antwoorden aan die voor uw winkel kloppen.",
+                "alreadyDone": "Niets veranderd: de aangevinkte antwoorden waren al opgeslagen, bijvoorbeeld in de Shopproof-instellingen.",
+                "failed": "De antwoorden konden niet worden opgeslagen. Probeer het opnieuw.",
+                "note": "Opgeslagen voor alle verkoopkanalen; een verkoopkanaal met een eigen antwoord houdt dat. De verklaring over geschillen zet u nog steeds zelf in uw algemene voorwaarden en bedrijfsgegevens; de Shopproof-pagina toont die om te kopiëren. Technische hulp, geen juridisch advies.",
+                "item": {
+                    "dispute": {
+                        "title": "Verklaring over geschillen",
+                        "tick": "Klopt voor mijn winkel: wij hebben niet ingestemd met deelname en zijn er niet toe verplicht.",
+                        "why": "De meeste kleine winkels antwoorden zo. Winkels in Duitsland met meer dan 10 medewerkers moeten vermelden of ze deelnemen (§ 36 VSBG). Als een geschillencommissie of een regel van uw branchevereniging u bindt, kies dan in de Shopproof-instellingen."
+                    },
+                    "reviews": {
+                        "title": "Vermelding over controle van beoordelingen",
+                        "tick": "Klopt voor mijn winkel: onze beoordelingen zijn die van Shopware, en geen andere plugin of dienst controleert ze.",
+                        "why": "Shopware controleert niet of iemand die een beoordeling schrijft het product heeft gekocht. Winkels die beoordelingen tonen, moeten vermelden of ze die controleren; zeggen dat ze gecontroleerd zijn terwijl dat niet zo is, is verboden."
+                    }
+                }
+            },
+            "exclusionHints": {
+                "title": "Voorgestelde uitsluitingen van herroeping",
+                "intro": "De wet staat winkels toe sommige goederen van herroeping uit te sluiten. Shopproof vond deze in uw winkel. Er wordt niets voor u uitgesloten: vink alleen aan wat past en sla op. Uitgesloten artikelen staan nog steeds op het herroepingsformulier met uw uitleg, en uw kopie van elke herroeping noemt ze, zodat u elk geval kunt controleren.",
+                "digital": "Digitale producten",
+                "category": "Categorie \"{name}\" ({count} product) | Categorie \"{name}\" ({count} producten)",
+                "why": {
+                    "download": "Digitale producten, zodra de klant heeft ingestemd dat de download vóór het einde van de herroepingstermijn begint en heeft bevestigd dat hij het herroepingsrecht verliest (art. 16, onder m, van Richtlijn 2011/83/EU). Uw vinkjes voor downloads bij het afrekenen vragen beide.",
+                    "custom": "De naam wijst op goederen die volgens de specificaties van de klant zijn vervaardigd of duidelijk gepersonaliseerd zijn (art. 16, onder c, van Richtlijn 2011/83/EU). Sluit de categorie alleen uit als elk product erin zo wordt gemaakt.",
+                    "hygiene": "De naam wijst op verzegelde goederen die om redenen van gezondheidsbescherming of hygiëne niet geschikt zijn om te worden teruggezonden als de verzegeling na de levering is verbroken (art. 16, onder e, van Richtlijn 2011/83/EU). De uitzondering geldt alleen voor artikelen met een verbroken verzegeling, controleer dus elke herroeping."
+                },
+                "button": "Aangevinkte uitsluiten",
+                "hide": "Deze niet meer voorstellen",
+                "saved": "{count} voorstel uitgesloten van herroeping, voor alle verkoopkanalen. U kunt dit wijzigen in de Shopproof-instellingen. | {count} voorstellen uitgesloten van herroeping, voor alle verkoopkanalen. U kunt dit wijzigen in de Shopproof-instellingen.",
+                "noneTicked": "Niets uitgesloten: vink eerst de voorstellen aan die bij uw winkel passen.",
+                "alreadyDone": "Niets veranderd: de aangevinkte suggesties waren al uitgesloten of zijn niet meer gevonden, bijvoorbeeld na een wijziging in de Shopproof-instellingen.",
+                "hidden": "Deze voorstellen worden niet meer getoond. U kunt nog steeds categorieën uitsluiten in de Shopproof-instellingen.",
+                "failed": "De uitsluitingen konden niet worden opgeslagen. Probeer het opnieuw.",
+                "note": "Opgeslagen voor alle verkoopkanalen; een verkoopkanaal met een eigen lijst houdt die. Of een uitzondering van toepassing is, beslist u. Technische hulp, geen juridisch advies."
             }
         },
         "cancel": {
@@ -720,6 +767,20 @@
             "undoneKept": "Ongedaan gemaakt. Instellingen die iemand sindsdien heeft gewijzigd, blijven zoals ze zijn.",
             "undoFailed": "Deze wijziging kon niet ongedaan worden gemaakt. Misschien is dat al gebeurd.",
             "notLegalAdvice": "Technische hulp, geen juridisch advies. Shopproof noemt een winkel nooit conform."
+        },
+        "quietEmail": {
+            "subject": "{count} ding in {shop} heeft u nodig | {count} dingen in {shop} hebben u nodig",
+            "intro": "Shopproof heeft in uw winkel iets gevonden waar een mens naar moet kijken:",
+            "overview": "Al het andere staat op de Shopproof-pagina in uw Shopware-beheer: {url}",
+            "footer": "Shopproof stuurt deze e-mail alleen als er iets is dat u nodig heeft, hooguit één keer per dag. Om hem te stoppen, vinkt u \"Mail mij als er iets is dat mij nodig heeft\" uit op de Shopproof-pagina. Technische hulp, geen juridisch advies.",
+            "switch": "Mail mij als er iets is dat mij nodig heeft (hooguit één keer per dag, naar {to})",
+            "noAddress": "Shopproof heeft geen adres om naar te mailen. Vul het e-mailadres van de winkel in onder Instellingen, Basisgegevens.",
+            "failed": "De instelling kon niet worden opgeslagen. Probeer het opnieuw."
+        },
+        "keepCurrent": {
+            "text": "Regels actueel houden: Shopproof zoekt één keer per dag naar nieuwe regels. Er worden geen winkel-, klant- of bestelgegevens verstuurd. U zet het uit in de plugin-instellingen (Regelupdates).",
+            "button": "Regels actueel houden",
+            "failed": "Dit kon niet worden opgeslagen. Probeer het opnieuw."
         }
     }
 }

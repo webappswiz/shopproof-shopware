@@ -2,7 +2,10 @@
 
 namespace Shopproof\Compliance\Controller;
 
+use Shopproof\Compliance\Setup\Answers;
+use Shopproof\Compliance\Setup\ExclusionHints;
 use Shopproof\Compliance\Setup\OverviewData;
+use Shopproof\Compliance\Setup\QuietEmailSender;
 use Shopproof\Compliance\Setup\Recommended;
 use Shopware\Core\Framework\Routing\ApiRouteScope;
 use Shopware\Core\PlatformRequest;
@@ -21,6 +24,9 @@ final class OverviewController extends AbstractController
     public function __construct(
         private readonly OverviewData $overview,
         private readonly Recommended $recommended,
+        private readonly Answers $answers,
+        private readonly ExclusionHints $hints,
+        private readonly QuietEmailSender $quiet,
     ) {
     }
 
@@ -32,7 +38,16 @@ final class OverviewController extends AbstractController
     )]
     public function overview(Request $request): JsonResponse
     {
-        return new JsonResponse($this->overview->build(self::zone($request->query->get('timezone'))));
+        $out = $this->overview->build(self::zone($request->query->get('timezone')));
+        // Ready-made answers, with the words shoppers see in the admin language.
+        $locale = $request->query->get('locale');
+        $out['answers'] = $this->answers->offered(\is_string($locale) ? $locale : '');
+        // Suggested withdrawal exclusions from the catalogue, nothing ticked.
+        $out['exclusionHints'] = ExclusionHints::suggest($this->hints->facts());
+        // The quiet email switch and where the email goes.
+        $out['quietEmail'] = ['on' => $this->quiet->on(), 'to' => $this->quiet->recipient()];
+
+        return new JsonResponse($out);
     }
 
     /**
@@ -61,6 +76,70 @@ final class OverviewController extends AbstractController
     public function undoRecommended(): JsonResponse
     {
         return new JsonResponse(['undone' => $this->recommended->undo()]);
+    }
+
+    /**
+     * Saves the ticked ready-made answers. Only answers still offered are saved.
+     */
+    #[Route(
+        path: '/api/_action/shopproof/answers/apply',
+        name: 'api.action.shopproof.answers.apply',
+        defaults: [PlatformRequest::ATTRIBUTE_ACL => ['system_config:update']],
+        methods: ['POST']
+    )]
+    public function applyAnswers(Request $request): JsonResponse
+    {
+        $keys = $request->request->all()['keys'] ?? [];
+        $keys = \is_array($keys) ? array_values(array_filter($keys, 'is_string')) : [];
+
+        return new JsonResponse(['saved' => $this->answers->apply($keys)]);
+    }
+
+    /**
+     * Excludes the ticked suggestions. Only suggestions still offered are saved.
+     */
+    #[Route(
+        path: '/api/_action/shopproof/exclusion-hints/apply',
+        name: 'api.action.shopproof.exclusion_hints.apply',
+        defaults: [PlatformRequest::ATTRIBUTE_ACL => ['system_config:update']],
+        methods: ['POST']
+    )]
+    public function applyExclusionHints(Request $request): JsonResponse
+    {
+        $keys = $request->request->all()['keys'] ?? [];
+        $keys = \is_array($keys) ? array_values(array_filter($keys, 'is_string')) : [];
+
+        return new JsonResponse(['excluded' => $this->hints->apply($keys)]);
+    }
+
+    /**
+     * Hides the suggestions now shown, for good. Excludes nothing.
+     */
+    #[Route(
+        path: '/api/_action/shopproof/exclusion-hints/hide',
+        name: 'api.action.shopproof.exclusion_hints.hide',
+        defaults: [PlatformRequest::ATTRIBUTE_ACL => ['system_config:update']],
+        methods: ['POST']
+    )]
+    public function hideExclusionHints(): JsonResponse
+    {
+        return new JsonResponse(['hidden' => $this->hints->hide()]);
+    }
+
+    /**
+     * The quiet email switch: on or off, nothing else changes.
+     */
+    #[Route(
+        path: '/api/_action/shopproof/quiet-email',
+        name: 'api.action.shopproof.quiet_email',
+        defaults: [PlatformRequest::ATTRIBUTE_ACL => ['system_config:update']],
+        methods: ['POST']
+    )]
+    public function quietEmail(Request $request): JsonResponse
+    {
+        $this->quiet->switchTo(($request->request->all()['on'] ?? null) === true);
+
+        return new JsonResponse(['on' => $this->quiet->on()]);
     }
 
     private static function zone(mixed $name): \DateTimeZone

@@ -398,7 +398,8 @@
                     "problem": "Ostatnia kontrola wykryła problem na {count} stronie. | Ostatnia kontrola wykryła problem na stronach (liczba: {count}).",
                     "noPages": "Nie sprawdzono. Ostatnia kontrola nie otworzyła żadnej strony sklepu, na której powinien być przycisk odstąpienia, więc go tam nie znaleziono. Uruchom kontrolę ponownie.",
                     "look": "Działa, ale ostatnia kontrola znalazła coś do sprawdzenia.",
-                    "working": "Działa. Przycisk znaleziono na {count} sprawdzonej stronie. | Działa. Przycisk znaleziono na wszystkich sprawdzonych stronach (liczba: {count})."
+                    "working": "Działa. Przycisk znaleziono na {count} sprawdzonej stronie. | Działa. Przycisk znaleziono na wszystkich sprawdzonych stronach (liczba: {count}).",
+                    "gone": "Cotygodniowe sprawdzenie nie znalazło linku do odstąpienia na stronach (liczba: {count}). Mogła go usunąć zmiana motywu lub menu. | Cotygodniowe sprawdzenie nie znalazło linku do odstąpienia na stronach (liczba: {count}). Mogła go usunąć zmiana motywu lub menu."
                 },
                 "withdrawals": {
                     "title": "Odstąpienia od umowy",
@@ -443,7 +444,11 @@
                 "rules": {
                     "title": "Przepisy",
                     "missing": "Nie udało się wczytać listy przepisów.",
-                    "loaded": "Przepisy dla UE i Twoich krajów: {count} (wersja {version}). | Przepisy dla UE i Twoich krajów: {count} (wersja {version})."
+                    "manual": "Przepisy dla UE i Twoich krajów: {count} (wersja {version}). Nowe przepisy trafiają do sklepu tylko z aktualizacjami wtyczki. Proszę kliknąć „Utrzymuj aktualne przepisy”, a będą przychodzić same. | Przepisy dla UE i Twoich krajów: {count} (wersja {version}). Nowe przepisy trafiają do sklepu tylko z aktualizacjami wtyczki. Proszę kliknąć „Utrzymuj aktualne przepisy”, a będą przychodzić same.",
+                    "current": "Przepisy dla UE i Twoich krajów: {count} (wersja {version}). Nowe przepisy przychodzą same. Nie trzeba nic robić. | Przepisy dla UE i Twoich krajów: {count} (wersja {version}). Nowe przepisy przychodzą same. Nie trzeba nic robić.",
+                    "currentChecked": "Przepisy dla UE i Twoich krajów: {count} (wersja {version}). Nowe przepisy przychodzą same. Nie trzeba nic robić. Ostatnie sprawdzenie: {date}. | Przepisy dla UE i Twoich krajów: {count} (wersja {version}). Nowe przepisy przychodzą same. Nie trzeba nic robić. Ostatnie sprawdzenie: {date}.",
+                    "failed": "Przepisy dla UE i Twoich krajów: {count} (wersja {version}). Sprawdzenie nowych przepisów {date} nie powiodło się, więc może brakować nowych przepisów. Shopproof sam próbuje ponownie codziennie. Jeśli to się utrzymuje, sprawdź, czy sklep łączy się z shopproof.app. | Przepisy dla UE i Twoich krajów: {count} (wersja {version}). Sprawdzenie nowych przepisów {date} nie powiodło się, więc może brakować nowych przepisów. Shopproof sam próbuje ponownie codziennie. Jeśli to się utrzymuje, sprawdź, czy sklep łączy się z shopproof.app.",
+                    "notChecked": "Przepisy dla UE i Twoich krajów: {count} (wersja {version}). Nie sprawdzono: codzienne sprawdzanie nowych przepisów nie działało przez ostatnie 2 dni. Shopware uruchamia je w zaplanowanych zadaniach; sprawdź, czy działają. | Przepisy dla UE i Twoich krajów: {count} (wersja {version}). Nie sprawdzono: codzienne sprawdzanie nowych przepisów nie działało przez ostatnie 2 dni. Shopware uruchamia je w zaplanowanych zadaniach; sprawdź, czy działają."
                 }
             },
             "nonEu": {
@@ -506,6 +511,48 @@
                 "nothingToUndo": "Nie ma nic do cofnięcia. Cofnięcie jest możliwe przez 14 dni od kliknięcia. W przeciwnym razie proszę zmienić każde ustawienie w konfiguracji wtyczki.",
                 "failed": "To się nie udało. Proszę odświeżyć stronę, aby zobaczyć aktualne ustawienia.",
                 "note": "Decyzje, które mogą podjąć tylko Państwo, na przykład dłuższy termin odstąpienia czy informacja o rozstrzyganiu sporów, nigdy nie są włączane za Państwa. Kanał sprzedaży z własną wartością ustawienia ją zachowuje. Pomoc techniczna, nie porada prawna."
+            },
+            "answers": {
+                "title": "Gotowe odpowiedzi",
+                "intro": "Wiedzą to tylko Państwo, więc nic nie jest zaznaczone za Państwa. Większość sklepów odpowiada tak jak poniżej. Proszę zaznaczyć każdą odpowiedź prawdziwą dla Państwa sklepu i zapisać.",
+                "shoppersSee": "Klienci widzą: „{text}”",
+                "button": "Zapisz zaznaczone odpowiedzi",
+                "saved": "Zapisane odpowiedzi: {count}. Można je zmienić w ustawieniach Shopproof. | Zapisane odpowiedzi: {count}. Można je zmienić w ustawieniach Shopproof.",
+                "noneTicked": "Nic nie zapisano: proszę najpierw zaznaczyć odpowiedzi, które są prawdziwe dla Państwa sklepu.",
+                "alreadyDone": "Nic się nie zmieniło: zaznaczone odpowiedzi były już zapisane, na przykład w ustawieniach Shopproof.",
+                "failed": "Nie udało się zapisać odpowiedzi. Proszę spróbować ponownie.",
+                "note": "Zapisane dla wszystkich kanałów sprzedaży; kanał sprzedaży z własną odpowiedzią ją zachowuje. Oświadczenie o sporach nadal dodają Państwo sami na strony regulaminu i danych firmy; strona Shopproof pokazuje je do skopiowania. Pomoc techniczna, nie porada prawna.",
+                "item": {
+                    "dispute": {
+                        "title": "Oświadczenie o sporach",
+                        "tick": "Prawda dla mojego sklepu: nie zgodziliśmy się na udział i nie mamy takiego obowiązku.",
+                        "why": "Tak odpowiada większość małych sklepów. Sklepy w Niemczech zatrudniające ponad 10 osób muszą podać, czy biorą udział (§ 36 VSBG). Jeśli wiąże Państwa sąd polubowny lub zasada stowarzyszenia branżowego, proszę wybrać w ustawieniach Shopproof."
+                    },
+                    "reviews": {
+                        "title": "Informacja o sprawdzaniu opinii",
+                        "tick": "Prawda dla mojego sklepu: nasze opinie pochodzą z Shopware i żadna inna wtyczka ani usługa ich nie sprawdza.",
+                        "why": "Shopware nie sprawdza, czy autor opinii kupił produkt. Sklepy pokazujące opinie muszą podać, czy je sprawdzają; twierdzenie, że są sprawdzane, gdy nie są, jest zakazane."
+                    }
+                }
+            },
+            "exclusionHints": {
+                "title": "Proponowane wykluczenia z odstąpienia",
+                "intro": "Prawo pozwala sklepom wykluczyć niektóre towary z prawa odstąpienia. Shopproof znalazł je w Państwa sklepie. Nic nie jest wykluczane za Państwa: proszę zaznaczyć tylko to, co pasuje, i zapisać. Wykluczone produkty nadal widać w formularzu odstąpienia z Państwa wyjaśnieniem, a Państwa kopia każdego odstąpienia je wymienia, więc można sprawdzić każdy przypadek.",
+                "digital": "Produkty cyfrowe",
+                "category": "Kategoria „{name}” (produkty: {count}) | Kategoria „{name}” (produkty: {count})",
+                "why": {
+                    "download": "Produkty cyfrowe, gdy klient zgodził się, aby pobieranie rozpoczęło się przed upływem terminu na odstąpienie, i potwierdził, że traci prawo odstąpienia (art. 16 lit. m dyrektywy 2011/83/UE). Pola zgody na pobieranie przy składaniu zamówienia pytają o oba warunki.",
+                    "custom": "Nazwa wskazuje na towary wyprodukowane według specyfikacji klienta lub wyraźnie spersonalizowane (art. 16 lit. c dyrektywy 2011/83/UE). Proszę ją wykluczyć tylko wtedy, gdy każdy produkt w niej jest tak wykonany.",
+                    "hygiene": "Nazwa wskazuje na towary w zapieczętowanym opakowaniu, których po otwarciu nie można zwrócić ze względu na ochronę zdrowia lub względy higieniczne, jeśli opakowanie otwarto po dostarczeniu (art. 16 lit. e dyrektywy 2011/83/UE). Wyjątek obejmuje tylko produkty z otwartym opakowaniem, więc proszę sprawdzać każde odstąpienie."
+                },
+                "button": "Wyklucz zaznaczone",
+                "hide": "Nie proponuj ich ponownie",
+                "saved": "Wykluczone z odstąpienia propozycje: {count}, dla wszystkich kanałów sprzedaży. Można to zmienić w ustawieniach Shopproof. | Wykluczone z odstąpienia propozycje: {count}, dla wszystkich kanałów sprzedaży. Można to zmienić w ustawieniach Shopproof.",
+                "noneTicked": "Nic nie wykluczono: proszę najpierw zaznaczyć propozycje pasujące do Państwa sklepu.",
+                "alreadyDone": "Nic się nie zmieniło: zaznaczone propozycje były już wyłączone albo nie ma ich już w sklepie, na przykład po zmianie w ustawieniach Shopproof.",
+                "hidden": "Te propozycje nie będą już pokazywane. Nadal można wykluczać kategorie w ustawieniach Shopproof.",
+                "failed": "Nie udało się zapisać wykluczeń. Proszę spróbować ponownie.",
+                "note": "Zapisane dla wszystkich kanałów sprzedaży; kanał sprzedaży z własną listą ją zachowuje. To Państwo decydują, czy wyjątek ma zastosowanie. Pomoc techniczna, nie porada prawna."
             }
         },
         "cancel": {
@@ -720,6 +767,20 @@
             "undoneKept": "Cofnięto. Ustawienia, które ktoś zmienił w międzyczasie, pozostają bez zmian.",
             "undoFailed": "Nie udało się cofnąć tej zmiany. Możliwe, że już została cofnięta.",
             "notLegalAdvice": "Pomoc techniczna, nie porada prawna. Shopproof nigdy nie nazywa sklepu zgodnym z przepisami."
+        },
+        "quietEmail": {
+            "subject": "Sprawy w {shop} wymagające Państwa działania: {count} | Sprawy w {shop} wymagające Państwa działania: {count}",
+            "intro": "Shopproof znalazł w Państwa sklepie coś, co wymaga działania człowieka:",
+            "overview": "Wszystko inne znajdą Państwo na stronie Shopproof w panelu Shopware: {url}",
+            "footer": "Shopproof wysyła tę wiadomość tylko wtedy, gdy coś wymaga Państwa działania, najwyżej raz dziennie. Aby ją wyłączyć, proszę odznaczyć \"Wyślij mi e-mail, gdy coś wymaga mojej uwagi\" na stronie Shopproof. Pomoc techniczna, nie porada prawna.",
+            "switch": "Wyślij mi e-mail, gdy coś wymaga mojej uwagi (najwyżej raz dziennie, na {to})",
+            "noAddress": "Shopproof nie ma adresu, na który można wysłać wiadomość. Proszę podać e-mail sklepu w Ustawienia, Podstawowe informacje.",
+            "failed": "Nie udało się zapisać ustawienia. Proszę spróbować ponownie."
+        },
+        "keepCurrent": {
+            "text": "Utrzymuj aktualne przepisy: Shopproof raz dziennie sprawdza nowe przepisy i nie wysyła danych sklepu, klientów ani zamówień. Można to wyłączyć w ustawieniach wtyczki (Aktualizacje przepisów).",
+            "button": "Utrzymuj aktualne przepisy",
+            "failed": "Nie udało się zapisać. Proszę spróbować ponownie."
         }
     }
 }

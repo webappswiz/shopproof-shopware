@@ -4,10 +4,12 @@ namespace Shopproof\Compliance\Setup;
 
 use Doctrine\DBAL\Connection;
 use Shopproof\Compliance\Controller\RulesController;
+use Shopproof\Compliance\Placement\LinkCheck;
 use Shopproof\Compliance\Placement\PlacementResult;
 use Shopproof\Compliance\ProofLog\ProofLog;
 use Shopproof\Compliance\Rules\RulesFile;
 use Shopproof\Compliance\Rules\RulesUpdater;
+use Shopproof\Compliance\ScheduledTask\RefreshRulesTaskHandler;
 use Shopproof\Compliance\Storefront\Registrations;
 use Shopproof\Compliance\Storefront\SafetyData;
 use Shopproof\Compliance\Withdrawal\OrderEmailLine;
@@ -57,6 +59,7 @@ final class OverviewData
         $out = Overview::build([
             'check' => $check,
             'placement' => PlacementResult::read($this->config->get(PlacementResult::CONFIG)),
+            'linkCheck' => LinkCheck::read($this->config->get(LinkCheck::CONFIG)),
             'manufacturersWithoutDetails' => $facts['manufacturersWithoutDetailsCount'],
             'productsWithoutMaker' => $this->productsWithoutMaker(),
             'products' => $this->products(),
@@ -72,6 +75,9 @@ final class OverviewData
                 'available' => $file !== null,
                 'count' => \count(RulesFile::forCountries($file, RulesController::chosenCountries($this->config->get(self::CONFIG . 'countries')))),
                 'version' => RulesFile::text($file, 'version'),
+                'autoUpdate' => $this->config->getBool(RefreshRulesTaskHandler::SETTING),
+                'checked' => $this->rules->fetchedAt()?->getTimestamp(),
+                'attempt' => RulesUpdater::attempt($this->config->get(RulesUpdater::ATTEMPT)),
             ],
             'now' => time(),
         ]);

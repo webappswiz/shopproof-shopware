@@ -27,6 +27,9 @@ use Shopproof\Compliance\Controller\ProofLogController;
 use Shopproof\Compliance\Controller\RulesController;
 use Shopproof\Compliance\Controller\SafetyController;
 use Shopproof\Compliance\Setup\OverviewData;
+use Shopproof\Compliance\Setup\QuietEmailSender;
+use Shopproof\Compliance\Setup\Answers;
+use Shopproof\Compliance\Setup\ExclusionHints;
 use Shopproof\Compliance\Setup\Recommended;
 use Shopproof\Compliance\Setup\SettingsFile;
 use Shopproof\Compliance\Setup\ShopDetails;
@@ -49,12 +52,18 @@ use Shopproof\Compliance\Notes\PriceHistory;
 use Shopproof\Compliance\Notes\PriceHistorySubscriber;
 use Shopproof\Compliance\ProofLog\ProofSnapshot;
 use Shopproof\Compliance\Placement\PlacementPages;
+use Shopproof\Compliance\Placement\WeeklyLinkCheck;
 use Shopproof\Compliance\Placement\PreviewSubscriber;
 use Shopproof\Compliance\Placement\PreviewToken;
 use Shopproof\Compliance\ProofLog\RetentionSubscriber;
 use Shopproof\Compliance\Rules\RulesStore;
 use Shopproof\Compliance\Rules\RulesUpdater;
+use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Shopproof\Compliance\ScheduledTask\ProofSnapshotTask;
+use Shopproof\Compliance\ScheduledTask\LinkCheckTask;
+use Shopproof\Compliance\ScheduledTask\LinkCheckTaskHandler;
+use Shopproof\Compliance\ScheduledTask\QuietEmailTask;
+use Shopproof\Compliance\ScheduledTask\QuietEmailTaskHandler;
 use Shopproof\Compliance\ScheduledTask\ProofSnapshotTaskHandler;
 use Shopproof\Compliance\ScheduledTask\RefreshRulesTask;
 use Shopproof\Compliance\ScheduledTask\RefreshRulesTaskHandler;
@@ -103,7 +112,8 @@ return static function (ContainerConfigurator $container): void {
     $services->set(RulesStore::class);
 
     $services->set(RulesUpdater::class)
-        ->arg('$client', service('shopproof.http_client'));
+        ->arg('$client', service('shopproof.http_client'))
+        ->arg('$config', service(SystemConfigService::class));
 
     $services->set(RefreshRulesTask::class)
         ->tag('shopware.scheduled.task');
@@ -149,13 +159,37 @@ return static function (ContainerConfigurator $container): void {
     $services->set(PlacementPages::class)
         ->arg('$snippetDir', __DIR__ . '/../snippet');
 
+    // The weekly link check opens the shop's own storefront pages only.
+    $services->set(WeeklyLinkCheck::class)
+        ->arg('$client', service('shopproof.http_client'))
+        ->arg('$logger', service('logger'));
+
+    $services->set(LinkCheckTask::class)
+        ->tag('shopware.scheduled.task');
+
+    $services->set(LinkCheckTaskHandler::class)
+        ->arg('$scheduledTaskRepository', service('scheduled_task.repository'));
+
     $services->set(PlacementController::class)
         ->public()
         ->call('setContainer', [service('service_container')]);
 
     $services->set(Recommended::class);
+    $services->set(Answers::class);
+    $services->set(ExclusionHints::class);
 
     $services->set(OverviewData::class);
+
+    // The quiet email to the owner goes through Shopware's own mail service.
+    $services->set(QuietEmailSender::class)
+        ->arg('$mail', service('Shopware\\Core\\Content\\Mail\\Service\\MailService'))
+        ->arg('$logger', service('logger'));
+
+    $services->set(QuietEmailTask::class)
+        ->tag('shopware.scheduled.task');
+
+    $services->set(QuietEmailTaskHandler::class)
+        ->arg('$scheduledTaskRepository', service('scheduled_task.repository'));
 
     // AI assistant connection (decision 0047): what the assistant may change is checked against config.xml.
     $services->set(SettingsFile::class)

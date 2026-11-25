@@ -398,7 +398,8 @@
                     "problem": "Die letzte Prüfung hat auf {count} Seite ein Problem gefunden. | Die letzte Prüfung hat auf {count} Seiten ein Problem gefunden.",
                     "noPages": "Nicht geprüft. Die letzte Prüfung hat keine Shopseite geöffnet, auf der der Widerrufsbutton stehen sollte, daher wurde er dort nicht gefunden. Starten Sie die Prüfung erneut.",
                     "look": "Funktioniert, aber die letzte Prüfung hat etwas zum Ansehen gefunden.",
-                    "working": "Funktioniert. Der Button wurde auf der {count} geprüften Seite gefunden. | Funktioniert. Der Button wurde auf allen {count} geprüften Seiten gefunden."
+                    "working": "Funktioniert. Der Button wurde auf der {count} geprüften Seite gefunden. | Funktioniert. Der Button wurde auf allen {count} geprüften Seiten gefunden.",
+                    "gone": "Die wöchentliche Prüfung hat den Widerrufslink auf {count} Seite nicht gefunden. Vielleicht hat eine Änderung am Theme oder Menü ihn entfernt. | Die wöchentliche Prüfung hat den Widerrufslink auf {count} Seiten nicht gefunden. Vielleicht hat eine Änderung am Theme oder Menü ihn entfernt."
                 },
                 "withdrawals": {
                     "title": "Widerrufe",
@@ -443,7 +444,11 @@
                 "rules": {
                     "title": "Regeln",
                     "missing": "Die Regelliste konnte nicht geladen werden.",
-                    "loaded": "{count} Regel für die EU und Ihre Länder (Version {version}). | {count} Regeln für die EU und Ihre Länder (Version {version})."
+                    "manual": "{count} Regel für die EU und Ihre Länder (Version {version}). Neue Regeln kommen nur mit Plugin-Updates in Ihren Shop. Klicken Sie auf „Regeln aktuell halten“, dann kommen sie von selbst. | {count} Regeln für die EU und Ihre Länder (Version {version}). Neue Regeln kommen nur mit Plugin-Updates in Ihren Shop. Klicken Sie auf „Regeln aktuell halten“, dann kommen sie von selbst.",
+                    "current": "{count} Regel für die EU und Ihre Länder (Version {version}). Neue Regeln kommen von selbst. Für Sie ist nichts zu tun. | {count} Regeln für die EU und Ihre Länder (Version {version}). Neue Regeln kommen von selbst. Für Sie ist nichts zu tun.",
+                    "currentChecked": "{count} Regel für die EU und Ihre Länder (Version {version}). Neue Regeln kommen von selbst. Für Sie ist nichts zu tun. Zuletzt geprüft am {date}. | {count} Regeln für die EU und Ihre Länder (Version {version}). Neue Regeln kommen von selbst. Für Sie ist nichts zu tun. Zuletzt geprüft am {date}.",
+                    "failed": "{count} Regel für die EU und Ihre Länder (Version {version}). Die Suche nach neuen Regeln am {date} hat nicht geklappt, neue Regeln können also fehlen. Shopproof versucht es jeden Tag von selbst wieder. Bleibt das so, prüfen Sie, ob der Shop shopproof.app erreicht. | {count} Regeln für die EU und Ihre Länder (Version {version}). Die Suche nach neuen Regeln am {date} hat nicht geklappt, neue Regeln können also fehlen. Shopproof versucht es jeden Tag von selbst wieder. Bleibt das so, prüfen Sie, ob der Shop shopproof.app erreicht.",
+                    "notChecked": "{count} Regel für die EU und Ihre Länder (Version {version}). Nicht geprüft: Die tägliche Suche nach neuen Regeln ist in den letzten 2 Tagen nicht gelaufen. Shopware startet sie mit den geplanten Aufgaben; prüfen Sie, ob diese laufen. | {count} Regeln für die EU und Ihre Länder (Version {version}). Nicht geprüft: Die tägliche Suche nach neuen Regeln ist in den letzten 2 Tagen nicht gelaufen. Shopware startet sie mit den geplanten Aufgaben; prüfen Sie, ob diese laufen."
                 }
             },
             "nonEu": {
@@ -506,6 +511,48 @@
                 "nothingToUndo": "Nichts rückgängig zu machen. Rückgängig ist 14 Tage nach dem Klick möglich. Ändern Sie die Einstellungen sonst einzeln in der Plugin-Konfiguration.",
                 "failed": "Das hat nicht geklappt. Laden Sie die Seite neu, um die aktuellen Einstellungen zu sehen.",
                 "note": "Entscheidungen, die nur Sie treffen können, etwa eine längere Widerrufsfrist oder Ihr Hinweis zur Streitbeilegung, werden nie für Sie eingeschaltet. Ein Verkaufskanal mit eigenem Wert für eine Einstellung behält ihn. Technische Hilfe, keine Rechtsberatung."
+            },
+            "answers": {
+                "title": "Fertige Antworten",
+                "intro": "Das wissen nur Sie, deshalb ist nichts für Sie angehakt. Die meisten Shops antworten so wie unten. Haken Sie jede Antwort an, die auf Ihren Shop zutrifft, und speichern Sie.",
+                "shoppersSee": "Kunden sehen: „{text}“",
+                "button": "Angehakte Antworten speichern",
+                "saved": "{count} Antwort gespeichert. Sie können sie in den Shopproof-Einstellungen ändern. | {count} Antworten gespeichert. Sie können sie in den Shopproof-Einstellungen ändern.",
+                "noneTicked": "Nichts gespeichert: Haken Sie zuerst die Antworten an, die auf Ihren Shop zutreffen.",
+                "alreadyDone": "Nichts geändert: Die angekreuzten Antworten waren schon gespeichert, zum Beispiel in den Shopproof-Einstellungen.",
+                "failed": "Die Antworten konnten nicht gespeichert werden. Bitte versuchen Sie es erneut.",
+                "note": "Gespeichert für alle Verkaufskanäle; ein Verkaufskanal mit eigener Antwort behält sie. Den Hinweis zur Streitbeilegung fügen Sie weiterhin selbst in Ihre AGB und Ihr Impressum ein; die Shopproof-Seite zeigt ihn zum Kopieren. Technische Hilfe, keine Rechtsberatung.",
+                "item": {
+                    "dispute": {
+                        "title": "Hinweis zur Streitbeilegung",
+                        "tick": "Trifft auf meinen Shop zu: Wir haben einer Teilnahme nicht zugestimmt und sind dazu nicht verpflichtet.",
+                        "why": "So antworten die meisten kleinen Shops. Shops in Deutschland mit mehr als 10 Beschäftigten müssen angeben, ob sie teilnehmen (§ 36 VSBG). Wenn eine Schlichtungsstelle oder eine Regel Ihres Verbands Sie bindet, wählen Sie stattdessen in den Shopproof-Einstellungen."
+                    },
+                    "reviews": {
+                        "title": "Hinweis zur Prüfung von Bewertungen",
+                        "tick": "Trifft auf meinen Shop zu: Unsere Bewertungen sind die von Shopware, und kein anderes Plugin und kein Dienst prüft sie.",
+                        "why": "Shopware prüft nicht, ob jemand, der bewertet, das Produkt gekauft hat. Shops, die Bewertungen zeigen, müssen angeben, ob sie diese prüfen; zu behaupten, sie seien geprüft, wenn sie es nicht sind, ist verboten."
+                    }
+                }
+            },
+            "exclusionHints": {
+                "title": "Vorgeschlagene Ausschlüsse vom Widerruf",
+                "intro": "Das Gesetz erlaubt Shops, manche Waren vom Widerruf auszuschließen. Shopproof hat diese in Ihrem Shop gefunden. Nichts wird für Sie ausgeschlossen: Haken Sie nur an, was passt, und speichern Sie. Ausgeschlossene Artikel erscheinen weiter im Widerrufsformular mit Ihrer Erklärung, und Ihre Kopie jedes Widerrufs nennt sie, damit Sie jeden Fall prüfen können.",
+                "digital": "Digitale Produkte",
+                "category": "Kategorie „{name}“ ({count} Produkt) | Kategorie „{name}“ ({count} Produkte)",
+                "why": {
+                    "download": "Digitale Produkte, sobald der Kunde zugestimmt hat, dass der Download vor Ablauf der Widerrufsfrist beginnt, und bestätigt hat, dass er sein Widerrufsrecht verliert (Art. 16 Buchst. m der Richtlinie 2011/83/EU). Ihre Häkchen für Downloads an der Kasse fragen beides ab.",
+                    "custom": "Der Name deutet auf Waren hin, die nach Kundenspezifikation angefertigt oder eindeutig personalisiert sind (Art. 16 Buchst. c der Richtlinie 2011/83/EU). Schließen Sie die Kategorie nur aus, wenn jedes Produkt darin so hergestellt wird.",
+                    "hygiene": "Der Name deutet auf versiegelte Waren hin, die aus Gründen des Gesundheitsschutzes oder der Hygiene nicht zur Rückgabe geeignet sind, wenn ihre Versiegelung nach der Lieferung entfernt wurde (Art. 16 Buchst. e der Richtlinie 2011/83/EU). Die Ausnahme gilt nur für Artikel mit geöffneter Versiegelung, prüfen Sie also jeden Widerruf."
+                },
+                "button": "Angehakte ausschließen",
+                "hide": "Diese nicht mehr vorschlagen",
+                "saved": "{count} Vorschlag vom Widerruf ausgeschlossen, für alle Verkaufskanäle. Sie können das in den Shopproof-Einstellungen ändern. | {count} Vorschläge vom Widerruf ausgeschlossen, für alle Verkaufskanäle. Sie können das in den Shopproof-Einstellungen ändern.",
+                "noneTicked": "Nichts ausgeschlossen: Haken Sie zuerst die Vorschläge an, die zu Ihrem Shop passen.",
+                "alreadyDone": "Nichts geändert: Die angekreuzten Vorschläge waren schon ausgenommen oder sind nicht mehr da, zum Beispiel nach einer Änderung in den Shopproof-Einstellungen.",
+                "hidden": "Diese Vorschläge werden nicht mehr angezeigt. Kategorien können Sie weiterhin in den Shopproof-Einstellungen ausschließen.",
+                "failed": "Die Ausschlüsse konnten nicht gespeichert werden. Bitte versuchen Sie es erneut.",
+                "note": "Gespeichert für alle Verkaufskanäle; ein Verkaufskanal mit eigener Liste behält sie. Ob eine Ausnahme greift, entscheiden Sie. Technische Hilfe, keine Rechtsberatung."
             }
         },
         "cancel": {
@@ -720,6 +767,20 @@
             "undoneKept": "Rückgängig gemacht. Einstellungen, die seitdem jemand geändert hat, bleiben, wie sie sind.",
             "undoFailed": "Diese Änderung konnte nicht rückgängig gemacht werden. Vielleicht wurde sie schon rückgängig gemacht.",
             "notLegalAdvice": "Technische Hilfe, keine Rechtsberatung. Shopproof bezeichnet einen Shop nie als rechtskonform."
+        },
+        "quietEmail": {
+            "subject": "{count} Sache in {shop} braucht Sie | {count} Sachen in {shop} brauchen Sie",
+            "intro": "Shopproof hat in Ihrem Shop etwas gefunden, das einen Menschen braucht:",
+            "overview": "Alles Weitere steht auf der Shopproof-Seite in Ihrer Shopware-Administration: {url}",
+            "footer": "Shopproof sendet diese E-Mail nur, wenn etwas Sie braucht, höchstens einmal am Tag. Um sie abzustellen, entfernen Sie auf der Shopproof-Seite den Haken bei \"E-Mail an mich, wenn etwas mich braucht\". Technische Hilfe, keine Rechtsberatung.",
+            "switch": "E-Mail an mich, wenn etwas mich braucht (höchstens einmal am Tag, an {to})",
+            "noAddress": "Shopproof hat keine Adresse für die E-Mail. Tragen Sie die Shop-E-Mail unter Einstellungen, Stammdaten ein.",
+            "failed": "Die Einstellung konnte nicht gespeichert werden. Bitte versuchen Sie es noch einmal."
+        },
+        "keepCurrent": {
+            "text": "Regeln aktuell halten: Shopproof sucht einmal am Tag nach neuen Regeln. Dabei werden keine Shop-, Kunden- oder Bestelldaten gesendet. Abschalten können Sie das in den Plugin-Einstellungen (Regel-Updates).",
+            "button": "Regeln aktuell halten",
+            "failed": "Das konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
         }
     }
 }

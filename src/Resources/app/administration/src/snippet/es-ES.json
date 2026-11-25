@@ -398,7 +398,8 @@
                     "problem": "La última revisión encontró un problema en {count} página. | La última revisión encontró un problema en {count} páginas.",
                     "noPages": "No revisado. La última revisión no abrió ninguna página de la tienda que deba mostrar el botón de desistimiento, así que el botón no se encontró allí. Vuelva a hacer la revisión.",
                     "look": "Funciona, pero la última revisión encontró algo que conviene mirar.",
-                    "working": "Funciona. El botón se encontró en {count} página revisada. | Funciona. El botón se encontró en las {count} páginas revisadas."
+                    "working": "Funciona. El botón se encontró en {count} página revisada. | Funciona. El botón se encontró en las {count} páginas revisadas.",
+                    "gone": "La revisión semanal no encontró el enlace de desistimiento en {count} página. Puede que un cambio en el tema o el menú lo haya quitado. | La revisión semanal no encontró el enlace de desistimiento en {count} páginas. Puede que un cambio en el tema o el menú lo haya quitado."
                 },
                 "withdrawals": {
                     "title": "Desistimientos",
@@ -443,7 +444,11 @@
                 "rules": {
                     "title": "Normas",
                     "missing": "No se ha podido cargar la lista de normas.",
-                    "loaded": "{count} norma para la UE y sus países (versión {version}). | {count} normas para la UE y sus países (versión {version})."
+                    "manual": "{count} norma para la UE y sus países (versión {version}). Las normas nuevas solo llegan a su tienda con las actualizaciones del plugin. Pulse «Mantener las normas al día» y llegarán solas. | {count} normas para la UE y sus países (versión {version}). Las normas nuevas solo llegan a su tienda con las actualizaciones del plugin. Pulse «Mantener las normas al día» y llegarán solas.",
+                    "current": "{count} norma para la UE y sus países (versión {version}). Las normas nuevas llegan solas. No tiene que hacer nada. | {count} normas para la UE y sus países (versión {version}). Las normas nuevas llegan solas. No tiene que hacer nada.",
+                    "currentChecked": "{count} norma para la UE y sus países (versión {version}). Las normas nuevas llegan solas. No tiene que hacer nada. Última comprobación el {date}. | {count} normas para la UE y sus países (versión {version}). Las normas nuevas llegan solas. No tiene que hacer nada. Última comprobación el {date}.",
+                    "failed": "{count} norma para la UE y sus países (versión {version}). La búsqueda de normas nuevas del {date} no funcionó, así que pueden faltar normas nuevas. Shopproof lo vuelve a intentar solo cada día. Si sigue así, compruebe que la tienda puede llegar a shopproof.app. | {count} normas para la UE y sus países (versión {version}). La búsqueda de normas nuevas del {date} no funcionó, así que pueden faltar normas nuevas. Shopproof lo vuelve a intentar solo cada día. Si sigue así, compruebe que la tienda puede llegar a shopproof.app.",
+                    "notChecked": "{count} norma para la UE y sus países (versión {version}). Sin comprobar: la búsqueda diaria de normas nuevas no se ha ejecutado en los últimos 2 días. Shopware la lanza con sus tareas programadas; compruebe que funcionan. | {count} normas para la UE y sus países (versión {version}). Sin comprobar: la búsqueda diaria de normas nuevas no se ha ejecutado en los últimos 2 días. Shopware la lanza con sus tareas programadas; compruebe que funcionan."
                 }
             },
             "nonEu": {
@@ -506,6 +511,48 @@
                 "nothingToUndo": "No hay nada que deshacer. Deshacer es posible durante 14 días después del clic. Si no, cambie cada ajuste en la configuración del plugin.",
                 "failed": "No ha funcionado. Vuelva a cargar la página para ver los ajustes actuales.",
                 "note": "Las decisiones que solo usted puede tomar, como un plazo de desistimiento más largo o su declaración sobre resolución de litigios, nunca se activan por usted. Un canal de venta con su propio valor para un ajuste lo conserva. Ayuda técnica, no asesoramiento legal."
+            },
+            "answers": {
+                "title": "Respuestas preparadas",
+                "intro": "Solo usted lo sabe, así que no se marca nada por usted. La mayoría de las tiendas responden como se indica abajo. Marque cada respuesta que sea cierta para su tienda y guarde.",
+                "shoppersSee": "Los clientes ven: «{text}»",
+                "button": "Guardar las respuestas marcadas",
+                "saved": "{count} respuesta guardada. Puede cambiarla en los ajustes de Shopproof. | {count} respuestas guardadas. Puede cambiarlas en los ajustes de Shopproof.",
+                "noneTicked": "No se ha guardado nada: marque primero las respuestas que son ciertas para su tienda.",
+                "alreadyDone": "No ha cambiado nada: las respuestas marcadas ya estaban guardadas, por ejemplo en los ajustes de Shopproof.",
+                "failed": "No se han podido guardar las respuestas. Inténtelo de nuevo.",
+                "note": "Guardado para todos los canales de venta; un canal de venta con su propia respuesta la conserva. La declaración sobre litigios la sigue añadiendo usted a sus páginas de términos y aviso legal; la página de Shopproof la muestra para copiarla. Ayuda técnica, no asesoramiento legal.",
+                "item": {
+                    "dispute": {
+                        "title": "Declaración sobre litigios",
+                        "tick": "Cierto para mi tienda: no hemos aceptado participar ni estamos obligados a hacerlo.",
+                        "why": "La mayoría de las tiendas pequeñas responden así. En Alemania, las tiendas con más de 10 empleados deben indicar si participan (§ 36 VSBG). Si le obliga un organismo de arbitraje o una norma de su asociación sectorial, elija en los ajustes de Shopproof."
+                    },
+                    "reviews": {
+                        "title": "Aviso sobre la revisión de valoraciones",
+                        "tick": "Cierto para mi tienda: nuestras valoraciones son las de Shopware y ningún otro plugin o servicio las comprueba.",
+                        "why": "Shopware no comprueba si quien escribe una valoración compró el producto. Las tiendas que muestran valoraciones deben indicar si las comprueban; decir que están comprobadas cuando no lo están está prohibido."
+                    }
+                }
+            },
+            "exclusionHints": {
+                "title": "Exclusiones del desistimiento sugeridas",
+                "intro": "La ley permite a las tiendas excluir algunos bienes del desistimiento. Shopproof ha encontrado estos en su tienda. No se excluye nada por usted: marque solo lo que encaje y guarde. Los artículos excluidos siguen apareciendo en el formulario de desistimiento con su explicación, y su copia de cada desistimiento los nombra, para que pueda revisar cada caso.",
+                "digital": "Productos digitales",
+                "category": "Categoría «{name}» ({count} producto) | Categoría «{name}» ({count} productos)",
+                "why": {
+                    "download": "Los productos digitales, una vez que el cliente aceptó que la descarga empiece antes de que termine el plazo de desistimiento y confirmó que pierde el derecho de desistimiento (art. 16, letra m, de la Directiva 2011/83/UE). Sus casillas de consentimiento de descarga en el pago piden ambas cosas.",
+                    "custom": "El nombre sugiere bienes confeccionados conforme a las especificaciones del cliente o claramente personalizados (art. 16, letra c, de la Directiva 2011/83/UE). Exclúyala solo si todos sus productos se hacen así.",
+                    "hygiene": "El nombre sugiere bienes precintados que no son aptos para ser devueltos por razones de protección de la salud o de higiene una vez desprecintados tras la entrega (art. 16, letra e, de la Directiva 2011/83/UE). La excepción solo cubre los artículos cuyo precinto se rompió, así que revise cada desistimiento."
+                },
+                "button": "Excluir los marcados",
+                "hide": "No volver a sugerir estos",
+                "saved": "{count} sugerencia excluida del desistimiento, para todos los canales de venta. Puede cambiarla en los ajustes de Shopproof. | {count} sugerencias excluidas del desistimiento, para todos los canales de venta. Puede cambiarlas en los ajustes de Shopproof.",
+                "noneTicked": "No se ha excluido nada: marque primero las sugerencias que encajan con su tienda.",
+                "alreadyDone": "No ha cambiado nada: las sugerencias marcadas ya estaban excluidas o ya no se encuentran, por ejemplo tras un cambio en los ajustes de Shopproof.",
+                "hidden": "Estas sugerencias no se volverán a mostrar. Puede seguir excluyendo categorías en los ajustes de Shopproof.",
+                "failed": "No se han podido guardar las exclusiones. Inténtelo de nuevo.",
+                "note": "Guardado para todos los canales de venta; un canal de venta con su propia lista la conserva. Usted decide si se aplica una excepción. Ayuda técnica, no asesoramiento legal."
             }
         },
         "cancel": {
@@ -720,6 +767,20 @@
             "undoneKept": "Deshecho. Los ajustes que alguien cambió después se quedan como están.",
             "undoFailed": "No se pudo deshacer este cambio. Puede que ya se haya deshecho.",
             "notLegalAdvice": "Ayuda técnica, no asesoramiento jurídico. Shopproof nunca califica una tienda de conforme."
+        },
+        "quietEmail": {
+            "subject": "{count} cosa en {shop} le necesita | {count} cosas en {shop} le necesitan",
+            "intro": "Shopproof ha encontrado algo en su tienda que necesita a una persona:",
+            "overview": "Todo lo demás está en la página de Shopproof de su administración de Shopware: {url}",
+            "footer": "Shopproof envía este correo solo cuando algo le necesita, como mucho una vez al día. Para detenerlo, desmarque \"Enviarme un correo cuando algo me necesite\" en la página de Shopproof. Ayuda técnica, no asesoramiento jurídico.",
+            "switch": "Enviarme un correo cuando algo me necesite (como mucho una vez al día, a {to})",
+            "noAddress": "Shopproof no tiene una dirección a la que enviar el correo. Introduzca el correo de la tienda en Ajustes, Información básica.",
+            "failed": "No se ha podido guardar el ajuste. Inténtelo de nuevo."
+        },
+        "keepCurrent": {
+            "text": "Mantener las normas al día: Shopproof busca normas nuevas una vez al día, sin enviar datos de la tienda, de clientes ni de pedidos. Puede desactivarlo en los ajustes del plugin (Actualizaciones de normas).",
+            "button": "Mantener las normas al día",
+            "failed": "No se ha podido guardar. Inténtelo de nuevo."
         }
     }
 }

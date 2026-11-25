@@ -133,11 +133,11 @@ class ShopproofRulesService extends ApiService {
         });
     }
 
-    getOverview() {
+    getOverview(locale = '') {
         return this.httpClient
             .get(`${this.getApiBasePath()}/overview`, {
                 headers: this.getBasicHeaders(),
-                params: { timezone: ShopproofRulesService.timeZone() },
+                params: { timezone: ShopproofRulesService.timeZone(), locale },
             })
             .then((response) => ApiService.handleResponse(response));
     }
@@ -145,6 +145,40 @@ class ShopproofRulesService extends ApiService {
     applyRecommended() {
         return this.httpClient
             .post(`${this.getApiBasePath()}/recommended/apply`, {}, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    /** Ready-made answers: saves the ticked ones that are still offered. */
+    applyAnswers(keys) {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/answers/apply`, { keys }, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    /** "Keep rules up to date": turns on the daily rule check and checks once now. */
+    keepRulesCurrent() {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/rules/keep-current`, {}, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    /** The quiet email to the owner: on or off. */
+    setQuietEmail(on) {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/quiet-email`, { on: on === true }, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    /** Suggested withdrawal exclusions: excludes the ticked ones that are still offered. */
+    applyExclusionHints(keys) {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/exclusion-hints/apply`, { keys }, { headers: this.getBasicHeaders() })
+            .then((response) => ApiService.handleResponse(response));
+    }
+
+    hideExclusionHints() {
+        return this.httpClient
+            .post(`${this.getApiBasePath()}/exclusion-hints/hide`, {}, { headers: this.getBasicHeaders() })
             .then((response) => ApiService.handleResponse(response));
     }
 

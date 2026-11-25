@@ -76,6 +76,23 @@ final class RulesController extends AbstractController
     }
 
     /**
+     * "Keep rules up to date" on the Shopproof page (zero-thought item 5): the merchant turns on
+     * the daily rule check, and Shopproof checks once right away.
+     */
+    #[Route(
+        path: '/api/_action/shopproof/rules/keep-current',
+        name: 'api.action.shopproof.rules.keep_current',
+        defaults: [PlatformRequest::ATTRIBUTE_ACL => ['system_config:update']],
+        methods: ['POST']
+    )]
+    public function keepCurrent(): JsonResponse
+    {
+        $this->config->set(RefreshRulesTaskHandler::SETTING, true);
+
+        return new JsonResponse(['autoUpdate' => true, 'updated' => $this->updater->refresh()]);
+    }
+
+    /**
      * Countries chosen in the plugin settings, limited to the launch countries. All of them when
      * nothing usable is set.
      *

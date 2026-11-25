@@ -398,7 +398,8 @@
                     "problem": "L'ultimo controllo ha trovato un problema in {count} pagina. | L'ultimo controllo ha trovato un problema in {count} pagine.",
                     "noPages": "Non controllato. L'ultimo controllo non ha aperto alcuna pagina del negozio che dovrebbe mostrare il pulsante di recesso, quindi lì il pulsante non è stato trovato. Esegua di nuovo il controllo.",
                     "look": "Funziona, ma l'ultimo controllo ha trovato qualcosa da guardare.",
-                    "working": "Funziona. Il pulsante è stato trovato nella pagina controllata ({count}). | Funziona. Il pulsante è stato trovato in tutte le {count} pagine controllate."
+                    "working": "Funziona. Il pulsante è stato trovato nella pagina controllata ({count}). | Funziona. Il pulsante è stato trovato in tutte le {count} pagine controllate.",
+                    "gone": "Il controllo settimanale non ha trovato il link di recesso su {count} pagina. Forse una modifica al tema o al menu lo ha rimosso. | Il controllo settimanale non ha trovato il link di recesso su {count} pagine. Forse una modifica al tema o al menu lo ha rimosso."
                 },
                 "withdrawals": {
                     "title": "Recessi",
@@ -443,7 +444,11 @@
                 "rules": {
                     "title": "Regole",
                     "missing": "Non è stato possibile caricare l'elenco delle regole.",
-                    "loaded": "{count} regola per l'UE e i suoi paesi (versione {version}). | {count} regole per l'UE e i suoi paesi (versione {version})."
+                    "manual": "{count} regola per l'UE e i suoi paesi (versione {version}). Le nuove regole arrivano nel negozio solo con gli aggiornamenti del plugin. Prema \"Mantieni aggiornate le regole\" e arriveranno da sole. | {count} regole per l'UE e i suoi paesi (versione {version}). Le nuove regole arrivano nel negozio solo con gli aggiornamenti del plugin. Prema \"Mantieni aggiornate le regole\" e arriveranno da sole.",
+                    "current": "{count} regola per l'UE e i suoi paesi (versione {version}). Le nuove regole arrivano da sole. Non deve fare nulla. | {count} regole per l'UE e i suoi paesi (versione {version}). Le nuove regole arrivano da sole. Non deve fare nulla.",
+                    "currentChecked": "{count} regola per l'UE e i suoi paesi (versione {version}). Le nuove regole arrivano da sole. Non deve fare nulla. Ultimo controllo il {date}. | {count} regole per l'UE e i suoi paesi (versione {version}). Le nuove regole arrivano da sole. Non deve fare nulla. Ultimo controllo il {date}.",
+                    "failed": "{count} regola per l'UE e i suoi paesi (versione {version}). La ricerca di nuove regole del {date} non è riuscita, quindi potrebbero mancare nuove regole. Shopproof riprova da solo ogni giorno. Se continua, controlli che il negozio raggiunga shopproof.app. | {count} regole per l'UE e i suoi paesi (versione {version}). La ricerca di nuove regole del {date} non è riuscita, quindi potrebbero mancare nuove regole. Shopproof riprova da solo ogni giorno. Se continua, controlli che il negozio raggiunga shopproof.app.",
+                    "notChecked": "{count} regola per l'UE e i suoi paesi (versione {version}). Non controllato: la ricerca giornaliera di nuove regole non è partita negli ultimi 2 giorni. Shopware la avvia con le attività pianificate; controlli che siano attive. | {count} regole per l'UE e i suoi paesi (versione {version}). Non controllato: la ricerca giornaliera di nuove regole non è partita negli ultimi 2 giorni. Shopware la avvia con le attività pianificate; controlli che siano attive."
                 }
             },
             "nonEu": {
@@ -506,6 +511,48 @@
                 "nothingToUndo": "Niente da annullare. L'annullamento è possibile per 14 giorni dopo il clic. Altrimenti modifichi ogni impostazione nella configurazione del plugin.",
                 "failed": "Non ha funzionato. Ricarichi la pagina per vedere le impostazioni attuali.",
                 "note": "Le scelte che spettano solo a Lei, come un periodo di recesso più lungo o la Sua dichiarazione sulla risoluzione delle controversie, non vengono mai attivate al posto Suo. Un canale di vendita con un proprio valore per un'impostazione lo mantiene. Aiuto tecnico, non consulenza legale."
+            },
+            "answers": {
+                "title": "Risposte già pronte",
+                "intro": "Solo lei lo sa, quindi nulla è spuntato al suo posto. La maggior parte dei negozi risponde come qui sotto. Spunti ogni risposta vera per il suo negozio e salvi.",
+                "shoppersSee": "I clienti vedono: \"{text}\"",
+                "button": "Salva le risposte spuntate",
+                "saved": "{count} risposta salvata. Può modificarla nelle impostazioni di Shopproof. | {count} risposte salvate. Può modificarle nelle impostazioni di Shopproof.",
+                "noneTicked": "Nulla salvato: spunti prima le risposte vere per il suo negozio.",
+                "alreadyDone": "Nulla è cambiato: le risposte selezionate erano già salvate, per esempio nelle impostazioni di Shopproof.",
+                "failed": "Non è stato possibile salvare le risposte. Riprovi.",
+                "note": "Salvato per tutti i canali di vendita; un canale di vendita con una propria risposta la mantiene. La dichiarazione sulle controversie va comunque aggiunta da lei alle pagine dei termini e delle note legali; la pagina di Shopproof la mostra da copiare. Aiuto tecnico, non consulenza legale.",
+                "item": {
+                    "dispute": {
+                        "title": "Dichiarazione sulle controversie",
+                        "tick": "Vero per il mio negozio: non abbiamo accettato di partecipare e non siamo obbligati a farlo.",
+                        "why": "La maggior parte dei piccoli negozi risponde così. In Germania i negozi con più di 10 dipendenti devono dichiarare se partecipano (§ 36 VSBG). Se un organismo di conciliazione o una regola della sua associazione di categoria la vincola, scelga invece nelle impostazioni di Shopproof."
+                    },
+                    "reviews": {
+                        "title": "Avviso sulla verifica delle recensioni",
+                        "tick": "Vero per il mio negozio: le nostre recensioni sono quelle di Shopware e nessun altro plugin o servizio le verifica.",
+                        "why": "Shopware non verifica se chi scrive una recensione ha acquistato il prodotto. I negozi che mostrano recensioni devono dire se le verificano; dire che sono verificate quando non lo sono è vietato."
+                    }
+                }
+            },
+            "exclusionHints": {
+                "title": "Esclusioni dal recesso suggerite",
+                "intro": "La legge consente ai negozi di escludere alcuni beni dal recesso. Shopproof ha trovato questi nel suo negozio. Nulla viene escluso al suo posto: spunti solo ciò che è adatto e salvi. Gli articoli esclusi restano visibili nel modulo di recesso con la sua spiegazione, e la sua copia di ogni recesso li nomina, così può verificare ogni caso.",
+                "digital": "Prodotti digitali",
+                "category": "Categoria \"{name}\" ({count} prodotto) | Categoria \"{name}\" ({count} prodotti)",
+                "why": {
+                    "download": "I prodotti digitali, una volta che il cliente ha accettato che il download inizi prima della fine del periodo di recesso e ha confermato di perdere il diritto di recesso (art. 16, lettera m), della direttiva 2011/83/UE). Le sue caselle di consenso al download nel checkout chiedono entrambe le cose.",
+                    "custom": "Il nome fa pensare a beni confezionati su misura o chiaramente personalizzati (art. 16, lettera c), della direttiva 2011/83/UE). La escluda solo se ogni prodotto che contiene è fatto così.",
+                    "hygiene": "Il nome fa pensare a beni sigillati che non si prestano a essere restituiti per motivi igienici o di protezione della salute una volta aperti dopo la consegna (art. 16, lettera e), della direttiva 2011/83/UE). L'eccezione vale solo per gli articoli con il sigillo aperto, quindi verifichi ogni recesso."
+                },
+                "button": "Escludi quelli spuntati",
+                "hide": "Non suggerire più questi",
+                "saved": "{count} suggerimento escluso dal recesso, per tutti i canali di vendita. Può modificarlo nelle impostazioni di Shopproof. | {count} suggerimenti esclusi dal recesso, per tutti i canali di vendita. Può modificarli nelle impostazioni di Shopproof.",
+                "noneTicked": "Nulla escluso: spunti prima i suggerimenti adatti al suo negozio.",
+                "alreadyDone": "Nulla è cambiato: i suggerimenti selezionati erano già esclusi o non ci sono più, per esempio dopo una modifica nelle impostazioni di Shopproof.",
+                "hidden": "Questi suggerimenti non verranno più mostrati. Può comunque escludere categorie nelle impostazioni di Shopproof.",
+                "failed": "Non è stato possibile salvare le esclusioni. Riprovi.",
+                "note": "Salvato per tutti i canali di vendita; un canale di vendita con una propria lista la mantiene. Se un'eccezione si applica lo decide lei. Aiuto tecnico, non consulenza legale."
             }
         },
         "cancel": {
@@ -720,6 +767,20 @@
             "undoneKept": "Annullata. Le impostazioni che qualcuno ha cambiato nel frattempo restano come sono.",
             "undoFailed": "Non è stato possibile annullare questa modifica. Forse è già stata annullata.",
             "notLegalAdvice": "Aiuto tecnico, non consulenza legale. Shopproof non definisce mai un negozio conforme."
+        },
+        "quietEmail": {
+            "subject": "{count} cosa in {shop} richiede il suo intervento | {count} cose in {shop} richiedono il suo intervento",
+            "intro": "Shopproof ha trovato nel suo negozio qualcosa che richiede l'intervento di una persona:",
+            "overview": "Tutto il resto è nella pagina Shopproof della sua amministrazione Shopware: {url}",
+            "footer": "Shopproof invia questa email solo quando qualcosa richiede il suo intervento, al massimo una volta al giorno. Per fermarla, tolga la spunta da \"Inviami un'email quando qualcosa richiede il mio intervento\" nella pagina Shopproof. Aiuto tecnico, non consulenza legale.",
+            "switch": "Inviami un'email quando qualcosa richiede il mio intervento (al massimo una volta al giorno, a {to})",
+            "noAddress": "Shopproof non ha un indirizzo a cui inviare l'email. Inserisca l'email del negozio in Impostazioni, Informazioni di base.",
+            "failed": "Non è stato possibile salvare l'impostazione. Riprovi."
+        },
+        "keepCurrent": {
+            "text": "Mantieni aggiornate le regole: Shopproof cerca nuove regole una volta al giorno, senza inviare dati del negozio, dei clienti o degli ordini. Può disattivarlo nelle impostazioni del plugin (Aggiornamenti delle regole).",
+            "button": "Mantieni aggiornate le regole",
+            "failed": "Non è stato possibile salvare. Riprovi."
         }
     }
 }

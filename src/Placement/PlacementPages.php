@@ -75,11 +75,9 @@ final class PlacementPages
             if (\is_string($pageId) && Uuid::isValid($pageId)) {
                 $pageId = strtolower($pageId);
                 $paths[] = '/page/cms/' . $pageId;
-                $seo = $this->categoryWithPage($id, $language, $pageId);
-                if ($seo !== null) {
-                    $paths[] = $seo;
-                }
-                $pages[] = ['key' => 'withdrawal', 'path' => $seo ?? '/page/cms/' . $pageId, 'expectLink' => false];
+                $seo = $this->categoriesWithPage($id, $language, $pageId);
+                array_push($paths, ...$seo);
+                $pages[] = ['key' => 'withdrawal', 'path' => $seo[0] ?? '/page/cms/' . $pageId, 'expectLink' => false];
             }
 
             foreach (['en', 'de', 'fr', 'it', 'nl'] as $lang) {
@@ -225,15 +223,27 @@ final class PlacementPages
         return \is_string($id) ? $id : '';
     }
 
-    /** The SEO address of a category whose layout is the withdrawal page, if there is one. */
-    private function categoryWithPage(string $channel, string $language, string $pageId): ?string
+    /**
+     * The SEO addresses of every active category whose layout is the withdrawal page, oldest first.
+     *
+     * @return list<string>
+     */
+    private function categoriesWithPage(string $channel, string $language, string $pageId): array
     {
-        $category = $this->connection->fetchOne(
-            'SELECT LOWER(HEX(c.id)) FROM category c WHERE c.cms_page_id = :page AND c.version_id = :version AND c.active = 1 LIMIT 1',
+        $categories = $this->connection->fetchFirstColumn(
+            'SELECT LOWER(HEX(c.id)) FROM category c WHERE c.cms_page_id = :page AND c.version_id = :version AND c.active = 1
+             ORDER BY c.created_at ASC, c.id ASC LIMIT 20',
             ['page' => Uuid::fromHexToBytes($pageId), 'version' => Uuid::fromHexToBytes(Defaults::LIVE_VERSION)]
         );
+        $paths = [];
+        foreach ($categories as $category) {
+            $path = \is_string($category) ? $this->seoPath($channel, $language, 'frontend.navigation.page', $category) : null;
+            if ($path !== null) {
+                $paths[] = $path;
+            }
+        }
 
-        return \is_string($category) ? $this->seoPath($channel, $language, 'frontend.navigation.page', $category) : null;
+        return array_values(array_unique($paths));
     }
 
     private function seoPath(string $channel, string $language, string $route, string $id): ?string

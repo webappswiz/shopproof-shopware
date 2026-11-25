@@ -398,7 +398,8 @@
                     "problem": "The last check found a problem on {count} page. | The last check found a problem on {count} pages.",
                     "noPages": "Not checked. The last check did not open any shop page that should show the withdrawal button, so the button was not found there. Run the check again.",
                     "look": "Working, but the last check found something to look at.",
-                    "working": "Working. The button was found on the {count} page we checked. | Working. The button was found on all {count} pages we checked."
+                    "working": "Working. The button was found on the {count} page we checked. | Working. The button was found on all {count} pages we checked.",
+                    "gone": "The weekly check did not find the withdrawal link on {count} page. A theme or menu change may have removed it. | The weekly check did not find the withdrawal link on {count} pages. A theme or menu change may have removed it."
                 },
                 "withdrawals": {
                     "title": "Withdrawals",
@@ -443,7 +444,11 @@
                 "rules": {
                     "title": "Rules",
                     "missing": "The rules list could not be loaded.",
-                    "loaded": "{count} rule for the EU and your countries (version {version}). | {count} rules for the EU and your countries (version {version})."
+                    "manual": "{count} rule for the EU and your countries (version {version}). New rules reach your shop only with plugin updates. Press \"Keep rules up to date\" and they arrive by themselves. | {count} rules for the EU and your countries (version {version}). New rules reach your shop only with plugin updates. Press \"Keep rules up to date\" and they arrive by themselves.",
+                    "current": "{count} rule for the EU and your countries (version {version}). New rules arrive by themselves. Nothing for you to do. | {count} rules for the EU and your countries (version {version}). New rules arrive by themselves. Nothing for you to do.",
+                    "currentChecked": "{count} rule for the EU and your countries (version {version}). New rules arrive by themselves. Nothing for you to do. Last checked on {date}. | {count} rules for the EU and your countries (version {version}). New rules arrive by themselves. Nothing for you to do. Last checked on {date}.",
+                    "failed": "{count} rule for the EU and your countries (version {version}). The check for new rules on {date} did not work, so new rules may be missing. Shopproof tries again by itself every day. If this stays, check that the shop can reach shopproof.app. | {count} rules for the EU and your countries (version {version}). The check for new rules on {date} did not work, so new rules may be missing. Shopproof tries again by itself every day. If this stays, check that the shop can reach shopproof.app.",
+                    "notChecked": "{count} rule for the EU and your countries (version {version}). Not checked: the daily check for new rules has not run in the last 2 days. Shopware runs it with its scheduled tasks; check that they are running. | {count} rules for the EU and your countries (version {version}). Not checked: the daily check for new rules has not run in the last 2 days. Shopware runs it with its scheduled tasks; check that they are running."
                 }
             },
             "nonEu": {
@@ -506,6 +511,48 @@
                 "nothingToUndo": "Nothing to undo. Undo is offered for 14 days after a press. Change each setting in the plugin configuration instead.",
                 "failed": "That did not work. Reload the page to see the current settings.",
                 "note": "Choices only you can make, such as a longer withdrawal period or your dispute statement, are never switched on for you. A sales channel with its own value for a setting keeps it. Technical help, not legal advice."
+            },
+            "answers": {
+                "title": "Ready-made answers",
+                "intro": "Only you know these, so nothing is ticked for you. Most shops answer them as written below. Tick each one that is true for your shop and save.",
+                "shoppersSee": "Shoppers see: \"{text}\"",
+                "button": "Save the ticked answers",
+                "saved": "Saved {count} answer. You can change it in the Shopproof settings. | Saved {count} answers. You can change them in the Shopproof settings.",
+                "noneTicked": "Nothing saved: tick the answers that are true for your shop first.",
+                "alreadyDone": "Nothing changed: the ticked answers were already saved, for example in the Shopproof settings.",
+                "failed": "The answers could not be saved. Please try again.",
+                "note": "Saved for all sales channels; a sales channel with its own answer keeps it. You still add the dispute statement to your terms and imprint pages yourself; the Shopproof page shows it to copy. Technical help, not legal advice.",
+                "item": {
+                    "dispute": {
+                        "title": "Dispute statement",
+                        "tick": "True for my shop: we have not agreed to and are not obliged to take part.",
+                        "why": "Most small shops answer this way. Shops in Germany with more than 10 employees must say whether they take part (§ 36 VSBG). If an arbitration board or a trade association rule binds you, choose in the Shopproof settings instead."
+                    },
+                    "reviews": {
+                        "title": "Review check notice",
+                        "tick": "True for my shop: our reviews are Shopware's own, and no other plugin or service checks them.",
+                        "why": "Shopware does not check whether a reviewer bought the product. Shops that show reviews must say whether they check them; saying they are checked when they are not is banned."
+                    }
+                }
+            },
+            "exclusionHints": {
+                "title": "Suggested withdrawal exclusions",
+                "intro": "The law lets shops exclude some goods from withdrawal. Shopproof found these in your shop. Nothing is excluded for you: tick only what fits and save. Excluded items still show on the withdrawal form with your explanation, and your copy of each withdrawal names them, so you can check each case.",
+                "digital": "Digital products",
+                "category": "Category \"{name}\" ({count} product) | Category \"{name}\" ({count} products)",
+                "why": {
+                    "download": "Digital products, once the customer agreed that the download starts before the withdrawal period ends and confirmed that they lose the right to withdraw (Art. 16(m) of Directive 2011/83/EU). Your download consent boxes at checkout ask for both.",
+                    "custom": "The name suggests goods made to the customer's specifications or clearly personalised (Art. 16(c) of Directive 2011/83/EU). Exclude it only if every product in it is made that way.",
+                    "hygiene": "The name suggests sealed goods that cannot be returned for health or hygiene reasons once unsealed after delivery (Art. 16(e) of Directive 2011/83/EU). The exception covers only items whose seal was broken, so check each withdrawal."
+                },
+                "button": "Exclude the ticked",
+                "hide": "Do not suggest these again",
+                "saved": "Excluded {count} suggestion from withdrawal, for all sales channels. You can change it in the Shopproof settings. | Excluded {count} suggestions from withdrawal, for all sales channels. You can change them in the Shopproof settings.",
+                "noneTicked": "Nothing excluded: tick the suggestions that fit your shop first.",
+                "alreadyDone": "Nothing changed: the ticked suggestions were already excluded or are no longer found, for example after a change in the Shopproof settings.",
+                "hidden": "These suggestions will not be shown again. You can still exclude categories in the Shopproof settings.",
+                "failed": "The exclusions could not be saved. Please try again.",
+                "note": "Saved for all sales channels; a sales channel with its own list keeps it. Whether an exception applies is your call. Technical help, not legal advice."
             }
         },
         "cancel": {
@@ -720,6 +767,20 @@
             "undoneKept": "Undone. Settings someone changed since stay as they are.",
             "undoFailed": "This change could not be undone. It may have been undone already.",
             "notLegalAdvice": "Technical help, not legal advice. Shopproof never calls a shop compliant."
+        },
+        "quietEmail": {
+            "subject": "{count} thing in {shop} needs you | {count} things in {shop} need you",
+            "intro": "Shopproof found something in your shop that needs a person:",
+            "overview": "Everything else is on the Shopproof page in your Shopware admin: {url}",
+            "footer": "Shopproof sends this email only when something needs you, at most once a day. To stop it, untick \"Email me when something needs me\" on the Shopproof page. Technical help, not legal advice.",
+            "switch": "Email me when something needs me (at most once a day, to {to})",
+            "noAddress": "Shopproof has no address to send to. Enter the shop email under Settings, Basic information.",
+            "failed": "The switch could not be saved. Please try again."
+        },
+        "keepCurrent": {
+            "text": "Keep rules up to date: Shopproof checks once a day for new rules. It sends no shop, customer or order data. You can turn it off in the plugin settings (Rule updates).",
+            "button": "Keep rules up to date",
+            "failed": "This could not be saved. Please try again."
         }
     }
 }
