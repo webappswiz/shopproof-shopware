@@ -188,7 +188,8 @@
                 "retention": "Zmieniono okres przechowywania",
                 "anchor": "Znacznik przechowywany przez Shopproof",
                 "prices": "Zapieczętowano historię cen",
-                "assistant": "Zmienione przez asystenta AI"
+                "assistant": "Zmienione przez asystenta AI",
+                "status": "Zmieniono status odstąpienia"
             }
         },
         "returns": {

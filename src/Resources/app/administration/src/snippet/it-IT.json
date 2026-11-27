@@ -188,7 +188,8 @@
                 "retention": "Conservazione modificata",
                 "anchor": "Marcatura conservata da Shopproof",
                 "prices": "Storico prezzi sigillato",
-                "assistant": "Modificato dall'assistente IA"
+                "assistant": "Modificato dall'assistente IA",
+                "status": "Stato del recesso modificato"
             }
         },
         "returns": {

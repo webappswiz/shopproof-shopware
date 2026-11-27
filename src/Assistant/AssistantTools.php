@@ -30,6 +30,9 @@ final class AssistantTools
 {
     public const CONFIG = 'ShopproofCompliance.config.';
 
+    /** Change keys of settings another Shopproof plugin adds (ExtraSettings). */
+    public const EXTRA = 'extra.';
+
     /** Shopware's own withdrawal button (6.7.9 and later); its page is set in Basic information. */
     public const BUTTON = SetupFacts::BUTTON;
 
@@ -83,6 +86,7 @@ final class AssistantTools
         'anchor' => 'Stamp held by Shopproof',
         'prices' => 'Price history sealed',
         'assistant' => 'Changed by AI assistant',
+        'status' => 'Withdrawal status changed',
     ];
 
     private const NO_LOG = 'The proof log entry could not be written, so nothing was changed. Try again in a moment.';
@@ -99,7 +103,150 @@ final class AssistantTools
         private readonly ProofLog $log,
         private readonly SetupFacts $setup,
         private readonly Connection $connection,
+        /** @var iterable<ExtraSettings> */
+        private readonly iterable $extras = [],
     ) {
+    }
+
+    /** @var array<string, array{owner: ExtraSettings, spec: array{type: 'enum'|'list', allowed: list<string>, label: string, description: string}}>|null */
+    private ?array $extraMap = null;
+
+    /**
+     * The settings other Shopproof plugins add, read once per request. A plugin that fails is
+     * left out, so the assistant's own settings keep working.
+     *
+     * @return array<string, array{owner: ExtraSettings, spec: array{type: 'enum'|'list', allowed: list<string>, label: string, description: string}}>
+     */
+    private function extraMap(): array
+    {
+        if ($this->extraMap !== null) {
+            return $this->extraMap;
+        }
+        $map = [];
+        foreach ($this->extras as $owner) {
+            try {
+                foreach ($owner->settings() as $name => $spec) {
+                    if (preg_match('/^[a-z_]{1,40}$/', $name) === 1 && !isset(self::REGISTRY[$name])) {
+                        $map[$name] ??= ['owner' => $owner, 'spec' => $spec];
+                    }
+                }
+            } catch (\Throwable) {
+                continue;
+            }
+        }
+
+        return $this->extraMap = $map;
+    }
+
+    /**
+     * Current values of the added settings.
+     *
+     * @return array<string, mixed>
+     */
+    private function extraValues(): array
+    {
+        $out = [];
+        $seen = [];
+        foreach ($this->extraMap() as $name => $entry) {
+            $id = spl_object_id($entry['owner']);
+            if (!isset($seen[$id])) {
+                try {
+                    $seen[$id] = $entry['owner']->values();
+                } catch (\Throwable) {
+                    // A plugin whose values cannot be read is left out for this request, so
+                    // list_settings and the plugin's own settings keep working.
+                    $seen[$id] = false;
+                    $this->extraMap = array_filter($this->extraMap ?? [], static fn (array $e): bool => spl_object_id($e['owner']) !== $id);
+                }
+            }
+            if ($seen[$id] !== false) {
+                $out[$name] = $seen[$id][$name] ?? null;
+            }
+        }
+
+        return $out;
+    }
+
+    /**
+     * Labels of the added settings, for the change lines.
+     *
+     * @return array<string, string>
+     */
+    private function extraLabels(): array
+    {
+        return array_map(static fn (array $entry): string => $entry['spec']['label'], $this->extraMap());
+    }
+
+    /**
+     * Writes values by change key: the plugin's settings to the system config, added settings
+     * through the plugin that adds them.
+     *
+     * @param array<string, mixed> $values
+     */
+    private function write(array $values): void
+    {
+        $map = $this->extraMap();
+        $groups = [];
+        $own = [];
+        foreach ($values as $key => $value) {
+            if (str_starts_with($key, self::EXTRA)) {
+                $name = substr($key, \strlen(self::EXTRA));
+                if (isset($map[$name])) {
+                    $groups[spl_object_id($map[$name]['owner'])]['owner'] = $map[$name]['owner'];
+                    $groups[spl_object_id($map[$name]['owner'])]['values'][$name] = $value;
+                }
+                continue;
+            }
+            $own[$key] = $value;
+        }
+        // Added settings first: a plugin that fails to save throws before the plugin's own
+        // settings change, so a failed write leaves nothing changed and nothing unrecorded.
+        foreach ($groups as $group) {
+            $group['owner']->save($group['values']);
+        }
+        foreach ($own as $key => $value) {
+            $this->config->set($key, self::storable($value));
+        }
+    }
+
+    /**
+     * Checks new values of added settings against their choices. Pure, so it is unit tested alone.
+     *
+     * @param array<string, array{type: 'enum'|'list', allowed: list<string>, label: string, description: string}> $specs
+     * @param array<string, mixed>                                                                                  $current
+     * @param array<string, mixed>                                                                                  $values
+     *
+     * @return array{changes: array<string, array{from: mixed, to: mixed}>, errors: list<string>}
+     */
+    public static function checkExtra(array $specs, array $current, array $values): array
+    {
+        $changes = [];
+        $errors = [];
+        foreach ($values as $name => $value) {
+            $spec = $specs[$name] ?? null;
+            if ($spec === null) {
+                $errors[] = 'Unknown or not changeable here: ' . substr($name, 0, 60) . '.';
+                continue;
+            }
+            if ($spec['type'] === 'enum') {
+                $good = \is_string($value) && \in_array($value, $spec['allowed'], true);
+            } else {
+                $good = \is_array($value) && array_filter($value, static fn (mixed $v): bool => !\is_string($v) || !\in_array($v, $spec['allowed'], true)) === [];
+                if ($good) {
+                    $value = array_values(array_filter($spec['allowed'], static fn (string $allowed): bool => \in_array($allowed, $value, true)));
+                }
+            }
+            if (!$good) {
+                $errors[] = 'Not an allowed value for ' . $name . ': one of ' . implode(', ', $spec['allowed']) . ($spec['type'] === 'list' ? ' (a list)' : '') . '.';
+                continue;
+            }
+            $from = $current[$name] ?? null;
+            if ($from !== $value) {
+                $changes[self::EXTRA . $name] = ['from' => $from, 'to' => $value];
+            }
+        }
+
+        return ['changes' => $changes, 'errors' => $errors];
     }
 
     /**
@@ -241,6 +388,18 @@ final class AssistantTools
             }
             $rows[] = $row;
         }
+        $extra = $this->extraMap();
+        $values = $extra !== [] ? $this->extraValues() : [];
+        foreach ($extra as $name => $entry) {
+            $rows[] = [
+                'key' => $name,
+                'value' => $values[$name] ?? null,
+                'type' => $entry['spec']['type'],
+                'description' => $entry['spec']['description'],
+                'shoppers_see' => false,
+                'allowed' => $entry['spec']['allowed'],
+            ];
+        }
 
         return [
             'settings' => $rows,
@@ -336,13 +495,19 @@ final class AssistantTools
      * Plain lines for a change. Pure, so it is unit tested alone.
      *
      * @param array<string, array{from: mixed, to: mixed}> $changes keyed by system config key
+     * @param array<string, string>                        $labels  labels of added settings
      *
      * @return list<array{text: string, shoppers_see: bool}>
      */
-    public static function describe(SettingsFile $schema, array $changes): array
+    public static function describe(SettingsFile $schema, array $changes, array $labels = []): array
     {
         $lines = [];
         foreach ($changes as $key => $change) {
+            if (str_starts_with($key, self::EXTRA)) {
+                $name = substr($key, \strlen(self::EXTRA));
+                $lines[] = ['text' => ($labels[$name] ?? $name) . ': ' . self::show($change['from']) . ' -> ' . self::show($change['to']), 'shoppers_see' => false];
+                continue;
+            }
             if ($key === self::BUTTON) {
                 $lines[] = ['text' => 'Shopware\'s withdrawal button in the storefront footer (Settings > Basic information): ' . self::show($change['from']) . ' -> ' . self::show($change['to']), 'shoppers_see' => true];
                 continue;
@@ -384,7 +549,35 @@ final class AssistantTools
     {
         $current = $this->current();
         $values = \is_array($args['settings'] ?? null) ? $args['settings'] : [];
+        $map = $this->extraMap();
+        $added = [];
+        foreach ($values as $name => $value) {
+            if (\is_string($name) && isset($map[$name])) {
+                $added[$name] = $value;
+                unset($values[$name]);
+            }
+        }
         $checked = self::checkValues($this->schema, $current, $values);
+        if ($added !== []) {
+            $extraNow = $this->extraValues();
+            $more = self::checkExtra(array_map(static fn (array $entry): array => $entry['spec'], $map), $extraNow, $added);
+            $checked['changes'] += $more['changes'];
+            $checked['errors'] = [...$checked['errors'], ...$more['errors']];
+            if ($more['errors'] === [] && $more['changes'] !== []) {
+                $after = $extraNow;
+                foreach ($more['changes'] as $key => $change) {
+                    $after[substr($key, \strlen(self::EXTRA))] = $change['to'];
+                }
+                $owners = [];
+                foreach ($more['changes'] as $key => $change) {
+                    $owner = $map[substr($key, \strlen(self::EXTRA))]['owner'];
+                    $owners[spl_object_id($owner)] = $owner;
+                }
+                foreach ($owners as $owner) {
+                    $checked['errors'] = [...$checked['errors'], ...$owner->errors($extraNow, $after)];
+                }
+            }
+        }
 
         $plan = Recommended::plan($this->recommended->facts());
         $keys = \is_array($args['switch_on'] ?? null) ? array_values(array_unique(array_filter($args['switch_on'], 'is_string'))) : [];
@@ -424,8 +617,8 @@ final class AssistantTools
         if ($checked['changes'] === []) {
             return self::fail('Nothing would change.');
         }
-        $notes = [...$notes, ...$this->ownValues(array_keys($checked['changes']))];
-        $lines = self::describe($this->schema, $checked['changes']);
+        $notes = [...$notes, ...$this->ownValues(array_values(array_filter(array_keys($checked['changes']), static fn (string $k): bool => !str_starts_with($k, self::EXTRA))))];
+        $lines = self::describe($this->schema, $checked['changes'], $this->extraLabels());
         $code = $this->store->savePreview($userId, ['changes' => $checked['changes']], time());
 
         return self::ok([
@@ -449,6 +642,9 @@ final class AssistantTools
      */
     private function ownValues(array $keys): array
     {
+        if ($keys === []) {
+            return [];
+        }
         $rows = $this->connection->fetchAllAssociative(
             'SELECT c.configuration_key, COALESCE(t.name, LOWER(HEX(c.sales_channel_id))) AS channel
              FROM system_config c
@@ -515,17 +711,17 @@ final class AssistantTools
                 return self::fail('Settings changed since the preview. Call preview_change again.');
             }
         }
-        foreach ($changes as $key => $change) {
-            $this->config->set($key, self::storable($change['to']));
+        try {
+            $this->write(array_map(static fn (array $change): mixed => $change['to'], $changes));
+        } catch (\Throwable) {
+            return self::fail('Not saved: a setting from another Shopproof plugin could not be saved. Nothing was changed. Try again later.');
         }
         $id = AssistantStore::changeId($now);
-        $lines = self::describe($this->schema, $changes);
+        $lines = self::describe($this->schema, $changes, $this->extraLabels());
         $this->store->addChange($id, $userId, ['lines' => $lines, 'changes' => $changes], $now);
         if (!$this->log->append('assistant', self::logSummary($id, $changes))) {
             // Every change has its proof log entry, or it does not happen.
-            foreach ($changes as $key => $change) {
-                $this->config->set($key, self::storable($change['from']));
-            }
+            $this->write(array_map(static fn (array $change): mixed => $change['from'], $changes));
             $this->store->removeChange($id);
 
             return self::fail(self::NO_LOG);
@@ -557,6 +753,12 @@ final class AssistantTools
         if ($key === self::BUTTON) {
             return $this->config->getBool(self::BUTTON);
         }
+        if (str_starts_with($key, self::EXTRA)) {
+            $name = substr($key, \strlen(self::EXTRA));
+
+            // A setting no longer offered (for example the licence ran out) is never "as before".
+            return isset($this->extraMap()[$name]) ? ($this->extraValues()[$name] ?? null) : new \stdClass();
+        }
 
         return self::value($this->schema, substr($key, \strlen(self::CONFIG)), $this->config->get($key));
     }
@@ -571,7 +773,8 @@ final class AssistantTools
         $out = [];
         foreach (\is_array($stored) ? $stored : [] as $key => $change) {
             $key = (string) $key;
-            $allowed = $key === self::BUTTON || (str_starts_with($key, self::CONFIG) && isset(self::REGISTRY[substr($key, \strlen(self::CONFIG))]));
+            $allowed = $key === self::BUTTON || (str_starts_with($key, self::CONFIG) && isset(self::REGISTRY[substr($key, \strlen(self::CONFIG))]))
+                || preg_match('/^' . preg_quote(self::EXTRA, '/') . '[a-z_]{1,40}$/', $key) === 1;
             if ($allowed && \is_array($change) && \array_key_exists('from', $change) && \array_key_exists('to', $change)) {
                 $out[$key] = ['from' => $change['from'], 'to' => $change['to']];
             }
@@ -594,7 +797,11 @@ final class AssistantTools
             || (\is_array($value) && \count($value) <= 30 && array_filter($value, static fn (mixed $v): bool => !\is_string($v) || preg_match('/^[A-Z]{2}$/', $v) !== 1) === []);
         $settings = [];
         foreach ($changes as $key => $change) {
-            $name = $key === self::BUTTON ? 'withdrawalButton' : substr($key, \strlen(self::CONFIG));
+            $name = match (true) {
+                $key === self::BUTTON => 'withdrawalButton',
+                str_starts_with($key, self::EXTRA) => substr($key, \strlen(self::EXTRA)),
+                default => substr($key, \strlen(self::CONFIG)),
+            };
             $settings[$name] = $plain($change['from']) && $plain($change['to']) ? ['from' => $change['from'], 'to' => $change['to']] : 'changed';
         }
 
@@ -628,24 +835,80 @@ final class AssistantTools
             return self::fail('No change with this id.');
         }
         $now = time();
-        if ($found[0]['undone'] !== null || !$this->store->markUndone($id, $now)) {
+        if ($found[0]['undone'] !== null) {
             return self::fail('This change was already undone.');
         }
         $changes = self::storedChanges($found[0]['data']['changes'] ?? null);
-        $kept = [];
-        $restored = [];
+        // Settings no longer offered (another plugin turned off or not licensed): nothing is
+        // undone, so the change is never marked undone with some of its values still in place.
+        $map = $this->extraMap();
+        $extraNow = $map !== [] ? $this->extraValues() : [];
+        // Read again: a plugin whose values failed was just left out.
+        $map = $this->extraMap();
+        $gone = [];
+        foreach (array_keys($changes) as $key) {
+            if (str_starts_with($key, self::EXTRA) && !isset($map[substr($key, \strlen(self::EXTRA))])) {
+                $gone[] = substr($key, \strlen(self::EXTRA));
+            }
+        }
+        if ($gone !== []) {
+            return self::fail('Not undone: these settings are not available now, so they cannot be put back: ' . implode(', ', $gone) . '. If they belong to Shopproof Pro, it must be active and licensed. Nothing was changed.');
+        }
+        // Added settings that belong together (such as the three product questions) are put back
+        // only together: when one was changed since, the rest could leave a mix nobody chose.
+        $after = $extraNow;
+        $keptExtra = [];
+        $owners = [];
         foreach ($changes as $key => $change) {
-            if ($this->now($key) !== $change['to']) {
-                $kept[] = $key === self::BUTTON ? 'the withdrawal button' : substr($key, \strlen(self::CONFIG));
+            if (!str_starts_with($key, self::EXTRA)) {
                 continue;
             }
-            $this->config->set($key, self::storable($change['from']));
+            $name = substr($key, \strlen(self::EXTRA));
+            if (($extraNow[$name] ?? null) !== $change['to']) {
+                $keptExtra[] = $name;
+                continue;
+            }
+            $after[$name] = $change['from'];
+            $owners[spl_object_id($map[$name]['owner'])] = $map[$name]['owner'];
+        }
+        if ($keptExtra !== []) {
+            foreach ($owners as $owner) {
+                if ($owner->errors($extraNow, $after) !== []) {
+                    return self::fail('Not undone: ' . implode(', ', $keptExtra) . ' changed again since, and the rest cannot be put back without it. Nothing was changed. Ask the owner what the settings should be now and make a new change instead.');
+                }
+            }
+        }
+        if (!$this->store->markUndone($id, $now)) {
+            return self::fail('This change was already undone.');
+        }
+        $kept = [];
+        $restored = [];
+        $back = [];
+        foreach ($changes as $key => $change) {
+            if ($this->now($key) !== $change['to']) {
+                $kept[] = match (true) {
+                    $key === self::BUTTON => 'the withdrawal button',
+                    str_starts_with($key, self::EXTRA) => substr($key, \strlen(self::EXTRA)),
+                    default => substr($key, \strlen(self::CONFIG)),
+                };
+                continue;
+            }
+            $back[$key] = $change['from'];
             $restored[$key] = $change['to'];
+        }
+        if ($back !== []) {
+            try {
+                $this->write($back);
+            } catch (\Throwable) {
+                $this->store->unmarkUndone($id);
+
+                return self::fail('Not undone: a setting from another Shopproof plugin could not be saved. Nothing was changed. Try again later.');
+            }
         }
         if (!$this->log->append('assistant', ['by' => $by, 'undo' => $id, 'change' => $id, 'kept' => $kept])) {
             // Without its proof log entry the undo does not happen: put the values back.
-            foreach ($restored as $key => $value) {
-                $this->config->set($key, self::storable($value));
+            if ($restored !== []) {
+                $this->write($restored);
             }
             $this->store->unmarkUndone($id);
 

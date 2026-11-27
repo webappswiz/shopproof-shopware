@@ -188,7 +188,8 @@
                 "retention": "Durée de conservation modifiée",
                 "anchor": "Horodatage conservé par Shopproof",
                 "prices": "Historique des prix scellé",
-                "assistant": "Modifié par l'assistant IA"
+                "assistant": "Modifié par l'assistant IA",
+                "status": "Statut de la rétractation modifié"
             }
         },
         "returns": {

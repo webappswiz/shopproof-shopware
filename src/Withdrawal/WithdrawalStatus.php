@@ -4,6 +4,7 @@ namespace Shopproof\Compliance\Withdrawal;
 
 use Doctrine\DBAL\Connection;
 use Psr\Log\LoggerInterface;
+use Shopproof\Compliance\ProofLog\ProofLog;
 use Shopproof\Compliance\Installer\MailTemplateInstaller;
 use Shopware\Core\Content\Mail\Service\AbstractMailService;
 use Shopware\Core\Defaults;
@@ -35,18 +36,26 @@ class WithdrawalStatus
         private readonly SystemConfigService $config,
         private readonly Connection $connection,
         private readonly LoggerInterface $logger,
+        private readonly ?ProofLog $proofLog = null,
     ) {
     }
 
     /**
+     * Moves a withdrawal and records the change in the proof log (decision 0051).
+     *
+     * @param string $source who moved it: 'shop' (the merchant, on the Shopproof page),
+     *                       'shopware_refund' (the payment marked as refunded) or 'shopware_return'
+     *                       (every delivery marked as returned)
+     *
      * @return array{changed: bool, emailed: bool}
      */
-    public function set(string $id, string $state, bool $notify = true): array
+    public function set(string $id, string $state, bool $notify = true, string $source = 'shop'): array
     {
         $record = $this->store->find($id);
         if ($record === null || !$this->store->setStatus($id, $state)) {
             return ['changed' => false, 'emailed' => false];
         }
+        $this->logProof($id, $state, $source);
         $forward = array_search($state, WithdrawalStore::STATES, true) > array_search($record['status'], WithdrawalStore::STATES, true);
         $emailed = $notify && $forward && $state !== WithdrawalStore::STATES[0] && $this->send($record, $state);
 
@@ -60,7 +69,7 @@ class WithdrawalStatus
     {
         $count = 0;
         foreach ($this->store->openForOrder($orderId) as $id) {
-            $count += $this->set($id, WithdrawalStore::STATES[2])['changed'] ? 1 : 0;
+            $count += $this->set($id, WithdrawalStore::STATES[2], true, 'shopware_refund')['changed'] ? 1 : 0;
         }
 
         return $count;
@@ -82,7 +91,7 @@ class WithdrawalStatus
             if ($record === null || $record['status'] !== WithdrawalStore::STATES[0]) {
                 continue;
             }
-            $count += $this->set($id, WithdrawalStore::STATES[1])['changed'] ? 1 : 0;
+            $count += $this->set($id, WithdrawalStore::STATES[1], true, 'shopware_return')['changed'] ? 1 : 0;
         }
 
         return $count;
@@ -179,5 +188,78 @@ class WithdrawalStatus
             'contentHtml' => $text($row['content_html'] ?? null),
             'contentPlain' => $plain !== '' ? $plain : strip_tags($text($row['content_html'] ?? null)),
         ];
+    }
+
+    /**
+     * The proof log entry for a status change, the same fields as the WooCommerce plugin: the
+     * reference, the new status, when (UTC), by what, and for a refund the day it was due and
+     * whether it was paid by then (yes, no, or check when it came after the 14 days while the goods
+     * were not marked back, since the shop may wait for them, Art. 13(3)). Shopware refunds whole
+     * payments, so no item amounts. No name, email address or order number. A failed write is
+     * logged and never stops the status.
+     */
+    /**
+     * Whether a refund on this day was in time: "yes" on or before the due day; "check" after it
+     * while the goods were not marked back or no delivery day is known (the shop may have waited
+     * for the goods or proof of sending, Article 13(3), which Shopproof cannot see); else "no".
+     *
+     * @param array<mixed> $clock
+     */
+    public static function onTime(string $day, array $clock): string
+    {
+        $due = \is_string($clock['refundDue'] ?? null) ? $clock['refundDue'] : '';
+        if ($day !== '' && $due !== '' && $day <= $due) {
+            return 'yes';
+        }
+        if ($day === '' || (($clock['basis'] ?? '') !== 'order' && ($clock['goodsBack'] ?? '') === '')) {
+            return 'check';
+        }
+
+        return 'no';
+    }
+
+    /**
+     * The shop's time zone for proof log days: the time zone of the first administrator in the
+     * Shopware admin (webhooks and order events carry none), else the server's, else UTC.
+     */
+    private function shopZone(): \DateTimeZone
+    {
+        try {
+            $name = $this->connection->fetchOne('SELECT `time_zone` FROM `user` WHERE `admin` = 1 AND `active` = 1 ORDER BY `created_at` ASC LIMIT 1');
+            if (\is_string($name) && \in_array($name, \DateTimeZone::listIdentifiers(), true)) {
+                return new \DateTimeZone($name);
+            }
+        } catch (\Throwable) {
+            // Fall through to the server's time zone.
+        }
+
+        return new \DateTimeZone(date_default_timezone_get());
+    }
+
+    private function logProof(string $id, string $state, string $source): void
+    {
+        if ($this->proofLog === null) {
+            return;
+        }
+        try {
+            $at = gmdate('Y-m-d\TH:i:s\Z');
+            $summary = ['reference' => $id, 'status' => $state, 'source' => $source, 'at' => $at];
+            if ($state === WithdrawalStore::STATES[2]) {
+                $days = OrderEmailLine::period($this->config->getInt(self::CONFIG . 'withdrawalDays'));
+                $zone = $this->shopZone();
+                $clock = $this->store->list(1, 1, '', $zone, $days, $id)['items'][0]['clock'] ?? null;
+                if (\is_array($clock) && $clock['refundDue'] !== '') {
+                    $day = \is_string($clock['refunded'] ?? null) && $clock['refunded'] !== '' ? $clock['refunded'] : WithdrawalClock::day($at, $zone);
+                    $summary['refund_day'] = $day;
+                    $summary['refund_due'] = $clock['refundDue'];
+                    $summary['on_time'] = self::onTime($day, $clock);
+                }
+            }
+            if (!$this->proofLog->append('status', $summary)) {
+                $this->logger->error('Shopproof could not add a status change to the proof log (lock not available).');
+            }
+        } catch (\Throwable $e) {
+            $this->logger->error('Shopproof could not add a status change to the proof log: ' . $e->getMessage());
+        }
     }
 }

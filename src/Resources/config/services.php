@@ -9,6 +9,7 @@ use Shopproof\Compliance\Cancel\CancelService;
 use Shopproof\Compliance\Cancel\CancelStore;
 use Shopproof\Compliance\Assistant\AssistantStore;
 use Shopproof\Compliance\Assistant\AssistantTools;
+use Shopproof\Compliance\Assistant\ExtraSettings;
 use Shopproof\Compliance\Controller\AssistantController;
 use Shopproof\Compliance\Controller\CancelController;
 use Shopproof\Compliance\Controller\CancellationController;
@@ -198,7 +199,8 @@ return static function (ContainerConfigurator $container): void {
 
     $services->set(AssistantStore::class);
 
-    $services->set(AssistantTools::class);
+    $services->set(AssistantTools::class)
+        ->arg('$extras', tagged_iterator(ExtraSettings::TAG));
 
     $services->set(AssistantController::class)
         ->public()

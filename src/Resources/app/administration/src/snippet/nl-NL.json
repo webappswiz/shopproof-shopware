@@ -188,7 +188,8 @@
                 "retention": "Bewaartermijn gewijzigd",
                 "anchor": "Stempel bewaard door Shopproof",
                 "prices": "Prijsgeschiedenis verzegeld",
-                "assistant": "Gewijzigd door AI-assistent"
+                "assistant": "Gewijzigd door AI-assistent",
+                "status": "Status van herroeping gewijzigd"
             }
         },
         "returns": {

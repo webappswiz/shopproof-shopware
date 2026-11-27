@@ -188,7 +188,8 @@
                 "retention": "Aufbewahrung geändert",
                 "anchor": "Stempel bei Shopproof",
                 "prices": "Preisverlauf versiegelt",
-                "assistant": "Von KI-Assistent geändert"
+                "assistant": "Von KI-Assistent geändert",
+                "status": "Widerrufsstatus geändert"
             }
         },
         "returns": {

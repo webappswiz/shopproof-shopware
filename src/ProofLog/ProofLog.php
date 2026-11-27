@@ -23,9 +23,10 @@ class ProofLog
     /**
      * Entry types. "anchor" records Shopproof's receipt for the chain hash it stored (the daily
      * stamp of Shopproof Pro, decision 0013); the free plugin never writes one itself. "prices"
-     * seals the price history rows added since the last one (decision 0040).
+     * seals the price history rows added since the last one (decision 0040). "status" records a
+     * withdrawal status change (decision 0051).
      */
-    public const TYPES = ['snapshot', 'withdrawal', 'retention', 'anchor', 'prices', 'assistant'];
+    public const TYPES = ['snapshot', 'withdrawal', 'retention', 'anchor', 'prices', 'assistant', 'status'];
 
     public const DEFAULT_RETENTION = 730;
 

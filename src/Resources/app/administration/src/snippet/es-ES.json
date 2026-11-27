@@ -188,7 +188,8 @@
                 "retention": "Plazo de conservación cambiado",
                 "anchor": "Sello guardado por Shopproof",
                 "prices": "Historial de precios sellado",
-                "assistant": "Cambiado por el asistente de IA"
+                "assistant": "Cambiado por el asistente de IA",
+                "status": "Estado del desistimiento cambiado"
             }
         },
         "returns": {

@@ -188,7 +188,8 @@
                 "retention": "Retention changed",
                 "anchor": "Stamp held by Shopproof",
                 "prices": "Price history sealed",
-                "assistant": "Changed by AI assistant"
+                "assistant": "Changed by AI assistant",
+                "status": "Withdrawal status changed"
             }
         },
         "returns": {
